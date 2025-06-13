@@ -9,9 +9,7 @@ deployment:
 
     # 3. Copiar archivos de configuración
     - /bin/cp $CONFIGPATH/.env $DEPLOYPATH/.env
-    - /bin/rm -f $DEPLOYPATH/.env.example
     - /bin/cp $CONFIGPATH/.htaccess $DEPLOYPATH/.htaccess
-    - /bin/rm -f $DEPLOYPATH/.htaccess.example
 
     # 4. Ajustar permisos y propietarios
     - /bin/chmod 750 $DEPLOYPATH/vendor
