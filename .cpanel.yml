@@ -1,46 +1,11 @@
 ---
 deployment:
   tasks:
-    # ======================
-    # 1. PATH CONFIGURATION
-    # ======================
     - export DEPLOYPATH=/home/se7entechnet/se7entech-crm
     - export CONFIGPATH=/home/se7entechnet/deploy_config_files
-    
-    # ======================
-    # 2. VENDOR DIRECTORY
-    # ======================
-    - echo "Copying vendor directory..."
-    - /bin/rm -rf $DEPLOYPATH/vendor 2>/dev/null || true
-    - /bin/cp -rf $CONFIGPATH/vendor $DEPLOYPATH/
-    - /bin/chmod -R 750 $DEPLOYPATH/vendor
-    
-    # ======================
-    # 3. ENV CONFIGURATION
-    # ======================
-    - echo "Handling .env files..."
-    - [ -f $CONFIGPATH/.env ] && /bin/cp $CONFIGPATH/.env $DEPLOYPATH/
-    - [ -f $DEPLOYPATH/.env.example ] && /bin/rm -f $DEPLOYPATH/.env.example
-    - [ -f $DEPLOYPATH/.env ] && /bin/chmod 640 $DEPLOYPATH/.env
-    
-    # ======================
-    # 4. HTACCESS CONFIG
-    # ======================
-    - echo "Configuring .htaccess..."
-    - [ -f $CONFIGPATH/.htaccess ] && /bin/cp $CONFIGPATH/.htaccess $DEPLOYPATH/
-    - [ -f $DEPLOYPATH/.htaccess.example ] && /bin/rm -f $DEPLOYPATH/.htaccess.example
-    - [ -f $DEPLOYPATH/.htaccess ] && /bin/chmod 644 $DEPLOYPATH/.htaccess
-    
-    # ======================
-    # 5. CORE FILES
-    # ======================
-    - echo "Deploying application files..."
-    - /bin/cp -f $DEPLOYPATH/index.html $DEPLOYPATH/
-    - /bin/cp -f $DEPLOYPATH/style.css $DEPLOYPATH/
-    
-    # ======================
-    # 6. VERIFICATION
-    # ======================
-    - echo "Verifying deployment..."
-    - /bin/ls -la $DEPLOYPATH/
-    - echo "Deployment completed at $(date +'%Y-%m-%d %H:%M:%S')"
+    - /bin/cp -r $CONFIGPATH/vendor $DEPLOYPATH/vendor
+    - /bin/cp $CONFIGPATH/.env $DEPLOYPATH/.env
+    - /bin/cp $CONFIGPATH/.htaccess $DEPLOYPATH/.htaccess
+    - /bin/chmod 750 $DEPLOYPATH/vendor
+    - /bin/chmod 640 $DEPLOYPATH/.env
+    - /bin/chmod 644 $DEPLOYPATH/.htaccess
