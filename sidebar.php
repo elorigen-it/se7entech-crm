@@ -79,28 +79,28 @@ navbar-light bg-white" id="sidenav-main">
                     <i class="fa fa-desktop"></i> Dashboard
                 </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="<?php echo $base_url;?>/modules/tasks/">
                     <i class="fa fa-tasks"></i> Tasks
                 </a>
-            </li>
+            </li> -->
             <?php if($role != 12 && $role != 15):?>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="<?php echo $base_url;?>/modules/tasks/index.php/labels">
                         <i class="fa fa-tasks"></i> Tasks Labels
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo $base_url;?>/Client">
                         <i class="fa fa-users"></i> Client
                     </a>
                 </li>
                 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="<?php echo $base_url;?>/Lead">
                         <i class="fa fa-list"></i> Lead
                     </a>
-                </li>
+                </li> -->
 
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo $base_url;?>/modules/contract/">
@@ -130,17 +130,17 @@ navbar-light bg-white" id="sidenav-main">
                 </li> -->
 
 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="<?php echo $base_url;?>/agentdata">
                         <i class="fa fa-vcard-o"></i> Sales Data
                     </a>
-                </li>
+                </li> -->
                 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" title="you can shere by copy url" href="<?php echo $base_url;?>/questionair-list">
                         <i class="fa fa-question"></i> Questionnaire
                     </a>
-                </li>
+                </li> -->
             
 
                 <!-- <li class="nav-item">
@@ -149,11 +149,11 @@ navbar-light bg-white" id="sidenav-main">
                     </a>
                 </li> -->
 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="<?php echo $base_url;?>/modules/appointments/">
                         <i class="fa fa-calendar-o"></i> Appointments
                     </a>
-                </li>
+                </li> -->
                 
                 <!--<li class="nav-item">
                     <a class="nav-link" href="<?php echo $base_url;?>/modules/payReminder/">
@@ -161,23 +161,23 @@ navbar-light bg-white" id="sidenav-main">
                     </a>
                 </li> -->
                 
-                <li class="nav-item" style="<?php echo $access=='0'?'':'display:none'?>">
+                <!-- <li class="nav-item" style="<?php echo $access=='0'?'':'display:none'?>">
                     <a class="nav-link" href="<?php echo $base_url;?>/Model">
                         <i class="fa fa-female"></i> Model
                     </a>
-                </li>
+                </li> -->
                 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="<?php echo $base_url;?>/Pin-Location">
                         <i class="fa fa-map-marker"></i> Pined Location
                     </a>
-                </li>
+                </li> -->
             <?php endif;?>
             
             
             
             <?php if($role != 12 && $role != 15):?>
-                <li class="nav-item" style="<?php echo $access=='0'?'':'display:none'?>">
+                <!-- <li class="nav-item" style="<?php echo $access=='0'?'':'display:none'?>">
                     <a class="nav-link" href="<?php echo $base_url;?>/marker-icon">
                         <i class="fa fa-paint-brush"></i> Add Icon
                     </a>
@@ -193,14 +193,14 @@ navbar-light bg-white" id="sidenav-main">
                     <a class="nav-link" href="<?php echo $base_url;?>/modules/calendar/">
                         <i class="fa fa-calendar"></i> Calendar
                     </a>
-                </li>
+                </li> -->
                 
                 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link dropdown-toggle" href="<?php echo $base_url;?>/chat/users">
                         <i class="fa fa-comments"></i> Chat Now <sup class="count" style="color:red"></sup> 
                     </a>
-                </li>
+                </li> -->
 
                 <?php if($access === '0'):?>
                     <li class="nav-item">
@@ -219,11 +219,11 @@ navbar-light bg-white" id="sidenav-main">
                 <?php endif;?>
 
                 <?php if($access === '0'):?>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="<?php echo $base_url;?>/modules/users/">
                             <i class="fa fa-cog" aria-hidden="true"></i> Users
                         </a>
-                    </li>
+                    </li> -->
                 <?php endif;?>
 
                 <?php // if($access === '0'):?>
@@ -243,11 +243,11 @@ navbar-light bg-white" id="sidenav-main">
                     </li>
                 <?php endif;?>
             <?php endif;?>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="<?php echo $base_url;?>/modules/users/index.php/taxes/">
                     <i class="fa fa-cog" aria-hidden="true"></i> My Contract / Taxes
                 </a>
-            </li>
+            </li> -->
                         <!--<li class="nav-item">-->
                         <!--<li class="nav-item dropdown">-->
                         <!--<a class="nav-link" href="#" role="button"-->
