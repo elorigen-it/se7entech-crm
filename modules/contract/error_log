@@ -1,0 +1,234 @@
+[14-Dec-2024 01:03:00 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[14-Dec-2024 01:03:00 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[14-Dec-2024 01:03:10 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[14-Dec-2024 01:03:10 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[18-Dec-2024 23:12:26 UTC] PHP Warning:  Undefined array key "agent_id" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 87
+[18-Dec-2024 23:12:26 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 87
+[18-Dec-2024 23:22:44 UTC] PHP Warning:  Undefined array key "agent_id" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 87
+[18-Dec-2024 23:22:44 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 87
+[18-Dec-2024 23:43:09 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[18-Dec-2024 23:43:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[18-Dec-2024 23:43:20 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[18-Dec-2024 23:43:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[23-Dec-2024 20:47:33 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[23-Dec-2024 20:47:33 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[27-Dec-2024 17:17:06 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[27-Dec-2024 17:17:06 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[27-Dec-2024 17:17:16 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[27-Dec-2024 17:17:16 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[27-Dec-2024 17:19:24 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[27-Dec-2024 17:19:24 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[27-Dec-2024 17:26:22 UTC] PHP Warning:  Undefined array key "agent_id" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 87
+[27-Dec-2024 17:26:22 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 87
+[09-Jan-2025 16:28:40 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[09-Jan-2025 16:28:40 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[22-Jan-2025 18:39:15 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[22-Jan-2025 18:39:15 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[22-Jan-2025 18:39:23 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[22-Jan-2025 18:39:23 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[13-Feb-2025 00:56:51 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[13-Feb-2025 00:56:51 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[22-Feb-2025 20:49:57 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[22-Feb-2025 20:49:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[27-Feb-2025 04:48:50 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[27-Feb-2025 04:48:50 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[27-Feb-2025 23:00:54 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[27-Feb-2025 23:00:54 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[28-Feb-2025 22:22:20 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[28-Feb-2025 22:22:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[05-Mar-2025 16:03:28 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[05-Mar-2025 16:03:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[05-Mar-2025 22:39:49 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[05-Mar-2025 22:39:49 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[11-Mar-2025 18:36:20 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[11-Mar-2025 18:36:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[13-Mar-2025 00:59:02 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[13-Mar-2025 00:59:02 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[13-Mar-2025 00:59:09 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[13-Mar-2025 00:59:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[13-Mar-2025 05:10:37 UTC] PHP Warning:  Undefined array key "agent_id" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 87
+[13-Mar-2025 05:10:37 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 87
+[13-Mar-2025 06:31:05 UTC] PHP Warning:  Undefined array key "agent_id" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 87
+[13-Mar-2025 06:31:05 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 87
+[15-Mar-2025 21:45:15 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[15-Mar-2025 21:45:15 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[15-Mar-2025 21:56:04 UTC] PHP Warning:  Undefined array key "agent_id" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 87
+[15-Mar-2025 21:56:04 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 87
+[15-Mar-2025 21:56:46 UTC] PHP Warning:  Undefined array key "agent_id" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 87
+[15-Mar-2025 21:56:46 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 87
+[21-Mar-2025 16:50:22 UTC] PHP Warning:  Undefined array key "agent_id" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 87
+[21-Mar-2025 16:50:22 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 87
+[21-Mar-2025 18:20:03 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[21-Mar-2025 18:20:03 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[21-Mar-2025 18:20:14 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 14
+[21-Mar-2025 18:20:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Se7entech\Contractnew\Modules\Contract\Models\convertGracetime() in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php:128
+Stack trace:
+#0 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php(20): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::insertGraceTime()
+#1 /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Controllers/ContractController.php(329): Se7entech\Contractnew\Modules\Contract\Models\ContractModel::postContract()
+#2 /home/se7entechnet/crm.se7entech.net/modules/ModuleLoader.php(69): Se7entech\Contractnew\Modules\Contract\Controllers\ContractController->postContract()
+#3 /home/se7entechnet/crm.se7entech.net/modules/contract/index.php(8): ModuleLoader->run()
+#4 {main}
+  thrown in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 128
+[27-Mar-2025 17:48:58 UTC] PHP Warning:  Undefined array key "agent_id" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 87
+[27-Mar-2025 17:48:58 UTC] PHP Warning:  Undefined array key "customer_id_input" in /home/se7entechnet/crm.se7entech.net/src/Modules/Contract/Models/ContractModel.php on line 87

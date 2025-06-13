@@ -1,0 +1,17 @@
+{
+    "name": "se7entech/contractnew",
+    "description": "CRM for se7entech",
+    "autoload": {
+        "psr-4": {
+            "Se7entech\\Contractnew\\": "src/"
+        }
+    },
+    "require": {
+        "rakit/validation": "^1.4",
+        "symfony/routing": "^6.2",
+        "symfony/http-foundation": "^6.2",
+        "phpmailer/phpmailer": "^6.8",
+        "mpdf/mpdf": "^8.1",
+        "cloudmersive/cloudmersive_document_convert_api_client": "^1.0"
+    }
+}
