@@ -13,7 +13,7 @@ deployment:
     - /bin/cp $CONFIGPATH/.htaccess $DEPLOYPATH/.htaccess
     - /bin/rm -f $DEPLOYPATH/.htaccess.example  # Elimina el .htaccess.example si existe
 
-    # 4. Ajustar permisos
+    # 4. Ajustar permisos y propietarios
     - /bin/chmod 750 $DEPLOYPATH/vendor
     - /bin/chmod 640 $DEPLOYPATH/.env
     - /bin/chmod 644 $DEPLOYPATH/.htaccess
