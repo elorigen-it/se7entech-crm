@@ -1,0 +1,952 @@
+<?php
+    namespace Se7entech\Contractnew\Modules\Contract;
+
+    // session_start();
+    require('../../config/config.php');
+    require('../../connection.php');
+    // require_once '../../access.php';
+
+    // if (isset($_POST['save'])) {
+    //     $a = $_POST['a'];
+    //     $b = $_POST['b'];
+    //     $c = $_POST['c'];
+    //     $d = $_POST['d'];
+    //     $e = $_POST['e'];
+    //     $f = $_POST['f'];
+    //     $i = $_POST['i'];
+    //     $j = $_POST['j'];
+    //     $k = $_POST['k'];
+    //     $l = $_POST['l'];
+    //     $m = $_POST['m'];
+    //     $n = $_POST['n'];
+    //     $o = $_POST['o'];
+    //     $p = $_POST['p'];
+    //     $q = $_POST['q'];
+    //     $r = $_POST['r'];
+    //     $s = $_POST['s'];
+    //     $t = $_POST['t'];
+    //     $u = $_POST['u'];
+    //     $v = $_POST['v'];
+    //     $w = $_POST['w'];
+    //     $x = $_POST['x'];
+    //     $y = $_POST['y'];
+    //     $z = $_POST['z'];
+    //     $aa = $_POST['aa'];
+    //     $bb = $_POST['bb'];
+    //     $cc = $_POST['cc'];
+    //     $dd = $_POST['dd'];
+    //     $ee = $_POST['ee'];
+    //     $ff = $_POST['ff'];
+    //     $gg = $_POST['gg'];
+    //     $hh = $_POST['hh'];
+    //     $ii = $_POST['ii'];
+    //     $jj = $_POST['jj'];
+    //     $kk = $_POST['kk'];
+    //     $ll = $_POST['ll'];
+    //     $mm = $_POST['mm'];
+    //     $nn = $_POST['nn'];
+    //     $oo = $_POST['oo'];
+    //     $pp = $_POST['pp'];
+
+    //     $rand = rand(11111111, 9999999);
+    //     $r = $rand . $_FILES['r']['name'];
+    //     $company_sign = '1';
+    //     $client_sign = '2';
+    //     $ka = $_POST['ka'];
+    //     $initial = $_POST['initial'];
+    //     $services = $_POST['services'];
+
+    //     $sql = "INSERT INTO contactnew (a,b,c,d,e,f,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,aa,bb,cc,dd,ee,ff,gg,hh,ii,jj,kk,ll,mm,nn,oo,pp,rand,company_sign,client_sign,ka,initial,logid,services) VALUES ('$a','$b','$c','$d','$e','$f','$i','$j','$k','$l','$m','$n','$o','$p','$q','$r','$s','$t','$u','$v','$w','$x','$y','$z','$aa','$bb','$cc','$dd','$ee','$ff','$gg','$hh','$ii','$jj','$kk','$ll','$mm','$nn','$oo','$pp','$rand','$company_sign','$client_sign','$ka','$initial','$logid','$services')";
+    //     $result = mysqli_query($con, $sql);
+
+    //     if (empty($r)) {
+    //         echo "<script>window.location.href='sign1.php?id=$rand';</script>";
+    //     } else {
+    //         if (move_uploaded_file($_FILES['r']['tmp_name'], 'images/' . $r)) {
+    //             echo "<script>window.location.href='sign1.php?id=$rand';</script>";
+    //         }
+    //     }
+    // }
+?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <?php include_once('../../layout/head.php');?>
+        <title>Se7entech Corps | Contract</title>
+        <style>
+            .required{
+                color:red;
+            }
+            .se7entech-input, .se7entech-input-number{
+                height: 28px;
+                padding: 3px;
+                border: 1px solid transparent;
+                margin:3px .5em;
+                border-bottom-color: black;
+                outline:none;
+                width: 250px;
+                background:transparent;
+            }
+            .se7entech-input-number{
+                width:50px;
+            }
+            /* .se7entech-input:focus{
+                border: 1px solid transparent;
+                border-bottom-color: black;
+                outline:none;
+            } */
+            .se7entech-paragraph{
+                line-height:2.5;
+                text-align:justify;
+                color:#000;
+            }
+            .se7entech-bordered-paragraph{
+                border-style: solid;
+                border-radius:3px;
+                border-width:1px;
+                padding: 1em;
+                border-color:#5f908e;
+            }
+            .bolder{
+                font-weight:bolder;
+                /* color:#256361; */
+            }
+            .mt-2{
+                margin-top:2em;
+            }
+            .mb-2{
+                margin-bottom:2em !important;
+            }
+            .signature-pad{
+                border: 2px solid #00918a;
+                border-radius: 3%;
+                margin: 0 auto;
+                display: block;
+            }
+            .sign-labels{
+                display:block;
+                text-align:center;
+            }
+            .button_sign_clear{
+                margin: 0 auto;
+                display: block;
+                margin-top: 2em;
+            }
+            .select2-container{
+                z-index: 999999;
+            }
+            .notifyjs-corner{
+                z-index:9999999;
+            }
+            .select2-container{
+                height:auto !important;
+            }
+            .signature-links:hover{
+                cursor:pointer;
+            }
+        </style>
+        <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+        <link rel="stylesheet" href="<?php echo $base_url;?>/editor/summernote-bs4.min.css">
+    </head>
+
+    <body class="">
+        <?php include ('../../sidebar.php'); ?>
+        <div class="main-content">
+            <?php include ('../../nav.php'); ?>
+            <div class="header bg-gradient-info pb-6 pt-5 pt-md-8">
+                <div class="container-fluid">
+                    <div class="nav-wrapper">
+                        <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="res_menagment" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link mb-sm-3 mb-md-0 active " id="tabs-menagment-main" data-toggle="tab" href="#addcontract" role="tab" aria-controls="tabs-menagment" aria-selected="true"><i class="fa fa-user mr-2"></i>Add new Contract</a>
+                            </li>    
+                            <li class="nav-item">
+                                <a class="nav-link mb-sm-3 mb-md-0 " id="tabs-media-list" data-toggle="tab" href="#listcontracts" role="tab" aria-controls="tabs-menagment" aria-selected="false"><i class="fa fa-users mr-2"></i>Contract List</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Top navbar -->
+            <div class="container-fluid mt--7">
+                <div class="row">
+                    <div class="col-12">
+                        <br />
+                        <div class="tab-content" id="tabs">
+                            <!-- Tab Managment -->
+                            <div class="tab-pane fade show active" id="addcontract" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab" >
+                                <div class="card bg-secondary shadow">
+                                    <div class="card-header bg-white border-0">
+                                        <div class="row align-items-center">
+                                            <div class="col-8">
+                                                <h3 class="mb-0">Contracts Management</h3>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center">
+                                            <div class="col">
+                                                <?php if(count($this->data['session'])):?>
+                                                    <?php foreach ($this->data['session'] as $msg)
+                                                        echo $msg;    
+                                                    ?>
+                                                <?php endif;?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h6 class="heading-small text-muted mb-4">Add information</h6>
+                                        <div class="pl-lg-4">   
+                                            <div class="container mb-2">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-6 mb-1">
+                                                        <label for="customer_id" class="bolder">Populate with:</label><br>
+                                                        <input type="hidden" class="customer_id_input" id="customer_id_input" name="customer_id_input">
+                                                        <select name="customer_id" id="customer_id" class="form-control select2">
+                                                            <option>SELECT A CUSTOMER</option>
+                                                            <?php foreach($this->data['customers'] as $customer):?>
+                                                                <option value="<?php echo $customer['id'];?>"><?php echo $customer['type'] . ' - ' .$customer['business_name'] . ' - ' . $customer['name'];;?></option>
+                                                            <?php endforeach;?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-12 col-md-6 mb-1">
+                                                        <label for="services_control" class="bolder">Services:</label><br>
+                                                        <select name="services_control[]" id="services_control" multiple class="form-control select2">
+                                                            <option>SELECT A SERVICE</option>
+                                                            <?php if(count($this->data['groups'])): ?>
+                                                            <?php foreach($this->data['groups'] as $group => $val):?>
+                                                                <optgroup label="<?php echo $val[0];?>">
+                                                                    <?php foreach($this->data['services'] as $service):?>
+                                                                        <?php if($service['department_id'] === $val[1]):?>
+                                                                            <option value="<?php echo $service['id'];?>"><?php echo $service['name'];?></option>
+                                                                        <?php endif;?>
+                                                                    <?php endforeach;?>
+                                                                </optgroup>
+                                                            <?php endforeach;?>
+                                                        <?php endif;?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 col-md-6">
+                                                        <label for="company_name_control" class="bolder">Customer Company</label>
+                                                        <input type="text" name="company_name_control" id="company_name_control" class="form-control company_name_control">
+                                                    </div>
+                                                    <div class="col-12 col-md-6">
+                                                        <label for="customer_name_control" class="bolder">Customer Name</label>
+                                                        <input type="text" name="customer_name_control" id="customer_name_control" class="form-control customer_name_control">
+                                                    </div>
+                                                </div>
+                                            </div>    
+                                            <form id="postcontract" method="POST">
+                                                <!-- Form Name -->
+                                                <legend>
+                                                    <center>
+                                                        <img style="height:50px;width:150px" src="https://se7entech.net/images/logo.png">
+                                                        <h1 style="color:#000080;"><b>Sales Contract<br>
+                                                            <U>SE7ENTECH CORPORATION</u></b>
+                                                        </h1>
+                                                        <BR>
+                                                        <P>460 Irving park rd Suite C123, Bensenville, IL 60106<br>
+                                                            (773)-666-2021
+                                                        </P>
+                                                    </center>
+                                                    <div id="google_translate_element"></div>
+                                                </legend>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-sm-12"> 
+                                                        <p class="se7entech-paragraph">
+                                                            <span>I</span>
+                                                            <input type="text" <?php echo ($this->session->get('access') != '0') ? 'disabled' : '';?>  placeholder="Se7entech RP" value="<?php echo $this->session->get('user');?>" name="agent_name_1" class="se7entech-input no-outline" >
+                                                            <span> the Representative of SE7ENTECH CORPORATION hereby enter into a Sales Agreement with </span>
+                                                            <input type="text" name="customer_name_1" class="se7entech-input no-outline mirror_customer_name" placeholder="Company Representative Name" value="<?php echo isset($this->data['last_data']['customer_name_1']) ? $this->data['last_data']['customer_name_1'] : '';?>">
+                                                            <span> who is the owner/Representative of &nbsp;</span>
+                                                            <input type="text" name="company_name_1" class="se7entech-input no-outline mirror_company_name" placeholder="Company Name" value="<?php echo isset($this->data['last_data']['company_name_1']) ? $this->data['last_data']['company_name_1'] : '';?>">
+                                                            <span>for a term of business to be enacted on this </span>
+                                                            <input type="date" required name="contract_date_start" class="se7entech-input no-outline" value="<?php echo isset($this->data['last_data']['contract_date_start']) ? $this->data['last_data']['contract_date_start'] : '';?>" >
+                                                            <span>And shall automatically end on </span>
+                                                            <input type="date" required  name="contract_date_end" class="se7entech-input no-outline" value="<?php echo isset($this->data['last_data']['contract_date_end']) ? $this->data['last_data']['contract_date_end'] : '';?>"> 
+                                                            <span>unless further contractual terms are added within this Sales Agreement. </span>
+                                                        </p>
+                                                        <p class="se7entech-paragraph">
+                                                            <span>This Sales Agreement shall include the following services offered to </span>
+                                                            <input type="text" name="customer_name_2" class="se7entech-input no-outline mirror_customer_name" value="<?php echo isset($this->data['last_data']['customer_name_2']) ? $this->data['last_data']['customer_name_2'] : '';?>">
+                                                            <span>at the rates so listed there in beside each service offered: </span>
+                                                        </p>
+                                                        <textarea id="services" name="services"><?php echo isset($this->data['last_data']['services']) ? $this->data['last_data']['services'] : '';?></textarea>
+                                                        <p class="se7entech-paragraph">
+                                                            <span>*Our company shall provide</span>
+                                                            <input name="maintenance_period" type="text" class="se7entech-input no-outline" placeholder="Maintenance Period" value="<?php echo isset($this->data['last_data']['maintenance_period']) ? $this->data['last_data']['maintenance_period'] : '';?>">
+                                                            <span> at no additional cost after project gets online.</span>
+                                                            <span>We shall take care of any bugs or issues caused during that period.</span>
+                                                        </p>
+                                                        <p class="se7entech-paragraph"> 
+                                                            <span><b>SE7ENTECH CORPORATION</b> agree to provide above listed services and sales to the Owner/Representative  of </span>
+                                                            <input type="text"  name="company_name_2" class="se7entech-input no-outline mirror_company_name" placeholder="Client's Company Name" value="<?php echo isset($this->data['last_data']['company_name_2']) ? $this->data['last_data']['company_name_2'] : '';?>">  
+                                                            <span>on a per needed basis and shall remain at their service until they require.</span>
+                                                        </p>
+                                                                                                                    
+                                                    </div>                                                        
+                                                </div>
+                                                <!-- <div class="row">
+                                                    <div class="col-sm-12" >
+                                                        <p class="se7entech-paragraph mt-2"> 
+                                                            <span><b>Easy payment option</b>: Se7entech Corp offers our customer two option to pay via electronic fund transfer. please complete the following information</span>
+                                                        </p>
+                                                        <div class="row se7entech-bordered-paragraph">
+                                                            <div class="col-sm-12">
+                                                                <p class="se7entech-paragraph">
+                                                                    <input name="k" type="checkbox" value="checked">
+                                                                    I hereby authorize Se7entech Corp to electronically withdraw my minimum payment on the day 
+                                                                    <input name="pp" type="number" min="1" max="31"  placeholder="1-31" class="se7entech-input-number">
+                                                                    of each month from my credit.
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-sm-3"> 
+                                                                <label class="bolder">Name On Card:</label>
+                                                                <input id="a" name="l" type="text" class="form-control" placeholder="John Done">
+                                                            </div>
+                                                            <div class="col-sm-3"> 
+                                                                <label class="bolder">Card Number:</label>
+                                                                <input id="b" name="m" type="text" maxlength="16" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" placeholder="xxxx-xxxx-xxxx-xxxx">
+                                                            </div>
+                                                            <div class="col-sm-3"> 
+                                                                <label class="bolder">Exp Date:</label>
+                                                                <input id="c" name="n" type="text" class="form-control" placeholder="05/25">
+                                                            </div>
+                                                            <div class="col-sm-3"> 
+                                                                <label class="bolder">Cvv:</label>
+                                                                <input id="d" name="o" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="3" class="form-control" placeholder="123">
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <label class="bolder">Zip Code:</label>
+                                                                <input id="h" name="p"   placeholder="Zip Code" maxlength="5" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" placeholder="">
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <p class="se7entech-paragraph"> I hereby authorize Se7entech Corp to electronically withdraw my minimum payment on the day <input  name="q" type="number" min="1" max="31" placeholder="1-31" class="se7entech-input-number">
+                                                                of each month from my checking account.</p>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <p class="se7entech-paragraph">
+                                                                    Please attach a copy of a voided check <input name="r" type="file" >
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <h3>Initial</h3>
+                                                                <input type="text" name="initial" class="form-control">
+                                                                <p class="se7entech-paragraph"> 
+                                                                    (1) <b>CANCELLED</b> this authorization will remain in effect canceled by Se7enetch Corp or untill Se7entech Corp provided my revocation in writing at 460 Irving park rd Suite C123, Bensenville, IL 60106 
+                                                                </p>
+                                                                <p class="se7entech-paragraph">
+                                                                    i understand that i may stop any transfer of funds, by notifying the financial instutution,mentioned above,at least three(3) days before my payment date.
+                                                                </p>
+                                                            </div>
+                                                        </div>                                                            
+                                                    </div>
+                                                </div>     
+                                                
+                                                <div class="row mt-2">
+                                                    <div class="col-sm-12" >
+                                                        <div class="row se7entech-bordered-paragraph">
+                                                            <div class="col-sm-12 mb-2"> 
+                                                                <h4><b>Charge to credit card:</b></h4>
+                                                    
+                                                                <input type="checkbox" name="s"  value="checked"> My down payment
+                                                                <input type="checkbox" name="t"  value="checked"> My total balance
+                                                            </div>
+                                                            <div class="col-sm-3"> 
+                                                                <label class="bolder">Name On Card:</label>
+                                                                <input type="text" name="u" class="form-control" placeholder="John Done">
+                                                            </div>
+                                                            <div class="col-sm-3"> 
+                                                                <label class="bolder">Card Number:</label>
+                                                                <input type="text" name="v" class="form-control" maxlength="16" placeholder="xxxx-xxxx-xxxx-xxxx" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                                            </div>
+                                                            <div class="col-sm-3"> 
+                                                                <label class="bolder">Exp Date:</label>
+                                                                <input type="text" name="w" class="form-control" placeholder="05/25">
+                                                            </div>
+                                                        
+                                                            <div class="col-sm-3">
+                                                                <label class="bolder">Cvv:</label>
+                                                                <input type="text" maxlength="3" name="x" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="123" maxlength="3">
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <label class="bolder">Card type:</label>
+                                                                <select name="y" class="form-control">
+                                                                    <option>---Select---</option>
+                                                                    <option value="American Card">American Card</option>
+                                                                    <option value="Visa">Visa</option>
+                                                                    <option value="Discover">Discover</option>
+                                                                    <option value="Master Card">Master Card</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-3"> 
+                                                                <label class="bolder">Zip Code:</label>
+                                                                <input name="z" type="text" maxlength="5" placeholder="Zip Code" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                                            </div>
+                                                            
+                                                            <div class="col-sm-3">
+                                                                <label class="bolder">Initial payment:</label>
+                                                                <input name="aa" type="text" class="form-control">
+                                                            </div>
+                                                            
+                                                            <div class="col-sm-3"> 
+                                                                <label class="bolder">Total Balance:</label>
+                                                                <input name="bb" type="text" class="form-control">
+                                                            </div>
+                                                            
+                                                            <div class="col-sm-3"> 
+                                                                <label class="bolder">Amount to be charge:</label>
+                                                                <input name="cc" type="number" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                                                <div class="row mt-2">
+                                                    <div class="col-sm-12" >
+                                                        <div class="row se7entech-bordered-paragraph">
+                                                            <div class="col-sm-4"> 
+                                                                <label class="bolder">Shipping cost & handling:</label>
+                                                                <input name="shipping_handling" type="number" value="<?php echo isset($this->data['last_data']['shipping_handling']) ? $this->data['last_data']['shipping_handling'] : '';?>" class="form-control">
+                                                            </div>
+                                                        
+                                                            <div class="col-sm-4">
+                                                                <label class="bolder">Sale tax:</label>
+                                                                <input name="sale_tax" type="number" value="<?php echo isset($this->data['last_data']['sale_tax']) ? $this->data['last_data']['sale_tax'] : '';?>" class="form-control">
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <label class="bolder">Total purchase value:</label>
+                                                                <input name="total_purchase" type="number" value="<?php echo isset($this->data['last_data']['total_purchase']) ? $this->data['last_data']['total_purchase'] : '';?>" class="form-control">
+                                                            </div>
+                                                            
+                                                            <div class="col-sm-4"> 
+                                                                <label class="bolder">Additional Deposit:</label>
+                                                                <input name="additional_deposit" type="number" value="<?php echo isset($this->data['last_data']['additional_deposit']) ? $this->data['last_data']['additional_deposit'] : '';?>" class="form-control">
+                                                            </div>
+                                                            
+                                                            <div class="col-sm-4"> 
+                                                                <label class="bolder">Payment date:</label>
+                                                                <input name="payment_date" type="date" value="<?php echo isset($this->data['last_data']['payment_date']) ? $this->data['last_data']['payment_date'] : '';?>" class="form-control">
+                                                            </div>
+                                                            
+                                                            <div class="col-sm-4"> 
+                                                                <label class="bolder">Balance dues after additional Deposit:</label>
+                                                                <input name="dues_after_deposit" type="number" value="<?php echo isset($this->data['last_data']['dues_after_deposit']) ? $this->data['last_data']['dues_after_deposit'] : '';?>" class="form-control">
+                                                            </div>
+
+                                                            <div class="col-sm-12">
+                                                                <p class="se7entech-paragraph"> 
+                                                                    As use Our Corporation products and services remains in effect, the following terms and conditions will apply in all matters concerning this Sales Agreement.
+                                                                </p>
+                                                                <p class="se7entech-paragraph">
+                                                                    Terms & Conditions* (www.se7entech.net/contract/term.php)
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-sm-6"> 
+                                                                <label class="bolder">Company representative Name:</label>
+                                                                <input name="agent_name_2" type="text" value="<?php echo $this->session->get('user');?>" <?php echo ($this->session->get('access') != '0') ? 'disabled' : '';?> class="form-control">
+                                                            </div>
+                                                            
+                                                            <div class="col-sm-6"> 
+                                                                <label class="bolder">Enter Date:</label>
+                                                                <input name="contract_sign_date_agent" type="date" value="<?php echo isset($this->data['last_data']['contract_sign_date_agent']) ? $this->data['last_data']['contract_sign_date_agent'] : '';?>" class="form-control">
+                                                            </div>
+                                                            
+                                                            <div class="col-sm-6"> 
+                                                                <label class="bolder">Client representative Name:</label>
+                                                                <input name="customer_name_3" type="text" value="<?php echo isset($this->data['last_data']['customer_name_3']) ? $this->data['last_data']['customer_name_3'] : '';?>" class="form-control mirror_customer_name">
+                                                            </div>
+                                                            
+                                                            <div class="col-sm-6"> 
+                                                                <label class="bolder">Enter Date:</label>
+                                                                <input name="contract_sign_date_customer" type="date" value="<?php echo isset($this->data['last_data']['contract_sign_date_customer']) ? $this->data['last_data']['contract_sign_date_customer'] : '';?>" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mt-2">
+                                                            <div class="col-sm-6"> 
+                                                                <label class="bolder sign-labels">Agent Signature:</label>
+                                                                <canvas id="canvas-signature-agent" class="signature-pad" width="400px" height="300px" >Canvas not supported!</canvas>
+                                                                <input name="agent_sign" type="hidden" id="agent_sign">
+                                                                <button class="button_sign_clear btn btn-danger btn-sm" id="clear_agent_sign"> <i class="fa fa-eraser" aria-hidden="true"></i> clear</button>
+                                                            </div>
+                                                                
+                                                            <div class="col-sm-6"> 
+                                                                <label class="bolder sign-labels">Client Signature:</label>
+                                                                <canvas id="canvas-signature-customer" class="signature-pad" width="400px" height="300px" >Canvas not supported!</canvas>
+                                                                <input name="customer_sign" type="hidden" id="customer_sign">
+                                                                <button class="button_sign_clear btn btn-danger btn-sm" id="clear_customer_sign"> <i class="fa fa-eraser" aria-hidden="true"></i> clear</button>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>                                                  
+                                                <div class="text-center">
+                                                    <button type="submit" name="save" value="1" class="btn btn-primary mt-2">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Tab Apps -->
+                            <!-- Tab Media List -->
+                            <div class="tab-pane fade show" id="listcontracts" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
+                                <div class="card card-profile shadow">
+                                    <div class="card-header">
+                                        <input type="text" id="myInput" onkeyup="filterTable()" placeholder="Search for names.." title="Type in a name" class="form-control">
+                                    </div>
+                                    <div class="card-body" style="overflow-x:hidden;">
+                                        <table id="contract-list-table" class="table table-bordered table-striped display responsive" style="width:100%">
+                                            <thead style="background:#337ab7;color:white;"> 
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Date</th>
+                                                    <th>Agent Name</th>
+                                                    <th>Customer Name</th>
+                                                    <th>Customer Company</th>
+                                                    <th>Total Purchase</th>
+                                                    <th>Sign Link</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="contract-list-tbody">
+                                                <?php foreach($this->data['contracts'] as $contract):?>
+                                                    <tr>
+                                                        <td><?php echo $contract['id'];?></td>
+                                                        <td><?php echo $contract['contract_date_start'];?></td>
+                                                        <td><?php echo $contract['agent_name_1'];?></td>
+                                                        <td><?php echo $contract['customer_name_1'];?></td>
+                                                        <td><?php echo $contract['company_name_1'];?></td>
+                                                        <td><?php echo $contract['total_purchase'];?></td>
+                                                        <td>
+                                                            <details>
+                                                                <summary>
+                                                                Copy Link
+                                                                </summary>
+                                                                Client Signature: <span class="signature-links" onclick="GeeksForGeeks(this)"><?php echo $base_url;?>/sign2?x=<?php echo $contract['id'];?></span>
+                                                                <br>
+                                                                Company Signature: <span class="signature-links" onclick="GeeksForGeeks(this)"><?php echo $base_url;?>/sign1?x=<?php echo $contract['id'];?></span>
+                                                            </details>
+                                                        </td>
+                                                        <td>
+                                                            <a href="<?php echo $base_url;?>/modules/contract/index.php/<?php echo $contract['id'];?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+                                                            <a href="#" data-contractid="<?php echo $contract['id'];?>" class = "btn btn-sm btn-primary associateinvoices" data-toggle="modal" data-target = "#modalInvoices">
+                                                                <i class="fa fa-file-text" aria-hidden="true"></i>
+                                                                Associate Invoices
+                                                            </a>    
+                                                            <a class="btn btn-sm btn-primary send-notifications" data-contractid="<?php echo $contract['id'];?>"  href="#" data-toggle="modal" data-target="#queryMailModal">
+                                                                <i class="fa fa-envelope"></i>
+                                                                Purchase Notification
+                                                            </a>
+                                                            <!-- <a href="<?php echo $base_url;?>/modules/contract/index.php/printContract/<?php echo $contract['id'];?>" class="btn btn-sm btn-primary"><i class="fa fa-print" aria-hidden="true"></i> Print</a> -->
+                                                            <a href="<?php echo $base_url;?>/print.php?id=<?php echo $contract['id'];?>" class="btn btn-sm btn-primary" target="_blank"><i class="fa fa-print" aria-hidden="true"></i> Print</a>
+                                                            
+                                                            <a href="#" class="btn btn-sm btn-danger" data-id="<?php echo $contract['id'];?>" onclick="showModal(this)"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach;?>
+                                            </tbody>
+                                        </table>   
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+         <footer class="footer">
+            <div class="row align-items-center justify-content-xl-between"></div>
+         </footer>
+         <!-- Modal -->
+         <div class="modal fade" id="queryMailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                  <div class="modal-header">
+                    <h4>Send thanks for purchasing</h4>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="control-label" for="customer_id_modal">Populate With:</label>
+                                <br>
+                                <select class="form-control select2" id="customer_id_modal">
+                                    <option>SELECT A CUSTOMER</option>
+                                    <?php foreach($this->data['customers'] as $customer):?>
+                                        <option value="<?php echo $customer['id'];?>"><?php echo $customer['type'] . ' - ' .$customer['business_name'] . ' - ' . $customer['name'];;?></option>
+                                    <?php endforeach;?>
+                                </select>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="control-label" for="myModalLabel">Email:</label>
+                                <br>
+                                <input type="hidden" id="actualContractIdForNotification" value="">
+                                <!-- <h4 class="modal-title" id="myModalLabel">Send email notification to:</h4> -->
+                                <input class="form-control" type="text" id="InputEmailNotification" name="InputEmailNotification">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary send-notification-save">Send Now</button>
+                    </div>
+                  </div>
+                  
+               </div>
+            </div>
+         </div>
+          <!-- Modal -->
+          <div class = "modal fade" id = "modalInvoices" tabindex = "-1" 
+            role = "dialog" aria-labelledby =" exampleModalLabel" aria-hidden = "true">
+            <div class = "modal-dialog" role = "document">
+               <div class = "modal-content">
+                  <div class = "modal-header">
+                     <h5 class = "modal-title" id = "exampleModalLabel">Attach invoice to contract</h5>
+                     <button type = "button" class = "close" data-dismiss = "modal" aria-label = "Close">
+                        <span aria-hidden = "true">×</span>
+                     </button>
+                  </div>
+                  
+                  <div class = "modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="hidden" id="actualContractId" value="">
+                                <select style="width:100%;" id="invoicesids" class="invoicesids" name="invoicesids[]" multiple="multiple"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+                    <div class = "modal-footer">
+                     <button type = "button" class = "btn btn-danger" data-dismiss = "modal">Close</button>
+                     <button id="associateInvoice" type = "button" class = "btn btn-success">Save</button>
+                    </div>
+                  </div>
+                  
+                  
+                  
+               </div>
+            </div>
+         </div>
+        <!-- Commented because navtabs includes same script -->
+        <?php include '../../layout/footer_scripts.php';?>
+        <script src="<?php echo $base_url;?>/editor/summernote-bs4.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+        <script>
+            var customers = <?php echo json_encode($this->data['customers']);?>;
+            var services = <?php echo json_encode($this->data['services']);?>;
+            var setupActions = () => {
+                console.log('setup')
+                let invoicesIds = document.querySelector('#invoicesids');
+                $.ajax({
+                method:'POST',
+                url: "<?php echo $base_url;?>/modules/contract/index.php/getAllInvoices/",
+                success: (response) => {
+                    let data = JSON.parse(response);
+                    if(data.success){
+                        let allInvoices = data.data;
+                        if(allInvoices.length){
+                            let options = '';
+                            for(let i=0; i<allInvoices.length; i++){
+                            options += `
+                                <option value="${allInvoices[i].order_id}"> ${allInvoices[i].order_receiver_name} - ${allInvoices[i].order_concept} - ${allInvoices[i].order_total_amount_due} </option>
+                            `
+                            }
+                            invoicesIds.innerHTML = options;
+                            $('#invoicesids').select2();
+                            
+                        }
+                    }
+                }
+                })
+
+                let notificationButtons = document.querySelectorAll('.send-notifications');
+                $('#contract-list-table').on( 'click', 'tbody a.send-notifications', function (e) {
+                    // Ignore the Responsive control and checkbox columns
+                    let contractid = e.currentTarget.dataset.contractid;
+                    $('#actualContractIdForNotification').val(contractid)
+            
+                } );
+
+                let notificationButton = document.querySelector('.send-notification-save');
+                notificationButton.addEventListener('click', (e) => {
+                let contractid = $('#actualContractIdForNotification').val();
+                let toemail = $('#InputEmailNotification').val();
+
+                $.ajax({
+                    method: 'POST',
+                    url: "<?php echo $base_url;?>/modules/contract/index.php/notifications/",
+                    data: {
+                        'contractid':contractid,
+                        'toemail': toemail
+                    },
+                    beforeSend: () => {
+                        notificationButton.setAttribute('disabled', true);
+                    },
+
+                    success: (response) => {
+                        let data = JSON.parse(response);
+                        notificationButton.removeAttribute('disabled');
+                        if(data.success){
+                            $.notify('Notifications sent', 'success')
+                            $('#queryMailModal').modal('hide');
+                        }else{
+                            $.notify('Please try again later', 'error')
+                        }
+                    }
+                })
+                }, false)
+
+                $('#contract-list-table').on( 'click', 'tbody a.associateinvoices', function (e) {
+                    // Ignore the Responsive control and checkbox columns
+                    $('#invoicesids').val([]).trigger('change') 
+                    let contractid = e.currentTarget.dataset.contractid;
+                    $('#actualContractId').val(contractid);
+
+                    $.ajax({
+                        method: 'POST',
+                        url: "<?php echo $base_url;?>/modules/contract/index.php/getAssociatedInvoices/",
+                        data: {'contractid':contractid},
+                        success: (response) => {
+                            let res = JSON.parse(response);
+                            if(res.success){
+                            let relatedInvoices = res.data;
+                            let selected = [];
+                            if(relatedInvoices.length){
+                                relatedInvoices.forEach((el) => {
+                                    selected.push(el.invoice_id);
+                                })
+                                $('#invoicesids').val(selected).trigger('change') 
+                            }
+                            }else{
+                            alert('please try again later')
+                            }
+                        }
+                    })
+            
+                } );
+               
+                let saveBtn = document.querySelector('#associateInvoice')
+                saveBtn.addEventListener('click', (e) => {
+                let contractid = $('#actualContractId').val();
+                let invoicesids = $('#invoicesids').val().toString();
+                $.ajax({
+                    method: 'post',
+                    url: "<?php echo $base_url;?>/modules/contract/index.php/associateInvoice/",
+                    data:{
+                        'contractid': contractid,
+                        'invoicesids': invoicesids
+                    },
+                    success: (res) => {
+                        res = JSON.parse(res);
+                        if(res.success){
+                            $.notify('Invoices attached successfully', 'success')
+                        }else{
+                            $.notify('Please try again later', 'error')
+                        }
+                        $('#exampleModal').modal('hide');
+                    }
+                })
+                }, false)
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                setupActions();
+                const customer_selection = document.querySelector('#customer_id');
+                const customer_selection_modal = document.querySelector('#customer_id_modal');
+
+                const company_name_control = document.querySelector('#company_name_control');
+                const customer_name_control = document.querySelector('#customer_name_control');
+
+                $('#customer_id').on('change', (e) => {
+                    let selectedCustomer = customers.filter((el) => Number(el.id) === Number(customer_selection.value))[0]
+
+                    company_name_control.value = selectedCustomer.business_name;
+                    company_name_control.dispatchEvent(new Event('change', {bubbles:true}));
+
+                    customer_name_control.value = selectedCustomer.name;
+                    customer_name_control.dispatchEvent(new Event('change', {bubbles:true}));
+
+                    document.querySelector('#customer_id_input').value=customer_selection.value;
+
+                })
+
+                $('#customer_id_modal').on('change', (e) => {
+                    let selectedCustomerModal = customers.filter((el) => Number(el.id) === Number(customer_selection_modal.value))[0]
+                    
+
+                    document.querySelector('#InputEmailNotification').value=selectedCustomerModal.email;
+
+                })
+
+                company_name_control.addEventListener('change', (e) => {
+                    document.querySelectorAll('.mirror_company_name').forEach((el) => {
+                        el.value = e.target.value;
+                    })
+                }, false)
+
+                customer_name_control.addEventListener('change', (e) => {
+                    document.querySelectorAll('.mirror_customer_name').forEach((el) => {
+                        el.value = e.target.value;
+                    })
+                }, false)
+
+
+                $('#services_control').on('change', (e) => {
+                    let vals = $(e.target).val()
+                    let prevContent = $('#services').summernote('code');
+                    let services_str = prevContent + '<ul>';
+                    vals.forEach((el) => {
+                        let selectedService = services.filter((_) => _.id == el )
+                        selectedService.map((__) => {
+                            services_str += '<li>' + __.name + ': ' + __.price + '$'+'<br>&nbsp;&nbsp;&nbsp;'+__.description+'</li>'
+                        })
+                    })
+                    services_str += '</ul>'
+                    $('#services').summernote('code', services_str)
+                })
+
+                //signatures
+                var signature_agent = new SignaturePad(document.getElementById('canvas-signature-agent'), {
+                    backgroundColor: 'white',
+                    penColor: 'black'
+                });
+                signature_agent.addEventListener('endStroke', (e) => {
+                    document.querySelector('#agent_sign').value = e.target.toDataURL();
+                })
+                document.querySelector('#clear_agent_sign').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    signature_agent.clear();
+                    document.querySelector('#agent_sign').value = signature_agent.toDataURL();
+                })
+
+                var signature_acustomer = new SignaturePad(document.getElementById('canvas-signature-customer'), {
+                    backgroundColor: 'white',
+                    penColor: 'black'
+                });
+                signature_acustomer.addEventListener('endStroke', (e) => {
+                    document.querySelector('#customer_sign').value = e.target.toDataURL();
+                })
+                document.querySelector('#clear_customer_sign').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    signature_acustomer.clear();
+                    document.querySelector('#customer_sign').value = signature_acustomer.toDataURL();
+                })
+                // var saveButton = document.getElementById('save');
+                // var cancelButton = document.getElementById('clear');
+        
+                // saveButton.addEventListener('click', function (event) {
+                // var data = signaturePad.toDataURL('image/png');
+        
+                // // Send data to server instead...
+                // console.log(data)
+                // });
+        
+                // cancelButton.addEventListener('click', function (event) {
+                //     signaturePad.clear();
+                // });
+
+                
+
+            }, false)
+
+            $(document).ready(function(){
+                $('#contract-list-table').DataTable({
+                    responsive:true,
+                    order:[0]
+                })
+
+                $('#services').summernote();
+
+                $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                    var target = $(e.target).attr("href") // activated tab
+                    if(target === '#listcontracts'){
+                        $($.fn.dataTable.tables(true)).DataTable()
+                        .columns.adjust()
+                        .responsive.recalc(); 
+                       
+                        // $('#video-list-tbody').html("<img src='<?php echo $base_url;?>/modules/videos/images/uploading.gif' >")
+                        // updateMediaListTable()                      
+                    }
+                });
+
+               
+            });
+
+            function filterTable() {
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("contract-list-table");
+                tr = table.getElementsByTagName("tr");
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[1];
+                    if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                    }       
+                }
+            }
+            
+            function showModal(button){
+                let id = button.dataset.id;
+                let row = button.parentElement.parentElement;    
+
+                bootbox.confirm('Are you sure of this action?', function(confirmed) {
+                    console.log(confirmed)
+                    if(confirmed){
+                        let data = new FormData;
+                        data.set('id', id);
+                        let endpoint = "<?php echo $base_url;?>/modules/contract/index.php/delete/"
+                        let xhr = new XMLHttpRequest();
+                        xhr.open('POST', endpoint, true)
+                        xhr.addEventListener('load', (e) => {
+                            let res = JSON.parse(e.target.response);
+                            if(res.success){
+                                $("#contract-list-table").dataTable().fnDeleteRow(row)
+                                $.notify('Contract deleted!', 'success')
+                                //TODO: delete row from datatable
+                            }
+                        })
+                        xhr.send(data)
+                    }
+                });
+
+            }
+            function selectElementText(el, win) {
+            win = win || window;
+            var doc = win.document, sel, range;
+            if (win.getSelection && doc.createRange) {
+               sel = win.getSelection();
+               range = doc.createRange();
+               range.selectNodeContents(el);
+               sel.removeAllRanges();
+               sel.addRange(range);
+               return sel;
+
+            }
+            return false;
+         }
+            function GeeksForGeeks(el) {
+                /* Get the text field */
+                let sel = selectElementText(el)
+                if(sel){
+                /* Select the text field */         
+                /* Copy the text inside the text field */
+                document.execCommand("copy");
+                
+                /* Alert the copied text */
+                alert("Copied the text: " + sel.toString());
+
+                }
+            }
+            </script>        
+    </body>
+</html>

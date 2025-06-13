@@ -1,0 +1,409 @@
+[06-Jul-2022 07:30:43 America/New_York] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/Stripe-Payment-Gateway-Integration-using-PHP-main/stripe/dbConnect.php on line 4
+[06-Jul-2022 07:32:38 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/Stripe-Payment-Gateway-Integration-using-PHP-main/stripe/index.php on line 23
+[06-Jul-2022 07:33:36 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/Stripe-Payment-Gateway-Integration-using-PHP-main/stripe/index.php on line 23
+[06-Jul-2022 07:33:37 America/New_York] PHP Warning:  A non-numeric value encountered in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/Stripe-Payment-Gateway-Integration-using-PHP-main/stripe/stripe_charge.php on line 29
+[06-Jul-2022 07:38:59 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/Stripe-Payment-Gateway-Integration-using-PHP-main/stripe/index.php on line 23
+[06-Jul-2022 07:39:00 America/New_York] PHP Warning:  A non-numeric value encountered in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/Stripe-Payment-Gateway-Integration-using-PHP-main/stripe/stripe_charge.php on line 29
+[06-Jul-2022 07:39:30 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/Stripe-Payment-Gateway-Integration-using-PHP-main/stripe/index.php on line 23
+[06-Jul-2022 07:39:32 America/New_York] PHP Warning:  A non-numeric value encountered in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/Stripe-Payment-Gateway-Integration-using-PHP-main/stripe/stripe_charge.php on line 29
+[06-Jul-2022 07:41:25 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/Stripe-Payment-Gateway-Integration-using-PHP-main/stripe/index.php on line 23
+[06-Jul-2022 07:41:26 America/New_York] PHP Warning:  A non-numeric value encountered in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/Stripe-Payment-Gateway-Integration-using-PHP-main/stripe/stripe_charge.php on line 29
+[06-Jul-2022 07:42:15 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/Stripe-Payment-Gateway-Integration-using-PHP-main/stripe/index.php on line 23
+[06-Jul-2022 07:42:16 America/New_York] PHP Warning:  A non-numeric value encountered in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/Stripe-Payment-Gateway-Integration-using-PHP-main/stripe/stripe_charge.php on line 29
+[06-Jul-2022 07:44:01 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/Stripe-Payment-Gateway-Integration-using-PHP-main/stripe/index.php on line 23
+[06-Jul-2022 07:48:13 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/Stripe-Payment-Gateway-Integration-using-PHP-main/stripe/index.php on line 21
+[06-Jul-2022 07:52:30 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/Stripe-Payment-Gateway-Integration-using-PHP-main/stripe/index.php on line 21
+[06-Jul-2022 07:52:34 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/Stripe-Payment-Gateway-Integration-using-PHP-main/stripe/index.php on line 21
+[06-Jul-2022 07:52:56 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 21
+[06-Jul-2022 07:54:27 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 21
+[06-Jul-2022 15:25:52 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 21
+[06-Jul-2022 15:26:22 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 21
+[06-Jul-2022 15:29:46 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 24
+[06-Jul-2022 15:36:27 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 24
+[06-Jul-2022 15:37:05 America/New_York] PHP Notice:  Undefined index: price in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 24
+[06-Jul-2022 15:37:05 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 40
+[06-Jul-2022 15:37:26 America/New_York] PHP Warning:  include(../connection.php): failed to open stream: No such file or directory in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 23
+[06-Jul-2022 15:37:26 America/New_York] PHP Warning:  include(../connection.php): failed to open stream: No such file or directory in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 23
+[06-Jul-2022 15:37:26 America/New_York] PHP Warning:  include(): Failed opening '../connection.php' for inclusion (include_path='.:/opt/alt/php73/usr/share/pear') in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 23
+[06-Jul-2022 15:37:26 America/New_York] PHP Notice:  Undefined index: price in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 24
+[06-Jul-2022 15:37:26 America/New_York] PHP Notice:  Undefined variable: con in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 26
+[06-Jul-2022 15:37:26 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 26
+[06-Jul-2022 15:37:26 America/New_York] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 28
+[06-Jul-2022 15:37:26 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 40
+[06-Jul-2022 15:40:08 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 35
+[06-Jul-2022 15:43:07 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 35
+[06-Jul-2022 15:43:21 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 35
+[06-Jul-2022 15:44:46 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 35
+[06-Jul-2022 15:45:20 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 35
+[06-Jul-2022 15:46:50 America/New_York] PHP Notice:  Undefined index: price in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 27
+[06-Jul-2022 15:46:50 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 45
+[06-Jul-2022 15:46:50 America/New_York] PHP Notice:  Undefined variable: idd in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 66
+[06-Jul-2022 15:46:50 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 67
+[06-Jul-2022 15:47:30 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 38
+[06-Jul-2022 15:47:43 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 38
+[06-Jul-2022 15:48:31 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 38
+[06-Jul-2022 15:48:40 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 38
+[06-Jul-2022 15:57:34 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 38
+[06-Jul-2022 16:41:52 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 45
+[06-Jul-2022 16:41:52 America/New_York] PHP Notice:  Undefined variable: idd in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 66
+[06-Jul-2022 16:41:52 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 67
+[06-Jul-2022 16:43:55 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 38
+[06-Jul-2022 16:44:57 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 38
+[08-Jul-2022 15:20:54 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 38
+[08-Jul-2022 15:22:32 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 38
+[08-Jul-2022 15:22:58 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 38
+[08-Jul-2022 15:23:03 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 45
+[08-Jul-2022 15:23:03 America/New_York] PHP Notice:  Undefined variable: idd in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 66
+[08-Jul-2022 15:23:03 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 67
+[08-Jul-2022 15:23:09 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 45
+[08-Jul-2022 15:23:09 America/New_York] PHP Notice:  Undefined variable: idd in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 66
+[08-Jul-2022 15:23:09 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 67
+[08-Jul-2022 15:23:13 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 38
+[08-Jul-2022 15:23:23 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 45
+[08-Jul-2022 15:23:23 America/New_York] PHP Notice:  Undefined variable: idd in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 66
+[08-Jul-2022 15:23:23 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 67
+[08-Jul-2022 15:23:28 America/New_York] PHP Notice:  Undefined variable: sum in /home/buapxtgk/se7entech.net/Zinatex5/front/done/stripe/index.php on line 38
+[13-Aug-2022 18:54:31 America/New_York] PHP Notice:  Undefined index: price in /home/buapxtgk/se7entech.net/Zinatex7/front/done/stripe/index.php on line 25
+[13-Aug-2022 18:54:31 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/Zinatex7/front/done/stripe/index.php on line 26
+[13-Aug-2022 18:55:12 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/Zinatex7/front/done/stripe/index.php on line 26
+[13-Aug-2022 18:59:58 America/New_York] PHP Notice:  Undefined index: price in /home/buapxtgk/se7entech.net/Zinatex7/front/done/stripe/config.php on line 5
+[13-Aug-2022 18:59:58 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/Zinatex7/front/done/stripe/index.php on line 26
+[13-Aug-2022 19:00:00 America/New_York] PHP Notice:  Undefined index: price in /home/buapxtgk/se7entech.net/Zinatex7/front/done/stripe/config.php on line 5
+[13-Aug-2022 19:05:22 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/Zinatex7/front/done/stripe/index.php on line 26
+[13-Aug-2022 19:34:49 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index.php on line 26
+[13-Aug-2022 19:37:48 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index.php on line 26
+[13-Aug-2022 19:41:32 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index.php on line 26
+[13-Aug-2022 19:42:27 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index1.php on line 26
+[13-Aug-2022 19:43:49 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index1.php on line 26
+[13-Aug-2022 19:44:18 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index1.php on line 26
+[13-Aug-2022 19:44:33 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index1.php on line 26
+[13-Aug-2022 19:44:45 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index1.php on line 26
+[13-Aug-2022 19:45:24 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index1.php on line 26
+[13-Aug-2022 19:46:57 America/New_York] PHP Warning:  include(connection.php): failed to open stream: No such file or directory in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 2
+[13-Aug-2022 19:46:57 America/New_York] PHP Warning:  include(connection.php): failed to open stream: No such file or directory in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 2
+[13-Aug-2022 19:46:57 America/New_York] PHP Warning:  include(): Failed opening 'connection.php' for inclusion (include_path='.:/opt/alt/php73/usr/share/pear') in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 2
+[13-Aug-2022 19:46:57 America/New_York] PHP Notice:  Undefined variable: _SESSION in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 3
+[13-Aug-2022 19:46:57 America/New_York] PHP Notice:  Undefined variable: ordStatus in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 33
+[13-Aug-2022 19:46:57 America/New_York] PHP Notice:  Undefined variable: statusMsg in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 33
+[13-Aug-2022 19:47:25 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index1.php on line 26
+[13-Aug-2022 19:47:31 America/New_York] PHP Warning:  include(connection.php): failed to open stream: No such file or directory in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 2
+[13-Aug-2022 19:47:31 America/New_York] PHP Warning:  include(connection.php): failed to open stream: No such file or directory in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 2
+[13-Aug-2022 19:47:31 America/New_York] PHP Warning:  include(): Failed opening 'connection.php' for inclusion (include_path='.:/opt/alt/php73/usr/share/pear') in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 2
+[13-Aug-2022 19:47:31 America/New_York] PHP Notice:  Undefined variable: _SESSION in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 3
+[13-Aug-2022 19:47:31 America/New_York] PHP Notice:  Undefined variable: ordStatus in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 33
+[13-Aug-2022 19:47:31 America/New_York] PHP Notice:  Undefined variable: statusMsg in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 33
+[13-Aug-2022 19:48:01 America/New_York] PHP Warning:  include(connection.php): failed to open stream: No such file or directory in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 3
+[13-Aug-2022 19:48:01 America/New_York] PHP Warning:  include(connection.php): failed to open stream: No such file or directory in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 3
+[13-Aug-2022 19:48:01 America/New_York] PHP Warning:  include(): Failed opening 'connection.php' for inclusion (include_path='.:/opt/alt/php73/usr/share/pear') in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 3
+[13-Aug-2022 19:48:01 America/New_York] PHP Notice:  Undefined variable: ordStatus in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 34
+[13-Aug-2022 19:48:01 America/New_York] PHP Notice:  Undefined variable: statusMsg in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 34
+[13-Aug-2022 19:48:25 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index1.php on line 26
+[13-Aug-2022 19:48:30 America/New_York] PHP Warning:  include(connection.php): failed to open stream: No such file or directory in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 3
+[13-Aug-2022 19:48:30 America/New_York] PHP Warning:  include(connection.php): failed to open stream: No such file or directory in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 3
+[13-Aug-2022 19:48:30 America/New_York] PHP Warning:  include(): Failed opening 'connection.php' for inclusion (include_path='.:/opt/alt/php73/usr/share/pear') in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 3
+[13-Aug-2022 19:48:30 America/New_York] PHP Notice:  Undefined variable: ordStatus in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 34
+[13-Aug-2022 19:48:30 America/New_York] PHP Notice:  Undefined variable: statusMsg in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 34
+[13-Aug-2022 19:48:58 America/New_York] PHP Warning:  include(connection.php): failed to open stream: No such file or directory in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 3
+[13-Aug-2022 19:48:58 America/New_York] PHP Warning:  include(connection.php): failed to open stream: No such file or directory in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 3
+[13-Aug-2022 19:48:58 America/New_York] PHP Warning:  include(): Failed opening 'connection.php' for inclusion (include_path='.:/opt/alt/php73/usr/share/pear') in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 3
+[13-Aug-2022 19:48:58 America/New_York] PHP Notice:  Undefined variable: ordStatus in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 33
+[13-Aug-2022 19:48:58 America/New_York] PHP Notice:  Undefined variable: statusMsg in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 33
+[13-Aug-2022 19:49:52 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index1.php on line 26
+[13-Aug-2022 19:49:58 America/New_York] PHP Warning:  include(connection.php): failed to open stream: No such file or directory in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 3
+[13-Aug-2022 19:49:58 America/New_York] PHP Warning:  include(connection.php): failed to open stream: No such file or directory in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 3
+[13-Aug-2022 19:49:58 America/New_York] PHP Warning:  include(): Failed opening 'connection.php' for inclusion (include_path='.:/opt/alt/php73/usr/share/pear') in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 3
+[13-Aug-2022 19:49:58 America/New_York] PHP Notice:  Undefined variable: ordStatus in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 33
+[13-Aug-2022 19:49:58 America/New_York] PHP Notice:  Undefined variable: statusMsg in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 33
+[13-Aug-2022 19:51:27 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index1.php on line 26
+[13-Aug-2022 19:51:30 America/New_York] PHP Warning:  include(connection.php): failed to open stream: No such file or directory in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 3
+[13-Aug-2022 19:51:30 America/New_York] PHP Warning:  include(connection.php): failed to open stream: No such file or directory in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 3
+[13-Aug-2022 19:51:30 America/New_York] PHP Warning:  include(): Failed opening 'connection.php' for inclusion (include_path='.:/opt/alt/php73/usr/share/pear') in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 3
+[13-Aug-2022 19:51:30 America/New_York] PHP Notice:  Undefined variable: ordStatus in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 33
+[13-Aug-2022 19:51:30 America/New_York] PHP Notice:  Undefined variable: statusMsg in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 33
+[13-Aug-2022 19:52:30 America/New_York] PHP Warning:  include(connection.php): failed to open stream: No such file or directory in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 7
+[13-Aug-2022 19:52:30 America/New_York] PHP Warning:  include(connection.php): failed to open stream: No such file or directory in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 7
+[13-Aug-2022 19:52:30 America/New_York] PHP Warning:  include(): Failed opening 'connection.php' for inclusion (include_path='.:/opt/alt/php73/usr/share/pear') in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 7
+[13-Aug-2022 19:52:30 America/New_York] PHP Notice:  Undefined variable: ordStatus in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 37
+[13-Aug-2022 19:52:30 America/New_York] PHP Notice:  Undefined variable: statusMsg in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 37
+[13-Aug-2022 19:52:30 America/New_York] PHP Notice:  Undefined variable: logid in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 50
+[13-Aug-2022 19:53:06 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index1.php on line 26
+[13-Aug-2022 19:53:15 America/New_York] PHP Warning:  include(connection.php): failed to open stream: No such file or directory in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 7
+[13-Aug-2022 19:53:15 America/New_York] PHP Warning:  include(connection.php): failed to open stream: No such file or directory in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 7
+[13-Aug-2022 19:53:15 America/New_York] PHP Warning:  include(): Failed opening 'connection.php' for inclusion (include_path='.:/opt/alt/php73/usr/share/pear') in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 7
+[13-Aug-2022 19:53:15 America/New_York] PHP Notice:  Undefined variable: ordStatus in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 37
+[13-Aug-2022 19:53:15 America/New_York] PHP Notice:  Undefined variable: statusMsg in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 37
+[13-Aug-2022 19:53:15 America/New_York] PHP Notice:  Undefined variable: logid in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 50
+[13-Aug-2022 19:53:39 America/New_York] PHP Notice:  Undefined variable: ordStatus in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 38
+[13-Aug-2022 19:53:39 America/New_York] PHP Notice:  Undefined variable: statusMsg in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 38
+[13-Aug-2022 19:53:39 America/New_York] PHP Notice:  Undefined variable: logid in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 51
+[13-Aug-2022 19:54:39 America/New_York] PHP Notice:  Undefined variable: ordStatus in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 41
+[13-Aug-2022 19:54:39 America/New_York] PHP Notice:  Undefined variable: statusMsg in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 41
+[13-Aug-2022 19:54:39 America/New_York] PHP Notice:  Undefined variable: logid in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 54
+[13-Aug-2022 19:54:50 America/New_York] PHP Notice:  Undefined variable: ordStatus in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 41
+[13-Aug-2022 19:54:50 America/New_York] PHP Notice:  Undefined variable: statusMsg in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 41
+[13-Aug-2022 19:54:50 America/New_York] PHP Notice:  Undefined variable: logid in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 54
+[13-Aug-2022 19:55:42 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index1.php on line 26
+[13-Aug-2022 19:55:49 America/New_York] PHP Notice:  Undefined variable: ordStatus in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 41
+[13-Aug-2022 19:55:49 America/New_York] PHP Notice:  Undefined variable: statusMsg in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 41
+[13-Aug-2022 19:55:49 America/New_York] PHP Notice:  Undefined variable: logid in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 54
+[13-Aug-2022 19:56:40 America/New_York] PHP Notice:  Undefined variable: ordStatus in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 43
+[13-Aug-2022 19:56:40 America/New_York] PHP Notice:  Undefined variable: statusMsg in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 43
+[13-Aug-2022 19:56:40 America/New_York] PHP Notice:  Undefined variable: logid in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 56
+[13-Aug-2022 19:57:01 America/New_York] PHP Notice:  Undefined variable: ordStatus in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 43
+[13-Aug-2022 19:57:01 America/New_York] PHP Notice:  Undefined variable: statusMsg in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 43
+[13-Aug-2022 19:57:01 America/New_York] PHP Notice:  Undefined variable: logid in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 56
+[13-Aug-2022 19:57:21 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index1.php on line 26
+[13-Aug-2022 19:57:27 America/New_York] PHP Notice:  Undefined variable: ordStatus in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 43
+[13-Aug-2022 19:57:27 America/New_York] PHP Notice:  Undefined variable: statusMsg in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 43
+[13-Aug-2022 19:59:23 America/New_York] PHP Notice:  Undefined variable: ordStatus in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 38
+[13-Aug-2022 19:59:23 America/New_York] PHP Notice:  Undefined variable: statusMsg in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 38
+[13-Aug-2022 20:13:23 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index1.php on line 26
+[13-Aug-2022 20:14:25 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index1.php on line 26
+[13-Aug-2022 20:16:46 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index1.php on line 26
+[13-Aug-2022 20:17:18 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index1.php on line 26
+[14-Aug-2022 20:04:38 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index1.php on line 26
+[14-Aug-2022 20:06:33 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index1.php on line 26
+[14-Aug-2022 20:07:52 America/New_York] PHP Notice:  Undefined variable: logid in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 18
+[14-Aug-2022 20:07:52 America/New_York] PHP Notice:  Undefined variable: con in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 19
+[14-Aug-2022 20:07:52 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 19
+[14-Aug-2022 20:07:52 America/New_York] PHP Notice:  Undefined variable: con in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 21
+[14-Aug-2022 20:07:52 America/New_York] PHP Warning:  mysqli_affected_rows() expects parameter 1 to be mysqli, null given in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 21
+[14-Aug-2022 20:08:38 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index1.php on line 26
+[14-Aug-2022 20:08:57 America/New_York] PHP Notice:  Undefined variable: logid in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 18
+[14-Aug-2022 20:08:57 America/New_York] PHP Notice:  Undefined variable: con in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 19
+[14-Aug-2022 20:08:57 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 19
+[14-Aug-2022 20:08:57 America/New_York] PHP Notice:  Undefined variable: con in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 21
+[14-Aug-2022 20:08:57 America/New_York] PHP Warning:  mysqli_affected_rows() expects parameter 1 to be mysqli, null given in /home/buapxtgk/se7entech.net/PNL/stripe/success.php on line 21
+[14-Aug-2022 20:31:36 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index1.php on line 27
+[14-Aug-2022 21:54:52 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index1.php on line 27
+[15-Aug-2022 00:11:15 America/New_York] PHP Notice:  Undefined index: order_id in /home/buapxtgk/se7entech.net/PNL/stripe/index1.php on line 27
+[15-Aug-2022 00:40:21 America/New_York] PHP Warning:  mysqli::__construct(): (28000/1045): Access denied for user 'buapxtgk_zinatex4'@'localhost' (using password: YES) in /home/institutocoachpn/public_html/stripe/dbConnect.php on line 4
+[15-Aug-2022 00:41:21 America/New_York] PHP Notice:  Undefined index: order_id in /home/institutocoachpn/public_html/stripe/index.php on line 27
+[15-Aug-2022 00:41:57 America/New_York] PHP Notice:  Undefined index: order_id in /home/institutocoachpn/public_html/stripe/index.php on line 27
+[15-Aug-2022 00:42:33 America/New_York] PHP Notice:  Undefined index: order_id in /home/institutocoachpn/public_html/stripe/index.php on line 27
+[15-Aug-2022 00:43:04 America/New_York] PHP Notice:  Undefined index: order_id in /home/institutocoachpn/public_html/stripe/index.php on line 27
+[15-Aug-2022 00:43:46 America/New_York] PHP Notice:  Undefined index: order_id in /home/institutocoachpn/public_html/stripe/index.php on line 27
+[15-Aug-2022 00:43:58 America/New_York] PHP Notice:  Undefined index: order_id in /home/institutocoachpn/public_html/stripe/index.php on line 27
+[15-Aug-2022 00:45:43 America/New_York] PHP Notice:  Undefined index: order_id in /home/institutocoachpn/public_html/stripe/index.php on line 26
+[15-Aug-2022 00:45:51 America/New_York] PHP Notice:  Undefined index: order_id in /home/institutocoachpn/public_html/stripe/index.php on line 26
+[07-Sep-2022 13:46:49 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 26
+[07-Sep-2022 13:49:09 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 26
+[07-Sep-2022 13:58:58 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 26
+[08-Sep-2022 13:14:30 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 26
+[08-Sep-2022 13:18:43 America/New_York] PHP Parse error:  syntax error, unexpected '}', expecting end of file in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 100
+[08-Sep-2022 13:23:16 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 36
+[08-Sep-2022 13:24:50 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 36
+[08-Sep-2022 13:25:31 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 13:25:39 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 13:26:34 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 13:26:59 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 13:27:25 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 13:27:25 America/New_York] PHP Notice:  Undefined variable: rows in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[08-Sep-2022 13:27:25 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[08-Sep-2022 13:27:40 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 13:27:40 America/New_York] PHP Notice:  Undefined variable: rows in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[08-Sep-2022 13:27:40 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[08-Sep-2022 13:27:52 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 13:28:14 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 13:28:14 America/New_York] PHP Notice:  Undefined variable: rows in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[08-Sep-2022 13:28:14 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[08-Sep-2022 13:28:16 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 13:28:16 America/New_York] PHP Notice:  Undefined variable: rows in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[08-Sep-2022 13:28:16 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[08-Sep-2022 13:28:25 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 13:28:25 America/New_York] PHP Notice:  Undefined variable: rows in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[08-Sep-2022 13:28:25 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[08-Sep-2022 13:28:32 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 13:28:32 America/New_York] PHP Notice:  Undefined variable: rows in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[08-Sep-2022 13:28:32 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[08-Sep-2022 13:28:44 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 13:28:44 America/New_York] PHP Notice:  Undefined variable: rows in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[08-Sep-2022 13:28:44 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[08-Sep-2022 13:29:51 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 13:30:34 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 13:30:44 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 13:36:41 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 13:37:49 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 13:42:26 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 13:56:13 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 13:57:12 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 13:57:20 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 13:58:19 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 13:59:13 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 14:00:10 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 14:01:28 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[08-Sep-2022 14:04:16 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[09-Sep-2022 00:11:27 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[09-Sep-2022 00:12:30 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[09-Sep-2022 00:13:24 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[09-Sep-2022 00:15:56 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:28:40 America/New_York] PHP Notice:  Undefined variable: rows in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:28:40 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:28:40 America/New_York] PHP Notice:  Undefined variable: rows in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:28:40 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:28:40 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:28:40 America/New_York] PHP Notice:  Undefined index: name in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[21-Sep-2022 01:30:10 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:30:10 America/New_York] PHP Notice:  Undefined index: name in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[21-Sep-2022 01:30:42 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:30:42 America/New_York] PHP Notice:  Undefined index: name in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[21-Sep-2022 01:31:01 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:31:01 America/New_York] PHP Notice:  Undefined index: name in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[21-Sep-2022 01:31:37 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:31:37 America/New_York] PHP Notice:  Undefined index: name in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[21-Sep-2022 01:31:45 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:31:45 America/New_York] PHP Notice:  Undefined index: name in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[21-Sep-2022 01:31:46 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:31:46 America/New_York] PHP Notice:  Undefined index: name in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[21-Sep-2022 01:32:49 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:32:49 America/New_York] PHP Notice:  Undefined index: name in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[21-Sep-2022 01:33:03 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:33:03 America/New_York] PHP Notice:  Undefined index: name in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[21-Sep-2022 01:33:25 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:33:25 America/New_York] PHP Notice:  Undefined index: name in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[21-Sep-2022 01:33:46 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:33:46 America/New_York] PHP Notice:  Undefined index: name in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[21-Sep-2022 01:34:09 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:34:17 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:34:29 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:34:34 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:34:45 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:34:45 America/New_York] PHP Notice:  Undefined index: name in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[21-Sep-2022 01:34:59 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:34:59 America/New_York] PHP Notice:  Undefined index: name in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[21-Sep-2022 01:35:00 America/New_York] PHP Notice:  Undefined variable: con in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 2
+[21-Sep-2022 01:35:00 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 2
+[21-Sep-2022 01:35:00 America/New_York] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 3
+[21-Sep-2022 01:35:16 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:35:25 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:35:30 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:36:11 America/New_York] PHP Notice:  Undefined index: secretkey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:36:11 America/New_York] PHP Notice:  Undefined index: publickey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:36:11 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:36:22 America/New_York] PHP Notice:  Undefined index: secretkey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:36:22 America/New_York] PHP Notice:  Undefined index: publickey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:36:22 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:37:13 America/New_York] PHP Notice:  Undefined index: secretkey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:37:13 America/New_York] PHP Notice:  Undefined index: publickey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:37:13 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:37:29 America/New_York] PHP Notice:  Undefined index: secretkey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:37:29 America/New_York] PHP Notice:  Undefined index: publickey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:37:29 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:37:31 America/New_York] PHP Notice:  Undefined variable: row in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:37:31 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:37:31 America/New_York] PHP Notice:  Undefined variable: row in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:37:31 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:37:54 America/New_York] PHP Notice:  Undefined index: secretkey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:37:54 America/New_York] PHP Notice:  Undefined index: publickey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:37:54 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:37:56 America/New_York] PHP Notice:  Undefined variable: row in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:37:56 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:37:56 America/New_York] PHP Notice:  Undefined variable: row in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:37:56 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:38:33 America/New_York] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO), expecting ')' in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 8
+[21-Sep-2022 01:40:50 America/New_York] PHP Notice:  Undefined index: secretkey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:40:50 America/New_York] PHP Notice:  Undefined index: publickey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:40:50 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:43:00 America/New_York] PHP Notice:  Undefined index: secretkey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:43:00 America/New_York] PHP Notice:  Undefined index: publickey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:43:00 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:45:03 America/New_York] PHP Notice:  Undefined index: secretkey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:45:03 America/New_York] PHP Notice:  Undefined index: publickey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:45:03 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:45:03 America/New_York] PHP Warning:  Use of undefined constant STRIPE_PUBLISHABLE_KEY - assumed 'STRIPE_PUBLISHABLE_KEY' (this will throw an Error in a future version of PHP) in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 82
+[21-Sep-2022 01:45:05 America/New_York] PHP Notice:  Undefined variable: row in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:45:05 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:45:05 America/New_York] PHP Notice:  Undefined variable: row in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:45:05 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:45:05 America/New_York] PHP Warning:  Use of undefined constant STRIPE_API_KEY - assumed 'STRIPE_API_KEY' (this will throw an Error in a future version of PHP) in /home/se7entechnet/public_html/contractnew/stripe/stripe_charge.php on line 7
+[21-Sep-2022 01:46:35 America/New_York] PHP Notice:  Undefined index: secretkey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:46:35 America/New_York] PHP Notice:  Undefined index: publickey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:46:35 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:47:31 America/New_York] PHP Notice:  Undefined index: secretkey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:47:31 America/New_York] PHP Notice:  Undefined index: publickey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:47:31 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:48:41 America/New_York] PHP Notice:  Undefined index: secretkey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:48:41 America/New_York] PHP Notice:  Undefined index: publickey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:48:41 America/New_York] PHP Notice:  Constant 1 already defined in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 9
+[21-Sep-2022 01:48:41 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:48:41 America/New_York] PHP Warning:  Use of undefined constant STRIPE_PUBLISHABLE_KEY - assumed 'STRIPE_PUBLISHABLE_KEY' (this will throw an Error in a future version of PHP) in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 82
+[21-Sep-2022 01:48:55 America/New_York] PHP Notice:  Undefined index: secretkey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:48:55 America/New_York] PHP Notice:  Undefined index: publickey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:48:55 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:48:57 America/New_York] PHP Notice:  Undefined variable: row in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:48:57 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:48:57 America/New_York] PHP Notice:  Undefined variable: row in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:48:57 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:50:06 America/New_York] PHP Notice:  Undefined index: secretkey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:50:06 America/New_York] PHP Notice:  Undefined index: publickey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:50:06 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:50:08 America/New_York] PHP Notice:  Undefined variable: row in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:50:08 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:50:08 America/New_York] PHP Notice:  Undefined variable: row in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:50:08 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:50:33 America/New_York] PHP Notice:  Undefined index: secretkey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:50:33 America/New_York] PHP Notice:  Undefined index: publickey in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:50:33 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:50:47 America/New_York] PHP Notice:  Undefined variable: row in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:50:47 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:50:47 America/New_York] PHP Notice:  Undefined variable: row in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:50:47 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:50:57 America/New_York] PHP Notice:  Undefined variable: row in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:50:57 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 5
+[21-Sep-2022 01:50:57 America/New_York] PHP Notice:  Undefined variable: row in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:50:57 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 6
+[21-Sep-2022 01:51:10 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:51:12 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:51:36 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:52:17 America/New_York] PHP Notice:  Constant 1 already defined in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 9
+[21-Sep-2022 01:52:17 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:52:17 America/New_York] PHP Warning:  Use of undefined constant STRIPE_PUBLISHABLE_KEY - assumed 'STRIPE_PUBLISHABLE_KEY' (this will throw an Error in a future version of PHP) in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 82
+[21-Sep-2022 01:52:18 America/New_York] PHP Notice:  Constant 1 already defined in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 9
+[21-Sep-2022 01:52:18 America/New_York] PHP Warning:  Use of undefined constant STRIPE_API_KEY - assumed 'STRIPE_API_KEY' (this will throw an Error in a future version of PHP) in /home/se7entechnet/public_html/contractnew/stripe/stripe_charge.php on line 7
+[21-Sep-2022 01:53:10 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:54:06 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:54:17 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:55:10 America/New_York] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO), expecting ')' in /home/se7entechnet/public_html/contractnew/stripe/config.php on line 8
+[21-Sep-2022 01:56:05 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[21-Sep-2022 01:58:19 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[27-Sep-2022 04:58:47 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 10
+[27-Sep-2022 04:58:47 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 11
+[27-Sep-2022 04:58:47 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[27-Sep-2022 04:58:47 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[27-Sep-2022 04:58:58 America/New_York] PHP Notice:  Undefined variable: logid in /home/se7entechnet/public_html/contractnew/stripe/success.php on line 9
+[27-Sep-2022 04:58:58 America/New_York] PHP Notice:  Undefined variable: con in /home/se7entechnet/public_html/contractnew/stripe/success.php on line 10
+[27-Sep-2022 04:58:58 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/se7entechnet/public_html/contractnew/stripe/success.php on line 10
+[27-Sep-2022 04:58:58 America/New_York] PHP Notice:  Undefined variable: con in /home/se7entechnet/public_html/contractnew/stripe/success.php on line 12
+[27-Sep-2022 04:58:58 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/se7entechnet/public_html/contractnew/stripe/success.php on line 12
+[27-Sep-2022 05:02:16 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 10
+[27-Sep-2022 05:02:16 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 11
+[27-Sep-2022 05:02:16 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[27-Sep-2022 05:02:16 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[27-Sep-2022 05:04:06 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 10
+[27-Sep-2022 05:04:06 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 11
+[27-Sep-2022 05:04:06 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[27-Sep-2022 05:04:06 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[27-Sep-2022 05:06:55 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[27-Sep-2022 05:08:22 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[27-Sep-2022 05:08:28 America/New_York] PHP Notice:  Undefined variable: logid in /home/se7entechnet/public_html/contractnew/stripe/success.php on line 9
+[27-Sep-2022 05:10:20 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 10
+[27-Sep-2022 05:10:20 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 11
+[27-Sep-2022 05:10:20 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[27-Sep-2022 05:10:20 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[27-Sep-2022 05:10:22 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 10
+[27-Sep-2022 05:10:22 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 11
+[27-Sep-2022 05:10:22 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[27-Sep-2022 05:10:22 America/New_York] PHP Notice:  Trying to access array offset on value of type null in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 62
+[27-Sep-2022 05:11:24 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[27-Sep-2022 05:11:30 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[11-Nov-2022 14:01:38 America/New_York] PHP Notice:  Undefined index: order_id in /home/se7entechnet/public_html/contractnew/stripe/index.php on line 37
+[15-Feb-2023 22:12:23 America/New_York] PHP Notice:  Undefined variable: logid in /home/se7entechnet/public_html/contractnew/stripe/success.php on line 17
+[15-Feb-2023 22:12:23 America/New_York] PHP Notice:  Undefined variable: con in /home/se7entechnet/public_html/contractnew/stripe/success.php on line 18
+[15-Feb-2023 22:12:23 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/se7entechnet/public_html/contractnew/stripe/success.php on line 18
+[15-Feb-2023 22:12:23 America/New_York] PHP Notice:  Undefined variable: con in /home/se7entechnet/public_html/contractnew/stripe/success.php on line 20
+[15-Feb-2023 22:12:23 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/se7entechnet/public_html/contractnew/stripe/success.php on line 20
+[01-Mar-2023 16:36:09 America/New_York] PHP Notice:  Undefined variable: logid in /home/se7entechnet/public_html/contractnew/stripe/success.php on line 17
+[01-Mar-2023 16:36:09 America/New_York] PHP Notice:  Undefined variable: con in /home/se7entechnet/public_html/contractnew/stripe/success.php on line 18
+[01-Mar-2023 16:36:09 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/se7entechnet/public_html/contractnew/stripe/success.php on line 18
+[01-Mar-2023 16:36:09 America/New_York] PHP Notice:  Undefined variable: con in /home/se7entechnet/public_html/contractnew/stripe/success.php on line 20
+[01-Mar-2023 16:36:09 America/New_York] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/se7entechnet/public_html/contractnew/stripe/success.php on line 20
