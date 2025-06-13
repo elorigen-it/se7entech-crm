@@ -1,7 +1,7 @@
 <?php
 @session_start();
-include_once(__DIR__ . './envloader.php');
-include_once(__DIR__ . './config/connection.php');
+include_once(__DIR__ . '/envloader.php');
+include_once(__DIR__ . '/config/connection.php');
 
 if(isset($_SESSION['email']))
 {
