@@ -1,7 +1,7 @@
 deployment:
   tasks:
     # 1. Definir rutas importantes
-    - export DEPLOYPATH=/home/se7entechnet/se7entech-crm
+    - export DEPLOYPATH=/home/se7entechnet/crm.se7entech.net
     - export CONFIGPATH=/home/se7entechnet/deploy_config_files  # Ruta donde están tus archivos de configuración
 
     # 2. Copiar la carpeta vendor completa (en lugar de composer install)
