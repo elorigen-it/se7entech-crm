@@ -9,7 +9,8 @@
         error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
         ini_set('display_errors', 1);
     } else {
-        error_reporting(E_ALL); 
+        error_reporting(E_ALL);
+        //someting
     }
     $base_url = getenv('BASE_URL');
     $process_url = getenv('PROCESS_URL');
