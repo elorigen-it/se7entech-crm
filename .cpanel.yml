@@ -1,11 +1,19 @@
----
 deployment:
-      tasks:
-        - export DEPLOYPATH=/home/se7entechnet/se7entech-crm
-        - export CONFIGPATH=/home/se7entechnet/deploy_config_files
-        - /bin/cp -r $CONFIGPATH/vendor $DEPLOYPATH/vendor
-        - /bin/cp $CONFIGPATH/.env $DEPLOYPATH/.env
-        - /bin/cp $CONFIGPATH/.htaccess $DEPLOYPATH/.htaccess
-        - /bin/chmod 750 $DEPLOYPATH/vendor
-        - /bin/chmod 640 $DEPLOYPATH/.env
-        - /bin/chmod 644 $DEPLOYPATH/.htaccess 
+  tasks:
+    # 1. Definir rutas importantes
+    - export DEPLOYPATH=/home/se7entechnet/se7entech-crm
+    - export CONFIGPATH=/home/se7entechnet/deploy_config_files  # Ruta donde están tus archivos de configuración
+
+    # 2. Copiar la carpeta vendor completa (en lugar de composer install)
+    - /bin/cp -r $CONFIGPATH/vendor $DEPLOYPATH/vendor
+
+    # 3. Copiar archivos de configuración
+    - /bin/cp $CONFIGPATH/.env $DEPLOYPATH/.env
+    - /bin/rm -f $DEPLOYPATH/.env.example  # Elimina el .env.example si existe
+    - /bin/cp $CONFIGPATH/.htaccess $DEPLOYPATH/.htaccess
+    - /bin/rm -f $DEPLOYPATH/.htaccess.example  # Elimina el .htaccess.example si existe
+
+    # 4. Ajustar permisos 
+    - /bin/chmod 750 $DEPLOYPATH/vendor
+    - /bin/chmod 640 $DEPLOYPATH/.env
+    - /bin/chmod 644 $DEPLOYPATH/.htaccess
