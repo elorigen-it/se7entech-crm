@@ -10,7 +10,6 @@
         ini_set('display_errors', 1);
     } else {
         error_reporting(E_ALL);
-        //someting more like a warning
     }
     $base_url = getenv('BASE_URL');
     $process_url = getenv('PROCESS_URL');
