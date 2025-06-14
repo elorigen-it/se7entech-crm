@@ -15,72 +15,12 @@ $definitions = array(
         )
     ),
     array(
-        'name' => 'postContract',
+        'name' => 'postCustomer',
         'route' => array(
             'path' => '/',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Contract\Controllers\ContractController', 
-                'method'=>'postContract',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm')),
-            'methods' => ['POST']
-            // 'params' => array('id' => '[0-9]+') //query parameters requirements
-        )
-    ),
-    array(
-        'name' => 'getAllContracts',
-        'route' => array(
-            'path' => '/getAllContracts/',
-            'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Contract\Controllers\ContractController', 
-                'method'=>'getAllContracts',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm')),
-            'methods' => ['POST']
-            // 'params' => array('id' => '[0-9]+') //query parameters requirements
-        )
-    ),
-    array(
-        'name' => 'getAllInvoices',
-        'route' => array(
-            'path' => '/getAllInvoices/',
-            'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Contract\Controllers\ContractController', 
-                'method'=>'getAllInvoices',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm')),
-            'methods' => ['POST']
-            // 'params' => array('id' => '[0-9]+') //query parameters requirements
-        )
-    ),
-    array(
-        'name' => 'notifications',
-        'route' => array(
-            'path' => '/notifications/',
-            'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Contract\Controllers\ContractController', 
-                'method'=>'notifications',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm')),
-            'methods' => ['POST']
-            // 'params' => array('id' => '[0-9]+') //query parameters requirements
-        )
-    ),
-    array(
-        'name' => 'associateInvoice',
-        'route' => array(
-            'path' => '/associateInvoice/',
-            'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Contract\Controllers\ContractController', 
-                'method'=>'associateInvoice',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm')),
-            'methods' => ['POST']
-            // 'params' => array('id' => '[0-9]+') //query parameters requirements
-        )
-    ),
-    array(
-        'name' => 'getAssociatedInvoices',
-        'route' => array(
-            'path' => '/getAssociatedInvoices/',
-            'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Contract\Controllers\ContractController', 
-                'method'=>'getAssociatedInvoices',
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController', 
+                'method'=>'postCustomer',
                 'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm')),
             'methods' => ['POST']
             // 'params' => array('id' => '[0-9]+') //query parameters requirements
@@ -91,20 +31,8 @@ $definitions = array(
         'route' => array(
             'path' => '/{id}',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Contract\Controllers\ContractController', 
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController', 
                 'method'=>'getById',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
-            'methods' => ['GET'],
-            'params' => array('id' => '[0-9]+') //query parameters requirements
-        )
-    ),
-    array(
-        'name' => 'printContract',
-        'route' => array(
-            'path' => '/printContract/{id}',
-            'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Contract\Controllers\ContractController', 
-                'method'=>'printContract',
                 'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
             'methods' => ['GET'],
             'params' => array('id' => '[0-9]+') //query parameters requirements
@@ -115,8 +43,8 @@ $definitions = array(
         'route' => array(
             'path' => '/{id}',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Contract\Controllers\ContractController', 
-                'method'=>'updateContract',
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController', 
+                'method'=>'updateCustomer',
                 'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
             'methods' => ['POST'],
             'params' => array('id' => '[0-9]+') //query parameters requirements
@@ -127,7 +55,7 @@ $definitions = array(
         'route' => array(
             'path' => '/delete/',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Contract\Controllers\ContractController', 
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController', 
                 'method'=>'delete',
                 'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
             'methods' => ['POST'],

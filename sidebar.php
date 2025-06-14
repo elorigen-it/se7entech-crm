@@ -91,16 +91,16 @@ navbar-light bg-white" id="sidenav-main">
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo $base_url;?>/Client">
-                        <i class="fa fa-users"></i> Client
+                    <a class="nav-link" href="<?php echo $base_url;?>/modules/customers/">
+                        <i class="fa fa-users"></i> Customers
                     </a>
                 </li>
                 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="<?php echo $base_url;?>/Lead">
                         <i class="fa fa-list"></i> Lead
                     </a>
-                </li>
+                </li> -->
 
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo $base_url;?>/modules/contract/">
