@@ -2,6 +2,7 @@
 .htaccess
 .user.ini
 vendor/
+uploads/
 # Ignore all node modules
 node_modules/
 .env.local
