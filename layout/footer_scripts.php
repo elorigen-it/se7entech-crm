@@ -39,7 +39,7 @@
 <!-- Cart custom sidemenu -->
 <script src="<?php echo $base_url;?>/js/cartSideMenu.js"></script>
 <!-- OneSignal -->
-<script src="<?php echo $base_url;?>/js/rmap.js"></script>
+<!-- <script src="<?php echo $base_url;?>/js/rmap.js"></script> -->
 
 <script src="<?php echo $base_url;?>/js/notifications.js"></script>
 
