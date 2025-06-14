@@ -219,11 +219,11 @@ navbar-light bg-white" id="sidenav-main">
                 <?php endif;?>
 
                 <?php if($access === '0'):?>
-                    <!-- <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="<?php echo $base_url;?>/modules/users/">
                             <i class="fa fa-cog" aria-hidden="true"></i> Users
                         </a>
-                    </li> -->
+                    </li>
                 <?php endif;?>
 
                 <?php // if($access === '0'):?>
