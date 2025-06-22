@@ -129,7 +129,7 @@
 <body>
     <h1>Definición de Personalidad de Marca</h1>
     
-    <form id="brandPersonalityForm" action="<?php echo $this->base_url . '/modules/tests/postbrand';?>" method="post">
+    <form id="brandPersonalityForm" action="<?php echo $this->base_url . '/modules/tests/index.php/postbrand';?>" method="post">
         <!-- Sección 1: Identidad Básica -->
         <div class="form-section">
             <h2>1. Identidad Básica</h2>
