@@ -3,6 +3,30 @@ use Symfony\Component\Routing\Route;
 
 $definitions = array(
     array(
+        'name' => 'generateBrandRulesForm',
+        'route' => array(
+            'path' => '/{customerId}/brand-rules/generate',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController', 
+                'method'=>'generateBrandRulesForm',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
+            'methods' => ['GET'],
+            'params' => array('customerId' => '[0-9]+') //query parameters requirements
+        )
+    ),
+     array(
+        'name' => 'generateBrandRules',
+        'route' => array(
+            'path' => '/{customerId}/brand-rules/generate',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController', 
+                'method'=>'generateBrandRules',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
+            'methods' => ['POST'],
+            // 'params' => array('customerId' => '[0-9]+') //query parameters requirements
+        )
+    ),
+    array(
         'name' => 'index',
         'route' => array(
             'path' => '/',
@@ -61,8 +85,8 @@ $definitions = array(
             'methods' => ['POST'],
             // 'params' => array('id' => '[0-9]+') //query parameters requirements
         )
-    )
-
+    ),
+    
     // array(
     //     'name' => 'acceptAppointment',
     //     'route' => array(
