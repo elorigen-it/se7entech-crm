@@ -81,7 +81,13 @@ class TaskController {
 
             $tasks = TaskModel::getAll();
             $users = UserModel::getAll();
+            $labels = TaskLabelModel::getAll();
             $customers = CustomersModel::getAllV2();
+            
+            $flashes = $this->session->getFlashBag();
+            foreach ($this->data['errors'] as $error) {
+                $flashes->add('danger', $error);
+            }
             $this->data['tasks'] = $tasks;
             $this->data['users'] = $users;
             $this->data['customers'] = $customers;
