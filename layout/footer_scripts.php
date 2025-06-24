@@ -4,10 +4,10 @@
 </script>
 
 <script src="<?php echo $base_url;?>/js/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
 <script src="<?php echo $base_url;?>/js/popper.min.js" type="text/javascript"></script>
 <script src="<?php echo $base_url;?>/js/bootstrap.bundle.min.js"></script>
 <script src="<?php echo $base_url;?>/js/bootstrap-datepicker.min.js"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
 
 <script src="<?php echo $base_url;?>/js/nouislider.min.js" type="text/javascript"></script>
 <!-- Latest compiled and minified JavaScript -->
@@ -16,10 +16,10 @@
 <!-- Custom js -->
 <script src="<?php echo $base_url;?>/js/orders.js"></script>
 <!-- Custom js -->
-<script src="<?php echo $base_url;?>/js/mresto.js"></script>
+<!-- <script src="<?php echo $base_url;?>/js/mresto.js"></script> -->
 <!-- AJAX -->
 <!-- SELECT2 -->
-<script src="<?php echo $base_url;?>/js/select2.js"></script>
+<!-- <script src="<?php echo $base_url;?>/js/select2.js"></script> -->
 <script src="<?php echo $base_url;?>/js/select2.min.js"></script>
 <!-- DATE RANGE PICKER -->
 <script type="text/javascript" src="<?php echo $base_url;?>/js/moment.min.js"></script>
