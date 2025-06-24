@@ -245,8 +245,8 @@
          </footer>
         <!-- Commented because navtabs includes same script -->
         <?php include '../../layout/footer_scripts.php';?>
-        <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
-        <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+        <script src="<?php echo $base_url;?>/js/quill.js"></script>
+        <link href="<?php echo $base_url;?>/css/quill.snow.css" rel="stylesheet">
         <style>
             .ql-snow .ql-tooltip {
                 left: 5px !important;
@@ -259,14 +259,34 @@
                     responsive: true,
                     order: [[0, 'desc']]
                 });
-
-                const quill = new Quill('#task-description-wrapper', {
-                    theme: 'snow'
+                var quill = new Quill('#task-description-wrapper', {
+                    theme: 'snow',
+                    modules: {
+                        toolbar: [
+                            ['bold', 'italic', 'underline'],
+                            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                            ['link']
+                        ]
+                    }
                 });
 
                 quill.on('text-change', (delta, oldDelta, source) => {
                     // Update the hidden input with the HTML content
                     document.getElementById('task-description').value = quill.root.innerHTML;
+                });
+
+                // Initialize Select2 for task-label
+                function formatState (state) {
+                    if (!state.id) {
+                        return state.text;
+                    }
+                    var $state = $(state.element.innerHTML);
+                    return $state;
+                };
+
+                $("#task-labels").select2({
+                    templateSelection: formatState,
+                    templateResult: formatState
                 });
 
                 //check if there is #listzones in the URL
@@ -284,20 +304,6 @@
                     if ($(e.target).attr('href') === '#listzones') {
                         $('#roles-list-table').DataTable().columns.adjust().responsive.recalc();
                     }
-                });
-
-                // Initialize Select2 for task-label
-                function formatState (state) {
-                    if (!state.id) {
-                        return state.text;
-                    }
-                    var $state = $(state.element.innerHTML);
-                    return $state;
-                };
-
-                $("#task-labels").select2({
-                    templateSelection: formatState,
-                    templateResult: formatState
                 });
 
                 //force datatable refresh to apply responsive styles

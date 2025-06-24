@@ -162,8 +162,8 @@
         </div>
         <!-- Commented because navtabs includes same script -->
         <?php include '../../layout/footer_scripts.php';?>  
-        <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
-        <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+         <script src="<?php echo $base_url;?>/js/quill.js"></script>
+        <link href="<?php echo $base_url;?>/css/quill.snow.css" rel="stylesheet">
         <style>
             .ql-snow .ql-tooltip {
                 left: 5px !important;
