@@ -119,11 +119,12 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group  ">
                                                         <label class="form-control-label" for="task-description">Task Description <span class="required">*</span></label>
-                                                        <div id="task-description-wrapper" class="form-control" style="height: 250px; overflow-y: auto;">
-                                                            <!-- Quill Editor will be initialized here -->
+                                                        
+                                                        <div class="task-description-wrapper" style="display:block; position:relative;">
+                                                            <textarea id="task-description" rows="10" class="form-control" name="task-description" placeholder="Describe the task here..." style="height: 250px; overflow-y: auto;">
+                                                                <?php echo $this->data['current']['description'];?>
+                                                            </textarea>
                                                         </div>
-                                                        <input type="hidden" id="task-description" name="task-description" value='' />
-                                                        <!-- <textarea id="task-description" name="task-description" class="form-control" rows="3" placeholder="Task Description"></textarea> -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -162,36 +163,30 @@
         </div>
         <!-- Commented because navtabs includes same script -->
         <?php include '../../layout/footer_scripts.php';?>  
-         <script src="<?php echo $base_url;?>/js/quill.js"></script>
-        <link href="<?php echo $base_url;?>/css/quill.snow.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
+        <script src="<?php echo $base_url;?>/js/summernote.min.js"></script>
         <style>
-            .ql-snow .ql-tooltip {
-                left: 5px !important;
+            .task-description-wrapper b{
+                font-weight: bold !important;
             }
         </style>
         <script>
             // Initialize Quill editor
              $(document).ready(function(){
-                var quill = new Quill('#task-description-wrapper', {
-                    theme: 'snow',
-                    modules: {
-                        toolbar: [
-                            ['bold', 'italic', 'underline'],
-                            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                            ['link']
-                        ]
-                    }
-                });
-
-                quill.on('text-change', (delta, oldDelta, source) => {
-                    // Update the hidden input with the HTML content
-                    document.getElementById('task-description').value = quill.root.innerHTML;
-                });
-
-                // Set the initial content of the editor
                 let descriptionValue = `<?php echo addslashes($this->data['current']['description']); ?>`;
-                quill.root.innerHTML = descriptionValue;
-                document.getElementById('task-description').value = descriptionValue;
+                // Initialize Summernote editor
+                $('#task-description').summernote({
+                    height: 250, // Set the height of the editor
+                    toolbar: [
+                        ['style', ['bold', 'italic', 'underline', 'clear']],
+                        ['font', ['strikethrough', 'superscript', 'subscript']],
+                        ['fontsize', ['fontsize']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['insert', ['link']],
+                        ['view', ['codeview']]
+                    ]
+                });
 
                 // Initialize Select2 for task-label
                 function formatState (state) {
