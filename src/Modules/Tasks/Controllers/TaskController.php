@@ -334,8 +334,10 @@ class TaskController {
 
     public function finishTask($params){
         $id = $params['id'];
-        
+        $resource = $params['resource'];
+        $resource = base64_decode($resource);
         $task = TaskModel::getById($id);
+
         if(!$task){
             return json_encode(array('error' => 'Task not found'));
         }
@@ -369,7 +371,9 @@ class TaskController {
             'status' => 'finished',
             'total_time' => $net_seconds,
             'total_pauses' => $total_paused,
+            'final_resource' => $resource
         );
+
         $res = TaskModel::finishTask($id, $update);
 
         if($res){

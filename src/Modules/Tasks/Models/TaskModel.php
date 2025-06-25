@@ -67,6 +67,7 @@ class TaskModel{
                 tasks.total_pauses, 
                 tasks.total_time, 
                 tasks.created_at, 
+                tasks.final_resource,
                 invoice_user.email, 
                 invoice_user.first_name, 
                 invoice_user.last_name, 
@@ -175,7 +176,7 @@ class TaskModel{
         include __DIR__ . '/../../../../envloader.php';
         include __DIR__ . '/../../../../config/connection.php';
         $data = EscapeString::escapeArray($con, $data);
-        $sql = "UPDATE " . self::$table . " SET end_time='".$data['end_time']."', status='".$data['status']."', total_time='".$data['total_time']."', total_pauses='".$data['total_pauses']."' WHERE id=$id";
+        $sql = "UPDATE " . self::$table . " SET end_time='".$data['end_time']."', status='".$data['status']."', total_time='".$data['total_time']."', total_pauses='".$data['total_pauses']."', final_resource='".$data['final_resource']."' WHERE id=$id";
         
         return(mysqli_query($con, $sql));
     }
