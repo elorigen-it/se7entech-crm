@@ -378,6 +378,9 @@
                             if (result !== null) {
                                 result = btoa(unescape(encodeURIComponent(result)));
                                 // If the user entered a value, redirect to the URL with the reason as a query parameter
+                                if( result.trim() === '') {
+                                    result = btoa(unescape('No Resources'));
+                                }
                                 window.location.href = finishButton.href + '/' + encodeURIComponent(result);
                             }
                         }
