@@ -49,7 +49,11 @@
                             </div>
                             <div class="card-body">
                                 <form id="brandPersonalityForm" action="<?php echo $this->base_url . '/modules/customers/index.php/'. $customerId .'/brand-rules/confirm';?>" method="POST">
-                                    <!-- Sección 1: Identidad Básica -->
+                                    <input type="hidden" name="customerId" id="customerId" value="<?php echo $customerId;?>">
+                                    <div class="xs-12">
+                                        <label class="form-control-label" for="uniqueValue">Nombre para la regla de marca<span class="required">*</span></label>
+                                        <input type="text" name="rule_name" id="rule_name" class="form-control" placeholder="Reglas para creacion de contenido 1" required>
+                                    </div> 
                                     <div class="xs-12">
                                         <div style="padding:5px;" name="brand_identity" id="brand_identity" contenteditable><?php echo $responseContent;?></div>
                                     </div>                                   
@@ -69,6 +73,56 @@
         </footer>
         <?php include '../../layout/footer_scripts.php';?>    
         <script>
+            window.addEventListener('DOMContentLoaded', function() {
+                // Initialize the contenteditable div
+                const brandIdentityDiv = document.getElementById('brand_identity').innerHTML;
+                const ruleNameInput = document.getElementById('rule_name');
+                const customerId = document.getElementById('customerId').value;
+
+                document.getElementById('brandPersonalityForm').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    e.target.disabled = true; // Disable the form to prevent multiple submissions
+
+                    if (!ruleNameInput.value.trim()) {
+                        alert('Por favor, ingrese el nombre para la regla de marca.');
+                        ruleNameInput.focus();
+                        e.target.disabled = false;
+                        return;
+                    }                    
+
+                    const actionUrl = this.action;
+                    const data = new FormData();
+                    data.append('brand_identity', document.getElementById('brand_identity').innerHTML);
+                    data.append('rule_name', ruleNameInput.value);
+                    data.append('customerId', customerId);
+
+                    
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('POST', actionUrl, true);
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === 4) {
+                            // Optionally handle response here
+                            console.log(xhr);
+                            try {
+                                const response = JSON.parse(xhr.responseText);
+                                if (response.success) {
+                                    bootbox.alert({
+                                        message: response.message,
+                                        callback: function () {
+                                            window.location.href = `<?php echo $base_url;?>/modules/customers/`;
+                                        }
+                                    });
+                                } else {
+                                    bootbox.alert(response.message || 'Error al guardar las reglas de marca.');
+                                }
+                            } catch (err) {
+                                bootbox.alert('Respuesta inesperada del servidor.');
+                            }
+                        }
+                    };
+                    xhr.send(data);
+                });
+            });
         </script>
     </body>
 </html>

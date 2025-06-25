@@ -323,6 +323,7 @@
                                                         <td>
                                                             <a href="<?php echo $base_url;?>/modules/customers/index.php/<?php echo $record['id'];?>" class="btn btn-primary">Edit</a>
                                                             <a href="<?php echo $base_url;?>/modules/customers/index.php/<?php echo $record['id'];?>/brand-rules/generate" class="btn btn-info" style="margin-right:5px;"><i class="fa fa-magic" aria-hidden="true"></i>AI Rules</a>
+                                                            <a href="<?php echo $base_url;?>/modules/customers/index.php/<?php echo $record['id'];?>/content-creator/generate" class="btn btn-success" style="margin-right:5px;"><i class="fa fa-magic" aria-hidden="true"></i>AI Create Content</a>
                                                             <a href="#" class="btn btn-danger" data-id="<?php echo $record['id'];?>" onclick="showModal(this)">Delete</a>
                                                         </td>
                                                     </tr>
