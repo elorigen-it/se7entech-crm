@@ -14,7 +14,7 @@ $definitions = array(
             'params' => array('customerId' => '[0-9]+') //query parameters requirements
         )
     ),
-     array(
+    array(
         'name' => 'generateBrandRules',
         'route' => array(
             'path' => '/{customerId}/brand-rules/generate',
@@ -23,7 +23,43 @@ $definitions = array(
                 'method'=>'generateBrandRules',
                 'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
             'methods' => ['POST'],
-            // 'params' => array('customerId' => '[0-9]+') //query parameters requirements
+            'params' => array('customerId' => '[0-9]+') //query parameters requirements
+        )
+    ),
+    array(
+        'name' => 'confirmBrandRules',
+        'route' => array(
+            'path' => '/{customerId}/brand-rules/confirm',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController', 
+                'method'=>'confirmBrandRules',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
+            'methods' => ['POST'],
+            'params' => array('customerId' => '[0-9]+') //query parameters requirements
+        )
+    ),
+    array(
+        'name' => 'generateContentForm',
+        'route' => array(
+            'path' => '/{customerId}/content-creator/generate',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController', 
+                'method'=>'generateContentForm',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
+            'methods' => ['GET'],
+            'params' => array('customerId' => '[0-9]+') //query parameters requirements
+        )
+    ),
+    array(
+        'name' => 'generateContentPlan',
+        'route' => array(
+            'path' => '/{customerId}/content-creator/generate',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController', 
+                'method'=>'generateContentPlan',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
+            'methods' => ['POST'],
+            'params' => array('customerId' => '[0-9]+') //query parameters requirements
         )
     ),
     array(

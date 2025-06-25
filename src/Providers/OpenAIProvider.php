@@ -33,7 +33,7 @@ class OpenAIProvider
      * @return array Respuesta de la API
      * @throws Exception Si ocurre un error
      */
-    public function chatCompletion(array $messages, ?string $model = null, float $temperature = 0.7): array
+    public function chatCompletion(array $messages, ?string $model = null, float $temperature = 0): array
     {
         $model = $model ?? $this->defaultModel;
         $url = $this->apiBase . '/chat/completions';
@@ -42,6 +42,8 @@ class OpenAIProvider
             'model' => $model,
             'messages' => $messages,
             'temperature' => $temperature,
+            'top_p' => 1.0,
+            'max_tokens' => 20000, // Ajusta según tus necesidades
         ];
         if($model === 'o3-mini'){
             unset($data['temperature']);
