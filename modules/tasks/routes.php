@@ -152,13 +152,13 @@ $definitions = array(
     array(
         'name' => 'finish',
         'route' => array(
-            'path' => '/{id}/finish',
+            'path' => '/{id}/finish/{resource}',
             'detail' => array(
                 'controller' => 'Se7entech\Contractnew\Modules\Tasks\Controllers\TaskController', 
                 'method'=>'finishTask',
                 'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
             'methods' => ['GET'],
-            'params' => array('id' => '[0-9]+') //query parameters requirements
+            'params' => array('id' => '[0-9]+', 'resource' => '[a-zA-Z0-9\s\-\_\.\,\!\@\#\$\%\^\&\*\(\)\+\=\?\:\;\'\"]+') //query parameters requirements
         )
     ),
     array(

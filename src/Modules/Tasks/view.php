@@ -287,6 +287,28 @@
                                                         </div> 
                                                     </div>
                                                 </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="task-user">Final Resources</label>
+                                                            <br>
+                                                            <?php 
+                                                                if ($this->data['current']['final_resource']) {
+                                                                    $resource = explode(',', $this->data['current']['final_resource']);
+                                                                    $resources = [];
+                                                                    for ($i = 0; $i < count($resource); $i++) {
+                                                                        $resources[] = '<a href="' . $resource[$i] . '" target="_blank">' . $resource[$i] . '</a>';
+                                                                    }                                                                  
+
+                                                                    $resources = implode('<br>', $resources);
+                                                                } else {
+                                                                    $resources = 'No final resources yet';
+                                                                }
+                                                            ?>
+                                                            <span class="text-muted"><?php echo $resources;?></span><br>                                                
+                                                        </div> 
+                                                    </div>
+                                                </div>
                                             <?php endif;?>
 
                                             <div class="text-center">
@@ -301,7 +323,7 @@
                                                     <a href="<?php echo $this->base_url;?>/modules/tasks/index.php/<?php echo $this->data['current']['id'];?>/resume" class="btn btn-primary">Resume task</a>
                                                 <?php endif;?>
                                                 <?php if($this->data['current']['status'] == 'started'):?>
-                                                    <a href="<?php echo $this->base_url;?>/modules/tasks/index.php/<?php echo $this->data['current']['id'];?>/finish"class="btn btn-success">Finish task</a>
+                                                    <a id="finish-task" href="<?php echo $this->base_url;?>/modules/tasks/index.php/<?php echo $this->data['current']['id'];?>/finish"class="btn btn-success">Finish task</a>
                                                 <?php endif;?>
                                                 <?php if($this->data['current']['status'] == 'finished'):?>
                                                     <a href="<?php echo $this->base_url;?>/modules/tasks/index.php/<?php echo $this->data['current']['id'];?>/reopen"class="btn btn-warning">Reopen task</a>
@@ -339,6 +361,24 @@
                                 console.log(result); // Log the result to the console (for debugging purposes)
                                 // If the user entered a value, redirect to the URL with the reason as a query parameter
                                 window.location.href = pauseButton.href + '/' + encodeURIComponent(result);
+                            }
+                        }
+                    });
+                });
+
+                let finishButton = document.getElementById('finish-task');
+                finishButton.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent the default action of the link
+                    // Show the prompt
+                    bootbox.prompt({
+                        title: "Please enter link for finished task (if any). <br> You can enter multiple links separated by commas.",
+                        placeholder: "https://example.com/resource1,  https://example.com/resource2",
+                        inputType: 'textarea',
+                        callback: function(result) {
+                            if (result !== null) {
+                                result = btoa(unescape(encodeURIComponent(result)));
+                                // If the user entered a value, redirect to the URL with the reason as a query parameter
+                                window.location.href = finishButton.href + '/' + encodeURIComponent(result);
                             }
                         }
                     });
