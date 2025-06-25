@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form id="contentPlanForm" action="<?php echo $this->base_url . '/modules/customers/'.$customerId.'/content-creator/generate';?>" method="POST">
+                                <form id="contentPlanForm" action="<?php echo $this->base_url . '/modules/customers/index.php/'.$customerId.'/content-creator/generate';?>" method="POST">
                                     <!-- Sección 1: Selección de Reglas -->
                                     <div class="pl-lg-4">
                                         <h6 class="heading-small text-muted mb-4">1. Reglas de Marca</h6>
