@@ -297,7 +297,13 @@
                                                                     $resource = explode(',', $this->data['current']['final_resource']);
                                                                     $resources = [];
                                                                     for ($i = 0; $i < count($resource); $i++) {
-                                                                        $resources[] = '<a href="' . $resource[$i] . '" target="_blank">' . $resource[$i] . '</a>';
+                                                                        if(!filter_var($resource[$i], FILTER_VALIDATE_URL)) {
+                                                                           $url = '#';
+                                                                            $resources[] = '<a href="' . $url . '" disabled>' . $resource[$i] . '</a>';
+                                                                        }else{
+                                                                            $url = $resource[$i];
+                                                                            $resources[] = '<a href="' . $url . '" target="_blank">' . $resource[$i] . '</a>';
+                                                                        }
                                                                     }                                                                  
 
                                                                     $resources = implode('<br>', $resources);
