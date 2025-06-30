@@ -115,7 +115,7 @@
                                     bootbox.alert({
                                         message: response.message,
                                         callback: function () {
-                                            window.location.href = `<?php echo $base_url;?>/modules/customers/<?php echo $customerId;?>/brand-rules/view/<?php echo $brandRule['id'];?>`;
+                                            window.location.href = `<?php echo $base_url;?>/modules/customers/index.php/<?php echo $customerId;?>/brand-rules/view/<?php echo $brandRule['id'];?>`;
                                         }
                                     });
                                 } else {
