@@ -63,6 +63,71 @@ $definitions = array(
         )
     ),
     array(
+        'name' => 'manageBrandRules',
+        'route' => array(
+            'path' => '/{customerId}/brand-rules/manage',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'manageBrandRules',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
+            'methods' => ['GET'],
+            'params' => array('customerId' => '[0-9]+')
+        )
+    ),
+    array(
+        'name' => 'viewBrandRule',
+        'route' => array(
+            'path' => '/{customerId}/brand-rules/view/{brandRuleId}',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'viewBrandRule',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
+            'methods' => ['GET'],
+            'params' => array('customerId' => '[0-9]+', 'brandRuleId' => '[0-9]+')
+        )
+    ),
+    array(
+        'name' => 'editBrandRule',
+        'route' => array(
+            'path' => '/{customerId}/brand-rules/edit/{brandRuleId}',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'editBrandRule',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
+            'methods' => ['GET'],
+            'params' => array('customerId' => '[0-9]+', 'brandRuleId' => '[0-9]+')
+        )
+    ),
+    array(
+        'name' => 'updateBrandRule',
+        'route' => array(
+            'path' => '/{customerId}/brand-rules/edit/{brandRuleId}',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'updateBrandRule',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
+            'methods' => ['POST'],
+            'params' => array('customerId' => '[0-9]+', 'brandRuleId' => '[0-9]+')
+        )
+    ),
+    array(
+        'name' => 'deleteBrandRule',
+        'route' => array(
+            'path' => '/{customerId}/brand-rules/delete/{brandRuleId}',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'deleteBrandRule',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
+            'methods' => ['POST'],
+            'params' => array('customerId' => '[0-9]+', 'brandRuleId' => '[0-9]+')
+        )
+    ),
+    array(
         'name' => 'index',
         'route' => array(
             'path' => '/',
@@ -122,7 +187,84 @@ $definitions = array(
             // 'params' => array('id' => '[0-9]+') //query parameters requirements
         )
     ),
-    
+    array(
+        'name' => 'manageBrandContent',
+        'route' => array(
+            'path' => '/{customerId}/brand-content/manage',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'manageBrandContent',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
+            'methods' => ['GET'],
+            'params' => array('customerId' => '[0-9]+')
+        )
+    ),
+    array(
+        'name' => 'viewBrandContent',
+        'route' => array(
+            'path' => '/{customerId}/brand-content/view/{brandContentId}',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'viewBrandContent',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
+            'methods' => ['GET'],
+            'params' => array('customerId' => '[0-9]+', 'brandContentId' => '[0-9]+')
+        )
+    ),
+    array(
+        'name' => 'confirmBrandContent',
+        'route' => array(
+            'path' => '/{customerId}/brand-content/confirm',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'confirmBrandContent',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
+            'methods' => ['POST'],
+            'params' => array('customerId' => '[0-9]+')
+        )
+    ),
+    array(
+        'name' => 'editBrandContent',
+        'route' => array(
+            'path' => '/{customerId}/brand-content/edit/{brandContentId}',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'editBrandContent',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
+            'methods' => ['GET'],
+            'params' => array('customerId' => '[0-9]+', 'brandContentId' => '[0-9]+')
+        )
+    ),
+    array(
+        'name' => 'updateBrandContent',
+        'route' => array(
+            'path' => '/{customerId}/brand-content/edit/{brandContentId}',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'updateBrandContent',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
+            'methods' => ['POST'],
+            'params' => array('customerId' => '[0-9]+', 'brandContentId' => '[0-9]+')
+        )
+    ),
+    array(
+        'name' => 'deleteBrandContent',
+        'route' => array(
+            'path' => '/{customerId}/brand-content/delete/{brandContentId}',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'deleteBrandContent',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
+            'methods' => ['POST'],
+            'params' => array('customerId' => '[0-9]+', 'brandContentId' => '[0-9]+')
+        )
+    ),
     // array(
     //     'name' => 'acceptAppointment',
     //     'route' => array(

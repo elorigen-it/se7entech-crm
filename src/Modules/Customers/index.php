@@ -14,6 +14,9 @@
             .required{
                 color:red;
             }
+            table.dataTable>tbody>tr.child ul.dtr-details>li:last-child{
+                white-space: normal !important;
+            }
         </style>
     </head>
     <body class="">
@@ -321,10 +324,12 @@
                                                         <td><?php echo $record['email'];?></td>
                                                         <td><?php echo ucfirst($record['status']);?></td>
                                                         <td>
-                                                            <a href="<?php echo $base_url;?>/modules/customers/index.php/<?php echo $record['id'];?>" class="btn btn-primary">Edit</a>
-                                                            <a href="<?php echo $base_url;?>/modules/customers/index.php/<?php echo $record['id'];?>/brand-rules/generate" class="btn btn-info" style="margin-right:5px;"><i class="fa fa-magic" aria-hidden="true"></i>AI Rules</a>
-                                                            <a href="<?php echo $base_url;?>/modules/customers/index.php/<?php echo $record['id'];?>/content-creator/generate" class="btn btn-success" style="margin-right:5px;"><i class="fa fa-magic" aria-hidden="true"></i>AI Create Content</a>
-                                                            <a href="#" class="btn btn-danger" data-id="<?php echo $record['id'];?>" onclick="showModal(this)">Delete</a>
+                                                            <a href="<?php echo $base_url;?>/modules/customers/index.php/<?php echo $record['id'];?>" class="btn btn-primary btn-sm" style="margin-right:5px;margin-top:5px;">Edit</a>
+                                                            <a href="<?php echo $base_url;?>/modules/customers/index.php/<?php echo $record['id'];?>/brand-rules/generate" class="btn btn-info btn-sm" style="margin-right:5px;margin-top:5px;"><i class="fa fa-magic" aria-hidden="true"></i>AI Rules</a>
+                                                            <a href="<?php echo $base_url;?>/modules/customers/index.php/<?php echo $record['id'];?>/content-creator/generate" class="btn btn-success btn-sm" style="margin-right:5px;margin-top:5px;"><i class="fa fa-magic" aria-hidden="true"></i>AI Create Content</a>                                                            
+                                                            <a href="<?php echo $base_url;?>/modules/customers/index.php/<?php echo $record['id'];?>/brand-rules/manage" class="btn btn-warning btn-sm" style="margin-right:5px;margin-top:5px;"><i class="fa fa-magic" aria-hidden="true"></i>Manage AI Rules</a>
+                                                            <a href="<?php echo $base_url;?>/modules/customers/index.php/<?php echo $record['id'];?>/brand-content/manage" class="btn btn-warning btn-sm" style="margin-right:5px;margin-top:5px;"><i class="fa fa-magic" aria-hidden="true"></i>Manage AI Content</a>
+                                                            <a href="#" class="btn btn-danger btn-sm" data-id="<?php echo $record['id'];?>" onclick="showModal(this)" style="margin-right:5px;margin-top:5px;">Delete</a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach;?>

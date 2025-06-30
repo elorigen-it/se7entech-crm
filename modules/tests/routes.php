@@ -13,7 +13,19 @@ $definitions = array(
             ),
             'methods' => ['GET'],
         )
-    ),    
+    ),  
+    array(
+        'name' => 'tasks',
+        'route' => array(
+            'path' => '/tasks',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Tests\Controllers\TestsController', 
+                'method'=>'tasks',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware',)
+            ),
+            'methods' => ['GET'],
+        )
+    ),   
     array(
         'name' => 'postbrand',
         'route' => array(

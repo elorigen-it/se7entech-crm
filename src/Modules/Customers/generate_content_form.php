@@ -17,7 +17,7 @@
             }
         </style>
     </head>
-    <body class="">
+    <body class="content-creator-form">
         <?php include ('../../sidebar.php'); ?>
         <div class="main-content">
             <?php include ('../../nav.php'); ?>
@@ -47,6 +47,95 @@
                             <div class="card-body">
                                 <form id="contentPlanForm" action="<?php echo $this->base_url . '/modules/customers/index.php/'.$customerId.'/content-creator/generate';?>" method="POST">
                                     <!-- Sección 1: Selección de Reglas -->
+                                    <!-- Slide de configuración de la API (temperatura y modelo) -->
+                                    <div class="pl-lg-4 mb-4">
+                                        <h6 class="heading-small text-muted mb-4">Configuración de la API</h6>                                        
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="apiModel">
+                                                        Modelo <span class="required">*</span>
+                                                    </label>
+                                                    <select class="form-control noselecttwo" id="apiModel" name="apiModel" required>
+                                                        <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+                                                        <option value="gpt-4">GPT-4</option>
+                                                        <option value="gpt-4.1">GPT-4.1</option>
+                                                        <option value="gpt-4o">GPT-4o</option>
+                                                        <option value="gpt-4o-mini">GPT-4o Mini</option>
+                                                        <option value="o1">GPT-o1</option>
+                                                        <option value="o3">GPT-o3</option>
+                                                        <option value="o4-mini">GPT-o4 Mini</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="apiTemperature">
+                                                        Temperatura <span class="required">*</span>
+                                                        <small class="form-text text-muted">Controla la creatividad de la IA (0 = determinista, 1 = creativo)</small>
+                                                    </label>
+                                                    <input type="range" class="form-control-range" id="apiTemperature" name="apiTemperature" min="0" max="1" step="0.01" value="0.7" oninput="document.getElementById('tempValue').textContent = this.value">
+                                                    <span id="tempValue">0.7</span>
+                                                </div>
+                                            </div>
+                                            <div class="w-100 d-block d-lg-none"></div>
+                                            <!-- Para md: dos filas de 2 columnas, para lg: una fila de 4 columnas -->
+                                            <div class="col-md-6 col-lg-4">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="apiTopP">
+                                                        Top-p <span class="required">*</span>
+                                                        <small class="form-text text-muted">Controla la diversidad de las respuestas (1 = más diverso, 0 = menos diverso)</small>
+                                                    </label>
+                                                    <input type="range" class="form-control-range" id="apiTopP" name="apiTopP" min="0" max="1" step="0.01" value="1" oninput="document.getElementById('topPValue').textContent = this.value">
+                                                    <span id="topPValue">1</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-4">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="apiFrequencyPenalty">
+                                                        Frequency Penalty
+                                                        <small class="form-text text-muted">Penaliza palabras repetidas en la respuesta (-2 = mínima penalización, 0 = valor por defecto, 2 = máxima penalización)</small>
+                                                    </label>
+                                                    <input type="range" class="form-control-range" id="apiFrequencyPenalty" name="apiFrequencyPenalty" min="-2" max="2" step="0.01" value="0" oninput="document.getElementById('frequencyPenaltyValue').textContent = this.value">
+                                                    <span id="frequencyPenaltyValue">0</span>
+                                                </div>
+                                            </div>
+                                            <div class="w-100 d-block d-md-none"></div>
+                                            <div class="col-md-6 col-lg-4">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="apiPresencePenalty">
+                                                        Presence Penalty
+                                                        <small class="form-text text-muted">Penaliza la aparición de nuevos temas en la respuesta (-2 = mínima penalización, 0 = valor por defecto, 2 = máxima penalización)</small>
+                                                    </label>
+                                                    <input type="range" class="form-control-range" id="apiPresencePenalty" name="apiPresencePenalty" min="-2" max="2" step="0.01" value="0" oninput="document.getElementById('presencePenaltyValue').textContent = this.value">
+                                                    <span id="presencePenaltyValue">0</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-4" id="maxTokensWrapper">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="apiMaxTokens">
+                                                        Máx. Tokens <span class="required">*</span>
+                                                        <small class="form-text text-muted">Límite máximo de tokens generados por la IA (máx recomendado: 4096 para GPT-3.5, 8192 para GPT-4)</small>
+                                                    </label>
+                                                    <input type="range" class="form-control-range" id="apiMaxTokens" name="apiMaxTokens" min="256" max="32768" step="1" value="1024" oninput="document.getElementById('maxTokensValue').textContent = this.value">
+                                                    <span id="maxTokensValue">1024</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-4" id="effortReasoningWrapper" style="display: none;">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="apiReasoningEffort">
+                                                        Reasoning Effort <span class="required">*</span>
+                                                        <small class="form-text text-muted">Nivel de esfuerzo de razonamiento de la IA (válido solo para modelos GPT-o)</small>
+                                                    </label>
+                                                    <select class="form-control" id="apiReasoningEffort" name="apiReasoningEffort" required>
+                                                        <option value="low">Low</option>
+                                                        <option value="medium" selected>Medium</option>
+                                                        <option value="high">High</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="pl-lg-4">
                                         <h6 class="heading-small text-muted mb-4">1. Reglas de Marca</h6>
                                         <div class="row">
@@ -68,7 +157,37 @@
                                         </div>
                                     </div>
                                     <hr class="my-4">
-
+                                    <!-- Sección: Idioma principal de generación -->
+                                    <div class="pl-lg-4 mb-4">
+                                        <h6 class="heading-small text-muted mb-4">Idioma principal de generación</h6>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="language">
+                                                        Selecciona el idioma principal <span class="required">*</span>
+                                                    </label>
+                                                    <select class="form-control noselecttwo" id="language" name="language" required>
+                                                        <option value="">-- Selecciona idioma --</option>
+                                                        <option value="es" selected>Español</option>
+                                                        <option value="en">Inglés</option>
+                                                        <option value="pt">Portugués</option>
+                                                        <option value="fr">Francés</option>
+                                                        <option value="de">Alemán</option>
+                                                        <option value="it">Italiano</option>
+                                                        <option value="other">Otro</option>
+                                                    </select>                                                    
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6" id="languageOtherContainer" style="display: none;"    >
+                                                <div class="form-group">
+                                                    <label class="form-control-label" for="language">
+                                                        Selecciona el otro idioma <span class="required">*</span>
+                                                    </label>
+                                                    <input type="text" id="languageOther" name="languageOther" class="form-control mt-2" placeholder="Especifica idioma" style="display: none;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <!-- Sección 2: Estrategia de Contenido -->
                                     <div class="pl-lg-4">
                                         <h6 class="heading-small text-muted mb-4">2. Estrategia de Contenido</h6>
@@ -465,46 +584,143 @@
         </footer>
         <?php include '../../layout/footer_scripts.php';?>
         <script>
-            // Mostrar campos de texto cuando se selecciona "Otro"
-            document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(input => {
-                input.addEventListener('change', function() {
-                    const otherTextId = this.id + 'Text';
-                    const otherTextElement = document.getElementById(otherTextId);
-                    
-                    if (otherTextElement) {
-                        otherTextElement.style.display = this.checked ? 'block' : 'none';
-                        if (this.checked) otherTextElement.focus();
-                    }
-                });
-            });
+            var modelMaxTokens = <?php echo json_encode($modelMaxTokens); ?>;
+            var modelCostsPerMillionTokens = <?php echo json_encode($modelCostsPerMillionTokens); ?>;
 
-            // Validar que la suma de porcentajes sea 100%
-            const percentageInputs = document.querySelectorAll('input[name^="content"]');
-            percentageInputs.forEach(input => {
-                input.addEventListener('change', updateTotalPercentage);
-                input.addEventListener('keyup', updateTotalPercentage);
-            });
+            window.addEventListener('DOMContentLoaded', function() {
+                const languageSelect = document.getElementById('language');
+                const apiModelSelect = document.getElementById('apiModel');
+                const apiMaxTokensInput = document.getElementById('apiMaxTokens');
+                const maxTokensValueSpan = document.getElementById('maxTokensValue');
 
-            function updateTotalPercentage() {
-                let total = 0;
-                percentageInputs.forEach(input => {
-                    const value = parseInt(input.value) || 0;
-                    total += value;
+                apiMaxTokensInput.addEventListener('change', function() {
+                    const selectedModel = apiModelSelect.value;
+                    const maxTokens = parseInt(this.value) || 0;
+                    const costPerMillion = modelCostsPerMillionTokens[selectedModel] || 0;
+                    const approxCost = ((maxTokens / 1000000) * costPerMillion).toFixed(4);
+                    maxTokensValueSpan.innerHTML = `${this.value} <span style="color:#e55353;font-weight:bold;">(~$${approxCost}</span><span style="color:#e55353;">)</span>`;
+                    // maxTokensValueSpan.textContent = this.value;
                 });
-                
-                document.getElementById('totalPercentage').textContent = `Total: ${total}%`;
-                
-                if (total !== 100) {
-                    document.getElementById('totalPercentage').classList.add('text-danger');
-                    document.getElementById('submitContentBtn').disabled = true;
-                } else {
-                    document.getElementById('totalPercentage').classList.remove('text-danger');
-                    document.getElementById('submitContentBtn').disabled = false;
+
+                if (window.jQuery && typeof $(apiModelSelect).select2 === 'function') {
+                    $(apiModelSelect).val('gpt-4.1').trigger('change');
+                    $(apiModelSelect).select2({
+                        width: '100%',
+                        placeholder: '-- Selecciona el modelo --',
+                        allowClear: true
+                    }).on('change', function(e) {
+                        const effortReasoningWrapper = document.getElementById('effortReasoningWrapper');
+                        const maxTokensWrapper = document.getElementById('maxTokensWrapper');
+
+                        if (apiModelSelect.value.startsWith('o')) {
+                            effortReasoningWrapper.style.display = 'block';
+                            maxTokensWrapper.style.display = 'none';
+                        } else {
+                            effortReasoningWrapper.style.display = 'none';
+                            maxTokensWrapper.style.display = 'block';
+                        }
+                        function updateMaxTokensRange() {
+                            const selectedModel = apiModelSelect.value;
+                            const maxTokens = modelMaxTokens[selectedModel] || 4096;
+                            apiMaxTokensInput.max = maxTokens;
+                            if (parseInt(apiMaxTokensInput.value) > maxTokens) {
+                                apiMaxTokensInput.value = maxTokens;
+                                maxTokensValueSpan.textContent = maxTokens;
+                            }
+                        }
+                        updateMaxTokensRange();
+                        maxTokensValueSpan.textContent = apiMaxTokensInput.value;
+                    });
                 }
-            }
 
-            // Establecer fecha de inicio por defecto (hoy + 2 días)
-            document.addEventListener('DOMContentLoaded', function() {
+                if (window.jQuery && typeof $(languageSelect).select2 === 'function') {
+                    $(languageSelect).select2({
+                        width: '100%',
+                        placeholder: '-- Selecciona idioma --',
+                        allowClear: true
+                    }).on('change', function(e) {
+                        const otherInput = document.getElementById('languageOther');
+                        const otherInputContainer = document.getElementById('languageOtherContainer');
+                        if (this.value === 'other') {
+                            otherInput.style.display = 'block';
+                            otherInput.required = true;
+                            otherInput.focus();
+                            otherInputContainer.style.display = 'block';
+                        } else {
+                            otherInput.style.display = 'none';
+                            otherInput.required = false;
+                            otherInput.value = '';
+                            otherInputContainer.style.display = 'none';
+                        }
+                    });
+                }
+
+                // Mostrar campos de texto cuando se selecciona "Otro"
+                document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(input => {
+                    input.addEventListener('change', function() {
+                        const otherTextId = this.id + 'Text';
+                        const otherTextElement = document.getElementById(otherTextId);
+                        
+                        if (otherTextElement) {
+                            otherTextElement.style.display = this.checked ? 'block' : 'none';
+                            if (this.checked) otherTextElement.focus();
+                        }
+                    });
+                });
+
+                // Validar que la suma de porcentajes sea 100%
+                const percentageInputs = document.querySelectorAll('input[name^="content"]');
+                percentageInputs.forEach(input => {
+                    input.addEventListener('change', updateTotalPercentage);
+                    input.addEventListener('keyup', updateTotalPercentage);
+                });
+
+                function updateTotalPercentage() {
+                    let total = 0;
+                    percentageInputs.forEach(input => {
+                        const value = parseInt(input.value) || 0;
+                        total += value;
+                    });
+                    
+                    document.getElementById('totalPercentage').textContent = `Total: ${total}%`;
+                    
+                    if (total !== 100) {
+                        document.getElementById('totalPercentage').classList.add('text-danger');
+                        document.getElementById('submitContentBtn').disabled = true;
+                    } else {
+                        document.getElementById('totalPercentage').classList.remove('text-danger');
+                        document.getElementById('submitContentBtn').disabled = false;
+                    }
+                }
+
+                 // Manejar envío del formulario
+                document.querySelector('#submitContentBtn').addEventListener('click', function(event) {
+                    event.preventDefault();
+                    event.target.disabled = true;
+                    const form = document.getElementById('contentPlanForm');
+                    
+                    if (!form.checkValidity()) {
+                        form.reportValidity();
+                        event.target.disabled = false;
+                        return;
+                    }
+
+                    // Validar porcentajes
+                    let total = 0;
+                    percentageInputs.forEach(input => {
+                        total += parseInt(input.value) || 0;
+                    });
+                    
+                    if (total !== 100) {
+                        alert('La suma de los porcentajes de tipos de contenido debe ser exactamente 100%');
+                        event.target.disabled = false;
+                        return;
+                    }
+
+                    // Si todo es válido, enviar el formulario
+                    form.submit();
+                });
+
                 const today = new Date();
                 today.setDate(today.getDate() + 2);
                 const dateStr = today.toISOString().split('T')[0];
@@ -513,34 +729,7 @@
                 // Inicializar el cálculo de porcentajes
                 updateTotalPercentage();
             });
-
-            // Manejar envío del formulario
-            document.querySelector('#submitContentBtn').addEventListener('click', function(event) {
-                event.preventDefault();
-                event.target.disabled = true;
-                const form = document.getElementById('contentPlanForm');
-                
-                if (!form.checkValidity()) {
-                    form.reportValidity();
-                    event.target.disabled = false;
-                    return;
-                }
-
-                // Validar porcentajes
-                let total = 0;
-                percentageInputs.forEach(input => {
-                    total += parseInt(input.value) || 0;
-                });
-                
-                if (total !== 100) {
-                    alert('La suma de los porcentajes de tipos de contenido debe ser exactamente 100%');
-                    event.target.disabled = false;
-                    return;
-                }
-
-                // Si todo es válido, enviar el formulario
-                form.submit();
-            });
+            
         </script>
     </body>
 </html>

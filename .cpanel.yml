@@ -6,12 +6,15 @@ deployment:
 
     # 2. Copiar la carpeta vendor completa (en lugar de composer install)
     - /bin/cp -r $CONFIGPATH/vendor $DEPLOYPATH/vendor
+    
+    # 3. Copiar la carpeta node_modules completa (en lugar de npm install)
+    - /bin/cp -r $CONFIGPATH/node_modules $DEPLOYPATH/node_modules
 
-    # 3. Copiar archivos de configuración
+    # 4. Copiar archivos de configuración
     - /bin/cp $CONFIGPATH/.env $DEPLOYPATH/.env
     - /bin/cp $CONFIGPATH/.htaccess $DEPLOYPATH/.htaccess
 
-    # 4. Ajustar permisos 
+    # 5. Ajustar permisos 
     - /bin/chmod 750 $DEPLOYPATH/vendor
     - /bin/chmod 640 $DEPLOYPATH/.env
     - /bin/chmod 644 $DEPLOYPATH/.htaccess

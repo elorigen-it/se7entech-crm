@@ -397,4 +397,11 @@ class TestsController
 
         return json_encode($availableModels);
     }
+
+    public function tasks()
+    {
+        // Aquí puedes implementar la lógica para manejar las tareas
+        // Por ejemplo, podrías devolver una lista de tareas pendientes
+        include __DIR__ . '/../tasks.php';
+    }
 }

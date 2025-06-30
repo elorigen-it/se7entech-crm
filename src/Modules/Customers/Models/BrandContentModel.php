@@ -4,13 +4,13 @@ namespace Se7entech\Contractnew\Modules\Customers\Models;
 use Se7entech\Contractnew\Helpers\EscapeString;
 use Exception;
 
-class BrandRulesModel{
-    private static $table = 'brand_rules';    
+class BrandContentModel{
+    private static $table = 'brand_content';    
     protected static $fillable = [
-        'customer_id', 'rule_name', 'rule_content'
+        'customer_id', 'name', 'content'
     ];
 
-    public static function getBrandRulesByCustomerId($customerId){
+    public static function getBrandContentByCustomerId($customerId){
         include __DIR__ . '/../../../../config/connection.php';
         
         $customerId = EscapeString::escapeValue($con, $customerId);
@@ -38,35 +38,35 @@ class BrandRulesModel{
         return null;
     }
 
-    public static function addBrandRuleToCustomer($customerId, $ruleName, $ruleContent){
+    public static function addBrandContentToCustomer($customerId, $ruleName, $ruleContent){
         include __DIR__ . '/../../../../config/connection.php';
 
         $customerId = EscapeString::escapeValue($con, $customerId);
         $ruleName = EscapeString::escapeValue($con, $ruleName);
         $ruleContent = EscapeString::escapeValue($con, $ruleContent);
 
-        $sql = "INSERT INTO " . self::$table . " (customer_id, rule_name, rule_content) VALUES ('$customerId', '$ruleName', '$ruleContent')";
+        $sql = "INSERT INTO " . self::$table . " (customer_id, name, content) VALUES ('$customerId', '$ruleName', '$ruleContent')";
         if(mysqli_query($con, $sql)){
             return true;
         }
         return false;
     }
 
-    public static function updateBrandRule($id, $ruleName, $ruleContent){
+    public static function updateBrandContent($id, $name, $content){
         include __DIR__ . '/../../../../config/connection.php';
 
         $id = EscapeString::escapeValue($con, $id);
-        $ruleName = EscapeString::escapeValue($con, $ruleName);
-        $ruleContent = EscapeString::escapeValue($con, $ruleContent);
+        $name = EscapeString::escapeValue($con, $name);
+        $content = EscapeString::escapeValue($con, $content);
 
-        $sql = "UPDATE " . self::$table . " SET rule_name='$ruleName', rule_content='$ruleContent' WHERE id='$id'";
+        $sql = "UPDATE " . self::$table . " SET name='$name', content='$content' WHERE id='$id'";
         if(mysqli_query($con, $sql)){
             return true;
         }
         return false;
     }
 
-    public static function deleteBrandRule($id){
+    public static function deleteBrandContent($id){
         include __DIR__ . '/../../../../config/connection.php';
 
         $id = EscapeString::escapeValue($con, $id);

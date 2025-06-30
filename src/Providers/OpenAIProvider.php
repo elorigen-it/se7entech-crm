@@ -12,16 +12,52 @@ class OpenAIProvider
     private int $timeout;
     private string $defaultModel;
 
-    public function __construct()
-    {
-        // Cargar variables de entorno (ajustada la ruta para tu estructura)
+    // Definir los límites de tokens máximos por modelo
+    public static $modelMaxTokens = [
+        'gpt-3.5-turbo' => 4096,
+        'gpt-4' => 8192,
+        'gpt-4.1' => 32768,
+        'gpt-4o' => 16384,
+        'gpt-4o-mini' => 16384,
+        'o1' => 100000,
+        'o3' => 100000,
+        'o4-mini' => 100000,
+    ];
+    public static $modelCostsPerMillionTokens = [
+        'gpt-3.5-turbo' => 1.50,
+        'gpt-4' => 60.00,
+        'gpt-4.1' => 8.00,
+        'gpt-4o' => 10.00,
+        'gpt-4o-mini' => 0.60,
+        'o1' => 60.00,
+        'o3' => 8.00,
+        'o4-mini' => 4.40,
+    ];
+
+    public function __construct(
+        $apiModel = null, $apiTemperature = null, 
+        $apiTopP = null, $apiMaxTokens = null, 
+        $apiFrequencyPenalty = null, $apiPresencePenalty = null,
+        $apiTimeout = null,
+        $reasoningEffort = null)
+    {       // Cargar variables de entorno (ajustada la ruta para tu estructura)
         $dotenv = Dotenv::createImmutable(__DIR__ . '/../../');
         $dotenv->load();
 
         $this->apiKey = $_ENV['OPENAI_API_KEY'];
         $this->apiBase = $_ENV['OPENAI_API_BASE'] ?? 'https://api.openai.com/v1';
         $this->timeout = (int)($_ENV['OPENAI_TIMEOUT'] ?? 30);
-        $this->defaultModel = $_ENV['OPENAI_MODEL'] ?? 'gpt-3.5-turbo';
+        $this->defaultModel = $apiModel ?? ($_ENV['OPENAI_MODEL'] ?? 'gpt-3.5-turbo');
+        $this->defaultTemperature = $apiTemperature ?? ($_ENV['OPENAI_TEMPERATURE'] ?? 0.7);
+        $this->defaultTopP = $apiTopP ?? ($_ENV['OPENAI_TOP_P'] ?? 1.0);
+        $this->defaultMaxTokens = $apiMaxTokens ?? ($_ENV['OPENAI_MAX_TOKENS'] ?? 20000);
+        $this->defaultFrequencyPenalty = $apiFrequencyPenalty ?? ($_ENV['OPENAI_FREQUENCY_PENALTY'] ?? 0.0);
+        $this->defaultPresencePenalty = $apiPresencePenalty ?? ($_ENV['OPENAI_PRESENCE_PENALTY'] ?? 0.0);
+        $this->defaultReasoningEffort = $reasoningEffort ?? ($_ENV['OPENAI_REASONING_EFFORT'] ?? 'medium');
+
+        if (empty($this->apiKey)) {
+            throw new Exception('API key is required for OpenAI');
+        }
     }
 
     /**
@@ -33,20 +69,31 @@ class OpenAIProvider
      * @return array Respuesta de la API
      * @throws Exception Si ocurre un error
      */
-    public function chatCompletion(array $messages, ?string $model = null, float $temperature = 0): array
+    public function chatCompletion(array $messages): array
     {
-        $model = $model ?? $this->defaultModel;
+        $model = $this->defaultModel;
+        $temperature = $this->defaultTemperature;
+        $topP = $this->defaultTopP;
+        $maxTokens = $this->defaultMaxTokens;
+        $frequencePenalty = $this->defaultFrequencyPenalty;
+        $presencePenalty = $this->defaultPresencePenalty;
+        $reasoningEffort =  $this->defaultReasoningEffort;
+        
         $url = $this->apiBase . '/chat/completions';
 
         $data = [
             'model' => $model,
             'messages' => $messages,
-            'temperature' => $temperature,
-            'top_p' => 1.0,
-            'max_tokens' => 20000, // Ajusta según tus necesidades
-        ];
-        if($model === 'o3-mini'){
-            unset($data['temperature']);
+            'temperature' =>  (float) $temperature,
+            'top_p' =>  (float) $topP,
+            'frequency_penalty' => (float) $frequencePenalty,
+            'presence_penalty' => (float) $presencePenalty,
+            (str_starts_with($model, 'gpt-4o') ? 'max_completion_tokens' : 'max_tokens') => (float) $maxTokens,
+
+        ];        
+        if (str_starts_with($model, 'o')) {
+            unset($data['max_tokens']);
+            $data['reasoning_effort'] = $reasoningEffort;
         }
 
         return $this->makeRequest($url, $data);

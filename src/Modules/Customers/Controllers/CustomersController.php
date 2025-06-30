@@ -4,6 +4,7 @@ namespace Se7entech\Contractnew\Modules\Customers\Controllers;
 
 use Se7entech\Contractnew\Modules\Customers\Models\CustomersModel;
 use Se7entech\Contractnew\Modules\Customers\Models\BrandRulesModel;
+use Se7entech\Contractnew\Modules\Customers\Models\BrandContentModel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Rakit\Validation\Validator;
@@ -513,6 +514,8 @@ class CustomersController {
         $customerId = $params['customerId'];
         $customer = CustomersModel::getById($customerId);
         $brandRules = BrandRulesModel::getBrandRulesByCustomerId($customerId);
+        $modelMaxTokens = OpenAIProvider::$modelMaxTokens;
+        $modelCostsPerMillionTokens = OpenAIProvider::$modelCostsPerMillionTokens;
 
         if (!$customer) {
             echo json_encode(array('success' => false, 'message' => 'Customer not found'));
@@ -601,12 +604,23 @@ class CustomersController {
             echo json_encode(array('success' => false, 'message' => 'Brand rules not found'));
             return;
         }
+        $apiModel = htmlspecialchars($request->get('apiModel'));
+        $apiTemperature = htmlspecialchars($request->get('apiTemperature'));
+        $apiTopP = htmlspecialchars($request->get('apiTopP'));
+        $apiMaxTokens = htmlspecialchars($request->get('apiMaxTokens'));
+        $apiFrequencyPenalty = htmlspecialchars($request->get('apiFrequencyPenalty'));
+        $apiPresencePenalty = htmlspecialchars($request->get('apiPresencePenalty'));
+        $reasoningEffort = htmlspecialchars($request->get('apiReasoningEffort'));
+
         $brandRulesContent = html_entity_decode($brandRules['rule_content'], ENT_QUOTES, 'UTF-8');
         $frequency = htmlspecialchars($request->get('frequency'));
         $postCount = htmlspecialchars($request->get('postCount'));
         $startDate = htmlspecialchars($request->get('startDate'));
         $duration = htmlspecialchars($request->get('duration'));
-        
+        $language = htmlspecialchars($request->get('language'));
+        if ($language === 'other') {
+            $language = htmlspecialchars($request->get('languageOther'));
+        }
         // Procesar arrays (checkbox)
         $days = $request->all('days');
         $days = is_array($days) ? array_map('htmlspecialchars', $days) : [];
@@ -651,20 +665,50 @@ class CustomersController {
         // Construir el prompt para IA
         $systemPrompt = "";
         $prompt = "";
-        
-        $systemPrompt .= "Eres un experto en estrategia de contenido para redes sociales. 
-        Tu tarea es crear un plan detallado de contenido para redes sociales lista para implementar basado en los parámetros proporcionados.\n";
-        $systemPrompt .= "Debes crear ". $totalPosts ." publicaciones exactamente, de manera variada con los copys exactos, descripciones de imagenes y lineamientos para los diseñadores y editores en cada post.\n";
-        $systemPrompt .= "Tambien utiliza la informacion de las reglas de marca proporcionadas para generar contenido especifico que se debe publicar en cada plataforma.\n";
-        $systemPrompt .= "Debes seguir las reglas de contenido y la personalidad de la marca\n";
+        $systemPrompt .="
+            Eres un estratega de contenido para redes sociales con amplia experiencia en la creación de planes de contenido de alto rendimiento y específicos para cada plataforma. Necesito que desarrolles un calendario de contenido para redes sociales meticulosamente detallado de 91 publicaciones, totalmente alineado con las directrices de la marca y los requisitos de la plataforma.\n
+
+            Resultados clave:\n
+
+            Fundación de Estrategia de Contenido:\n
+
+            Cumpla estrictamente con la personalidad de la marca, el tono y las pautas visuales descritas en las reglas HTML proporcionadas.\n
+            Asegúrese de que todo el contenido refleje el mensaje central, los valores y las preferencias de la audiencia de la marca.\n
+            Especificaciones de las publicaciones para las " . $totalPosts . "publicaciones):\n
+
+            Copia exacta (incluidos hashtags, CTA y uso de emojis según las reglas de la marca).\n
+            Descripciones de imágenes/vídeos (informe detallado para los diseñadores: composición, colores, fuentes, elementos clave).\n
+            Adaptaciones específicas de la plataforma (ajustes de formato, dimensiones y estilo para Instagram, Facebook, LinkedIn, etc.).\n
+            Mezcla de contenido y temas:\n
+
+            Diversifique los tipos de publicaciones (educativas, promocionales, generadas por el usuario, detrás de escena, encuestas, etc.).\n
+            Alinee los temas con los pilares de contenido de la marca y las oportunidades basadas en eventos y temporadas.\n
+            Guía de flujo de trabajo:\n
+
+            Instrucciones claras para diseñadores/editores (convenciones de nombres de archivos, fuentes de activos, especificaciones de edición).\n
+            Recomendaciones de programación (horarios de publicación óptimos/frecuencia por plataforma).\n
+            Cumplimiento y optimización:\n
+
+            Cumplir con los estándares de accesibilidad (texto alternativo, subtítulos, legibilidad).\n
+            Incluir notas de seguimiento del rendimiento (KPI a monitorear por tipo de publicación).\n
+            Aprovecha tu experiencia en algoritmos de redes sociales y narrativa de marca para crear un plan listo para usar que equilibre la creatividad con la precisión estratégica. Cada publicación debe ser coherente y, al mismo tiempo, estar adaptada a su plataforma y propósito.\n
+            El formato de tu respuesta debe ser en markdown, con cada publicación claramente etiquetada y estructurada para facilitar la implementación. Asegúrate de que el contenido sea fácil de copiar y pegar en las plataformas correspondientes.\n
+            La cantidad de publicaciones debe ser exactamente de " . $totalPosts . " publicaciones\n
+        ";
+        // $systemPrompt .= "Eres un experto en estrategia de contenido para redes sociales. 
+        // Tu tarea es crear un plan detallado de contenido para redes sociales lista para implementar basado en los parámetros proporcionados.\n";
+        // $systemPrompt .= "Debes crear ". $totalPosts ." publicaciones exactamente, de manera variada con los copys exactos, descripciones de imagenes y lineamientos para los diseñadores y editores en cada post.\n";
+        // $systemPrompt .= "Tambien utiliza la informacion de las reglas de marca proporcionadas para generar contenido especifico que se debe publicar en cada plataforma.\n";
+        // $systemPrompt .= "Debes seguir las reglas de contenido y la personalidad de la marca\n";
         
         // $systemPrompt .= "- Formatos y horarios de publicación\n";
         // $systemPrompt .= "El formato de respuesta debe ser claro, estructurado y listo para implementar.\n";
         // $systemPrompt .= "Multiplica las publicaciones por semana por la cantidad de semanas del plan, asegurando que el contenido cubra todo el periodo solicitado por el usuario.\n\n";
         // $systemPrompt .= "No te estoy pidiendo ejemplos, te estoy pidiendo el calendario definitivo completo de publicacion.\n";
-        $systemPrompt .= "Las reglas obligatorias para el formato de contenido y la personalidad de la marca estan en este texto html: $brandRulesContent\n\n";
+        $prompt .= "Las reglas obligatorias para el formato de contenido y la personalidad de la marca estan en este texto html: $brandRulesContent\n\n";
         
         // Información básica
+        $prompt .= "Ahora te proporciono los requerimientos para el plan de contenido:\n\n";
         $prompt .= "INFORMACIÓN BÁSICA:\n";
         $prompt .= "- Frecuencia de publicación: $frequency\n";
         $prompt .= "- Cantidad de publicaciones por semana: $postCount\n";
@@ -731,6 +775,8 @@ class CustomersController {
             $prompt .= "FECHAS ESPECIALES:\n";
             $prompt .= "$specialDates\n\n";
         }
+        $prompt .= "IDIOMA:\n";
+        $prompt .= "- Idioma del contenido: $language.\n\n";
         
         // Instrucción final para la IA
         // $prompt .= "INSTRUCCIÓN PARA LA IA:\n";
@@ -747,11 +793,13 @@ class CustomersController {
         // $prompt .= "Tambien incluye los guiones para videos, imagenes y texto que se van a publicar, asi como instrucciones graficas para que el equipo de diseño y edicion sepa donde colocar cada elemento.";
         // $prompt .= "Es importante que el contenido abarque la totalidad del tiempo solicitado por el usuario, asegurando que cada semana tenga contenido relevante y variado.\n";
         // $prompt .= "Crea un plan de contenido completo para" . $duration . " con una frecuencia de " . $frequency . " y " . $postCount . " publicaciones por semana.\n";
-        $prompt .= "El formato de respuesta debe ser en HTML, organizado en secciones claras con títulos descriptivos.";
-
-
+        $prompt .= "No coloques los caracteres ``` al comienzo detu respuesta\n";
+        $prompt .= "Comienza tu respuesta con el caracter #";
         try {
-            $openAI = new OpenAIProvider();
+            $openAI = new OpenAIProvider(
+                $apiModel, $apiTemperature, $apiTopP, $apiMaxTokens,
+                $apiFrequencyPenalty, $apiPresencePenalty, null, $reasoningEffort
+            );
             $messages = [
                 ['role' => 'system', 'content' => $systemPrompt],
                 ['role' => 'user', 'content' => $prompt]
@@ -768,5 +816,192 @@ class CustomersController {
             $result['message'] = 'Error al generar el plan de contenido';
             echo var_dump($result);
         }            
+    }
+
+    public function manageBrandRules($params){
+        $customerId = $params['customerId'];
+        $customer = CustomersModel::getById($customerId);
+        $brandRules = BrandRulesModel::getBrandRulesByCustomerId($customerId);
+        if (!$customer) {
+            echo json_encode(array('success' => false, 'message' => 'Customer not found'));
+            return;
+        }
+        
+        // Mostrar el formulario para gestionar las reglas de marca
+        include __DIR__ . '/../manage_brand_rules.php';
+    }
+
+    public function viewBrandRule($params) {
+        $brandRuleId = $params['brandRuleId'];
+        $customerId = $params['customerId'];
+        $brandRule = BrandRulesModel::getById($brandRuleId);
+        if (!$brandRule) {
+            echo json_encode(array('success' => false, 'message' => 'Brand rule not found'));
+            return;
+        }
+        
+        // Mostrar la vista de la regla de marca
+        include __DIR__ . '/../view_brand_rule.php';
+    }
+
+    public function editBrandRule($params) {
+        $brandRuleId = $params['brandRuleId'];
+        $customerId = $params['customerId'];
+        $brandRule = BrandRulesModel::getById($brandRuleId);
+    
+        if (!$brandRule) {
+            echo json_encode(array('success' => false, 'message' => 'Brand rule not found'));
+            return;
+        }
+        
+        // Mostrar el formulario para editar la regla de marca
+        include __DIR__ . '/../edit_brand_rule.php';
+    }
+
+    public function updateBrandRule($params) {
+        $brandRuleId = $params['brandRuleId'];
+        $customerId = $params['customerId'];
+        $request = Request::createFromGlobals()->request;
+        
+        // Recoger y sanitizar datos del formulario
+        $ruleName = htmlspecialchars($request->get('rule_name'));
+        $brandIdentity = filter_input(INPUT_POST, 'brand_identity', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        
+        // Validar datos
+        if (empty($ruleName) || empty($brandIdentity)) {
+            echo json_encode(array('success' => false, 'message' => 'Faltan datos requeridos'));
+            return;
+        }
+        
+        // Actualizar la regla de marca
+        $success = BrandRulesModel::updateBrandRule($brandRuleId, $ruleName, $brandIdentity);
+        
+        if ($success) {
+            echo json_encode(array('success' => true, 'message' => 'Regla de marca actualizada correctamente'));
+        } else {
+            echo json_encode(array('success' => false, 'message' => 'Error al actualizar la regla de marca'));
+        }
+    }
+
+    public function deleteBrandRule($params) {
+        $brandRuleId = $params['brandRuleId'];
+        $customerId = $params['customerId'];
+        
+        // Eliminar la regla de marca
+        $success = BrandRulesModel::deleteBrandRule($brandRuleId);
+        
+        if ($success) {
+            echo json_encode(array('success' => true, 'message' => 'Regla de marca eliminada correctamente'));
+        } else {
+            echo json_encode(array('success' => false, 'message' => 'Error al eliminar la regla de marca'));
+        }
+    }
+
+    public function manageBrandContent($params){
+        $customerId = $params['customerId'];
+        $customer = CustomersModel::getById($customerId);
+        $brandContents = BrandContentModel::getBrandContentByCustomerId($customerId);
+        if (!$customer) {
+            echo json_encode(array('success' => false, 'message' => 'Customer not found'));
+            return;
+        }
+        
+        // Mostrar el formulario para gestionar las reglas de marca
+        include __DIR__ . '/../manage_brand_contents.php';
+    }
+
+    public function viewBrandContent($params) {
+        $brandContentId = $params['brandContentId'];
+        $customerId = $params['customerId'];
+        $brandContent = BrandContentModel::getById($brandContentId);
+        if (!$brandContent) {
+            echo json_encode(array('success' => false, 'message' => 'Brand content not found'));
+            return;
+        }
+        
+        // Mostrar la vista de la regla de marca
+        include __DIR__ . '/../view_brand_content.php';
+    }
+
+     public function confirmBrandContent($params) {
+        $request = Request::createFromGlobals();
+        $customerId = $params['customerId'];
+        $customer = CustomersModel::getById($customerId);
+        if (!$customer) {
+            echo json_encode(array('success' => false, 'message' => 'Customer not found'));
+            return;
+        }
+        
+        // Procesar el formulario de confirmación de reglas de marca
+        $contentName = htmlspecialchars($request->get('plan_name'));
+        $content = filter_input(INPUT_POST, 'generated_content', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+        $success = BrandContentModel::addBrandContentToCustomer($customerId, $contentName, $content);
+        // Aquí podrías guardar las reglas generadas en la base de datos o en un archivo
+        // Por simplicidad, solo se muestra un mensaje de éxito
+        if($success){
+            $this->session->getFlashBag()->add('success', 'Brand content confirmed successfully for customer: ' . $customer['name']);
+        }
+        
+        echo json_encode(array(
+            'success' => $success,
+            'message' => 'Brand content confirmed successfully',
+            'customerId' => $customerId,
+            'contentName' => $contentName,
+            'content' => $content
+        ));
+    }
+
+    public function editBrandContent($params) {
+        $brandContentId = $params['brandContentId'];
+        $customerId = $params['customerId'];
+        $brandContent = BrandContentModel::getById($brandContentId);
+    
+        if (!$brandContent) {
+            echo json_encode(array('success' => false, 'message' => 'Brand content not found'));
+            return;
+        }
+        
+        // Mostrar el formulario para editar la regla de marca
+        include __DIR__ . '/../edit_brand_content.php';
+    }
+
+    public function updateBrandContent($params) {
+        $brandContentId = $params['brandContentId'];
+        $customerId = $params['customerId'];
+        $request = Request::createFromGlobals()->request;
+        
+        // Recoger y sanitizar datos del formulario
+        $contentName = htmlspecialchars($request->get('content_name'));
+        $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        
+        // Validar datos
+        if (empty($contentName) || empty($content)) {
+            echo json_encode(array('success' => false, 'message' => 'Faltan datos requeridos'));
+            return;
+        }
+        
+        // Actualizar la regla de marca
+        $success = BrandContentModel::updateBrandContent($brandContentId, $contentName, $content);
+        
+        if ($success) {
+            echo json_encode(array('success' => true, 'message' => 'Contenido  de marca actualizado correctamente'));
+        } else {
+            echo json_encode(array('success' => false, 'message' => 'Error al actualizar la contenido de marca'));
+        }
+    }
+
+    public function deleteBrandContent($params) {
+        $brandContentId = $params['brandContentId'];
+        $customerId = $params['customerId'];
+        
+        // Eliminar la regla de marca
+        $success = BrandContentModel::deleteBrandContent($brandContentId);
+        
+        if ($success) {
+            echo json_encode(array('success' => true, 'message' => 'Contenido de marca eliminado correctamente'));
+        } else {
+            echo json_encode(array('success' => false, 'message' => 'Error al eliminar el contenido de marca'));
+        }
     }
 }
