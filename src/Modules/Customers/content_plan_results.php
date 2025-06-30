@@ -49,9 +49,9 @@
             .content-plan-container tr:nth-child(even) {
                 background-color: #f9f9f9;
             }
-        </style>
+        </style>  
     </head>
-    <body class="">
+    <body class="content-creator-results">
         <?php include ('../../sidebar.php'); ?>
         <div class="main-content">
             <?php include ('../../nav.php'); ?>
@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form id="contentPlanForm" action="<?php echo $this->base_url . '/modules/customers/index.php/'. $customerId .'/content-plan/confirm';?>" method="POST">
+                                <form id="contentPlanForm" action="<?php echo $this->base_url . '/modules/customers/index.php/'. $customerId .'/brand-content/confirm';?>" method="POST">
                                     <input type="hidden" name="customerId" id="customerId" value="<?php echo $customerId;?>">
                                     <div class="xs-12">
                                         <label class="form-control-label" for="plan_name">Nombre para el plan de contenido<span class="required">*</span></label>
@@ -87,9 +87,8 @@
                                     </div> 
                                     <div class="xs-12 mt-4">
                                         <label class="form-control-label">Plan generado:</label>
-                                        <div class="content-plan-container" name="generated_content" id="generated_content" contenteditable>
-                                            <?php echo $responseContent; ?>
-                                        </div>
+                                        <textarea style="display:none" id="content"><?php echo $responseContent;?></textarea>
+                                        <div class="content-plan-container" name="generated_content" id="generated_content"></div>
                                     </div>                                   
 
                                     <div class="text-center">
@@ -108,68 +107,8 @@
         </footer>
         <?php include '../../layout/footer_scripts.php';?>    
         <script>
-            window.addEventListener('DOMContentLoaded', function() {
-                const planNameInput = document.getElementById('plan_name');
-                const customerId = document.getElementById('customerId').value;
-
-                document.getElementById('contentPlanForm').addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const submitBtn = e.target.querySelector('button[type="submit"]');
-                    submitBtn.disabled = true;
-
-                    if (!planNameInput.value.trim()) {
-                        alert('Por favor, ingrese el nombre para el plan de contenido.');
-                        planNameInput.focus();
-                        submitBtn.disabled = false;
-                        return;
-                    }                    
-
-                    const actionUrl = this.action;
-                    const data = new FormData();
-                    data.append('generated_content', document.getElementById('generated_content').innerHTML);
-                    data.append('plan_name', planNameInput.value);
-                    data.append('customerId', customerId);
-
-                    const xhr = new XMLHttpRequest();
-                    xhr.open('POST', actionUrl, true);
-                    xhr.onreadystatechange = function() {
-                        if (xhr.readyState === 4) {
-                            submitBtn.disabled = false;
-                            try {
-                                const response = JSON.parse(xhr.responseText);
-                                if (response.success) {
-                                    bootbox.alert({
-                                        message: response.message,
-                                        callback: function () {
-                                            window.location.href = `<?php echo $base_url;?>/modules/customers/`;
-                                        }
-                                    });
-                                } else {
-                                    bootbox.alert(response.message || 'Error al guardar el plan de contenido.');
-                                }
-                            } catch (err) {
-                                bootbox.alert('Respuesta inesperada del servidor.');
-                            }
-                        }
-                    };
-                    xhr.send(data);
-                });
-
-                // Mejorar la visualización del contenido generado
-                const contentDiv = document.getElementById('generated_content');
-                if(contentDiv) {
-                    // Limpiar y formatear el contenido HTML
-                    let content = contentDiv.innerHTML;
-                    
-                    // Eliminar divs vacíos que pueda haber generado la IA
-                    content = content.replace(/<div>\s*<\/div>/g, '');
-                    
-                    // Reemplazar saltos de línea múltiples
-                    content = content.replace(/\n{3,}/g, '\n\n');
-                    
-                    contentDiv.innerHTML = content;
-                }
-            });
+            base_url = "<?php echo $this->base_url;?>";
+            //managed in /app/src/routes/content-creator.js
         </script>
     </body>
 </html>

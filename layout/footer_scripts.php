@@ -1,3 +1,7 @@
+<?php 
+    $base_url = isset($base_url) ? $base_url : $this->base_url; 
+?>
+
 <script>
     window.SE7ENTECH = window.SE7ENTECH || {}
     SE7ENTECH.base_url = "<?php echo $base_url;?>";
@@ -53,3 +57,4 @@
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
 <script src="<?php echo $base_url;?>/js/custom.js"></script>
+<script src="<?php echo $base_url;?>/build/app-bundle.js"></script>

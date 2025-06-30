@@ -1,0 +1,36 @@
+{
+  "name": "se7entech-crm",
+  "version": "1.0.0",
+  "description": "[![PHP Version](https://img.shields.io/badge/PHP-8.1+-%23777BB4.svg)](https://www.php.net/releases/8.1/en.php)",
+  "homepage": "https://github.com/elorigen-it/se7entech-crm#readme",
+  "bugs": {
+    "url": "https://github.com/elorigen-it/se7entech-crm/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elorigen-it/se7entech-crm.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node esbuild.config.js",
+    "watch": "node esbuild.config.js --watch",
+    "build": "ENVIRONMENT=production node esbuild.config.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.5",
+    "esbuild-css-modules-plugin": "^3.1.5"
+  },
+  "dependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.1.2",
+    "@toast-ui/editor": "^3.2.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}
