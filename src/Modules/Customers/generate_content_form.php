@@ -74,7 +74,7 @@
                                                         Temperatura <span class="required">*</span>
                                                         <small class="form-text text-muted">Controla la creatividad de la IA (0 = determinista, 1 = creativo)</small>
                                                     </label>
-                                                    <input type="range" class="form-control-range" id="apiTemperature" name="apiTemperature" min="0" max="1" step="0.01" value="0.7" oninput="document.getElementById('tempValue').textContent = this.value">
+                                                    <input type="range" class="form-control-range" id="apiTemperature" name="apiTemperature" min="0" max="1" step="0.01" value="0.7" oninput="validateTemperature(this)">
                                                     <span id="tempValue">0.7</span>
                                                 </div>
                                             </div>
@@ -586,7 +586,16 @@
         <script>
             var modelMaxTokens = <?php echo json_encode($modelMaxTokens); ?>;
             var modelCostsPerMillionTokens = <?php echo json_encode($modelCostsPerMillionTokens); ?>;
-
+            
+            function validateTemperature(_this) {
+                const apiModelSelect = document.getElementById('apiModel');
+                if (apiModelSelect.value.startsWith('o')){
+                    _this.value = '1';
+                    document.getElementById('tempValue').textContent = '1.0';
+                }else{
+                    document.getElementById('tempValue').textContent = _this.value;
+                }
+            }                                 
             window.addEventListener('DOMContentLoaded', function() {
                 const languageSelect = document.getElementById('language');
                 const apiModelSelect = document.getElementById('apiModel');
@@ -615,9 +624,11 @@
                         if (apiModelSelect.value.startsWith('o')) {
                             effortReasoningWrapper.style.display = 'block';
                             maxTokensWrapper.style.display = 'none';
+                            document.getElementById('apiTemperature').value = '1';
+                            document.getElementById('tempValue').textContent = '1.0';
                         } else {
                             effortReasoningWrapper.style.display = 'none';
-                            maxTokensWrapper.style.display = 'block';
+                            maxTokensWrapper.style.display = 'block';                            
                         }
                         function updateMaxTokensRange() {
                             const selectedModel = apiModelSelect.value;
