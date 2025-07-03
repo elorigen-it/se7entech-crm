@@ -592,6 +592,7 @@ class CustomersController {
         
         return $totalPosts;
     }
+    
     public function generateContentPlan($params)
     {
         $customerId = $params['customerId'];
@@ -695,16 +696,6 @@ class CustomersController {
             El formato de tu respuesta debe ser en markdown, con cada publicación claramente etiquetada y estructurada para facilitar la implementación. Asegúrate de que el contenido sea fácil de copiar y pegar en las plataformas correspondientes.\n
             La cantidad de publicaciones debe ser exactamente de " . $totalPosts . " publicaciones\n
         ";
-        // $systemPrompt .= "Eres un experto en estrategia de contenido para redes sociales. 
-        // Tu tarea es crear un plan detallado de contenido para redes sociales lista para implementar basado en los parámetros proporcionados.\n";
-        // $systemPrompt .= "Debes crear ". $totalPosts ." publicaciones exactamente, de manera variada con los copys exactos, descripciones de imagenes y lineamientos para los diseñadores y editores en cada post.\n";
-        // $systemPrompt .= "Tambien utiliza la informacion de las reglas de marca proporcionadas para generar contenido especifico que se debe publicar en cada plataforma.\n";
-        // $systemPrompt .= "Debes seguir las reglas de contenido y la personalidad de la marca\n";
-        
-        // $systemPrompt .= "- Formatos y horarios de publicación\n";
-        // $systemPrompt .= "El formato de respuesta debe ser claro, estructurado y listo para implementar.\n";
-        // $systemPrompt .= "Multiplica las publicaciones por semana por la cantidad de semanas del plan, asegurando que el contenido cubra todo el periodo solicitado por el usuario.\n\n";
-        // $systemPrompt .= "No te estoy pidiendo ejemplos, te estoy pidiendo el calendario definitivo completo de publicacion.\n";
         $prompt .= "Las reglas obligatorias para el formato de contenido y la personalidad de la marca estan en este texto html: $brandRulesContent\n\n";
         
         // Información básica
@@ -778,21 +769,6 @@ class CustomersController {
         $prompt .= "IDIOMA:\n";
         $prompt .= "- Idioma del contenido: $language.\n\n";
         
-        // Instrucción final para la IA
-        // $prompt .= "INSTRUCCIÓN PARA LA IA:\n";
-        // $prompt .= "Basado en esta información, desarrolla:\n";
-        // $prompt .= "1. Un calendario editorial detallado por semanas, incluyendo fechas específicas. Asegurandote de que abarcas todo el tiempo solicitado por el usuario\n";
-        // // $prompt .= "2. Ideas de contenido específicas para cada plataforma seleccionada\n";
-        // // $prompt .= "3. Recomendaciones de formatos según los recursos disponibles\n";
-        // // $prompt .= "4. Sugerencias de horarios de publicación óptimos\n";
-        // // $prompt .= "5. Ideas para aprovechar fechas especiales\n";
-        // // $prompt .= "6. Estrategias para aumentar el engagement\n";
-        // // $prompt .= "7. Ejemplos concretos de posts para cada tipo de contenido\n\n";
-        // $prompt .= "El contenido debe ser claro, estructurado y fácil de seguir. Desarrolla todos los copys con su calendario editorial con fechas específicas, ideas de contenido para cada plataforma, recomendaciones de formatos y horarios de publicación.\n";
-        
-        // $prompt .= "Tambien incluye los guiones para videos, imagenes y texto que se van a publicar, asi como instrucciones graficas para que el equipo de diseño y edicion sepa donde colocar cada elemento.";
-        // $prompt .= "Es importante que el contenido abarque la totalidad del tiempo solicitado por el usuario, asegurando que cada semana tenga contenido relevante y variado.\n";
-        // $prompt .= "Crea un plan de contenido completo para" . $duration . " con una frecuencia de " . $frequency . " y " . $postCount . " publicaciones por semana.\n";
         $prompt .= "No coloques los caracteres ``` al comienzo detu respuesta\n";
         $prompt .= "Comienza tu respuesta con el caracter #";
         try {
