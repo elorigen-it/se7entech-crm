@@ -93,9 +93,6 @@
                             <!-- Tab Categories List -->
                             <div class="tab-pane fade show <?php echo $this->session->get('access') == '0' ? '': 'active';?>" id="listcategories" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
                                 <div class="card card-profile shadow">
-                                    <div class="card-header">
-                                        <input type="text" id="myInput" onkeyup="filterTable()" placeholder="Search for category names.." title="Type in a category name" class="form-control">
-                                    </div>
                                     <div class="card-body" style="overflow-x:hidden;">
                                         <table id="categories-list-table" class="table table-bordered table-striped display responsive" style="width:100%">
                                             <thead style="background:#337ab7;color:white;"> 
