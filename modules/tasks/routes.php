@@ -2,29 +2,6 @@
 use Symfony\Component\Routing\Route;
 
 $definitions = array(
-    array(
-        'name' => 'index',
-        'route' => array(
-            'path' => '/',
-            'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Tasks\Controllers\TaskController', 
-                'method'=>'index',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
-            'methods' => ['GET'],
-        )
-    ),
-    array(
-        'name' => 'postTask',
-        'route' => array(
-            'path' => '/',
-            'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Tasks\Controllers\TaskController', 
-                'method'=>'postTask',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
-            'methods' => ['POST'],
-            'params' => array('id' => '[0-9]+') //query parameters requirements
-        )
-    ),
     // Task Labels CRUD routes
     array(
         'name' => 'listTaskLabels',
@@ -87,6 +64,93 @@ $definitions = array(
             ),
             'methods' => ['POST'],
             'params' => array('id' => '[0-9]+')
+        )
+    ),
+    // Task Categories CRUD routes
+    array(
+        'name' => 'listTaskCategories',
+        'route' => array(
+            'path' => '/categories',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Tasks\Controllers\TaskCategoryController',
+                'method' => 'index',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
+            'methods' => ['GET'],
+        )
+    ),
+    array(
+        'name' => 'createTaskCategory',
+        'route' => array(
+            'path' => '/categories',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Tasks\Controllers\TaskCategoryController',
+                'method' => 'postCategory',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
+            'methods' => ['POST'],
+        )
+    ),
+    array(
+        'name' => 'getTaskCategory',
+        'route' => array(
+            'path' => '/categories/{id}',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Tasks\Controllers\TaskCategoryController',
+                'method' => 'getById',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
+            'methods' => ['GET'],
+            'params' => array('id' => '[0-9]+')
+        )
+    ),
+    array(
+        'name' => 'updateTaskCategory',
+        'route' => array(
+            'path' => '/categories/{id}',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Tasks\Controllers\TaskCategoryController',
+                'method' => 'updateCategory',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
+            'methods' => ['POST'],
+            'params' => array('id' => '[0-9]+')
+        )
+    ),
+    array(
+        'name' => 'deleteTaskCategory',
+        'route' => array(
+            'path' => '/categories/{id}/delete',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Tasks\Controllers\TaskCategoryController',
+                'method' => 'deleteCategory',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
+            'methods' => ['POST'],
+            'params' => array('id' => '[0-9]+')
+        )
+    ),
+    array(
+        'name' => 'index',
+        'route' => array(
+            'path' => '/',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Tasks\Controllers\TaskController', 
+                'method'=>'index',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
+            'methods' => ['GET'],
+        )
+    ),    
+    array(
+        'name' => 'postTask',
+        'route' => array(
+            'path' => '/',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Tasks\Controllers\TaskController', 
+                'method'=>'postTask',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
+            'methods' => ['POST'],
+            'params' => array('id' => '[0-9]+') //query parameters requirements
         )
     ),
     array(
@@ -197,19 +261,6 @@ $definitions = array(
             'params' => array('id' => '[0-9]+') //query parameters requirements
         )
     ),
-    
-    // array(
-    //     'name' => 'delete',
-    //     'route' => array(
-    //         'path' => '/delete/',
-    //         'detail' => array(
-    //             'controller' => 'Se7entech\Contractnew\Modules\Roles\Controllers\RolesController', 
-    //             'method'=>'delete',
-    //             'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm')),
-    //         'methods' => ['POST'],
-    //         // 'params' => array('id' => '[0-9]+') //query parameters requirements
-    //     )
-    // )
 );
 
 $routes = array();

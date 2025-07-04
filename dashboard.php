@@ -232,6 +232,6 @@ if(!empty($_POST['companyName']) && $_POST['companyName'])
             </div>
 
 
-      <?php include './layout/footer_scripts.php';?>
+      <?php require './layout/footer_scripts.php';?>
     </body>
 </html>

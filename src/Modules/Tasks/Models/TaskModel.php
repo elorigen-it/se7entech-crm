@@ -7,8 +7,10 @@ use Se7entech\Contractnew\Helpers\EscapeString;
 class TaskModel{
     private static $table = 'tasks';
     private static $taskLabelTable = 'task_labels';
+    private static $taskCategoryTable = 'task_categories';
     // This table is used to link tasks with labels
     private static $taskLablesTasks = 'task_labels_tasks';
+    private static $taskCategoriesTasks = 'task_categories_tasks';
 
     public static function getAll(){
         include __DIR__ . '/../../../../envloader.php';
@@ -73,12 +75,15 @@ class TaskModel{
                 invoice_user.last_name, 
                 customers.name as customer_name, 
                 customers.business_name as customer_business_name,
-                GROUP_CONCAT(" . self::$taskLabelTable . ".id) AS labels
+                GROUP_CONCAT(" . self::$taskLabelTable . ".id) AS labels,
+                GROUP_CONCAT(" . self::$taskCategoryTable . ".id) AS categories
             FROM " . self::$table . "
             JOIN invoice_user ON tasks.asigned_to = invoice_user.id
             JOIN customers ON tasks.customer_id = customers.id
             LEFT JOIN " . self::$taskLablesTasks . " ON tasks.id = " . self::$taskLablesTasks . ".id_task
-            LEFT JOIN " . self::$taskLabelTable . " ON " . self::$taskLablesTasks . ".id_task_label = " . self::$taskLabelTable . ".id";
+            LEFT JOIN " . self::$taskLabelTable . " ON " . self::$taskLablesTasks . ".id_task_label = " . self::$taskLabelTable . ".id
+            LEFT JOIN " . self::$taskCategoriesTasks . " ON tasks.id = " . self::$taskCategoriesTasks . ".task_id
+            LEFT JOIN " . self::$taskCategoryTable . " ON " . self::$taskCategoriesTasks . ".category_id = " . self::$taskCategoryTable. ".id";
         $sql .= " WHERE tasks.id='" . $id . "' GROUP BY tasks.id ORDER BY tasks.created_at DESC";
 
         $res = mysqli_query($con, $sql);
@@ -108,9 +113,20 @@ class TaskModel{
             } else {
                 $data['task-labels'] = array();
             }
+            if( isset($data['task-categories']) && is_array($data['task-categories']) && (count($data['task-categories']) > 0)){
+                // Ensure task categories are escaped and inserted
+                $data['task-categories'] = $data['task-categories'];
+            } else {
+                $data['task-categories'] = array();
+            }
             
             foreach($data['task-labels'] as $label){
                 $sql = "INSERT INTO " . self::$taskLablesTasks . " (id_task, id_task_label) VALUES (".$insertedTaskId.", '$label')";
+                mysqli_query($con, $sql);
+            }
+
+            foreach($data['task-categories'] as $category){
+                $sql = "INSERT INTO " . self::$taskCategoriesTasks . " (task_id, category_id) VALUES (".$insertedTaskId.", '$category')";
                 mysqli_query($con, $sql);
             }
         }
@@ -139,6 +155,21 @@ class TaskModel{
         }
         foreach($data['task-labels'] as $label){
             $sql = "INSERT INTO " . self::$taskLablesTasks . " (id_task, id_task_label) VALUES ($id, '$label')";
+            mysqli_query($con, $sql);
+        }
+
+        // If the update is successful, we proceed to handle categories
+        // delete all categories for this task, then insert new ones
+        $deleteCategoriesSql = "DELETE FROM " . self::$taskCategoriesTasks . " WHERE task_id=$id";
+        mysqli_query($con, $deleteCategoriesSql);
+        if(isset($data['task-categories']) && is_array($data['task-categories']) && (count($data['task-categories']) > 0)){
+            // Ensure task labels are escaped and inserted TODO
+            $data['task-categories'] = $data['task-categories'];
+        } else {
+            $data['task-categories'] = array();
+        }
+        foreach($data['task-categories'] as $category){
+            $sql = "INSERT INTO " . self::$taskCategoriesTasks . " (task_id, category_id) VALUES ($id, '$category')";
             mysqli_query($con, $sql);
         }
         

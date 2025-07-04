@@ -82,6 +82,28 @@
                                                         ?>
                                                     </div>
                                                 </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label" for="task-categories">Task Categories</label>
+                                                        <br>
+                                                        <?php
+                                                            if (!empty($this->data['categories'])){
+                                                                // Get selected label ids as array
+                                                                $selectedCategories = array_map('trim', explode(',', $this->data['current']['categories'] ?? ''));
+                                                                
+                                                                foreach ($this->data['categories'] as $category){
+                                                                    $selected = in_array($category['id'], $selectedCategories) ? true : false;
+                                                                    if(!$selected) continue; // Skip if label is not selected
+                                                                    ?>
+                                                                    <span>
+                                                                        <?php echo htmlspecialchars($category['name']); ?>
+                                                                    </span>
+                                                                <?php
+                                                                }
+                                                            }
+                                                        ?>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6">
