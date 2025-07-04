@@ -80,16 +80,32 @@ navbar-light bg-white" id="sidenav-main">
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo $base_url;?>/modules/tasks/">
+                <a class="nav-link collapsed" href="#tasksSubmenu" data-toggle="collapse" aria-expanded="false" aria-controls="tasksSubmenu">
                     <i class="fa fa-tasks"></i> Tasks
                 </a>
+                <div class="collapse" id="tasksSubmenu">
+                    <ul class="navbar-nav ml-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo $base_url;?>/modules/tasks/">
+                                <i class="fa fa-tasks"></i> All Tasks
+                            </a>
+                        </li>
+                        <?php if($role != 12 && $role != 15):?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo $base_url;?>/modules/tasks/index.php/labels">
+                                <i class="fa fa-tags"></i> Tasks Labels
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo $base_url;?>/modules/tasks/index.php/categories">
+                                <i class="fa fa-tags"></i> Tasks Categories
+                            </a>
+                        </li>
+                        <?php endif;?>
+                    </ul>
+                </div>
             </li>
             <?php if($role != 12 && $role != 15):?>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo $base_url;?>/modules/tasks/index.php/labels">
-                        <i class="fa fa-tasks"></i> Tasks Labels
-                    </a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo $base_url;?>/modules/customers/">
                         <i class="fa fa-users"></i> Customers

@@ -87,6 +87,32 @@
                                                         </select>
                                                     </div>
                                                 </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label" for="task-labels">Task Category</label>
+                                                        <br>
+                                                        <!-- Multiple select for task labels -->
+                                                        <select id="task-categories" name="task-categories[]" class="form-control" multiple>
+                                                            <option value="">Select Category</option>
+                                                            <?php
+                                                                if (!empty($this->data['categories'])):
+                                                                    // Get selected label ids as array
+                                                                    $selectedCategories = array_map('trim', explode(',', $this->data['current']['categories'] ?? ''));
+                                                                    foreach ($this->data['categories'] as $category):
+                                                                        $selected = in_array($category['id'], $selectedCategories) ? 'selected' : '';
+                                                            ?>
+                                                                <option value="<?php echo htmlspecialchars($category['id']); ?>" <?php echo $selected; ?>>
+                                                                    <span>
+                                                                        <?php echo htmlspecialchars($category['name']); ?>
+                                                                    </span>
+                                                                </option>
+                                                            <?php
+                                                                    endforeach;
+                                                                endif;
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6">

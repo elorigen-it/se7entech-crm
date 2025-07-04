@@ -4,6 +4,8 @@ namespace Se7entech\Contractnew\Modules\Tasks\Controllers;
 
 use Se7entech\Contractnew\Modules\Tasks\Models\TaskModel;
 use Se7entech\Contractnew\Modules\Tasks\Models\TaskLabelModel;
+use Se7entech\Contractnew\Modules\Tasks\Models\TaskCategoryModel;
+
 
 use Se7entech\Contractnew\Modules\Users\Models\UserModel;
 use Se7entech\Contractnew\Modules\Customers\Models\CustomersModel;
@@ -47,11 +49,13 @@ class TaskController {
         $users = UserModel::getAll();
         $customers = CustomersModel::getAllV2();
         $labels = TaskLabelModel::getAll();
+        $categories = TaskCategoryModel::getAll();
 
         $this->data['tasks'] = $tasks;
         $this->data['users'] = $users;
         $this->data['customers'] = $customers;
         $this->data['labels'] = $labels;
+        $this->data['categories'] = $categories;
 
         if($this->session->get('access') != '0'){
             $tasks = array_filter($tasks, function($task) {
@@ -82,6 +86,7 @@ class TaskController {
             $tasks = TaskModel::getAll();
             $users = UserModel::getAll();
             $labels = TaskLabelModel::getAll();
+            $categories = TaskCategoryModel::getAll();
             $customers = CustomersModel::getAllV2();
             
             $flashes = $this->session->getFlashBag();
@@ -90,6 +95,8 @@ class TaskController {
             }
             $this->data['tasks'] = $tasks;
             $this->data['users'] = $users;
+            $this->data['labels'] = $labels;
+            $this->data['categories'] = $categories;
             $this->data['customers'] = $customers;
             
             include __DIR__ . '/../index.php';
@@ -145,12 +152,15 @@ class TaskController {
             $users = UserModel::getAll();
             $customers = CustomersModel::getAllV2();
             $labels = TaskLabelModel::getAll();
+            $categories = TaskCategoryModel::getAll();
             $res = TaskModel::getById($data['id']);
+
             if($res){
                 $this->data['current'] = $res[0];
                 $this->data['customers'] = $customers;
                 $this->data['users'] = $users;
                 $this->data['labels'] = $labels;
+                $this->data['categories'] = $categories;
 
                 include __DIR__ . '/../single.php';
             }else{
@@ -178,12 +188,14 @@ class TaskController {
             $users = UserModel::getAll();
             $customers = CustomersModel::getAllV2();
             $labels = TaskLabelModel::getAll();
+            $categories = TaskCategoryModel::getAll();
             $res = TaskModel::getById($id);
             if($res){
                 $this->data['current'] = $res[0];
                 $this->data['customers'] = $customers;
                 $this->data['users'] = $users;
                 $this->data['labels'] = $labels;
+                $this->data['categories'] = $categories;
                 include __DIR__ . '/../single.php';
             }
         } else {
@@ -202,9 +214,12 @@ class TaskController {
         if($id){
             $res = TaskModel::getById($id);
             $labels = TaskLabelModel::getAll();
+            $categories = TaskCategoryModel::getAll();
             if($res){
                 $this->data['current'] = $res[0];
                 $this->data['labels'] = $labels;
+                $this->data['categories'] = $categories;
+                
                 include __DIR__ . '/../view.php';
             }else{
                 $flashes = $this->session->getFlashBag();
