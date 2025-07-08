@@ -180,17 +180,15 @@ if(!empty($_GET['invoice_id']) && $_GET['invoice_id']) {
                         <p><b>$<?php echo $invoiceValues['order_total_amount_due'];?> due <?php   $datatat = $invoiceValues['duesdate']; echo date('F d, Y', strtotime($datatat));?></b></p>
                         <p style="<?php echo $invoiceValues['order_total_amount_due']<1?'display:none':''?>"><a href="https://crm.se7entech.net/invoicepay/index?id=<?php echo $inv_id;?>">Pay Online</a></p>
                         <div style="text-align:left;line-height:2">
+                            <p>
+                                You're welcome to pay by Zelle (admin@se7entech.net) or check to SE7ENTECH with no additional fees. If you prefer to pay by credit or debit card, please note that a 4% service charge will be added to cover processing fees. This charge reflects our cost of acceptance and complies with Illinois law. Please note: payments may be processed by Instant Pay Corporation, our authorized billing partner. Thank you for your understanding and continued support!
+                                <!-- <br> -->
+                                <!-- The se7entech team is at your service and thank you very much for your preference. -->
+                            </p>
                             <p><?php echo $invoiceValues['note'];?></p>
-                                <?php if($invoiceValues['order_tax_per'] > 0):?>
-                                    <p>
-                                        This amount includes the <?php echo $invoiceValues['order_tax_per'];?>% additional charge for the use of online payment.
-                                        If you choose to avoid this additional charge, you can make payment via Zelle to 
-                                        (se7entech@icloud.com), Cash or company check to pay the amount of $<?php echo ($invoiceValues['order_total_before_tax'] - $invoiceValues['order_amount_paid']);?> 
-                                        made out to Se7entech.
-                                        <br>
-                                        The se7entech team is at your service and thank you very much for your preference.
-                                    </p>
-                                <?php endif;?>
+                                <!-- <?php if($invoiceValues['order_tax_per'] > 0):?> -->
+                                    
+                                <!-- <?php endif;?> -->
                             
                         </div>
 
