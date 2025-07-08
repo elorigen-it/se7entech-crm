@@ -1,4 +1,7 @@
 <?php
+// require_once './dompdf/src/Autoloader.php';
+// use Dompdf\Dompdf;
+
 session_start();
 include 'Invoice.php';
 $invoice = new Invoice();
@@ -110,10 +113,9 @@ if(!empty($_GET['invoice_id']) && $_GET['invoice_id']) {
     tr {
         height: 20px
     }
-     body, .container {
-  height: auto;
-}
-}
+    body, .container {
+        height: auto;
+    }
     @media print
 {    
     .printtt, .printtt *
@@ -263,21 +265,21 @@ if(!empty($_GET['invoice_id']) && $_GET['invoice_id']) {
     </div>
 </body>
 <?php
-require_once("dompdf/dompdf_config.inc.php");
-spl_autoload_register('DOMPDF_autoload');
-$html = $smarty->fetch('index.tpl');
-$dompdf = new DOMPDF();
-$dompdf->load_html($html);
-$dompdf->set_paper('a4', 'portrait');
-$dompdf->render();
-$dompdf->stream("newfile.pdf");
-$invoiceFileName = 'Invoice-'.$invoiceValues['order_id'].'.pdf';
-require_once 'dompdf/src/Autoloader.php';
-Dompdf\Autoloader::register();
-use Dompdf\Dompdf;
-$dompdf = new Dompdf();
-$dompdf->loadHtml(html_entity_decode($output));
-$dompdf->setPaper('A4', 'landscape');
-$dompdf->render();
-$dompdf->stream($invoiceFileName, array("Attachment" => false));
+// require_once("dompdf/dompdf_config.inc.php");
+// spl_autoload_register('DOMPDF_autoload');
+// $html = $smarty->fetch('index.tpl');
+// $dompdf = new DOMPDF();
+// $dompdf->load_html($html);
+// $dompdf->set_paper('a4', 'portrait');
+// $dompdf->render();
+// $dompdf->stream("newfile.pdf");
+// $invoiceFileName = 'Invoice-'.$invoiceValues['order_id'].'.pdf';
+
+// Dompdf\Autoloader::register();
+
+// $dompdf = new Dompdf();
+// $dompdf->loadHtml(html_entity_decode($output));
+// $dompdf->setPaper('A4', 'landscape');
+// $dompdf->render();
+// $dompdf->stream($invoiceFileName, array("Attachment" => false));
 ?>
