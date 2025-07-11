@@ -1,6 +1,7 @@
 <?php
- 
-	include('../connection.php');
+    include('../envloader.php');
+	include('../config/config.php');
+	include('../config/connection.php');
 	$logid=$_GET['id'];
 	$res=mysqli_query($con,"select * from invoice_order where order_id='$logid'");
 	$row=mysqli_fetch_assoc($res);
