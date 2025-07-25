@@ -122,7 +122,26 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-12">
+                                                <div class="col-md-6">
+                                                    <div class="form-group  ">
+                                                        <label class="form-control-label" for="task-project">Project</label>
+                                                        <br>
+                                                        <?php if(isset($this->data['current']['project_id']) && $this->data['current']['project_id']):?>
+                                                            <?php if(isset($this->data['projects']) && count($this->data['projects'])):?>
+                                                                <?php foreach($this->data['projects'] as $project):?>
+                                                                    <?php if($project['id'] == $this->data['current']['project_id']):?>
+                                                                        <span class="text-muted"><?php echo $project['name'];?></span><br>
+                                                                    <?php endif;?>
+                                                                <?php endforeach;?>   
+                                                            <?php else:?>
+                                                                <span class="text-muted">No project assigned</span><br>                                                         
+                                                            <?php endif;?>
+                                                        <?php else:?>
+                                                            <span class="text-muted">No project assigned</span><br>
+                                                        <?php endif;?>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
                                                     <div class="form-group  ">
                                                         <label class="form-control-label" for="task-name">Task Name</label>
                                                         <br>
@@ -213,6 +232,20 @@
                                                         <span class="text-muted"><?php echo $end_time;?></span><br>
                                                     </div>
                                                 </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label" for="task-user">Deadline</label>
+                                                        <br>                                                            
+                                                        <span class="text-muted"><?php echo $this->data['current']['deadline'];?></span><br>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label" for="task-user">Estimated time (hours)</label>
+                                                        <br>                                                            
+                                                        <span class="text-muted"><?php echo $this->data['current']['estimated_time'];?></span><br>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <?php if($this->session->get('access') == '0'):?>
                                                 <div class="row">
@@ -281,6 +314,13 @@
                                                             <span class="text-muted"><?php echo $net_time;?></span><br>
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label" for="custom_total_time">Custom total time</label>
+                                                            <br>
+                                                            <span class="text-muted"><?php echo ($this->data['current']['custom_total_time']) ? $this->data['current']['custom_total_time'] : 'N/A';?></span><br>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -336,7 +376,7 @@
                                                             <span class="text-muted"><?php echo $resources;?></span><br>                                                
                                                         </div> 
                                                     </div>
-                                                </div>
+                                                </div>                                                
                                             <?php endif;?>
 
                                             <div class="text-center">

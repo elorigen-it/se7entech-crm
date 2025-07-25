@@ -78,7 +78,7 @@ navbar-light bg-white" id="sidenav-main">
                 <a class="nav-link" href="<?php echo $base_url;?>/dashboard">
                     <i class="fa fa-desktop"></i> Dashboard
                 </a>
-            </li>
+            </li>        
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#tasksSubmenu" data-toggle="collapse" aria-expanded="false" aria-controls="tasksSubmenu">
                     <i class="fa fa-tasks"></i> Tasks
@@ -106,6 +106,23 @@ navbar-light bg-white" id="sidenav-main">
                 </div>
             </li>
             <?php if($role != 12 && $role != 15):?>
+                    <li class="nav-item">
+                    <a class="nav-link collapsed" href="#projectsSubmenu" data-toggle="collapse" aria-expanded="false" aria-controls="projectsSubmenu">
+                        <i class="fa fa-tasks"></i> Projects
+                    </a>
+                    <div class="collapse" id="projectsSubmenu">
+                        <ul class="navbar-nav ml-3">
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo $base_url;?>/modules/projects/">
+                                    <i class="fa fa-tasks"></i> All Projects
+                                </a>
+                            </li>
+                            
+                            
+                            
+                        </ul>
+                    </div>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo $base_url;?>/modules/customers/">
                         <i class="fa fa-users"></i> Customers
@@ -235,10 +252,28 @@ navbar-light bg-white" id="sidenav-main">
                 <?php endif;?>
 
                 <?php if($access === '0'):?>
+                    
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo $base_url;?>/modules/users/">
+                        <!-- <a class="nav-link" href="#usersSubmenu">
                             <i class="fa fa-cog" aria-hidden="true"></i> Users
+                        </a> -->
+                        <a class="nav-link collapsed" href="#usersSubmenu" data-toggle="collapse" aria-expanded="false" aria-controls="usersSubmenu">
+                            <i class="fa fa-user"></i> Users
                         </a>
+                        <div class="collapse" id="usersSubmenu">
+                            <ul class="navbar-nav ml-3">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo $base_url;?>/modules/users/">
+                                        <i class="fa fa-user"></i> CRM users
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo $base_url;?>/modules/customers/index.php/login-access">
+                                        <i class="fa fa-user"></i> Customers access
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                 <?php endif;?>
 

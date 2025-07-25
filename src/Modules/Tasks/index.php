@@ -67,7 +67,7 @@
                                             <div class="pl-lg-4">       
                                                 <form id="postzone" method="POST">
                                                     <div class="row">
-                                                        <div class="col-md-12">
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label class="form-control-label" for="task-labels">Task Label</label>
                                                                 <br>
@@ -86,7 +86,7 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-12">
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label class="form-control-label" for="task-categories">Task Category</label>
                                                                 <br>
@@ -129,6 +129,22 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label class="form-control-label" for="task-labels">Task Project</label>
+                                                                <select id="task-project" name="task-project" class="form-control">
+                                                                    <option value="">Select a project for this task</option>
+                                                                    <?php 
+                                                                        if(!empty($this->data['projects'])):
+                                                                            foreach($this->data['projects'] as $project):?>
+                                                                                <option <?php echo ($this->data['last_data']['task-project'] == $project['id']) ? 'selected' : '';?> value="<?php echo $project['id'];?>"><?php echo $project['name'];?></option>
+                                                                            <?php
+                                                                            endforeach;
+                                                                        endif;
+                                                                    ?>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
                                                             <div class="form-group  ">
                                                                 <label class="form-control-label" for="task-name">Task Name <span class="required">*</span></label>
                                                                 <input value="<?php echo isset($this->data['last_data']['task-name']) ? $this->data['last_data']['task-name'] : '';?>" type="text" id="task-name" name="task-name" placeholder="Example: Create Design" class="form-control">
@@ -146,7 +162,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label class="form-control-label" for="task-user">Asign to <span class="required">*</span></label>
                                                                 <select id="task-user" name="task-user" class="form-control">
@@ -158,6 +174,20 @@
                                                                     <?php endif;?>
                                                                 </select>
                                                                 <!-- <input value="<?php echo isset($this->data['last_data']['task-user']) ? $this->data['last_data']['task-user'] : '';?>" type="text" id="task-user" name="task-user" class="form-control"> -->
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label class="form-control-label" for="deadline">Deadline</label>
+                                                                <br>
+                                                                <input type="text" id="deadline" name="deadline" value="<?php echo isset($this->data['last_data']['deadline']) ? $this->data['last_data']['deadline'] : '';?>" class="form-control datepicker" placeholder="Select a deadline">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label class="form-control-label" for="estimated_time">Estimated time (in hours)</label>
+                                                                <br>
+                                                                <input type="number" step="0.5" id="estimated_time" name="estimated_time" value="<?php echo isset($this->data['last_data']['estimated_time']) ? $this->data['last_data']['estimated_time'] : '';?>" class="form-control" placeholder="Estimated time in hours">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -301,6 +331,9 @@
                     templateResult: formatState
                 });
 
+                // // Initialize Select2 for customer-id
+                // $("#customer-id").select2();
+
                 //check if there is #listzones in the URL
                 if(window.location.hash === '#listzones'){
                     $('#tabs-media-list').addClass('show active');
@@ -320,26 +353,42 @@
 
                 //force datatable refresh to apply responsive styles
                 $('#roles-list-table').DataTable().columns.adjust().responsive.recalc();
-            });
 
-            function filterTable() {
-                var input, filter, table, tr, td, i, txtValue;
-                input = document.getElementById("myInput");
-                filter = input.value.toUpperCase();
-                table = document.getElementById("roles-list-table");
-                tr = table.getElementsByTagName("tr");
-                for (i = 0; i < tr.length; i++) {
-                    td = tr[i].getElementsByTagName("td")[1];
-                    if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
+                // Use jQuery event for select2 change
+                
+                $('#customer-id').on('change', function() {
+                    console.log('changed');
+                    var customerId = $(this).val();
+                    var projectSelect = document.getElementById('task-project');
+                    // Clear existing options except the first
+                    projectSelect.options.length = 1;
+
+                    if (customerId) {
+                        $.ajax({
+                            url: '<?php echo $base_url; ?>/modules/projects/index.php/ajax/get_projects_by_customer_id',
+                            type: 'POST',
+                            data: { customer_id: customerId },
+                            dataType: 'json',
+                            success: function(response) {
+                                if (response.success && Array.isArray(response.projects)) {
+                                    response.projects.forEach(function(project) {
+                                        var option = document.createElement('option');
+                                        option.value = project.id;
+                                        option.text = project.name;
+                                        projectSelect.appendChild(option);
+                                    });
+                                }
+                            }
+                        });
                     }
-                    }       
-                }
-            }
+                });
+
+                flatpickr("#deadline", {
+                    enableTime: true,
+                    dateFormat: "Y-m-d H:i",
+                });
+                
+            })
             
             function showModal(button){
                 let id = button.dataset.id;

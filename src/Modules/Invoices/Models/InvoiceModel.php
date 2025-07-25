@@ -36,5 +36,19 @@ class InvoiceModel{
         return $response;
     }
 
+    public static function getCustomerInvoices($customer_id){
+        include __DIR__ . '/../../../../config/connection.php';
+        $sql = "SELECT * FROM " . self::$table . " WHERE customer_id = '" . $customer_id . "'";
+        $res = mysqli_query($con, $sql);
 
+        $response = array();
+        if(mysqli_num_rows($res)){
+            while($row = mysqli_fetch_assoc($res)){
+                array_push($response, $row);
+            }
+        }
+        
+        return $response;
+       
+    }
 }

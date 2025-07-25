@@ -1,5 +1,5 @@
 <?php
-    namespace Se7entech\Contractnew\Modules\Zones;
+    namespace Se7entech\Contractnew\Modules\Tasks;
     require('../../envloader.php');
     require('../../config/config.php');
     require('../../config/connection.php');
@@ -61,7 +61,7 @@
                                     <div class="pl-lg-4">       
                                         <form id="postzone" method="POST">
                                             <div class="row">
-                                                <div class="col-md-12">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-control-label" for="task-labels">Task Label</label>
                                                         <br>
@@ -87,7 +87,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-control-label" for="task-labels">Task Category</label>
                                                         <br>
@@ -110,11 +110,9 @@
                                                                     endforeach;
                                                                 endif;
                                                             ?>
-                                                        </select>
+                                                        </select>                                                        
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group  ">
                                                         <label class="form-control-label" for="customer-id">Customer <span class="required">*</span></label>
@@ -132,10 +130,25 @@
                                                         <label class="form-control-label" for="customer-tempname">Customer Name <span class="required">*</span></label>
                                                         <input value="<?php echo isset($this->data['current']['customer_tempname']) ? $this->data['current']['customer_tempname'] : '';?>" type="text" id="customer-tempname" name="customer-tempname" placeholder="Example: Los Jerezanos" class="form-control">
                                                     </div>
-                                                </div>
-                                                
+                                                </div>                                                                                              
                                             </div>
                                             <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label" for="task-labels">Task Project</label>
+                                                        <select id="task-project" name="task-project" class="form-control">
+                                                            <option value="">Select a project for this task</option>
+                                                            <?php 
+                                                                if(!empty($this->data['projects'])):
+                                                                    foreach($this->data['projects'] as $project):?>_
+                                                                        <option <?php echo ($this->data['current']['project_id'] == $project['id']) ? 'selected' : '';?> value="<?php echo $project['id'];?>"><?php echo $project['name'];?></option>
+                                                                    <?php
+                                                                    endforeach;
+                                                                endif;
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                                 <div class="col-md-12">
                                                     <div class="form-group  ">
                                                         <label class="form-control-label" for="task-name">Task Name <span class="required">*</span></label>
@@ -155,7 +168,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label class="form-control-label" for="task-user">Asign to <span class="required">*</span></label>
                                                         <select id="task-user" name="task-user" class="form-control">
@@ -166,7 +179,27 @@
                                                                 <?php endforeach;?>
                                                             <?php endif;?>
                                                         </select>
-                                                        <!-- <input value="<?php echo isset($this->data['last_data']['task-user']) ? $this->data['last_data']['task-user'] : '';?>" type="text" id="task-user" name="task-user" class="form-control"> -->
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label" for="deadline">Deadline</label>
+                                                        <br>
+                                                        <input type="text" id="deadline" name="deadline">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label" for="estimated_time">Estimated time (in hours)</label>
+                                                        <br>
+                                                        <input type="number" step="0.5" value="<?php echo $this->data['current']['estimated_time'];?>" id="estimated_time" name="estimated_time">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label" for="custom_total_time">Custom total time (in hours)</label>
+                                                        <br>
+                                                        <input type="number" step="0.1" value="<?php echo $this->data['current']['custom_total_time'];?>" id="custom_total_time" name="custom_total_time">
                                                     </div>
                                                 </div>
                                             </div>
@@ -226,6 +259,39 @@
                 $("#task-labels").select2({
                     templateSelection: formatState,
                     templateResult: formatState
+                });
+
+                $('#customer-id').change((event) => {
+                    const customer_id = event.target.value;
+                    let selectControl = $('#task-project');
+                    selectControl.select2().empty();
+                    $.ajax(SE7ENTECH.base_url + '/modules/projects/index.php/ajax/get_projects_by_customer_id', {
+                        type: 'POST',
+                        data: {
+                            'customer-id': customer_id
+                        },
+                        success: (data) => {
+                            const parsed = JSON.parse(data);
+                            if(parsed.length){
+                                parsed.forEach((item) => {
+                                    selectControl.append($('<option>', {
+                                        value: item.id,
+                                        text: item.name
+                                    }));
+                                })
+                                selectControl.trigger('change.select2');
+                            }
+                        },
+                        error: () => {
+                            //TODO IMPLEMENT
+                        }
+                    })
+                })
+
+                flatpickr("#deadline", {
+                    enableTime: true,
+                    dateFormat: "Y-m-d H:i",
+                    defaultDate: "<?php echo isset($this->data['current']['deadline']) ? $this->data['current']['deadline'] : ''; ?>",
                 });
             })
         </script>

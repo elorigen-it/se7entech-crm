@@ -5,6 +5,8 @@ namespace Se7entech\Contractnew\Modules\Customers\Controllers;
 use Se7entech\Contractnew\Modules\Customers\Models\CustomersModel;
 use Se7entech\Contractnew\Modules\Customers\Models\BrandRulesModel;
 use Se7entech\Contractnew\Modules\Customers\Models\BrandContentModel;
+use Se7entech\Contractnew\Modules\Customers\Models\CustomerAccessModel;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Rakit\Validation\Validator;
@@ -27,6 +29,7 @@ class CustomersController {
         $this->base_url = $base_url;
         $this->session = $session;
         $this->data['records'] = $this->getCustomers();
+        $this->data['loginAccess'] = $this->getCustomersAccess();
         
         // Si necesitas cargar usuarios/agentes para dropdowns
         // $this->data['users'] = $this->getUsers(); 
@@ -208,6 +211,10 @@ class CustomersController {
 
     public function getCustomers() {
         return CustomersModel::getAll();
+    }
+
+    public function getCustomerAccess() {
+        return CustomerAccessModel::getAll();
     }
 
     public function delete($params) {
@@ -979,5 +986,56 @@ class CustomersController {
         } else {
             echo json_encode(array('success' => false, 'message' => 'Error al eliminar el contenido de marca'));
         }
+    }
+
+    public function activateLoginAccess(){
+        $request = Request::createFromGlobals()->request;
+        $data = $request->all();
+
+        CustomerAccessModel::deleteByCustomerID($data['customer_id']);
+        $result = CustomerAccessModel::create($data);       
+
+        if(isset($result['record_id'])){
+            echo json_encode(array(
+                'inserted_id' => $result['record_id'],
+                'success' => true
+            ));
+        }else{
+            echo json_encode(array(
+                'success' => false,
+                'msg' => $result 
+            ));
+        }
+        exit;
+    }
+
+    public function deactivateLoginAccess(){
+        $request = Request::createFromGlobals()->request;
+        $data = $request->all();
+
+        $record = CustomerAccessModel::getAccessByCustomerId($data['customer_id']);
+
+        if(count($record)){
+
+            $customerAccess = $record[0];
+            $customerAccess['active'] = 0;
+            $updated = CustomerAccessModel::update($customerAccess['id'], $customerAccess);
+            echo json_encode(array(
+                'success' => $updated,
+            ));
+        }else{
+            echo json_encode(array(
+                'success' => false,
+                'msg' => 'Access not found'
+            ));
+        }
+        exit;
+    }
+
+    public function getCustomersAccess(){
+        return CustomerAccessModel::getAll();
+    }
+    public function loginAccess(){
+        include __DIR__ . '/../customer_access.php';    
     }
 }

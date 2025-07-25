@@ -3,6 +3,19 @@ use Symfony\Component\Routing\Route;
 
 $definitions = array(
     array(
+        'name' => 'loginAccess',
+        'route' => array(
+            'path' => '/login-access',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'loginAccess',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
+            'methods' => ['GET'],
+            // 'params' => array('customerId' => '[0-9]+', 'brandContentId' => '[0-9]+')
+        )
+    ),
+    array(
         'name' => 'generateBrandRulesForm',
         'route' => array(
             'path' => '/{customerId}/brand-rules/generate',
@@ -265,6 +278,33 @@ $definitions = array(
             'params' => array('customerId' => '[0-9]+', 'brandContentId' => '[0-9]+')
         )
     ),
+    array(
+        'name' => 'activateLoginAccess',
+        'route' => array(
+            'path' => '/login-access/activate',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'activateLoginAccess',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
+            'methods' => ['POST'],
+            // 'params' => array('customerId' => '[0-9]+', 'brandContentId' => '[0-9]+')
+        )
+    ),
+    array(
+        'name' => 'deactivateLoginAccess',
+        'route' => array(
+            'path' => '/login-access/deactivate',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'deactivateLoginAccess',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
+            'methods' => ['POST'],
+            // 'params' => array('customerId' => '[0-9]+', 'brandContentId' => '[0-9]+')
+        )
+    ),    
+    
     // array(
     //     'name' => 'acceptAppointment',
     //     'route' => array(

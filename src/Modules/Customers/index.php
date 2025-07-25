@@ -17,6 +17,38 @@
             table.dataTable>tbody>tr.child ul.dtr-details>li:last-child{
                 white-space: normal !important;
             }
+            .switch {
+                position: relative;
+                display: inline-block;
+                width: 38px;
+                height: 20px;
+            }
+            .switch input {display:none;}
+            .slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background-color: #ccc;
+                transition: .4s;
+                border-radius: 20px;
+            }
+            .slider:before {
+                position: absolute;
+                content: "";
+                height: 14px;
+                width: 14px;
+                left: 3px;
+                bottom: 3px;
+                background-color: white;
+                transition: .4s;
+                border-radius: 50%;
+            }
+            input:checked + .slider {
+                background-color: #2196F3;
+            }
+            input:checked + .slider:before {
+                transform: translateX(18px);
+            }
         </style>
     </head>
     <body class="">
@@ -315,7 +347,7 @@
                                         <tbody id="zones-list-tbody">
                                             <?php if(count($this->data['records'])):?>
                                                 <?php foreach($this->data['records'] as $record):?>
-                                                    <tr>
+                                                    <tr id="<?php echo 'row-'.$record['id'];?>">
                                                         <td><?php echo $record['id'];?></td>
                                                         <td><?php echo $record['type'];?></td>
                                                         <td><?php echo $record['name'];?></td>
@@ -324,12 +356,53 @@
                                                         <td><?php echo $record['email'];?></td>
                                                         <td><?php echo ucfirst($record['status']);?></td>
                                                         <td>
-                                                            <a href="<?php echo $base_url;?>/modules/customers/index.php/<?php echo $record['id'];?>" class="btn btn-primary btn-sm" style="margin-right:5px;margin-top:5px;">Edit</a>
-                                                            <a href="<?php echo $base_url;?>/modules/customers/index.php/<?php echo $record['id'];?>/brand-rules/generate" class="btn btn-info btn-sm" style="margin-right:5px;margin-top:5px;"><i class="fa fa-magic" aria-hidden="true"></i>AI Rules</a>
-                                                            <a href="<?php echo $base_url;?>/modules/customers/index.php/<?php echo $record['id'];?>/content-creator/generate" class="btn btn-success btn-sm" style="margin-right:5px;margin-top:5px;"><i class="fa fa-magic" aria-hidden="true"></i>AI Create Content</a>                                                            
-                                                            <a href="<?php echo $base_url;?>/modules/customers/index.php/<?php echo $record['id'];?>/brand-rules/manage" class="btn btn-warning btn-sm" style="margin-right:5px;margin-top:5px;"><i class="fa fa-magic" aria-hidden="true"></i>Manage AI Rules</a>
-                                                            <a href="<?php echo $base_url;?>/modules/customers/index.php/<?php echo $record['id'];?>/brand-content/manage" class="btn btn-warning btn-sm" style="margin-right:5px;margin-top:5px;"><i class="fa fa-magic" aria-hidden="true"></i>Manage AI Content</a>
-                                                            <a href="#" class="btn btn-danger btn-sm" data-id="<?php echo $record['id'];?>" onclick="showModal(this)" style="margin-right:5px;margin-top:5px;">Delete</a>
+
+                                                            <!-- Actions: Edit & Delete -->
+                                                            <h5>Edit and Delete</h5>
+                                                            <div class="btn-group mb-1" role="group" aria-label="Edit and Delete">
+                                                                <a href="<?php echo $base_url;?>/modules/customers/index.php/<?php echo $record['id'];?>" class="btn btn-primary btn-sm" style="margin-right:5px;">Edit</a>
+                                                                <a href="#" class="btn btn-danger btn-sm" data-id="<?php echo $record['id'];?>" onclick="showModal(this)">Delete</a>
+                                                            </div>
+                                                            <hr style="margin:.5em 0"/>
+                                                            <!-- Actions: AI Generation -->
+                                                            <h5>AI Generation</h5>
+                                                            <div class="btn-group mb-1" role="group" aria-label="AI Generation">
+                                                                <a href="<?php echo $base_url;?>/modules/customers/index.php/<?php echo $record['id'];?>/brand-rules/generate" class="btn btn-info btn-sm" style="margin-right:5px;">
+                                                                    <i class="fa fa-magic" aria-hidden="true"></i> AI Rules
+                                                                </a>
+                                                                <a href="<?php echo $base_url;?>/modules/customers/index.php/<?php echo $record['id'];?>/content-creator/generate" class="btn btn-success btn-sm" style="margin-right:5px;">
+                                                                    <i class="fa fa-magic" aria-hidden="true"></i> AI Create Content
+                                                                </a>
+                                                            </div>
+                                                            <hr style="margin:.5em 0"/>
+
+                                                            <!-- Actions: AI Management -->
+                                                            <h5>AI Management</h5>
+                                                            <div class="btn-group mb-1" role="group" aria-label="AI Management">
+                                                                <a href="<?php echo $base_url;?>/modules/customers/index.php/<?php echo $record['id'];?>/brand-rules/manage" class="btn btn-warning btn-sm" style="margin-right:5px;">
+                                                                    <i class="fa fa-magic" aria-hidden="true"></i> Manage AI Rules
+                                                                </a>
+                                                                <a href="<?php echo $base_url;?>/modules/customers/index.php/<?php echo $record['id'];?>/brand-content/manage" class="btn btn-warning btn-sm" style="margin-right:5px;">
+                                                                    <i class="fa fa-magic" aria-hidden="true"></i> Manage AI Content
+                                                                </a>
+                                                            </div>
+                                                            <hr style="margin:.5em 0"/>
+
+                                                            <!-- Login Access Switch -->
+                                                            <h5>Access Activation</h5>
+                                                            <?php
+                                                                $hasLogin = !empty($record['access_id']);
+                                                                $isActive = $hasLogin && $record['active_access'] == 1;
+                                                                $switchId = 'login-switch-' . $record['id'];
+                                                            ?>
+                                                            <label class="switch" style="vertical-align:middle;">
+                                                                <input type="checkbox" 
+                                                                    data-defaultusername="<?php echo $record['email'];?>" 
+                                                                    data-checkboxid="<?php echo $switchId;?>" 
+                                                                    <?php echo $isActive ? 'checked' : '';?> 
+                                                                    onchange="toggleLoginAccess(<?php echo $record['id'];?>, this.checked, this)">
+                                                                <span class="slider round"></span>
+                                                            </label>                                                                                                                                                                               
                                                         </td>
                                                     </tr>
                                                 <?php endforeach;?>
@@ -353,6 +426,19 @@
         <script>
             
             $(document).ready(function(){
+                $table = $('#zones-list-table').DataTable({
+                    responsive:true,
+                    order: [[ 0, "desc" ]], // Order by ID descending
+                })
+
+                $table.on('responsive-resize', function (e, datatable, columns) {
+                    var count = columns.reduce(function (a, b) {
+                        return b === false ? a + 1 : a;
+                    }, 0);
+                
+                    console.log(count + ' column(s) are hidden');
+                });
+
                 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
                     var target = $(e.target).attr("href") // activated tab
                     if(target === '#media-list'){
@@ -362,13 +448,8 @@
                     }
                 });
 
-                $('#zones-list-table').DataTable({
-                    responsive:true,
-                    order: [[ 0, "desc" ]], // Order by ID descending
-                })
-
                 //force datatable refresh to apply responsive styles
-                $('#zones-list-table').DataTable().columns.adjust().responsive.recalc();
+                $('#zones-list-table').DataTable().draw().columns.adjust().responsive.recalc();
 
                 //check if there is #listzones in the URL
                 if(window.location.hash === '#listzones'){
@@ -377,13 +458,13 @@
                     $('#listzones').addClass('show active');
                     $('#addzone').removeClass('show active');
                     // Refresh DataTable after tab change
-                    $('#zones-list-table').DataTable().columns.adjust().responsive.recalc();
+                    $('#zones-list-table').DataTable().columns.adjust().draw().responsive.recalc();
                 }
 
                 // Also refresh DataTable when tab is changed by clicking
                 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
                     if ($(e.target).attr('href') === '#listzones') {
-                        $('#zones-list-table').DataTable().columns.adjust().responsive.recalc();
+                        $('#zones-list-table').DataTable().columns.adjust().draw().responsive.recalc();
                     }
                 });
             });
@@ -410,6 +491,155 @@
                         xhr.send(data)
                     }
                 });
+            }
+
+            function toggleLoginAccess(customerId, enabled, el) {   
+                const defaultUsername = el.dataset.defaultusername || '';
+                if (enabled) { 
+                    
+                    // Show modal to enter username and generate password
+                    bootbox.dialog({
+                        title: "Activate Login Access",
+                        message: `
+                            <form id="loginAccessForm">
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" id="username" name="username" class="form-control" value="${defaultUsername}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <div class="input-group">
+                                        <input type="text" id="password" name="password" class="form-control" readonly>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-secondary" type="button" onclick="generatePassword()">Generate</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        `,
+                        buttons: {
+                            cancel: {
+                                label: "Cancel",
+                                className: 'btn-secondary',
+                                callback: function() {
+                                    // Uncheck switch if cancelled                                    
+                                    el.checked = false;
+                                }
+                            },
+                            confirm: {
+                                label: "Save",
+                                className: 'btn-primary',
+                                callback: function() {
+                                    var username = document.getElementById('username').value.trim();
+                                    var password = document.getElementById('password').value.trim();
+                                    if (!username || !password) {
+                                        $.notify('Username and password are required', 'danger');
+                                        return false;
+                                    }
+                                    var data = new FormData();
+                                    data.append('customer_id', customerId);
+                                    data.append('username', username);
+                                    data.append('password', password);
+                                    var endpoint = "<?php echo $base_url;?>/modules/customers/index.php/login-access/activate";
+                                    fetch(endpoint, {
+                                        method: 'POST',
+                                        body: data
+                                    })
+                                    .then(res => res.json())
+                                    .then(res => {
+                                        if (res.success) {
+                                            $.notify('Login access activated!', 'success');
+                                            el.checked = true;
+                                        } else {
+                                            $.notify(res.msg || 'Failed to activate login access', 'danger');
+                                            el.checked = false;
+                                        }
+                                    })
+                                    .catch(() => {
+                                        $.notify('Request failed', 'danger');
+                                        el.checked = false;
+                                    });
+                                }
+                            }
+                        },
+                        onEscape: () => {     
+                            el.checked = false;
+                        },
+                        onHide: (e) => {
+                            // If dialog is closed without pressing Cancel or Save
+                            if (!e || (e && e.currentTarget && e.currentTarget.classList && !e.currentTarget.classList.contains('btn-primary') && !e.currentTarget.classList.contains('btn-secondary'))) {
+                                el.checked = false;
+                            }
+                        }
+                    });
+                } else {
+                    // Confirm deactivation
+                    bootbox.confirm({
+                        message: 'Deactivate login access for this customer?',
+                        callback: (confirmed) => {
+                            if (confirmed) {
+                                var data = new FormData();
+                                data.append('customer_id', customerId);
+                                var endpoint = "<?php echo $base_url;?>/modules/customers/index.php/login-access/deactivate";
+                                fetch(endpoint, {
+                                    method: 'POST',
+                                    body: data
+                                })
+                                .then(res => res.json())
+                                .then(res => {
+                                    if (res.success) {
+                                        $.notify('Login access deactivated!', 'success');  
+                                        // document.querySelectorAll("[data-checkboxid='"+el.dataset.checkboxid+"']").forEach((element, n) => {
+                                        //     element.checked = false;
+                                        //     element.removeAttribute('checked')
+                                        // })                                      
+                                        let table = $('#zones-list-table').DataTable();
+                                        let rowIdx = table.row('#row-'+customerId).index();
+                                        let cellColumn = 7;
+                                        let cell = table.cell(rowIdx, cellColumn);
+                                        let cellHtml = cell.data();
+                                        cellHtml = cellHtml.replace(/checked\s*=\s*""/g, '');
+                                        cell.data(cellHtml).draw(false);      
+                                        
+                                    } else {
+                                        $.notify(res.error || 'Failed to deactivate login access', 'danger');
+                                        document.querySelectorAll("[data-checkboxid='"+el.dataset.checkboxid+"']").forEach((element) => {
+                                            element.checked = true;
+                                        })
+                                    }
+                                })
+                                .catch(() => {
+                                    $.notify('Request failed', 'danger');
+                                    document.querySelectorAll("[data-checkboxid='"+el.dataset.checkboxid+"']").forEach((element) => {
+                                        element.checked = true;
+                                    })
+                                });
+                            } else {
+                                document.querySelectorAll("[data-checkboxid='"+el.dataset.checkboxid+"']").forEach((element) => {
+                                    element.checked = true;
+                                })
+                            }
+                        },
+                        onEscape: () => {     
+                            el.checked = true;
+                        },
+                        onHide: (e) => {
+                            // If dialog is closed without pressing Cancel or Save
+                            if (!e || (e && e.currentTarget && e.currentTarget.classList && !e.currentTarget.classList.contains('btn-primary') && !e.currentTarget.classList.contains('btn-secondary'))) {
+                                el.checked = true;
+                            }
+                        }        
+                    });
+                }
+            }
+
+            function generatePassword() {
+                var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+                var pass = "";
+                for (var i = 0; i < 10; i++) {
+                    pass += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+                document.getElementById('password').value = pass;
             }
         </script>        
     </body>
