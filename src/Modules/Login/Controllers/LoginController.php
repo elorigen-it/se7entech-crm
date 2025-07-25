@@ -42,7 +42,7 @@ class LoginController{
                 $_SESSION['active'] = $login['active'];
                 $_SESSION['image'] = $login['image'];
                 
-                header('Location: ' . $this->base_url . '/modules/dashboard/customer');
+                header('Location: ' . $this->base_url . '/modules/dashboard/index.php/customer');
                 exit();
                 // header("Location:dashboard.php");
             } else {
@@ -50,6 +50,6 @@ class LoginController{
             }
         }
 
-        header('Location: ' . $this->base_url . '/modules/login/customer');
+        header('Location: ' . $this->base_url . '/modules/login/index.php/customer');
     }
 }
