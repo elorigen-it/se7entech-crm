@@ -9,7 +9,7 @@ navbar-light bg-white" id="sidenav-main">
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Brand -->
-        <a class="navbar-brand pt-0" href="<?php echo $this->base_url;?>/modules/dashboard/customer">
+        <a class="navbar-brand pt-0" href="<?php echo $this->base_url;?>/modules/dashboard/index.php/customer">
             <img src="<?php echo $this->base_url;?>/images/logo.png"
                 class="navbar-brand-img" alt="...">
         </a>
@@ -22,7 +22,7 @@ navbar-light bg-white" id="sidenav-main">
             <div class="navbar-collapse-header d-md-none">
                 <div class="row">
                     <div class="col-6 collapse-brand">
-                        <a href="<?php echo $this->base_url;?>/modules/dashboard/customer">
+                        <a href="<?php echo $this->base_url;?>/modules/dashboard/index.php/customer">
                             <img src="<?php echo $this->base_url;?>/images/logo.png">
                         </a>
                     </div>
@@ -48,12 +48,12 @@ navbar-light bg-white" id="sidenav-main">
 
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo $this->base_url;?>/modules/dashboard/customer">
+                    <a class="nav-link" href="<?php echo $this->base_url;?>/modules/dashboard/index.php/customer">
                         <i class="fa fa-desktop"></i> Dashboard
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo $this->base_url;?>/modules/customer-portal/tasks">
+                    <a class="nav-link" href="<?php echo $this->base_url;?>/modules/customer-portal/index.php/tasks">
                         <i class="fa fa-tasks"></i> Tasks
                     </a>
                 </li>
