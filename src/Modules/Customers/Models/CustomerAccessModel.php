@@ -98,7 +98,7 @@ class CustomerAccessModel{
         
         try {
             if ($stmt->execute()) {
-            return $con->insert_id;
+            return array('record_id' => $con->insert_id);
             }
             if ($stmt->error) {
             return $stmt->error;
