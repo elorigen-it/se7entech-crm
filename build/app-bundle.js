@@ -43496,7 +43496,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           "aria-labelledby": "modal-modal-title",
           "aria-describedby": "modal-modal-description"
         },
-        /* @__PURE__ */ import_react10.default.createElement(Box_default, { sx: { p: 2, width: 200, background: "white", margin: "2em auto" }, id: "modal-content" }, modalContent)
+        /* @__PURE__ */ import_react10.default.createElement(Box_default, { sx: { p: 2, width: "80%", height: "80vh", background: "white", margin: "2em auto", overflowY: "auto" }, id: "modal-content" }, /* @__PURE__ */ import_react10.default.createElement("span", { dangerouslySetInnerHTML: { __html: modalContent } }))
       ));
     };
     const container = document.getElementById("tasks-app");
