@@ -8,8 +8,7 @@ $reader = new Reader($databaseFile);
 // Para testing, puedes usar una IP de ejemplo
 $venezuelaIp = '38.196.192.4'; 
 $chicagoIp = '162.217.184.65'; 
-$ip = $chicagoIp;
-$ip = $_SERVER['REMOTE_ADDR'];
+$ip = (getenv('ENVIRONMENT') === 'development') ? $chicagoIp : $_SERVER['REMOTE_ADDR'];
 
 $record = $reader->city($ip);
 $timezone = $record->location->timeZone;

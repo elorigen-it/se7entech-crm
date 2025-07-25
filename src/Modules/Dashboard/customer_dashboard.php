@@ -4,8 +4,8 @@ require('./vendor/autoload.php');
 require_once './envloader.php';
 require_once './config/config.php';
 require_once './config/connection.php';
-require_once 'access.php'; //inside access.php you already have $con variable without importing it there.
-require_once 'Invoice.php';
+// require_once 'access.php'; //inside access.php you already have $con variable without importing it there.
+// require_once 'Invoice.php';
 ?>
 
 <!DOCTYPE html>
