@@ -19,8 +19,12 @@ export class Router {
 
   findMatchingRoute(path) {
     return Object.keys(this.routes).find(route => {
+      // Convierte /modules/:module/:file/tasks a una expresión regular
       const routeRegex = new RegExp(
-        `^${route.replace(/:\w+/g, '\\w+')}$`
+      '^' +
+      route.replace(/:[^/]+/g, '[^/]+') // :param -> cualquier segmento que no sea /
+         .replace(/\//g, '\\/') +     // escapa las barras
+      '$'
       );
       return routeRegex.test(path);
     });

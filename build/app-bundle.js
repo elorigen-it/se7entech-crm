@@ -54,7 +54,8 @@
         findMatchingRoute(path) {
           return Object.keys(this.routes).find((route) => {
             const routeRegex = new RegExp(
-              `^${route.replace(/:\w+/g, "\\w+")}$`
+              "^" + route.replace(/:[^/]+/g, "[^/]+").replace(/\//g, "\\/") + // escapa las barras
+              "$"
             );
             return routeRegex.test(path);
           });
