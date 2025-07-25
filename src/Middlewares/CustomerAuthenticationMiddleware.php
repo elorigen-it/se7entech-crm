@@ -9,7 +9,7 @@ class CustomerAuthenticationMiddleware implements Middleware {
         // Authentication logic here
         if (!isset($_SESSION['customer'])) {
             //redirect to login
-            header( 'Location: ' . $base_url . '/modules/login/customer' );
+            header( 'Location: ' . $base_url . '/modules/login/index.php/customer' );
             exit;
         }
 
