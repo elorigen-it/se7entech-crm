@@ -88,7 +88,7 @@ export function init() {
                     } else {
                       progressColor = 'primary';
                     }
-                                        
+
                     return <Box sx={{display:'inline-flex'}} p={2} key={i}>
                     <Card sx={{ maxWidth: 300, pb:0 }}>
                       <CardContent>
@@ -96,8 +96,8 @@ export function init() {
                       {task.name}
                       </Typography>
                       <Stack direction={'row'}>
-                      {task.task_categories.split(',').map((cat, idx) => (
-                      <Chip key={idx} label={cat.trim()} color="primary" size="small" sx={{mr: 0.5}} />
+                      {task.task_categories && task.task_categories.length > 0 && task.task_categories.split(',').map((cat, idx) => (
+                        <Chip key={idx} label={cat.trim()} color="primary" size="small" sx={{mr: 0.5}} />
                       ))}
                       </Stack>
                       <Divider sx={{mb:1, pt:1}}/>
