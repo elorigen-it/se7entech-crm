@@ -82579,7 +82579,6 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         "/modules/customers/index.php/:id/brand-content/view/:id": () => Promise.resolve().then(() => (init_view_brand_content(), view_brand_content_exports)),
         "/modules/customers/index.php/:id/brand-content/edit/:id": () => Promise.resolve().then(() => (init_edit_brand_content(), edit_brand_content_exports)),
         "/modules/tests/tasks": () => Promise.resolve().then(() => (init_tasks(), tasks_exports)),
-        "/modules/customer-portal/tasks": () => Promise.resolve().then(() => (init_user_tasks(), user_tasks_exports)),
         "/modules/customer-portal/index.php/tasks": () => Promise.resolve().then(() => (init_user_tasks(), user_tasks_exports))
       };
       var router = new Router(routes);
