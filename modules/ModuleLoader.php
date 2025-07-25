@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../envloader.php';
 require __DIR__ . '/../config/config.php';
+require __DIR__ . '/../config/defaults.php';
 
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
@@ -12,7 +13,6 @@ use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Exception\MethodNotAllowedException;
 
 use Se7entech\Contractnew\Middlewares\MiddlewareHandler;
-
 use Symfony\Component\HttpFoundation\Session\Session;
 
 class ModuleLoader{

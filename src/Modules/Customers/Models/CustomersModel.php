@@ -84,7 +84,7 @@ class CustomersModel{
     public static function getAll() {
         include __DIR__ . '/../../../../config/connection.php';
 
-        $query = "SELECT * FROM " . self::$newTable;
+        $query = "SELECT " . self::$newTable . ".*, customer_access.id access_id, customer_access.username username, customer_access.active active_access FROM " . self::$newTable . " LEFT JOIN customer_access ON " . self::$newTable . ".id = customer_access.customer_id";
         $result = $con->query($query);
         
         $records = [];

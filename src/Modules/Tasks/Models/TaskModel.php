@@ -68,6 +68,10 @@ class TaskModel{
                 tasks.pause_reasons, 
                 tasks.total_pauses, 
                 tasks.total_time, 
+                tasks.deadline,
+                tasks.estimated_time,
+                tasks.custom_total_time,
+                tasks.project_id,
                 tasks.created_at, 
                 tasks.final_resource,
                 invoice_user.email, 
@@ -100,7 +104,23 @@ class TaskModel{
         include __DIR__ . '/../../../../envloader.php';
         include __DIR__ . '/../../../../config/connection.php';
         $data = EscapeString::escapeArray($con, $data);
-        $sql = "INSERT INTO " . self::$table ." (asigned_to, name, status, customer_id, description, customer_tempname ) VALUES ('".$data['task-user']."','".$data['task-name']."','created', '".$data['customer-id']."','".$data['task-description']."','". $data['customer-tempname'] ."')";
+        $sql = "INSERT INTO " . self::$table ." 
+        (
+            asigned_to, name, 
+            status, customer_id, 
+            description, customer_tempname,
+            project_id, deadline, estimated_time
+        ) VALUES (
+         '".$data['task-user']."',
+         '".$data['task-name']."',
+         'created', 
+         '".$data['customer-id']."',
+         '".$data['task-description']."',
+         '". $data['customer-tempname'] ."',
+         '".$data['task-project']."',
+         '".$data['deadline']."',
+         '".$data['estimated_time']."'
+        )";
         
         $result = mysqli_query($con, $sql);
 
@@ -138,7 +158,16 @@ class TaskModel{
         include __DIR__ . '/../../../../envloader.php';
         include __DIR__ . '/../../../../config/connection.php';
         $data = EscapeString::escapeArray($con, $data);
-        $sql = "UPDATE " . self::$table . " SET name='" . $data['task-name'] . "', description='" . $data['task-description'] . "', asigned_to='" . $data['task-user'] . "', customer_id='".$data['customer-id']."', customer_tempname='".$data['customer-tempname']."' WHERE id=$id";
+        $sql = "UPDATE " . self::$table . " SET name='" . $data['task-name'] . "', 
+            description='" . $data['task-description'] . "', 
+            asigned_to='" . $data['task-user'] . "', 
+            customer_id='".$data['customer-id']."', 
+            customer_tempname='".$data['customer-tempname']."', 
+            project_id='".($data['task-project']) ."',
+            deadline='".$data['deadline']."',
+            estimated_time='".$data['estimated_time']."',
+            custom_total_time='".$data['custom_total_time']."' 
+            WHERE id=$id";
         $result = mysqli_query($con, $sql);
         if(!$result){
             return false; // If the update fails, return false
@@ -233,5 +262,21 @@ class TaskModel{
         $sql = "DELETE FROM " . self::$table . " WHERE id=$id";
         $res = mysqli_query($con, $sql);
         return $res;
+    }
+
+    public static function getCustomerTasks($customer_id){
+        include __DIR__ . '/../../../../config/connection.php';
+        $sql = "SELECT * FROM " . self::$table . " WHERE customer_id = '" . $customer_id . "'";
+        $res = mysqli_query($con, $sql);
+
+        $response = array();
+        if(mysqli_num_rows($res)){
+            while($row = mysqli_fetch_assoc($res)){
+                array_push($response, $row);
+            }
+        }
+        
+        return $response;
+       
     }
 }

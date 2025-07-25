@@ -7,7 +7,7 @@ const routes = {
   '/modules/customers/index.php/:id/brand-content/view/:id': () => import('./routes/view-brand-content.js'),
   '/modules/customers/index.php/:id/brand-content/edit/:id': () => import('./routes/edit-brand-content.js'),
   '/modules/tests/tasks': () => import('./routes/tasks.js'),
-
+  '/modules/customer-portal/tasks': () => import('./routes/user-tasks.js')
 };
 
 // 2. Inicializar router

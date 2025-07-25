@@ -14,6 +14,30 @@ $definitions = array(
             'methods' => ['GET'],
         )
     ),
+    array(
+        'name' => 'indexCustomer',
+        'route' => array(
+            'path' => '/customer',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Login\Controllers\LoginController', 
+                'method'=> 'indexCustomer',
+                'middlewares' => array()
+            ),
+            'methods' => ['GET'],
+        )
+    ),
+    array(
+        'name' => 'loginCustomer',
+        'route' => array(
+            'path' => '/customer',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Login\Controllers\LoginController', 
+                'method'=> 'loginCustomer',
+                'middlewares' => array()
+            ),
+            'methods' => ['POST'],
+        )
+    ),
    
 );
 

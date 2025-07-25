@@ -9,13 +9,16 @@ use Se7entech\Contractnew\Modules\Tasks\Models\TaskCategoryModel;
 
 use Se7entech\Contractnew\Modules\Users\Models\UserModel;
 use Se7entech\Contractnew\Modules\Customers\Models\CustomersModel;
+use Se7entech\Contractnew\Modules\Projects\Models\ProjectsModel;
+
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Rakit\Validation\Validator;
 
 use Se7entech\Contractnew\Helpers\Mailer;
-
+use Se7entech\Contractnew\Helpers\TimezoneUtils;
+use GeoIp2\Database\Reader;
 
 class TaskController {
 
@@ -101,6 +104,8 @@ class TaskController {
             
             include __DIR__ . '/../index.php';
         } else {
+            $data['deadline'] = TimezoneUtils::fromUserTimeZoneDateStringToTimestamp($data['deadline']);
+            $data['estimated_time'] = $data['estimated_time'] ? $data['estimated_time'] * 60 : 0;
             $res = TaskModel::postTask($data);
             $flashes = $this->session->getFlashBag();
             if($res['success']){
@@ -157,10 +162,14 @@ class TaskController {
 
             if($res){
                 $this->data['current'] = $res[0];
+                $this->data['current']['deadline'] = isset($this->data['current']['deadline']) ? TimezoneUtils::fromTimestampToUserTimezoneDateString($this->data['current']['deadline']) : '';
+                $this->data['current']['estimated_time'] = isset($this->data['current']['estimated_time']) ? $this->data['current']['estimated_time'] / 60 : 0;
+                $this->data['current']['custom_total_time'] = isset($this->data['current']['custom_total_time']) ? $this->data['current']['custom_total_time'] / 60 : 0;
                 $this->data['customers'] = $customers;
                 $this->data['users'] = $users;
                 $this->data['labels'] = $labels;
                 $this->data['categories'] = $categories;
+                $this->data['projects'] = ProjectsModel::getByCustomerId($this->data['current']['customer_id']);
 
                 include __DIR__ . '/../single.php';
             }else{
@@ -199,6 +208,10 @@ class TaskController {
                 include __DIR__ . '/../single.php';
             }
         } else {
+            $data['deadline'] = TimezoneUtils::fromUserTimeZoneDateStringToTimestamp($data['deadline']);
+            $data['estimated_time'] = ($data['estimated_time']) ? $data['estimated_time'] * 60 : 0;
+            $data['custom_total_time'] = ($data['custom_total_time']) ? $data['custom_total_time'] * 60 : 0;
+
             $res = TaskModel::updateTask($id, $data);
             if($res){
                 header('location: /modules/tasks/index.php/'.$id.'/view');
@@ -216,14 +229,24 @@ class TaskController {
             $labels = TaskLabelModel::getAll();
             $categories = TaskCategoryModel::getAll();
             if($res){
+                $projects = ProjectsModel::getByCustomerId($res[0]['customer_id']);
                 $this->data['current'] = $res[0];
                 $this->data['labels'] = $labels;
                 $this->data['categories'] = $categories;
-                
+                $this->data['projects'] = $projects;
+                if($this->data['current']['deadline']){
+                    $deadline = TimezoneUtils::fromTimestampToUserTimezoneDateString($this->data['current']['deadline']);
+                }else{
+                    $deadline = 'No deadline set';
+                }
+                $this->data['current']['deadline'] = $deadline;
+                $this->data['current']['estimated_time'] = isset($this->data['current']['estimated_time']) ? $this->data['current']['estimated_time'] / 60 : 'Not set';
+                $this->data['current']['custom_total_time'] = isset($this->data['current']['custom_total_time']) ? $this->data['current']['custom_total_time'] / 60 : 'Not set';
+
                 include __DIR__ . '/../view.php';
             }else{
                 $flashes = $this->session->getFlashBag();
-                $flashes->add('warning', 'Role id not found');
+                $flashes->add('warning', 'Task id not found');
 
                 header('location: /modules/tasks/');
             } 
