@@ -1,6 +1,6 @@
 <?php
 
-use GeoIp2\Database\Reader;
+use \GeoIp2\Database\Reader;
 
 $databaseFile = __DIR__ . '/../geoip/geolite2-city.mmdb';
 $reader = new Reader($databaseFile);
