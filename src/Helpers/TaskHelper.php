@@ -22,7 +22,7 @@ class TaskHelper {
         }
         $estimated_time = $task['estimated_time'];
         if ($hours) {
-            return ceil($estimated_time / 3600);
+            return ceil($estimated_time / 60);
         }
         return $estimated_time;
     }
