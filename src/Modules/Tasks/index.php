@@ -191,6 +191,18 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label class="form-control-label" for="task-description-for-customer">Task Description for customer <span class="required">*</span></label>
+                                                                <div class="task-description-wrapper" style="display:block; position:relative;">
+                                                                    <textarea id="task-description-for-customer" rows="10" class="form-control" name="task-description-for-customer" placeholder="Describe the task here..." style="height: 250px; overflow-y: auto;">
+                                                                        <?php echo isset($this->data['last_data']['task-description-for-customer']) ? $this->data['last_data']['task-description-for-customer'] : '';?>
+                                                                    </textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <div class="text-center">
                                                         <button type="submit" name="save" value="1" class="btn btn-primary">Add New Task</button>
                                                     </div>
@@ -305,6 +317,19 @@
                     order: [[0, 'desc']]
                 });
                 $('#task-description').summernote({
+                    height: 250,
+                    toolbar: [
+                        ['style', ['bold', 'italic', 'underline', 'clear']],
+                        ['font', ['strikethrough', 'superscript', 'subscript']],
+                        ['fontsize', ['fontsize']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['insert', ['link']],
+                        ['view', ['codeview']]
+                    ]
+                });
+
+                $('#task-description-for-customer').summernote({
                     height: 250,
                     toolbar: [
                         ['style', ['bold', 'italic', 'underline', 'clear']],

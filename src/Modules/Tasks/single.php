@@ -203,6 +203,19 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label" for="task-description-for-customer">Task Description for customer <span class="required">*</span></label>
+                                                        <div class="task-description-wrapper" style="display:block; position:relative;">
+                                                            <textarea id="task-description-for-customer" rows="10" class="form-control" name="task-description-for-customer" placeholder="Describe the task here..." style="height: 250px; overflow-y: auto;">
+                                                                <?php echo isset($this->data['current']['task_description_for_customer']) ? $this->data['current']['task_description_for_customer'] : '';?>
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                                    
                                             <div class="text-center">
                                                 <button type="submit" name="save" value="1" class="btn btn-success">Update Task</button>
                                                 <a href="<?php echo $this->base_url;?>/modules/tasks/#listzones" class="btn btn-primary">Tasks List</a>
@@ -235,6 +248,19 @@
                 let descriptionValue = `<?php echo addslashes($this->data['current']['description']); ?>`;
                 // Initialize Summernote editor
                 $('#task-description').summernote({
+                    height: 250, // Set the height of the editor
+                    toolbar: [
+                        ['style', ['bold', 'italic', 'underline', 'clear']],
+                        ['font', ['strikethrough', 'superscript', 'subscript']],
+                        ['fontsize', ['fontsize']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['insert', ['link']],
+                        ['view', ['codeview']]
+                    ]
+                });
+
+                $('#task-description-for-customer').summernote({
                     height: 250, // Set the height of the editor
                     toolbar: [
                         ['style', ['bold', 'italic', 'underline', 'clear']],
