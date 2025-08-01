@@ -103,7 +103,7 @@ export function init() {
               <Divider sx={{mb:1, pt:1}}/>
               <Box>
               <Stack direction={'row'} alignItems={'center'} justifyContent={'flex-start'} flexWrap={"wrap"}>
-              <IconButton onClick={() => handleOpenModal(task.description)} size="small" sx={[{'&:focus': {outline:'none'}}]}>
+              <IconButton onClick={() => handleOpenModal(task.task_description_for_customer || 'Sin descripción agregada')} size="small" sx={[{'&:focus': {outline:'none'}}]}>
               <StickyNote2Icon /> 
               </IconButton>
               {task.status === 'created' && (

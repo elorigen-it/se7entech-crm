@@ -104,6 +104,7 @@ class ProjectsModel{
             t.deadline task_deadline,
             t.estimated_time task_estimated_time,
             t.custom_total_time,
+            t.task_description_for_customer,
             tc.name category_name,
             GROUP_CONCAT(tc.name) AS task_categories
         FROM " . self::$table . " p
@@ -146,7 +147,8 @@ class ProjectsModel{
                         'estimated_time' => $row['task_estimated_time'],
                         'category_name' => $row['category_name'],
                         'task_categories' => $row['task_categories'],
-                        'custom_total_time' => $row['custom_total_time']
+                        'custom_total_time' => $row['custom_total_time'],
+                        'task_description_for_customer' => $row['task_description_for_customer']
                     ];
                     $projects[$project_id]['tasks'][] = $task;
                 }

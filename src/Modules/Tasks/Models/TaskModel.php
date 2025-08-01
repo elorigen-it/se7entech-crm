@@ -28,6 +28,7 @@ class TaskModel{
             tasks.pause_intervals, 
             tasks.total_pauses, 
             tasks.total_time, 
+            tasks.task_description_for_customer,
             tasks.created_at, 
             invoice_user.email, 
             invoice_user.first_name, 
@@ -71,6 +72,7 @@ class TaskModel{
                 tasks.deadline,
                 tasks.estimated_time,
                 tasks.custom_total_time,
+                tasks.task_description_for_customer,
                 tasks.project_id,
                 tasks.created_at, 
                 tasks.final_resource,
@@ -109,7 +111,8 @@ class TaskModel{
             asigned_to, name, 
             status, customer_id, 
             description, customer_tempname,
-            project_id, deadline, estimated_time
+            project_id, deadline, estimated_time,
+            task_description_for_customer
         ) VALUES (
          '".$data['task-user']."',
          '".$data['task-name']."',
@@ -119,7 +122,8 @@ class TaskModel{
          '". $data['customer-tempname'] ."',
          '".$data['task-project']."',
          '".$data['deadline']."',
-         '".$data['estimated_time']."'
+         '".$data['estimated_time']."',
+         '".$data['task-description-for-customer']."'
         )";
         
         $result = mysqli_query($con, $sql);
@@ -166,7 +170,8 @@ class TaskModel{
             project_id='".($data['task-project']) ."',
             deadline='".$data['deadline']."',
             estimated_time='".$data['estimated_time']."',
-            custom_total_time='".$data['custom_total_time']."' 
+            custom_total_time='".$data['custom_total_time']."',
+            task_description_for_customer='".$data['task-description-for-customer']."'
             WHERE id=$id";
         $result = mysqli_query($con, $sql);
         if(!$result){
