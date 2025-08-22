@@ -24,3 +24,7 @@ node_modules/
 # Ignore all secret files
 *.secret
 # Ignore all environment files
+error_log
+modules/login/error_log
+modules/tasks/error_log
+modules/contract/error_log
