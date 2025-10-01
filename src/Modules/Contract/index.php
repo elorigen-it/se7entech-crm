@@ -201,7 +201,7 @@
                                                 <div class="row">
                                                     <div class="col-12 col-md-6 mb-1">
                                                         <label for="customer_id" class="bolder">Populate with:</label><br>
-                                                        <input type="hidden" class="customer_id_input" id="customer_id_input" name="customer_id_input">
+                                                        <!-- <input type="hidden" class="customer_id_input" id="customer_id_input" name="customer_id_input">!-->
                                                         <select name="customer_id" id="customer_id" class="form-control select2">
                                                             <option>SELECT A CUSTOMER</option>
                                                             <?php foreach($this->data['customers'] as $customer):?>
@@ -239,6 +239,7 @@
                                                 </div>
                                             </div>    
                                             <form id="postcontract" method="POST">
+                                                <input type="hidden" class="customer_id_input" id="customer_id_input" name="customer_id_input">
                                                 <!-- Form Name -->
                                                 <legend>
                                                     <center>
