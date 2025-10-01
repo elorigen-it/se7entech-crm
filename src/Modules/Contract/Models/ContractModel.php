@@ -125,7 +125,7 @@ class ContractModel{
     }
 
     public static function insertGraceTime($contractid, $gracetime){
-        $days = convertGracetime($gracetime);
+        $days = self::convertGracetime($gracetime);
         
         $sql = "INSERT INTO " . self::$table_gracetime ." (contract_id, grace_time) VALUES ('".$contractid."','".$days."')";
 
