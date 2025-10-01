@@ -125,6 +125,7 @@ class ContractModel{
     }
 
     public static function insertGraceTime($contractid, $gracetime){
+        include __DIR__ . '/../../../../config/connection.php';
         $days = self::convertGracetime($gracetime);
         
         $sql = "INSERT INTO " . self::$table_gracetime ." (contract_id, grace_time) VALUES ('".$contractid."','".$days."')";
@@ -133,6 +134,7 @@ class ContractModel{
     }
     
     public static function convertGracetime($gracetime) {
+        include __DIR__ . '/../../../../config/connection.php';
         $gracetime = strtolower($gracetime);
 
         // Definimos un array asociativo para mapear las unidades de tiempo a sus valores en días
