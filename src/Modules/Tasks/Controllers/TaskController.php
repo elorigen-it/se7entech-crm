@@ -472,4 +472,144 @@ class TaskController {
             echo json_encode(array('success' => TaskModel::delete($id)));
         }
     }
+
+    /**
+     * Render the Admin Dashboard View
+     */
+    public function adminDashboard(){
+        // Check admin access
+        if($this->session->get('access') != '0'){
+            header('Location: ' . $this->base_url . '/dashboard');
+            exit;
+        }
+        
+        include __DIR__ . '/../admin_dashboard.php';
+    }
+    /**
+     * API Endpoint: Get data for Admin Dashboard
+     */
+    public function getAdminDashboardData(){
+        // Check admin access
+        if($this->session->get('access') != '0'){
+            echo json_encode(['error' => 'Unauthorized']);
+            exit;
+        }
+        $users = UserModel::getAll();
+        $tasks = TaskModel::getAll();
+        
+        // Filter users to only those with role != 12 and != 15 (optional, based on sidebar logic)
+        // $users = array_filter($users, function($user){
+        //     return $user['role'] != 12 && $user['role'] != 15;
+        // });
+        $usersMap = [];
+        foreach($users as $user){
+            $usersMap[$user['id']] = $user;
+            $usersMap[$user['id']]['tasks'] = [];
+            $usersMap[$user['id']]['stats'] = [
+                'total_hours' => 0,
+                'daily_history' => []
+            ];
+        }
+        foreach($tasks as $task){
+            $userId = $task['asigned_to'];
+            if(isset($usersMap[$userId])){
+                $usersMap[$userId]['tasks'][] = $task;
+                
+                // Calculate Total Hours
+                $totalSeconds = $task['total_time'] ? $task['total_time'] : 0;
+                $usersMap[$userId]['stats']['total_hours'] += ($totalSeconds / 3600);
+                // Calculate Daily History
+                $dailyData = $this->calculateDailyHours($task);
+                foreach($dailyData as $date => $seconds){
+                    if(!isset($usersMap[$userId]['stats']['daily_history'][$date])){
+                        $usersMap[$userId]['stats']['daily_history'][$date] = 0;
+                    }
+                    $usersMap[$userId]['stats']['daily_history'][$date] += ($seconds / 3600);
+                }
+            }
+        }
+        // Format daily history for frontend (array of objects)
+        foreach($usersMap as &$user){
+            $history = [];
+            foreach($user['stats']['daily_history'] as $date => $hours){
+                $history[] = ['date' => $date, 'hours' => round($hours, 2)];
+            }
+            // Sort by date desc
+            usort($history, function($a, $b) {
+                return strtotime($b['date']) - strtotime($a['date']);
+            });
+            $user['stats']['daily_history'] = $history;
+            $user['stats']['total_hours'] = round($user['stats']['total_hours'], 2);
+        }
+        header('Content-Type: application/json');
+        echo json_encode(array_values($usersMap));
+        exit;
+    }
+    /**
+     * Helper: Calculate daily hours from task timestamps
+     */
+    private function calculateDailyHours($task){
+        $dailyLog = [];
+        
+        // If no start time, we can't calculate history
+        if(empty($task['start_time'])) return [];
+        $intervals = [];
+        $currentStart = $task['start_time'];
+        
+        // Parse pause intervals
+        // Format: start_pause,end_pause,start_pause,end_pause...
+        $pauses = [];
+        if(!empty($task['pause_intervals'])){
+            $parts = explode(',', $task['pause_intervals']);
+            for($i = 0; $i < count($parts); $i+=2){
+                if(isset($parts[$i]) && isset($parts[$i+1])){
+                    $pauses[] = ['start' => $parts[$i], 'end' => $parts[$i+1]];
+                }
+            }
+        }
+        // Determine end time for calculation (finished time or now if active)
+        $finalEnd = !empty($task['end_time']) ? $task['end_time'] : time();
+        if($task['status'] == 'paused' && !empty($pauses)){
+             // If currently paused, the last pause start is the effective end of the last work segment
+             $lastPause = end($pauses);
+             $finalEnd = $lastPause['start']; 
+        }
+        // Build work segments: [Start, End]
+        // Segment 1: Start Time -> First Pause Start
+        // Segment 2: First Pause End -> Second Pause Start
+        // ...
+        // Last Segment: Last Pause End -> Final End
+        $workSegments = [];
+        $lastWorkStart = $currentStart;
+        foreach($pauses as $pause){
+            if($pause['start'] > $lastWorkStart){
+                $workSegments[] = ['start' => $lastWorkStart, 'end' => $pause['start']];
+            }
+            $lastWorkStart = $pause['end'];
+        }
+        
+        // Add final segment
+        if($finalEnd > $lastWorkStart){
+            $workSegments[] = ['start' => $lastWorkStart, 'end' => $finalEnd];
+        }
+        // Distribute segments into days
+        foreach($workSegments as $segment){
+            $segStart = $segment['start'];
+            $segEnd = $segment['end'];
+            
+            while($segStart < $segEnd){
+                $currentDay = date('Y-m-d', $segStart);
+                $nextDayStart = strtotime($currentDay . ' +1 day');
+                
+                $segmentEndForDay = min($segEnd, $nextDayStart);
+                $duration = $segmentEndForDay - $segStart;
+                
+                if(!isset($dailyLog[$currentDay])) $dailyLog[$currentDay] = 0;
+                $dailyLog[$currentDay] += $duration;
+                
+                $segStart = $segmentEndForDay;
+            }
+        }
+        return $dailyLog;
+    }
 }

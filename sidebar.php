@@ -90,6 +90,15 @@ navbar-light bg-white" id="sidenav-main">
                                 <i class="fa fa-tasks"></i> All Tasks
                             </a>
                         </li>
+                        <!-- NEW LINK -->
+                        <?php if($access == '0'): // Only for Admin ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo $base_url;?>/modules/tasks/index.php/admin-dashboard">
+                                <i class="fa fa-tachometer"></i> Task Admin
+                            </a>
+                        </li>
+                        <?php endif; ?>
+                        <!-- End NEW LINK -->
                         <?php if($role != 12 && $role != 15):?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo $base_url;?>/modules/tasks/index.php/labels">

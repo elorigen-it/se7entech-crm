@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../envloader.php';
 $con_host = getenv('DATABASE_HOST');
 $con_user = getenv('DATABASE_USER');
 $con_pass = getenv('DATABASE_PASSWORD');

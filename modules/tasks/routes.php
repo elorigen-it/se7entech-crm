@@ -131,6 +131,28 @@ $definitions = array(
         )
     ),
     array(
+        'name' => 'adminDashboard',
+        'route' => array(
+            'path' => '/admin-dashboard',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Tasks\Controllers\TaskController', 
+                'method'=>'adminDashboard',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
+            'methods' => ['GET'],
+        )
+    ),
+    array(
+        'name' => 'getAdminDashboardData',
+        'route' => array(
+            'path' => '/api/admin-dashboard-data',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Tasks\Controllers\TaskController', 
+                'method'=>'getAdminDashboardData',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
+            'methods' => ['GET'],
+        )
+    ),
+    array(
         'name' => 'index',
         'route' => array(
             'path' => '/',
@@ -261,6 +283,7 @@ $definitions = array(
             'params' => array('id' => '[0-9]+') //query parameters requirements
         )
     ),
+    
 );
 
 $routes = array();

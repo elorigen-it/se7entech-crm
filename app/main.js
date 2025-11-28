@@ -4,9 +4,12 @@ import { Router } from './utils/router.js';
 const routes = {
   '/': () => import('./routes/home.js'),
   '/modules/customer-portal/index.php/tasks': () => import('./routes/user-tasks.js'),
+  // NEW ROUTE
+
+  '/modules/tasks/index.php/admin-dashboard': () => import('./routes/admin-tasks.js'),
   '/modules/customers/index.php/:id/content-creator/generate': () => import('./routes/content-creator.js'),
   '/modules/customers/index.php/:id/brand-content/view/:id': () => import('./routes/view-brand-content.js'),
-  '/modules/customers/index.php/:id/brand-content/edit/:id': () => import('./routes/edit-brand-content.js')  
+  '/modules/customers/index.php/:id/brand-content/edit/:id': () => import('./routes/edit-brand-content.js')
 };
 
 // 2. Inicializar router
