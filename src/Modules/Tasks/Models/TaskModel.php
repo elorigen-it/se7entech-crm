@@ -29,6 +29,8 @@ class TaskModel{
             tasks.total_pauses, 
             tasks.total_time, 
             tasks.task_description_for_customer,
+            tasks.custom_total_time,
+            tasks.estimated_time,
             tasks.created_at, 
             invoice_user.email, 
             invoice_user.first_name, 
