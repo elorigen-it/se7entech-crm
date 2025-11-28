@@ -4,6 +4,7 @@
 vendor/
 uploads/
 src/Modules/Contract/tmp/
+
 # Ignore all node modules
 node_modules/
 .env.local
