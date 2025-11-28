@@ -5,8 +5,8 @@
   var __getOwnPropNames = Object.getOwnPropertyNames;
   var __getProtoOf = Object.getPrototypeOf;
   var __hasOwnProp = Object.prototype.hasOwnProperty;
-  var __esm = (fn, res) => function __init() {
-    return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
+  var __esm = (fn2, res) => function __init() {
+    return fn2 && (res = (0, fn2[__getOwnPropNames(fn2)[0]])(fn2 = 0)), res;
   };
   var __commonJS = (cb, mod) => function __require() {
     return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
@@ -299,7 +299,7 @@
           oldElement._store && (newKey._store.validated = oldElement._store.validated);
           return newKey;
         }
-        function isValidElement13(object) {
+        function isValidElement14(object) {
           return "object" === typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
         }
         function escape2(key) {
@@ -370,13 +370,13 @@
             var childKey = "" === nameSoFar ? "." + getElementKey(invokeCallback, 0) : nameSoFar;
             isArrayImpl(callback) ? (escapedPrefix = "", null != childKey && (escapedPrefix = childKey.replace(userProvidedKeyEscapeRegex, "$&/") + "/"), mapIntoArray(callback, array, escapedPrefix, "", function(c) {
               return c;
-            })) : null != callback && (isValidElement13(callback) && (null != callback.key && (invokeCallback && invokeCallback.key === callback.key || checkKeyStringCoercion(callback.key)), escapedPrefix = cloneAndReplaceKey(
+            })) : null != callback && (isValidElement14(callback) && (null != callback.key && (invokeCallback && invokeCallback.key === callback.key || checkKeyStringCoercion(callback.key)), escapedPrefix = cloneAndReplaceKey(
               callback,
               escapedPrefix + (null == callback.key || invokeCallback && invokeCallback.key === callback.key ? "" : ("" + callback.key).replace(
                 userProvidedKeyEscapeRegex,
                 "$&/"
               ) + "/") + childKey
-            ), "" !== nameSoFar && null != invokeCallback && isValidElement13(invokeCallback) && null == invokeCallback.key && invokeCallback._store && !invokeCallback._store.validated && (escapedPrefix._store.validated = 2), callback = escapedPrefix), array.push(callback));
+            ), "" !== nameSoFar && null != invokeCallback && isValidElement14(invokeCallback) && null == invokeCallback.key && invokeCallback._store && !invokeCallback._store.validated && (escapedPrefix._store.validated = 2), callback = escapedPrefix), array.push(callback));
             return 1;
           }
           invokeCallback = 0;
@@ -653,7 +653,7 @@
             }) || [];
           },
           only: function(children) {
-            if (!isValidElement13(children))
+            if (!isValidElement14(children))
               throw Error(
                 "React.Children.only expected to receive a single React element child."
               );
@@ -745,9 +745,9 @@
             }
           };
         };
-        exports.cache = function(fn) {
+        exports.cache = function(fn2) {
           return function() {
-            return fn.apply(null, arguments);
+            return fn2.apply(null, arguments);
           };
         };
         exports.captureOwnerStack = function() {
@@ -796,7 +796,7 @@
             element._debugTask
           );
           for (key = 2; key < arguments.length; key++)
-            owner = arguments[key], isValidElement13(owner) && owner._store && (owner._store.validated = 1);
+            owner = arguments[key], isValidElement14(owner) && owner._store && (owner._store.validated = 1);
           return props;
         };
         exports.createContext = function(defaultValue) {
@@ -820,7 +820,7 @@
         exports.createElement = function(type, config, children) {
           for (var i = 2; i < arguments.length; i++) {
             var node2 = arguments[i];
-            isValidElement13(node2) && node2._store && (node2._store.validated = 1);
+            isValidElement14(node2) && node2._store && (node2._store.validated = 1);
           }
           i = {};
           node2 = null;
@@ -888,7 +888,7 @@
           });
           return elementType;
         };
-        exports.isValidElement = isValidElement13;
+        exports.isValidElement = isValidElement14;
         exports.lazy = function(ctor) {
           return {
             $$typeof: REACT_LAZY_TYPE,
@@ -1117,11 +1117,11 @@
           if (last2 !== first) {
             heap[0] = last2;
             a: for (var index2 = 0, length2 = heap.length, halfLength = length2 >>> 1; index2 < halfLength; ) {
-              var leftIndex = 2 * (index2 + 1) - 1, left2 = heap[leftIndex], rightIndex = leftIndex + 1, right2 = heap[rightIndex];
-              if (0 > compare(left2, last2))
-                rightIndex < length2 && 0 > compare(right2, left2) ? (heap[index2] = right2, heap[rightIndex] = last2, index2 = rightIndex) : (heap[index2] = left2, heap[leftIndex] = last2, index2 = leftIndex);
-              else if (rightIndex < length2 && 0 > compare(right2, last2))
-                heap[index2] = right2, heap[rightIndex] = last2, index2 = rightIndex;
+              var leftIndex = 2 * (index2 + 1) - 1, left3 = heap[leftIndex], rightIndex = leftIndex + 1, right3 = heap[rightIndex];
+              if (0 > compare(left3, last2))
+                rightIndex < length2 && 0 > compare(right3, left3) ? (heap[index2] = right3, heap[rightIndex] = last2, index2 = rightIndex) : (heap[index2] = left3, heap[leftIndex] = last2, index2 = leftIndex);
+              else if (rightIndex < length2 && 0 > compare(right3, last2))
+                heap[index2] = right3, heap[rightIndex] = last2, index2 = rightIndex;
               else break a;
             }
           }
@@ -1357,7 +1357,7 @@
           return dispatcher;
         }
         "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-        var React107 = require_react(), Internals = {
+        var React110 = require_react(), Internals = {
           d: {
             f: noop6,
             r: function() {
@@ -1375,7 +1375,7 @@
           },
           p: 0,
           findDOMNode: null
-        }, REACT_PORTAL_TYPE = Symbol.for("react.portal"), ReactSharedInternals = React107.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+        }, REACT_PORTAL_TYPE = Symbol.for("react.portal"), ReactSharedInternals = React110.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
         "function" === typeof Map && null != Map.prototype && "function" === typeof Map.prototype.forEach && "function" === typeof Set && null != Set.prototype && "function" === typeof Set.prototype.clear && "function" === typeof Set.prototype.forEach || console.error(
           "React depends on Map and Set built-in types. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills"
         );
@@ -1386,11 +1386,11 @@
             throw Error("Target container is not a DOM element.");
           return createPortal$1(children, container, null, key);
         };
-        exports.flushSync = function(fn) {
+        exports.flushSync = function(fn2) {
           var previousTransition = ReactSharedInternals.T, previousUpdatePriority = Internals.p;
           try {
-            if (ReactSharedInternals.T = null, Internals.p = 2, fn)
-              return fn();
+            if (ReactSharedInternals.T = null, Internals.p = 2, fn2)
+              return fn2();
           } finally {
             ReactSharedInternals.T = previousTransition, Internals.p = previousUpdatePriority, Internals.d.f() && console.error(
               "flushSync was called from inside a lifecycle method. React cannot flush when React is already rendering. Consider moving this call to a scheduler task or micro task."
@@ -1537,8 +1537,8 @@
         exports.requestFormReset = function(form) {
           Internals.d.r(form);
         };
-        exports.unstable_batchedUpdates = function(fn, a) {
-          return fn(a);
+        exports.unstable_batchedUpdates = function(fn2, a) {
+          return fn2(a);
         };
         exports.useFormState = function(action, initialState, permalink) {
           return resolveDispatcher().useFormState(action, initialState, permalink);
@@ -2313,10 +2313,10 @@
           updatePriority = window.event;
           return void 0 === updatePriority ? DefaultEventPriority : getEventPriority(updatePriority.type);
         }
-        function runWithPriority(priority, fn) {
+        function runWithPriority(priority, fn2) {
           var previousPriority = ReactDOMSharedInternals.p;
           try {
-            return ReactDOMSharedInternals.p = priority, fn();
+            return ReactDOMSharedInternals.p = priority, fn2();
           } finally {
             ReactDOMSharedInternals.p = previousPriority;
           }
@@ -2535,9 +2535,9 @@
             }
           return "\n" + prefix2 + name + suffix;
         }
-        function describeNativeComponentFrame(fn, construct2) {
-          if (!fn || reentry) return "";
-          var frame = componentFrameCache.get(fn);
+        function describeNativeComponentFrame(fn2, construct2) {
+          if (!fn2 || reentry) return "";
+          var frame = componentFrameCache.get(fn2);
           if (void 0 !== frame) return frame;
           reentry = true;
           frame = Error.prepareStackTrace;
@@ -2565,14 +2565,14 @@
                       } catch (x) {
                         var control = x;
                       }
-                      Reflect.construct(fn, [], Fake);
+                      Reflect.construct(fn2, [], Fake);
                     } else {
                       try {
                         Fake.call();
                       } catch (x$0) {
                         control = x$0;
                       }
-                      fn.call(Fake.prototype);
+                      fn2.call(Fake.prototype);
                     }
                   } else {
                     try {
@@ -2580,7 +2580,7 @@
                     } catch (x$1) {
                       control = x$1;
                     }
-                    (Fake = fn()) && "function" === typeof Fake.catch && Fake.catch(function() {
+                    (Fake = fn2()) && "function" === typeof Fake.catch && Fake.catch(function() {
                     });
                   }
                 } catch (sample) {
@@ -2623,8 +2623,8 @@
                           " at new ",
                           " at "
                         );
-                        fn.displayName && _frame.includes("<anonymous>") && (_frame = _frame.replace("<anonymous>", fn.displayName));
-                        "function" === typeof fn && componentFrameCache.set(fn, _frame);
+                        fn2.displayName && _frame.includes("<anonymous>") && (_frame = _frame.replace("<anonymous>", fn2.displayName));
+                        "function" === typeof fn2 && componentFrameCache.set(fn2, _frame);
                         return _frame;
                       }
                     while (1 <= namePropDescriptor && 0 <= _RunInRootFrame$Deter);
@@ -2635,8 +2635,8 @@
           } finally {
             reentry = false, ReactSharedInternals.H = previousDispatcher2, reenableLogs(), Error.prepareStackTrace = frame;
           }
-          sampleLines = (sampleLines = fn ? fn.displayName || fn.name : "") ? describeBuiltInComponentFrame(sampleLines) : "";
-          "function" === typeof fn && componentFrameCache.set(fn, sampleLines);
+          sampleLines = (sampleLines = fn2 ? fn2.displayName || fn2.name : "") ? describeBuiltInComponentFrame(sampleLines) : "";
+          "function" === typeof fn2 && componentFrameCache.set(fn2, sampleLines);
           return sampleLines;
         }
         function formatOwnerStack(error) {
@@ -2706,8 +2706,8 @@
             return "\nError generating stack: " + x.message + "\n" + x.stack;
           }
         }
-        function describeFunctionComponentFrameWithoutLineNumber(fn) {
-          return (fn = fn ? fn.displayName || fn.name : "") ? describeBuiltInComponentFrame(fn) : "";
+        function describeFunctionComponentFrameWithoutLineNumber(fn2) {
+          return (fn2 = fn2 ? fn2.displayName || fn2.name : "") ? describeBuiltInComponentFrame(fn2) : "";
         }
         function getCurrentFiberOwnerNameInDevOrNull() {
           if (null === current) return null;
@@ -2917,7 +2917,7 @@
           "number" === type && getActiveElement(node2.ownerDocument) === node2 || node2.defaultValue === "" + value || (node2.defaultValue = "" + value);
         }
         function validateOptionProps(element, props) {
-          null == props.value && ("object" === typeof props.children && null !== props.children ? React107.Children.forEach(props.children, function(child) {
+          null == props.value && ("object" === typeof props.children && null !== props.children ? React110.Children.forEach(props.children, function(child) {
             null == child || "string" === typeof child || "number" === typeof child || "bigint" === typeof child || didWarnInvalidChild || (didWarnInvalidChild = true, console.error(
               "Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>."
             ));
@@ -3907,16 +3907,16 @@
             }
           }
         }
-        function batchedUpdates$1(fn, a, b) {
-          if (isInsideEventHandler) return fn(a, b);
+        function batchedUpdates$1(fn2, a, b) {
+          if (isInsideEventHandler) return fn2(a, b);
           isInsideEventHandler = true;
           try {
-            var JSCompiler_inline_result = fn(a);
+            var JSCompiler_inline_result = fn2(a);
             return JSCompiler_inline_result;
           } finally {
             if (isInsideEventHandler = false, null !== restoreTarget || null !== restoreQueue) {
-              if (flushSyncWork$1(), restoreTarget && (a = restoreTarget, fn = restoreQueue, restoreQueue = restoreTarget = null, restoreStateOfTarget(a), fn))
-                for (a = 0; a < fn.length; a++) restoreStateOfTarget(fn[a]);
+              if (flushSyncWork$1(), restoreTarget && (a = restoreTarget, fn2 = restoreQueue, restoreQueue = restoreTarget = null, restoreStateOfTarget(a), fn2))
+                for (a = 0; a < fn2.length; a++) restoreStateOfTarget(fn2[a]);
             }
           }
         }
@@ -3953,11 +3953,11 @@
         }
         function getData() {
           if (fallbackText) return fallbackText;
-          var start, startValue = startText, startLength = startValue.length, end, endValue = "value" in root ? root.value : root.textContent, endLength = endValue.length;
-          for (start = 0; start < startLength && startValue[start] === endValue[start]; start++) ;
-          var minEnd = startLength - start;
-          for (end = 1; end <= minEnd && startValue[startLength - end] === endValue[endLength - end]; end++) ;
-          return fallbackText = endValue.slice(start, 1 < end ? 1 - end : void 0);
+          var start2, startValue = startText, startLength = startValue.length, end2, endValue = "value" in root ? root.value : root.textContent, endLength = endValue.length;
+          for (start2 = 0; start2 < startLength && startValue[start2] === endValue[start2]; start2++) ;
+          var minEnd = startLength - start2;
+          for (end2 = 1; end2 <= minEnd && startValue[startLength - end2] === endValue[endLength - end2]; end2++) ;
+          return fallbackText = endValue.slice(start2, 1 < end2 ? 1 - end2 : void 0);
         }
         function getEventCharCode(nativeEvent) {
           var keyCode = nativeEvent.keyCode;
@@ -4141,14 +4141,14 @@
           for (; node2 && node2.firstChild; ) node2 = node2.firstChild;
           return node2;
         }
-        function getNodeForCharacterOffset(root2, offset) {
+        function getNodeForCharacterOffset(root2, offset2) {
           var node2 = getLeafNode(root2);
           root2 = 0;
           for (var nodeEnd; node2; ) {
             if (3 === node2.nodeType) {
               nodeEnd = root2 + node2.textContent.length;
-              if (root2 <= offset && nodeEnd >= offset)
-                return { node: node2, offset: offset - root2 };
+              if (root2 <= offset2 && nodeEnd >= offset2)
+                return { node: node2, offset: offset2 - root2 };
               root2 = nodeEnd;
             }
             a: {
@@ -6526,17 +6526,17 @@
           return [false, stateHook];
         }
         function updateTransition() {
-          var booleanOrThenable = updateReducer(basicStateReducer)[0], start = updateWorkInProgressHook().memoizedState;
+          var booleanOrThenable = updateReducer(basicStateReducer)[0], start2 = updateWorkInProgressHook().memoizedState;
           return [
             "boolean" === typeof booleanOrThenable ? booleanOrThenable : useThenable(booleanOrThenable),
-            start
+            start2
           ];
         }
         function rerenderTransition() {
-          var booleanOrThenable = rerenderReducer(basicStateReducer)[0], start = updateWorkInProgressHook().memoizedState;
+          var booleanOrThenable = rerenderReducer(basicStateReducer)[0], start2 = updateWorkInProgressHook().memoizedState;
           return [
             "boolean" === typeof booleanOrThenable ? booleanOrThenable : useThenable(booleanOrThenable),
-            start
+            start2
           ];
         }
         function useHostTransitionStatus() {
@@ -10148,11 +10148,11 @@
                     JSCompiler_temp = null;
                     break a;
                   }
-                  var length2 = 0, start = -1, end = -1, indexWithinAnchor = 0, indexWithinFocus = 0, node2 = root2, parentNode2 = null;
+                  var length2 = 0, start2 = -1, end2 = -1, indexWithinAnchor = 0, indexWithinFocus = 0, node2 = root2, parentNode2 = null;
                   b: for (; ; ) {
                     for (var next2; ; ) {
-                      node2 !== JSCompiler_temp || 0 !== anchorOffset && 3 !== node2.nodeType || (start = length2 + anchorOffset);
-                      node2 !== focusNode || 0 !== selection && 3 !== node2.nodeType || (end = length2 + selection);
+                      node2 !== JSCompiler_temp || 0 !== anchorOffset && 3 !== node2.nodeType || (start2 = length2 + anchorOffset);
+                      node2 !== focusNode || 0 !== selection && 3 !== node2.nodeType || (end2 = length2 + selection);
                       3 === node2.nodeType && (length2 += node2.nodeValue.length);
                       if (null === (next2 = node2.firstChild)) break;
                       parentNode2 = node2;
@@ -10160,15 +10160,15 @@
                     }
                     for (; ; ) {
                       if (node2 === root2) break b;
-                      parentNode2 === JSCompiler_temp && ++indexWithinAnchor === anchorOffset && (start = length2);
-                      parentNode2 === focusNode && ++indexWithinFocus === selection && (end = length2);
+                      parentNode2 === JSCompiler_temp && ++indexWithinAnchor === anchorOffset && (start2 = length2);
+                      parentNode2 === focusNode && ++indexWithinFocus === selection && (end2 = length2);
                       if (null !== (next2 = node2.nextSibling)) break;
                       node2 = parentNode2;
                       parentNode2 = node2.parentNode;
                     }
                     node2 = next2;
                   }
-                  JSCompiler_temp = -1 === start || -1 === end ? null : { start, end };
+                  JSCompiler_temp = -1 === start2 || -1 === end2 ? null : { start: start2, end: end2 };
                 } else JSCompiler_temp = null;
               }
             JSCompiler_temp = JSCompiler_temp || { start: 0, end: 0 };
@@ -12390,11 +12390,11 @@
                   priorFocusedElem
                 )) {
                   if (null !== priorSelectionRange && hasSelectionCapabilities(priorFocusedElem)) {
-                    var start = priorSelectionRange.start, end = priorSelectionRange.end;
-                    void 0 === end && (end = start);
+                    var start2 = priorSelectionRange.start, end2 = priorSelectionRange.end;
+                    void 0 === end2 && (end2 = start2);
                     if ("selectionStart" in priorFocusedElem)
-                      priorFocusedElem.selectionStart = start, priorFocusedElem.selectionEnd = Math.min(
-                        end,
+                      priorFocusedElem.selectionStart = start2, priorFocusedElem.selectionEnd = Math.min(
+                        end2,
                         priorFocusedElem.value.length
                       );
                     else {
@@ -16499,14 +16499,14 @@
           ));
         }
         "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-        var Scheduler = require_scheduler(), React107 = require_react(), ReactDOM5 = require_react_dom(), assign3 = Object.assign, REACT_LEGACY_ELEMENT_TYPE = Symbol.for("react.element"), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy");
+        var Scheduler = require_scheduler(), React110 = require_react(), ReactDOM5 = require_react_dom(), assign3 = Object.assign, REACT_LEGACY_ELEMENT_TYPE = Symbol.for("react.element"), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy");
         Symbol.for("react.scope");
         var REACT_ACTIVITY_TYPE = Symbol.for("react.activity");
         Symbol.for("react.legacy_hidden");
         Symbol.for("react.tracing_marker");
         var REACT_MEMO_CACHE_SENTINEL = Symbol.for("react.memo_cache_sentinel");
         Symbol.for("react.view_transition");
-        var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React107.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM5.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
+        var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React110.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM5.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
           pending: false,
           data: null,
           method: null,
@@ -18754,15 +18754,15 @@
             }
           }
         }, callComponentWillUnmountInDEV = callComponentWillUnmount["react-stack-bottom-frame"].bind(callComponentWillUnmount), callCreate = {
-          "react-stack-bottom-frame": function(effect) {
-            null != effect.resourceKind && console.error(
+          "react-stack-bottom-frame": function(effect4) {
+            null != effect4.resourceKind && console.error(
               "Expected only SimpleEffects when enableUseEffectCRUDOverload is disabled, got %s",
-              effect.resourceKind
+              effect4.resourceKind
             );
-            var create2 = effect.create;
-            effect = effect.inst;
+            var create2 = effect4.create;
+            effect4 = effect4.inst;
             create2 = create2();
-            return effect.destroy = create2;
+            return effect4.destroy = create2;
           }
         }, callCreateInDEV = callCreate["react-stack-bottom-frame"].bind(callCreate), callDestroy = {
           "react-stack-bottom-frame": function(current2, nearestMountedAncestor, destroy2) {
@@ -19220,7 +19220,7 @@
           }
         };
         (function() {
-          var isomorphicReactPackageVersion = React107.version;
+          var isomorphicReactPackageVersion = React110.version;
           if ("19.1.0" !== isomorphicReactPackageVersion)
             throw Error(
               'Incompatible React versions: The "react" and "react-dom" packages must have the exact same version. Instead got:\n  - react:      ' + (isomorphicReactPackageVersion + "\n  - react-dom:  19.1.0\nLearn more: https://react.dev/warnings/version-mismatch")
@@ -19536,7 +19536,7 @@
           var ContextProvider = REACT_PROVIDER_TYPE;
           var Element2 = REACT_ELEMENT_TYPE;
           var ForwardRef2 = REACT_FORWARD_REF_TYPE;
-          var Fragment16 = REACT_FRAGMENT_TYPE;
+          var Fragment17 = REACT_FRAGMENT_TYPE;
           var Lazy = REACT_LAZY_TYPE;
           var Memo2 = REACT_MEMO_TYPE;
           var Portal3 = REACT_PORTAL_TYPE;
@@ -19562,7 +19562,7 @@
           function isContextProvider(object) {
             return typeOf(object) === REACT_PROVIDER_TYPE;
           }
-          function isElement(object) {
+          function isElement2(object) {
             return typeof object === "object" && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
           }
           function isForwardRef(object) {
@@ -19595,7 +19595,7 @@
           exports.ContextProvider = ContextProvider;
           exports.Element = Element2;
           exports.ForwardRef = ForwardRef2;
-          exports.Fragment = Fragment16;
+          exports.Fragment = Fragment17;
           exports.Lazy = Lazy;
           exports.Memo = Memo2;
           exports.Portal = Portal3;
@@ -19606,7 +19606,7 @@
           exports.isConcurrentMode = isConcurrentMode;
           exports.isContextConsumer = isContextConsumer;
           exports.isContextProvider = isContextProvider;
-          exports.isElement = isElement;
+          exports.isElement = isElement2;
           exports.isForwardRef = isForwardRef;
           exports.isFragment = isFragment5;
           exports.isLazy = isLazy;
@@ -19812,7 +19812,7 @@
       function emptyFunctionThatReturnsNull() {
         return null;
       }
-      module.exports = function(isValidElement13, throwOnDirectAccess) {
+      module.exports = function(isValidElement14, throwOnDirectAccess) {
         var ITERATOR_SYMBOL = typeof Symbol === "function" && Symbol.iterator;
         var FAUX_ITERATOR_SYMBOL = "@@iterator";
         function getIteratorFn(maybeIterable) {
@@ -19940,7 +19940,7 @@
         function createElementTypeChecker() {
           function validate(props, propName, componentName, location2, propFullName) {
             var propValue = props[propName];
-            if (!isValidElement13(propValue)) {
+            if (!isValidElement14(propValue)) {
               var propType = getPropType(propValue);
               return new PropTypeError("Invalid " + location2 + " `" + propFullName + "` of type " + ("`" + propType + "` supplied to `" + componentName + "`, expected a single ReactElement."));
             }
@@ -20128,7 +20128,7 @@
               if (Array.isArray(propValue)) {
                 return propValue.every(isNode);
               }
-              if (propValue === null || isValidElement13(propValue)) {
+              if (propValue === null || isValidElement14(propValue)) {
                 return true;
               }
               var iteratorFn = getIteratorFn(propValue);
@@ -20292,12 +20292,12 @@
     for (const slotName in slots) {
       const slot = slots[slotName];
       let buffer = "";
-      let start = true;
+      let start2 = true;
       for (let i = 0; i < slot.length; i += 1) {
         const value = slot[i];
         if (value) {
-          buffer += (start === true ? "" : " ") + getUtilityClass(value);
-          start = false;
+          buffer += (start2 === true ? "" : " ") + getUtilityClass(value);
+          start2 = false;
           if (classes && classes[value]) {
             buffer += " " + classes[value];
           }
@@ -20694,7 +20694,7 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
       themeKey,
       transform
     } = options;
-    const fn = (props) => {
+    const fn2 = (props) => {
       if (props[prop2] == null) {
         return null;
       }
@@ -20715,11 +20715,11 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
       };
       return handleBreakpoints(props, propValue, styleFromPropValue);
     };
-    fn.propTypes = true ? {
+    fn2.propTypes = true ? {
       [prop2]: responsivePropType_default
     } : {};
-    fn.filterProps = [prop2];
-    return fn;
+    fn2.filterProps = [prop2];
+    return fn2;
   }
   var style_default;
   var init_style = __esm({
@@ -20740,11 +20740,11 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
   });
 
   // node_modules/@mui/system/esm/memoize/memoize.js
-  function memoize(fn) {
+  function memoize(fn2) {
     const cache2 = {};
     return (arg2) => {
       if (cache2[arg2] === void 0) {
-        cache2[arg2] = fn(arg2);
+        cache2[arg2] = fn2(arg2);
       }
       return cache2[arg2];
     };
@@ -20932,7 +20932,7 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
       });
       return acc;
     }, {});
-    const fn = (props) => {
+    const fn2 = (props) => {
       return Object.keys(props).reduce((acc, prop2) => {
         if (handlers2[prop2]) {
           return merge_default(acc, handlers2[prop2](props));
@@ -20940,9 +20940,9 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
         return acc;
       }, {});
     };
-    fn.propTypes = true ? styles4.reduce((acc, style4) => Object.assign(acc, style4.propTypes), {}) : {};
-    fn.filterProps = styles4.reduce((acc, style4) => acc.concat(style4.filterProps), []);
-    return fn;
+    fn2.propTypes = true ? styles4.reduce((acc, style4) => Object.assign(acc, style4.propTypes), {}) : {};
+    fn2.filterProps = styles4.reduce((acc, style4) => acc.concat(style4.filterProps), []);
+    return fn2;
   }
   var compose_default;
   var init_compose = __esm({
@@ -21858,8 +21858,8 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
   function charat(value, index2) {
     return value.charCodeAt(index2) | 0;
   }
-  function substr(value, begin, end) {
-    return value.slice(begin, end);
+  function substr(value, begin, end2) {
+    return value.slice(begin, end2);
   }
   function strlen(value) {
     return value.length;
@@ -21910,8 +21910,8 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
   function caret() {
     return position;
   }
-  function slice(begin, end) {
-    return substr(characters, begin, end);
+  function slice(begin, end2) {
+    return substr(characters, begin, end2);
   }
   function token(type) {
     switch (type) {
@@ -22030,7 +22030,7 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
   }
   function parse(value, root, parent, rule, rules, rulesets, pseudo, points, declarations) {
     var index2 = 0;
-    var offset = 0;
+    var offset2 = 0;
     var length2 = pseudo;
     var atrule = 0;
     var property = 0;
@@ -22042,7 +22042,7 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
     var type = "";
     var props = rules;
     var children = rulesets;
-    var reference = rule;
+    var reference2 = rule;
     var characters2 = type;
     while (scanning)
       switch (previous = character2, character2 = next()) {
@@ -22094,7 +22094,7 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
             case 125:
               scanning = 0;
             // ;
-            case 59 + offset:
+            case 59 + offset2:
               if (ampersand == -1) characters2 = replace(characters2, /\f/g, "");
               if (property > 0 && strlen(characters2) - length2)
                 append(property > 32 ? declaration(characters2 + ";", rule, parent, length2 - 1) : declaration(replace(characters2, " ", "") + ";", rule, parent, length2 - 2), declarations);
@@ -22104,10 +22104,10 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
               characters2 += ";";
             // { rule/at-rule
             default:
-              append(reference = ruleset(characters2, root, parent, index2, offset, rules, points, type, props = [], children = [], length2), rulesets);
+              append(reference2 = ruleset(characters2, root, parent, index2, offset2, rules, points, type, props = [], children = [], length2), rulesets);
               if (character2 === 123)
-                if (offset === 0)
-                  parse(characters2, root, reference, reference, props, rulesets, length2, points, children);
+                if (offset2 === 0)
+                  parse(characters2, root, reference2, reference2, props, rulesets, length2, points, children);
                 else
                   switch (atrule === 99 && charat(characters2, 3) === 110 ? 100 : atrule) {
                     // d l m s
@@ -22115,13 +22115,13 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
                     case 108:
                     case 109:
                     case 115:
-                      parse(value, reference, reference, rule && append(ruleset(value, reference, reference, 0, 0, rules, points, type, rules, props = [], length2), children), rules, children, length2, points, rule ? props : children);
+                      parse(value, reference2, reference2, rule && append(ruleset(value, reference2, reference2, 0, 0, rules, points, type, rules, props = [], length2), children), rules, children, length2, points, rule ? props : children);
                       break;
                     default:
-                      parse(characters2, reference, reference, reference, [""], children, 0, points, children);
+                      parse(characters2, reference2, reference2, reference2, [""], children, 0, points, children);
                   }
           }
-          index2 = offset = property = 0, variable = ampersand = 1, type = characters2 = "", length2 = pseudo;
+          index2 = offset2 = property = 0, variable = ampersand = 1, type = characters2 = "", length2 = pseudo;
           break;
         // :
         case 58:
@@ -22136,7 +22136,7 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
           switch (characters2 += from(character2), character2 * variable) {
             // &
             case 38:
-              ampersand = offset > 0 ? 1 : (characters2 += "\f", -1);
+              ampersand = offset2 > 0 ? 1 : (characters2 += "\f", -1);
               break;
             // ,
             case 44:
@@ -22146,7 +22146,7 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
             case 64:
               if (peek() === 45)
                 characters2 += delimit(next());
-              atrule = peek(), offset = length2 = strlen(type = characters2 += identifier(caret())), character2++;
+              atrule = peek(), offset2 = length2 = strlen(type = characters2 += identifier(caret())), character2++;
               break;
             // -
             case 45:
@@ -22156,15 +22156,15 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
       }
     return rulesets;
   }
-  function ruleset(value, root, parent, index2, offset, rules, points, type, props, children, length2) {
-    var post = offset - 1;
-    var rule = offset === 0 ? rules : [""];
+  function ruleset(value, root, parent, index2, offset2, rules, points, type, props, children, length2) {
+    var post = offset2 - 1;
+    var rule = offset2 === 0 ? rules : [""];
     var size = sizeof(rule);
     for (var i = 0, j = 0, k = 0; i < index2; ++i)
       for (var x = 0, y = substr(value, post + 1, post = abs(j = points[i])), z = value; x < size; ++x)
         if (z = trim(j > 0 ? rule[x] + " " + y : replace(y, /&\f/g, rule[x])))
           props[k++] = z;
-    return node(value, root, parent, offset === 0 ? RULESET : type, props, children, length2);
+    return node(value, root, parent, offset2 === 0 ? RULESET : type, props, children, length2);
   }
   function comment(value, root, parent) {
     return node(value, root, parent, COMMENT, from(char()), substr(value, 2, -2), 0);
@@ -22261,10 +22261,10 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
   });
 
   // node_modules/@emotion/memoize/dist/emotion-memoize.esm.js
-  function memoize2(fn) {
+  function memoize2(fn2) {
     var cache2 = /* @__PURE__ */ Object.create(null);
     return function(arg2) {
-      if (cache2[arg2] === void 0) cache2[arg2] = fn(arg2);
+      if (cache2[arg2] === void 0) cache2[arg2] = fn2(arg2);
       return cache2[arg2];
     };
   }
@@ -22688,7 +22688,7 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
           var ContextProvider = REACT_PROVIDER_TYPE;
           var Element2 = REACT_ELEMENT_TYPE;
           var ForwardRef2 = REACT_FORWARD_REF_TYPE;
-          var Fragment16 = REACT_FRAGMENT_TYPE;
+          var Fragment17 = REACT_FRAGMENT_TYPE;
           var Lazy = REACT_LAZY_TYPE;
           var Memo2 = REACT_MEMO_TYPE;
           var Portal3 = REACT_PORTAL_TYPE;
@@ -22714,7 +22714,7 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
           function isContextProvider(object) {
             return typeOf(object) === REACT_PROVIDER_TYPE;
           }
-          function isElement(object) {
+          function isElement2(object) {
             return typeof object === "object" && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
           }
           function isForwardRef(object) {
@@ -22747,7 +22747,7 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
           exports.ContextProvider = ContextProvider;
           exports.Element = Element2;
           exports.ForwardRef = ForwardRef2;
-          exports.Fragment = Fragment16;
+          exports.Fragment = Fragment17;
           exports.Lazy = Lazy;
           exports.Memo = Memo2;
           exports.Portal = Portal3;
@@ -22758,7 +22758,7 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
           exports.isConcurrentMode = isConcurrentMode;
           exports.isContextConsumer = isContextConsumer;
           exports.isContextProvider = isContextProvider;
-          exports.isElement = isElement;
+          exports.isElement = isElement2;
           exports.isForwardRef = isForwardRef;
           exports.isFragment = isFragment5;
           exports.isLazy = isLazy;
@@ -23340,10 +23340,10 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
         }
         return React4.createElement.apply(null, createElementArgArray);
       };
-      (function(_jsx77) {
+      (function(_jsx81) {
         var JSX;
         /* @__PURE__ */ (function(_JSX) {
-        })(JSX || (JSX = _jsx77.JSX || (_jsx77.JSX = {})));
+        })(JSX || (JSX = _jsx81.JSX || (_jsx81.JSX = {})));
       })(jsx || (jsx = {}));
       Global = /* @__PURE__ */ withEmotionCache(function(props, cache2) {
         var styles4 = props.styles;
@@ -23915,20 +23915,20 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
         function validateChildKeys(node2) {
           "object" === typeof node2 && null !== node2 && node2.$$typeof === REACT_ELEMENT_TYPE && node2._store && (node2._store.validated = 1);
         }
-        var React107 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler");
+        var React110 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler");
         Symbol.for("react.provider");
-        var REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), ReactSharedInternals = React107.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty2 = Object.prototype.hasOwnProperty, isArrayImpl = Array.isArray, createTask = console.createTask ? console.createTask : function() {
+        var REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), ReactSharedInternals = React110.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty2 = Object.prototype.hasOwnProperty, isArrayImpl = Array.isArray, createTask = console.createTask ? console.createTask : function() {
           return null;
         };
-        React107 = {
+        React110 = {
           "react-stack-bottom-frame": function(callStackForError) {
             return callStackForError();
           }
         };
         var specialPropKeyWarningShown;
         var didWarnAboutElementRef = {};
-        var unknownOwnerDebugStack = React107["react-stack-bottom-frame"].bind(
-          React107,
+        var unknownOwnerDebugStack = React110["react-stack-bottom-frame"].bind(
+          React110,
           UnknownOwner
         )();
         var unknownOwnerDebugTask = createTask(getTaskName(UnknownOwner));
@@ -24080,9 +24080,9 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
       const value = typeof values3[key] === "number" ? values3[key] : key;
       return `@media (max-width:${value - step / 100}${unit})`;
     }
-    function between2(start, end) {
-      const endIndex = keys2.indexOf(end);
-      return `@media (min-width:${typeof values3[start] === "number" ? values3[start] : start}${unit}) and (max-width:${(endIndex !== -1 && typeof values3[keys2[endIndex]] === "number" ? values3[keys2[endIndex]] : end) - step / 100}${unit})`;
+    function between2(start2, end2) {
+      const endIndex = keys2.indexOf(end2);
+      return `@media (min-width:${typeof values3[start2] === "number" ? values3[start2] : start2}${unit}) and (max-width:${(endIndex !== -1 && typeof values3[keys2[endIndex]] === "number" ? values3[keys2[endIndex]] : end2) - step / 100}${unit})`;
     }
     function only(key) {
       if (keys2.indexOf(key) + 1 < keys2.length) {
@@ -25250,8 +25250,8 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
   });
 
   // node_modules/@mui/utils/esm/clamp/clamp.js
-  function clamp(val, min = Number.MIN_SAFE_INTEGER, max = Number.MAX_SAFE_INTEGER) {
-    return Math.max(min, Math.min(val, max));
+  function clamp(val, min2 = Number.MIN_SAFE_INTEGER, max2 = Number.MAX_SAFE_INTEGER) {
+    return Math.max(min2, Math.min(val, max2));
   }
   var clamp_default;
   var init_clamp = __esm({
@@ -25268,13 +25268,13 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
   });
 
   // node_modules/@mui/system/esm/colorManipulator/colorManipulator.js
-  function clampWrapper(value, min = 0, max = 1) {
+  function clampWrapper(value, min2 = 0, max2 = 1) {
     if (true) {
-      if (value < min || value > max) {
-        console.error(`MUI: The value provided ${value} is out of range [${min}, ${max}].`);
+      if (value < min2 || value > max2) {
+        console.error(`MUI: The value provided ${value} is out of range [${min2}, ${max2}].`);
       }
     }
-    return clamp_default(value, min, max);
+    return clamp_default(value, min2, max2);
   }
   function hexToRgb(color2) {
     color2 = color2.slice(1);
@@ -27308,7 +27308,7 @@ try {
       useTheme: useTheme6 = useTheme_default,
       componentName = "MuiGrid"
     } = options;
-    const useUtilityClasses41 = (ownerState, theme) => {
+    const useUtilityClasses43 = (ownerState, theme) => {
       const {
         container,
         direction,
@@ -27367,7 +27367,7 @@ try {
         ...other
       } = props;
       const size = parseResponsiveProp(sizeProp, theme.breakpoints, (val) => val !== false);
-      const offset = parseResponsiveProp(offsetProp, theme.breakpoints);
+      const offset2 = parseResponsiveProp(offsetProp, theme.breakpoints);
       const columns = inProps.columns ?? (level ? void 0 : columnsProp);
       const spacing2 = inProps.spacing ?? (level ? void 0 : spacingProp);
       const rowSpacing = inProps.rowSpacing ?? inProps.spacing ?? (level ? void 0 : rowSpacingProp);
@@ -27383,9 +27383,9 @@ try {
         rowSpacing,
         columnSpacing,
         size,
-        offset
+        offset: offset2
       };
-      const classes = useUtilityClasses41(ownerState, theme);
+      const classes = useUtilityClasses43(ownerState, theme);
       return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(GridRoot, {
         ref,
         as: component,
@@ -27517,7 +27517,7 @@ try {
       useThemeProps: useThemeProps2 = useThemePropsDefault2,
       componentName = "MuiStack"
     } = options;
-    const useUtilityClasses41 = () => {
+    const useUtilityClasses43 = () => {
       const slots = {
         root: ["root"]
       };
@@ -27542,7 +27542,7 @@ try {
         spacing: spacing2,
         useFlexGap
       };
-      const classes = useUtilityClasses41();
+      const classes = useUtilityClasses43();
       return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(StackRoot, {
         as: component,
         ownerState,
@@ -29101,9 +29101,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_shouldSkipGeneratingVar();
       init_createGetSelector();
       init_stringifyTheme();
-      silent = (fn) => {
+      silent = (fn2) => {
         try {
-          return fn();
+          return fn2();
         } catch (error) {
         }
         return void 0;
@@ -30200,8 +30200,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/utils/esm/useOnMount/useOnMount.js
-  function useOnMount(fn) {
-    React34.useEffect(fn, EMPTY);
+  function useOnMount(fn2) {
+    React34.useEffect(fn2, EMPTY);
   }
   var React34, EMPTY;
   var init_useOnMount = __esm({
@@ -30232,11 +30232,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * Executes `fn` after `delay`, clearing any previously scheduled call.
          */
-        start(delay, fn) {
+        start(delay, fn2) {
           this.clear();
           this.currentId = setTimeout(() => {
             this.currentId = null;
-            fn();
+            fn2();
           }, delay);
         }
         clear = () => {
@@ -30255,6 +30255,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   // node_modules/@mui/utils/esm/useTimeout/index.js
   var init_useTimeout2 = __esm({
     "node_modules/@mui/utils/esm/useTimeout/index.js"() {
+      init_useTimeout();
       init_useTimeout();
     }
   });
@@ -30928,10 +30929,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/utils/esm/useEventCallback/useEventCallback.js
-  function useEventCallback(fn) {
-    const ref = React38.useRef(fn);
+  function useEventCallback(fn2) {
+    const ref = React38.useRef(fn2);
     useEnhancedEffect_default(() => {
-      ref.current = fn;
+      ref.current = fn2;
     });
     return React38.useRef((...args) => (
       // @ts-expect-error hide `this`
@@ -32841,7 +32842,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           nextKey.current += 1;
           rippleCallback.current = cb;
         }, [classes]);
-        const start = React46.useCallback((event = {}, options = {}, cb = () => {
+        const start2 = React46.useCallback((event = {}, options = {}, cb = () => {
         }) => {
           const {
             pulsate: pulsate2 = false,
@@ -32916,10 +32917,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
         }, [centerProp, startCommit, startTimer]);
         const pulsate = React46.useCallback(() => {
-          start({}, {
+          start2({}, {
             pulsate: true
           });
-        }, [start]);
+        }, [start2]);
         const stop = React46.useCallback((event, cb) => {
           startTimer.clear();
           if (event?.type === "touchend" && startTimerCommit.current) {
@@ -32941,9 +32942,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         }, [startTimer]);
         React46.useImperativeHandle(ref, () => ({
           pulsate,
-          start,
+          start: start2,
           stop
-        }), [pulsate, start, stop]);
+        }), [pulsate, start2, stop]);
         return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(TouchRippleRoot, {
           className: clsx_default(touchRippleClasses_default.root, classes.root, className),
           ref: container,
@@ -35026,6 +35027,1860 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }
   });
 
+  // node_modules/@popperjs/core/lib/enums.js
+  var top2, bottom2, right2, left2, auto, basePlacements, start, end, clippingParents, viewport, popper, reference, variationPlacements, placements, beforeRead, read, afterRead, beforeMain, main, afterMain, beforeWrite, write, afterWrite, modifierPhases;
+  var init_enums = __esm({
+    "node_modules/@popperjs/core/lib/enums.js"() {
+      top2 = "top";
+      bottom2 = "bottom";
+      right2 = "right";
+      left2 = "left";
+      auto = "auto";
+      basePlacements = [top2, bottom2, right2, left2];
+      start = "start";
+      end = "end";
+      clippingParents = "clippingParents";
+      viewport = "viewport";
+      popper = "popper";
+      reference = "reference";
+      variationPlacements = /* @__PURE__ */ basePlacements.reduce(function(acc, placement) {
+        return acc.concat([placement + "-" + start, placement + "-" + end]);
+      }, []);
+      placements = /* @__PURE__ */ [].concat(basePlacements, [auto]).reduce(function(acc, placement) {
+        return acc.concat([placement, placement + "-" + start, placement + "-" + end]);
+      }, []);
+      beforeRead = "beforeRead";
+      read = "read";
+      afterRead = "afterRead";
+      beforeMain = "beforeMain";
+      main = "main";
+      afterMain = "afterMain";
+      beforeWrite = "beforeWrite";
+      write = "write";
+      afterWrite = "afterWrite";
+      modifierPhases = [beforeRead, read, afterRead, beforeMain, main, afterMain, beforeWrite, write, afterWrite];
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/dom-utils/getNodeName.js
+  function getNodeName(element) {
+    return element ? (element.nodeName || "").toLowerCase() : null;
+  }
+  var init_getNodeName = __esm({
+    "node_modules/@popperjs/core/lib/dom-utils/getNodeName.js"() {
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/dom-utils/getWindow.js
+  function getWindow(node2) {
+    if (node2 == null) {
+      return window;
+    }
+    if (node2.toString() !== "[object Window]") {
+      var ownerDocument2 = node2.ownerDocument;
+      return ownerDocument2 ? ownerDocument2.defaultView || window : window;
+    }
+    return node2;
+  }
+  var init_getWindow = __esm({
+    "node_modules/@popperjs/core/lib/dom-utils/getWindow.js"() {
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/dom-utils/instanceOf.js
+  function isElement(node2) {
+    var OwnElement = getWindow(node2).Element;
+    return node2 instanceof OwnElement || node2 instanceof Element;
+  }
+  function isHTMLElement(node2) {
+    var OwnElement = getWindow(node2).HTMLElement;
+    return node2 instanceof OwnElement || node2 instanceof HTMLElement;
+  }
+  function isShadowRoot(node2) {
+    if (typeof ShadowRoot === "undefined") {
+      return false;
+    }
+    var OwnElement = getWindow(node2).ShadowRoot;
+    return node2 instanceof OwnElement || node2 instanceof ShadowRoot;
+  }
+  var init_instanceOf = __esm({
+    "node_modules/@popperjs/core/lib/dom-utils/instanceOf.js"() {
+      init_getWindow();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/modifiers/applyStyles.js
+  function applyStyles2(_ref2) {
+    var state = _ref2.state;
+    Object.keys(state.elements).forEach(function(name) {
+      var style4 = state.styles[name] || {};
+      var attributes = state.attributes[name] || {};
+      var element = state.elements[name];
+      if (!isHTMLElement(element) || !getNodeName(element)) {
+        return;
+      }
+      Object.assign(element.style, style4);
+      Object.keys(attributes).forEach(function(name2) {
+        var value = attributes[name2];
+        if (value === false) {
+          element.removeAttribute(name2);
+        } else {
+          element.setAttribute(name2, value === true ? "" : value);
+        }
+      });
+    });
+  }
+  function effect(_ref2) {
+    var state = _ref2.state;
+    var initialStyles = {
+      popper: {
+        position: state.options.strategy,
+        left: "0",
+        top: "0",
+        margin: "0"
+      },
+      arrow: {
+        position: "absolute"
+      },
+      reference: {}
+    };
+    Object.assign(state.elements.popper.style, initialStyles.popper);
+    state.styles = initialStyles;
+    if (state.elements.arrow) {
+      Object.assign(state.elements.arrow.style, initialStyles.arrow);
+    }
+    return function() {
+      Object.keys(state.elements).forEach(function(name) {
+        var element = state.elements[name];
+        var attributes = state.attributes[name] || {};
+        var styleProperties = Object.keys(state.styles.hasOwnProperty(name) ? state.styles[name] : initialStyles[name]);
+        var style4 = styleProperties.reduce(function(style5, property) {
+          style5[property] = "";
+          return style5;
+        }, {});
+        if (!isHTMLElement(element) || !getNodeName(element)) {
+          return;
+        }
+        Object.assign(element.style, style4);
+        Object.keys(attributes).forEach(function(attribute) {
+          element.removeAttribute(attribute);
+        });
+      });
+    };
+  }
+  var applyStyles_default;
+  var init_applyStyles2 = __esm({
+    "node_modules/@popperjs/core/lib/modifiers/applyStyles.js"() {
+      init_getNodeName();
+      init_instanceOf();
+      applyStyles_default = {
+        name: "applyStyles",
+        enabled: true,
+        phase: "write",
+        fn: applyStyles2,
+        effect,
+        requires: ["computeStyles"]
+      };
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/utils/getBasePlacement.js
+  function getBasePlacement(placement) {
+    return placement.split("-")[0];
+  }
+  var init_getBasePlacement = __esm({
+    "node_modules/@popperjs/core/lib/utils/getBasePlacement.js"() {
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/utils/math.js
+  var max, min, round2;
+  var init_math = __esm({
+    "node_modules/@popperjs/core/lib/utils/math.js"() {
+      max = Math.max;
+      min = Math.min;
+      round2 = Math.round;
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/utils/userAgent.js
+  function getUAString() {
+    var uaData = navigator.userAgentData;
+    if (uaData != null && uaData.brands && Array.isArray(uaData.brands)) {
+      return uaData.brands.map(function(item2) {
+        return item2.brand + "/" + item2.version;
+      }).join(" ");
+    }
+    return navigator.userAgent;
+  }
+  var init_userAgent = __esm({
+    "node_modules/@popperjs/core/lib/utils/userAgent.js"() {
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/dom-utils/isLayoutViewport.js
+  function isLayoutViewport() {
+    return !/^((?!chrome|android).)*safari/i.test(getUAString());
+  }
+  var init_isLayoutViewport = __esm({
+    "node_modules/@popperjs/core/lib/dom-utils/isLayoutViewport.js"() {
+      init_userAgent();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js
+  function getBoundingClientRect(element, includeScale, isFixedStrategy) {
+    if (includeScale === void 0) {
+      includeScale = false;
+    }
+    if (isFixedStrategy === void 0) {
+      isFixedStrategy = false;
+    }
+    var clientRect2 = element.getBoundingClientRect();
+    var scaleX = 1;
+    var scaleY = 1;
+    if (includeScale && isHTMLElement(element)) {
+      scaleX = element.offsetWidth > 0 ? round2(clientRect2.width) / element.offsetWidth || 1 : 1;
+      scaleY = element.offsetHeight > 0 ? round2(clientRect2.height) / element.offsetHeight || 1 : 1;
+    }
+    var _ref2 = isElement(element) ? getWindow(element) : window, visualViewport = _ref2.visualViewport;
+    var addVisualOffsets = !isLayoutViewport() && isFixedStrategy;
+    var x = (clientRect2.left + (addVisualOffsets && visualViewport ? visualViewport.offsetLeft : 0)) / scaleX;
+    var y = (clientRect2.top + (addVisualOffsets && visualViewport ? visualViewport.offsetTop : 0)) / scaleY;
+    var width2 = clientRect2.width / scaleX;
+    var height2 = clientRect2.height / scaleY;
+    return {
+      width: width2,
+      height: height2,
+      top: y,
+      right: x + width2,
+      bottom: y + height2,
+      left: x,
+      x,
+      y
+    };
+  }
+  var init_getBoundingClientRect = __esm({
+    "node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js"() {
+      init_instanceOf();
+      init_math();
+      init_getWindow();
+      init_isLayoutViewport();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js
+  function getLayoutRect(element) {
+    var clientRect2 = getBoundingClientRect(element);
+    var width2 = element.offsetWidth;
+    var height2 = element.offsetHeight;
+    if (Math.abs(clientRect2.width - width2) <= 1) {
+      width2 = clientRect2.width;
+    }
+    if (Math.abs(clientRect2.height - height2) <= 1) {
+      height2 = clientRect2.height;
+    }
+    return {
+      x: element.offsetLeft,
+      y: element.offsetTop,
+      width: width2,
+      height: height2
+    };
+  }
+  var init_getLayoutRect = __esm({
+    "node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js"() {
+      init_getBoundingClientRect();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/dom-utils/contains.js
+  function contains(parent, child) {
+    var rootNode = child.getRootNode && child.getRootNode();
+    if (parent.contains(child)) {
+      return true;
+    } else if (rootNode && isShadowRoot(rootNode)) {
+      var next2 = child;
+      do {
+        if (next2 && parent.isSameNode(next2)) {
+          return true;
+        }
+        next2 = next2.parentNode || next2.host;
+      } while (next2);
+    }
+    return false;
+  }
+  var init_contains = __esm({
+    "node_modules/@popperjs/core/lib/dom-utils/contains.js"() {
+      init_instanceOf();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js
+  function getComputedStyle2(element) {
+    return getWindow(element).getComputedStyle(element);
+  }
+  var init_getComputedStyle = __esm({
+    "node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js"() {
+      init_getWindow();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/dom-utils/isTableElement.js
+  function isTableElement(element) {
+    return ["table", "td", "th"].indexOf(getNodeName(element)) >= 0;
+  }
+  var init_isTableElement = __esm({
+    "node_modules/@popperjs/core/lib/dom-utils/isTableElement.js"() {
+      init_getNodeName();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js
+  function getDocumentElement(element) {
+    return ((isElement(element) ? element.ownerDocument : (
+      // $FlowFixMe[prop-missing]
+      element.document
+    )) || window.document).documentElement;
+  }
+  var init_getDocumentElement = __esm({
+    "node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js"() {
+      init_instanceOf();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/dom-utils/getParentNode.js
+  function getParentNode(element) {
+    if (getNodeName(element) === "html") {
+      return element;
+    }
+    return (
+      // this is a quicker (but less type safe) way to save quite some bytes from the bundle
+      // $FlowFixMe[incompatible-return]
+      // $FlowFixMe[prop-missing]
+      element.assignedSlot || // step into the shadow DOM of the parent of a slotted node
+      element.parentNode || // DOM Element detected
+      (isShadowRoot(element) ? element.host : null) || // ShadowRoot detected
+      // $FlowFixMe[incompatible-call]: HTMLElement is a Node
+      getDocumentElement(element)
+    );
+  }
+  var init_getParentNode = __esm({
+    "node_modules/@popperjs/core/lib/dom-utils/getParentNode.js"() {
+      init_getNodeName();
+      init_getDocumentElement();
+      init_instanceOf();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js
+  function getTrueOffsetParent(element) {
+    if (!isHTMLElement(element) || // https://github.com/popperjs/popper-core/issues/837
+    getComputedStyle2(element).position === "fixed") {
+      return null;
+    }
+    return element.offsetParent;
+  }
+  function getContainingBlock(element) {
+    var isFirefox = /firefox/i.test(getUAString());
+    var isIE = /Trident/i.test(getUAString());
+    if (isIE && isHTMLElement(element)) {
+      var elementCss = getComputedStyle2(element);
+      if (elementCss.position === "fixed") {
+        return null;
+      }
+    }
+    var currentNode = getParentNode(element);
+    if (isShadowRoot(currentNode)) {
+      currentNode = currentNode.host;
+    }
+    while (isHTMLElement(currentNode) && ["html", "body"].indexOf(getNodeName(currentNode)) < 0) {
+      var css3 = getComputedStyle2(currentNode);
+      if (css3.transform !== "none" || css3.perspective !== "none" || css3.contain === "paint" || ["transform", "perspective"].indexOf(css3.willChange) !== -1 || isFirefox && css3.willChange === "filter" || isFirefox && css3.filter && css3.filter !== "none") {
+        return currentNode;
+      } else {
+        currentNode = currentNode.parentNode;
+      }
+    }
+    return null;
+  }
+  function getOffsetParent(element) {
+    var window2 = getWindow(element);
+    var offsetParent = getTrueOffsetParent(element);
+    while (offsetParent && isTableElement(offsetParent) && getComputedStyle2(offsetParent).position === "static") {
+      offsetParent = getTrueOffsetParent(offsetParent);
+    }
+    if (offsetParent && (getNodeName(offsetParent) === "html" || getNodeName(offsetParent) === "body" && getComputedStyle2(offsetParent).position === "static")) {
+      return window2;
+    }
+    return offsetParent || getContainingBlock(element) || window2;
+  }
+  var init_getOffsetParent = __esm({
+    "node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js"() {
+      init_getWindow();
+      init_getNodeName();
+      init_getComputedStyle();
+      init_instanceOf();
+      init_isTableElement();
+      init_getParentNode();
+      init_userAgent();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/utils/getMainAxisFromPlacement.js
+  function getMainAxisFromPlacement(placement) {
+    return ["top", "bottom"].indexOf(placement) >= 0 ? "x" : "y";
+  }
+  var init_getMainAxisFromPlacement = __esm({
+    "node_modules/@popperjs/core/lib/utils/getMainAxisFromPlacement.js"() {
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/utils/within.js
+  function within(min2, value, max2) {
+    return max(min2, min(value, max2));
+  }
+  function withinMaxClamp(min2, value, max2) {
+    var v = within(min2, value, max2);
+    return v > max2 ? max2 : v;
+  }
+  var init_within = __esm({
+    "node_modules/@popperjs/core/lib/utils/within.js"() {
+      init_math();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/utils/getFreshSideObject.js
+  function getFreshSideObject() {
+    return {
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0
+    };
+  }
+  var init_getFreshSideObject = __esm({
+    "node_modules/@popperjs/core/lib/utils/getFreshSideObject.js"() {
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/utils/mergePaddingObject.js
+  function mergePaddingObject(paddingObject) {
+    return Object.assign({}, getFreshSideObject(), paddingObject);
+  }
+  var init_mergePaddingObject = __esm({
+    "node_modules/@popperjs/core/lib/utils/mergePaddingObject.js"() {
+      init_getFreshSideObject();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/utils/expandToHashMap.js
+  function expandToHashMap(value, keys2) {
+    return keys2.reduce(function(hashMap, key) {
+      hashMap[key] = value;
+      return hashMap;
+    }, {});
+  }
+  var init_expandToHashMap = __esm({
+    "node_modules/@popperjs/core/lib/utils/expandToHashMap.js"() {
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/modifiers/arrow.js
+  function arrow(_ref2) {
+    var _state$modifiersData$;
+    var state = _ref2.state, name = _ref2.name, options = _ref2.options;
+    var arrowElement = state.elements.arrow;
+    var popperOffsets2 = state.modifiersData.popperOffsets;
+    var basePlacement = getBasePlacement(state.placement);
+    var axis = getMainAxisFromPlacement(basePlacement);
+    var isVertical = [left2, right2].indexOf(basePlacement) >= 0;
+    var len = isVertical ? "height" : "width";
+    if (!arrowElement || !popperOffsets2) {
+      return;
+    }
+    var paddingObject = toPaddingObject(options.padding, state);
+    var arrowRect = getLayoutRect(arrowElement);
+    var minProp = axis === "y" ? top2 : left2;
+    var maxProp = axis === "y" ? bottom2 : right2;
+    var endDiff = state.rects.reference[len] + state.rects.reference[axis] - popperOffsets2[axis] - state.rects.popper[len];
+    var startDiff = popperOffsets2[axis] - state.rects.reference[axis];
+    var arrowOffsetParent = getOffsetParent(arrowElement);
+    var clientSize = arrowOffsetParent ? axis === "y" ? arrowOffsetParent.clientHeight || 0 : arrowOffsetParent.clientWidth || 0 : 0;
+    var centerToReference = endDiff / 2 - startDiff / 2;
+    var min2 = paddingObject[minProp];
+    var max2 = clientSize - arrowRect[len] - paddingObject[maxProp];
+    var center = clientSize / 2 - arrowRect[len] / 2 + centerToReference;
+    var offset2 = within(min2, center, max2);
+    var axisProp = axis;
+    state.modifiersData[name] = (_state$modifiersData$ = {}, _state$modifiersData$[axisProp] = offset2, _state$modifiersData$.centerOffset = offset2 - center, _state$modifiersData$);
+  }
+  function effect2(_ref2) {
+    var state = _ref2.state, options = _ref2.options;
+    var _options$element = options.element, arrowElement = _options$element === void 0 ? "[data-popper-arrow]" : _options$element;
+    if (arrowElement == null) {
+      return;
+    }
+    if (typeof arrowElement === "string") {
+      arrowElement = state.elements.popper.querySelector(arrowElement);
+      if (!arrowElement) {
+        return;
+      }
+    }
+    if (!contains(state.elements.popper, arrowElement)) {
+      return;
+    }
+    state.elements.arrow = arrowElement;
+  }
+  var toPaddingObject, arrow_default;
+  var init_arrow = __esm({
+    "node_modules/@popperjs/core/lib/modifiers/arrow.js"() {
+      init_getBasePlacement();
+      init_getLayoutRect();
+      init_contains();
+      init_getOffsetParent();
+      init_getMainAxisFromPlacement();
+      init_within();
+      init_mergePaddingObject();
+      init_expandToHashMap();
+      init_enums();
+      toPaddingObject = function toPaddingObject2(padding2, state) {
+        padding2 = typeof padding2 === "function" ? padding2(Object.assign({}, state.rects, {
+          placement: state.placement
+        })) : padding2;
+        return mergePaddingObject(typeof padding2 !== "number" ? padding2 : expandToHashMap(padding2, basePlacements));
+      };
+      arrow_default = {
+        name: "arrow",
+        enabled: true,
+        phase: "main",
+        fn: arrow,
+        effect: effect2,
+        requires: ["popperOffsets"],
+        requiresIfExists: ["preventOverflow"]
+      };
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/utils/getVariation.js
+  function getVariation(placement) {
+    return placement.split("-")[1];
+  }
+  var init_getVariation = __esm({
+    "node_modules/@popperjs/core/lib/utils/getVariation.js"() {
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/modifiers/computeStyles.js
+  function roundOffsetsByDPR(_ref2, win) {
+    var x = _ref2.x, y = _ref2.y;
+    var dpr = win.devicePixelRatio || 1;
+    return {
+      x: round2(x * dpr) / dpr || 0,
+      y: round2(y * dpr) / dpr || 0
+    };
+  }
+  function mapToStyles(_ref2) {
+    var _Object$assign2;
+    var popper2 = _ref2.popper, popperRect = _ref2.popperRect, placement = _ref2.placement, variation = _ref2.variation, offsets = _ref2.offsets, position3 = _ref2.position, gpuAcceleration = _ref2.gpuAcceleration, adaptive = _ref2.adaptive, roundOffsets = _ref2.roundOffsets, isFixed = _ref2.isFixed;
+    var _offsets$x = offsets.x, x = _offsets$x === void 0 ? 0 : _offsets$x, _offsets$y = offsets.y, y = _offsets$y === void 0 ? 0 : _offsets$y;
+    var _ref3 = typeof roundOffsets === "function" ? roundOffsets({
+      x,
+      y
+    }) : {
+      x,
+      y
+    };
+    x = _ref3.x;
+    y = _ref3.y;
+    var hasX = offsets.hasOwnProperty("x");
+    var hasY = offsets.hasOwnProperty("y");
+    var sideX = left2;
+    var sideY = top2;
+    var win = window;
+    if (adaptive) {
+      var offsetParent = getOffsetParent(popper2);
+      var heightProp = "clientHeight";
+      var widthProp = "clientWidth";
+      if (offsetParent === getWindow(popper2)) {
+        offsetParent = getDocumentElement(popper2);
+        if (getComputedStyle2(offsetParent).position !== "static" && position3 === "absolute") {
+          heightProp = "scrollHeight";
+          widthProp = "scrollWidth";
+        }
+      }
+      offsetParent = offsetParent;
+      if (placement === top2 || (placement === left2 || placement === right2) && variation === end) {
+        sideY = bottom2;
+        var offsetY = isFixed && offsetParent === win && win.visualViewport ? win.visualViewport.height : (
+          // $FlowFixMe[prop-missing]
+          offsetParent[heightProp]
+        );
+        y -= offsetY - popperRect.height;
+        y *= gpuAcceleration ? 1 : -1;
+      }
+      if (placement === left2 || (placement === top2 || placement === bottom2) && variation === end) {
+        sideX = right2;
+        var offsetX = isFixed && offsetParent === win && win.visualViewport ? win.visualViewport.width : (
+          // $FlowFixMe[prop-missing]
+          offsetParent[widthProp]
+        );
+        x -= offsetX - popperRect.width;
+        x *= gpuAcceleration ? 1 : -1;
+      }
+    }
+    var commonStyles = Object.assign({
+      position: position3
+    }, adaptive && unsetSides);
+    var _ref4 = roundOffsets === true ? roundOffsetsByDPR({
+      x,
+      y
+    }, getWindow(popper2)) : {
+      x,
+      y
+    };
+    x = _ref4.x;
+    y = _ref4.y;
+    if (gpuAcceleration) {
+      var _Object$assign;
+      return Object.assign({}, commonStyles, (_Object$assign = {}, _Object$assign[sideY] = hasY ? "0" : "", _Object$assign[sideX] = hasX ? "0" : "", _Object$assign.transform = (win.devicePixelRatio || 1) <= 1 ? "translate(" + x + "px, " + y + "px)" : "translate3d(" + x + "px, " + y + "px, 0)", _Object$assign));
+    }
+    return Object.assign({}, commonStyles, (_Object$assign2 = {}, _Object$assign2[sideY] = hasY ? y + "px" : "", _Object$assign2[sideX] = hasX ? x + "px" : "", _Object$assign2.transform = "", _Object$assign2));
+  }
+  function computeStyles(_ref5) {
+    var state = _ref5.state, options = _ref5.options;
+    var _options$gpuAccelerat = options.gpuAcceleration, gpuAcceleration = _options$gpuAccelerat === void 0 ? true : _options$gpuAccelerat, _options$adaptive = options.adaptive, adaptive = _options$adaptive === void 0 ? true : _options$adaptive, _options$roundOffsets = options.roundOffsets, roundOffsets = _options$roundOffsets === void 0 ? true : _options$roundOffsets;
+    var commonStyles = {
+      placement: getBasePlacement(state.placement),
+      variation: getVariation(state.placement),
+      popper: state.elements.popper,
+      popperRect: state.rects.popper,
+      gpuAcceleration,
+      isFixed: state.options.strategy === "fixed"
+    };
+    if (state.modifiersData.popperOffsets != null) {
+      state.styles.popper = Object.assign({}, state.styles.popper, mapToStyles(Object.assign({}, commonStyles, {
+        offsets: state.modifiersData.popperOffsets,
+        position: state.options.strategy,
+        adaptive,
+        roundOffsets
+      })));
+    }
+    if (state.modifiersData.arrow != null) {
+      state.styles.arrow = Object.assign({}, state.styles.arrow, mapToStyles(Object.assign({}, commonStyles, {
+        offsets: state.modifiersData.arrow,
+        position: "absolute",
+        adaptive: false,
+        roundOffsets
+      })));
+    }
+    state.attributes.popper = Object.assign({}, state.attributes.popper, {
+      "data-popper-placement": state.placement
+    });
+  }
+  var unsetSides, computeStyles_default;
+  var init_computeStyles = __esm({
+    "node_modules/@popperjs/core/lib/modifiers/computeStyles.js"() {
+      init_enums();
+      init_getOffsetParent();
+      init_getWindow();
+      init_getDocumentElement();
+      init_getComputedStyle();
+      init_getBasePlacement();
+      init_getVariation();
+      init_math();
+      unsetSides = {
+        top: "auto",
+        right: "auto",
+        bottom: "auto",
+        left: "auto"
+      };
+      computeStyles_default = {
+        name: "computeStyles",
+        enabled: true,
+        phase: "beforeWrite",
+        fn: computeStyles,
+        data: {}
+      };
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/modifiers/eventListeners.js
+  function effect3(_ref2) {
+    var state = _ref2.state, instance = _ref2.instance, options = _ref2.options;
+    var _options$scroll = options.scroll, scroll = _options$scroll === void 0 ? true : _options$scroll, _options$resize = options.resize, resize = _options$resize === void 0 ? true : _options$resize;
+    var window2 = getWindow(state.elements.popper);
+    var scrollParents = [].concat(state.scrollParents.reference, state.scrollParents.popper);
+    if (scroll) {
+      scrollParents.forEach(function(scrollParent) {
+        scrollParent.addEventListener("scroll", instance.update, passive);
+      });
+    }
+    if (resize) {
+      window2.addEventListener("resize", instance.update, passive);
+    }
+    return function() {
+      if (scroll) {
+        scrollParents.forEach(function(scrollParent) {
+          scrollParent.removeEventListener("scroll", instance.update, passive);
+        });
+      }
+      if (resize) {
+        window2.removeEventListener("resize", instance.update, passive);
+      }
+    };
+  }
+  var passive, eventListeners_default;
+  var init_eventListeners = __esm({
+    "node_modules/@popperjs/core/lib/modifiers/eventListeners.js"() {
+      init_getWindow();
+      passive = {
+        passive: true
+      };
+      eventListeners_default = {
+        name: "eventListeners",
+        enabled: true,
+        phase: "write",
+        fn: function fn() {
+        },
+        effect: effect3,
+        data: {}
+      };
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/utils/getOppositePlacement.js
+  function getOppositePlacement(placement) {
+    return placement.replace(/left|right|bottom|top/g, function(matched) {
+      return hash2[matched];
+    });
+  }
+  var hash2;
+  var init_getOppositePlacement = __esm({
+    "node_modules/@popperjs/core/lib/utils/getOppositePlacement.js"() {
+      hash2 = {
+        left: "right",
+        right: "left",
+        bottom: "top",
+        top: "bottom"
+      };
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/utils/getOppositeVariationPlacement.js
+  function getOppositeVariationPlacement(placement) {
+    return placement.replace(/start|end/g, function(matched) {
+      return hash3[matched];
+    });
+  }
+  var hash3;
+  var init_getOppositeVariationPlacement = __esm({
+    "node_modules/@popperjs/core/lib/utils/getOppositeVariationPlacement.js"() {
+      hash3 = {
+        start: "end",
+        end: "start"
+      };
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js
+  function getWindowScroll(node2) {
+    var win = getWindow(node2);
+    var scrollLeft = win.pageXOffset;
+    var scrollTop = win.pageYOffset;
+    return {
+      scrollLeft,
+      scrollTop
+    };
+  }
+  var init_getWindowScroll = __esm({
+    "node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js"() {
+      init_getWindow();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js
+  function getWindowScrollBarX(element) {
+    return getBoundingClientRect(getDocumentElement(element)).left + getWindowScroll(element).scrollLeft;
+  }
+  var init_getWindowScrollBarX = __esm({
+    "node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js"() {
+      init_getBoundingClientRect();
+      init_getDocumentElement();
+      init_getWindowScroll();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/dom-utils/getViewportRect.js
+  function getViewportRect(element, strategy) {
+    var win = getWindow(element);
+    var html2 = getDocumentElement(element);
+    var visualViewport = win.visualViewport;
+    var width2 = html2.clientWidth;
+    var height2 = html2.clientHeight;
+    var x = 0;
+    var y = 0;
+    if (visualViewport) {
+      width2 = visualViewport.width;
+      height2 = visualViewport.height;
+      var layoutViewport = isLayoutViewport();
+      if (layoutViewport || !layoutViewport && strategy === "fixed") {
+        x = visualViewport.offsetLeft;
+        y = visualViewport.offsetTop;
+      }
+    }
+    return {
+      width: width2,
+      height: height2,
+      x: x + getWindowScrollBarX(element),
+      y
+    };
+  }
+  var init_getViewportRect = __esm({
+    "node_modules/@popperjs/core/lib/dom-utils/getViewportRect.js"() {
+      init_getWindow();
+      init_getDocumentElement();
+      init_getWindowScrollBarX();
+      init_isLayoutViewport();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/dom-utils/getDocumentRect.js
+  function getDocumentRect(element) {
+    var _element$ownerDocumen;
+    var html2 = getDocumentElement(element);
+    var winScroll = getWindowScroll(element);
+    var body = (_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body;
+    var width2 = max(html2.scrollWidth, html2.clientWidth, body ? body.scrollWidth : 0, body ? body.clientWidth : 0);
+    var height2 = max(html2.scrollHeight, html2.clientHeight, body ? body.scrollHeight : 0, body ? body.clientHeight : 0);
+    var x = -winScroll.scrollLeft + getWindowScrollBarX(element);
+    var y = -winScroll.scrollTop;
+    if (getComputedStyle2(body || html2).direction === "rtl") {
+      x += max(html2.clientWidth, body ? body.clientWidth : 0) - width2;
+    }
+    return {
+      width: width2,
+      height: height2,
+      x,
+      y
+    };
+  }
+  var init_getDocumentRect = __esm({
+    "node_modules/@popperjs/core/lib/dom-utils/getDocumentRect.js"() {
+      init_getDocumentElement();
+      init_getComputedStyle();
+      init_getWindowScrollBarX();
+      init_getWindowScroll();
+      init_math();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/dom-utils/isScrollParent.js
+  function isScrollParent(element) {
+    var _getComputedStyle = getComputedStyle2(element), overflow = _getComputedStyle.overflow, overflowX = _getComputedStyle.overflowX, overflowY = _getComputedStyle.overflowY;
+    return /auto|scroll|overlay|hidden/.test(overflow + overflowY + overflowX);
+  }
+  var init_isScrollParent = __esm({
+    "node_modules/@popperjs/core/lib/dom-utils/isScrollParent.js"() {
+      init_getComputedStyle();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/dom-utils/getScrollParent.js
+  function getScrollParent(node2) {
+    if (["html", "body", "#document"].indexOf(getNodeName(node2)) >= 0) {
+      return node2.ownerDocument.body;
+    }
+    if (isHTMLElement(node2) && isScrollParent(node2)) {
+      return node2;
+    }
+    return getScrollParent(getParentNode(node2));
+  }
+  var init_getScrollParent = __esm({
+    "node_modules/@popperjs/core/lib/dom-utils/getScrollParent.js"() {
+      init_getParentNode();
+      init_isScrollParent();
+      init_getNodeName();
+      init_instanceOf();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/dom-utils/listScrollParents.js
+  function listScrollParents(element, list2) {
+    var _element$ownerDocumen;
+    if (list2 === void 0) {
+      list2 = [];
+    }
+    var scrollParent = getScrollParent(element);
+    var isBody = scrollParent === ((_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body);
+    var win = getWindow(scrollParent);
+    var target2 = isBody ? [win].concat(win.visualViewport || [], isScrollParent(scrollParent) ? scrollParent : []) : scrollParent;
+    var updatedList = list2.concat(target2);
+    return isBody ? updatedList : (
+      // $FlowFixMe[incompatible-call]: isBody tells us target will be an HTMLElement here
+      updatedList.concat(listScrollParents(getParentNode(target2)))
+    );
+  }
+  var init_listScrollParents = __esm({
+    "node_modules/@popperjs/core/lib/dom-utils/listScrollParents.js"() {
+      init_getScrollParent();
+      init_getParentNode();
+      init_getWindow();
+      init_isScrollParent();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/utils/rectToClientRect.js
+  function rectToClientRect(rect2) {
+    return Object.assign({}, rect2, {
+      left: rect2.x,
+      top: rect2.y,
+      right: rect2.x + rect2.width,
+      bottom: rect2.y + rect2.height
+    });
+  }
+  var init_rectToClientRect = __esm({
+    "node_modules/@popperjs/core/lib/utils/rectToClientRect.js"() {
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/dom-utils/getClippingRect.js
+  function getInnerBoundingClientRect(element, strategy) {
+    var rect2 = getBoundingClientRect(element, false, strategy === "fixed");
+    rect2.top = rect2.top + element.clientTop;
+    rect2.left = rect2.left + element.clientLeft;
+    rect2.bottom = rect2.top + element.clientHeight;
+    rect2.right = rect2.left + element.clientWidth;
+    rect2.width = element.clientWidth;
+    rect2.height = element.clientHeight;
+    rect2.x = rect2.left;
+    rect2.y = rect2.top;
+    return rect2;
+  }
+  function getClientRectFromMixedType(element, clippingParent, strategy) {
+    return clippingParent === viewport ? rectToClientRect(getViewportRect(element, strategy)) : isElement(clippingParent) ? getInnerBoundingClientRect(clippingParent, strategy) : rectToClientRect(getDocumentRect(getDocumentElement(element)));
+  }
+  function getClippingParents(element) {
+    var clippingParents2 = listScrollParents(getParentNode(element));
+    var canEscapeClipping = ["absolute", "fixed"].indexOf(getComputedStyle2(element).position) >= 0;
+    var clipperElement = canEscapeClipping && isHTMLElement(element) ? getOffsetParent(element) : element;
+    if (!isElement(clipperElement)) {
+      return [];
+    }
+    return clippingParents2.filter(function(clippingParent) {
+      return isElement(clippingParent) && contains(clippingParent, clipperElement) && getNodeName(clippingParent) !== "body";
+    });
+  }
+  function getClippingRect(element, boundary, rootBoundary, strategy) {
+    var mainClippingParents = boundary === "clippingParents" ? getClippingParents(element) : [].concat(boundary);
+    var clippingParents2 = [].concat(mainClippingParents, [rootBoundary]);
+    var firstClippingParent = clippingParents2[0];
+    var clippingRect = clippingParents2.reduce(function(accRect, clippingParent) {
+      var rect2 = getClientRectFromMixedType(element, clippingParent, strategy);
+      accRect.top = max(rect2.top, accRect.top);
+      accRect.right = min(rect2.right, accRect.right);
+      accRect.bottom = min(rect2.bottom, accRect.bottom);
+      accRect.left = max(rect2.left, accRect.left);
+      return accRect;
+    }, getClientRectFromMixedType(element, firstClippingParent, strategy));
+    clippingRect.width = clippingRect.right - clippingRect.left;
+    clippingRect.height = clippingRect.bottom - clippingRect.top;
+    clippingRect.x = clippingRect.left;
+    clippingRect.y = clippingRect.top;
+    return clippingRect;
+  }
+  var init_getClippingRect = __esm({
+    "node_modules/@popperjs/core/lib/dom-utils/getClippingRect.js"() {
+      init_enums();
+      init_getViewportRect();
+      init_getDocumentRect();
+      init_listScrollParents();
+      init_getOffsetParent();
+      init_getDocumentElement();
+      init_getComputedStyle();
+      init_instanceOf();
+      init_getBoundingClientRect();
+      init_getParentNode();
+      init_contains();
+      init_getNodeName();
+      init_rectToClientRect();
+      init_math();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/utils/computeOffsets.js
+  function computeOffsets(_ref2) {
+    var reference2 = _ref2.reference, element = _ref2.element, placement = _ref2.placement;
+    var basePlacement = placement ? getBasePlacement(placement) : null;
+    var variation = placement ? getVariation(placement) : null;
+    var commonX = reference2.x + reference2.width / 2 - element.width / 2;
+    var commonY = reference2.y + reference2.height / 2 - element.height / 2;
+    var offsets;
+    switch (basePlacement) {
+      case top2:
+        offsets = {
+          x: commonX,
+          y: reference2.y - element.height
+        };
+        break;
+      case bottom2:
+        offsets = {
+          x: commonX,
+          y: reference2.y + reference2.height
+        };
+        break;
+      case right2:
+        offsets = {
+          x: reference2.x + reference2.width,
+          y: commonY
+        };
+        break;
+      case left2:
+        offsets = {
+          x: reference2.x - element.width,
+          y: commonY
+        };
+        break;
+      default:
+        offsets = {
+          x: reference2.x,
+          y: reference2.y
+        };
+    }
+    var mainAxis = basePlacement ? getMainAxisFromPlacement(basePlacement) : null;
+    if (mainAxis != null) {
+      var len = mainAxis === "y" ? "height" : "width";
+      switch (variation) {
+        case start:
+          offsets[mainAxis] = offsets[mainAxis] - (reference2[len] / 2 - element[len] / 2);
+          break;
+        case end:
+          offsets[mainAxis] = offsets[mainAxis] + (reference2[len] / 2 - element[len] / 2);
+          break;
+        default:
+      }
+    }
+    return offsets;
+  }
+  var init_computeOffsets = __esm({
+    "node_modules/@popperjs/core/lib/utils/computeOffsets.js"() {
+      init_getBasePlacement();
+      init_getVariation();
+      init_getMainAxisFromPlacement();
+      init_enums();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/utils/detectOverflow.js
+  function detectOverflow(state, options) {
+    if (options === void 0) {
+      options = {};
+    }
+    var _options = options, _options$placement = _options.placement, placement = _options$placement === void 0 ? state.placement : _options$placement, _options$strategy = _options.strategy, strategy = _options$strategy === void 0 ? state.strategy : _options$strategy, _options$boundary = _options.boundary, boundary = _options$boundary === void 0 ? clippingParents : _options$boundary, _options$rootBoundary = _options.rootBoundary, rootBoundary = _options$rootBoundary === void 0 ? viewport : _options$rootBoundary, _options$elementConte = _options.elementContext, elementContext = _options$elementConte === void 0 ? popper : _options$elementConte, _options$altBoundary = _options.altBoundary, altBoundary = _options$altBoundary === void 0 ? false : _options$altBoundary, _options$padding = _options.padding, padding2 = _options$padding === void 0 ? 0 : _options$padding;
+    var paddingObject = mergePaddingObject(typeof padding2 !== "number" ? padding2 : expandToHashMap(padding2, basePlacements));
+    var altContext = elementContext === popper ? reference : popper;
+    var popperRect = state.rects.popper;
+    var element = state.elements[altBoundary ? altContext : elementContext];
+    var clippingClientRect = getClippingRect(isElement(element) ? element : element.contextElement || getDocumentElement(state.elements.popper), boundary, rootBoundary, strategy);
+    var referenceClientRect = getBoundingClientRect(state.elements.reference);
+    var popperOffsets2 = computeOffsets({
+      reference: referenceClientRect,
+      element: popperRect,
+      strategy: "absolute",
+      placement
+    });
+    var popperClientRect = rectToClientRect(Object.assign({}, popperRect, popperOffsets2));
+    var elementClientRect = elementContext === popper ? popperClientRect : referenceClientRect;
+    var overflowOffsets = {
+      top: clippingClientRect.top - elementClientRect.top + paddingObject.top,
+      bottom: elementClientRect.bottom - clippingClientRect.bottom + paddingObject.bottom,
+      left: clippingClientRect.left - elementClientRect.left + paddingObject.left,
+      right: elementClientRect.right - clippingClientRect.right + paddingObject.right
+    };
+    var offsetData = state.modifiersData.offset;
+    if (elementContext === popper && offsetData) {
+      var offset2 = offsetData[placement];
+      Object.keys(overflowOffsets).forEach(function(key) {
+        var multiply = [right2, bottom2].indexOf(key) >= 0 ? 1 : -1;
+        var axis = [top2, bottom2].indexOf(key) >= 0 ? "y" : "x";
+        overflowOffsets[key] += offset2[axis] * multiply;
+      });
+    }
+    return overflowOffsets;
+  }
+  var init_detectOverflow = __esm({
+    "node_modules/@popperjs/core/lib/utils/detectOverflow.js"() {
+      init_getClippingRect();
+      init_getDocumentElement();
+      init_getBoundingClientRect();
+      init_computeOffsets();
+      init_rectToClientRect();
+      init_enums();
+      init_instanceOf();
+      init_mergePaddingObject();
+      init_expandToHashMap();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/utils/computeAutoPlacement.js
+  function computeAutoPlacement(state, options) {
+    if (options === void 0) {
+      options = {};
+    }
+    var _options = options, placement = _options.placement, boundary = _options.boundary, rootBoundary = _options.rootBoundary, padding2 = _options.padding, flipVariations = _options.flipVariations, _options$allowedAutoP = _options.allowedAutoPlacements, allowedAutoPlacements = _options$allowedAutoP === void 0 ? placements : _options$allowedAutoP;
+    var variation = getVariation(placement);
+    var placements2 = variation ? flipVariations ? variationPlacements : variationPlacements.filter(function(placement2) {
+      return getVariation(placement2) === variation;
+    }) : basePlacements;
+    var allowedPlacements = placements2.filter(function(placement2) {
+      return allowedAutoPlacements.indexOf(placement2) >= 0;
+    });
+    if (allowedPlacements.length === 0) {
+      allowedPlacements = placements2;
+    }
+    var overflows = allowedPlacements.reduce(function(acc, placement2) {
+      acc[placement2] = detectOverflow(state, {
+        placement: placement2,
+        boundary,
+        rootBoundary,
+        padding: padding2
+      })[getBasePlacement(placement2)];
+      return acc;
+    }, {});
+    return Object.keys(overflows).sort(function(a, b) {
+      return overflows[a] - overflows[b];
+    });
+  }
+  var init_computeAutoPlacement = __esm({
+    "node_modules/@popperjs/core/lib/utils/computeAutoPlacement.js"() {
+      init_getVariation();
+      init_enums();
+      init_detectOverflow();
+      init_getBasePlacement();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/modifiers/flip.js
+  function getExpandedFallbackPlacements(placement) {
+    if (getBasePlacement(placement) === auto) {
+      return [];
+    }
+    var oppositePlacement = getOppositePlacement(placement);
+    return [getOppositeVariationPlacement(placement), oppositePlacement, getOppositeVariationPlacement(oppositePlacement)];
+  }
+  function flip(_ref2) {
+    var state = _ref2.state, options = _ref2.options, name = _ref2.name;
+    if (state.modifiersData[name]._skip) {
+      return;
+    }
+    var _options$mainAxis = options.mainAxis, checkMainAxis = _options$mainAxis === void 0 ? true : _options$mainAxis, _options$altAxis = options.altAxis, checkAltAxis = _options$altAxis === void 0 ? true : _options$altAxis, specifiedFallbackPlacements = options.fallbackPlacements, padding2 = options.padding, boundary = options.boundary, rootBoundary = options.rootBoundary, altBoundary = options.altBoundary, _options$flipVariatio = options.flipVariations, flipVariations = _options$flipVariatio === void 0 ? true : _options$flipVariatio, allowedAutoPlacements = options.allowedAutoPlacements;
+    var preferredPlacement = state.options.placement;
+    var basePlacement = getBasePlacement(preferredPlacement);
+    var isBasePlacement = basePlacement === preferredPlacement;
+    var fallbackPlacements = specifiedFallbackPlacements || (isBasePlacement || !flipVariations ? [getOppositePlacement(preferredPlacement)] : getExpandedFallbackPlacements(preferredPlacement));
+    var placements2 = [preferredPlacement].concat(fallbackPlacements).reduce(function(acc, placement2) {
+      return acc.concat(getBasePlacement(placement2) === auto ? computeAutoPlacement(state, {
+        placement: placement2,
+        boundary,
+        rootBoundary,
+        padding: padding2,
+        flipVariations,
+        allowedAutoPlacements
+      }) : placement2);
+    }, []);
+    var referenceRect = state.rects.reference;
+    var popperRect = state.rects.popper;
+    var checksMap = /* @__PURE__ */ new Map();
+    var makeFallbackChecks = true;
+    var firstFittingPlacement = placements2[0];
+    for (var i = 0; i < placements2.length; i++) {
+      var placement = placements2[i];
+      var _basePlacement = getBasePlacement(placement);
+      var isStartVariation = getVariation(placement) === start;
+      var isVertical = [top2, bottom2].indexOf(_basePlacement) >= 0;
+      var len = isVertical ? "width" : "height";
+      var overflow = detectOverflow(state, {
+        placement,
+        boundary,
+        rootBoundary,
+        altBoundary,
+        padding: padding2
+      });
+      var mainVariationSide = isVertical ? isStartVariation ? right2 : left2 : isStartVariation ? bottom2 : top2;
+      if (referenceRect[len] > popperRect[len]) {
+        mainVariationSide = getOppositePlacement(mainVariationSide);
+      }
+      var altVariationSide = getOppositePlacement(mainVariationSide);
+      var checks = [];
+      if (checkMainAxis) {
+        checks.push(overflow[_basePlacement] <= 0);
+      }
+      if (checkAltAxis) {
+        checks.push(overflow[mainVariationSide] <= 0, overflow[altVariationSide] <= 0);
+      }
+      if (checks.every(function(check2) {
+        return check2;
+      })) {
+        firstFittingPlacement = placement;
+        makeFallbackChecks = false;
+        break;
+      }
+      checksMap.set(placement, checks);
+    }
+    if (makeFallbackChecks) {
+      var numberOfChecks = flipVariations ? 3 : 1;
+      var _loop = function _loop2(_i2) {
+        var fittingPlacement = placements2.find(function(placement2) {
+          var checks2 = checksMap.get(placement2);
+          if (checks2) {
+            return checks2.slice(0, _i2).every(function(check2) {
+              return check2;
+            });
+          }
+        });
+        if (fittingPlacement) {
+          firstFittingPlacement = fittingPlacement;
+          return "break";
+        }
+      };
+      for (var _i = numberOfChecks; _i > 0; _i--) {
+        var _ret = _loop(_i);
+        if (_ret === "break") break;
+      }
+    }
+    if (state.placement !== firstFittingPlacement) {
+      state.modifiersData[name]._skip = true;
+      state.placement = firstFittingPlacement;
+      state.reset = true;
+    }
+  }
+  var flip_default;
+  var init_flip = __esm({
+    "node_modules/@popperjs/core/lib/modifiers/flip.js"() {
+      init_getOppositePlacement();
+      init_getBasePlacement();
+      init_getOppositeVariationPlacement();
+      init_detectOverflow();
+      init_computeAutoPlacement();
+      init_enums();
+      init_getVariation();
+      flip_default = {
+        name: "flip",
+        enabled: true,
+        phase: "main",
+        fn: flip,
+        requiresIfExists: ["offset"],
+        data: {
+          _skip: false
+        }
+      };
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/modifiers/hide.js
+  function getSideOffsets(overflow, rect2, preventedOffsets) {
+    if (preventedOffsets === void 0) {
+      preventedOffsets = {
+        x: 0,
+        y: 0
+      };
+    }
+    return {
+      top: overflow.top - rect2.height - preventedOffsets.y,
+      right: overflow.right - rect2.width + preventedOffsets.x,
+      bottom: overflow.bottom - rect2.height + preventedOffsets.y,
+      left: overflow.left - rect2.width - preventedOffsets.x
+    };
+  }
+  function isAnySideFullyClipped(overflow) {
+    return [top2, right2, bottom2, left2].some(function(side) {
+      return overflow[side] >= 0;
+    });
+  }
+  function hide(_ref2) {
+    var state = _ref2.state, name = _ref2.name;
+    var referenceRect = state.rects.reference;
+    var popperRect = state.rects.popper;
+    var preventedOffsets = state.modifiersData.preventOverflow;
+    var referenceOverflow = detectOverflow(state, {
+      elementContext: "reference"
+    });
+    var popperAltOverflow = detectOverflow(state, {
+      altBoundary: true
+    });
+    var referenceClippingOffsets = getSideOffsets(referenceOverflow, referenceRect);
+    var popperEscapeOffsets = getSideOffsets(popperAltOverflow, popperRect, preventedOffsets);
+    var isReferenceHidden = isAnySideFullyClipped(referenceClippingOffsets);
+    var hasPopperEscaped = isAnySideFullyClipped(popperEscapeOffsets);
+    state.modifiersData[name] = {
+      referenceClippingOffsets,
+      popperEscapeOffsets,
+      isReferenceHidden,
+      hasPopperEscaped
+    };
+    state.attributes.popper = Object.assign({}, state.attributes.popper, {
+      "data-popper-reference-hidden": isReferenceHidden,
+      "data-popper-escaped": hasPopperEscaped
+    });
+  }
+  var hide_default;
+  var init_hide = __esm({
+    "node_modules/@popperjs/core/lib/modifiers/hide.js"() {
+      init_enums();
+      init_detectOverflow();
+      hide_default = {
+        name: "hide",
+        enabled: true,
+        phase: "main",
+        requiresIfExists: ["preventOverflow"],
+        fn: hide
+      };
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/modifiers/offset.js
+  function distanceAndSkiddingToXY(placement, rects, offset2) {
+    var basePlacement = getBasePlacement(placement);
+    var invertDistance = [left2, top2].indexOf(basePlacement) >= 0 ? -1 : 1;
+    var _ref2 = typeof offset2 === "function" ? offset2(Object.assign({}, rects, {
+      placement
+    })) : offset2, skidding = _ref2[0], distance = _ref2[1];
+    skidding = skidding || 0;
+    distance = (distance || 0) * invertDistance;
+    return [left2, right2].indexOf(basePlacement) >= 0 ? {
+      x: distance,
+      y: skidding
+    } : {
+      x: skidding,
+      y: distance
+    };
+  }
+  function offset(_ref2) {
+    var state = _ref2.state, options = _ref2.options, name = _ref2.name;
+    var _options$offset = options.offset, offset2 = _options$offset === void 0 ? [0, 0] : _options$offset;
+    var data = placements.reduce(function(acc, placement) {
+      acc[placement] = distanceAndSkiddingToXY(placement, state.rects, offset2);
+      return acc;
+    }, {});
+    var _data$state$placement = data[state.placement], x = _data$state$placement.x, y = _data$state$placement.y;
+    if (state.modifiersData.popperOffsets != null) {
+      state.modifiersData.popperOffsets.x += x;
+      state.modifiersData.popperOffsets.y += y;
+    }
+    state.modifiersData[name] = data;
+  }
+  var offset_default;
+  var init_offset = __esm({
+    "node_modules/@popperjs/core/lib/modifiers/offset.js"() {
+      init_getBasePlacement();
+      init_enums();
+      offset_default = {
+        name: "offset",
+        enabled: true,
+        phase: "main",
+        requires: ["popperOffsets"],
+        fn: offset
+      };
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/modifiers/popperOffsets.js
+  function popperOffsets(_ref2) {
+    var state = _ref2.state, name = _ref2.name;
+    state.modifiersData[name] = computeOffsets({
+      reference: state.rects.reference,
+      element: state.rects.popper,
+      strategy: "absolute",
+      placement: state.placement
+    });
+  }
+  var popperOffsets_default;
+  var init_popperOffsets = __esm({
+    "node_modules/@popperjs/core/lib/modifiers/popperOffsets.js"() {
+      init_computeOffsets();
+      popperOffsets_default = {
+        name: "popperOffsets",
+        enabled: true,
+        phase: "read",
+        fn: popperOffsets,
+        data: {}
+      };
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/utils/getAltAxis.js
+  function getAltAxis(axis) {
+    return axis === "x" ? "y" : "x";
+  }
+  var init_getAltAxis = __esm({
+    "node_modules/@popperjs/core/lib/utils/getAltAxis.js"() {
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/modifiers/preventOverflow.js
+  function preventOverflow(_ref2) {
+    var state = _ref2.state, options = _ref2.options, name = _ref2.name;
+    var _options$mainAxis = options.mainAxis, checkMainAxis = _options$mainAxis === void 0 ? true : _options$mainAxis, _options$altAxis = options.altAxis, checkAltAxis = _options$altAxis === void 0 ? false : _options$altAxis, boundary = options.boundary, rootBoundary = options.rootBoundary, altBoundary = options.altBoundary, padding2 = options.padding, _options$tether = options.tether, tether = _options$tether === void 0 ? true : _options$tether, _options$tetherOffset = options.tetherOffset, tetherOffset = _options$tetherOffset === void 0 ? 0 : _options$tetherOffset;
+    var overflow = detectOverflow(state, {
+      boundary,
+      rootBoundary,
+      padding: padding2,
+      altBoundary
+    });
+    var basePlacement = getBasePlacement(state.placement);
+    var variation = getVariation(state.placement);
+    var isBasePlacement = !variation;
+    var mainAxis = getMainAxisFromPlacement(basePlacement);
+    var altAxis = getAltAxis(mainAxis);
+    var popperOffsets2 = state.modifiersData.popperOffsets;
+    var referenceRect = state.rects.reference;
+    var popperRect = state.rects.popper;
+    var tetherOffsetValue = typeof tetherOffset === "function" ? tetherOffset(Object.assign({}, state.rects, {
+      placement: state.placement
+    })) : tetherOffset;
+    var normalizedTetherOffsetValue = typeof tetherOffsetValue === "number" ? {
+      mainAxis: tetherOffsetValue,
+      altAxis: tetherOffsetValue
+    } : Object.assign({
+      mainAxis: 0,
+      altAxis: 0
+    }, tetherOffsetValue);
+    var offsetModifierState = state.modifiersData.offset ? state.modifiersData.offset[state.placement] : null;
+    var data = {
+      x: 0,
+      y: 0
+    };
+    if (!popperOffsets2) {
+      return;
+    }
+    if (checkMainAxis) {
+      var _offsetModifierState$;
+      var mainSide = mainAxis === "y" ? top2 : left2;
+      var altSide = mainAxis === "y" ? bottom2 : right2;
+      var len = mainAxis === "y" ? "height" : "width";
+      var offset2 = popperOffsets2[mainAxis];
+      var min2 = offset2 + overflow[mainSide];
+      var max2 = offset2 - overflow[altSide];
+      var additive = tether ? -popperRect[len] / 2 : 0;
+      var minLen = variation === start ? referenceRect[len] : popperRect[len];
+      var maxLen = variation === start ? -popperRect[len] : -referenceRect[len];
+      var arrowElement = state.elements.arrow;
+      var arrowRect = tether && arrowElement ? getLayoutRect(arrowElement) : {
+        width: 0,
+        height: 0
+      };
+      var arrowPaddingObject = state.modifiersData["arrow#persistent"] ? state.modifiersData["arrow#persistent"].padding : getFreshSideObject();
+      var arrowPaddingMin = arrowPaddingObject[mainSide];
+      var arrowPaddingMax = arrowPaddingObject[altSide];
+      var arrowLen = within(0, referenceRect[len], arrowRect[len]);
+      var minOffset = isBasePlacement ? referenceRect[len] / 2 - additive - arrowLen - arrowPaddingMin - normalizedTetherOffsetValue.mainAxis : minLen - arrowLen - arrowPaddingMin - normalizedTetherOffsetValue.mainAxis;
+      var maxOffset = isBasePlacement ? -referenceRect[len] / 2 + additive + arrowLen + arrowPaddingMax + normalizedTetherOffsetValue.mainAxis : maxLen + arrowLen + arrowPaddingMax + normalizedTetherOffsetValue.mainAxis;
+      var arrowOffsetParent = state.elements.arrow && getOffsetParent(state.elements.arrow);
+      var clientOffset = arrowOffsetParent ? mainAxis === "y" ? arrowOffsetParent.clientTop || 0 : arrowOffsetParent.clientLeft || 0 : 0;
+      var offsetModifierValue = (_offsetModifierState$ = offsetModifierState == null ? void 0 : offsetModifierState[mainAxis]) != null ? _offsetModifierState$ : 0;
+      var tetherMin = offset2 + minOffset - offsetModifierValue - clientOffset;
+      var tetherMax = offset2 + maxOffset - offsetModifierValue;
+      var preventedOffset = within(tether ? min(min2, tetherMin) : min2, offset2, tether ? max(max2, tetherMax) : max2);
+      popperOffsets2[mainAxis] = preventedOffset;
+      data[mainAxis] = preventedOffset - offset2;
+    }
+    if (checkAltAxis) {
+      var _offsetModifierState$2;
+      var _mainSide = mainAxis === "x" ? top2 : left2;
+      var _altSide = mainAxis === "x" ? bottom2 : right2;
+      var _offset = popperOffsets2[altAxis];
+      var _len = altAxis === "y" ? "height" : "width";
+      var _min = _offset + overflow[_mainSide];
+      var _max = _offset - overflow[_altSide];
+      var isOriginSide = [top2, left2].indexOf(basePlacement) !== -1;
+      var _offsetModifierValue = (_offsetModifierState$2 = offsetModifierState == null ? void 0 : offsetModifierState[altAxis]) != null ? _offsetModifierState$2 : 0;
+      var _tetherMin = isOriginSide ? _min : _offset - referenceRect[_len] - popperRect[_len] - _offsetModifierValue + normalizedTetherOffsetValue.altAxis;
+      var _tetherMax = isOriginSide ? _offset + referenceRect[_len] + popperRect[_len] - _offsetModifierValue - normalizedTetherOffsetValue.altAxis : _max;
+      var _preventedOffset = tether && isOriginSide ? withinMaxClamp(_tetherMin, _offset, _tetherMax) : within(tether ? _tetherMin : _min, _offset, tether ? _tetherMax : _max);
+      popperOffsets2[altAxis] = _preventedOffset;
+      data[altAxis] = _preventedOffset - _offset;
+    }
+    state.modifiersData[name] = data;
+  }
+  var preventOverflow_default;
+  var init_preventOverflow = __esm({
+    "node_modules/@popperjs/core/lib/modifiers/preventOverflow.js"() {
+      init_enums();
+      init_getBasePlacement();
+      init_getMainAxisFromPlacement();
+      init_getAltAxis();
+      init_within();
+      init_getLayoutRect();
+      init_getOffsetParent();
+      init_detectOverflow();
+      init_getVariation();
+      init_getFreshSideObject();
+      init_math();
+      preventOverflow_default = {
+        name: "preventOverflow",
+        enabled: true,
+        phase: "main",
+        fn: preventOverflow,
+        requiresIfExists: ["offset"]
+      };
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/modifiers/index.js
+  var init_modifiers = __esm({
+    "node_modules/@popperjs/core/lib/modifiers/index.js"() {
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/dom-utils/getHTMLElementScroll.js
+  function getHTMLElementScroll(element) {
+    return {
+      scrollLeft: element.scrollLeft,
+      scrollTop: element.scrollTop
+    };
+  }
+  var init_getHTMLElementScroll = __esm({
+    "node_modules/@popperjs/core/lib/dom-utils/getHTMLElementScroll.js"() {
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/dom-utils/getNodeScroll.js
+  function getNodeScroll(node2) {
+    if (node2 === getWindow(node2) || !isHTMLElement(node2)) {
+      return getWindowScroll(node2);
+    } else {
+      return getHTMLElementScroll(node2);
+    }
+  }
+  var init_getNodeScroll = __esm({
+    "node_modules/@popperjs/core/lib/dom-utils/getNodeScroll.js"() {
+      init_getWindowScroll();
+      init_getWindow();
+      init_instanceOf();
+      init_getHTMLElementScroll();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/dom-utils/getCompositeRect.js
+  function isElementScaled(element) {
+    var rect2 = element.getBoundingClientRect();
+    var scaleX = round2(rect2.width) / element.offsetWidth || 1;
+    var scaleY = round2(rect2.height) / element.offsetHeight || 1;
+    return scaleX !== 1 || scaleY !== 1;
+  }
+  function getCompositeRect(elementOrVirtualElement, offsetParent, isFixed) {
+    if (isFixed === void 0) {
+      isFixed = false;
+    }
+    var isOffsetParentAnElement = isHTMLElement(offsetParent);
+    var offsetParentIsScaled = isHTMLElement(offsetParent) && isElementScaled(offsetParent);
+    var documentElement = getDocumentElement(offsetParent);
+    var rect2 = getBoundingClientRect(elementOrVirtualElement, offsetParentIsScaled, isFixed);
+    var scroll = {
+      scrollLeft: 0,
+      scrollTop: 0
+    };
+    var offsets = {
+      x: 0,
+      y: 0
+    };
+    if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
+      if (getNodeName(offsetParent) !== "body" || // https://github.com/popperjs/popper-core/issues/1078
+      isScrollParent(documentElement)) {
+        scroll = getNodeScroll(offsetParent);
+      }
+      if (isHTMLElement(offsetParent)) {
+        offsets = getBoundingClientRect(offsetParent, true);
+        offsets.x += offsetParent.clientLeft;
+        offsets.y += offsetParent.clientTop;
+      } else if (documentElement) {
+        offsets.x = getWindowScrollBarX(documentElement);
+      }
+    }
+    return {
+      x: rect2.left + scroll.scrollLeft - offsets.x,
+      y: rect2.top + scroll.scrollTop - offsets.y,
+      width: rect2.width,
+      height: rect2.height
+    };
+  }
+  var init_getCompositeRect = __esm({
+    "node_modules/@popperjs/core/lib/dom-utils/getCompositeRect.js"() {
+      init_getBoundingClientRect();
+      init_getNodeScroll();
+      init_getNodeName();
+      init_instanceOf();
+      init_getWindowScrollBarX();
+      init_getDocumentElement();
+      init_isScrollParent();
+      init_math();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/utils/orderModifiers.js
+  function order2(modifiers2) {
+    var map3 = /* @__PURE__ */ new Map();
+    var visited = /* @__PURE__ */ new Set();
+    var result = [];
+    modifiers2.forEach(function(modifier) {
+      map3.set(modifier.name, modifier);
+    });
+    function sort(modifier) {
+      visited.add(modifier.name);
+      var requires = [].concat(modifier.requires || [], modifier.requiresIfExists || []);
+      requires.forEach(function(dep) {
+        if (!visited.has(dep)) {
+          var depModifier = map3.get(dep);
+          if (depModifier) {
+            sort(depModifier);
+          }
+        }
+      });
+      result.push(modifier);
+    }
+    modifiers2.forEach(function(modifier) {
+      if (!visited.has(modifier.name)) {
+        sort(modifier);
+      }
+    });
+    return result;
+  }
+  function orderModifiers(modifiers2) {
+    var orderedModifiers = order2(modifiers2);
+    return modifierPhases.reduce(function(acc, phase) {
+      return acc.concat(orderedModifiers.filter(function(modifier) {
+        return modifier.phase === phase;
+      }));
+    }, []);
+  }
+  var init_orderModifiers = __esm({
+    "node_modules/@popperjs/core/lib/utils/orderModifiers.js"() {
+      init_enums();
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/utils/debounce.js
+  function debounce2(fn2) {
+    var pending;
+    return function() {
+      if (!pending) {
+        pending = new Promise(function(resolve) {
+          Promise.resolve().then(function() {
+            pending = void 0;
+            resolve(fn2());
+          });
+        });
+      }
+      return pending;
+    };
+  }
+  var init_debounce4 = __esm({
+    "node_modules/@popperjs/core/lib/utils/debounce.js"() {
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/utils/mergeByName.js
+  function mergeByName(modifiers2) {
+    var merged = modifiers2.reduce(function(merged2, current) {
+      var existing = merged2[current.name];
+      merged2[current.name] = existing ? Object.assign({}, existing, current, {
+        options: Object.assign({}, existing.options, current.options),
+        data: Object.assign({}, existing.data, current.data)
+      }) : current;
+      return merged2;
+    }, {});
+    return Object.keys(merged).map(function(key) {
+      return merged[key];
+    });
+  }
+  var init_mergeByName = __esm({
+    "node_modules/@popperjs/core/lib/utils/mergeByName.js"() {
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/createPopper.js
+  function areValidElements() {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+    return !args.some(function(element) {
+      return !(element && typeof element.getBoundingClientRect === "function");
+    });
+  }
+  function popperGenerator(generatorOptions) {
+    if (generatorOptions === void 0) {
+      generatorOptions = {};
+    }
+    var _generatorOptions = generatorOptions, _generatorOptions$def = _generatorOptions.defaultModifiers, defaultModifiers2 = _generatorOptions$def === void 0 ? [] : _generatorOptions$def, _generatorOptions$def2 = _generatorOptions.defaultOptions, defaultOptions2 = _generatorOptions$def2 === void 0 ? DEFAULT_OPTIONS : _generatorOptions$def2;
+    return function createPopper2(reference2, popper2, options) {
+      if (options === void 0) {
+        options = defaultOptions2;
+      }
+      var state = {
+        placement: "bottom",
+        orderedModifiers: [],
+        options: Object.assign({}, DEFAULT_OPTIONS, defaultOptions2),
+        modifiersData: {},
+        elements: {
+          reference: reference2,
+          popper: popper2
+        },
+        attributes: {},
+        styles: {}
+      };
+      var effectCleanupFns = [];
+      var isDestroyed = false;
+      var instance = {
+        state,
+        setOptions: function setOptions(setOptionsAction) {
+          var options2 = typeof setOptionsAction === "function" ? setOptionsAction(state.options) : setOptionsAction;
+          cleanupModifierEffects();
+          state.options = Object.assign({}, defaultOptions2, state.options, options2);
+          state.scrollParents = {
+            reference: isElement(reference2) ? listScrollParents(reference2) : reference2.contextElement ? listScrollParents(reference2.contextElement) : [],
+            popper: listScrollParents(popper2)
+          };
+          var orderedModifiers = orderModifiers(mergeByName([].concat(defaultModifiers2, state.options.modifiers)));
+          state.orderedModifiers = orderedModifiers.filter(function(m) {
+            return m.enabled;
+          });
+          runModifierEffects();
+          return instance.update();
+        },
+        // Sync update – it will always be executed, even if not necessary. This
+        // is useful for low frequency updates where sync behavior simplifies the
+        // logic.
+        // For high frequency updates (e.g. `resize` and `scroll` events), always
+        // prefer the async Popper#update method
+        forceUpdate: function forceUpdate() {
+          if (isDestroyed) {
+            return;
+          }
+          var _state$elements = state.elements, reference3 = _state$elements.reference, popper3 = _state$elements.popper;
+          if (!areValidElements(reference3, popper3)) {
+            return;
+          }
+          state.rects = {
+            reference: getCompositeRect(reference3, getOffsetParent(popper3), state.options.strategy === "fixed"),
+            popper: getLayoutRect(popper3)
+          };
+          state.reset = false;
+          state.placement = state.options.placement;
+          state.orderedModifiers.forEach(function(modifier) {
+            return state.modifiersData[modifier.name] = Object.assign({}, modifier.data);
+          });
+          for (var index2 = 0; index2 < state.orderedModifiers.length; index2++) {
+            if (state.reset === true) {
+              state.reset = false;
+              index2 = -1;
+              continue;
+            }
+            var _state$orderedModifie = state.orderedModifiers[index2], fn2 = _state$orderedModifie.fn, _state$orderedModifie2 = _state$orderedModifie.options, _options = _state$orderedModifie2 === void 0 ? {} : _state$orderedModifie2, name = _state$orderedModifie.name;
+            if (typeof fn2 === "function") {
+              state = fn2({
+                state,
+                options: _options,
+                name,
+                instance
+              }) || state;
+            }
+          }
+        },
+        // Async and optimistically optimized update – it will not be executed if
+        // not necessary (debounced to run at most once-per-tick)
+        update: debounce2(function() {
+          return new Promise(function(resolve) {
+            instance.forceUpdate();
+            resolve(state);
+          });
+        }),
+        destroy: function destroy2() {
+          cleanupModifierEffects();
+          isDestroyed = true;
+        }
+      };
+      if (!areValidElements(reference2, popper2)) {
+        return instance;
+      }
+      instance.setOptions(options).then(function(state2) {
+        if (!isDestroyed && options.onFirstUpdate) {
+          options.onFirstUpdate(state2);
+        }
+      });
+      function runModifierEffects() {
+        state.orderedModifiers.forEach(function(_ref2) {
+          var name = _ref2.name, _ref$options = _ref2.options, options2 = _ref$options === void 0 ? {} : _ref$options, effect4 = _ref2.effect;
+          if (typeof effect4 === "function") {
+            var cleanupFn = effect4({
+              state,
+              name,
+              instance,
+              options: options2
+            });
+            var noopFn = function noopFn2() {
+            };
+            effectCleanupFns.push(cleanupFn || noopFn);
+          }
+        });
+      }
+      function cleanupModifierEffects() {
+        effectCleanupFns.forEach(function(fn2) {
+          return fn2();
+        });
+        effectCleanupFns = [];
+      }
+      return instance;
+    };
+  }
+  var DEFAULT_OPTIONS;
+  var init_createPopper = __esm({
+    "node_modules/@popperjs/core/lib/createPopper.js"() {
+      init_getCompositeRect();
+      init_getLayoutRect();
+      init_listScrollParents();
+      init_getOffsetParent();
+      init_orderModifiers();
+      init_debounce4();
+      init_mergeByName();
+      init_instanceOf();
+      DEFAULT_OPTIONS = {
+        placement: "bottom",
+        modifiers: [],
+        strategy: "absolute"
+      };
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/popper.js
+  var defaultModifiers, createPopper;
+  var init_popper = __esm({
+    "node_modules/@popperjs/core/lib/popper.js"() {
+      init_createPopper();
+      init_eventListeners();
+      init_popperOffsets();
+      init_computeStyles();
+      init_applyStyles2();
+      init_offset();
+      init_flip();
+      init_preventOverflow();
+      init_arrow();
+      init_hide();
+      init_modifiers();
+      defaultModifiers = [eventListeners_default, popperOffsets_default, computeStyles_default, applyStyles_default, offset_default, flip_default, preventOverflow_default, arrow_default, hide_default];
+      createPopper = /* @__PURE__ */ popperGenerator({
+        defaultModifiers
+      });
+    }
+  });
+
+  // node_modules/@popperjs/core/lib/index.js
+  var init_lib = __esm({
+    "node_modules/@popperjs/core/lib/index.js"() {
+      init_enums();
+      init_modifiers();
+      init_popper();
+    }
+  });
+
   // node_modules/@mui/utils/esm/useSlotProps/useSlotProps.js
   function useSlotProps(parameters) {
     const {
@@ -35181,17 +37036,593 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/Popper/popperClasses.js
+  function getPopperUtilityClass(slot) {
+    return generateUtilityClass("MuiPopper", slot);
+  }
   var popperClasses;
   var init_popperClasses = __esm({
     "node_modules/@mui/material/esm/Popper/popperClasses.js"() {
       init_generateUtilityClasses2();
+      init_generateUtilityClass2();
       popperClasses = generateUtilityClasses("MuiPopper", ["root"]);
     }
   });
 
-  // node_modules/@mui/material/esm/Popper/index.js
+  // node_modules/@mui/material/esm/Popper/BasePopper.js
+  function flipPlacement(placement, direction) {
+    if (direction === "ltr") {
+      return placement;
+    }
+    switch (placement) {
+      case "bottom-end":
+        return "bottom-start";
+      case "bottom-start":
+        return "bottom-end";
+      case "top-end":
+        return "top-start";
+      case "top-start":
+        return "top-end";
+      default:
+        return placement;
+    }
+  }
+  function resolveAnchorEl(anchorEl) {
+    return typeof anchorEl === "function" ? anchorEl() : anchorEl;
+  }
+  function isHTMLElement2(element) {
+    return element.nodeType !== void 0;
+  }
+  function isVirtualElement(element) {
+    return !isHTMLElement2(element);
+  }
+  var React57, import_prop_types32, import_jsx_runtime32, useUtilityClasses11, defaultPopperOptions, PopperTooltip, Popper, BasePopper_default;
+  var init_BasePopper = __esm({
+    "node_modules/@mui/material/esm/Popper/BasePopper.js"() {
+      "use client";
+      React57 = __toESM(require_react(), 1);
+      init_ownerDocument2();
+      init_useEnhancedEffect2();
+      init_useForkRef2();
+      init_chainPropTypes2();
+      init_HTMLElementType2();
+      init_refType2();
+      init_lib();
+      import_prop_types32 = __toESM(require_prop_types(), 1);
+      init_composeClasses2();
+      init_useSlotProps2();
+      init_Portal2();
+      init_popperClasses();
+      import_jsx_runtime32 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses11 = (ownerState) => {
+        const {
+          classes
+        } = ownerState;
+        const slots = {
+          root: ["root"]
+        };
+        return composeClasses(slots, getPopperUtilityClass, classes);
+      };
+      defaultPopperOptions = {};
+      PopperTooltip = /* @__PURE__ */ React57.forwardRef(function PopperTooltip2(props, forwardedRef) {
+        const {
+          anchorEl,
+          children,
+          direction,
+          disablePortal,
+          modifiers: modifiers2,
+          open,
+          placement: initialPlacement,
+          popperOptions,
+          popperRef: popperRefProp,
+          slotProps = {},
+          slots = {},
+          TransitionProps,
+          // @ts-ignore internal logic
+          ownerState: ownerStateProp,
+          // prevent from spreading to DOM, it can come from the parent component e.g. Select.
+          ...other
+        } = props;
+        const tooltipRef = React57.useRef(null);
+        const ownRef = useForkRef(tooltipRef, forwardedRef);
+        const popperRef = React57.useRef(null);
+        const handlePopperRef = useForkRef(popperRef, popperRefProp);
+        const handlePopperRefRef = React57.useRef(handlePopperRef);
+        useEnhancedEffect_default(() => {
+          handlePopperRefRef.current = handlePopperRef;
+        }, [handlePopperRef]);
+        React57.useImperativeHandle(popperRefProp, () => popperRef.current, []);
+        const rtlPlacement = flipPlacement(initialPlacement, direction);
+        const [placement, setPlacement] = React57.useState(rtlPlacement);
+        const [resolvedAnchorElement, setResolvedAnchorElement] = React57.useState(resolveAnchorEl(anchorEl));
+        React57.useEffect(() => {
+          if (popperRef.current) {
+            popperRef.current.forceUpdate();
+          }
+        });
+        React57.useEffect(() => {
+          if (anchorEl) {
+            setResolvedAnchorElement(resolveAnchorEl(anchorEl));
+          }
+        }, [anchorEl]);
+        useEnhancedEffect_default(() => {
+          if (!resolvedAnchorElement || !open) {
+            return void 0;
+          }
+          const handlePopperUpdate = (data) => {
+            setPlacement(data.placement);
+          };
+          if (true) {
+            if (resolvedAnchorElement && isHTMLElement2(resolvedAnchorElement) && resolvedAnchorElement.nodeType === 1) {
+              const box = resolvedAnchorElement.getBoundingClientRect();
+              if (box.top === 0 && box.left === 0 && box.right === 0 && box.bottom === 0) {
+                console.warn(["MUI: The `anchorEl` prop provided to the component is invalid.", "The anchor element should be part of the document layout.", "Make sure the element is present in the document or that it's not display none."].join("\n"));
+              }
+            }
+          }
+          let popperModifiers = [{
+            name: "preventOverflow",
+            options: {
+              altBoundary: disablePortal
+            }
+          }, {
+            name: "flip",
+            options: {
+              altBoundary: disablePortal
+            }
+          }, {
+            name: "onUpdate",
+            enabled: true,
+            phase: "afterWrite",
+            fn: ({
+              state
+            }) => {
+              handlePopperUpdate(state);
+            }
+          }];
+          if (modifiers2 != null) {
+            popperModifiers = popperModifiers.concat(modifiers2);
+          }
+          if (popperOptions && popperOptions.modifiers != null) {
+            popperModifiers = popperModifiers.concat(popperOptions.modifiers);
+          }
+          const popper2 = createPopper(resolvedAnchorElement, tooltipRef.current, {
+            placement: rtlPlacement,
+            ...popperOptions,
+            modifiers: popperModifiers
+          });
+          handlePopperRefRef.current(popper2);
+          return () => {
+            popper2.destroy();
+            handlePopperRefRef.current(null);
+          };
+        }, [resolvedAnchorElement, disablePortal, modifiers2, open, popperOptions, rtlPlacement]);
+        const childProps = {
+          placement
+        };
+        if (TransitionProps !== null) {
+          childProps.TransitionProps = TransitionProps;
+        }
+        const classes = useUtilityClasses11(props);
+        const Root = slots.root ?? "div";
+        const rootProps = useSlotProps_default({
+          elementType: Root,
+          externalSlotProps: slotProps.root,
+          externalForwardedProps: other,
+          additionalProps: {
+            role: "tooltip",
+            ref: ownRef
+          },
+          ownerState: props,
+          className: classes.root
+        });
+        return /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(Root, {
+          ...rootProps,
+          children: typeof children === "function" ? children(childProps) : children
+        });
+      });
+      Popper = /* @__PURE__ */ React57.forwardRef(function Popper2(props, forwardedRef) {
+        const {
+          anchorEl,
+          children,
+          container: containerProp,
+          direction = "ltr",
+          disablePortal = false,
+          keepMounted = false,
+          modifiers: modifiers2,
+          open,
+          placement = "bottom",
+          popperOptions = defaultPopperOptions,
+          popperRef,
+          style: style4,
+          transition = false,
+          slotProps = {},
+          slots = {},
+          ...other
+        } = props;
+        const [exited, setExited] = React57.useState(true);
+        const handleEnter = () => {
+          setExited(false);
+        };
+        const handleExited = () => {
+          setExited(true);
+        };
+        if (!keepMounted && !open && (!transition || exited)) {
+          return null;
+        }
+        let container;
+        if (containerProp) {
+          container = containerProp;
+        } else if (anchorEl) {
+          const resolvedAnchorEl = resolveAnchorEl(anchorEl);
+          container = resolvedAnchorEl && isHTMLElement2(resolvedAnchorEl) ? ownerDocument(resolvedAnchorEl).body : ownerDocument(null).body;
+        }
+        const display = !open && keepMounted && (!transition || exited) ? "none" : void 0;
+        const transitionProps = transition ? {
+          in: open,
+          onEnter: handleEnter,
+          onExited: handleExited
+        } : void 0;
+        return /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(Portal_default, {
+          disablePortal,
+          container,
+          children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(PopperTooltip, {
+            anchorEl,
+            direction,
+            disablePortal,
+            modifiers: modifiers2,
+            ref: forwardedRef,
+            open: transition ? !exited : open,
+            placement,
+            popperOptions,
+            popperRef,
+            slotProps,
+            slots,
+            ...other,
+            style: {
+              // Prevents scroll issue, waiting for Popper.js to add this style once initiated.
+              position: "fixed",
+              // Fix Popper.js display issue
+              top: 0,
+              left: 0,
+              display,
+              ...style4
+            },
+            TransitionProps: transitionProps,
+            children
+          })
+        });
+      });
+      true ? Popper.propTypes = {
+        // ┌────────────────────────────── Warning ──────────────────────────────┐
+        // │ These PropTypes are generated from the TypeScript type definitions. │
+        // │ To update them, edit the TypeScript types and run `pnpm proptypes`. │
+        // └─────────────────────────────────────────────────────────────────────┘
+        /**
+         * An HTML element, [virtualElement](https://popper.js.org/docs/v2/virtual-elements/),
+         * or a function that returns either.
+         * It's used to set the position of the popper.
+         * The return value will passed as the reference object of the Popper instance.
+         */
+        anchorEl: chainPropTypes(import_prop_types32.default.oneOfType([HTMLElementType, import_prop_types32.default.object, import_prop_types32.default.func]), (props) => {
+          if (props.open) {
+            const resolvedAnchorEl = resolveAnchorEl(props.anchorEl);
+            if (resolvedAnchorEl && isHTMLElement2(resolvedAnchorEl) && resolvedAnchorEl.nodeType === 1) {
+              const box = resolvedAnchorEl.getBoundingClientRect();
+              if (box.top === 0 && box.left === 0 && box.right === 0 && box.bottom === 0) {
+                return new Error(["MUI: The `anchorEl` prop provided to the component is invalid.", "The anchor element should be part of the document layout.", "Make sure the element is present in the document or that it's not display none."].join("\n"));
+              }
+            } else if (!resolvedAnchorEl || typeof resolvedAnchorEl.getBoundingClientRect !== "function" || isVirtualElement(resolvedAnchorEl) && resolvedAnchorEl.contextElement != null && resolvedAnchorEl.contextElement.nodeType !== 1) {
+              return new Error(["MUI: The `anchorEl` prop provided to the component is invalid.", "It should be an HTML element instance or a virtualElement ", "(https://popper.js.org/docs/v2/virtual-elements/)."].join("\n"));
+            }
+          }
+          return null;
+        }),
+        /**
+         * Popper render function or node.
+         */
+        children: import_prop_types32.default.oneOfType([import_prop_types32.default.node, import_prop_types32.default.func]),
+        /**
+         * An HTML element or function that returns one.
+         * The `container` will have the portal children appended to it.
+         *
+         * You can also provide a callback, which is called in a React layout effect.
+         * This lets you set the container from a ref, and also makes server-side rendering possible.
+         *
+         * By default, it uses the body of the top-level document object,
+         * so it's simply `document.body` most of the time.
+         */
+        container: import_prop_types32.default.oneOfType([HTMLElementType, import_prop_types32.default.func]),
+        /**
+         * Direction of the text.
+         * @default 'ltr'
+         */
+        direction: import_prop_types32.default.oneOf(["ltr", "rtl"]),
+        /**
+         * The `children` will be under the DOM hierarchy of the parent component.
+         * @default false
+         */
+        disablePortal: import_prop_types32.default.bool,
+        /**
+         * Always keep the children in the DOM.
+         * This prop can be useful in SEO situation or
+         * when you want to maximize the responsiveness of the Popper.
+         * @default false
+         */
+        keepMounted: import_prop_types32.default.bool,
+        /**
+         * Popper.js is based on a "plugin-like" architecture,
+         * most of its features are fully encapsulated "modifiers".
+         *
+         * A modifier is a function that is called each time Popper.js needs to
+         * compute the position of the popper.
+         * For this reason, modifiers should be very performant to avoid bottlenecks.
+         * To learn how to create a modifier, [read the modifiers documentation](https://popper.js.org/docs/v2/modifiers/).
+         */
+        modifiers: import_prop_types32.default.arrayOf(import_prop_types32.default.shape({
+          data: import_prop_types32.default.object,
+          effect: import_prop_types32.default.func,
+          enabled: import_prop_types32.default.bool,
+          fn: import_prop_types32.default.func,
+          name: import_prop_types32.default.any,
+          options: import_prop_types32.default.object,
+          phase: import_prop_types32.default.oneOf(["afterMain", "afterRead", "afterWrite", "beforeMain", "beforeRead", "beforeWrite", "main", "read", "write"]),
+          requires: import_prop_types32.default.arrayOf(import_prop_types32.default.string),
+          requiresIfExists: import_prop_types32.default.arrayOf(import_prop_types32.default.string)
+        })),
+        /**
+         * If `true`, the component is shown.
+         */
+        open: import_prop_types32.default.bool.isRequired,
+        /**
+         * Popper placement.
+         * @default 'bottom'
+         */
+        placement: import_prop_types32.default.oneOf(["auto-end", "auto-start", "auto", "bottom-end", "bottom-start", "bottom", "left-end", "left-start", "left", "right-end", "right-start", "right", "top-end", "top-start", "top"]),
+        /**
+         * Options provided to the [`Popper.js`](https://popper.js.org/docs/v2/constructors/#options) instance.
+         * @default {}
+         */
+        popperOptions: import_prop_types32.default.shape({
+          modifiers: import_prop_types32.default.array,
+          onFirstUpdate: import_prop_types32.default.func,
+          placement: import_prop_types32.default.oneOf(["auto-end", "auto-start", "auto", "bottom-end", "bottom-start", "bottom", "left-end", "left-start", "left", "right-end", "right-start", "right", "top-end", "top-start", "top"]),
+          strategy: import_prop_types32.default.oneOf(["absolute", "fixed"])
+        }),
+        /**
+         * A ref that points to the used popper instance.
+         */
+        popperRef: refType_default,
+        /**
+         * The props used for each slot inside the Popper.
+         * @default {}
+         */
+        slotProps: import_prop_types32.default.shape({
+          root: import_prop_types32.default.oneOfType([import_prop_types32.default.func, import_prop_types32.default.object])
+        }),
+        /**
+         * The components used for each slot inside the Popper.
+         * Either a string to use a HTML element or a component.
+         * @default {}
+         */
+        slots: import_prop_types32.default.shape({
+          root: import_prop_types32.default.elementType
+        }),
+        /**
+         * Help supporting a react-transition-group/Transition component.
+         * @default false
+         */
+        transition: import_prop_types32.default.bool
+      } : void 0;
+      BasePopper_default = Popper;
+    }
+  });
+
+  // node_modules/@mui/material/esm/Popper/Popper.js
+  var import_prop_types33, React58, import_jsx_runtime33, PopperRoot, Popper3, Popper_default;
   var init_Popper = __esm({
+    "node_modules/@mui/material/esm/Popper/Popper.js"() {
+      "use client";
+      init_RtlProvider();
+      init_refType2();
+      init_HTMLElementType2();
+      import_prop_types33 = __toESM(require_prop_types(), 1);
+      React58 = __toESM(require_react(), 1);
+      init_BasePopper();
+      init_zero_styled();
+      init_DefaultPropsProvider4();
+      import_jsx_runtime33 = __toESM(require_jsx_runtime(), 1);
+      PopperRoot = styled_default2(BasePopper_default, {
+        name: "MuiPopper",
+        slot: "Root"
+      })({});
+      Popper3 = /* @__PURE__ */ React58.forwardRef(function Popper4(inProps, ref) {
+        const isRtl = useRtl();
+        const props = useDefaultProps2({
+          props: inProps,
+          name: "MuiPopper"
+        });
+        const {
+          anchorEl,
+          component,
+          components,
+          componentsProps,
+          container,
+          disablePortal,
+          keepMounted,
+          modifiers: modifiers2,
+          open,
+          placement,
+          popperOptions,
+          popperRef,
+          transition,
+          slots,
+          slotProps,
+          ...other
+        } = props;
+        const RootComponent = slots?.root ?? components?.Root;
+        const otherProps = {
+          anchorEl,
+          container,
+          disablePortal,
+          keepMounted,
+          modifiers: modifiers2,
+          open,
+          placement,
+          popperOptions,
+          popperRef,
+          transition,
+          ...other
+        };
+        return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(PopperRoot, {
+          as: component,
+          direction: isRtl ? "rtl" : "ltr",
+          slots: {
+            root: RootComponent
+          },
+          slotProps: slotProps ?? componentsProps,
+          ...otherProps,
+          ref
+        });
+      });
+      true ? Popper3.propTypes = {
+        // ┌────────────────────────────── Warning ──────────────────────────────┐
+        // │ These PropTypes are generated from the TypeScript type definitions. │
+        // │ To update them, edit the TypeScript types and run `pnpm proptypes`. │
+        // └─────────────────────────────────────────────────────────────────────┘
+        /**
+         * An HTML element, [virtualElement](https://popper.js.org/docs/v2/virtual-elements/),
+         * or a function that returns either.
+         * It's used to set the position of the popper.
+         * The return value will passed as the reference object of the Popper instance.
+         */
+        anchorEl: import_prop_types33.default.oneOfType([HTMLElementType, import_prop_types33.default.object, import_prop_types33.default.func]),
+        /**
+         * Popper render function or node.
+         */
+        children: import_prop_types33.default.oneOfType([import_prop_types33.default.node, import_prop_types33.default.func]),
+        /**
+         * The component used for the root node.
+         * Either a string to use a HTML element or a component.
+         */
+        component: import_prop_types33.default.elementType,
+        /**
+         * The components used for each slot inside the Popper.
+         * Either a string to use a HTML element or a component.
+         *
+         * @deprecated use the `slots` prop instead. This prop will be removed in a future major release. [How to migrate](/material-ui/migration/migrating-from-deprecated-apis/).
+         * @default {}
+         */
+        components: import_prop_types33.default.shape({
+          Root: import_prop_types33.default.elementType
+        }),
+        /**
+         * The props used for each slot inside the Popper.
+         *
+         * @deprecated use the `slotProps` prop instead. This prop will be removed in a future major release. [How to migrate](/material-ui/migration/migrating-from-deprecated-apis/).
+         * @default {}
+         */
+        componentsProps: import_prop_types33.default.shape({
+          root: import_prop_types33.default.oneOfType([import_prop_types33.default.func, import_prop_types33.default.object])
+        }),
+        /**
+         * An HTML element or function that returns one.
+         * The `container` will have the portal children appended to it.
+         *
+         * You can also provide a callback, which is called in a React layout effect.
+         * This lets you set the container from a ref, and also makes server-side rendering possible.
+         *
+         * By default, it uses the body of the top-level document object,
+         * so it's simply `document.body` most of the time.
+         */
+        container: import_prop_types33.default.oneOfType([HTMLElementType, import_prop_types33.default.func]),
+        /**
+         * The `children` will be under the DOM hierarchy of the parent component.
+         * @default false
+         */
+        disablePortal: import_prop_types33.default.bool,
+        /**
+         * Always keep the children in the DOM.
+         * This prop can be useful in SEO situation or
+         * when you want to maximize the responsiveness of the Popper.
+         * @default false
+         */
+        keepMounted: import_prop_types33.default.bool,
+        /**
+         * Popper.js is based on a "plugin-like" architecture,
+         * most of its features are fully encapsulated "modifiers".
+         *
+         * A modifier is a function that is called each time Popper.js needs to
+         * compute the position of the popper.
+         * For this reason, modifiers should be very performant to avoid bottlenecks.
+         * To learn how to create a modifier, [read the modifiers documentation](https://popper.js.org/docs/v2/modifiers/).
+         */
+        modifiers: import_prop_types33.default.arrayOf(import_prop_types33.default.shape({
+          data: import_prop_types33.default.object,
+          effect: import_prop_types33.default.func,
+          enabled: import_prop_types33.default.bool,
+          fn: import_prop_types33.default.func,
+          name: import_prop_types33.default.any,
+          options: import_prop_types33.default.object,
+          phase: import_prop_types33.default.oneOf(["afterMain", "afterRead", "afterWrite", "beforeMain", "beforeRead", "beforeWrite", "main", "read", "write"]),
+          requires: import_prop_types33.default.arrayOf(import_prop_types33.default.string),
+          requiresIfExists: import_prop_types33.default.arrayOf(import_prop_types33.default.string)
+        })),
+        /**
+         * If `true`, the component is shown.
+         */
+        open: import_prop_types33.default.bool.isRequired,
+        /**
+         * Popper placement.
+         * @default 'bottom'
+         */
+        placement: import_prop_types33.default.oneOf(["auto-end", "auto-start", "auto", "bottom-end", "bottom-start", "bottom", "left-end", "left-start", "left", "right-end", "right-start", "right", "top-end", "top-start", "top"]),
+        /**
+         * Options provided to the [`Popper.js`](https://popper.js.org/docs/v2/constructors/#options) instance.
+         * @default {}
+         */
+        popperOptions: import_prop_types33.default.shape({
+          modifiers: import_prop_types33.default.array,
+          onFirstUpdate: import_prop_types33.default.func,
+          placement: import_prop_types33.default.oneOf(["auto-end", "auto-start", "auto", "bottom-end", "bottom-start", "bottom", "left-end", "left-start", "left", "right-end", "right-start", "right", "top-end", "top-start", "top"]),
+          strategy: import_prop_types33.default.oneOf(["absolute", "fixed"])
+        }),
+        /**
+         * A ref that points to the used popper instance.
+         */
+        popperRef: refType_default,
+        /**
+         * The props used for each slot inside the Popper.
+         * @default {}
+         */
+        slotProps: import_prop_types33.default.shape({
+          root: import_prop_types33.default.oneOfType([import_prop_types33.default.func, import_prop_types33.default.object])
+        }),
+        /**
+         * The components used for each slot inside the Popper.
+         * Either a string to use a HTML element or a component.
+         * @default {}
+         */
+        slots: import_prop_types33.default.shape({
+          root: import_prop_types33.default.elementType
+        }),
+        /**
+         * The system prop that allows defining system overrides as well as additional CSS styles.
+         */
+        sx: import_prop_types33.default.oneOfType([import_prop_types33.default.arrayOf(import_prop_types33.default.oneOfType([import_prop_types33.default.func, import_prop_types33.default.object, import_prop_types33.default.bool])), import_prop_types33.default.func, import_prop_types33.default.object]),
+        /**
+         * Help supporting a react-transition-group/Transition component.
+         * @default false
+         */
+        transition: import_prop_types33.default.bool
+      } : void 0;
+      Popper_default = Popper3;
+    }
+  });
+
+  // node_modules/@mui/material/esm/Popper/index.js
+  var init_Popper2 = __esm({
     "node_modules/@mui/material/esm/Popper/index.js"() {
+      init_Popper();
       init_popperClasses();
     }
   });
@@ -35213,14 +37644,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/internal/svg-icons/Cancel.js
-  var React57, import_jsx_runtime32, Cancel_default;
+  var React59, import_jsx_runtime34, Cancel_default;
   var init_Cancel = __esm({
     "node_modules/@mui/material/esm/internal/svg-icons/Cancel.js"() {
       "use client";
-      React57 = __toESM(require_react(), 1);
+      React59 = __toESM(require_react(), 1);
       init_createSvgIcon();
-      import_jsx_runtime32 = __toESM(require_jsx_runtime(), 1);
-      Cancel_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime32.jsx)("path", {
+      import_jsx_runtime34 = __toESM(require_jsx_runtime(), 1);
+      Cancel_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime34.jsx)("path", {
         d: "M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"
       }), "Cancel");
     }
@@ -35244,12 +37675,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   function isDeleteKeyboardEvent(keyboardEvent) {
     return keyboardEvent.key === "Backspace" || keyboardEvent.key === "Delete";
   }
-  var React58, import_prop_types32, import_jsx_runtime33, useUtilityClasses11, ChipRoot, ChipLabel, Chip, Chip_default;
+  var React60, import_prop_types34, import_jsx_runtime35, useUtilityClasses12, ChipRoot, ChipLabel, Chip, Chip_default;
   var init_Chip = __esm({
     "node_modules/@mui/material/esm/Chip/Chip.js"() {
       "use client";
-      React58 = __toESM(require_react(), 1);
-      import_prop_types32 = __toESM(require_prop_types(), 1);
+      React60 = __toESM(require_react(), 1);
+      import_prop_types34 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_composeClasses2();
       init_colorManipulator2();
@@ -35264,8 +37695,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_DefaultPropsProvider4();
       init_chipClasses();
       init_useSlot();
-      import_jsx_runtime33 = __toESM(require_jsx_runtime(), 1);
-      useUtilityClasses11 = (ownerState) => {
+      import_jsx_runtime35 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses12 = (ownerState) => {
         const {
           classes,
           disabled,
@@ -35589,7 +38020,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
         }]
       });
-      Chip = /* @__PURE__ */ React58.forwardRef(function Chip2(inProps, ref) {
+      Chip = /* @__PURE__ */ React60.forwardRef(function Chip2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiChip"
@@ -35617,7 +38048,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           slotProps = {},
           ...other
         } = props;
-        const chipRef = React58.useRef(null);
+        const chipRef = React60.useRef(null);
         const handleRef = useForkRef_default(chipRef, ref);
         const handleDeleteIconClick = (event) => {
           event.stopPropagation();
@@ -35651,12 +38082,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           disabled,
           size,
           color: color2,
-          iconColor: /* @__PURE__ */ React58.isValidElement(iconProp) ? iconProp.props.color || color2 : color2,
+          iconColor: /* @__PURE__ */ React60.isValidElement(iconProp) ? iconProp.props.color || color2 : color2,
           onDelete: !!onDelete,
           clickable,
           variant
         };
-        const classes = useUtilityClasses11(ownerState);
+        const classes = useUtilityClasses12(ownerState);
         const moreProps = component === ButtonBase_default ? {
           component: ComponentProp || "div",
           focusVisibleClassName: classes.focusVisible,
@@ -35666,23 +38097,23 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         } : {};
         let deleteIcon = null;
         if (onDelete) {
-          deleteIcon = deleteIconProp && /* @__PURE__ */ React58.isValidElement(deleteIconProp) ? /* @__PURE__ */ React58.cloneElement(deleteIconProp, {
+          deleteIcon = deleteIconProp && /* @__PURE__ */ React60.isValidElement(deleteIconProp) ? /* @__PURE__ */ React60.cloneElement(deleteIconProp, {
             className: clsx_default(deleteIconProp.props.className, classes.deleteIcon),
             onClick: handleDeleteIconClick
-          }) : /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Cancel_default, {
+          }) : /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(Cancel_default, {
             className: classes.deleteIcon,
             onClick: handleDeleteIconClick
           });
         }
         let avatar = null;
-        if (avatarProp && /* @__PURE__ */ React58.isValidElement(avatarProp)) {
-          avatar = /* @__PURE__ */ React58.cloneElement(avatarProp, {
+        if (avatarProp && /* @__PURE__ */ React60.isValidElement(avatarProp)) {
+          avatar = /* @__PURE__ */ React60.cloneElement(avatarProp, {
             className: clsx_default(classes.avatar, avatarProp.props.className)
           });
         }
         let icon = null;
-        if (iconProp && /* @__PURE__ */ React58.isValidElement(iconProp)) {
-          icon = /* @__PURE__ */ React58.cloneElement(iconProp, {
+        if (iconProp && /* @__PURE__ */ React60.isValidElement(iconProp)) {
+          icon = /* @__PURE__ */ React60.cloneElement(iconProp, {
             className: clsx_default(classes.icon, iconProp.props.className)
           });
         }
@@ -35733,10 +38164,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           ownerState,
           className: classes.label
         });
-        return /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(RootSlot, {
+        return /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(RootSlot, {
           as: component,
           ...rootProps,
-          children: [avatar || icon, /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(LabelSlot, {
+          children: [avatar || icon, /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(LabelSlot, {
             ...labelProps,
             children: label
           }), deleteIcon]
@@ -35750,7 +38181,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * The Avatar element to display.
          */
-        avatar: import_prop_types32.default.element,
+        avatar: import_prop_types34.default.element,
         /**
          * This prop isn't supported.
          * Use the `component` prop if you need to change the children structure.
@@ -35759,11 +38190,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types32.default.object,
+        classes: import_prop_types34.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types32.default.string,
+        className: import_prop_types34.default.string,
         /**
          * If `true`, the chip will appear clickable, and will raise when pressed,
          * even if the onClick prop is not defined.
@@ -35772,93 +38203,93 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * along with the component prop to indicate an anchor Chip is clickable.
          * Note: this controls the UI and does not affect the onClick event.
          */
-        clickable: import_prop_types32.default.bool,
+        clickable: import_prop_types34.default.bool,
         /**
          * The color of the component.
          * It supports both default and custom theme colors, which can be added as shown in the
          * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
          * @default 'default'
          */
-        color: import_prop_types32.default.oneOfType([import_prop_types32.default.oneOf(["default", "primary", "secondary", "error", "info", "success", "warning"]), import_prop_types32.default.string]),
+        color: import_prop_types34.default.oneOfType([import_prop_types34.default.oneOf(["default", "primary", "secondary", "error", "info", "success", "warning"]), import_prop_types34.default.string]),
         /**
          * The component used for the root node.
          * Either a string to use a HTML element or a component.
          */
-        component: import_prop_types32.default.elementType,
+        component: import_prop_types34.default.elementType,
         /**
          * Override the default delete icon element. Shown only if `onDelete` is set.
          */
-        deleteIcon: import_prop_types32.default.element,
+        deleteIcon: import_prop_types34.default.element,
         /**
          * If `true`, the component is disabled.
          * @default false
          */
-        disabled: import_prop_types32.default.bool,
+        disabled: import_prop_types34.default.bool,
         /**
          * Icon element.
          */
-        icon: import_prop_types32.default.element,
+        icon: import_prop_types34.default.element,
         /**
          * The content of the component.
          */
-        label: import_prop_types32.default.node,
+        label: import_prop_types34.default.node,
         /**
          * @ignore
          */
-        onClick: import_prop_types32.default.func,
+        onClick: import_prop_types34.default.func,
         /**
          * Callback fired when the delete icon is clicked.
          * If set, the delete icon will be shown.
          */
-        onDelete: import_prop_types32.default.func,
+        onDelete: import_prop_types34.default.func,
         /**
          * @ignore
          */
-        onKeyDown: import_prop_types32.default.func,
+        onKeyDown: import_prop_types34.default.func,
         /**
          * @ignore
          */
-        onKeyUp: import_prop_types32.default.func,
+        onKeyUp: import_prop_types34.default.func,
         /**
          * The size of the component.
          * @default 'medium'
          */
-        size: import_prop_types32.default.oneOfType([import_prop_types32.default.oneOf(["medium", "small"]), import_prop_types32.default.string]),
+        size: import_prop_types34.default.oneOfType([import_prop_types34.default.oneOf(["medium", "small"]), import_prop_types34.default.string]),
         /**
          * If `true`, allows the disabled chip to escape focus.
          * If `false`, allows the disabled chip to receive focus.
          * @default false
          */
-        skipFocusWhenDisabled: import_prop_types32.default.bool,
+        skipFocusWhenDisabled: import_prop_types34.default.bool,
         /**
          * The props used for each slot inside.
          * @default {}
          */
-        slotProps: import_prop_types32.default.shape({
-          label: import_prop_types32.default.oneOfType([import_prop_types32.default.func, import_prop_types32.default.object]),
-          root: import_prop_types32.default.oneOfType([import_prop_types32.default.func, import_prop_types32.default.object])
+        slotProps: import_prop_types34.default.shape({
+          label: import_prop_types34.default.oneOfType([import_prop_types34.default.func, import_prop_types34.default.object]),
+          root: import_prop_types34.default.oneOfType([import_prop_types34.default.func, import_prop_types34.default.object])
         }),
         /**
          * The components used for each slot inside.
          * @default {}
          */
-        slots: import_prop_types32.default.shape({
-          label: import_prop_types32.default.elementType,
-          root: import_prop_types32.default.elementType
+        slots: import_prop_types34.default.shape({
+          label: import_prop_types34.default.elementType,
+          root: import_prop_types34.default.elementType
         }),
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types32.default.oneOfType([import_prop_types32.default.arrayOf(import_prop_types32.default.oneOfType([import_prop_types32.default.func, import_prop_types32.default.object, import_prop_types32.default.bool])), import_prop_types32.default.func, import_prop_types32.default.object]),
+        sx: import_prop_types34.default.oneOfType([import_prop_types34.default.arrayOf(import_prop_types34.default.oneOfType([import_prop_types34.default.func, import_prop_types34.default.object, import_prop_types34.default.bool])), import_prop_types34.default.func, import_prop_types34.default.object]),
         /**
          * @ignore
          */
-        tabIndex: import_prop_types32.default.number,
+        tabIndex: import_prop_types34.default.number,
         /**
          * The variant to use.
          * @default 'filled'
          */
-        variant: import_prop_types32.default.oneOfType([import_prop_types32.default.oneOf(["filled", "outlined"]), import_prop_types32.default.string])
+        variant: import_prop_types34.default.oneOfType([import_prop_types34.default.oneOf(["filled", "outlined"]), import_prop_types34.default.string])
       } : void 0;
       Chip_default = Chip;
     }
@@ -35885,18 +38316,18 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   function isEmpty2(obj) {
     return isObjectEmpty3(obj) || obj.outerHeightStyle === 0 && !obj.overflowing;
   }
-  var React59, import_prop_types33, import_jsx_runtime34, styles, TextareaAutosize, TextareaAutosize_default;
+  var React61, import_prop_types35, import_jsx_runtime36, styles, TextareaAutosize, TextareaAutosize_default;
   var init_TextareaAutosize = __esm({
     "node_modules/@mui/material/esm/TextareaAutosize/TextareaAutosize.js"() {
       "use client";
-      React59 = __toESM(require_react(), 1);
-      import_prop_types33 = __toESM(require_prop_types(), 1);
+      React61 = __toESM(require_react(), 1);
+      import_prop_types35 = __toESM(require_prop_types(), 1);
       init_debounce2();
       init_useForkRef2();
       init_useEnhancedEffect2();
       init_useEventCallback2();
       init_ownerWindow2();
-      import_jsx_runtime34 = __toESM(require_jsx_runtime(), 1);
+      import_jsx_runtime36 = __toESM(require_jsx_runtime(), 1);
       styles = {
         shadow: {
           // Visibility needed to hide the extra text area on iPads
@@ -35912,7 +38343,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           transform: "translateZ(0)"
         }
       };
-      TextareaAutosize = /* @__PURE__ */ React59.forwardRef(function TextareaAutosize2(props, forwardedRef) {
+      TextareaAutosize = /* @__PURE__ */ React61.forwardRef(function TextareaAutosize2(props, forwardedRef) {
         const {
           onChange,
           maxRows,
@@ -35923,12 +38354,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         } = props;
         const {
           current: isControlled
-        } = React59.useRef(value != null);
-        const textareaRef = React59.useRef(null);
+        } = React61.useRef(value != null);
+        const textareaRef = React61.useRef(null);
         const handleRef = useForkRef(forwardedRef, textareaRef);
-        const heightRef = React59.useRef(null);
-        const hiddenTextareaRef = React59.useRef(null);
-        const calculateTextareaStyles = React59.useCallback(() => {
+        const heightRef = React61.useRef(null);
+        const hiddenTextareaRef = React61.useRef(null);
+        const calculateTextareaStyles = React61.useCallback(() => {
           const textarea = textareaRef.current;
           const hiddenTextarea = hiddenTextareaRef.current;
           if (!textarea || !hiddenTextarea) {
@@ -35977,7 +38408,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           const outerHeightStyle = textareaStyles.outerHeightStyle;
           return heightRef.current != null && heightRef.current !== outerHeightStyle;
         });
-        const syncHeight = React59.useCallback(() => {
+        const syncHeight = React61.useCallback(() => {
           const textarea = textareaRef.current;
           const textareaStyles = calculateTextareaStyles();
           if (!textarea || !textareaStyles || isEmpty2(textareaStyles)) {
@@ -35990,7 +38421,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
           textarea.style.overflow = textareaStyles.overflowing ? "hidden" : "";
         }, [calculateTextareaStyles]);
-        const frameRef = React59.useRef(-1);
+        const frameRef = React61.useRef(-1);
         useEnhancedEffect_default(() => {
           const debouncedHandleResize = debounce(syncHeight);
           const textarea = textareaRef?.current;
@@ -36040,15 +38471,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             onChange(event);
           }
         };
-        return /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)(React59.Fragment, {
-          children: [/* @__PURE__ */ (0, import_jsx_runtime34.jsx)("textarea", {
+        return /* @__PURE__ */ (0, import_jsx_runtime36.jsxs)(React61.Fragment, {
+          children: [/* @__PURE__ */ (0, import_jsx_runtime36.jsx)("textarea", {
             value,
             onChange: handleChange,
             ref: handleRef,
             rows: minRows,
             style: style4,
             ...other
-          }), /* @__PURE__ */ (0, import_jsx_runtime34.jsx)("textarea", {
+          }), /* @__PURE__ */ (0, import_jsx_runtime36.jsx)("textarea", {
             "aria-hidden": true,
             className: props.className,
             readOnly: true,
@@ -36071,32 +38502,32 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * @ignore
          */
-        className: import_prop_types33.default.string,
+        className: import_prop_types35.default.string,
         /**
          * Maximum number of rows to display.
          */
-        maxRows: import_prop_types33.default.oneOfType([import_prop_types33.default.number, import_prop_types33.default.string]),
+        maxRows: import_prop_types35.default.oneOfType([import_prop_types35.default.number, import_prop_types35.default.string]),
         /**
          * Minimum number of rows to display.
          * @default 1
          */
-        minRows: import_prop_types33.default.oneOfType([import_prop_types33.default.number, import_prop_types33.default.string]),
+        minRows: import_prop_types35.default.oneOfType([import_prop_types35.default.number, import_prop_types35.default.string]),
         /**
          * @ignore
          */
-        onChange: import_prop_types33.default.func,
+        onChange: import_prop_types35.default.func,
         /**
          * @ignore
          */
-        placeholder: import_prop_types33.default.string,
+        placeholder: import_prop_types35.default.string,
         /**
          * @ignore
          */
-        style: import_prop_types33.default.object,
+        style: import_prop_types35.default.object,
         /**
          * @ignore
          */
-        value: import_prop_types33.default.oneOfType([import_prop_types33.default.arrayOf(import_prop_types33.default.string), import_prop_types33.default.number, import_prop_types33.default.string])
+        value: import_prop_types35.default.oneOfType([import_prop_types35.default.arrayOf(import_prop_types35.default.string), import_prop_types35.default.number, import_prop_types35.default.string])
       } : void 0;
       TextareaAutosize_default = TextareaAutosize;
     }
@@ -36142,12 +38573,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/FormControl/FormControlContext.js
-  var React60, FormControlContext, FormControlContext_default;
+  var React62, FormControlContext, FormControlContext_default;
   var init_FormControlContext = __esm({
     "node_modules/@mui/material/esm/FormControl/FormControlContext.js"() {
       "use client";
-      React60 = __toESM(require_react(), 1);
-      FormControlContext = /* @__PURE__ */ React60.createContext(void 0);
+      React62 = __toESM(require_react(), 1);
+      FormControlContext = /* @__PURE__ */ React62.createContext(void 0);
       if (true) {
         FormControlContext.displayName = "FormControlContext";
       }
@@ -36157,13 +38588,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
 
   // node_modules/@mui/material/esm/FormControl/useFormControl.js
   function useFormControl() {
-    return React61.useContext(FormControlContext_default);
+    return React63.useContext(FormControlContext_default);
   }
-  var React61;
+  var React63;
   var init_useFormControl = __esm({
     "node_modules/@mui/material/esm/FormControl/useFormControl.js"() {
       "use client";
-      React61 = __toESM(require_react(), 1);
+      React63 = __toESM(require_react(), 1);
       init_FormControlContext();
     }
   });
@@ -36198,12 +38629,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/InputBase/InputBase.js
-  var React62, import_prop_types34, import_jsx_runtime35, _InputGlobalStyles, rootOverridesResolver, inputOverridesResolver, useUtilityClasses12, InputBaseRoot, InputBaseInput, InputGlobalStyles, InputBase, InputBase_default;
+  var React64, import_prop_types36, import_jsx_runtime37, _InputGlobalStyles, rootOverridesResolver, inputOverridesResolver, useUtilityClasses13, InputBaseRoot, InputBaseInput, InputGlobalStyles, InputBase, InputBase_default;
   var init_InputBase = __esm({
     "node_modules/@mui/material/esm/InputBase/InputBase.js"() {
       "use client";
-      React62 = __toESM(require_react(), 1);
-      import_prop_types34 = __toESM(require_prop_types(), 1);
+      React64 = __toESM(require_react(), 1);
+      import_prop_types36 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_elementTypeAcceptingRef2();
       init_refType2();
@@ -36221,7 +38652,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_useEnhancedEffect3();
       init_utils3();
       init_inputBaseClasses();
-      import_jsx_runtime35 = __toESM(require_jsx_runtime(), 1);
+      import_jsx_runtime37 = __toESM(require_jsx_runtime(), 1);
       rootOverridesResolver = (props, styles4) => {
         const {
           ownerState
@@ -36234,7 +38665,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         } = props;
         return [styles4.input, ownerState.size === "small" && styles4.inputSizeSmall, ownerState.multiline && styles4.inputMultiline, ownerState.type === "search" && styles4.inputTypeSearch, ownerState.startAdornment && styles4.inputAdornedStart, ownerState.endAdornment && styles4.inputAdornedEnd, ownerState.hiddenLabel && styles4.inputHiddenLabel];
       };
-      useUtilityClasses12 = (ownerState) => {
+      useUtilityClasses13 = (ownerState) => {
         const {
           classes,
           color: color2,
@@ -36433,7 +38864,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
         }
       });
-      InputBase = /* @__PURE__ */ React62.forwardRef(function InputBase2(inProps, ref) {
+      InputBase = /* @__PURE__ */ React64.forwardRef(function InputBase2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiInputBase"
@@ -36482,9 +38913,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         const value = inputPropsProp.value != null ? inputPropsProp.value : valueProp;
         const {
           current: isControlled
-        } = React62.useRef(value != null);
-        const inputRef = React62.useRef();
-        const handleInputRefWarning = React62.useCallback((instance) => {
+        } = React64.useRef(value != null);
+        const inputRef = React64.useRef();
+        const handleInputRefWarning = React64.useCallback((instance) => {
           if (true) {
             if (instance && instance.nodeName !== "INPUT" && !instance.focus) {
               console.error(["MUI: You have provided a `inputComponent` to the input component", "that does not correctly handle the `ref` prop.", "Make sure the `ref` prop is called with a HTMLInputElement."].join("\n"));
@@ -36492,10 +38923,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
         }, []);
         const handleInputRef = useForkRef_default(inputRef, inputRefProp, inputPropsProp.ref, handleInputRefWarning);
-        const [focused, setFocused] = React62.useState(false);
+        const [focused, setFocused] = React64.useState(false);
         const muiFormControl = useFormControl();
         if (true) {
-          React62.useEffect(() => {
+          React64.useEffect(() => {
             if (muiFormControl) {
               return muiFormControl.registerEffect();
             }
@@ -36508,7 +38939,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           states: ["color", "disabled", "error", "hiddenLabel", "size", "required", "filled"]
         });
         fcs.focused = muiFormControl ? muiFormControl.focused : focused;
-        React62.useEffect(() => {
+        React64.useEffect(() => {
           if (!muiFormControl && disabled && focused) {
             setFocused(false);
             if (onBlur) {
@@ -36518,7 +38949,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         }, [muiFormControl, disabled, focused, onBlur]);
         const onFilled = muiFormControl && muiFormControl.onFilled;
         const onEmpty = muiFormControl && muiFormControl.onEmpty;
-        const checkDirty = React62.useCallback((obj) => {
+        const checkDirty = React64.useCallback((obj) => {
           if (isFilled(obj)) {
             if (onFilled) {
               onFilled();
@@ -36577,7 +39008,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             onChange(event, ...args);
           }
         };
-        React62.useEffect(() => {
+        React64.useEffect(() => {
           checkDirty(inputRef.current);
         }, []);
         const handleClick = (event) => {
@@ -36618,7 +39049,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             value: "x"
           });
         };
-        React62.useEffect(() => {
+        React64.useEffect(() => {
           if (muiFormControl) {
             muiFormControl.setAdornedStart(Boolean(startAdornment));
           }
@@ -36638,7 +39069,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           startAdornment,
           type
         };
-        const classes = useUtilityClasses12(ownerState);
+        const classes = useUtilityClasses13(ownerState);
         const Root = slots.root || components.Root || InputBaseRoot;
         const rootProps = slotProps.root || componentsProps.root || {};
         const Input3 = slots.input || components.Input || InputBaseInput;
@@ -36646,10 +39077,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           ...inputProps,
           ...slotProps.input ?? componentsProps.input
         };
-        return /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(React62.Fragment, {
+        return /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)(React64.Fragment, {
           children: [!disableInjectingGlobalStyles && typeof InputGlobalStyles === "function" && // For Emotion/Styled-components, InputGlobalStyles will be a function
           // For Pigment CSS, this has no effect because the InputGlobalStyles will be null.
-          (_InputGlobalStyles || (_InputGlobalStyles = /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(InputGlobalStyles, {}))), /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(Root, {
+          (_InputGlobalStyles || (_InputGlobalStyles = /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(InputGlobalStyles, {}))), /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)(Root, {
             ...rootProps,
             ref,
             onClick: handleClick,
@@ -36661,9 +39092,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
               }
             },
             className: clsx_default(classes.root, rootProps.className, className, readOnly && "MuiInputBase-readOnly"),
-            children: [startAdornment, /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(FormControlContext_default.Provider, {
+            children: [startAdornment, /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(FormControlContext_default.Provider, {
               value: null,
-              children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(Input3, {
+              children: /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(Input3, {
                 "aria-invalid": fcs.error,
                 "aria-describedby": ariaDescribedby,
                 autoComplete,
@@ -36710,32 +39141,32 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * @ignore
          */
-        "aria-describedby": import_prop_types34.default.string,
+        "aria-describedby": import_prop_types36.default.string,
         /**
          * This prop helps users to fill forms faster, especially on mobile devices.
          * The name can be confusing, as it's more like an autofill.
          * You can learn more about it [following the specification](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill).
          */
-        autoComplete: import_prop_types34.default.string,
+        autoComplete: import_prop_types36.default.string,
         /**
          * If `true`, the `input` element is focused during the first mount.
          */
-        autoFocus: import_prop_types34.default.bool,
+        autoFocus: import_prop_types36.default.bool,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types34.default.object,
+        classes: import_prop_types36.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types34.default.string,
+        className: import_prop_types36.default.string,
         /**
          * The color of the component.
          * It supports both default and custom theme colors, which can be added as shown in the
          * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
          * The prop defaults to the value (`'primary'`) inherited from the parent FormControl component.
          */
-        color: import_prop_types34.default.oneOfType([import_prop_types34.default.oneOf(["primary", "secondary", "error", "info", "success", "warning"]), import_prop_types34.default.string]),
+        color: import_prop_types36.default.oneOfType([import_prop_types36.default.oneOf(["primary", "secondary", "error", "info", "success", "warning"]), import_prop_types36.default.string]),
         /**
          * The components used for each slot inside.
          *
@@ -36743,9 +39174,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *
          * @default {}
          */
-        components: import_prop_types34.default.shape({
-          Input: import_prop_types34.default.elementType,
-          Root: import_prop_types34.default.elementType
+        components: import_prop_types36.default.shape({
+          Input: import_prop_types36.default.elementType,
+          Root: import_prop_types36.default.elementType
         }),
         /**
          * The extra props for the slot components.
@@ -36755,43 +39186,43 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *
          * @default {}
          */
-        componentsProps: import_prop_types34.default.shape({
-          input: import_prop_types34.default.object,
-          root: import_prop_types34.default.object
+        componentsProps: import_prop_types36.default.shape({
+          input: import_prop_types36.default.object,
+          root: import_prop_types36.default.object
         }),
         /**
          * The default value. Use when the component is not controlled.
          */
-        defaultValue: import_prop_types34.default.any,
+        defaultValue: import_prop_types36.default.any,
         /**
          * If `true`, the component is disabled.
          * The prop defaults to the value (`false`) inherited from the parent FormControl component.
          */
-        disabled: import_prop_types34.default.bool,
+        disabled: import_prop_types36.default.bool,
         /**
          * If `true`, GlobalStyles for the auto-fill keyframes will not be injected/removed on mount/unmount. Make sure to inject them at the top of your application.
          * This option is intended to help with boosting the initial rendering performance if you are loading a big amount of Input components at once.
          * @default false
          */
-        disableInjectingGlobalStyles: import_prop_types34.default.bool,
+        disableInjectingGlobalStyles: import_prop_types36.default.bool,
         /**
          * End `InputAdornment` for this component.
          */
-        endAdornment: import_prop_types34.default.node,
+        endAdornment: import_prop_types36.default.node,
         /**
          * If `true`, the `input` will indicate an error.
          * The prop defaults to the value (`false`) inherited from the parent FormControl component.
          */
-        error: import_prop_types34.default.bool,
+        error: import_prop_types36.default.bool,
         /**
          * If `true`, the `input` will take up the full width of its container.
          * @default false
          */
-        fullWidth: import_prop_types34.default.bool,
+        fullWidth: import_prop_types36.default.bool,
         /**
          * The id of the `input` element.
          */
-        id: import_prop_types34.default.string,
+        id: import_prop_types36.default.string,
         /**
          * The component used for the `input` element.
          * Either a string to use a HTML element or a component.
@@ -36802,7 +39233,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#attributes) applied to the `input` element.
          * @default {}
          */
-        inputProps: import_prop_types34.default.object,
+        inputProps: import_prop_types36.default.object,
         /**
          * Pass a ref to the `input` element.
          */
@@ -36812,83 +39243,83 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * FormControl.
          * The prop defaults to the value (`'none'`) inherited from the parent FormControl component.
          */
-        margin: import_prop_types34.default.oneOf(["dense", "none"]),
+        margin: import_prop_types36.default.oneOf(["dense", "none"]),
         /**
          * Maximum number of rows to display when multiline option is set to true.
          */
-        maxRows: import_prop_types34.default.oneOfType([import_prop_types34.default.number, import_prop_types34.default.string]),
+        maxRows: import_prop_types36.default.oneOfType([import_prop_types36.default.number, import_prop_types36.default.string]),
         /**
          * Minimum number of rows to display when multiline option is set to true.
          */
-        minRows: import_prop_types34.default.oneOfType([import_prop_types34.default.number, import_prop_types34.default.string]),
+        minRows: import_prop_types36.default.oneOfType([import_prop_types36.default.number, import_prop_types36.default.string]),
         /**
          * If `true`, a [TextareaAutosize](https://mui.com/material-ui/react-textarea-autosize/) element is rendered.
          * @default false
          */
-        multiline: import_prop_types34.default.bool,
+        multiline: import_prop_types36.default.bool,
         /**
          * Name attribute of the `input` element.
          */
-        name: import_prop_types34.default.string,
+        name: import_prop_types36.default.string,
         /**
          * Callback fired when the `input` is blurred.
          *
          * Notice that the first argument (event) might be undefined.
          */
-        onBlur: import_prop_types34.default.func,
+        onBlur: import_prop_types36.default.func,
         /**
          * Callback fired when the value is changed.
          *
          * @param {React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>} event The event source of the callback.
          * You can pull out the new value by accessing `event.target.value` (string).
          */
-        onChange: import_prop_types34.default.func,
+        onChange: import_prop_types36.default.func,
         /**
          * @ignore
          */
-        onClick: import_prop_types34.default.func,
+        onClick: import_prop_types36.default.func,
         /**
          * @ignore
          */
-        onFocus: import_prop_types34.default.func,
+        onFocus: import_prop_types36.default.func,
         /**
          * Callback fired when the `input` doesn't satisfy its constraints.
          */
-        onInvalid: import_prop_types34.default.func,
+        onInvalid: import_prop_types36.default.func,
         /**
          * @ignore
          */
-        onKeyDown: import_prop_types34.default.func,
+        onKeyDown: import_prop_types36.default.func,
         /**
          * @ignore
          */
-        onKeyUp: import_prop_types34.default.func,
+        onKeyUp: import_prop_types36.default.func,
         /**
          * The short hint displayed in the `input` before the user enters a value.
          */
-        placeholder: import_prop_types34.default.string,
+        placeholder: import_prop_types36.default.string,
         /**
          * It prevents the user from changing the value of the field
          * (not from interacting with the field).
          */
-        readOnly: import_prop_types34.default.bool,
+        readOnly: import_prop_types36.default.bool,
         /**
          * @ignore
          */
-        renderSuffix: import_prop_types34.default.func,
+        renderSuffix: import_prop_types36.default.func,
         /**
          * If `true`, the `input` element is required.
          * The prop defaults to the value (`false`) inherited from the parent FormControl component.
          */
-        required: import_prop_types34.default.bool,
+        required: import_prop_types36.default.bool,
         /**
          * Number of rows to display when multiline option is set to true.
          */
-        rows: import_prop_types34.default.oneOfType([import_prop_types34.default.number, import_prop_types34.default.string]),
+        rows: import_prop_types36.default.oneOfType([import_prop_types36.default.number, import_prop_types36.default.string]),
         /**
          * The size of the component.
          */
-        size: import_prop_types34.default.oneOfType([import_prop_types34.default.oneOf(["medium", "small"]), import_prop_types34.default.string]),
+        size: import_prop_types36.default.oneOfType([import_prop_types36.default.oneOf(["medium", "small"]), import_prop_types36.default.string]),
         /**
          * The extra props for the slot components.
          * You can override the existing props or add new ones.
@@ -36897,9 +39328,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *
          * @default {}
          */
-        slotProps: import_prop_types34.default.shape({
-          input: import_prop_types34.default.object,
-          root: import_prop_types34.default.object
+        slotProps: import_prop_types36.default.shape({
+          input: import_prop_types36.default.object,
+          root: import_prop_types36.default.object
         }),
         /**
          * The components used for each slot inside.
@@ -36908,27 +39339,27 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *
          * @default {}
          */
-        slots: import_prop_types34.default.shape({
-          input: import_prop_types34.default.elementType,
-          root: import_prop_types34.default.elementType
+        slots: import_prop_types36.default.shape({
+          input: import_prop_types36.default.elementType,
+          root: import_prop_types36.default.elementType
         }),
         /**
          * Start `InputAdornment` for this component.
          */
-        startAdornment: import_prop_types34.default.node,
+        startAdornment: import_prop_types36.default.node,
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types34.default.oneOfType([import_prop_types34.default.arrayOf(import_prop_types34.default.oneOfType([import_prop_types34.default.func, import_prop_types34.default.object, import_prop_types34.default.bool])), import_prop_types34.default.func, import_prop_types34.default.object]),
+        sx: import_prop_types36.default.oneOfType([import_prop_types36.default.arrayOf(import_prop_types36.default.oneOfType([import_prop_types36.default.func, import_prop_types36.default.object, import_prop_types36.default.bool])), import_prop_types36.default.func, import_prop_types36.default.object]),
         /**
          * Type of the `input` element. It should be [a valid HTML5 input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#input_types).
          * @default 'text'
          */
-        type: import_prop_types34.default.string,
+        type: import_prop_types36.default.string,
         /**
          * The value of the `input` element, required for a controlled component.
          */
-        value: import_prop_types34.default.any
+        value: import_prop_types36.default.any
       } : void 0;
       InputBase_default = InputBase;
     }
@@ -36998,14 +39429,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/internal/svg-icons/ArrowDropDown.js
-  var React63, import_jsx_runtime36, ArrowDropDown_default;
+  var React65, import_jsx_runtime38, ArrowDropDown_default;
   var init_ArrowDropDown = __esm({
     "node_modules/@mui/material/esm/internal/svg-icons/ArrowDropDown.js"() {
       "use client";
-      React63 = __toESM(require_react(), 1);
+      React65 = __toESM(require_react(), 1);
       init_createSvgIcon();
-      import_jsx_runtime36 = __toESM(require_jsx_runtime(), 1);
-      ArrowDropDown_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime36.jsx)("path", {
+      import_jsx_runtime38 = __toESM(require_jsx_runtime(), 1);
+      ArrowDropDown_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime38.jsx)("path", {
         d: "M7 10l5 5 5-5z"
       }), "ArrowDropDown");
     }
@@ -37086,13 +39517,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }
     return null;
   }
-  var import_prop_types35, elementAcceptingRef, elementAcceptingRef_default;
+  var import_prop_types37, elementAcceptingRef, elementAcceptingRef_default;
   var init_elementAcceptingRef = __esm({
     "node_modules/@mui/utils/esm/elementAcceptingRef/elementAcceptingRef.js"() {
-      import_prop_types35 = __toESM(require_prop_types(), 1);
+      import_prop_types37 = __toESM(require_prop_types(), 1);
       init_chainPropTypes2();
-      elementAcceptingRef = chainPropTypes(import_prop_types35.default.element, acceptingRef);
-      elementAcceptingRef.isRequired = chainPropTypes(import_prop_types35.default.element.isRequired, acceptingRef);
+      elementAcceptingRef = chainPropTypes(import_prop_types37.default.element, acceptingRef);
+      elementAcceptingRef.isRequired = chainPropTypes(import_prop_types37.default.element.isRequired, acceptingRef);
       elementAcceptingRef_default = elementAcceptingRef;
     }
   });
@@ -37105,19 +39536,19 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/Fade/Fade.js
-  var React64, import_prop_types36, import_jsx_runtime37, styles2, Fade, Fade_default;
+  var React66, import_prop_types38, import_jsx_runtime39, styles2, Fade, Fade_default;
   var init_Fade = __esm({
     "node_modules/@mui/material/esm/Fade/Fade.js"() {
       "use client";
-      React64 = __toESM(require_react(), 1);
-      import_prop_types36 = __toESM(require_prop_types(), 1);
+      React66 = __toESM(require_react(), 1);
+      import_prop_types38 = __toESM(require_prop_types(), 1);
       init_esm4();
       init_elementAcceptingRef2();
       init_getReactElementRef2();
       init_zero_styled();
       init_utils();
       init_useForkRef3();
-      import_jsx_runtime37 = __toESM(require_jsx_runtime(), 1);
+      import_jsx_runtime39 = __toESM(require_jsx_runtime(), 1);
       styles2 = {
         entering: {
           opacity: 1
@@ -37126,7 +39557,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           opacity: 1
         }
       };
-      Fade = /* @__PURE__ */ React64.forwardRef(function Fade2(props, ref) {
+      Fade = /* @__PURE__ */ React66.forwardRef(function Fade2(props, ref) {
         const theme = useTheme5();
         const defaultTimeout = {
           enter: theme.transitions.duration.enteringScreen,
@@ -37151,7 +39582,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           ...other
         } = props;
         const enableStrictModeCompat = true;
-        const nodeRef = React64.useRef(null);
+        const nodeRef = React66.useRef(null);
         const handleRef = useForkRef_default(nodeRef, getReactElementRef(children), ref);
         const normalizedTransitionCallback = (callback) => (maybeIsAppearing) => {
           if (callback) {
@@ -37201,7 +39632,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             addEndListener(nodeRef.current, next2);
           }
         };
-        return /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(TransitionComponent, {
+        return /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(TransitionComponent, {
           appear,
           in: inProp,
           nodeRef: enableStrictModeCompat ? nodeRef : void 0,
@@ -37218,7 +39649,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             ownerState,
             ...restChildProps
           }) => {
-            return /* @__PURE__ */ React64.cloneElement(children, {
+            return /* @__PURE__ */ React66.cloneElement(children, {
               style: {
                 opacity: 0,
                 visibility: state === "exited" && !inProp ? "hidden" : void 0,
@@ -37242,13 +39673,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * node and a done callback. Allows for more fine grained transition end
          * logic. Note: Timeouts are still used as a fallback if provided.
          */
-        addEndListener: import_prop_types36.default.func,
+        addEndListener: import_prop_types38.default.func,
         /**
          * Perform the enter transition when it first mounts if `in` is also `true`.
          * Set this to `false` to disable this behavior.
          * @default true
          */
-        appear: import_prop_types36.default.bool,
+        appear: import_prop_types38.default.bool,
         /**
          * A single child content element.
          */
@@ -37257,42 +39688,42 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * The transition timing function.
          * You may specify a single easing or a object containing enter and exit values.
          */
-        easing: import_prop_types36.default.oneOfType([import_prop_types36.default.shape({
-          enter: import_prop_types36.default.string,
-          exit: import_prop_types36.default.string
-        }), import_prop_types36.default.string]),
+        easing: import_prop_types38.default.oneOfType([import_prop_types38.default.shape({
+          enter: import_prop_types38.default.string,
+          exit: import_prop_types38.default.string
+        }), import_prop_types38.default.string]),
         /**
          * If `true`, the component will transition in.
          */
-        in: import_prop_types36.default.bool,
+        in: import_prop_types38.default.bool,
         /**
          * @ignore
          */
-        onEnter: import_prop_types36.default.func,
+        onEnter: import_prop_types38.default.func,
         /**
          * @ignore
          */
-        onEntered: import_prop_types36.default.func,
+        onEntered: import_prop_types38.default.func,
         /**
          * @ignore
          */
-        onEntering: import_prop_types36.default.func,
+        onEntering: import_prop_types38.default.func,
         /**
          * @ignore
          */
-        onExit: import_prop_types36.default.func,
+        onExit: import_prop_types38.default.func,
         /**
          * @ignore
          */
-        onExited: import_prop_types36.default.func,
+        onExited: import_prop_types38.default.func,
         /**
          * @ignore
          */
-        onExiting: import_prop_types36.default.func,
+        onExiting: import_prop_types38.default.func,
         /**
          * @ignore
          */
-        style: import_prop_types36.default.object,
+        style: import_prop_types38.default.object,
         /**
          * The duration for the transition, in milliseconds.
          * You may specify a single timeout for all transitions, or individually with an object.
@@ -37301,10 +39732,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *   exit: theme.transitions.duration.leavingScreen,
          * }
          */
-        timeout: import_prop_types36.default.oneOfType([import_prop_types36.default.number, import_prop_types36.default.shape({
-          appear: import_prop_types36.default.number,
-          enter: import_prop_types36.default.number,
-          exit: import_prop_types36.default.number
+        timeout: import_prop_types38.default.oneOfType([import_prop_types38.default.number, import_prop_types38.default.shape({
+          appear: import_prop_types38.default.number,
+          enter: import_prop_types38.default.number,
+          exit: import_prop_types38.default.number
         })])
       } : void 0;
       Fade_default = Fade;
@@ -37332,12 +39763,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/Backdrop/Backdrop.js
-  var React65, import_prop_types37, import_jsx_runtime38, useUtilityClasses13, BackdropRoot, Backdrop, Backdrop_default;
+  var React67, import_prop_types39, import_jsx_runtime40, useUtilityClasses14, BackdropRoot, Backdrop, Backdrop_default;
   var init_Backdrop = __esm({
     "node_modules/@mui/material/esm/Backdrop/Backdrop.js"() {
       "use client";
-      React65 = __toESM(require_react(), 1);
-      import_prop_types37 = __toESM(require_prop_types(), 1);
+      React67 = __toESM(require_react(), 1);
+      import_prop_types39 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_composeClasses2();
       init_zero_styled();
@@ -37345,8 +39776,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_useSlot();
       init_Fade2();
       init_backdropClasses();
-      import_jsx_runtime38 = __toESM(require_jsx_runtime(), 1);
-      useUtilityClasses13 = (ownerState) => {
+      import_jsx_runtime40 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses14 = (ownerState) => {
         const {
           classes,
           invisible
@@ -37385,7 +39816,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
         }]
       });
-      Backdrop = /* @__PURE__ */ React65.forwardRef(function Backdrop2(inProps, ref) {
+      Backdrop = /* @__PURE__ */ React67.forwardRef(function Backdrop2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiBackdrop"
@@ -37409,7 +39840,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           component,
           invisible
         };
-        const classes = useUtilityClasses13(ownerState);
+        const classes = useUtilityClasses14(ownerState);
         const backwardCompatibleSlots = {
           transition: TransitionComponentProp,
           root: components.Root,
@@ -37435,12 +39866,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           externalForwardedProps,
           ownerState
         });
-        return /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(TransitionSlot, {
+        return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(TransitionSlot, {
           in: open,
           timeout: transitionDuration,
           ...other,
           ...transitionProps,
-          children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(RootSlot, {
+          children: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(RootSlot, {
             "aria-hidden": true,
             ...rootProps,
             classes,
@@ -37457,20 +39888,20 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * The content of the component.
          */
-        children: import_prop_types37.default.node,
+        children: import_prop_types39.default.node,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types37.default.object,
+        classes: import_prop_types39.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types37.default.string,
+        className: import_prop_types39.default.string,
         /**
          * The component used for the root node.
          * Either a string to use a HTML element or a component.
          */
-        component: import_prop_types37.default.elementType,
+        component: import_prop_types39.default.elementType,
         /**
          * The components used for each slot inside.
          *
@@ -37478,8 +39909,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *
          * @default {}
          */
-        components: import_prop_types37.default.shape({
-          Root: import_prop_types37.default.elementType
+        components: import_prop_types39.default.shape({
+          Root: import_prop_types39.default.elementType
         }),
         /**
          * The extra props for the slot components.
@@ -37489,54 +39920,54 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *
          * @default {}
          */
-        componentsProps: import_prop_types37.default.shape({
-          root: import_prop_types37.default.object
+        componentsProps: import_prop_types39.default.shape({
+          root: import_prop_types39.default.object
         }),
         /**
          * If `true`, the backdrop is invisible.
          * It can be used when rendering a popover or a custom select component.
          * @default false
          */
-        invisible: import_prop_types37.default.bool,
+        invisible: import_prop_types39.default.bool,
         /**
          * If `true`, the component is shown.
          */
-        open: import_prop_types37.default.bool.isRequired,
+        open: import_prop_types39.default.bool.isRequired,
         /**
          * The props used for each slot inside.
          * @default {}
          */
-        slotProps: import_prop_types37.default.shape({
-          root: import_prop_types37.default.oneOfType([import_prop_types37.default.func, import_prop_types37.default.object]),
-          transition: import_prop_types37.default.oneOfType([import_prop_types37.default.func, import_prop_types37.default.object])
+        slotProps: import_prop_types39.default.shape({
+          root: import_prop_types39.default.oneOfType([import_prop_types39.default.func, import_prop_types39.default.object]),
+          transition: import_prop_types39.default.oneOfType([import_prop_types39.default.func, import_prop_types39.default.object])
         }),
         /**
          * The components used for each slot inside.
          * @default {}
          */
-        slots: import_prop_types37.default.shape({
-          root: import_prop_types37.default.elementType,
-          transition: import_prop_types37.default.elementType
+        slots: import_prop_types39.default.shape({
+          root: import_prop_types39.default.elementType,
+          transition: import_prop_types39.default.elementType
         }),
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types37.default.oneOfType([import_prop_types37.default.arrayOf(import_prop_types37.default.oneOfType([import_prop_types37.default.func, import_prop_types37.default.object, import_prop_types37.default.bool])), import_prop_types37.default.func, import_prop_types37.default.object]),
+        sx: import_prop_types39.default.oneOfType([import_prop_types39.default.arrayOf(import_prop_types39.default.oneOfType([import_prop_types39.default.func, import_prop_types39.default.object, import_prop_types39.default.bool])), import_prop_types39.default.func, import_prop_types39.default.object]),
         /**
          * The component used for the transition.
          * [Follow this guide](https://mui.com/material-ui/transitions/#transitioncomponent-prop) to learn more about the requirements for this component.
          * @default Fade
          * @deprecated Use `slots.transition` instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](/material-ui/migration/migrating-from-deprecated-apis/) for more details.
          */
-        TransitionComponent: import_prop_types37.default.elementType,
+        TransitionComponent: import_prop_types39.default.elementType,
         /**
          * The duration for the transition, in milliseconds.
          * You may specify a single timeout for all transitions, or individually with an object.
          */
-        transitionDuration: import_prop_types37.default.oneOfType([import_prop_types37.default.number, import_prop_types37.default.shape({
-          appear: import_prop_types37.default.number,
-          enter: import_prop_types37.default.number,
-          exit: import_prop_types37.default.number
+        transitionDuration: import_prop_types39.default.oneOfType([import_prop_types39.default.number, import_prop_types39.default.shape({
+          appear: import_prop_types39.default.number,
+          enter: import_prop_types39.default.number,
+          exit: import_prop_types39.default.number
         })])
       } : void 0;
       Backdrop_default = Backdrop;
@@ -37644,12 +40075,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/Box/Box.js
-  var import_prop_types38, defaultTheme4, Box, Box_default;
+  var import_prop_types40, defaultTheme4, Box, Box_default;
   var init_Box = __esm({
     "node_modules/@mui/material/esm/Box/Box.js"() {
       "use client";
       init_esm3();
-      import_prop_types38 = __toESM(require_prop_types(), 1);
+      import_prop_types40 = __toESM(require_prop_types(), 1);
       init_className();
       init_styles();
       init_identifier();
@@ -37669,16 +40100,16 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * @ignore
          */
-        children: import_prop_types38.default.node,
+        children: import_prop_types40.default.node,
         /**
          * The component used for the root node.
          * Either a string to use a HTML element or a component.
          */
-        component: import_prop_types38.default.elementType,
+        component: import_prop_types40.default.elementType,
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types38.default.oneOfType([import_prop_types38.default.arrayOf(import_prop_types38.default.oneOfType([import_prop_types38.default.func, import_prop_types38.default.object, import_prop_types38.default.bool])), import_prop_types38.default.func, import_prop_types38.default.object])
+        sx: import_prop_types40.default.oneOfType([import_prop_types40.default.arrayOf(import_prop_types40.default.oneOfType([import_prop_types40.default.func, import_prop_types40.default.object, import_prop_types40.default.bool])), import_prop_types40.default.func, import_prop_types40.default.object])
       } : void 0;
       Box_default = Box;
     }
@@ -37738,12 +40169,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/Card/Card.js
-  var React66, import_prop_types39, import_jsx_runtime39, useUtilityClasses14, CardRoot, Card, Card_default;
+  var React68, import_prop_types41, import_jsx_runtime41, useUtilityClasses15, CardRoot, Card, Card_default;
   var init_Card = __esm({
     "node_modules/@mui/material/esm/Card/Card.js"() {
       "use client";
-      React66 = __toESM(require_react(), 1);
-      import_prop_types39 = __toESM(require_prop_types(), 1);
+      React68 = __toESM(require_react(), 1);
+      import_prop_types41 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_chainPropTypes2();
       init_composeClasses2();
@@ -37751,8 +40182,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_DefaultPropsProvider4();
       init_Paper2();
       init_cardClasses();
-      import_jsx_runtime39 = __toESM(require_jsx_runtime(), 1);
-      useUtilityClasses14 = (ownerState) => {
+      import_jsx_runtime41 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses15 = (ownerState) => {
         const {
           classes
         } = ownerState;
@@ -37767,7 +40198,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       })({
         overflow: "hidden"
       });
-      Card = /* @__PURE__ */ React66.forwardRef(function Card2(inProps, ref) {
+      Card = /* @__PURE__ */ React68.forwardRef(function Card2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiCard"
@@ -37781,8 +40212,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           ...props,
           raised
         };
-        const classes = useUtilityClasses14(ownerState);
-        return /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(CardRoot, {
+        const classes = useUtilityClasses15(ownerState);
+        return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(CardRoot, {
           className: clsx_default(classes.root, className),
           elevation: raised ? 8 : void 0,
           ref,
@@ -37798,20 +40229,20 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * The content of the component.
          */
-        children: import_prop_types39.default.node,
+        children: import_prop_types41.default.node,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types39.default.object,
+        classes: import_prop_types41.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types39.default.string,
+        className: import_prop_types41.default.string,
         /**
          * If `true`, the card will use raised styling.
          * @default false
          */
-        raised: chainPropTypes(import_prop_types39.default.bool, (props) => {
+        raised: chainPropTypes(import_prop_types41.default.bool, (props) => {
           if (props.raised && props.variant === "outlined") {
             return new Error('MUI: Combining `raised={true}` with `variant="outlined"` has no effect.');
           }
@@ -37820,7 +40251,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types39.default.oneOfType([import_prop_types39.default.arrayOf(import_prop_types39.default.oneOfType([import_prop_types39.default.func, import_prop_types39.default.object, import_prop_types39.default.bool])), import_prop_types39.default.func, import_prop_types39.default.object])
+        sx: import_prop_types41.default.oneOfType([import_prop_types41.default.arrayOf(import_prop_types41.default.oneOfType([import_prop_types41.default.func, import_prop_types41.default.object, import_prop_types41.default.bool])), import_prop_types41.default.func, import_prop_types41.default.object])
       } : void 0;
       Card_default = Card;
     }
@@ -37880,19 +40311,19 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/CardContent/CardContent.js
-  var React67, import_prop_types40, import_jsx_runtime40, useUtilityClasses15, CardContentRoot, CardContent, CardContent_default;
+  var React69, import_prop_types42, import_jsx_runtime42, useUtilityClasses16, CardContentRoot, CardContent, CardContent_default;
   var init_CardContent = __esm({
     "node_modules/@mui/material/esm/CardContent/CardContent.js"() {
       "use client";
-      React67 = __toESM(require_react(), 1);
-      import_prop_types40 = __toESM(require_prop_types(), 1);
+      React69 = __toESM(require_react(), 1);
+      import_prop_types42 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_composeClasses2();
       init_zero_styled();
       init_DefaultPropsProvider4();
       init_cardContentClasses();
-      import_jsx_runtime40 = __toESM(require_jsx_runtime(), 1);
-      useUtilityClasses15 = (ownerState) => {
+      import_jsx_runtime42 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses16 = (ownerState) => {
         const {
           classes
         } = ownerState;
@@ -37910,7 +40341,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           paddingBottom: 24
         }
       });
-      CardContent = /* @__PURE__ */ React67.forwardRef(function CardContent2(inProps, ref) {
+      CardContent = /* @__PURE__ */ React69.forwardRef(function CardContent2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiCardContent"
@@ -37924,8 +40355,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           ...props,
           component
         };
-        const classes = useUtilityClasses15(ownerState);
-        return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(CardContentRoot, {
+        const classes = useUtilityClasses16(ownerState);
+        return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(CardContentRoot, {
           as: component,
           className: clsx_default(classes.root, className),
           ownerState,
@@ -37941,24 +40372,24 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * The content of the component.
          */
-        children: import_prop_types40.default.node,
+        children: import_prop_types42.default.node,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types40.default.object,
+        classes: import_prop_types42.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types40.default.string,
+        className: import_prop_types42.default.string,
         /**
          * The component used for the root node.
          * Either a string to use a HTML element or a component.
          */
-        component: import_prop_types40.default.elementType,
+        component: import_prop_types42.default.elementType,
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types40.default.oneOfType([import_prop_types40.default.arrayOf(import_prop_types40.default.oneOfType([import_prop_types40.default.func, import_prop_types40.default.object, import_prop_types40.default.bool])), import_prop_types40.default.func, import_prop_types40.default.object])
+        sx: import_prop_types42.default.oneOfType([import_prop_types42.default.arrayOf(import_prop_types42.default.oneOfType([import_prop_types42.default.func, import_prop_types42.default.object, import_prop_types42.default.bool])), import_prop_types42.default.func, import_prop_types42.default.object])
       } : void 0;
       CardContent_default = CardContent;
     }
@@ -38079,8 +40510,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }
     return container.scrollHeight > container.clientHeight;
   }
-  function ariaHidden(element, hide) {
-    if (hide) {
+  function ariaHidden(element, hide2) {
+    if (hide2) {
       element.setAttribute("aria-hidden", "true");
     } else {
       element.removeAttribute("aria-hidden");
@@ -38095,13 +40526,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const isInputHidden = element.tagName === "INPUT" && element.getAttribute("type") === "hidden";
     return isForbiddenTagName || isInputHidden;
   }
-  function ariaHiddenSiblings(container, mountElement, currentElement, elementsToExclude, hide) {
+  function ariaHiddenSiblings(container, mountElement, currentElement, elementsToExclude, hide2) {
     const blacklist = [mountElement, currentElement, ...elementsToExclude];
     [].forEach.call(container.children, (element) => {
       const isNotExcludedElement = !blacklist.includes(element);
       const isNotForbiddenElement = !isAriaHiddenForbiddenOnElement(element);
       if (isNotExcludedElement && isNotForbiddenElement) {
-        ariaHidden(element, hide);
+        ariaHidden(element, hide2);
       }
     });
   }
@@ -38325,22 +40756,22 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       isEnabled = defaultIsEnabled,
       open
     } = props;
-    const ignoreNextEnforceFocus = React68.useRef(false);
-    const sentinelStart = React68.useRef(null);
-    const sentinelEnd = React68.useRef(null);
-    const nodeToRestore = React68.useRef(null);
-    const reactFocusEventTarget = React68.useRef(null);
-    const activated = React68.useRef(false);
-    const rootRef = React68.useRef(null);
+    const ignoreNextEnforceFocus = React70.useRef(false);
+    const sentinelStart = React70.useRef(null);
+    const sentinelEnd = React70.useRef(null);
+    const nodeToRestore = React70.useRef(null);
+    const reactFocusEventTarget = React70.useRef(null);
+    const activated = React70.useRef(false);
+    const rootRef = React70.useRef(null);
     const handleRef = useForkRef(getReactElementRef(children), rootRef);
-    const lastKeydown = React68.useRef(null);
-    React68.useEffect(() => {
+    const lastKeydown = React70.useRef(null);
+    React70.useEffect(() => {
       if (!open || !rootRef.current) {
         return;
       }
       activated.current = !disableAutoFocus;
     }, [disableAutoFocus, open]);
-    React68.useEffect(() => {
+    React70.useEffect(() => {
       if (!open || !rootRef.current) {
         return;
       }
@@ -38366,7 +40797,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         }
       };
     }, [open]);
-    React68.useEffect(() => {
+    React70.useEffect(() => {
       if (!open || !rootRef.current) {
         return;
       }
@@ -38455,16 +40886,16 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
       activated.current = true;
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(React68.Fragment, {
-      children: [/* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", {
+    return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(React70.Fragment, {
+      children: [/* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", {
         tabIndex: open ? 0 : -1,
         onFocus: handleFocusSentinel,
         ref: sentinelStart,
         "data-testid": "sentinelStart"
-      }), /* @__PURE__ */ React68.cloneElement(children, {
+      }), /* @__PURE__ */ React70.cloneElement(children, {
         ref: handleRef,
         onFocus
-      }), /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", {
+      }), /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", {
         tabIndex: open ? 0 : -1,
         onFocus: handleFocusSentinel,
         ref: sentinelEnd,
@@ -38472,18 +40903,18 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       })]
     });
   }
-  var React68, import_prop_types41, import_jsx_runtime41, candidatesSelector, FocusTrap_default;
+  var React70, import_prop_types43, import_jsx_runtime43, candidatesSelector, FocusTrap_default;
   var init_FocusTrap = __esm({
     "node_modules/@mui/material/esm/Unstable_TrapFocus/FocusTrap.js"() {
       "use client";
-      React68 = __toESM(require_react(), 1);
-      import_prop_types41 = __toESM(require_prop_types(), 1);
+      React70 = __toESM(require_react(), 1);
+      import_prop_types43 = __toESM(require_prop_types(), 1);
       init_useForkRef2();
       init_ownerDocument2();
       init_getReactElementRef2();
       init_exactProp2();
       init_elementAcceptingRef2();
-      import_jsx_runtime41 = __toESM(require_jsx_runtime(), 1);
+      import_jsx_runtime43 = __toESM(require_jsx_runtime(), 1);
       candidatesSelector = ["input", "select", "textarea", "a[href]", "button", "[tabindex]", "audio[controls]", "video[controls]", '[contenteditable]:not([contenteditable="false"])'].join(",");
       true ? FocusTrap.propTypes = {
         // ┌────────────────────────────── Warning ──────────────────────────────┐
@@ -38503,7 +40934,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * accessible to assistive technologies, like screen readers.
          * @default false
          */
-        disableAutoFocus: import_prop_types41.default.bool,
+        disableAutoFocus: import_prop_types43.default.bool,
         /**
          * If `true`, the focus trap will not prevent focus from leaving the focus trap while open.
          *
@@ -38511,19 +40942,19 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * accessible to assistive technologies, like screen readers.
          * @default false
          */
-        disableEnforceFocus: import_prop_types41.default.bool,
+        disableEnforceFocus: import_prop_types43.default.bool,
         /**
          * If `true`, the focus trap will not restore focus to previously focused element once
          * focus trap is hidden or unmounted.
          * @default false
          */
-        disableRestoreFocus: import_prop_types41.default.bool,
+        disableRestoreFocus: import_prop_types43.default.bool,
         /**
          * Returns an array of ordered tabbable nodes (i.e. in tab order) within the root.
          * For instance, you can provide the "tabbable" npm dependency.
          * @param {HTMLElement} root
          */
-        getTabbable: import_prop_types41.default.func,
+        getTabbable: import_prop_types43.default.func,
         /**
          * This prop extends the `open` prop.
          * It allows to toggle the open state without having to wait for a rerender when changing the `open` prop.
@@ -38533,11 +40964,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *   return true;
          * }
          */
-        isEnabled: import_prop_types41.default.func,
+        isEnabled: import_prop_types43.default.func,
         /**
          * If `true`, focus is locked.
          */
-        open: import_prop_types41.default.bool.isRequired
+        open: import_prop_types43.default.bool.isRequired
       } : void 0;
       if (true) {
         FocusTrap["propTypes"] = exactProp(FocusTrap.propTypes);
@@ -38573,11 +41004,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       open,
       rootRef
     } = parameters;
-    const modal = React69.useRef({});
-    const mountNodeRef = React69.useRef(null);
-    const modalRef = React69.useRef(null);
+    const modal = React71.useRef({});
+    const mountNodeRef = React71.useRef(null);
+    const modalRef = React71.useRef(null);
     const handleRef = useForkRef(modalRef, rootRef);
-    const [exited, setExited] = React69.useState(!open);
+    const [exited, setExited] = React71.useState(!open);
     const hasTransition = getHasTransition(children);
     let ariaHiddenProp = true;
     if (parameters["aria-hidden"] === "false" || parameters["aria-hidden"] === false) {
@@ -38616,15 +41047,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         ariaHidden(modalRef.current, ariaHiddenProp);
       }
     });
-    const handleClose = React69.useCallback(() => {
+    const handleClose = React71.useCallback(() => {
       manager.remove(getModal(), ariaHiddenProp);
     }, [ariaHiddenProp]);
-    React69.useEffect(() => {
+    React71.useEffect(() => {
       return () => {
         handleClose();
       };
     }, [handleClose]);
-    React69.useEffect(() => {
+    React71.useEffect(() => {
       if (open) {
         handleOpen();
       } else if (!hasTransition || !closeAfterTransition) {
@@ -38715,11 +41146,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       hasTransition
     };
   }
-  var React69, noop4, manager, useModal_default;
+  var React71, noop4, manager, useModal_default;
   var init_useModal = __esm({
     "node_modules/@mui/material/esm/Modal/useModal.js"() {
       "use client";
-      React69 = __toESM(require_react(), 1);
+      React71 = __toESM(require_react(), 1);
       init_ownerDocument2();
       init_useForkRef2();
       init_useEventCallback2();
@@ -38747,12 +41178,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/Modal/Modal.js
-  var React70, import_prop_types42, import_jsx_runtime42, useUtilityClasses16, ModalRoot, ModalBackdrop, Modal, Modal_default;
+  var React72, import_prop_types44, import_jsx_runtime44, useUtilityClasses17, ModalRoot, ModalBackdrop, Modal, Modal_default;
   var init_Modal = __esm({
     "node_modules/@mui/material/esm/Modal/Modal.js"() {
       "use client";
-      React70 = __toESM(require_react(), 1);
-      import_prop_types42 = __toESM(require_prop_types(), 1);
+      React72 = __toESM(require_react(), 1);
+      import_prop_types44 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_HTMLElementType2();
       init_elementAcceptingRef2();
@@ -38766,8 +41197,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_useModal();
       init_modalClasses();
       init_useSlot();
-      import_jsx_runtime42 = __toESM(require_jsx_runtime(), 1);
-      useUtilityClasses16 = (ownerState) => {
+      import_jsx_runtime44 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses17 = (ownerState) => {
         const {
           open,
           exited,
@@ -38812,7 +41243,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       })({
         zIndex: -1
       });
-      Modal = /* @__PURE__ */ React70.forwardRef(function Modal2(inProps, ref) {
+      Modal = /* @__PURE__ */ React72.forwardRef(function Modal2(inProps, ref) {
         const props = useDefaultProps2({
           name: "MuiModal",
           props: inProps
@@ -38874,7 +41305,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           ...propsWithDefaults,
           exited
         };
-        const classes = useUtilityClasses16(ownerState);
+        const classes = useUtilityClasses17(ownerState);
         const childProps = {};
         if (children.props.tabIndex === void 0) {
           childProps.tabIndex = "-1";
@@ -38932,21 +41363,21 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         if (!keepMounted && !open && (!hasTransition || exited)) {
           return null;
         }
-        return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(Portal_default, {
+        return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(Portal_default, {
           ref: portalRef,
           container,
           disablePortal,
-          children: /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)(RootSlot, {
+          children: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(RootSlot, {
             ...rootProps,
-            children: [!hideBackdrop && BackdropComponent ? /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(BackdropSlot, {
+            children: [!hideBackdrop && BackdropComponent ? /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(BackdropSlot, {
               ...backdropProps
-            }) : null, /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(FocusTrap_default, {
+            }) : null, /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(FocusTrap_default, {
               disableEnforceFocus,
               disableAutoFocus,
               disableRestoreFocus,
               isEnabled: isTopModal,
               open,
-              children: /* @__PURE__ */ React70.cloneElement(children, childProps)
+              children: /* @__PURE__ */ React72.cloneElement(children, childProps)
             })]
           })
         });
@@ -38967,12 +41398,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *   zIndex: -1,
          * })
          */
-        BackdropComponent: import_prop_types42.default.elementType,
+        BackdropComponent: import_prop_types44.default.elementType,
         /**
          * Props applied to the [`Backdrop`](https://mui.com/material-ui/api/backdrop/) element.
          * @deprecated Use `slotProps.backdrop` instead.
          */
-        BackdropProps: import_prop_types42.default.object,
+        BackdropProps: import_prop_types44.default.object,
         /**
          * A single child content element.
          */
@@ -38980,21 +41411,21 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types42.default.object,
+        classes: import_prop_types44.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types42.default.string,
+        className: import_prop_types44.default.string,
         /**
          * When set to true the Modal waits until a nested Transition is completed before closing.
          * @default false
          */
-        closeAfterTransition: import_prop_types42.default.bool,
+        closeAfterTransition: import_prop_types44.default.bool,
         /**
          * The component used for the root node.
          * Either a string to use a HTML element or a component.
          */
-        component: import_prop_types42.default.elementType,
+        component: import_prop_types44.default.elementType,
         /**
          * The components used for each slot inside.
          *
@@ -39002,9 +41433,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *
          * @default {}
          */
-        components: import_prop_types42.default.shape({
-          Backdrop: import_prop_types42.default.elementType,
-          Root: import_prop_types42.default.elementType
+        components: import_prop_types44.default.shape({
+          Backdrop: import_prop_types44.default.elementType,
+          Root: import_prop_types44.default.elementType
         }),
         /**
          * The extra props for the slot components.
@@ -39014,9 +41445,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *
          * @default {}
          */
-        componentsProps: import_prop_types42.default.shape({
-          backdrop: import_prop_types42.default.oneOfType([import_prop_types42.default.func, import_prop_types42.default.object]),
-          root: import_prop_types42.default.oneOfType([import_prop_types42.default.func, import_prop_types42.default.object])
+        componentsProps: import_prop_types44.default.shape({
+          backdrop: import_prop_types44.default.oneOfType([import_prop_types44.default.func, import_prop_types44.default.object]),
+          root: import_prop_types44.default.oneOfType([import_prop_types44.default.func, import_prop_types44.default.object])
         }),
         /**
          * An HTML element or function that returns one.
@@ -39028,7 +41459,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * By default, it uses the body of the top-level document object,
          * so it's simply `document.body` most of the time.
          */
-        container: import_prop_types42.default.oneOfType([HTMLElementType, import_prop_types42.default.func]),
+        container: import_prop_types44.default.oneOfType([HTMLElementType, import_prop_types44.default.func]),
         /**
          * If `true`, the modal will not automatically shift focus to itself when it opens, and
          * replace it to the last focused element when it closes.
@@ -39038,7 +41469,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * accessible to assistive technologies, like screen readers.
          * @default false
          */
-        disableAutoFocus: import_prop_types42.default.bool,
+        disableAutoFocus: import_prop_types44.default.bool,
         /**
          * If `true`, the modal will not prevent focus from leaving the modal while open.
          *
@@ -39046,40 +41477,40 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * accessible to assistive technologies, like screen readers.
          * @default false
          */
-        disableEnforceFocus: import_prop_types42.default.bool,
+        disableEnforceFocus: import_prop_types44.default.bool,
         /**
          * If `true`, hitting escape will not fire the `onClose` callback.
          * @default false
          */
-        disableEscapeKeyDown: import_prop_types42.default.bool,
+        disableEscapeKeyDown: import_prop_types44.default.bool,
         /**
          * The `children` will be under the DOM hierarchy of the parent component.
          * @default false
          */
-        disablePortal: import_prop_types42.default.bool,
+        disablePortal: import_prop_types44.default.bool,
         /**
          * If `true`, the modal will not restore focus to previously focused element once
          * modal is hidden or unmounted.
          * @default false
          */
-        disableRestoreFocus: import_prop_types42.default.bool,
+        disableRestoreFocus: import_prop_types44.default.bool,
         /**
          * Disable the scroll lock behavior.
          * @default false
          */
-        disableScrollLock: import_prop_types42.default.bool,
+        disableScrollLock: import_prop_types44.default.bool,
         /**
          * If `true`, the backdrop is not rendered.
          * @default false
          */
-        hideBackdrop: import_prop_types42.default.bool,
+        hideBackdrop: import_prop_types44.default.bool,
         /**
          * Always keep the children in the DOM.
          * This prop can be useful in SEO situation or
          * when you want to maximize the responsiveness of the Modal.
          * @default false
          */
-        keepMounted: import_prop_types42.default.bool,
+        keepMounted: import_prop_types44.default.bool,
         /**
          * Callback fired when the component requests to be closed.
          * The `reason` parameter can optionally be used to control the response to `onClose`.
@@ -39087,40 +41518,40 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * @param {object} event The event source of the callback.
          * @param {string} reason Can be: `"escapeKeyDown"`, `"backdropClick"`.
          */
-        onClose: import_prop_types42.default.func,
+        onClose: import_prop_types44.default.func,
         /**
          * A function called when a transition enters.
          */
-        onTransitionEnter: import_prop_types42.default.func,
+        onTransitionEnter: import_prop_types44.default.func,
         /**
          * A function called when a transition has exited.
          */
-        onTransitionExited: import_prop_types42.default.func,
+        onTransitionExited: import_prop_types44.default.func,
         /**
          * If `true`, the component is shown.
          */
-        open: import_prop_types42.default.bool.isRequired,
+        open: import_prop_types44.default.bool.isRequired,
         /**
          * The props used for each slot inside the Modal.
          * @default {}
          */
-        slotProps: import_prop_types42.default.shape({
-          backdrop: import_prop_types42.default.oneOfType([import_prop_types42.default.func, import_prop_types42.default.object]),
-          root: import_prop_types42.default.oneOfType([import_prop_types42.default.func, import_prop_types42.default.object])
+        slotProps: import_prop_types44.default.shape({
+          backdrop: import_prop_types44.default.oneOfType([import_prop_types44.default.func, import_prop_types44.default.object]),
+          root: import_prop_types44.default.oneOfType([import_prop_types44.default.func, import_prop_types44.default.object])
         }),
         /**
          * The components used for each slot inside the Modal.
          * Either a string to use a HTML element or a component.
          * @default {}
          */
-        slots: import_prop_types42.default.shape({
-          backdrop: import_prop_types42.default.elementType,
-          root: import_prop_types42.default.elementType
+        slots: import_prop_types44.default.shape({
+          backdrop: import_prop_types44.default.elementType,
+          root: import_prop_types44.default.elementType
         }),
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types42.default.oneOfType([import_prop_types42.default.arrayOf(import_prop_types42.default.oneOfType([import_prop_types42.default.func, import_prop_types42.default.object, import_prop_types42.default.bool])), import_prop_types42.default.func, import_prop_types42.default.object])
+        sx: import_prop_types44.default.oneOfType([import_prop_types44.default.arrayOf(import_prop_types44.default.oneOfType([import_prop_types44.default.func, import_prop_types44.default.object, import_prop_types44.default.bool])), import_prop_types44.default.func, import_prop_types44.default.object])
       } : void 0;
       Modal_default = Modal;
     }
@@ -39228,12 +41659,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/Divider/Divider.js
-  var React71, import_prop_types43, import_jsx_runtime43, useUtilityClasses17, DividerRoot, DividerWrapper, Divider, Divider_default;
+  var React73, import_prop_types45, import_jsx_runtime45, useUtilityClasses18, DividerRoot, DividerWrapper, Divider, Divider_default;
   var init_Divider = __esm({
     "node_modules/@mui/material/esm/Divider/Divider.js"() {
       "use client";
-      React71 = __toESM(require_react(), 1);
-      import_prop_types43 = __toESM(require_prop_types(), 1);
+      React73 = __toESM(require_react(), 1);
+      import_prop_types45 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_composeClasses2();
       init_colorManipulator2();
@@ -39241,8 +41672,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_memoTheme2();
       init_DefaultPropsProvider4();
       init_dividerClasses();
-      import_jsx_runtime43 = __toESM(require_jsx_runtime(), 1);
-      useUtilityClasses17 = (ownerState) => {
+      import_jsx_runtime45 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses18 = (ownerState) => {
         const {
           absolute,
           children,
@@ -39427,7 +41858,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
         }]
       })));
-      Divider = /* @__PURE__ */ React71.forwardRef(function Divider2(inProps, ref) {
+      Divider = /* @__PURE__ */ React73.forwardRef(function Divider2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiDivider"
@@ -39456,8 +41887,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           textAlign: textAlign2,
           variant
         };
-        const classes = useUtilityClasses17(ownerState);
-        return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(DividerRoot, {
+        const classes = useUtilityClasses18(ownerState);
+        return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(DividerRoot, {
           as: component,
           className: clsx_default(classes.root, className),
           role,
@@ -39465,7 +41896,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           ownerState,
           "aria-orientation": role === "separator" && (component !== "hr" || orientation === "vertical") ? orientation : void 0,
           ...other,
-          children: children ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(DividerWrapper, {
+          children: children ? /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(DividerWrapper, {
             className: classes.wrapper,
             ownerState,
             children
@@ -39484,59 +41915,59 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * Absolutely position the element.
          * @default false
          */
-        absolute: import_prop_types43.default.bool,
+        absolute: import_prop_types45.default.bool,
         /**
          * The content of the component.
          */
-        children: import_prop_types43.default.node,
+        children: import_prop_types45.default.node,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types43.default.object,
+        classes: import_prop_types45.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types43.default.string,
+        className: import_prop_types45.default.string,
         /**
          * The component used for the root node.
          * Either a string to use a HTML element or a component.
          */
-        component: import_prop_types43.default.elementType,
+        component: import_prop_types45.default.elementType,
         /**
          * If `true`, a vertical divider will have the correct height when used in flex container.
          * (By default, a vertical divider will have a calculated height of `0px` if it is the child of a flex container.)
          * @default false
          */
-        flexItem: import_prop_types43.default.bool,
+        flexItem: import_prop_types45.default.bool,
         /**
          * If `true`, the divider will have a lighter color.
          * @default false
          * @deprecated Use <Divider sx={{ opacity: 0.6 }} /> (or any opacity or color) instead. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
          */
-        light: import_prop_types43.default.bool,
+        light: import_prop_types45.default.bool,
         /**
          * The component orientation.
          * @default 'horizontal'
          */
-        orientation: import_prop_types43.default.oneOf(["horizontal", "vertical"]),
+        orientation: import_prop_types45.default.oneOf(["horizontal", "vertical"]),
         /**
          * @ignore
          */
-        role: import_prop_types43.default.string,
+        role: import_prop_types45.default.string,
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types43.default.oneOfType([import_prop_types43.default.arrayOf(import_prop_types43.default.oneOfType([import_prop_types43.default.func, import_prop_types43.default.object, import_prop_types43.default.bool])), import_prop_types43.default.func, import_prop_types43.default.object]),
+        sx: import_prop_types45.default.oneOfType([import_prop_types45.default.arrayOf(import_prop_types45.default.oneOfType([import_prop_types45.default.func, import_prop_types45.default.object, import_prop_types45.default.bool])), import_prop_types45.default.func, import_prop_types45.default.object]),
         /**
          * The text alignment.
          * @default 'center'
          */
-        textAlign: import_prop_types43.default.oneOf(["center", "left", "right"]),
+        textAlign: import_prop_types45.default.oneOf(["center", "left", "right"]),
         /**
          * The variant to use.
          * @default 'fullWidth'
          */
-        variant: import_prop_types43.default.oneOfType([import_prop_types43.default.oneOf(["fullWidth", "inset", "middle"]), import_prop_types43.default.string])
+        variant: import_prop_types45.default.oneOfType([import_prop_types45.default.oneOf(["fullWidth", "inset", "middle"]), import_prop_types45.default.string])
       } : void 0;
       Divider_default = Divider;
     }
@@ -39589,14 +42020,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/FilledInput/FilledInput.js
-  var React72, import_prop_types44, import_jsx_runtime44, useUtilityClasses18, FilledInputRoot, FilledInputInput, FilledInput, FilledInput_default;
+  var React74, import_prop_types46, import_jsx_runtime46, useUtilityClasses19, FilledInputRoot, FilledInputInput, FilledInput, FilledInput_default;
   var init_FilledInput = __esm({
     "node_modules/@mui/material/esm/FilledInput/FilledInput.js"() {
       "use client";
-      React72 = __toESM(require_react(), 1);
+      React74 = __toESM(require_react(), 1);
       init_deepmerge2();
       init_refType2();
-      import_prop_types44 = __toESM(require_prop_types(), 1);
+      import_prop_types46 = __toESM(require_prop_types(), 1);
       init_composeClasses2();
       init_InputBase2();
       init_rootShouldForwardProp();
@@ -39607,8 +42038,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_filledInputClasses();
       init_InputBase();
       init_utils2();
-      import_jsx_runtime44 = __toESM(require_jsx_runtime(), 1);
-      useUtilityClasses18 = (ownerState) => {
+      import_jsx_runtime46 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses19 = (ownerState) => {
         const {
           classes,
           disableUnderline,
@@ -39860,7 +42291,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
         }]
       })));
-      FilledInput = /* @__PURE__ */ React72.forwardRef(function FilledInput2(inProps, ref) {
+      FilledInput = /* @__PURE__ */ React74.forwardRef(function FilledInput2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiFilledInput"
@@ -39887,7 +42318,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           multiline,
           type
         };
-        const classes = useUtilityClasses18(props);
+        const classes = useUtilityClasses19(props);
         const filledInputComponentsProps = {
           root: {
             ownerState
@@ -39899,7 +42330,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         const componentsProps = slotProps ?? componentsPropsProp ? deepmerge(filledInputComponentsProps, slotProps ?? componentsPropsProp) : filledInputComponentsProps;
         const RootSlot = slots.root ?? components.Root ?? FilledInputRoot;
         const InputSlot = slots.input ?? components.Input ?? FilledInputInput;
-        return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(InputBase_default, {
+        return /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(InputBase_default, {
           slots: {
             root: RootSlot,
             input: InputSlot
@@ -39924,22 +42355,22 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * The name can be confusing, as it's more like an autofill.
          * You can learn more about it [following the specification](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill).
          */
-        autoComplete: import_prop_types44.default.string,
+        autoComplete: import_prop_types46.default.string,
         /**
          * If `true`, the `input` element is focused during the first mount.
          */
-        autoFocus: import_prop_types44.default.bool,
+        autoFocus: import_prop_types46.default.bool,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types44.default.object,
+        classes: import_prop_types46.default.object,
         /**
          * The color of the component.
          * It supports both default and custom theme colors, which can be added as shown in the
          * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
          * The prop defaults to the value (`'primary'`) inherited from the parent FormControl component.
          */
-        color: import_prop_types44.default.oneOfType([import_prop_types44.default.oneOf(["primary", "secondary"]), import_prop_types44.default.string]),
+        color: import_prop_types46.default.oneOfType([import_prop_types46.default.oneOf(["primary", "secondary"]), import_prop_types46.default.string]),
         /**
          * The components used for each slot inside.
          *
@@ -39947,9 +42378,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *
          * @default {}
          */
-        components: import_prop_types44.default.shape({
-          Input: import_prop_types44.default.elementType,
-          Root: import_prop_types44.default.elementType
+        components: import_prop_types46.default.shape({
+          Input: import_prop_types46.default.elementType,
+          Root: import_prop_types46.default.elementType
         }),
         /**
          * The extra props for the slot components.
@@ -39959,60 +42390,60 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *
          * @default {}
          */
-        componentsProps: import_prop_types44.default.shape({
-          input: import_prop_types44.default.object,
-          root: import_prop_types44.default.object
+        componentsProps: import_prop_types46.default.shape({
+          input: import_prop_types46.default.object,
+          root: import_prop_types46.default.object
         }),
         /**
          * The default value. Use when the component is not controlled.
          */
-        defaultValue: import_prop_types44.default.any,
+        defaultValue: import_prop_types46.default.any,
         /**
          * If `true`, the component is disabled.
          * The prop defaults to the value (`false`) inherited from the parent FormControl component.
          */
-        disabled: import_prop_types44.default.bool,
+        disabled: import_prop_types46.default.bool,
         /**
          * If `true`, the input will not have an underline.
          * @default false
          */
-        disableUnderline: import_prop_types44.default.bool,
+        disableUnderline: import_prop_types46.default.bool,
         /**
          * End `InputAdornment` for this component.
          */
-        endAdornment: import_prop_types44.default.node,
+        endAdornment: import_prop_types46.default.node,
         /**
          * If `true`, the `input` will indicate an error.
          * The prop defaults to the value (`false`) inherited from the parent FormControl component.
          */
-        error: import_prop_types44.default.bool,
+        error: import_prop_types46.default.bool,
         /**
          * If `true`, the `input` will take up the full width of its container.
          * @default false
          */
-        fullWidth: import_prop_types44.default.bool,
+        fullWidth: import_prop_types46.default.bool,
         /**
          * If `true`, the label is hidden.
          * This is used to increase density for a `FilledInput`.
          * Be sure to add `aria-label` to the `input` element.
          * @default false
          */
-        hiddenLabel: import_prop_types44.default.bool,
+        hiddenLabel: import_prop_types46.default.bool,
         /**
          * The id of the `input` element.
          */
-        id: import_prop_types44.default.string,
+        id: import_prop_types46.default.string,
         /**
          * The component used for the `input` element.
          * Either a string to use a HTML element or a component.
          * @default 'input'
          */
-        inputComponent: import_prop_types44.default.elementType,
+        inputComponent: import_prop_types46.default.elementType,
         /**
          * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#attributes) applied to the `input` element.
          * @default {}
          */
-        inputProps: import_prop_types44.default.object,
+        inputProps: import_prop_types46.default.object,
         /**
          * Pass a ref to the `input` element.
          */
@@ -40022,49 +42453,49 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * FormControl.
          * The prop defaults to the value (`'none'`) inherited from the parent FormControl component.
          */
-        margin: import_prop_types44.default.oneOf(["dense", "none"]),
+        margin: import_prop_types46.default.oneOf(["dense", "none"]),
         /**
          * Maximum number of rows to display when multiline option is set to true.
          */
-        maxRows: import_prop_types44.default.oneOfType([import_prop_types44.default.number, import_prop_types44.default.string]),
+        maxRows: import_prop_types46.default.oneOfType([import_prop_types46.default.number, import_prop_types46.default.string]),
         /**
          * Minimum number of rows to display when multiline option is set to true.
          */
-        minRows: import_prop_types44.default.oneOfType([import_prop_types44.default.number, import_prop_types44.default.string]),
+        minRows: import_prop_types46.default.oneOfType([import_prop_types46.default.number, import_prop_types46.default.string]),
         /**
          * If `true`, a [TextareaAutosize](https://mui.com/material-ui/react-textarea-autosize/) element is rendered.
          * @default false
          */
-        multiline: import_prop_types44.default.bool,
+        multiline: import_prop_types46.default.bool,
         /**
          * Name attribute of the `input` element.
          */
-        name: import_prop_types44.default.string,
+        name: import_prop_types46.default.string,
         /**
          * Callback fired when the value is changed.
          *
          * @param {React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>} event The event source of the callback.
          * You can pull out the new value by accessing `event.target.value` (string).
          */
-        onChange: import_prop_types44.default.func,
+        onChange: import_prop_types46.default.func,
         /**
          * The short hint displayed in the `input` before the user enters a value.
          */
-        placeholder: import_prop_types44.default.string,
+        placeholder: import_prop_types46.default.string,
         /**
          * It prevents the user from changing the value of the field
          * (not from interacting with the field).
          */
-        readOnly: import_prop_types44.default.bool,
+        readOnly: import_prop_types46.default.bool,
         /**
          * If `true`, the `input` element is required.
          * The prop defaults to the value (`false`) inherited from the parent FormControl component.
          */
-        required: import_prop_types44.default.bool,
+        required: import_prop_types46.default.bool,
         /**
          * Number of rows to display when multiline option is set to true.
          */
-        rows: import_prop_types44.default.oneOfType([import_prop_types44.default.number, import_prop_types44.default.string]),
+        rows: import_prop_types46.default.oneOfType([import_prop_types46.default.number, import_prop_types46.default.string]),
         /**
          * The extra props for the slot components.
          * You can override the existing props or add new ones.
@@ -40073,9 +42504,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *
          * @default {}
          */
-        slotProps: import_prop_types44.default.shape({
-          input: import_prop_types44.default.object,
-          root: import_prop_types44.default.object
+        slotProps: import_prop_types46.default.shape({
+          input: import_prop_types46.default.object,
+          root: import_prop_types46.default.object
         }),
         /**
          * The components used for each slot inside.
@@ -40084,27 +42515,27 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *
          * @default {}
          */
-        slots: import_prop_types44.default.shape({
-          input: import_prop_types44.default.elementType,
-          root: import_prop_types44.default.elementType
+        slots: import_prop_types46.default.shape({
+          input: import_prop_types46.default.elementType,
+          root: import_prop_types46.default.elementType
         }),
         /**
          * Start `InputAdornment` for this component.
          */
-        startAdornment: import_prop_types44.default.node,
+        startAdornment: import_prop_types46.default.node,
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types44.default.oneOfType([import_prop_types44.default.arrayOf(import_prop_types44.default.oneOfType([import_prop_types44.default.func, import_prop_types44.default.object, import_prop_types44.default.bool])), import_prop_types44.default.func, import_prop_types44.default.object]),
+        sx: import_prop_types46.default.oneOfType([import_prop_types46.default.arrayOf(import_prop_types46.default.oneOfType([import_prop_types46.default.func, import_prop_types46.default.object, import_prop_types46.default.bool])), import_prop_types46.default.func, import_prop_types46.default.object]),
         /**
          * Type of the `input` element. It should be [a valid HTML5 input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#input_types).
          * @default 'text'
          */
-        type: import_prop_types44.default.string,
+        type: import_prop_types46.default.string,
         /**
          * The value of the `input` element, required for a controlled component.
          */
-        value: import_prop_types44.default.any
+        value: import_prop_types46.default.any
       } : void 0;
       FilledInput.muiName = "Input";
       FilledInput_default = FilledInput;
@@ -40133,12 +42564,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/FormControl/FormControl.js
-  var React73, import_prop_types45, import_jsx_runtime45, useUtilityClasses19, FormControlRoot, FormControl, FormControl_default;
+  var React75, import_prop_types47, import_jsx_runtime47, useUtilityClasses20, FormControlRoot, FormControl, FormControl_default;
   var init_FormControl = __esm({
     "node_modules/@mui/material/esm/FormControl/FormControl.js"() {
       "use client";
-      React73 = __toESM(require_react(), 1);
-      import_prop_types45 = __toESM(require_prop_types(), 1);
+      React75 = __toESM(require_react(), 1);
+      import_prop_types47 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_composeClasses2();
       init_zero_styled();
@@ -40148,8 +42579,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_isMuiElement3();
       init_FormControlContext();
       init_formControlClasses();
-      import_jsx_runtime45 = __toESM(require_jsx_runtime(), 1);
-      useUtilityClasses19 = (ownerState) => {
+      import_jsx_runtime47 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses20 = (ownerState) => {
         const {
           classes,
           margin: margin2,
@@ -40205,7 +42636,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
         }]
       });
-      FormControl = /* @__PURE__ */ React73.forwardRef(function FormControl2(inProps, ref) {
+      FormControl = /* @__PURE__ */ React75.forwardRef(function FormControl2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiFormControl"
@@ -40239,11 +42670,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           size,
           variant
         };
-        const classes = useUtilityClasses19(ownerState);
-        const [adornedStart, setAdornedStart] = React73.useState(() => {
+        const classes = useUtilityClasses20(ownerState);
+        const [adornedStart, setAdornedStart] = React75.useState(() => {
           let initialAdornedStart = false;
           if (children) {
-            React73.Children.forEach(children, (child) => {
+            React75.Children.forEach(children, (child) => {
               if (!isMuiElement_default(child, ["Input", "Select"])) {
                 return;
               }
@@ -40255,10 +42686,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
           return initialAdornedStart;
         });
-        const [filled, setFilled] = React73.useState(() => {
+        const [filled, setFilled] = React75.useState(() => {
           let initialFilled = false;
           if (children) {
-            React73.Children.forEach(children, (child) => {
+            React75.Children.forEach(children, (child) => {
               if (!isMuiElement_default(child, ["Input", "Select"])) {
                 return;
               }
@@ -40269,13 +42700,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
           return initialFilled;
         });
-        const [focusedState, setFocused] = React73.useState(false);
+        const [focusedState, setFocused] = React75.useState(false);
         if (disabled && focusedState) {
           setFocused(false);
         }
         const focused = visuallyFocused !== void 0 && !disabled ? visuallyFocused : focusedState;
         let registerEffect;
-        const registeredInput = React73.useRef(false);
+        const registeredInput = React75.useRef(false);
         if (true) {
           registerEffect = () => {
             if (registeredInput.current) {
@@ -40287,13 +42718,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             };
           };
         }
-        const onFilled = React73.useCallback(() => {
+        const onFilled = React75.useCallback(() => {
           setFilled(true);
         }, []);
-        const onEmpty = React73.useCallback(() => {
+        const onEmpty = React75.useCallback(() => {
           setFilled(false);
         }, []);
-        const childContext = React73.useMemo(() => {
+        const childContext = React75.useMemo(() => {
           return {
             adornedStart,
             setAdornedStart,
@@ -40318,9 +42749,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             variant
           };
         }, [adornedStart, color2, disabled, error, filled, focused, fullWidth, hiddenLabel, registerEffect, onEmpty, onFilled, required, size, variant]);
-        return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(FormControlContext_default.Provider, {
+        return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(FormControlContext_default.Provider, {
           value: childContext,
-          children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(FormControlRoot, {
+          children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(FormControlRoot, {
             as: component,
             ownerState,
             className: clsx_default(classes.root, className),
@@ -40338,77 +42769,77 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * The content of the component.
          */
-        children: import_prop_types45.default.node,
+        children: import_prop_types47.default.node,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types45.default.object,
+        classes: import_prop_types47.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types45.default.string,
+        className: import_prop_types47.default.string,
         /**
          * The color of the component.
          * It supports both default and custom theme colors, which can be added as shown in the
          * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
          * @default 'primary'
          */
-        color: import_prop_types45.default.oneOfType([import_prop_types45.default.oneOf(["primary", "secondary", "error", "info", "success", "warning"]), import_prop_types45.default.string]),
+        color: import_prop_types47.default.oneOfType([import_prop_types47.default.oneOf(["primary", "secondary", "error", "info", "success", "warning"]), import_prop_types47.default.string]),
         /**
          * The component used for the root node.
          * Either a string to use a HTML element or a component.
          */
-        component: import_prop_types45.default.elementType,
+        component: import_prop_types47.default.elementType,
         /**
          * If `true`, the label, input and helper text should be displayed in a disabled state.
          * @default false
          */
-        disabled: import_prop_types45.default.bool,
+        disabled: import_prop_types47.default.bool,
         /**
          * If `true`, the label is displayed in an error state.
          * @default false
          */
-        error: import_prop_types45.default.bool,
+        error: import_prop_types47.default.bool,
         /**
          * If `true`, the component is displayed in focused state.
          */
-        focused: import_prop_types45.default.bool,
+        focused: import_prop_types47.default.bool,
         /**
          * If `true`, the component will take up the full width of its container.
          * @default false
          */
-        fullWidth: import_prop_types45.default.bool,
+        fullWidth: import_prop_types47.default.bool,
         /**
          * If `true`, the label is hidden.
          * This is used to increase density for a `FilledInput`.
          * Be sure to add `aria-label` to the `input` element.
          * @default false
          */
-        hiddenLabel: import_prop_types45.default.bool,
+        hiddenLabel: import_prop_types47.default.bool,
         /**
          * If `dense` or `normal`, will adjust vertical spacing of this and contained components.
          * @default 'none'
          */
-        margin: import_prop_types45.default.oneOf(["dense", "none", "normal"]),
+        margin: import_prop_types47.default.oneOf(["dense", "none", "normal"]),
         /**
          * If `true`, the label will indicate that the `input` is required.
          * @default false
          */
-        required: import_prop_types45.default.bool,
+        required: import_prop_types47.default.bool,
         /**
          * The size of the component.
          * @default 'medium'
          */
-        size: import_prop_types45.default.oneOfType([import_prop_types45.default.oneOf(["medium", "small"]), import_prop_types45.default.string]),
+        size: import_prop_types47.default.oneOfType([import_prop_types47.default.oneOf(["medium", "small"]), import_prop_types47.default.string]),
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types45.default.oneOfType([import_prop_types45.default.arrayOf(import_prop_types45.default.oneOfType([import_prop_types45.default.func, import_prop_types45.default.object, import_prop_types45.default.bool])), import_prop_types45.default.func, import_prop_types45.default.object]),
+        sx: import_prop_types47.default.oneOfType([import_prop_types47.default.arrayOf(import_prop_types47.default.oneOfType([import_prop_types47.default.func, import_prop_types47.default.object, import_prop_types47.default.bool])), import_prop_types47.default.func, import_prop_types47.default.object]),
         /**
          * The variant to use.
          * @default 'outlined'
          */
-        variant: import_prop_types45.default.oneOf(["filled", "outlined", "standard"])
+        variant: import_prop_types47.default.oneOf(["filled", "outlined", "standard"])
       } : void 0;
       FormControl_default = FormControl;
     }
@@ -40469,12 +42900,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/FormHelperText/FormHelperText.js
-  var React74, import_prop_types46, import_jsx_runtime46, _span, useUtilityClasses20, FormHelperTextRoot, FormHelperText, FormHelperText_default;
+  var React76, import_prop_types48, import_jsx_runtime48, _span, useUtilityClasses21, FormHelperTextRoot, FormHelperText, FormHelperText_default;
   var init_FormHelperText = __esm({
     "node_modules/@mui/material/esm/FormHelperText/FormHelperText.js"() {
       "use client";
-      React74 = __toESM(require_react(), 1);
-      import_prop_types46 = __toESM(require_prop_types(), 1);
+      React76 = __toESM(require_react(), 1);
+      import_prop_types48 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_composeClasses2();
       init_formControlState();
@@ -40484,8 +42915,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_DefaultPropsProvider4();
       init_capitalize3();
       init_formHelperTextClasses();
-      import_jsx_runtime46 = __toESM(require_jsx_runtime(), 1);
-      useUtilityClasses20 = (ownerState) => {
+      import_jsx_runtime48 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses21 = (ownerState) => {
         const {
           classes,
           contained,
@@ -40543,7 +42974,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
         }]
       })));
-      FormHelperText = /* @__PURE__ */ React74.forwardRef(function FormHelperText2(inProps, ref) {
+      FormHelperText = /* @__PURE__ */ React76.forwardRef(function FormHelperText2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiFormHelperText"
@@ -40580,8 +43011,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           required: fcs.required
         };
         delete ownerState.ownerState;
-        const classes = useUtilityClasses20(ownerState);
-        return /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(FormHelperTextRoot, {
+        const classes = useUtilityClasses21(ownerState);
+        return /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(FormHelperTextRoot, {
           as: component,
           className: clsx_default(classes.root, className),
           ref,
@@ -40589,7 +43020,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           ownerState,
           children: children === " " ? (
             // notranslate needed while Google Translate will not fix zero-width space issue
-            _span || (_span = /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", {
+            _span || (_span = /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", {
               className: "notranslate",
               "aria-hidden": true,
               children: "\u200B"
@@ -40607,53 +43038,53 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *
          * If `' '` is provided, the component reserves one line height for displaying a future message.
          */
-        children: import_prop_types46.default.node,
+        children: import_prop_types48.default.node,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types46.default.object,
+        classes: import_prop_types48.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types46.default.string,
+        className: import_prop_types48.default.string,
         /**
          * The component used for the root node.
          * Either a string to use a HTML element or a component.
          */
-        component: import_prop_types46.default.elementType,
+        component: import_prop_types48.default.elementType,
         /**
          * If `true`, the helper text should be displayed in a disabled state.
          */
-        disabled: import_prop_types46.default.bool,
+        disabled: import_prop_types48.default.bool,
         /**
          * If `true`, helper text should be displayed in an error state.
          */
-        error: import_prop_types46.default.bool,
+        error: import_prop_types48.default.bool,
         /**
          * If `true`, the helper text should use filled classes key.
          */
-        filled: import_prop_types46.default.bool,
+        filled: import_prop_types48.default.bool,
         /**
          * If `true`, the helper text should use focused classes key.
          */
-        focused: import_prop_types46.default.bool,
+        focused: import_prop_types48.default.bool,
         /**
          * If `dense`, will adjust vertical spacing. This is normally obtained via context from
          * FormControl.
          */
-        margin: import_prop_types46.default.oneOf(["dense"]),
+        margin: import_prop_types48.default.oneOf(["dense"]),
         /**
          * If `true`, the helper text should use required classes key.
          */
-        required: import_prop_types46.default.bool,
+        required: import_prop_types48.default.bool,
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types46.default.oneOfType([import_prop_types46.default.arrayOf(import_prop_types46.default.oneOfType([import_prop_types46.default.func, import_prop_types46.default.object, import_prop_types46.default.bool])), import_prop_types46.default.func, import_prop_types46.default.object]),
+        sx: import_prop_types48.default.oneOfType([import_prop_types48.default.arrayOf(import_prop_types48.default.oneOfType([import_prop_types48.default.func, import_prop_types48.default.object, import_prop_types48.default.bool])), import_prop_types48.default.func, import_prop_types48.default.object]),
         /**
          * The variant to use.
          */
-        variant: import_prop_types46.default.oneOfType([import_prop_types46.default.oneOf(["filled", "outlined", "standard"]), import_prop_types46.default.string])
+        variant: import_prop_types48.default.oneOfType([import_prop_types48.default.oneOf(["filled", "outlined", "standard"]), import_prop_types48.default.string])
       } : void 0;
       FormHelperText_default = FormHelperText;
     }
@@ -40682,12 +43113,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/FormLabel/FormLabel.js
-  var React75, import_prop_types47, import_jsx_runtime47, useUtilityClasses21, FormLabelRoot, AsteriskComponent, FormLabel, FormLabel_default;
+  var React77, import_prop_types49, import_jsx_runtime49, useUtilityClasses22, FormLabelRoot, AsteriskComponent, FormLabel, FormLabel_default;
   var init_FormLabel = __esm({
     "node_modules/@mui/material/esm/FormLabel/FormLabel.js"() {
       "use client";
-      React75 = __toESM(require_react(), 1);
-      import_prop_types47 = __toESM(require_prop_types(), 1);
+      React77 = __toESM(require_react(), 1);
+      import_prop_types49 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_composeClasses2();
       init_formControlState();
@@ -40698,8 +43129,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_createSimplePaletteValueFilter();
       init_DefaultPropsProvider4();
       init_formLabelClasses();
-      import_jsx_runtime47 = __toESM(require_jsx_runtime(), 1);
-      useUtilityClasses21 = (ownerState) => {
+      import_jsx_runtime49 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses22 = (ownerState) => {
         const {
           classes,
           color: color2,
@@ -40763,7 +43194,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           color: (theme.vars || theme).palette.error.main
         }
       })));
-      FormLabel = /* @__PURE__ */ React75.forwardRef(function FormLabel2(inProps, ref) {
+      FormLabel = /* @__PURE__ */ React77.forwardRef(function FormLabel2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiFormLabel"
@@ -40796,14 +43227,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           focused: fcs.focused,
           required: fcs.required
         };
-        const classes = useUtilityClasses21(ownerState);
-        return /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(FormLabelRoot, {
+        const classes = useUtilityClasses22(ownerState);
+        return /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(FormLabelRoot, {
           as: component,
           ownerState,
           className: clsx_default(classes.root, className),
           ref,
           ...other,
-          children: [children, fcs.required && /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(AsteriskComponent, {
+          children: [children, fcs.required && /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(AsteriskComponent, {
             ownerState,
             "aria-hidden": true,
             className: classes.asterisk,
@@ -40819,50 +43250,50 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * The content of the component.
          */
-        children: import_prop_types47.default.node,
+        children: import_prop_types49.default.node,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types47.default.object,
+        classes: import_prop_types49.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types47.default.string,
+        className: import_prop_types49.default.string,
         /**
          * The color of the component.
          * It supports both default and custom theme colors, which can be added as shown in the
          * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
          */
-        color: import_prop_types47.default.oneOfType([import_prop_types47.default.oneOf(["error", "info", "primary", "secondary", "success", "warning"]), import_prop_types47.default.string]),
+        color: import_prop_types49.default.oneOfType([import_prop_types49.default.oneOf(["error", "info", "primary", "secondary", "success", "warning"]), import_prop_types49.default.string]),
         /**
          * The component used for the root node.
          * Either a string to use a HTML element or a component.
          */
-        component: import_prop_types47.default.elementType,
+        component: import_prop_types49.default.elementType,
         /**
          * If `true`, the label should be displayed in a disabled state.
          */
-        disabled: import_prop_types47.default.bool,
+        disabled: import_prop_types49.default.bool,
         /**
          * If `true`, the label is displayed in an error state.
          */
-        error: import_prop_types47.default.bool,
+        error: import_prop_types49.default.bool,
         /**
          * If `true`, the label should use filled classes key.
          */
-        filled: import_prop_types47.default.bool,
+        filled: import_prop_types49.default.bool,
         /**
          * If `true`, the input of this label is focused (used by `FormGroup` components).
          */
-        focused: import_prop_types47.default.bool,
+        focused: import_prop_types49.default.bool,
         /**
          * If `true`, the label will indicate that the `input` is required.
          */
-        required: import_prop_types47.default.bool,
+        required: import_prop_types49.default.bool,
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types47.default.oneOfType([import_prop_types47.default.arrayOf(import_prop_types47.default.oneOfType([import_prop_types47.default.func, import_prop_types47.default.object, import_prop_types47.default.bool])), import_prop_types47.default.func, import_prop_types47.default.object])
+        sx: import_prop_types49.default.oneOfType([import_prop_types49.default.arrayOf(import_prop_types49.default.oneOfType([import_prop_types49.default.func, import_prop_types49.default.object, import_prop_types49.default.bool])), import_prop_types49.default.func, import_prop_types49.default.object])
       } : void 0;
       FormLabel_default = FormLabel;
     }
@@ -40879,11 +43310,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/Grid/Grid.js
-  var import_prop_types48, Grid;
+  var import_prop_types50, Grid;
   var init_Grid2 = __esm({
     "node_modules/@mui/material/esm/Grid/Grid.js"() {
       "use client";
-      import_prop_types48 = __toESM(require_prop_types(), 1);
+      import_prop_types50 = __toESM(require_prop_types(), 1);
       init_Grid();
       init_requirePropFactory3();
       init_styles();
@@ -40915,52 +43346,52 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * The content of the component.
          */
-        children: import_prop_types48.default.node,
+        children: import_prop_types50.default.node,
         /**
          * The number of columns.
          * @default 12
          */
-        columns: import_prop_types48.default.oneOfType([import_prop_types48.default.arrayOf(import_prop_types48.default.number), import_prop_types48.default.number, import_prop_types48.default.object]),
+        columns: import_prop_types50.default.oneOfType([import_prop_types50.default.arrayOf(import_prop_types50.default.number), import_prop_types50.default.number, import_prop_types50.default.object]),
         /**
          * Defines the horizontal space between the type `item` components.
          * It overrides the value of the `spacing` prop.
          */
-        columnSpacing: import_prop_types48.default.oneOfType([import_prop_types48.default.arrayOf(import_prop_types48.default.oneOfType([import_prop_types48.default.number, import_prop_types48.default.string])), import_prop_types48.default.number, import_prop_types48.default.object, import_prop_types48.default.string]),
+        columnSpacing: import_prop_types50.default.oneOfType([import_prop_types50.default.arrayOf(import_prop_types50.default.oneOfType([import_prop_types50.default.number, import_prop_types50.default.string])), import_prop_types50.default.number, import_prop_types50.default.object, import_prop_types50.default.string]),
         /**
          * If `true`, the component will have the flex *container* behavior.
          * You should be wrapping *items* with a *container*.
          * @default false
          */
-        container: import_prop_types48.default.bool,
+        container: import_prop_types50.default.bool,
         /**
          * Defines the `flex-direction` style property.
          * It is applied for all screen sizes.
          * @default 'row'
          */
-        direction: import_prop_types48.default.oneOfType([import_prop_types48.default.oneOf(["column-reverse", "column", "row-reverse", "row"]), import_prop_types48.default.arrayOf(import_prop_types48.default.oneOf(["column-reverse", "column", "row-reverse", "row"])), import_prop_types48.default.object]),
+        direction: import_prop_types50.default.oneOfType([import_prop_types50.default.oneOf(["column-reverse", "column", "row-reverse", "row"]), import_prop_types50.default.arrayOf(import_prop_types50.default.oneOf(["column-reverse", "column", "row-reverse", "row"])), import_prop_types50.default.object]),
         /**
          * Defines the offset value for the type `item` components.
          */
-        offset: import_prop_types48.default.oneOfType([import_prop_types48.default.string, import_prop_types48.default.number, import_prop_types48.default.arrayOf(import_prop_types48.default.oneOfType([import_prop_types48.default.string, import_prop_types48.default.number])), import_prop_types48.default.object]),
+        offset: import_prop_types50.default.oneOfType([import_prop_types50.default.string, import_prop_types50.default.number, import_prop_types50.default.arrayOf(import_prop_types50.default.oneOfType([import_prop_types50.default.string, import_prop_types50.default.number])), import_prop_types50.default.object]),
         /**
          * Defines the vertical space between the type `item` components.
          * It overrides the value of the `spacing` prop.
          */
-        rowSpacing: import_prop_types48.default.oneOfType([import_prop_types48.default.arrayOf(import_prop_types48.default.oneOfType([import_prop_types48.default.number, import_prop_types48.default.string])), import_prop_types48.default.number, import_prop_types48.default.object, import_prop_types48.default.string]),
+        rowSpacing: import_prop_types50.default.oneOfType([import_prop_types50.default.arrayOf(import_prop_types50.default.oneOfType([import_prop_types50.default.number, import_prop_types50.default.string])), import_prop_types50.default.number, import_prop_types50.default.object, import_prop_types50.default.string]),
         /**
          * Defines the size of the the type `item` components.
          */
-        size: import_prop_types48.default.oneOfType([import_prop_types48.default.string, import_prop_types48.default.bool, import_prop_types48.default.number, import_prop_types48.default.arrayOf(import_prop_types48.default.oneOfType([import_prop_types48.default.string, import_prop_types48.default.bool, import_prop_types48.default.number])), import_prop_types48.default.object]),
+        size: import_prop_types50.default.oneOfType([import_prop_types50.default.string, import_prop_types50.default.bool, import_prop_types50.default.number, import_prop_types50.default.arrayOf(import_prop_types50.default.oneOfType([import_prop_types50.default.string, import_prop_types50.default.bool, import_prop_types50.default.number])), import_prop_types50.default.object]),
         /**
          * Defines the space between the type `item` components.
          * It can only be used on a type `container` component.
          * @default 0
          */
-        spacing: import_prop_types48.default.oneOfType([import_prop_types48.default.arrayOf(import_prop_types48.default.oneOfType([import_prop_types48.default.number, import_prop_types48.default.string])), import_prop_types48.default.number, import_prop_types48.default.object, import_prop_types48.default.string]),
+        spacing: import_prop_types50.default.oneOfType([import_prop_types50.default.arrayOf(import_prop_types50.default.oneOfType([import_prop_types50.default.number, import_prop_types50.default.string])), import_prop_types50.default.number, import_prop_types50.default.object, import_prop_types50.default.string]),
         /**
          * @ignore
          */
-        sx: import_prop_types48.default.oneOfType([import_prop_types48.default.arrayOf(import_prop_types48.default.oneOfType([import_prop_types48.default.func, import_prop_types48.default.object, import_prop_types48.default.bool])), import_prop_types48.default.func, import_prop_types48.default.object]),
+        sx: import_prop_types50.default.oneOfType([import_prop_types50.default.arrayOf(import_prop_types50.default.oneOfType([import_prop_types50.default.func, import_prop_types50.default.object, import_prop_types50.default.bool])), import_prop_types50.default.func, import_prop_types50.default.object]),
         /**
          * @internal
          * The level of the grid starts from `0` and increases when the grid nests
@@ -40988,13 +43419,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *     <Grid container> // level 0
          * ```
          */
-        unstable_level: import_prop_types48.default.number,
+        unstable_level: import_prop_types50.default.number,
         /**
          * Defines the `flex-wrap` style property.
          * It's applied for all screen sizes.
          * @default 'wrap'
          */
-        wrap: import_prop_types48.default.oneOf(["nowrap", "wrap-reverse", "wrap"])
+        wrap: import_prop_types50.default.oneOf(["nowrap", "wrap-reverse", "wrap"])
       } : void 0;
       if (true) {
         const Component2 = Grid;
@@ -41050,12 +43481,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   function getScale(value) {
     return `scale(${value}, ${value ** 2})`;
   }
-  var React76, import_prop_types49, import_jsx_runtime48, styles3, isWebKit154, Grow, Grow_default;
+  var React78, import_prop_types51, import_jsx_runtime50, styles3, isWebKit154, Grow, Grow_default;
   var init_Grow = __esm({
     "node_modules/@mui/material/esm/Grow/Grow.js"() {
       "use client";
-      React76 = __toESM(require_react(), 1);
-      import_prop_types49 = __toESM(require_prop_types(), 1);
+      React78 = __toESM(require_react(), 1);
+      import_prop_types51 = __toESM(require_prop_types(), 1);
       init_useTimeout2();
       init_elementAcceptingRef2();
       init_getReactElementRef2();
@@ -41063,7 +43494,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_zero_styled();
       init_utils();
       init_useForkRef3();
-      import_jsx_runtime48 = __toESM(require_jsx_runtime(), 1);
+      import_jsx_runtime50 = __toESM(require_jsx_runtime(), 1);
       styles3 = {
         entering: {
           opacity: 1,
@@ -41075,7 +43506,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         }
       };
       isWebKit154 = typeof navigator !== "undefined" && /^((?!chrome|android).)*(safari|mobile)/i.test(navigator.userAgent) && /(os |version\/)15(.|_)4/i.test(navigator.userAgent);
-      Grow = /* @__PURE__ */ React76.forwardRef(function Grow2(props, ref) {
+      Grow = /* @__PURE__ */ React78.forwardRef(function Grow2(props, ref) {
         const {
           addEndListener,
           appear = true,
@@ -41095,9 +43526,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           ...other
         } = props;
         const timer = useTimeout();
-        const autoTimeout = React76.useRef();
+        const autoTimeout = React78.useRef();
         const theme = useTheme5();
-        const nodeRef = React76.useRef(null);
+        const nodeRef = React78.useRef(null);
         const handleRef = useForkRef_default(nodeRef, getReactElementRef(children), ref);
         const normalizedTransitionCallback = (callback) => (maybeIsAppearing) => {
           if (callback) {
@@ -41186,7 +43617,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             addEndListener(nodeRef.current, next2);
           }
         };
-        return /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(TransitionComponent, {
+        return /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(TransitionComponent, {
           appear,
           in: inProp,
           nodeRef,
@@ -41203,7 +43634,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             ownerState,
             ...restChildProps
           }) => {
-            return /* @__PURE__ */ React76.cloneElement(children, {
+            return /* @__PURE__ */ React78.cloneElement(children, {
               style: {
                 opacity: 0,
                 transform: getScale(0.75),
@@ -41228,13 +43659,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * node and a done callback. Allows for more fine grained transition end
          * logic. Note: Timeouts are still used as a fallback if provided.
          */
-        addEndListener: import_prop_types49.default.func,
+        addEndListener: import_prop_types51.default.func,
         /**
          * Perform the enter transition when it first mounts if `in` is also `true`.
          * Set this to `false` to disable this behavior.
          * @default true
          */
-        appear: import_prop_types49.default.bool,
+        appear: import_prop_types51.default.bool,
         /**
          * A single child content element.
          */
@@ -41243,42 +43674,42 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * The transition timing function.
          * You may specify a single easing or a object containing enter and exit values.
          */
-        easing: import_prop_types49.default.oneOfType([import_prop_types49.default.shape({
-          enter: import_prop_types49.default.string,
-          exit: import_prop_types49.default.string
-        }), import_prop_types49.default.string]),
+        easing: import_prop_types51.default.oneOfType([import_prop_types51.default.shape({
+          enter: import_prop_types51.default.string,
+          exit: import_prop_types51.default.string
+        }), import_prop_types51.default.string]),
         /**
          * If `true`, the component will transition in.
          */
-        in: import_prop_types49.default.bool,
+        in: import_prop_types51.default.bool,
         /**
          * @ignore
          */
-        onEnter: import_prop_types49.default.func,
+        onEnter: import_prop_types51.default.func,
         /**
          * @ignore
          */
-        onEntered: import_prop_types49.default.func,
+        onEntered: import_prop_types51.default.func,
         /**
          * @ignore
          */
-        onEntering: import_prop_types49.default.func,
+        onEntering: import_prop_types51.default.func,
         /**
          * @ignore
          */
-        onExit: import_prop_types49.default.func,
+        onExit: import_prop_types51.default.func,
         /**
          * @ignore
          */
-        onExited: import_prop_types49.default.func,
+        onExited: import_prop_types51.default.func,
         /**
          * @ignore
          */
-        onExiting: import_prop_types49.default.func,
+        onExiting: import_prop_types51.default.func,
         /**
          * @ignore
          */
-        style: import_prop_types49.default.object,
+        style: import_prop_types51.default.object,
         /**
          * The duration for the transition, in milliseconds.
          * You may specify a single timeout for all transitions, or individually with an object.
@@ -41286,10 +43717,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * Set to 'auto' to automatically calculate transition time based on height.
          * @default 'auto'
          */
-        timeout: import_prop_types49.default.oneOfType([import_prop_types49.default.oneOf(["auto"]), import_prop_types49.default.number, import_prop_types49.default.shape({
-          appear: import_prop_types49.default.number,
-          enter: import_prop_types49.default.number,
-          exit: import_prop_types49.default.number
+        timeout: import_prop_types51.default.oneOfType([import_prop_types51.default.oneOf(["auto"]), import_prop_types51.default.number, import_prop_types51.default.shape({
+          appear: import_prop_types51.default.number,
+          enter: import_prop_types51.default.number,
+          exit: import_prop_types51.default.number
         })])
       } : void 0;
       if (Grow) {
@@ -41371,12 +43802,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/Input/Input.js
-  var React77, import_prop_types50, import_jsx_runtime49, useUtilityClasses22, InputRoot, InputInput, Input, Input_default;
+  var React79, import_prop_types52, import_jsx_runtime51, useUtilityClasses23, InputRoot, InputInput, Input, Input_default;
   var init_Input = __esm({
     "node_modules/@mui/material/esm/Input/Input.js"() {
       "use client";
-      React77 = __toESM(require_react(), 1);
-      import_prop_types50 = __toESM(require_prop_types(), 1);
+      React79 = __toESM(require_react(), 1);
+      import_prop_types52 = __toESM(require_prop_types(), 1);
       init_composeClasses2();
       init_deepmerge2();
       init_refType2();
@@ -41388,8 +43819,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_DefaultPropsProvider4();
       init_inputClasses();
       init_InputBase();
-      import_jsx_runtime49 = __toESM(require_jsx_runtime(), 1);
-      useUtilityClasses22 = (ownerState) => {
+      import_jsx_runtime51 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses23 = (ownerState) => {
         const {
           classes,
           disableUnderline
@@ -41505,7 +43936,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         slot: "Input",
         overridesResolver: inputOverridesResolver
       })({});
-      Input = /* @__PURE__ */ React77.forwardRef(function Input2(inProps, ref) {
+      Input = /* @__PURE__ */ React79.forwardRef(function Input2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiInput"
@@ -41522,7 +43953,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           type = "text",
           ...other
         } = props;
-        const classes = useUtilityClasses22(props);
+        const classes = useUtilityClasses23(props);
         const ownerState = {
           disableUnderline
         };
@@ -41534,7 +43965,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         const componentsProps = slotProps ?? componentsPropsProp ? deepmerge(slotProps ?? componentsPropsProp, inputComponentsProps) : inputComponentsProps;
         const RootSlot = slots.root ?? components.Root ?? InputRoot;
         const InputSlot = slots.input ?? components.Input ?? InputInput;
-        return /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(InputBase_default, {
+        return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(InputBase_default, {
           slots: {
             root: RootSlot,
             input: InputSlot
@@ -41559,22 +43990,22 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * The name can be confusing, as it's more like an autofill.
          * You can learn more about it [following the specification](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill).
          */
-        autoComplete: import_prop_types50.default.string,
+        autoComplete: import_prop_types52.default.string,
         /**
          * If `true`, the `input` element is focused during the first mount.
          */
-        autoFocus: import_prop_types50.default.bool,
+        autoFocus: import_prop_types52.default.bool,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types50.default.object,
+        classes: import_prop_types52.default.object,
         /**
          * The color of the component.
          * It supports both default and custom theme colors, which can be added as shown in the
          * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
          * The prop defaults to the value (`'primary'`) inherited from the parent FormControl component.
          */
-        color: import_prop_types50.default.oneOfType([import_prop_types50.default.oneOf(["primary", "secondary"]), import_prop_types50.default.string]),
+        color: import_prop_types52.default.oneOfType([import_prop_types52.default.oneOf(["primary", "secondary"]), import_prop_types52.default.string]),
         /**
          * The components used for each slot inside.
          *
@@ -41582,9 +44013,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *
          * @default {}
          */
-        components: import_prop_types50.default.shape({
-          Input: import_prop_types50.default.elementType,
-          Root: import_prop_types50.default.elementType
+        components: import_prop_types52.default.shape({
+          Input: import_prop_types52.default.elementType,
+          Root: import_prop_types52.default.elementType
         }),
         /**
          * The extra props for the slot components.
@@ -41594,53 +44025,53 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *
          * @default {}
          */
-        componentsProps: import_prop_types50.default.shape({
-          input: import_prop_types50.default.object,
-          root: import_prop_types50.default.object
+        componentsProps: import_prop_types52.default.shape({
+          input: import_prop_types52.default.object,
+          root: import_prop_types52.default.object
         }),
         /**
          * The default value. Use when the component is not controlled.
          */
-        defaultValue: import_prop_types50.default.any,
+        defaultValue: import_prop_types52.default.any,
         /**
          * If `true`, the component is disabled.
          * The prop defaults to the value (`false`) inherited from the parent FormControl component.
          */
-        disabled: import_prop_types50.default.bool,
+        disabled: import_prop_types52.default.bool,
         /**
          * If `true`, the `input` will not have an underline.
          * @default false
          */
-        disableUnderline: import_prop_types50.default.bool,
+        disableUnderline: import_prop_types52.default.bool,
         /**
          * End `InputAdornment` for this component.
          */
-        endAdornment: import_prop_types50.default.node,
+        endAdornment: import_prop_types52.default.node,
         /**
          * If `true`, the `input` will indicate an error.
          * The prop defaults to the value (`false`) inherited from the parent FormControl component.
          */
-        error: import_prop_types50.default.bool,
+        error: import_prop_types52.default.bool,
         /**
          * If `true`, the `input` will take up the full width of its container.
          * @default false
          */
-        fullWidth: import_prop_types50.default.bool,
+        fullWidth: import_prop_types52.default.bool,
         /**
          * The id of the `input` element.
          */
-        id: import_prop_types50.default.string,
+        id: import_prop_types52.default.string,
         /**
          * The component used for the `input` element.
          * Either a string to use a HTML element or a component.
          * @default 'input'
          */
-        inputComponent: import_prop_types50.default.elementType,
+        inputComponent: import_prop_types52.default.elementType,
         /**
          * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#attributes) applied to the `input` element.
          * @default {}
          */
-        inputProps: import_prop_types50.default.object,
+        inputProps: import_prop_types52.default.object,
         /**
          * Pass a ref to the `input` element.
          */
@@ -41650,49 +44081,49 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * FormControl.
          * The prop defaults to the value (`'none'`) inherited from the parent FormControl component.
          */
-        margin: import_prop_types50.default.oneOf(["dense", "none"]),
+        margin: import_prop_types52.default.oneOf(["dense", "none"]),
         /**
          * Maximum number of rows to display when multiline option is set to true.
          */
-        maxRows: import_prop_types50.default.oneOfType([import_prop_types50.default.number, import_prop_types50.default.string]),
+        maxRows: import_prop_types52.default.oneOfType([import_prop_types52.default.number, import_prop_types52.default.string]),
         /**
          * Minimum number of rows to display when multiline option is set to true.
          */
-        minRows: import_prop_types50.default.oneOfType([import_prop_types50.default.number, import_prop_types50.default.string]),
+        minRows: import_prop_types52.default.oneOfType([import_prop_types52.default.number, import_prop_types52.default.string]),
         /**
          * If `true`, a [TextareaAutosize](https://mui.com/material-ui/react-textarea-autosize/) element is rendered.
          * @default false
          */
-        multiline: import_prop_types50.default.bool,
+        multiline: import_prop_types52.default.bool,
         /**
          * Name attribute of the `input` element.
          */
-        name: import_prop_types50.default.string,
+        name: import_prop_types52.default.string,
         /**
          * Callback fired when the value is changed.
          *
          * @param {React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>} event The event source of the callback.
          * You can pull out the new value by accessing `event.target.value` (string).
          */
-        onChange: import_prop_types50.default.func,
+        onChange: import_prop_types52.default.func,
         /**
          * The short hint displayed in the `input` before the user enters a value.
          */
-        placeholder: import_prop_types50.default.string,
+        placeholder: import_prop_types52.default.string,
         /**
          * It prevents the user from changing the value of the field
          * (not from interacting with the field).
          */
-        readOnly: import_prop_types50.default.bool,
+        readOnly: import_prop_types52.default.bool,
         /**
          * If `true`, the `input` element is required.
          * The prop defaults to the value (`false`) inherited from the parent FormControl component.
          */
-        required: import_prop_types50.default.bool,
+        required: import_prop_types52.default.bool,
         /**
          * Number of rows to display when multiline option is set to true.
          */
-        rows: import_prop_types50.default.oneOfType([import_prop_types50.default.number, import_prop_types50.default.string]),
+        rows: import_prop_types52.default.oneOfType([import_prop_types52.default.number, import_prop_types52.default.string]),
         /**
          * The extra props for the slot components.
          * You can override the existing props or add new ones.
@@ -41701,9 +44132,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *
          * @default {}
          */
-        slotProps: import_prop_types50.default.shape({
-          input: import_prop_types50.default.object,
-          root: import_prop_types50.default.object
+        slotProps: import_prop_types52.default.shape({
+          input: import_prop_types52.default.object,
+          root: import_prop_types52.default.object
         }),
         /**
          * The components used for each slot inside.
@@ -41712,27 +44143,27 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *
          * @default {}
          */
-        slots: import_prop_types50.default.shape({
-          input: import_prop_types50.default.elementType,
-          root: import_prop_types50.default.elementType
+        slots: import_prop_types52.default.shape({
+          input: import_prop_types52.default.elementType,
+          root: import_prop_types52.default.elementType
         }),
         /**
          * Start `InputAdornment` for this component.
          */
-        startAdornment: import_prop_types50.default.node,
+        startAdornment: import_prop_types52.default.node,
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types50.default.oneOfType([import_prop_types50.default.arrayOf(import_prop_types50.default.oneOfType([import_prop_types50.default.func, import_prop_types50.default.object, import_prop_types50.default.bool])), import_prop_types50.default.func, import_prop_types50.default.object]),
+        sx: import_prop_types52.default.oneOfType([import_prop_types52.default.arrayOf(import_prop_types52.default.oneOfType([import_prop_types52.default.func, import_prop_types52.default.object, import_prop_types52.default.bool])), import_prop_types52.default.func, import_prop_types52.default.object]),
         /**
          * Type of the `input` element. It should be [a valid HTML5 input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#input_types).
          * @default 'text'
          */
-        type: import_prop_types50.default.string,
+        type: import_prop_types52.default.string,
         /**
          * The value of the `input` element, required for a controlled component.
          */
-        value: import_prop_types50.default.any
+        value: import_prop_types52.default.any
       } : void 0;
       Input.muiName = "Input";
       Input_default = Input;
@@ -41762,12 +44193,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/InputAdornment/InputAdornment.js
-  var React78, import_prop_types51, import_jsx_runtime50, _span2, overridesResolver, useUtilityClasses23, InputAdornmentRoot, InputAdornment, InputAdornment_default;
+  var React80, import_prop_types53, import_jsx_runtime52, _span2, overridesResolver, useUtilityClasses24, InputAdornmentRoot, InputAdornment, InputAdornment_default;
   var init_InputAdornment = __esm({
     "node_modules/@mui/material/esm/InputAdornment/InputAdornment.js"() {
       "use client";
-      React78 = __toESM(require_react(), 1);
-      import_prop_types51 = __toESM(require_prop_types(), 1);
+      React80 = __toESM(require_react(), 1);
+      import_prop_types53 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_composeClasses2();
       init_capitalize3();
@@ -41778,14 +44209,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_memoTheme2();
       init_DefaultPropsProvider4();
       init_inputAdornmentClasses();
-      import_jsx_runtime50 = __toESM(require_jsx_runtime(), 1);
+      import_jsx_runtime52 = __toESM(require_jsx_runtime(), 1);
       overridesResolver = (props, styles4) => {
         const {
           ownerState
         } = props;
         return [styles4.root, styles4[`position${capitalize_default(ownerState.position)}`], ownerState.disablePointerEvents === true && styles4.disablePointerEvents, styles4[ownerState.variant]];
       };
-      useUtilityClasses23 = (ownerState) => {
+      useUtilityClasses24 = (ownerState) => {
         const {
           classes,
           disablePointerEvents,
@@ -41843,7 +44274,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
         }]
       })));
-      InputAdornment = /* @__PURE__ */ React78.forwardRef(function InputAdornment2(inProps, ref) {
+      InputAdornment = /* @__PURE__ */ React80.forwardRef(function InputAdornment2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiInputAdornment"
@@ -41878,22 +44309,22 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           position: position3,
           variant
         };
-        const classes = useUtilityClasses23(ownerState);
-        return /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(FormControlContext_default.Provider, {
+        const classes = useUtilityClasses24(ownerState);
+        return /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(FormControlContext_default.Provider, {
           value: null,
-          children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(InputAdornmentRoot, {
+          children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(InputAdornmentRoot, {
             as: component,
             ownerState,
             className: clsx_default(classes.root, className),
             ref,
             ...other,
-            children: typeof children === "string" && !disableTypography ? /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Typography_default, {
+            children: typeof children === "string" && !disableTypography ? /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(Typography_default, {
               color: "textSecondary",
               children
-            }) : /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(React78.Fragment, {
+            }) : /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(React80.Fragment, {
               children: [position3 === "start" ? (
                 /* notranslate needed while Google Translate will not fix zero-width space issue */
-                _span2 || (_span2 = /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", {
+                _span2 || (_span2 = /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", {
                   className: "notranslate",
                   "aria-hidden": true,
                   children: "\u200B"
@@ -41911,45 +44342,45 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * The content of the component, normally an `IconButton` or string.
          */
-        children: import_prop_types51.default.node,
+        children: import_prop_types53.default.node,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types51.default.object,
+        classes: import_prop_types53.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types51.default.string,
+        className: import_prop_types53.default.string,
         /**
          * The component used for the root node.
          * Either a string to use a HTML element or a component.
          */
-        component: import_prop_types51.default.elementType,
+        component: import_prop_types53.default.elementType,
         /**
          * Disable pointer events on the root.
          * This allows for the content of the adornment to focus the `input` on click.
          * @default false
          */
-        disablePointerEvents: import_prop_types51.default.bool,
+        disablePointerEvents: import_prop_types53.default.bool,
         /**
          * If children is a string then disable wrapping in a Typography component.
          * @default false
          */
-        disableTypography: import_prop_types51.default.bool,
+        disableTypography: import_prop_types53.default.bool,
         /**
          * The position this adornment should appear relative to the `Input`.
          */
-        position: import_prop_types51.default.oneOf(["end", "start"]).isRequired,
+        position: import_prop_types53.default.oneOf(["end", "start"]).isRequired,
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types51.default.oneOfType([import_prop_types51.default.arrayOf(import_prop_types51.default.oneOfType([import_prop_types51.default.func, import_prop_types51.default.object, import_prop_types51.default.bool])), import_prop_types51.default.func, import_prop_types51.default.object]),
+        sx: import_prop_types53.default.oneOfType([import_prop_types53.default.arrayOf(import_prop_types53.default.oneOfType([import_prop_types53.default.func, import_prop_types53.default.object, import_prop_types53.default.bool])), import_prop_types53.default.func, import_prop_types53.default.object]),
         /**
          * The variant to use.
          * Note: If you are using the `TextField` component or the `FormControl` component
          * you do not have to set this manually.
          */
-        variant: import_prop_types51.default.oneOf(["filled", "outlined", "standard"])
+        variant: import_prop_types53.default.oneOf(["filled", "outlined", "standard"])
       } : void 0;
       InputAdornment_default = InputAdornment;
     }
@@ -41977,12 +44408,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/InputLabel/InputLabel.js
-  var React79, import_prop_types52, import_jsx_runtime51, useUtilityClasses24, InputLabelRoot, InputLabel, InputLabel_default;
+  var React81, import_prop_types54, import_jsx_runtime53, useUtilityClasses25, InputLabelRoot, InputLabel, InputLabel_default;
   var init_InputLabel = __esm({
     "node_modules/@mui/material/esm/InputLabel/InputLabel.js"() {
       "use client";
-      React79 = __toESM(require_react(), 1);
-      import_prop_types52 = __toESM(require_prop_types(), 1);
+      React81 = __toESM(require_react(), 1);
+      import_prop_types54 = __toESM(require_prop_types(), 1);
       init_composeClasses2();
       init_clsx();
       init_formControlState();
@@ -41994,8 +44425,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_memoTheme2();
       init_DefaultPropsProvider4();
       init_inputLabelClasses();
-      import_jsx_runtime51 = __toESM(require_jsx_runtime(), 1);
-      useUtilityClasses24 = (ownerState) => {
+      import_jsx_runtime53 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses25 = (ownerState) => {
         const {
           classes,
           formControl,
@@ -42151,7 +44582,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
         }]
       })));
-      InputLabel = /* @__PURE__ */ React79.forwardRef(function InputLabel2(inProps, ref) {
+      InputLabel = /* @__PURE__ */ React81.forwardRef(function InputLabel2(inProps, ref) {
         const props = useDefaultProps2({
           name: "MuiInputLabel",
           props: inProps
@@ -42184,8 +44615,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           required: fcs.required,
           focused: fcs.focused
         };
-        const classes = useUtilityClasses24(ownerState);
-        return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(InputLabelRoot, {
+        const classes = useUtilityClasses25(ownerState);
+        return /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(InputLabelRoot, {
           "data-shrink": shrink,
           ref,
           className: clsx_default(classes.root, className),
@@ -42202,64 +44633,64 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * The content of the component.
          */
-        children: import_prop_types52.default.node,
+        children: import_prop_types54.default.node,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types52.default.object,
+        classes: import_prop_types54.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types52.default.string,
+        className: import_prop_types54.default.string,
         /**
          * The color of the component.
          * It supports both default and custom theme colors, which can be added as shown in the
          * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
          */
-        color: import_prop_types52.default.oneOfType([import_prop_types52.default.oneOf(["error", "info", "primary", "secondary", "success", "warning"]), import_prop_types52.default.string]),
+        color: import_prop_types54.default.oneOfType([import_prop_types54.default.oneOf(["error", "info", "primary", "secondary", "success", "warning"]), import_prop_types54.default.string]),
         /**
          * If `true`, the transition animation is disabled.
          * @default false
          */
-        disableAnimation: import_prop_types52.default.bool,
+        disableAnimation: import_prop_types54.default.bool,
         /**
          * If `true`, the component is disabled.
          */
-        disabled: import_prop_types52.default.bool,
+        disabled: import_prop_types54.default.bool,
         /**
          * If `true`, the label is displayed in an error state.
          */
-        error: import_prop_types52.default.bool,
+        error: import_prop_types54.default.bool,
         /**
          * If `true`, the `input` of this label is focused.
          */
-        focused: import_prop_types52.default.bool,
+        focused: import_prop_types54.default.bool,
         /**
          * If `dense`, will adjust vertical spacing. This is normally obtained via context from
          * FormControl.
          */
-        margin: import_prop_types52.default.oneOf(["dense"]),
+        margin: import_prop_types54.default.oneOf(["dense"]),
         /**
          * if `true`, the label will indicate that the `input` is required.
          */
-        required: import_prop_types52.default.bool,
+        required: import_prop_types54.default.bool,
         /**
          * If `true`, the label is shrunk.
          */
-        shrink: import_prop_types52.default.bool,
+        shrink: import_prop_types54.default.bool,
         /**
          * The size of the component.
          * @default 'medium'
          */
-        size: import_prop_types52.default.oneOfType([import_prop_types52.default.oneOf(["medium", "small"]), import_prop_types52.default.string]),
+        size: import_prop_types54.default.oneOfType([import_prop_types54.default.oneOf(["medium", "small"]), import_prop_types54.default.string]),
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types52.default.oneOfType([import_prop_types52.default.arrayOf(import_prop_types52.default.oneOfType([import_prop_types52.default.func, import_prop_types52.default.object, import_prop_types52.default.bool])), import_prop_types52.default.func, import_prop_types52.default.object]),
+        sx: import_prop_types54.default.oneOfType([import_prop_types54.default.arrayOf(import_prop_types54.default.oneOfType([import_prop_types54.default.func, import_prop_types54.default.object, import_prop_types54.default.bool])), import_prop_types54.default.func, import_prop_types54.default.object]),
         /**
          * The variant to use.
          */
-        variant: import_prop_types52.default.oneOf(["filled", "outlined", "standard"])
+        variant: import_prop_types54.default.oneOf(["filled", "outlined", "standard"])
       } : void 0;
       InputLabel_default = InputLabel;
     }
@@ -42287,12 +44718,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/LinearProgress/LinearProgress.js
-  var React80, import_prop_types53, import_jsx_runtime52, TRANSITION_DURATION, indeterminate1Keyframe, indeterminate1Animation, indeterminate2Keyframe, indeterminate2Animation, bufferKeyframe, bufferAnimation, useUtilityClasses25, getColorShade, LinearProgressRoot, LinearProgressDashed, LinearProgressBar1, LinearProgressBar2, LinearProgress, LinearProgress_default;
+  var React82, import_prop_types55, import_jsx_runtime54, TRANSITION_DURATION, indeterminate1Keyframe, indeterminate1Animation, indeterminate2Keyframe, indeterminate2Animation, bufferKeyframe, bufferAnimation, useUtilityClasses26, getColorShade, LinearProgressRoot, LinearProgressDashed, LinearProgressBar1, LinearProgressBar2, LinearProgress, LinearProgress_default;
   var init_LinearProgress = __esm({
     "node_modules/@mui/material/esm/LinearProgress/LinearProgress.js"() {
       "use client";
-      React80 = __toESM(require_react(), 1);
-      import_prop_types53 = __toESM(require_prop_types(), 1);
+      React82 = __toESM(require_react(), 1);
+      import_prop_types55 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_composeClasses2();
       init_colorManipulator2();
@@ -42303,7 +44734,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_DefaultPropsProvider4();
       init_capitalize3();
       init_linearProgressClasses();
-      import_jsx_runtime52 = __toESM(require_jsx_runtime(), 1);
+      import_jsx_runtime54 = __toESM(require_jsx_runtime(), 1);
       TRANSITION_DURATION = 4;
       indeterminate1Keyframe = keyframes`
   0% {
@@ -42362,7 +44793,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       bufferAnimation = typeof bufferKeyframe !== "string" ? css`
         animation: ${bufferKeyframe} 3s infinite linear;
       ` : null;
-      useUtilityClasses25 = (ownerState) => {
+      useUtilityClasses26 = (ownerState) => {
         const {
           classes,
           variant,
@@ -42619,7 +45050,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
         }]
       })));
-      LinearProgress = /* @__PURE__ */ React80.forwardRef(function LinearProgress2(inProps, ref) {
+      LinearProgress = /* @__PURE__ */ React82.forwardRef(function LinearProgress2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiLinearProgress"
@@ -42637,7 +45068,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           color: color2,
           variant
         };
-        const classes = useUtilityClasses25(ownerState);
+        const classes = useUtilityClasses26(ownerState);
         const isRtl = useRtl();
         const rootProps = {};
         const inlineStyles = {
@@ -42669,21 +45100,21 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             console.error("MUI: You need to provide a valueBuffer prop when using the buffer variant of LinearProgress.");
           }
         }
-        return /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(LinearProgressRoot, {
+        return /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(LinearProgressRoot, {
           className: clsx_default(classes.root, className),
           ownerState,
           role: "progressbar",
           ...rootProps,
           ref,
           ...other,
-          children: [variant === "buffer" ? /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(LinearProgressDashed, {
+          children: [variant === "buffer" ? /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(LinearProgressDashed, {
             className: classes.dashed,
             ownerState
-          }) : null, /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(LinearProgressBar1, {
+          }) : null, /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(LinearProgressBar1, {
             className: classes.bar1,
             ownerState,
             style: inlineStyles.bar1
-          }), variant === "determinate" ? null : /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(LinearProgressBar2, {
+          }), variant === "determinate" ? null : /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(LinearProgressBar2, {
             className: classes.bar2,
             ownerState,
             style: inlineStyles.bar2
@@ -42698,38 +45129,38 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types53.default.object,
+        classes: import_prop_types55.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types53.default.string,
+        className: import_prop_types55.default.string,
         /**
          * The color of the component.
          * It supports both default and custom theme colors, which can be added as shown in the
          * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
          * @default 'primary'
          */
-        color: import_prop_types53.default.oneOfType([import_prop_types53.default.oneOf(["inherit", "primary", "secondary"]), import_prop_types53.default.string]),
+        color: import_prop_types55.default.oneOfType([import_prop_types55.default.oneOf(["inherit", "primary", "secondary"]), import_prop_types55.default.string]),
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types53.default.oneOfType([import_prop_types53.default.arrayOf(import_prop_types53.default.oneOfType([import_prop_types53.default.func, import_prop_types53.default.object, import_prop_types53.default.bool])), import_prop_types53.default.func, import_prop_types53.default.object]),
+        sx: import_prop_types55.default.oneOfType([import_prop_types55.default.arrayOf(import_prop_types55.default.oneOfType([import_prop_types55.default.func, import_prop_types55.default.object, import_prop_types55.default.bool])), import_prop_types55.default.func, import_prop_types55.default.object]),
         /**
          * The value of the progress indicator for the determinate and buffer variants.
          * Value between 0 and 100.
          */
-        value: import_prop_types53.default.number,
+        value: import_prop_types55.default.number,
         /**
          * The value for the buffer variant.
          * Value between 0 and 100.
          */
-        valueBuffer: import_prop_types53.default.number,
+        valueBuffer: import_prop_types55.default.number,
         /**
          * The variant to use.
          * Use indeterminate or query when there is no progress value.
          * @default 'indeterminate'
          */
-        variant: import_prop_types53.default.oneOf(["buffer", "determinate", "indeterminate", "query"])
+        variant: import_prop_types55.default.oneOf(["buffer", "determinate", "indeterminate", "query"])
       } : void 0;
       LinearProgress_default = LinearProgress;
     }
@@ -42760,12 +45191,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/List/ListContext.js
-  var React81, ListContext, ListContext_default;
+  var React83, ListContext, ListContext_default;
   var init_ListContext = __esm({
     "node_modules/@mui/material/esm/List/ListContext.js"() {
       "use client";
-      React81 = __toESM(require_react(), 1);
-      ListContext = /* @__PURE__ */ React81.createContext({});
+      React83 = __toESM(require_react(), 1);
+      ListContext = /* @__PURE__ */ React83.createContext({});
       if (true) {
         ListContext.displayName = "ListContext";
       }
@@ -42787,20 +45218,20 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/List/List.js
-  var React82, import_prop_types54, import_jsx_runtime53, useUtilityClasses26, ListRoot, List, List_default;
+  var React84, import_prop_types56, import_jsx_runtime55, useUtilityClasses27, ListRoot, List, List_default;
   var init_List = __esm({
     "node_modules/@mui/material/esm/List/List.js"() {
       "use client";
-      React82 = __toESM(require_react(), 1);
-      import_prop_types54 = __toESM(require_prop_types(), 1);
+      React84 = __toESM(require_react(), 1);
+      import_prop_types56 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_composeClasses2();
       init_zero_styled();
       init_DefaultPropsProvider4();
       init_ListContext();
       init_listClasses();
-      import_jsx_runtime53 = __toESM(require_jsx_runtime(), 1);
-      useUtilityClasses26 = (ownerState) => {
+      import_jsx_runtime55 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses27 = (ownerState) => {
         const {
           classes,
           disablePadding,
@@ -42843,7 +45274,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
         }]
       });
-      List = /* @__PURE__ */ React82.forwardRef(function List2(inProps, ref) {
+      List = /* @__PURE__ */ React84.forwardRef(function List2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiList"
@@ -42857,7 +45288,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           subheader,
           ...other
         } = props;
-        const context = React82.useMemo(() => ({
+        const context = React84.useMemo(() => ({
           dense
         }), [dense]);
         const ownerState = {
@@ -42866,10 +45297,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           dense,
           disablePadding
         };
-        const classes = useUtilityClasses26(ownerState);
-        return /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(ListContext_default.Provider, {
+        const classes = useUtilityClasses27(ownerState);
+        return /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(ListContext_default.Provider, {
           value: context,
-          children: /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(ListRoot, {
+          children: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(ListRoot, {
             as: component,
             className: clsx_default(classes.root, className),
             ref,
@@ -42887,40 +45318,40 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * The content of the component.
          */
-        children: import_prop_types54.default.node,
+        children: import_prop_types56.default.node,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types54.default.object,
+        classes: import_prop_types56.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types54.default.string,
+        className: import_prop_types56.default.string,
         /**
          * The component used for the root node.
          * Either a string to use a HTML element or a component.
          */
-        component: import_prop_types54.default.elementType,
+        component: import_prop_types56.default.elementType,
         /**
          * If `true`, compact vertical padding designed for keyboard and mouse input is used for
          * the list and list items.
          * The prop is available to descendant components as the `dense` context.
          * @default false
          */
-        dense: import_prop_types54.default.bool,
+        dense: import_prop_types56.default.bool,
         /**
          * If `true`, vertical padding is removed from the list.
          * @default false
          */
-        disablePadding: import_prop_types54.default.bool,
+        disablePadding: import_prop_types56.default.bool,
         /**
          * The content of the subheader, normally `ListSubheader`.
          */
-        subheader: import_prop_types54.default.node,
+        subheader: import_prop_types56.default.node,
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types54.default.oneOfType([import_prop_types54.default.arrayOf(import_prop_types54.default.oneOfType([import_prop_types54.default.func, import_prop_types54.default.object, import_prop_types54.default.bool])), import_prop_types54.default.func, import_prop_types54.default.object])
+        sx: import_prop_types56.default.oneOfType([import_prop_types56.default.arrayOf(import_prop_types56.default.oneOfType([import_prop_types56.default.func, import_prop_types56.default.object, import_prop_types56.default.bool])), import_prop_types56.default.func, import_prop_types56.default.object])
       } : void 0;
       List_default = List;
     }
@@ -43095,21 +45526,21 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }
     return false;
   }
-  var React83, import_react_is4, import_prop_types55, import_jsx_runtime54, MenuList, MenuList_default;
+  var React85, import_react_is4, import_prop_types57, import_jsx_runtime56, MenuList, MenuList_default;
   var init_MenuList = __esm({
     "node_modules/@mui/material/esm/MenuList/MenuList.js"() {
       "use client";
-      React83 = __toESM(require_react(), 1);
+      React85 = __toESM(require_react(), 1);
       import_react_is4 = __toESM(require_react_is(), 1);
-      import_prop_types55 = __toESM(require_prop_types(), 1);
+      import_prop_types57 = __toESM(require_prop_types(), 1);
       init_ownerDocument3();
       init_List2();
       init_getScrollbarSize3();
       init_useForkRef3();
       init_useEnhancedEffect3();
       init_utils2();
-      import_jsx_runtime54 = __toESM(require_jsx_runtime(), 1);
-      MenuList = /* @__PURE__ */ React83.forwardRef(function MenuList2(props, ref) {
+      import_jsx_runtime56 = __toESM(require_jsx_runtime(), 1);
+      MenuList = /* @__PURE__ */ React85.forwardRef(function MenuList2(props, ref) {
         const {
           // private
           // eslint-disable-next-line react/prop-types
@@ -43124,8 +45555,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           variant = "selectedMenu",
           ...other
         } = props;
-        const listRef = React83.useRef(null);
-        const textCriteriaRef = React83.useRef({
+        const listRef = React85.useRef(null);
+        const textCriteriaRef = React85.useRef({
           keys: [],
           repeating: true,
           previousKeyMatched: true,
@@ -43136,7 +45567,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             listRef.current.focus();
           }
         }, [autoFocus]);
-        React83.useImperativeHandle(actions, () => ({
+        React85.useImperativeHandle(actions, () => ({
           adjustStyleForScrollbar: (containerElement, {
             direction
           }) => {
@@ -43200,8 +45631,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         };
         const handleRef = useForkRef_default(listRef, ref);
         let activeItemIndex = -1;
-        React83.Children.forEach(children, (child, index2) => {
-          if (!/* @__PURE__ */ React83.isValidElement(child)) {
+        React85.Children.forEach(children, (child, index2) => {
+          if (!/* @__PURE__ */ React85.isValidElement(child)) {
             if (activeItemIndex === index2) {
               activeItemIndex += 1;
               if (activeItemIndex >= children.length) {
@@ -43229,7 +45660,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             }
           }
         });
-        const items = React83.Children.map(children, (child, index2) => {
+        const items = React85.Children.map(children, (child, index2) => {
           if (index2 === activeItemIndex) {
             const newChildProps = {};
             if (autoFocusItem) {
@@ -43238,11 +45669,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             if (child.props.tabIndex === void 0 && variant === "selectedMenu") {
               newChildProps.tabIndex = 0;
             }
-            return /* @__PURE__ */ React83.cloneElement(child, newChildProps);
+            return /* @__PURE__ */ React85.cloneElement(child, newChildProps);
           }
           return child;
         });
-        return /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(List_default, {
+        return /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(List_default, {
           role: "menu",
           ref: handleRef,
           className,
@@ -43261,41 +45692,41 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * If `true`, will focus the `[role="menu"]` container and move into tab order.
          * @default false
          */
-        autoFocus: import_prop_types55.default.bool,
+        autoFocus: import_prop_types57.default.bool,
         /**
          * If `true`, will focus the first menuitem if `variant="menu"` or selected item
          * if `variant="selectedMenu"`.
          * @default false
          */
-        autoFocusItem: import_prop_types55.default.bool,
+        autoFocusItem: import_prop_types57.default.bool,
         /**
          * MenuList contents, normally `MenuItem`s.
          */
-        children: import_prop_types55.default.node,
+        children: import_prop_types57.default.node,
         /**
          * @ignore
          */
-        className: import_prop_types55.default.string,
+        className: import_prop_types57.default.string,
         /**
          * If `true`, will allow focus on disabled items.
          * @default false
          */
-        disabledItemsFocusable: import_prop_types55.default.bool,
+        disabledItemsFocusable: import_prop_types57.default.bool,
         /**
          * If `true`, the menu items will not wrap focus.
          * @default false
          */
-        disableListWrap: import_prop_types55.default.bool,
+        disableListWrap: import_prop_types57.default.bool,
         /**
          * @ignore
          */
-        onKeyDown: import_prop_types55.default.func,
+        onKeyDown: import_prop_types57.default.func,
         /**
          * The variant to use. Use `menu` to prevent selected items from impacting the initial focus
          * and the vertical alignment relative to the anchor element.
          * @default 'selectedMenu'
          */
-        variant: import_prop_types55.default.oneOf(["menu", "selectedMenu"])
+        variant: import_prop_types57.default.oneOf(["menu", "selectedMenu"])
       } : void 0;
       MenuList_default = MenuList;
     }
@@ -43323,39 +45754,39 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
 
   // node_modules/@mui/material/esm/Popover/Popover.js
   function getOffsetTop(rect2, vertical) {
-    let offset = 0;
+    let offset2 = 0;
     if (typeof vertical === "number") {
-      offset = vertical;
+      offset2 = vertical;
     } else if (vertical === "center") {
-      offset = rect2.height / 2;
+      offset2 = rect2.height / 2;
     } else if (vertical === "bottom") {
-      offset = rect2.height;
+      offset2 = rect2.height;
     }
-    return offset;
+    return offset2;
   }
   function getOffsetLeft(rect2, horizontal) {
-    let offset = 0;
+    let offset2 = 0;
     if (typeof horizontal === "number") {
-      offset = horizontal;
+      offset2 = horizontal;
     } else if (horizontal === "center") {
-      offset = rect2.width / 2;
+      offset2 = rect2.width / 2;
     } else if (horizontal === "right") {
-      offset = rect2.width;
+      offset2 = rect2.width;
     }
-    return offset;
+    return offset2;
   }
   function getTransformOriginValue(transformOrigin) {
     return [transformOrigin.horizontal, transformOrigin.vertical].map((n) => typeof n === "number" ? `${n}px` : n).join(" ");
   }
-  function resolveAnchorEl(anchorEl) {
+  function resolveAnchorEl2(anchorEl) {
     return typeof anchorEl === "function" ? anchorEl() : anchorEl;
   }
-  var React84, import_prop_types56, import_jsx_runtime55, useUtilityClasses27, PopoverRoot, PopoverPaper, Popover, Popover_default;
+  var React86, import_prop_types58, import_jsx_runtime57, useUtilityClasses28, PopoverRoot, PopoverPaper, Popover, Popover_default;
   var init_Popover = __esm({
     "node_modules/@mui/material/esm/Popover/Popover.js"() {
       "use client";
-      React84 = __toESM(require_react(), 1);
-      import_prop_types56 = __toESM(require_prop_types(), 1);
+      React86 = __toESM(require_react(), 1);
+      import_prop_types58 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_composeClasses2();
       init_HTMLElementType2();
@@ -43375,8 +45806,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_popoverClasses();
       init_useSlot();
       init_utils2();
-      import_jsx_runtime55 = __toESM(require_jsx_runtime(), 1);
-      useUtilityClasses27 = (ownerState) => {
+      import_jsx_runtime57 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses28 = (ownerState) => {
         const {
           classes
         } = ownerState;
@@ -43406,7 +45837,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         // We disable the focus ring for mouse, touch and keyboard users.
         outline: 0
       });
-      Popover = /* @__PURE__ */ React84.forwardRef(function Popover2(inProps, ref) {
+      Popover = /* @__PURE__ */ React86.forwardRef(function Popover2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiPopover"
@@ -43442,7 +45873,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           disableScrollLock = false,
           ...other
         } = props;
-        const paperRef = React84.useRef();
+        const paperRef = React86.useRef();
         const ownerState = {
           ...props,
           anchorOrigin,
@@ -43454,8 +45885,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           transitionDuration: transitionDurationProp,
           TransitionProps
         };
-        const classes = useUtilityClasses27(ownerState);
-        const getAnchorOffset = React84.useCallback(() => {
+        const classes = useUtilityClasses28(ownerState);
+        const getAnchorOffset = React86.useCallback(() => {
           if (anchorReference === "anchorPosition") {
             if (true) {
               if (!anchorPosition) {
@@ -43464,7 +45895,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             }
             return anchorPosition;
           }
-          const resolvedAnchorEl = resolveAnchorEl(anchorEl);
+          const resolvedAnchorEl = resolveAnchorEl2(anchorEl);
           const anchorElement = resolvedAnchorEl && resolvedAnchorEl.nodeType === 1 ? resolvedAnchorEl : ownerDocument_default(paperRef.current).body;
           const anchorRect = anchorElement.getBoundingClientRect();
           if (true) {
@@ -43478,13 +45909,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             left: anchorRect.left + getOffsetLeft(anchorRect, anchorOrigin.horizontal)
           };
         }, [anchorEl, anchorOrigin.horizontal, anchorOrigin.vertical, anchorPosition, anchorReference]);
-        const getTransformOrigin = React84.useCallback((elemRect) => {
+        const getTransformOrigin = React86.useCallback((elemRect) => {
           return {
             vertical: getOffsetTop(elemRect, transformOrigin.vertical),
             horizontal: getOffsetLeft(elemRect, transformOrigin.horizontal)
           };
         }, [transformOrigin.horizontal, transformOrigin.vertical]);
-        const getPositioningStyle = React84.useCallback((element) => {
+        const getPositioningStyle = React86.useCallback((element) => {
           const elemRect = {
             width: element.offsetWidth,
             height: element.offsetHeight
@@ -43498,20 +45929,20 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             };
           }
           const anchorOffset = getAnchorOffset();
-          let top3 = anchorOffset.top - elemTransformOrigin.vertical;
-          let left2 = anchorOffset.left - elemTransformOrigin.horizontal;
-          const bottom3 = top3 + elemRect.height;
-          const right2 = left2 + elemRect.width;
-          const containerWindow = ownerWindow_default(resolveAnchorEl(anchorEl));
+          let top4 = anchorOffset.top - elemTransformOrigin.vertical;
+          let left3 = anchorOffset.left - elemTransformOrigin.horizontal;
+          const bottom4 = top4 + elemRect.height;
+          const right3 = left3 + elemRect.width;
+          const containerWindow = ownerWindow_default(resolveAnchorEl2(anchorEl));
           const heightThreshold = containerWindow.innerHeight - marginThreshold;
           const widthThreshold = containerWindow.innerWidth - marginThreshold;
-          if (marginThreshold !== null && top3 < marginThreshold) {
-            const diff2 = top3 - marginThreshold;
-            top3 -= diff2;
+          if (marginThreshold !== null && top4 < marginThreshold) {
+            const diff2 = top4 - marginThreshold;
+            top4 -= diff2;
             elemTransformOrigin.vertical += diff2;
-          } else if (marginThreshold !== null && bottom3 > heightThreshold) {
-            const diff2 = bottom3 - heightThreshold;
-            top3 -= diff2;
+          } else if (marginThreshold !== null && bottom4 > heightThreshold) {
+            const diff2 = bottom4 - heightThreshold;
+            top4 -= diff2;
             elemTransformOrigin.vertical += diff2;
           }
           if (true) {
@@ -43519,23 +45950,23 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
               console.error(["MUI: The popover component is too tall.", `Some part of it can not be seen on the screen (${elemRect.height - heightThreshold}px).`, "Please consider adding a `max-height` to improve the user-experience."].join("\n"));
             }
           }
-          if (marginThreshold !== null && left2 < marginThreshold) {
-            const diff2 = left2 - marginThreshold;
-            left2 -= diff2;
+          if (marginThreshold !== null && left3 < marginThreshold) {
+            const diff2 = left3 - marginThreshold;
+            left3 -= diff2;
             elemTransformOrigin.horizontal += diff2;
-          } else if (right2 > widthThreshold) {
-            const diff2 = right2 - widthThreshold;
-            left2 -= diff2;
+          } else if (right3 > widthThreshold) {
+            const diff2 = right3 - widthThreshold;
+            left3 -= diff2;
             elemTransformOrigin.horizontal += diff2;
           }
           return {
-            top: `${Math.round(top3)}px`,
-            left: `${Math.round(left2)}px`,
+            top: `${Math.round(top4)}px`,
+            left: `${Math.round(left3)}px`,
             transformOrigin: getTransformOriginValue(elemTransformOrigin)
           };
         }, [anchorEl, anchorReference, getAnchorOffset, getTransformOrigin, marginThreshold]);
-        const [isPositioned, setIsPositioned] = React84.useState(open);
-        const setPositioningStyles = React84.useCallback(() => {
+        const [isPositioned, setIsPositioned] = React86.useState(open);
+        const setPositioningStyles = React86.useCallback(() => {
           const element = paperRef.current;
           if (!element) {
             return;
@@ -43550,7 +45981,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           element.style.transformOrigin = positioning.transformOrigin;
           setIsPositioned(true);
         }, [getPositioningStyle]);
-        React84.useEffect(() => {
+        React86.useEffect(() => {
           if (disableScrollLock) {
             window.addEventListener("scroll", setPositioningStyles);
           }
@@ -43562,24 +45993,24 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         const handleExited = () => {
           setIsPositioned(false);
         };
-        React84.useEffect(() => {
+        React86.useEffect(() => {
           if (open) {
             setPositioningStyles();
           }
         });
-        React84.useImperativeHandle(action, () => open ? {
+        React86.useImperativeHandle(action, () => open ? {
           updatePosition: () => {
             setPositioningStyles();
           }
         } : null, [open, setPositioningStyles]);
-        React84.useEffect(() => {
+        React86.useEffect(() => {
           if (!open) {
             return void 0;
           }
           const handleResize = debounce_default(() => {
             setPositioningStyles();
           });
-          const containerWindow = ownerWindow_default(resolveAnchorEl(anchorEl));
+          const containerWindow = ownerWindow_default(resolveAnchorEl2(anchorEl));
           containerWindow.addEventListener("resize", handleResize);
           return () => {
             handleResize.clear();
@@ -43621,7 +46052,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         if (transitionDurationProp === "auto" && !TransitionSlot.muiSupportAuto) {
           transitionDuration = void 0;
         }
-        const container = containerProp || (anchorEl ? ownerDocument_default(resolveAnchorEl(anchorEl)).body : void 0);
+        const container = containerProp || (anchorEl ? ownerDocument_default(resolveAnchorEl2(anchorEl)).body : void 0);
         const [RootSlot, {
           slots: rootSlotsProp,
           slotProps: rootSlotPropsProp,
@@ -43663,17 +46094,17 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           },
           ownerState
         });
-        return /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(RootSlot, {
+        return /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(RootSlot, {
           ...rootProps,
           ...!isHostComponent_default2(RootSlot) && {
             slots: rootSlotsProp,
             slotProps: rootSlotPropsProp,
             disableScrollLock
           },
-          children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(TransitionSlot, {
+          children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(TransitionSlot, {
             ...transitionSlotProps,
             timeout: transitionDuration,
-            children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(PaperSlot, {
+            children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(PaperSlot, {
               ...paperProps,
               children
             })
@@ -43695,9 +46126,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * or a function that returns either.
          * It's used to set the position of the popover.
          */
-        anchorEl: chainPropTypes(import_prop_types56.default.oneOfType([HTMLElementType, import_prop_types56.default.func]), (props) => {
+        anchorEl: chainPropTypes(import_prop_types58.default.oneOfType([HTMLElementType, import_prop_types58.default.func]), (props) => {
           if (props.open && (!props.anchorReference || props.anchorReference === "anchorEl")) {
-            const resolvedAnchorEl = resolveAnchorEl(props.anchorEl);
+            const resolvedAnchorEl = resolveAnchorEl2(props.anchorEl);
             if (resolvedAnchorEl && resolvedAnchorEl.nodeType === 1) {
               const box = resolvedAnchorEl.getBoundingClientRect();
               if (box.top === 0 && box.left === 0 && box.right === 0 && box.bottom === 0) {
@@ -43722,24 +46153,24 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *   horizontal: 'left',
          * }
          */
-        anchorOrigin: import_prop_types56.default.shape({
-          horizontal: import_prop_types56.default.oneOfType([import_prop_types56.default.oneOf(["center", "left", "right"]), import_prop_types56.default.number]).isRequired,
-          vertical: import_prop_types56.default.oneOfType([import_prop_types56.default.oneOf(["bottom", "center", "top"]), import_prop_types56.default.number]).isRequired
+        anchorOrigin: import_prop_types58.default.shape({
+          horizontal: import_prop_types58.default.oneOfType([import_prop_types58.default.oneOf(["center", "left", "right"]), import_prop_types58.default.number]).isRequired,
+          vertical: import_prop_types58.default.oneOfType([import_prop_types58.default.oneOf(["bottom", "center", "top"]), import_prop_types58.default.number]).isRequired
         }),
         /**
          * This is the position that may be used to set the position of the popover.
          * The coordinates are relative to the application's client area.
          */
-        anchorPosition: import_prop_types56.default.shape({
-          left: import_prop_types56.default.number.isRequired,
-          top: import_prop_types56.default.number.isRequired
+        anchorPosition: import_prop_types58.default.shape({
+          left: import_prop_types58.default.number.isRequired,
+          top: import_prop_types58.default.number.isRequired
         }),
         /**
          * This determines which anchor prop to refer to when setting
          * the position of the popover.
          * @default 'anchorEl'
          */
-        anchorReference: import_prop_types56.default.oneOf(["anchorEl", "anchorPosition", "none"]),
+        anchorReference: import_prop_types58.default.oneOf(["anchorEl", "anchorPosition", "none"]),
         /**
          * A backdrop component. This prop enables custom backdrop rendering.
          * @deprecated Use `slots.backdrop` instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
@@ -43753,24 +46184,24 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *   zIndex: -1,
          * })
          */
-        BackdropComponent: import_prop_types56.default.elementType,
+        BackdropComponent: import_prop_types58.default.elementType,
         /**
          * Props applied to the [`Backdrop`](/material-ui/api/backdrop/) element.
          * @deprecated Use `slotProps.backdrop` instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
          */
-        BackdropProps: import_prop_types56.default.object,
+        BackdropProps: import_prop_types58.default.object,
         /**
          * The content of the component.
          */
-        children: import_prop_types56.default.node,
+        children: import_prop_types58.default.node,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types56.default.object,
+        classes: import_prop_types58.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types56.default.string,
+        className: import_prop_types58.default.string,
         /**
          * An HTML element, component instance, or function that returns either.
          * The `container` will passed to the Modal component.
@@ -43778,12 +46209,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * By default, it uses the body of the anchorEl's top-level document object,
          * so it's simply `document.body` most of the time.
          */
-        container: import_prop_types56.default.oneOfType([HTMLElementType, import_prop_types56.default.func]),
+        container: import_prop_types58.default.oneOfType([HTMLElementType, import_prop_types58.default.func]),
         /**
          * Disable the scroll lock behavior.
          * @default false
          */
-        disableScrollLock: import_prop_types56.default.bool,
+        disableScrollLock: import_prop_types58.default.bool,
         /**
          * The elevation of the popover.
          * @default 8
@@ -43794,16 +46225,16 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * If null, the popover will not be constrained by the window.
          * @default 16
          */
-        marginThreshold: import_prop_types56.default.number,
+        marginThreshold: import_prop_types58.default.number,
         /**
          * Callback fired when the component requests to be closed.
          * The `reason` parameter can optionally be used to control the response to `onClose`.
          */
-        onClose: import_prop_types56.default.func,
+        onClose: import_prop_types58.default.func,
         /**
          * If `true`, the component is shown.
          */
-        open: import_prop_types56.default.bool.isRequired,
+        open: import_prop_types58.default.bool.isRequired,
         /**
          * Props applied to the [`Paper`](https://mui.com/material-ui/api/paper/) element.
          *
@@ -43812,33 +46243,33 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *
          * @default {}
          */
-        PaperProps: import_prop_types56.default.shape({
+        PaperProps: import_prop_types58.default.shape({
           component: elementTypeAcceptingRef_default
         }),
         /**
          * The props used for each slot inside.
          * @default {}
          */
-        slotProps: import_prop_types56.default.shape({
-          backdrop: import_prop_types56.default.oneOfType([import_prop_types56.default.func, import_prop_types56.default.object]),
-          paper: import_prop_types56.default.oneOfType([import_prop_types56.default.func, import_prop_types56.default.object]),
-          root: import_prop_types56.default.oneOfType([import_prop_types56.default.func, import_prop_types56.default.object]),
-          transition: import_prop_types56.default.oneOfType([import_prop_types56.default.func, import_prop_types56.default.object])
+        slotProps: import_prop_types58.default.shape({
+          backdrop: import_prop_types58.default.oneOfType([import_prop_types58.default.func, import_prop_types58.default.object]),
+          paper: import_prop_types58.default.oneOfType([import_prop_types58.default.func, import_prop_types58.default.object]),
+          root: import_prop_types58.default.oneOfType([import_prop_types58.default.func, import_prop_types58.default.object]),
+          transition: import_prop_types58.default.oneOfType([import_prop_types58.default.func, import_prop_types58.default.object])
         }),
         /**
          * The components used for each slot inside.
          * @default {}
          */
-        slots: import_prop_types56.default.shape({
-          backdrop: import_prop_types56.default.elementType,
-          paper: import_prop_types56.default.elementType,
-          root: import_prop_types56.default.elementType,
-          transition: import_prop_types56.default.elementType
+        slots: import_prop_types58.default.shape({
+          backdrop: import_prop_types58.default.elementType,
+          paper: import_prop_types58.default.elementType,
+          root: import_prop_types58.default.elementType,
+          transition: import_prop_types58.default.elementType
         }),
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types56.default.oneOfType([import_prop_types56.default.arrayOf(import_prop_types56.default.oneOfType([import_prop_types56.default.func, import_prop_types56.default.object, import_prop_types56.default.bool])), import_prop_types56.default.func, import_prop_types56.default.object]),
+        sx: import_prop_types58.default.oneOfType([import_prop_types58.default.arrayOf(import_prop_types58.default.oneOfType([import_prop_types58.default.func, import_prop_types58.default.object, import_prop_types58.default.bool])), import_prop_types58.default.func, import_prop_types58.default.object]),
         /**
          * This is the point on the popover which
          * will attach to the anchor's origin.
@@ -43851,9 +46282,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *   horizontal: 'left',
          * }
          */
-        transformOrigin: import_prop_types56.default.shape({
-          horizontal: import_prop_types56.default.oneOfType([import_prop_types56.default.oneOf(["center", "left", "right"]), import_prop_types56.default.number]).isRequired,
-          vertical: import_prop_types56.default.oneOfType([import_prop_types56.default.oneOf(["bottom", "center", "top"]), import_prop_types56.default.number]).isRequired
+        transformOrigin: import_prop_types58.default.shape({
+          horizontal: import_prop_types58.default.oneOfType([import_prop_types58.default.oneOf(["center", "left", "right"]), import_prop_types58.default.number]).isRequired,
+          vertical: import_prop_types58.default.oneOfType([import_prop_types58.default.oneOf(["bottom", "center", "top"]), import_prop_types58.default.number]).isRequired
         }),
         /**
          * The component used for the transition.
@@ -43861,15 +46292,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * @deprecated use the `slots.transition` prop instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
          * @default Grow
          */
-        TransitionComponent: import_prop_types56.default.elementType,
+        TransitionComponent: import_prop_types58.default.elementType,
         /**
          * Set to 'auto' to automatically calculate transition time based on height.
          * @default 'auto'
          */
-        transitionDuration: import_prop_types56.default.oneOfType([import_prop_types56.default.oneOf(["auto"]), import_prop_types56.default.number, import_prop_types56.default.shape({
-          appear: import_prop_types56.default.number,
-          enter: import_prop_types56.default.number,
-          exit: import_prop_types56.default.number
+        transitionDuration: import_prop_types58.default.oneOfType([import_prop_types58.default.oneOf(["auto"]), import_prop_types58.default.number, import_prop_types58.default.shape({
+          appear: import_prop_types58.default.number,
+          enter: import_prop_types58.default.number,
+          exit: import_prop_types58.default.number
         })]),
         /**
          * Props applied to the transition element.
@@ -43877,7 +46308,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * @deprecated use the `slotProps.transition` prop instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
          * @default {}
          */
-        TransitionProps: import_prop_types56.default.object
+        TransitionProps: import_prop_types58.default.object
       } : void 0;
       Popover_default = Popover;
     }
@@ -43906,13 +46337,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/Menu/Menu.js
-  var React85, import_react_is5, import_prop_types57, import_jsx_runtime56, RTL_ORIGIN, LTR_ORIGIN, useUtilityClasses28, MenuRoot, MenuPaper, MenuMenuList, Menu, Menu_default;
+  var React87, import_react_is5, import_prop_types59, import_jsx_runtime58, RTL_ORIGIN, LTR_ORIGIN, useUtilityClasses29, MenuRoot, MenuPaper, MenuMenuList, Menu, Menu_default;
   var init_Menu = __esm({
     "node_modules/@mui/material/esm/Menu/Menu.js"() {
       "use client";
-      React85 = __toESM(require_react(), 1);
+      React87 = __toESM(require_react(), 1);
       import_react_is5 = __toESM(require_react_is(), 1);
-      import_prop_types57 = __toESM(require_prop_types(), 1);
+      import_prop_types59 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_composeClasses2();
       init_HTMLElementType2();
@@ -43925,7 +46356,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_DefaultPropsProvider4();
       init_menuClasses();
       init_useSlot();
-      import_jsx_runtime56 = __toESM(require_jsx_runtime(), 1);
+      import_jsx_runtime58 = __toESM(require_jsx_runtime(), 1);
       RTL_ORIGIN = {
         vertical: "top",
         horizontal: "right"
@@ -43934,7 +46365,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         vertical: "top",
         horizontal: "left"
       };
-      useUtilityClasses28 = (ownerState) => {
+      useUtilityClasses29 = (ownerState) => {
         const {
           classes
         } = ownerState;
@@ -43968,7 +46399,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         // We disable the focus ring for mouse, touch and keyboard users.
         outline: 0
       });
-      Menu = /* @__PURE__ */ React85.forwardRef(function Menu2(inProps, ref) {
+      Menu = /* @__PURE__ */ React87.forwardRef(function Menu2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiMenu"
@@ -44005,9 +46436,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           TransitionProps,
           variant
         };
-        const classes = useUtilityClasses28(ownerState);
+        const classes = useUtilityClasses29(ownerState);
         const autoFocusItem = autoFocus && !disableAutoFocusItem && open;
-        const menuListActionsRef = React85.useRef(null);
+        const menuListActionsRef = React87.useRef(null);
         const handleEntering = (element, isAppearing) => {
           if (menuListActionsRef.current) {
             menuListActionsRef.current.adjustStyleForScrollbar(element, {
@@ -44027,8 +46458,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
         };
         let activeItemIndex = -1;
-        React85.Children.map(children, (child, index2) => {
-          if (!/* @__PURE__ */ React85.isValidElement(child)) {
+        React87.Children.map(children, (child, index2) => {
+          if (!/* @__PURE__ */ React87.isValidElement(child)) {
             return;
           }
           if (true) {
@@ -44081,7 +46512,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           ownerState
         });
         const resolvedTransitionProps = typeof externalForwardedProps.slotProps.transition === "function" ? externalForwardedProps.slotProps.transition(ownerState) : externalForwardedProps.slotProps.transition;
-        return /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(MenuRoot, {
+        return /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(MenuRoot, {
           onClose,
           anchorOrigin: {
             vertical: "bottom",
@@ -44115,7 +46546,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           ownerState,
           ...other,
           classes: PopoverClasses,
-          children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(ListSlot, {
+          children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(ListSlot, {
             actions: menuListActionsRef,
             autoFocus: autoFocus && (activeItemIndex === -1 || disableAutoFocusItem),
             autoFocusItem,
@@ -44134,7 +46565,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * An HTML element, or a function that returns one.
          * It's used to set the position of the menu.
          */
-        anchorEl: import_prop_types57.default.oneOfType([HTMLElementType, import_prop_types57.default.func]),
+        anchorEl: import_prop_types59.default.oneOfType([HTMLElementType, import_prop_types59.default.func]),
         /**
          * If `true` (Default) will focus the `[role="menu"]` if no focusable child is found. Disabled
          * children are not focusable. If you set this prop to `false` focus will be placed
@@ -44142,19 +46573,19 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * and should only be considered if you manage focus otherwise.
          * @default true
          */
-        autoFocus: import_prop_types57.default.bool,
+        autoFocus: import_prop_types59.default.bool,
         /**
          * Menu contents, normally `MenuItem`s.
          */
-        children: import_prop_types57.default.node,
+        children: import_prop_types59.default.node,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types57.default.object,
+        classes: import_prop_types59.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types57.default.string,
+        className: import_prop_types59.default.string,
         /**
          * When opening the menu will not focus the active item but the `[role="menu"]`
          * unless `autoFocus` is also set to `false`. Not using the default means not
@@ -44162,66 +46593,66 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * accessibility implications.
          * @default false
          */
-        disableAutoFocusItem: import_prop_types57.default.bool,
+        disableAutoFocusItem: import_prop_types59.default.bool,
         /**
          * Props applied to the [`MenuList`](https://mui.com/material-ui/api/menu-list/) element.
          * @deprecated use the `slotProps.list` prop instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
          * @default {}
          */
-        MenuListProps: import_prop_types57.default.object,
+        MenuListProps: import_prop_types59.default.object,
         /**
          * Callback fired when the component requests to be closed.
          *
          * @param {object} event The event source of the callback.
          * @param {string} reason Can be: `"escapeKeyDown"`, `"backdropClick"`, `"tabKeyDown"`.
          */
-        onClose: import_prop_types57.default.func,
+        onClose: import_prop_types59.default.func,
         /**
          * If `true`, the component is shown.
          */
-        open: import_prop_types57.default.bool.isRequired,
+        open: import_prop_types59.default.bool.isRequired,
         /**
          * @ignore
          */
-        PaperProps: import_prop_types57.default.object,
+        PaperProps: import_prop_types59.default.object,
         /**
          * `classes` prop applied to the [`Popover`](https://mui.com/material-ui/api/popover/) element.
          */
-        PopoverClasses: import_prop_types57.default.object,
+        PopoverClasses: import_prop_types59.default.object,
         /**
          * The props used for each slot inside.
          * @default {}
          */
-        slotProps: import_prop_types57.default.shape({
-          backdrop: import_prop_types57.default.oneOfType([import_prop_types57.default.func, import_prop_types57.default.object]),
-          list: import_prop_types57.default.oneOfType([import_prop_types57.default.func, import_prop_types57.default.object]),
-          paper: import_prop_types57.default.oneOfType([import_prop_types57.default.func, import_prop_types57.default.object]),
-          root: import_prop_types57.default.oneOfType([import_prop_types57.default.func, import_prop_types57.default.object]),
-          transition: import_prop_types57.default.oneOfType([import_prop_types57.default.func, import_prop_types57.default.object])
+        slotProps: import_prop_types59.default.shape({
+          backdrop: import_prop_types59.default.oneOfType([import_prop_types59.default.func, import_prop_types59.default.object]),
+          list: import_prop_types59.default.oneOfType([import_prop_types59.default.func, import_prop_types59.default.object]),
+          paper: import_prop_types59.default.oneOfType([import_prop_types59.default.func, import_prop_types59.default.object]),
+          root: import_prop_types59.default.oneOfType([import_prop_types59.default.func, import_prop_types59.default.object]),
+          transition: import_prop_types59.default.oneOfType([import_prop_types59.default.func, import_prop_types59.default.object])
         }),
         /**
          * The components used for each slot inside.
          * @default {}
          */
-        slots: import_prop_types57.default.shape({
-          backdrop: import_prop_types57.default.elementType,
-          list: import_prop_types57.default.elementType,
-          paper: import_prop_types57.default.elementType,
-          root: import_prop_types57.default.elementType,
-          transition: import_prop_types57.default.elementType
+        slots: import_prop_types59.default.shape({
+          backdrop: import_prop_types59.default.elementType,
+          list: import_prop_types59.default.elementType,
+          paper: import_prop_types59.default.elementType,
+          root: import_prop_types59.default.elementType,
+          transition: import_prop_types59.default.elementType
         }),
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types57.default.oneOfType([import_prop_types57.default.arrayOf(import_prop_types57.default.oneOfType([import_prop_types57.default.func, import_prop_types57.default.object, import_prop_types57.default.bool])), import_prop_types57.default.func, import_prop_types57.default.object]),
+        sx: import_prop_types59.default.oneOfType([import_prop_types59.default.arrayOf(import_prop_types59.default.oneOfType([import_prop_types59.default.func, import_prop_types59.default.object, import_prop_types59.default.bool])), import_prop_types59.default.func, import_prop_types59.default.object]),
         /**
          * The length of the transition in `ms`, or 'auto'
          * @default 'auto'
          */
-        transitionDuration: import_prop_types57.default.oneOfType([import_prop_types57.default.oneOf(["auto"]), import_prop_types57.default.number, import_prop_types57.default.shape({
-          appear: import_prop_types57.default.number,
-          enter: import_prop_types57.default.number,
-          exit: import_prop_types57.default.number
+        transitionDuration: import_prop_types59.default.oneOfType([import_prop_types59.default.oneOf(["auto"]), import_prop_types59.default.number, import_prop_types59.default.shape({
+          appear: import_prop_types59.default.number,
+          enter: import_prop_types59.default.number,
+          exit: import_prop_types59.default.number
         })]),
         /**
          * Props applied to the transition element.
@@ -44229,12 +46660,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * @deprecated use the `slotProps.transition` prop instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
          * @default {}
          */
-        TransitionProps: import_prop_types57.default.object,
+        TransitionProps: import_prop_types59.default.object,
         /**
          * The variant to use. Use `menu` to prevent selected items from impacting the initial focus.
          * @default 'selectedMenu'
          */
-        variant: import_prop_types57.default.oneOf(["menu", "selectedMenu"])
+        variant: import_prop_types59.default.oneOf(["menu", "selectedMenu"])
       } : void 0;
       Menu_default = Menu;
     }
@@ -44294,12 +46725,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/NativeSelect/NativeSelectInput.js
-  var React86, import_prop_types58, import_jsx_runtime57, useUtilityClasses29, StyledSelectSelect, NativeSelectSelect, StyledSelectIcon, NativeSelectIcon, NativeSelectInput, NativeSelectInput_default;
+  var React88, import_prop_types60, import_jsx_runtime59, useUtilityClasses30, StyledSelectSelect, NativeSelectSelect, StyledSelectIcon, NativeSelectIcon, NativeSelectInput, NativeSelectInput_default;
   var init_NativeSelectInput = __esm({
     "node_modules/@mui/material/esm/NativeSelect/NativeSelectInput.js"() {
       "use client";
-      React86 = __toESM(require_react(), 1);
-      import_prop_types58 = __toESM(require_prop_types(), 1);
+      React88 = __toESM(require_react(), 1);
+      import_prop_types60 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_refType2();
       init_composeClasses2();
@@ -44307,8 +46738,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_nativeSelectClasses();
       init_zero_styled();
       init_rootShouldForwardProp();
-      import_jsx_runtime57 = __toESM(require_jsx_runtime(), 1);
-      useUtilityClasses29 = (ownerState) => {
+      import_jsx_runtime59 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses30 = (ownerState) => {
         const {
           classes,
           variant,
@@ -44451,7 +46882,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           return [styles4.icon, ownerState.variant && styles4[`icon${capitalize_default(ownerState.variant)}`], ownerState.open && styles4.iconOpen];
         }
       })({});
-      NativeSelectInput = /* @__PURE__ */ React86.forwardRef(function NativeSelectInput2(props, ref) {
+      NativeSelectInput = /* @__PURE__ */ React88.forwardRef(function NativeSelectInput2(props, ref) {
         const {
           className,
           disabled,
@@ -44467,15 +46898,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           variant,
           error
         };
-        const classes = useUtilityClasses29(ownerState);
-        return /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(React86.Fragment, {
-          children: [/* @__PURE__ */ (0, import_jsx_runtime57.jsx)(NativeSelectSelect, {
+        const classes = useUtilityClasses30(ownerState);
+        return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(React88.Fragment, {
+          children: [/* @__PURE__ */ (0, import_jsx_runtime59.jsx)(NativeSelectSelect, {
             ownerState,
             className: clsx_default(classes.select, className),
             disabled,
             ref: inputRef || ref,
             ...other
-          }), props.multiple ? null : /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(NativeSelectIcon, {
+          }), props.multiple ? null : /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(NativeSelectIcon, {
             as: IconComponent,
             ownerState,
             className: classes.icon
@@ -44487,27 +46918,27 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * The option elements to populate the select with.
          * Can be some `<option>` elements.
          */
-        children: import_prop_types58.default.node,
+        children: import_prop_types60.default.node,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types58.default.object,
+        classes: import_prop_types60.default.object,
         /**
          * The CSS class name of the select element.
          */
-        className: import_prop_types58.default.string,
+        className: import_prop_types60.default.string,
         /**
          * If `true`, the select is disabled.
          */
-        disabled: import_prop_types58.default.bool,
+        disabled: import_prop_types60.default.bool,
         /**
          * If `true`, the `select input` will indicate an error.
          */
-        error: import_prop_types58.default.bool,
+        error: import_prop_types60.default.bool,
         /**
          * The icon that displays the arrow.
          */
-        IconComponent: import_prop_types58.default.elementType.isRequired,
+        IconComponent: import_prop_types60.default.elementType.isRequired,
         /**
          * Use that prop to pass a ref to the native select element.
          * @deprecated
@@ -44516,26 +46947,26 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * @ignore
          */
-        multiple: import_prop_types58.default.bool,
+        multiple: import_prop_types60.default.bool,
         /**
          * Name attribute of the `select` or hidden `input` element.
          */
-        name: import_prop_types58.default.string,
+        name: import_prop_types60.default.string,
         /**
          * Callback fired when a menu item is selected.
          *
          * @param {object} event The event source of the callback.
          * You can pull out the new value by accessing `event.target.value` (string).
          */
-        onChange: import_prop_types58.default.func,
+        onChange: import_prop_types60.default.func,
         /**
          * The input value.
          */
-        value: import_prop_types58.default.any,
+        value: import_prop_types60.default.any,
         /**
          * The variant to use.
          */
-        variant: import_prop_types58.default.oneOf(["standard", "outlined", "filled"])
+        variant: import_prop_types60.default.oneOf(["standard", "outlined", "filled"])
       } : void 0;
       NativeSelectInput_default = NativeSelectInput;
     }
@@ -44570,18 +47001,18 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       notched,
       withLabel
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(NotchedOutlineRoot, {
+    return /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(NotchedOutlineRoot, {
       "aria-hidden": true,
       className,
       ownerState,
       ...other,
-      children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(NotchedOutlineLegend, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(NotchedOutlineLegend, {
         ownerState,
-        children: withLabel ? /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", {
+        children: withLabel ? /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", {
           children: label
         }) : (
           // notranslate needed while Google Translate will not fix zero-width space issue
-          _span3 || (_span3 = /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", {
+          _span3 || (_span3 = /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", {
             className: "notranslate",
             "aria-hidden": true,
             children: "\u200B"
@@ -44590,16 +47021,16 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       })
     });
   }
-  var React87, import_prop_types59, import_jsx_runtime58, _span3, NotchedOutlineRoot, NotchedOutlineLegend;
+  var React89, import_prop_types61, import_jsx_runtime60, _span3, NotchedOutlineRoot, NotchedOutlineLegend;
   var init_NotchedOutline = __esm({
     "node_modules/@mui/material/esm/OutlinedInput/NotchedOutline.js"() {
       "use client";
-      React87 = __toESM(require_react(), 1);
-      import_prop_types59 = __toESM(require_prop_types(), 1);
+      React89 = __toESM(require_react(), 1);
+      import_prop_types61 = __toESM(require_prop_types(), 1);
       init_rootShouldForwardProp();
       init_zero_styled();
       init_memoTheme2();
-      import_jsx_runtime58 = __toESM(require_jsx_runtime(), 1);
+      import_jsx_runtime60 = __toESM(require_jsx_runtime(), 1);
       NotchedOutlineRoot = styled_default2("fieldset", {
         name: "MuiNotchedOutlined",
         shouldForwardProp: rootShouldForwardProp_default
@@ -44688,38 +47119,38 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * The content of the component.
          */
-        children: import_prop_types59.default.node,
+        children: import_prop_types61.default.node,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types59.default.object,
+        classes: import_prop_types61.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types59.default.string,
+        className: import_prop_types61.default.string,
         /**
          * The label.
          */
-        label: import_prop_types59.default.node,
+        label: import_prop_types61.default.node,
         /**
          * If `true`, the outline is notched to accommodate the label.
          */
-        notched: import_prop_types59.default.bool.isRequired,
+        notched: import_prop_types61.default.bool.isRequired,
         /**
          * @ignore
          */
-        style: import_prop_types59.default.object
+        style: import_prop_types61.default.object
       } : void 0;
     }
   });
 
   // node_modules/@mui/material/esm/OutlinedInput/OutlinedInput.js
-  var React88, import_prop_types60, import_jsx_runtime59, useUtilityClasses30, OutlinedInputRoot, NotchedOutlineRoot2, OutlinedInputInput, OutlinedInput, OutlinedInput_default;
+  var React90, import_prop_types62, import_jsx_runtime61, useUtilityClasses31, OutlinedInputRoot, NotchedOutlineRoot2, OutlinedInputInput, OutlinedInput, OutlinedInput_default;
   var init_OutlinedInput = __esm({
     "node_modules/@mui/material/esm/OutlinedInput/OutlinedInput.js"() {
       "use client";
-      React88 = __toESM(require_react(), 1);
-      import_prop_types60 = __toESM(require_prop_types(), 1);
+      React90 = __toESM(require_react(), 1);
+      import_prop_types62 = __toESM(require_prop_types(), 1);
       init_refType2();
       init_composeClasses2();
       init_NotchedOutline();
@@ -44733,8 +47164,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_outlinedInputClasses();
       init_InputBase();
       init_useSlot();
-      import_jsx_runtime59 = __toESM(require_jsx_runtime(), 1);
-      useUtilityClasses30 = (ownerState) => {
+      import_jsx_runtime61 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses31 = (ownerState) => {
         const {
           classes
         } = ownerState;
@@ -44895,7 +47326,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
         }]
       })));
-      OutlinedInput = /* @__PURE__ */ React88.forwardRef(function OutlinedInput2(inProps, ref) {
+      OutlinedInput = /* @__PURE__ */ React90.forwardRef(function OutlinedInput2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiOutlinedInput"
@@ -44912,7 +47343,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           type = "text",
           ...other
         } = props;
-        const classes = useUtilityClasses30(props);
+        const classes = useUtilityClasses31(props);
         const muiFormControl = useFormControl();
         const fcs = formControlState({
           props,
@@ -44944,18 +47375,18 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             slotProps
           },
           additionalProps: {
-            label: label != null && label !== "" && fcs.required ? /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(React88.Fragment, {
+            label: label != null && label !== "" && fcs.required ? /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(React90.Fragment, {
               children: [label, "\u2009", "*"]
             }) : label
           }
         });
-        return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(InputBase_default, {
+        return /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(InputBase_default, {
           slots: {
             root: RootSlot,
             input: InputSlot
           },
           slotProps,
-          renderSuffix: (state) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(NotchedSlot, {
+          renderSuffix: (state) => /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(NotchedSlot, {
             ...notchedProps,
             notched: typeof notched !== "undefined" ? notched : Boolean(state.startAdornment || state.filled || state.focused)
           }),
@@ -44981,22 +47412,22 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * The name can be confusing, as it's more like an autofill.
          * You can learn more about it [following the specification](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill).
          */
-        autoComplete: import_prop_types60.default.string,
+        autoComplete: import_prop_types62.default.string,
         /**
          * If `true`, the `input` element is focused during the first mount.
          */
-        autoFocus: import_prop_types60.default.bool,
+        autoFocus: import_prop_types62.default.bool,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types60.default.object,
+        classes: import_prop_types62.default.object,
         /**
          * The color of the component.
          * It supports both default and custom theme colors, which can be added as shown in the
          * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
          * The prop defaults to the value (`'primary'`) inherited from the parent FormControl component.
          */
-        color: import_prop_types60.default.oneOfType([import_prop_types60.default.oneOf(["primary", "secondary"]), import_prop_types60.default.string]),
+        color: import_prop_types62.default.oneOfType([import_prop_types62.default.oneOf(["primary", "secondary"]), import_prop_types62.default.string]),
         /**
          * The components used for each slot inside.
          *
@@ -45004,48 +47435,48 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *
          * @default {}
          */
-        components: import_prop_types60.default.shape({
-          Input: import_prop_types60.default.elementType,
-          Root: import_prop_types60.default.elementType
+        components: import_prop_types62.default.shape({
+          Input: import_prop_types62.default.elementType,
+          Root: import_prop_types62.default.elementType
         }),
         /**
          * The default value. Use when the component is not controlled.
          */
-        defaultValue: import_prop_types60.default.any,
+        defaultValue: import_prop_types62.default.any,
         /**
          * If `true`, the component is disabled.
          * The prop defaults to the value (`false`) inherited from the parent FormControl component.
          */
-        disabled: import_prop_types60.default.bool,
+        disabled: import_prop_types62.default.bool,
         /**
          * End `InputAdornment` for this component.
          */
-        endAdornment: import_prop_types60.default.node,
+        endAdornment: import_prop_types62.default.node,
         /**
          * If `true`, the `input` will indicate an error.
          * The prop defaults to the value (`false`) inherited from the parent FormControl component.
          */
-        error: import_prop_types60.default.bool,
+        error: import_prop_types62.default.bool,
         /**
          * If `true`, the `input` will take up the full width of its container.
          * @default false
          */
-        fullWidth: import_prop_types60.default.bool,
+        fullWidth: import_prop_types62.default.bool,
         /**
          * The id of the `input` element.
          */
-        id: import_prop_types60.default.string,
+        id: import_prop_types62.default.string,
         /**
          * The component used for the `input` element.
          * Either a string to use a HTML element or a component.
          * @default 'input'
          */
-        inputComponent: import_prop_types60.default.elementType,
+        inputComponent: import_prop_types62.default.elementType,
         /**
          * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#attributes) applied to the `input` element.
          * @default {}
          */
-        inputProps: import_prop_types60.default.object,
+        inputProps: import_prop_types62.default.object,
         /**
          * Pass a ref to the `input` element.
          */
@@ -45054,94 +47485,94 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * The label of the `input`. It is only used for layout. The actual labelling
          * is handled by `InputLabel`.
          */
-        label: import_prop_types60.default.node,
+        label: import_prop_types62.default.node,
         /**
          * If `dense`, will adjust vertical spacing. This is normally obtained via context from
          * FormControl.
          * The prop defaults to the value (`'none'`) inherited from the parent FormControl component.
          */
-        margin: import_prop_types60.default.oneOf(["dense", "none"]),
+        margin: import_prop_types62.default.oneOf(["dense", "none"]),
         /**
          * Maximum number of rows to display when multiline option is set to true.
          */
-        maxRows: import_prop_types60.default.oneOfType([import_prop_types60.default.number, import_prop_types60.default.string]),
+        maxRows: import_prop_types62.default.oneOfType([import_prop_types62.default.number, import_prop_types62.default.string]),
         /**
          * Minimum number of rows to display when multiline option is set to true.
          */
-        minRows: import_prop_types60.default.oneOfType([import_prop_types60.default.number, import_prop_types60.default.string]),
+        minRows: import_prop_types62.default.oneOfType([import_prop_types62.default.number, import_prop_types62.default.string]),
         /**
          * If `true`, a [TextareaAutosize](https://mui.com/material-ui/react-textarea-autosize/) element is rendered.
          * @default false
          */
-        multiline: import_prop_types60.default.bool,
+        multiline: import_prop_types62.default.bool,
         /**
          * Name attribute of the `input` element.
          */
-        name: import_prop_types60.default.string,
+        name: import_prop_types62.default.string,
         /**
          * If `true`, the outline is notched to accommodate the label.
          */
-        notched: import_prop_types60.default.bool,
+        notched: import_prop_types62.default.bool,
         /**
          * Callback fired when the value is changed.
          *
          * @param {React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>} event The event source of the callback.
          * You can pull out the new value by accessing `event.target.value` (string).
          */
-        onChange: import_prop_types60.default.func,
+        onChange: import_prop_types62.default.func,
         /**
          * The short hint displayed in the `input` before the user enters a value.
          */
-        placeholder: import_prop_types60.default.string,
+        placeholder: import_prop_types62.default.string,
         /**
          * It prevents the user from changing the value of the field
          * (not from interacting with the field).
          */
-        readOnly: import_prop_types60.default.bool,
+        readOnly: import_prop_types62.default.bool,
         /**
          * If `true`, the `input` element is required.
          * The prop defaults to the value (`false`) inherited from the parent FormControl component.
          */
-        required: import_prop_types60.default.bool,
+        required: import_prop_types62.default.bool,
         /**
          * Number of rows to display when multiline option is set to true.
          */
-        rows: import_prop_types60.default.oneOfType([import_prop_types60.default.number, import_prop_types60.default.string]),
+        rows: import_prop_types62.default.oneOfType([import_prop_types62.default.number, import_prop_types62.default.string]),
         /**
          * The props used for each slot inside.
          * @default {}
          */
-        slotProps: import_prop_types60.default.shape({
-          input: import_prop_types60.default.object,
-          notchedOutline: import_prop_types60.default.oneOfType([import_prop_types60.default.func, import_prop_types60.default.object]),
-          root: import_prop_types60.default.object
+        slotProps: import_prop_types62.default.shape({
+          input: import_prop_types62.default.object,
+          notchedOutline: import_prop_types62.default.oneOfType([import_prop_types62.default.func, import_prop_types62.default.object]),
+          root: import_prop_types62.default.object
         }),
         /**
          * The components used for each slot inside.
          * @default {}
          */
-        slots: import_prop_types60.default.shape({
-          input: import_prop_types60.default.elementType,
-          notchedOutline: import_prop_types60.default.elementType,
-          root: import_prop_types60.default.elementType
+        slots: import_prop_types62.default.shape({
+          input: import_prop_types62.default.elementType,
+          notchedOutline: import_prop_types62.default.elementType,
+          root: import_prop_types62.default.elementType
         }),
         /**
          * Start `InputAdornment` for this component.
          */
-        startAdornment: import_prop_types60.default.node,
+        startAdornment: import_prop_types62.default.node,
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types60.default.oneOfType([import_prop_types60.default.arrayOf(import_prop_types60.default.oneOfType([import_prop_types60.default.func, import_prop_types60.default.object, import_prop_types60.default.bool])), import_prop_types60.default.func, import_prop_types60.default.object]),
+        sx: import_prop_types62.default.oneOfType([import_prop_types62.default.arrayOf(import_prop_types62.default.oneOfType([import_prop_types62.default.func, import_prop_types62.default.object, import_prop_types62.default.bool])), import_prop_types62.default.func, import_prop_types62.default.object]),
         /**
          * Type of the `input` element. It should be [a valid HTML5 input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#input_types).
          * @default 'text'
          */
-        type: import_prop_types60.default.string,
+        type: import_prop_types62.default.string,
         /**
          * The value of the `input` element, required for a controlled component.
          */
-        value: import_prop_types60.default.any
+        value: import_prop_types62.default.any
       } : void 0;
       OutlinedInput.muiName = "Input";
       OutlinedInput_default = OutlinedInput;
@@ -45308,13 +47739,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   function isEmpty3(display) {
     return display == null || typeof display === "string" && !display.trim();
   }
-  var React89, import_react_is6, import_prop_types61, import_jsx_runtime60, _span4, SelectSelect, SelectIcon, SelectNativeInput, useUtilityClasses31, SelectInput, SelectInput_default;
+  var React91, import_react_is6, import_prop_types63, import_jsx_runtime62, _span4, SelectSelect, SelectIcon, SelectNativeInput, useUtilityClasses32, SelectInput, SelectInput_default;
   var init_SelectInput = __esm({
     "node_modules/@mui/material/esm/Select/SelectInput.js"() {
       "use client";
-      React89 = __toESM(require_react(), 1);
+      React91 = __toESM(require_react(), 1);
       import_react_is6 = __toESM(require_react_is(), 1);
-      import_prop_types61 = __toESM(require_prop_types(), 1);
+      import_prop_types63 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_composeClasses2();
       init_useId2();
@@ -45329,7 +47760,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_useForkRef3();
       init_useControlled3();
       init_selectClasses();
-      import_jsx_runtime60 = __toESM(require_jsx_runtime(), 1);
+      import_jsx_runtime62 = __toESM(require_jsx_runtime(), 1);
       SelectSelect = styled_default2(StyledSelectSelect, {
         name: "MuiSelect",
         slot: "Select",
@@ -45388,7 +47819,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         width: "100%",
         boxSizing: "border-box"
       });
-      useUtilityClasses31 = (ownerState) => {
+      useUtilityClasses32 = (ownerState) => {
         const {
           classes,
           variant,
@@ -45404,7 +47835,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         };
         return composeClasses(slots, getSelectUtilityClasses, classes);
       };
-      SelectInput = /* @__PURE__ */ React89.forwardRef(function SelectInput2(props, ref) {
+      SelectInput = /* @__PURE__ */ React91.forwardRef(function SelectInput2(props, ref) {
         const {
           "aria-describedby": ariaDescribedby,
           "aria-label": ariaLabel,
@@ -45450,40 +47881,40 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           default: defaultOpen,
           name: "Select"
         });
-        const inputRef = React89.useRef(null);
-        const displayRef = React89.useRef(null);
-        const [displayNode, setDisplayNode] = React89.useState(null);
+        const inputRef = React91.useRef(null);
+        const displayRef = React91.useRef(null);
+        const [displayNode, setDisplayNode] = React91.useState(null);
         const {
           current: isOpenControlled
-        } = React89.useRef(openProp != null);
-        const [menuMinWidthState, setMenuMinWidthState] = React89.useState();
+        } = React91.useRef(openProp != null);
+        const [menuMinWidthState, setMenuMinWidthState] = React91.useState();
         const handleRef = useForkRef_default(ref, inputRefProp);
-        const handleDisplayRef = React89.useCallback((node2) => {
+        const handleDisplayRef = React91.useCallback((node2) => {
           displayRef.current = node2;
           if (node2) {
             setDisplayNode(node2);
           }
         }, []);
         const anchorElement = displayNode?.parentNode;
-        React89.useImperativeHandle(handleRef, () => ({
+        React91.useImperativeHandle(handleRef, () => ({
           focus: () => {
             displayRef.current.focus();
           },
           node: inputRef.current,
           value
         }), [value]);
-        React89.useEffect(() => {
+        React91.useEffect(() => {
           if (defaultOpen && openState && displayNode && !isOpenControlled) {
             setMenuMinWidthState(autoWidth ? null : anchorElement.clientWidth);
             displayRef.current.focus();
           }
         }, [displayNode, autoWidth]);
-        React89.useEffect(() => {
+        React91.useEffect(() => {
           if (autoFocus) {
             displayRef.current.focus();
           }
         }, [autoFocus]);
-        React89.useEffect(() => {
+        React91.useEffect(() => {
           if (!labelId) {
             return void 0;
           }
@@ -45525,7 +47956,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         const handleClose = (event) => {
           update(false, event);
         };
-        const childrenArray = React89.Children.toArray(children);
+        const childrenArray = React91.Children.toArray(children);
         const handleChange = (event) => {
           const child = childrenArray.find((childItem) => childItem.props.value === event.target.value);
           if (child === void 0) {
@@ -45619,7 +48050,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
         }
         const items = childrenArray.map((child) => {
-          if (!/* @__PURE__ */ React89.isValidElement(child)) {
+          if (!/* @__PURE__ */ React91.isValidElement(child)) {
             return null;
           }
           if (true) {
@@ -45645,7 +48076,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           if (selected) {
             foundMatch = true;
           }
-          return /* @__PURE__ */ React89.cloneElement(child, {
+          return /* @__PURE__ */ React91.cloneElement(child, {
             "aria-selected": selected ? "true" : "false",
             onClick: handleItemClick(child),
             onKeyUp: (event) => {
@@ -45665,7 +48096,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           });
         });
         if (true) {
-          React89.useEffect(() => {
+          React91.useEffect(() => {
             if (!foundMatch && !multiple && value !== "") {
               const values3 = childrenArray.map((child) => child.props.value);
               console.warn([`MUI: You have provided an out-of-range value \`${value}\` for the select ${name ? `(name="${name}") ` : ""}component.`, "Consider providing a value that matches one of the available options or ''.", `The available values are ${values3.filter((x) => x != null).map((x) => `\`${x}\``).join(", ") || '""'}.`].join("\n"));
@@ -45707,7 +48138,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           open,
           error
         };
-        const classes = useUtilityClasses31(ownerState);
+        const classes = useUtilityClasses32(ownerState);
         const paperProps = {
           ...MenuProps.PaperProps,
           ...MenuProps.slotProps?.paper
@@ -45717,8 +48148,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           ...MenuProps.slotProps?.list
         };
         const listboxId = useId();
-        return /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(React89.Fragment, {
-          children: [/* @__PURE__ */ (0, import_jsx_runtime60.jsx)(SelectSelect, {
+        return /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(React91.Fragment, {
+          children: [/* @__PURE__ */ (0, import_jsx_runtime62.jsx)(SelectSelect, {
             as: "div",
             ref: handleDisplayRef,
             tabIndex,
@@ -45742,13 +48173,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             id: buttonId,
             children: isEmpty3(display) ? (
               // notranslate needed while Google Translate will not fix zero-width space issue
-              _span4 || (_span4 = /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", {
+              _span4 || (_span4 = /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("span", {
                 className: "notranslate",
                 "aria-hidden": true,
                 children: "\u200B"
               }))
             ) : display
-          }), /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(SelectNativeInput, {
+          }), /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(SelectNativeInput, {
             "aria-invalid": error,
             value: Array.isArray(value) ? value.join(",") : value,
             name,
@@ -45762,11 +48193,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             required,
             ...other,
             ownerState
-          }), /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(SelectIcon, {
+          }), /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(SelectIcon, {
             as: IconComponent,
             className: classes.icon,
             ownerState
-          }), /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Menu_default, {
+          }), /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(Menu_default, {
             id: `menu-${name || ""}`,
             anchorEl: anchorElement,
             open,
@@ -45806,58 +48237,58 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * @ignore
          */
-        "aria-describedby": import_prop_types61.default.string,
+        "aria-describedby": import_prop_types63.default.string,
         /**
          * @ignore
          */
-        "aria-label": import_prop_types61.default.string,
+        "aria-label": import_prop_types63.default.string,
         /**
          * @ignore
          */
-        autoFocus: import_prop_types61.default.bool,
+        autoFocus: import_prop_types63.default.bool,
         /**
          * If `true`, the width of the popover will automatically be set according to the items inside the
          * menu, otherwise it will be at least the width of the select input.
          */
-        autoWidth: import_prop_types61.default.bool,
+        autoWidth: import_prop_types63.default.bool,
         /**
          * The option elements to populate the select with.
          * Can be some `<MenuItem>` elements.
          */
-        children: import_prop_types61.default.node,
+        children: import_prop_types63.default.node,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types61.default.object,
+        classes: import_prop_types63.default.object,
         /**
          * The CSS class name of the select element.
          */
-        className: import_prop_types61.default.string,
+        className: import_prop_types63.default.string,
         /**
          * If `true`, the component is toggled on mount. Use when the component open state is not controlled.
          * You can only use it when the `native` prop is `false` (default).
          */
-        defaultOpen: import_prop_types61.default.bool,
+        defaultOpen: import_prop_types63.default.bool,
         /**
          * The default value. Use when the component is not controlled.
          */
-        defaultValue: import_prop_types61.default.any,
+        defaultValue: import_prop_types63.default.any,
         /**
          * If `true`, the select is disabled.
          */
-        disabled: import_prop_types61.default.bool,
+        disabled: import_prop_types63.default.bool,
         /**
          * If `true`, the selected item is displayed even if its value is empty.
          */
-        displayEmpty: import_prop_types61.default.bool,
+        displayEmpty: import_prop_types63.default.bool,
         /**
          * If `true`, the `select input` will indicate an error.
          */
-        error: import_prop_types61.default.bool,
+        error: import_prop_types63.default.bool,
         /**
          * The icon that displays the arrow.
          */
-        IconComponent: import_prop_types61.default.elementType.isRequired,
+        IconComponent: import_prop_types63.default.elementType.isRequired,
         /**
          * Imperative handle implementing `{ value: T, node: HTMLElement, focus(): void }`
          * Equivalent to `ref`
@@ -45867,23 +48298,23 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * The ID of an element that acts as an additional label. The Select will
          * be labelled by the additional label and the selected value.
          */
-        labelId: import_prop_types61.default.string,
+        labelId: import_prop_types63.default.string,
         /**
          * Props applied to the [`Menu`](/material-ui/api/menu/) element.
          */
-        MenuProps: import_prop_types61.default.object,
+        MenuProps: import_prop_types63.default.object,
         /**
          * If `true`, `value` must be an array and the menu will support multiple selections.
          */
-        multiple: import_prop_types61.default.bool,
+        multiple: import_prop_types63.default.bool,
         /**
          * Name attribute of the `select` or hidden `input` element.
          */
-        name: import_prop_types61.default.string,
+        name: import_prop_types63.default.string,
         /**
          * @ignore
          */
-        onBlur: import_prop_types61.default.func,
+        onBlur: import_prop_types63.default.func,
         /**
          * Callback fired when a menu item is selected.
          *
@@ -45891,76 +48322,76 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * You can pull out the new value by accessing `event.target.value` (any).
          * @param {object} [child] The react element that was selected.
          */
-        onChange: import_prop_types61.default.func,
+        onChange: import_prop_types63.default.func,
         /**
          * Callback fired when the component requests to be closed.
          * Use in controlled mode (see open).
          *
          * @param {object} event The event source of the callback.
          */
-        onClose: import_prop_types61.default.func,
+        onClose: import_prop_types63.default.func,
         /**
          * @ignore
          */
-        onFocus: import_prop_types61.default.func,
+        onFocus: import_prop_types63.default.func,
         /**
          * Callback fired when the component requests to be opened.
          * Use in controlled mode (see open).
          *
          * @param {object} event The event source of the callback.
          */
-        onOpen: import_prop_types61.default.func,
+        onOpen: import_prop_types63.default.func,
         /**
          * If `true`, the component is shown.
          */
-        open: import_prop_types61.default.bool,
+        open: import_prop_types63.default.bool,
         /**
          * @ignore
          */
-        readOnly: import_prop_types61.default.bool,
+        readOnly: import_prop_types63.default.bool,
         /**
          * Render the selected value.
          *
          * @param {any} value The `value` provided to the component.
          * @returns {ReactNode}
          */
-        renderValue: import_prop_types61.default.func,
+        renderValue: import_prop_types63.default.func,
         /**
          * If `true`, the component is required.
          */
-        required: import_prop_types61.default.bool,
+        required: import_prop_types63.default.bool,
         /**
          * Props applied to the clickable div element.
          */
-        SelectDisplayProps: import_prop_types61.default.object,
+        SelectDisplayProps: import_prop_types63.default.object,
         /**
          * @ignore
          */
-        tabIndex: import_prop_types61.default.oneOfType([import_prop_types61.default.number, import_prop_types61.default.string]),
+        tabIndex: import_prop_types63.default.oneOfType([import_prop_types63.default.number, import_prop_types63.default.string]),
         /**
          * @ignore
          */
-        type: import_prop_types61.default.any,
+        type: import_prop_types63.default.any,
         /**
          * The input value.
          */
-        value: import_prop_types61.default.any,
+        value: import_prop_types63.default.any,
         /**
          * The variant to use.
          */
-        variant: import_prop_types61.default.oneOf(["standard", "outlined", "filled"])
+        variant: import_prop_types63.default.oneOf(["standard", "outlined", "filled"])
       } : void 0;
       SelectInput_default = SelectInput;
     }
   });
 
   // node_modules/@mui/material/esm/Select/Select.js
-  var React90, import_prop_types62, import_jsx_runtime61, useUtilityClasses32, styledRootConfig, StyledInput, StyledOutlinedInput, StyledFilledInput, Select, Select_default;
+  var React92, import_prop_types64, import_jsx_runtime63, useUtilityClasses33, styledRootConfig, StyledInput, StyledOutlinedInput, StyledFilledInput, Select, Select_default;
   var init_Select = __esm({
     "node_modules/@mui/material/esm/Select/Select.js"() {
       "use client";
-      React90 = __toESM(require_react(), 1);
-      import_prop_types62 = __toESM(require_prop_types(), 1);
+      React92 = __toESM(require_react(), 1);
+      import_prop_types64 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_deepmerge2();
       init_composeClasses2();
@@ -45978,8 +48409,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_zero_styled();
       init_rootShouldForwardProp();
       init_selectClasses();
-      import_jsx_runtime61 = __toESM(require_jsx_runtime(), 1);
-      useUtilityClasses32 = (ownerState) => {
+      import_jsx_runtime63 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses33 = (ownerState) => {
         const {
           classes
         } = ownerState;
@@ -46000,7 +48431,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       StyledInput = styled_default2(Input_default, styledRootConfig)("");
       StyledOutlinedInput = styled_default2(OutlinedInput_default, styledRootConfig)("");
       StyledFilledInput = styled_default2(FilledInput_default, styledRootConfig)("");
-      Select = /* @__PURE__ */ React90.forwardRef(function Select2(inProps, ref) {
+      Select = /* @__PURE__ */ React92.forwardRef(function Select2(inProps, ref) {
         const props = useDefaultProps2({
           name: "MuiSelect",
           props: inProps
@@ -46042,26 +48473,26 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           variant,
           classes: classesProp
         };
-        const classes = useUtilityClasses32(ownerState);
+        const classes = useUtilityClasses33(ownerState);
         const {
           root,
           ...restOfClasses
         } = classes;
         const InputComponent = input || {
-          standard: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(StyledInput, {
+          standard: /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(StyledInput, {
             ownerState
           }),
-          outlined: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(StyledOutlinedInput, {
+          outlined: /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(StyledOutlinedInput, {
             label,
             ownerState
           }),
-          filled: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(StyledFilledInput, {
+          filled: /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(StyledFilledInput, {
             ownerState
           })
         }[variant];
         const inputComponentRef = useForkRef_default(ref, getReactElementRef(InputComponent));
-        return /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(React90.Fragment, {
-          children: /* @__PURE__ */ React90.cloneElement(InputComponent, {
+        return /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(React92.Fragment, {
+          children: /* @__PURE__ */ React92.cloneElement(InputComponent, {
             // Most of the logic is implemented in `SelectInput`.
             // The `Select` component is a simple API wrapper to expose something better to play with.
             inputComponent,
@@ -46117,33 +48548,33 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * menu, otherwise it will be at least the width of the select input.
          * @default false
          */
-        autoWidth: import_prop_types62.default.bool,
+        autoWidth: import_prop_types64.default.bool,
         /**
          * The option elements to populate the select with.
          * Can be some `MenuItem` when `native` is false and `option` when `native` is true.
          *
          * ⚠️The `MenuItem` elements **must** be direct descendants when `native` is false.
          */
-        children: import_prop_types62.default.node,
+        children: import_prop_types64.default.node,
         /**
          * Override or extend the styles applied to the component.
          * @default {}
          */
-        classes: import_prop_types62.default.object,
+        classes: import_prop_types64.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types62.default.string,
+        className: import_prop_types64.default.string,
         /**
          * If `true`, the component is initially open. Use when the component open state is not controlled (i.e. the `open` prop is not defined).
          * You can only use it when the `native` prop is `false` (default).
          * @default false
          */
-        defaultOpen: import_prop_types62.default.bool,
+        defaultOpen: import_prop_types64.default.bool,
         /**
          * The default value. Use when the component is not controlled.
          */
-        defaultValue: import_prop_types62.default.any,
+        defaultValue: import_prop_types64.default.any,
         /**
          * If `true`, a value is displayed even if no items are selected.
          *
@@ -46154,48 +48585,48 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * The label should either be hidden or forced to a shrunk state.
          * @default false
          */
-        displayEmpty: import_prop_types62.default.bool,
+        displayEmpty: import_prop_types64.default.bool,
         /**
          * The icon that displays the arrow.
          * @default ArrowDropDownIcon
          */
-        IconComponent: import_prop_types62.default.elementType,
+        IconComponent: import_prop_types64.default.elementType,
         /**
          * The `id` of the wrapper element or the `select` element when `native`.
          */
-        id: import_prop_types62.default.string,
+        id: import_prop_types64.default.string,
         /**
          * An `Input` element; does not have to be a material-ui specific `Input`.
          */
-        input: import_prop_types62.default.element,
+        input: import_prop_types64.default.element,
         /**
          * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#attributes) applied to the `input` element.
          * When `native` is `true`, the attributes are applied on the `select` element.
          */
-        inputProps: import_prop_types62.default.object,
+        inputProps: import_prop_types64.default.object,
         /**
          * See [OutlinedInput#label](https://mui.com/material-ui/api/outlined-input/#props)
          */
-        label: import_prop_types62.default.node,
+        label: import_prop_types64.default.node,
         /**
          * The ID of an element that acts as an additional label. The Select will
          * be labelled by the additional label and the selected value.
          */
-        labelId: import_prop_types62.default.string,
+        labelId: import_prop_types64.default.string,
         /**
          * Props applied to the [`Menu`](https://mui.com/material-ui/api/menu/) element.
          */
-        MenuProps: import_prop_types62.default.object,
+        MenuProps: import_prop_types64.default.object,
         /**
          * If `true`, `value` must be an array and the menu will support multiple selections.
          * @default false
          */
-        multiple: import_prop_types62.default.bool,
+        multiple: import_prop_types64.default.bool,
         /**
          * If `true`, the component uses a native `select` element.
          * @default false
          */
-        native: import_prop_types62.default.bool,
+        native: import_prop_types64.default.bool,
         /**
          * Callback fired when a menu item is selected.
          *
@@ -46204,26 +48635,26 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * **Warning**: This is a generic event, not a change event, unless the change event is caused by browser autofill.
          * @param {object} [child] The react element that was selected when `native` is `false` (default).
          */
-        onChange: import_prop_types62.default.func,
+        onChange: import_prop_types64.default.func,
         /**
          * Callback fired when the component requests to be closed.
          * Use it in either controlled (see the `open` prop), or uncontrolled mode (to detect when the Select collapses).
          *
          * @param {object} event The event source of the callback.
          */
-        onClose: import_prop_types62.default.func,
+        onClose: import_prop_types64.default.func,
         /**
          * Callback fired when the component requests to be opened.
          * Use it in either controlled (see the `open` prop), or uncontrolled mode (to detect when the Select expands).
          *
          * @param {object} event The event source of the callback.
          */
-        onOpen: import_prop_types62.default.func,
+        onOpen: import_prop_types64.default.func,
         /**
          * If `true`, the component is shown.
          * You can only use it when the `native` prop is `false` (default).
          */
-        open: import_prop_types62.default.bool,
+        open: import_prop_types64.default.bool,
         /**
          * Render the selected value.
          * You can only use it when the `native` prop is `false` (default).
@@ -46231,15 +48662,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * @param {any} value The `value` provided to the component.
          * @returns {ReactNode}
          */
-        renderValue: import_prop_types62.default.func,
+        renderValue: import_prop_types64.default.func,
         /**
          * Props applied to the clickable div element.
          */
-        SelectDisplayProps: import_prop_types62.default.object,
+        SelectDisplayProps: import_prop_types64.default.object,
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types62.default.oneOfType([import_prop_types62.default.arrayOf(import_prop_types62.default.oneOfType([import_prop_types62.default.func, import_prop_types62.default.object, import_prop_types62.default.bool])), import_prop_types62.default.func, import_prop_types62.default.object]),
+        sx: import_prop_types64.default.oneOfType([import_prop_types64.default.arrayOf(import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.object, import_prop_types64.default.bool])), import_prop_types64.default.func, import_prop_types64.default.object]),
         /**
          * The `input` value. Providing an empty string will select no options.
          * Set to an empty string `''` if you don't want any of the available options to be selected.
@@ -46247,12 +48678,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * If the value is an object it must have reference equality with the option in order to be selected.
          * If the value is not an object, the string representation must match with the string representation of the option in order to be selected.
          */
-        value: import_prop_types62.default.oneOfType([import_prop_types62.default.oneOf([""]), import_prop_types62.default.any]),
+        value: import_prop_types64.default.oneOfType([import_prop_types64.default.oneOf([""]), import_prop_types64.default.any]),
         /**
          * The variant to use.
          * @default 'outlined'
          */
-        variant: import_prop_types62.default.oneOf(["filled", "outlined", "standard"])
+        variant: import_prop_types64.default.oneOf(["filled", "outlined", "standard"])
       } : void 0;
       Select.muiName = "Select";
       Select_default = Select;
@@ -46295,8 +48726,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/Slider/useSlider.js
-  function getNewValue(currentValue, step, direction, min, max) {
-    return direction === 1 ? Math.min(currentValue + step, max) : Math.max(currentValue - step, min);
+  function getNewValue(currentValue, step, direction, min2, max2) {
+    return direction === 1 ? Math.min(currentValue + step, max2) : Math.max(currentValue - step, min2);
   }
   function asc(a, b) {
     return a - b;
@@ -46335,11 +48766,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       y: event.clientY
     };
   }
-  function valueToPercent(value, min, max) {
-    return (value - min) * 100 / (max - min);
+  function valueToPercent(value, min2, max2) {
+    return (value - min2) * 100 / (max2 - min2);
   }
-  function percentToValue(percent, min, max) {
-    return (max - min) * percent + min;
+  function percentToValue(percent, min2, max2) {
+    return (max2 - min2) * percent + min2;
   }
   function getDecimalPrecision(num2) {
     if (Math.abs(num2) < 1) {
@@ -46350,8 +48781,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const decimalPart = num2.toString().split(".")[1];
     return decimalPart ? decimalPart.length : 0;
   }
-  function roundValueToStep(value, step, min) {
-    const nearest = Math.round((value - min) / step) * step + min;
+  function roundValueToStep(value, step, min2) {
+    const nearest = Math.round((value - min2) / step) * step + min2;
     return Number(nearest.toFixed(getDecimalPrecision(step)));
   }
   function setValueIndex({
@@ -46403,8 +48834,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       disableSwap = false,
       isRtl = false,
       marks: marksProp = false,
-      max = 100,
-      min = 0,
+      max: max2 = 100,
+      min: min2 = 0,
       name,
       onChange,
       onChangeCommitted,
@@ -46416,15 +48847,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       tabIndex,
       value: valueProp
     } = parameters;
-    const touchId = React91.useRef(void 0);
-    const [active, setActive] = React91.useState(-1);
-    const [open, setOpen] = React91.useState(-1);
-    const [dragging, setDragging] = React91.useState(false);
-    const moveCount = React91.useRef(0);
-    const lastChangedValue = React91.useRef(null);
+    const touchId = React93.useRef(void 0);
+    const [active, setActive] = React93.useState(-1);
+    const [open, setOpen] = React93.useState(-1);
+    const [dragging, setDragging] = React93.useState(false);
+    const moveCount = React93.useRef(0);
+    const lastChangedValue = React93.useRef(null);
     const [valueDerived, setValueState] = useControlled({
       controlled: valueProp,
-      default: defaultValue ?? min,
+      default: defaultValue ?? min2,
       name: "Slider"
     });
     const handleChange = onChange && ((event, value, thumbIndex) => {
@@ -46442,13 +48873,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     });
     const range2 = Array.isArray(valueDerived);
     let values3 = range2 ? valueDerived.slice().sort(asc) : [valueDerived];
-    values3 = values3.map((value) => value == null ? min : clamp_default(value, min, max));
-    const marks = marksProp === true && step !== null ? [...Array(Math.floor((max - min) / step) + 1)].map((_, index2) => ({
-      value: min + step * index2
+    values3 = values3.map((value) => value == null ? min2 : clamp_default(value, min2, max2));
+    const marks = marksProp === true && step !== null ? [...Array(Math.floor((max2 - min2) / step) + 1)].map((_, index2) => ({
+      value: min2 + step * index2
     })) : marksProp || [];
     const marksValues = marks.map((mark) => mark.value);
-    const [focusedThumbIndex, setFocusedThumbIndex] = React91.useState(-1);
-    const sliderRef = React91.useRef(null);
+    const [focusedThumbIndex, setFocusedThumbIndex] = React93.useState(-1);
+    const sliderRef = React93.useRef(null);
     const handleRef = useForkRef(ref, sliderRef);
     const createHandleHiddenInputFocus = (otherHandlers) => (event) => {
       const index2 = Number(event.currentTarget.getAttribute("data-index"));
@@ -46480,7 +48911,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           newValue = newValue < value ? marksValues[marksIndex - 1] : marksValues[marksIndex + 1];
         }
       }
-      newValue = clamp_default(newValue, min, max);
+      newValue = clamp_default(newValue, min2, max2);
       if (range2) {
         if (disableSwap) {
           newValue = clamp_default(newValue, values3[index2 - 1] || -Infinity, values3[index2 + 1] || Infinity);
@@ -46519,28 +48950,28 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           const stepSize = event.shiftKey ? shiftStep : step;
           switch (event.key) {
             case "ArrowUp":
-              newValue = getNewValue(value, stepSize, 1, min, max);
+              newValue = getNewValue(value, stepSize, 1, min2, max2);
               break;
             case "ArrowRight":
-              newValue = getNewValue(value, stepSize, isRtl ? -1 : 1, min, max);
+              newValue = getNewValue(value, stepSize, isRtl ? -1 : 1, min2, max2);
               break;
             case "ArrowDown":
-              newValue = getNewValue(value, stepSize, -1, min, max);
+              newValue = getNewValue(value, stepSize, -1, min2, max2);
               break;
             case "ArrowLeft":
-              newValue = getNewValue(value, stepSize, isRtl ? 1 : -1, min, max);
+              newValue = getNewValue(value, stepSize, isRtl ? 1 : -1, min2, max2);
               break;
             case "PageUp":
-              newValue = getNewValue(value, shiftStep, 1, min, max);
+              newValue = getNewValue(value, shiftStep, 1, min2, max2);
               break;
             case "PageDown":
-              newValue = getNewValue(value, shiftStep, -1, min, max);
+              newValue = getNewValue(value, shiftStep, -1, min2, max2);
               break;
             case "Home":
-              newValue = min;
+              newValue = min2;
               break;
             case "End":
-              newValue = max;
+              newValue = max2;
               break;
             default:
               break;
@@ -46585,7 +49016,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       otherHandlers.onChange?.(event);
       changeValue(event, event.target.valueAsNumber);
     };
-    const previousIndex = React91.useRef(void 0);
+    const previousIndex = React93.useRef(void 0);
     let axis = orientation;
     if (isRtl && orientation === "horizontal") {
       axis += "-reverse";
@@ -46600,27 +49031,27 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       const {
         width: width2,
         height: height2,
-        bottom: bottom3,
-        left: left2
+        bottom: bottom4,
+        left: left3
       } = slider.getBoundingClientRect();
       let percent;
       if (axis.startsWith("vertical")) {
-        percent = (bottom3 - finger.y) / height2;
+        percent = (bottom4 - finger.y) / height2;
       } else {
-        percent = (finger.x - left2) / width2;
+        percent = (finger.x - left3) / width2;
       }
       if (axis.includes("-reverse")) {
         percent = 1 - percent;
       }
       let newValue;
-      newValue = percentToValue(percent, min, max);
+      newValue = percentToValue(percent, min2, max2);
       if (step) {
-        newValue = roundValueToStep(newValue, step, min);
+        newValue = roundValueToStep(newValue, step, min2);
       } else {
         const closestIndex = findClosest(marksValues, newValue);
         newValue = marksValues[closestIndex];
       }
-      newValue = clamp_default(newValue, min, max);
+      newValue = clamp_default(newValue, min2, max2);
       let activeIndex = 0;
       if (range2) {
         if (!move) {
@@ -46737,14 +49168,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         passive: true
       });
     });
-    const stopListening = React91.useCallback(() => {
+    const stopListening = React93.useCallback(() => {
       const doc3 = ownerDocument(sliderRef.current);
       doc3.removeEventListener("mousemove", handleTouchMove);
       doc3.removeEventListener("mouseup", handleTouchEnd);
       doc3.removeEventListener("touchmove", handleTouchMove);
       doc3.removeEventListener("touchend", handleTouchEnd);
     }, [handleTouchEnd, handleTouchMove]);
-    React91.useEffect(() => {
+    React93.useEffect(() => {
       const {
         current: slider
       } = sliderRef;
@@ -46756,7 +49187,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         stopListening();
       };
     }, [stopListening, handleTouchStart]);
-    React91.useEffect(() => {
+    React93.useEffect(() => {
       if (disabled) {
         stopListening();
       }
@@ -46798,8 +49229,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       });
       doc3.addEventListener("mouseup", handleTouchEnd);
     };
-    const trackOffset = valueToPercent(range2 ? values3[0] : min, min, max);
-    const trackLeap = valueToPercent(values3[values3.length - 1], min, max) - trackOffset;
+    const trackOffset = valueToPercent(range2 ? values3[0] : min2, min2, max2);
+    const trackLeap = valueToPercent(values3[values3.length - 1], min2, max2) - trackOffset;
     const getRootProps = (externalProps = {}) => {
       const externalHandlers = extractEventHandlers_default(externalProps);
       const ownEventHandlers = {
@@ -46862,8 +49293,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         tabIndex,
         "aria-labelledby": ariaLabelledby,
         "aria-orientation": orientation,
-        "aria-valuemax": scale(max),
-        "aria-valuemin": scale(min),
+        "aria-valuemax": scale(max2),
+        "aria-valuemin": scale(min2),
         name,
         type: "range",
         min: parameters.min,
@@ -46901,11 +49332,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       getThumbStyle
     };
   }
-  var React91, INTENTIONAL_DRAG_COUNT_THRESHOLD, axisProps, Identity, cachedSupportsTouchActionNone;
+  var React93, INTENTIONAL_DRAG_COUNT_THRESHOLD, axisProps, Identity, cachedSupportsTouchActionNone;
   var init_useSlider = __esm({
     "node_modules/@mui/material/esm/Slider/useSlider.js"() {
       "use client";
-      React91 = __toESM(require_react(), 1);
+      React93 = __toESM(require_react(), 1);
       init_ownerDocument2();
       init_useControlled2();
       init_useEnhancedEffect2();
@@ -46984,15 +49415,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (!children) {
       return null;
     }
-    return /* @__PURE__ */ React92.cloneElement(children, {
+    return /* @__PURE__ */ React94.cloneElement(children, {
       className: children.props.className
-    }, /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(React92.Fragment, {
-      children: [children.props.children, /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("span", {
+    }, /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(React94.Fragment, {
+      children: [children.props.children, /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("span", {
         className: clsx_default(classes.offset, className),
         "aria-hidden": true,
-        children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("span", {
+        children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("span", {
           className: classes.circle,
-          children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("span", {
+          children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("span", {
             className: classes.label,
             children: value
           })
@@ -47000,15 +49431,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       })]
     }));
   }
-  var React92, import_prop_types63, import_jsx_runtime62, useValueLabelClasses;
+  var React94, import_prop_types65, import_jsx_runtime64, useValueLabelClasses;
   var init_SliderValueLabel = __esm({
     "node_modules/@mui/material/esm/Slider/SliderValueLabel.js"() {
       "use client";
-      React92 = __toESM(require_react(), 1);
-      import_prop_types63 = __toESM(require_prop_types(), 1);
+      React94 = __toESM(require_react(), 1);
+      import_prop_types65 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_sliderClasses();
-      import_jsx_runtime62 = __toESM(require_jsx_runtime(), 1);
+      import_jsx_runtime64 = __toESM(require_jsx_runtime(), 1);
       useValueLabelClasses = (props) => {
         const {
           open
@@ -47021,9 +49452,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         return utilityClasses;
       };
       true ? SliderValueLabel.propTypes = {
-        children: import_prop_types63.default.element.isRequired,
-        className: import_prop_types63.default.string,
-        value: import_prop_types63.default.node
+        children: import_prop_types65.default.element.isRequired,
+        className: import_prop_types65.default.string,
+        value: import_prop_types65.default.node
       } : void 0;
     }
   });
@@ -47032,12 +49463,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   function Identity2(x) {
     return x;
   }
-  var React93, import_prop_types64, import_jsx_runtime63, SliderRoot, SliderRail, SliderTrack, SliderThumb, SliderValueLabel2, SliderMark, SliderMarkLabel, useUtilityClasses33, Forward, Slider;
+  var React95, import_prop_types66, import_jsx_runtime65, SliderRoot, SliderRail, SliderTrack, SliderThumb, SliderValueLabel2, SliderMark, SliderMarkLabel, useUtilityClasses34, Forward, Slider;
   var init_Slider = __esm({
     "node_modules/@mui/material/esm/Slider/Slider.js"() {
       "use client";
-      React93 = __toESM(require_react(), 1);
-      import_prop_types64 = __toESM(require_prop_types(), 1);
+      React95 = __toESM(require_react(), 1);
+      import_prop_types66 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_chainPropTypes2();
       init_composeClasses2();
@@ -47055,7 +49486,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_createSimplePaletteValueFilter();
       init_SliderValueLabel();
       init_sliderClasses();
-      import_jsx_runtime63 = __toESM(require_jsx_runtime(), 1);
+      import_jsx_runtime65 = __toESM(require_jsx_runtime(), 1);
       SliderRoot = styled_default2("span", {
         name: "MuiSlider",
         slot: "Root",
@@ -47458,19 +49889,19 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * @ignore
          */
-        children: import_prop_types64.default.element.isRequired,
+        children: import_prop_types66.default.element.isRequired,
         /**
          * @ignore
          */
-        index: import_prop_types64.default.number.isRequired,
+        index: import_prop_types66.default.number.isRequired,
         /**
          * @ignore
          */
-        open: import_prop_types64.default.bool.isRequired,
+        open: import_prop_types66.default.bool.isRequired,
         /**
          * @ignore
          */
-        value: import_prop_types64.default.node
+        value: import_prop_types66.default.node
       } : void 0;
       SliderMark = styled_default2("span", {
         name: "MuiSlider",
@@ -47558,7 +49989,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
         }]
       })));
-      useUtilityClasses33 = (ownerState) => {
+      useUtilityClasses34 = (ownerState) => {
         const {
           disabled,
           dragging,
@@ -47588,7 +50019,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       Forward = ({
         children
       }) => children;
-      Slider = /* @__PURE__ */ React93.forwardRef(function Slider2(inputProps, ref) {
+      Slider = /* @__PURE__ */ React95.forwardRef(function Slider2(inputProps, ref) {
         const props = useDefaultProps2({
           props: inputProps,
           name: "MuiSlider"
@@ -47610,8 +50041,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           getAriaLabel,
           getAriaValueText,
           marks: marksProp = false,
-          max = 100,
-          min = 0,
+          max: max2 = 100,
+          min: min2 = 0,
           name,
           onChange,
           onChangeCommitted,
@@ -47632,8 +50063,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         const ownerState = {
           ...props,
           isRtl,
-          max,
-          min,
+          max: max2,
+          min: min2,
           classes: classesProp,
           disabled,
           disableSwap,
@@ -47671,7 +50102,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         ownerState.marked = marks.length > 0 && marks.some((mark) => mark.label);
         ownerState.dragging = dragging;
         ownerState.focusedThumbIndex = focusedThumbIndex;
-        const classes = useUtilityClasses33(ownerState);
+        const classes = useUtilityClasses34(ownerState);
         const RootSlot = slots?.root ?? components.Root ?? SliderRoot;
         const RailSlot = slots?.rail ?? components.Rail ?? SliderRail;
         const TrackSlot = slots?.track ?? components.Track ?? SliderTrack;
@@ -47762,14 +50193,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           externalSlotProps: inputSlotProps,
           ownerState
         });
-        return /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(RootSlot, {
+        return /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(RootSlot, {
           ...rootProps,
-          children: [/* @__PURE__ */ (0, import_jsx_runtime63.jsx)(RailSlot, {
+          children: [/* @__PURE__ */ (0, import_jsx_runtime65.jsx)(RailSlot, {
             ...railProps
-          }), /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(TrackSlot, {
+          }), /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(TrackSlot, {
             ...trackProps
-          }), marks.filter((mark) => mark.value >= min && mark.value <= max).map((mark, index2) => {
-            const percent = valueToPercent(mark.value, min, max);
+          }), marks.filter((mark) => mark.value >= min2 && mark.value <= max2).map((mark, index2) => {
+            const percent = valueToPercent(mark.value, min2, max2);
             const style4 = axisProps2[axis].offset(percent);
             let markActive;
             if (track === false) {
@@ -47777,8 +50208,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             } else {
               markActive = track === "normal" && (range2 ? mark.value >= values3[0] && mark.value <= values3[values3.length - 1] : mark.value <= values3[0]) || track === "inverted" && (range2 ? mark.value <= values3[0] || mark.value >= values3[values3.length - 1] : mark.value >= values3[0]);
             }
-            return /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(React93.Fragment, {
-              children: [/* @__PURE__ */ (0, import_jsx_runtime63.jsx)(MarkSlot, {
+            return /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(React95.Fragment, {
+              children: [/* @__PURE__ */ (0, import_jsx_runtime65.jsx)(MarkSlot, {
                 "data-index": index2,
                 ...markProps,
                 ...!isHostComponent_default2(MarkSlot) && {
@@ -47789,7 +50220,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
                   ...markProps.style
                 },
                 className: clsx_default(markProps.className, markActive && classes.markActive)
-              }), mark.label != null ? /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(MarkLabelSlot, {
+              }), mark.label != null ? /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(MarkLabelSlot, {
                 "aria-hidden": true,
                 "data-index": index2,
                 ...markLabelProps,
@@ -47805,12 +50236,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
               }) : null]
             }, index2);
           }), values3.map((value, index2) => {
-            const percent = valueToPercent(value, min, max);
+            const percent = valueToPercent(value, min2, max2);
             const style4 = axisProps2[axis].offset(percent);
             const ValueLabelComponent = valueLabelDisplay === "off" ? Forward : ValueLabelSlot;
             return (
               /* TODO v6: Change component structure. It will help in avoiding the complicated React.cloneElement API added in SliderValueLabel component. Should be: Thumb -> Input, ValueLabel. Follow Joy UI's Slider structure. */
-              /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(ValueLabelComponent, {
+              /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(ValueLabelComponent, {
                 ...!isHostComponent_default2(ValueLabelComponent) && {
                   valueLabelFormat,
                   valueLabelDisplay,
@@ -47820,7 +50251,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
                   disabled
                 },
                 ...valueLabelProps,
-                children: /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(ThumbSlot, {
+                children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(ThumbSlot, {
                   "data-index": index2,
                   ...thumbProps,
                   className: clsx_default(classes.thumb, thumbProps.className, active === index2 && classes.active, focusedThumbIndex === index2 && classes.focusVisible),
@@ -47829,7 +50260,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
                     ...getThumbStyle(index2),
                     ...thumbProps.style
                   },
-                  children: /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(InputSlot, {
+                  children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(InputSlot, {
                     "data-index": index2,
                     "aria-label": getAriaLabel ? getAriaLabel(index2) : ariaLabel,
                     "aria-valuenow": scale(value),
@@ -47852,7 +50283,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * The label of the slider.
          */
-        "aria-label": chainPropTypes(import_prop_types64.default.string, (props) => {
+        "aria-label": chainPropTypes(import_prop_types66.default.string, (props) => {
           const range2 = Array.isArray(props.value || props.defaultValue);
           if (range2 && props["aria-label"] != null) {
             return new Error("MUI: You need to use the `getAriaLabel` prop instead of `aria-label` when using a range slider.");
@@ -47862,11 +50293,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * The id of the element containing a label for the slider.
          */
-        "aria-labelledby": import_prop_types64.default.string,
+        "aria-labelledby": import_prop_types66.default.string,
         /**
          * A string value that provides a user-friendly name for the current value of the slider.
          */
-        "aria-valuetext": chainPropTypes(import_prop_types64.default.string, (props) => {
+        "aria-valuetext": chainPropTypes(import_prop_types66.default.string, (props) => {
           const range2 = Array.isArray(props.value || props.defaultValue);
           if (range2 && props["aria-valuetext"] != null) {
             return new Error("MUI: You need to use the `getAriaValueText` prop instead of `aria-valuetext` when using a range slider.");
@@ -47876,22 +50307,22 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * @ignore
          */
-        children: import_prop_types64.default.node,
+        children: import_prop_types66.default.node,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types64.default.object,
+        classes: import_prop_types66.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types64.default.string,
+        className: import_prop_types66.default.string,
         /**
          * The color of the component.
          * It supports both default and custom theme colors, which can be added as shown in the
          * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
          * @default 'primary'
          */
-        color: import_prop_types64.default.oneOfType([import_prop_types64.default.oneOf(["primary", "secondary", "error", "info", "success", "warning"]), import_prop_types64.default.string]),
+        color: import_prop_types66.default.oneOfType([import_prop_types66.default.oneOf(["primary", "secondary", "error", "info", "success", "warning"]), import_prop_types66.default.string]),
         /**
          * The components used for each slot inside.
          *
@@ -47899,15 +50330,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *
          * @default {}
          */
-        components: import_prop_types64.default.shape({
-          Input: import_prop_types64.default.elementType,
-          Mark: import_prop_types64.default.elementType,
-          MarkLabel: import_prop_types64.default.elementType,
-          Rail: import_prop_types64.default.elementType,
-          Root: import_prop_types64.default.elementType,
-          Thumb: import_prop_types64.default.elementType,
-          Track: import_prop_types64.default.elementType,
-          ValueLabel: import_prop_types64.default.elementType
+        components: import_prop_types66.default.shape({
+          Input: import_prop_types66.default.elementType,
+          Mark: import_prop_types66.default.elementType,
+          MarkLabel: import_prop_types66.default.elementType,
+          Rail: import_prop_types66.default.elementType,
+          Root: import_prop_types66.default.elementType,
+          Thumb: import_prop_types66.default.elementType,
+          Track: import_prop_types66.default.elementType,
+          ValueLabel: import_prop_types66.default.elementType
         }),
         /**
          * The extra props for the slot components.
@@ -47917,44 +50348,44 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *
          * @default {}
          */
-        componentsProps: import_prop_types64.default.shape({
-          input: import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.object]),
-          mark: import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.object]),
-          markLabel: import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.object]),
-          rail: import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.object]),
-          root: import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.object]),
-          thumb: import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.object]),
-          track: import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.object]),
-          valueLabel: import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.shape({
-            children: import_prop_types64.default.element,
-            className: import_prop_types64.default.string,
-            open: import_prop_types64.default.bool,
-            style: import_prop_types64.default.object,
-            value: import_prop_types64.default.node,
-            valueLabelDisplay: import_prop_types64.default.oneOf(["auto", "off", "on"])
+        componentsProps: import_prop_types66.default.shape({
+          input: import_prop_types66.default.oneOfType([import_prop_types66.default.func, import_prop_types66.default.object]),
+          mark: import_prop_types66.default.oneOfType([import_prop_types66.default.func, import_prop_types66.default.object]),
+          markLabel: import_prop_types66.default.oneOfType([import_prop_types66.default.func, import_prop_types66.default.object]),
+          rail: import_prop_types66.default.oneOfType([import_prop_types66.default.func, import_prop_types66.default.object]),
+          root: import_prop_types66.default.oneOfType([import_prop_types66.default.func, import_prop_types66.default.object]),
+          thumb: import_prop_types66.default.oneOfType([import_prop_types66.default.func, import_prop_types66.default.object]),
+          track: import_prop_types66.default.oneOfType([import_prop_types66.default.func, import_prop_types66.default.object]),
+          valueLabel: import_prop_types66.default.oneOfType([import_prop_types66.default.func, import_prop_types66.default.shape({
+            children: import_prop_types66.default.element,
+            className: import_prop_types66.default.string,
+            open: import_prop_types66.default.bool,
+            style: import_prop_types66.default.object,
+            value: import_prop_types66.default.node,
+            valueLabelDisplay: import_prop_types66.default.oneOf(["auto", "off", "on"])
           })])
         }),
         /**
          * The default value. Use when the component is not controlled.
          */
-        defaultValue: import_prop_types64.default.oneOfType([import_prop_types64.default.arrayOf(import_prop_types64.default.number), import_prop_types64.default.number]),
+        defaultValue: import_prop_types66.default.oneOfType([import_prop_types66.default.arrayOf(import_prop_types66.default.number), import_prop_types66.default.number]),
         /**
          * If `true`, the component is disabled.
          * @default false
          */
-        disabled: import_prop_types64.default.bool,
+        disabled: import_prop_types66.default.bool,
         /**
          * If `true`, the active thumb doesn't swap when moving pointer over a thumb while dragging another thumb.
          * @default false
          */
-        disableSwap: import_prop_types64.default.bool,
+        disableSwap: import_prop_types66.default.bool,
         /**
          * Accepts a function which returns a string value that provides a user-friendly name for the thumb labels of the slider.
          * This is important for screen reader users.
          * @param {number} index The thumb label's index to format.
          * @returns {string}
          */
-        getAriaLabel: import_prop_types64.default.func,
+        getAriaLabel: import_prop_types66.default.func,
         /**
          * Accepts a function which returns a string value that provides a user-friendly name for the current value of the slider.
          * This is important for screen reader users.
@@ -47962,33 +50393,33 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * @param {number} index The thumb label's index to format.
          * @returns {string}
          */
-        getAriaValueText: import_prop_types64.default.func,
+        getAriaValueText: import_prop_types66.default.func,
         /**
          * Marks indicate predetermined values to which the user can move the slider.
          * If `true` the marks are spaced according the value of the `step` prop.
          * If an array, it should contain objects with `value` and an optional `label` keys.
          * @default false
          */
-        marks: import_prop_types64.default.oneOfType([import_prop_types64.default.arrayOf(import_prop_types64.default.shape({
-          label: import_prop_types64.default.node,
-          value: import_prop_types64.default.number.isRequired
-        })), import_prop_types64.default.bool]),
+        marks: import_prop_types66.default.oneOfType([import_prop_types66.default.arrayOf(import_prop_types66.default.shape({
+          label: import_prop_types66.default.node,
+          value: import_prop_types66.default.number.isRequired
+        })), import_prop_types66.default.bool]),
         /**
          * The maximum allowed value of the slider.
          * Should not be equal to min.
          * @default 100
          */
-        max: import_prop_types64.default.number,
+        max: import_prop_types66.default.number,
         /**
          * The minimum allowed value of the slider.
          * Should not be equal to max.
          * @default 0
          */
-        min: import_prop_types64.default.number,
+        min: import_prop_types66.default.number,
         /**
          * Name attribute of the hidden `input` element.
          */
-        name: import_prop_types64.default.string,
+        name: import_prop_types66.default.string,
         /**
          * Callback function that is fired when the slider's value changed.
          *
@@ -47998,19 +50429,19 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * @param {Value} value The new value.
          * @param {number} activeThumb Index of the currently moved thumb.
          */
-        onChange: import_prop_types64.default.func,
+        onChange: import_prop_types66.default.func,
         /**
          * Callback function that is fired when the `mouseup` is triggered.
          *
          * @param {React.SyntheticEvent | Event} event The event source of the callback. **Warning**: This is a generic event not a change event.
          * @param {Value} value The new value.
          */
-        onChangeCommitted: import_prop_types64.default.func,
+        onChangeCommitted: import_prop_types66.default.func,
         /**
          * The component orientation.
          * @default 'horizontal'
          */
-        orientation: import_prop_types64.default.oneOf(["horizontal", "vertical"]),
+        orientation: import_prop_types66.default.oneOf(["horizontal", "vertical"]),
         /**
          * A transformation function, to change the scale of the slider.
          * @param {any} x
@@ -48019,36 +50450,36 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *   return x;
          * }
          */
-        scale: import_prop_types64.default.func,
+        scale: import_prop_types66.default.func,
         /**
          * The granularity with which the slider can step through values when using Page Up/Page Down or Shift + Arrow Up/Arrow Down.
          * @default 10
          */
-        shiftStep: import_prop_types64.default.number,
+        shiftStep: import_prop_types66.default.number,
         /**
          * The size of the slider.
          * @default 'medium'
          */
-        size: import_prop_types64.default.oneOfType([import_prop_types64.default.oneOf(["small", "medium"]), import_prop_types64.default.string]),
+        size: import_prop_types66.default.oneOfType([import_prop_types66.default.oneOf(["small", "medium"]), import_prop_types66.default.string]),
         /**
          * The props used for each slot inside the Slider.
          * @default {}
          */
-        slotProps: import_prop_types64.default.shape({
-          input: import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.object]),
-          mark: import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.object]),
-          markLabel: import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.object]),
-          rail: import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.object]),
-          root: import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.object]),
-          thumb: import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.object]),
-          track: import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.object]),
-          valueLabel: import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.shape({
-            children: import_prop_types64.default.element,
-            className: import_prop_types64.default.string,
-            open: import_prop_types64.default.bool,
-            style: import_prop_types64.default.object,
-            value: import_prop_types64.default.node,
-            valueLabelDisplay: import_prop_types64.default.oneOf(["auto", "off", "on"])
+        slotProps: import_prop_types66.default.shape({
+          input: import_prop_types66.default.oneOfType([import_prop_types66.default.func, import_prop_types66.default.object]),
+          mark: import_prop_types66.default.oneOfType([import_prop_types66.default.func, import_prop_types66.default.object]),
+          markLabel: import_prop_types66.default.oneOfType([import_prop_types66.default.func, import_prop_types66.default.object]),
+          rail: import_prop_types66.default.oneOfType([import_prop_types66.default.func, import_prop_types66.default.object]),
+          root: import_prop_types66.default.oneOfType([import_prop_types66.default.func, import_prop_types66.default.object]),
+          thumb: import_prop_types66.default.oneOfType([import_prop_types66.default.func, import_prop_types66.default.object]),
+          track: import_prop_types66.default.oneOfType([import_prop_types66.default.func, import_prop_types66.default.object]),
+          valueLabel: import_prop_types66.default.oneOfType([import_prop_types66.default.func, import_prop_types66.default.shape({
+            children: import_prop_types66.default.element,
+            className: import_prop_types66.default.string,
+            open: import_prop_types66.default.bool,
+            style: import_prop_types66.default.object,
+            value: import_prop_types66.default.node,
+            valueLabelDisplay: import_prop_types66.default.oneOf(["auto", "off", "on"])
           })])
         }),
         /**
@@ -48056,15 +50487,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * Either a string to use a HTML element or a component.
          * @default {}
          */
-        slots: import_prop_types64.default.shape({
-          input: import_prop_types64.default.elementType,
-          mark: import_prop_types64.default.elementType,
-          markLabel: import_prop_types64.default.elementType,
-          rail: import_prop_types64.default.elementType,
-          root: import_prop_types64.default.elementType,
-          thumb: import_prop_types64.default.elementType,
-          track: import_prop_types64.default.elementType,
-          valueLabel: import_prop_types64.default.elementType
+        slots: import_prop_types66.default.shape({
+          input: import_prop_types66.default.elementType,
+          mark: import_prop_types66.default.elementType,
+          markLabel: import_prop_types66.default.elementType,
+          rail: import_prop_types66.default.elementType,
+          root: import_prop_types66.default.elementType,
+          thumb: import_prop_types66.default.elementType,
+          track: import_prop_types66.default.elementType,
+          valueLabel: import_prop_types66.default.elementType
         }),
         /**
          * The granularity with which the slider can step through values. (A "discrete" slider.)
@@ -48074,15 +50505,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * When step is `null`, the thumb can only be slid onto marks provided with the `marks` prop.
          * @default 1
          */
-        step: import_prop_types64.default.number,
+        step: import_prop_types66.default.number,
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types64.default.oneOfType([import_prop_types64.default.arrayOf(import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.object, import_prop_types64.default.bool])), import_prop_types64.default.func, import_prop_types64.default.object]),
+        sx: import_prop_types66.default.oneOfType([import_prop_types66.default.arrayOf(import_prop_types66.default.oneOfType([import_prop_types66.default.func, import_prop_types66.default.object, import_prop_types66.default.bool])), import_prop_types66.default.func, import_prop_types66.default.object]),
         /**
          * Tab index attribute of the hidden `input` element.
          */
-        tabIndex: import_prop_types64.default.number,
+        tabIndex: import_prop_types66.default.number,
         /**
          * The track presentation:
          *
@@ -48091,12 +50522,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * - `false` the track will render without a bar.
          * @default 'normal'
          */
-        track: import_prop_types64.default.oneOf(["inverted", "normal", false]),
+        track: import_prop_types66.default.oneOf(["inverted", "normal", false]),
         /**
          * The value of the slider.
          * For ranged sliders, provide an array with two values.
          */
-        value: import_prop_types64.default.oneOfType([import_prop_types64.default.arrayOf(import_prop_types64.default.number), import_prop_types64.default.number]),
+        value: import_prop_types66.default.oneOfType([import_prop_types66.default.arrayOf(import_prop_types66.default.number), import_prop_types66.default.number]),
         /**
          * Controls when the value label is displayed:
          *
@@ -48105,7 +50536,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * - `off` will never display.
          * @default 'off'
          */
-        valueLabelDisplay: import_prop_types64.default.oneOf(["auto", "off", "on"]),
+        valueLabelDisplay: import_prop_types66.default.oneOf(["auto", "off", "on"]),
         /**
          * The format function the value label's value.
          *
@@ -48119,7 +50550,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          *   return x;
          * }
          */
-        valueLabelFormat: import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.string])
+        valueLabelFormat: import_prop_types66.default.oneOfType([import_prop_types66.default.func, import_prop_types66.default.string])
       } : void 0;
     }
   });
@@ -48187,17 +50618,892 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/Tooltip/tooltipClasses.js
-  var tooltipClasses;
+  function getTooltipUtilityClass(slot) {
+    return generateUtilityClass("MuiTooltip", slot);
+  }
+  var tooltipClasses, tooltipClasses_default;
   var init_tooltipClasses = __esm({
     "node_modules/@mui/material/esm/Tooltip/tooltipClasses.js"() {
       init_generateUtilityClasses2();
+      init_generateUtilityClass2();
       tooltipClasses = generateUtilityClasses("MuiTooltip", ["popper", "popperInteractive", "popperArrow", "popperClose", "tooltip", "tooltipArrow", "touch", "tooltipPlacementLeft", "tooltipPlacementRight", "tooltipPlacementTop", "tooltipPlacementBottom", "arrow"]);
+      tooltipClasses_default = tooltipClasses;
+    }
+  });
+
+  // node_modules/@mui/material/esm/Tooltip/Tooltip.js
+  function round3(value) {
+    return Math.round(value * 1e5) / 1e5;
+  }
+  function composeEventHandler(handler, eventHandler) {
+    return (event, ...params) => {
+      if (eventHandler) {
+        eventHandler(event, ...params);
+      }
+      handler(event, ...params);
+    };
+  }
+  var React96, import_prop_types67, import_jsx_runtime66, useUtilityClasses35, TooltipPopper, TooltipTooltip, TooltipArrow, hystersisOpen, hystersisTimer, cursorPosition, Tooltip, Tooltip_default;
+  var init_Tooltip = __esm({
+    "node_modules/@mui/material/esm/Tooltip/Tooltip.js"() {
+      "use client";
+      React96 = __toESM(require_react(), 1);
+      import_prop_types67 = __toESM(require_prop_types(), 1);
+      init_clsx();
+      init_useTimeout2();
+      init_elementAcceptingRef2();
+      init_composeClasses2();
+      init_colorManipulator2();
+      init_RtlProvider();
+      init_isFocusVisible2();
+      init_getReactElementRef2();
+      init_zero_styled();
+      init_memoTheme2();
+      init_DefaultPropsProvider4();
+      init_capitalize3();
+      init_Grow2();
+      init_Popper2();
+      init_useEventCallback3();
+      init_useForkRef3();
+      init_useId3();
+      init_useControlled3();
+      init_useSlot();
+      init_tooltipClasses();
+      import_jsx_runtime66 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses35 = (ownerState) => {
+        const {
+          classes,
+          disableInteractive,
+          arrow: arrow2,
+          touch,
+          placement
+        } = ownerState;
+        const slots = {
+          popper: ["popper", !disableInteractive && "popperInteractive", arrow2 && "popperArrow"],
+          tooltip: ["tooltip", arrow2 && "tooltipArrow", touch && "touch", `tooltipPlacement${capitalize_default(placement.split("-")[0])}`],
+          arrow: ["arrow"]
+        };
+        return composeClasses(slots, getTooltipUtilityClass, classes);
+      };
+      TooltipPopper = styled_default2(Popper_default, {
+        name: "MuiTooltip",
+        slot: "Popper",
+        overridesResolver: (props, styles4) => {
+          const {
+            ownerState
+          } = props;
+          return [styles4.popper, !ownerState.disableInteractive && styles4.popperInteractive, ownerState.arrow && styles4.popperArrow, !ownerState.open && styles4.popperClose];
+        }
+      })(memoTheme_default(({
+        theme
+      }) => ({
+        zIndex: (theme.vars || theme).zIndex.tooltip,
+        pointerEvents: "none",
+        variants: [{
+          props: ({
+            ownerState
+          }) => !ownerState.disableInteractive,
+          style: {
+            pointerEvents: "auto"
+          }
+        }, {
+          props: ({
+            open
+          }) => !open,
+          style: {
+            pointerEvents: "none"
+          }
+        }, {
+          props: ({
+            ownerState
+          }) => ownerState.arrow,
+          style: {
+            [`&[data-popper-placement*="bottom"] .${tooltipClasses_default.arrow}`]: {
+              top: 0,
+              marginTop: "-0.71em",
+              "&::before": {
+                transformOrigin: "0 100%"
+              }
+            },
+            [`&[data-popper-placement*="top"] .${tooltipClasses_default.arrow}`]: {
+              bottom: 0,
+              marginBottom: "-0.71em",
+              "&::before": {
+                transformOrigin: "100% 0"
+              }
+            },
+            [`&[data-popper-placement*="right"] .${tooltipClasses_default.arrow}`]: {
+              height: "1em",
+              width: "0.71em",
+              "&::before": {
+                transformOrigin: "100% 100%"
+              }
+            },
+            [`&[data-popper-placement*="left"] .${tooltipClasses_default.arrow}`]: {
+              height: "1em",
+              width: "0.71em",
+              "&::before": {
+                transformOrigin: "0 0"
+              }
+            }
+          }
+        }, {
+          props: ({
+            ownerState
+          }) => ownerState.arrow && !ownerState.isRtl,
+          style: {
+            [`&[data-popper-placement*="right"] .${tooltipClasses_default.arrow}`]: {
+              left: 0,
+              marginLeft: "-0.71em"
+            }
+          }
+        }, {
+          props: ({
+            ownerState
+          }) => ownerState.arrow && !!ownerState.isRtl,
+          style: {
+            [`&[data-popper-placement*="right"] .${tooltipClasses_default.arrow}`]: {
+              right: 0,
+              marginRight: "-0.71em"
+            }
+          }
+        }, {
+          props: ({
+            ownerState
+          }) => ownerState.arrow && !ownerState.isRtl,
+          style: {
+            [`&[data-popper-placement*="left"] .${tooltipClasses_default.arrow}`]: {
+              right: 0,
+              marginRight: "-0.71em"
+            }
+          }
+        }, {
+          props: ({
+            ownerState
+          }) => ownerState.arrow && !!ownerState.isRtl,
+          style: {
+            [`&[data-popper-placement*="left"] .${tooltipClasses_default.arrow}`]: {
+              left: 0,
+              marginLeft: "-0.71em"
+            }
+          }
+        }]
+      })));
+      TooltipTooltip = styled_default2("div", {
+        name: "MuiTooltip",
+        slot: "Tooltip",
+        overridesResolver: (props, styles4) => {
+          const {
+            ownerState
+          } = props;
+          return [styles4.tooltip, ownerState.touch && styles4.touch, ownerState.arrow && styles4.tooltipArrow, styles4[`tooltipPlacement${capitalize_default(ownerState.placement.split("-")[0])}`]];
+        }
+      })(memoTheme_default(({
+        theme
+      }) => ({
+        backgroundColor: theme.vars ? theme.vars.palette.Tooltip.bg : alpha(theme.palette.grey[700], 0.92),
+        borderRadius: (theme.vars || theme).shape.borderRadius,
+        color: (theme.vars || theme).palette.common.white,
+        fontFamily: theme.typography.fontFamily,
+        padding: "4px 8px",
+        fontSize: theme.typography.pxToRem(11),
+        maxWidth: 300,
+        margin: 2,
+        wordWrap: "break-word",
+        fontWeight: theme.typography.fontWeightMedium,
+        [`.${tooltipClasses_default.popper}[data-popper-placement*="left"] &`]: {
+          transformOrigin: "right center"
+        },
+        [`.${tooltipClasses_default.popper}[data-popper-placement*="right"] &`]: {
+          transformOrigin: "left center"
+        },
+        [`.${tooltipClasses_default.popper}[data-popper-placement*="top"] &`]: {
+          transformOrigin: "center bottom",
+          marginBottom: "14px"
+        },
+        [`.${tooltipClasses_default.popper}[data-popper-placement*="bottom"] &`]: {
+          transformOrigin: "center top",
+          marginTop: "14px"
+        },
+        variants: [{
+          props: ({
+            ownerState
+          }) => ownerState.arrow,
+          style: {
+            position: "relative",
+            margin: 0
+          }
+        }, {
+          props: ({
+            ownerState
+          }) => ownerState.touch,
+          style: {
+            padding: "8px 16px",
+            fontSize: theme.typography.pxToRem(14),
+            lineHeight: `${round3(16 / 14)}em`,
+            fontWeight: theme.typography.fontWeightRegular
+          }
+        }, {
+          props: ({
+            ownerState
+          }) => !ownerState.isRtl,
+          style: {
+            [`.${tooltipClasses_default.popper}[data-popper-placement*="left"] &`]: {
+              marginRight: "14px"
+            },
+            [`.${tooltipClasses_default.popper}[data-popper-placement*="right"] &`]: {
+              marginLeft: "14px"
+            }
+          }
+        }, {
+          props: ({
+            ownerState
+          }) => !ownerState.isRtl && ownerState.touch,
+          style: {
+            [`.${tooltipClasses_default.popper}[data-popper-placement*="left"] &`]: {
+              marginRight: "24px"
+            },
+            [`.${tooltipClasses_default.popper}[data-popper-placement*="right"] &`]: {
+              marginLeft: "24px"
+            }
+          }
+        }, {
+          props: ({
+            ownerState
+          }) => !!ownerState.isRtl,
+          style: {
+            [`.${tooltipClasses_default.popper}[data-popper-placement*="left"] &`]: {
+              marginLeft: "14px"
+            },
+            [`.${tooltipClasses_default.popper}[data-popper-placement*="right"] &`]: {
+              marginRight: "14px"
+            }
+          }
+        }, {
+          props: ({
+            ownerState
+          }) => !!ownerState.isRtl && ownerState.touch,
+          style: {
+            [`.${tooltipClasses_default.popper}[data-popper-placement*="left"] &`]: {
+              marginLeft: "24px"
+            },
+            [`.${tooltipClasses_default.popper}[data-popper-placement*="right"] &`]: {
+              marginRight: "24px"
+            }
+          }
+        }, {
+          props: ({
+            ownerState
+          }) => ownerState.touch,
+          style: {
+            [`.${tooltipClasses_default.popper}[data-popper-placement*="top"] &`]: {
+              marginBottom: "24px"
+            }
+          }
+        }, {
+          props: ({
+            ownerState
+          }) => ownerState.touch,
+          style: {
+            [`.${tooltipClasses_default.popper}[data-popper-placement*="bottom"] &`]: {
+              marginTop: "24px"
+            }
+          }
+        }]
+      })));
+      TooltipArrow = styled_default2("span", {
+        name: "MuiTooltip",
+        slot: "Arrow"
+      })(memoTheme_default(({
+        theme
+      }) => ({
+        overflow: "hidden",
+        position: "absolute",
+        width: "1em",
+        height: "0.71em",
+        boxSizing: "border-box",
+        color: theme.vars ? theme.vars.palette.Tooltip.bg : alpha(theme.palette.grey[700], 0.9),
+        "&::before": {
+          content: '""',
+          margin: "auto",
+          display: "block",
+          width: "100%",
+          height: "100%",
+          backgroundColor: "currentColor",
+          transform: "rotate(45deg)"
+        }
+      })));
+      hystersisOpen = false;
+      hystersisTimer = new Timeout();
+      cursorPosition = {
+        x: 0,
+        y: 0
+      };
+      Tooltip = /* @__PURE__ */ React96.forwardRef(function Tooltip2(inProps, ref) {
+        const props = useDefaultProps2({
+          props: inProps,
+          name: "MuiTooltip"
+        });
+        const {
+          arrow: arrow2 = false,
+          children: childrenProp,
+          classes: classesProp,
+          components = {},
+          componentsProps = {},
+          describeChild = false,
+          disableFocusListener = false,
+          disableHoverListener = false,
+          disableInteractive: disableInteractiveProp = false,
+          disableTouchListener = false,
+          enterDelay = 100,
+          enterNextDelay = 0,
+          enterTouchDelay = 700,
+          followCursor = false,
+          id: idProp,
+          leaveDelay = 0,
+          leaveTouchDelay = 1500,
+          onClose,
+          onOpen,
+          open: openProp,
+          placement = "bottom",
+          PopperComponent: PopperComponentProp,
+          PopperProps = {},
+          slotProps = {},
+          slots = {},
+          title,
+          TransitionComponent: TransitionComponentProp,
+          TransitionProps,
+          ...other
+        } = props;
+        const children = /* @__PURE__ */ React96.isValidElement(childrenProp) ? childrenProp : /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("span", {
+          children: childrenProp
+        });
+        const theme = useTheme5();
+        const isRtl = useRtl();
+        const [childNode, setChildNode] = React96.useState();
+        const [arrowRef, setArrowRef] = React96.useState(null);
+        const ignoreNonTouchEvents = React96.useRef(false);
+        const disableInteractive = disableInteractiveProp || followCursor;
+        const closeTimer = useTimeout();
+        const enterTimer = useTimeout();
+        const leaveTimer = useTimeout();
+        const touchTimer = useTimeout();
+        const [openState, setOpenState] = useControlled_default({
+          controlled: openProp,
+          default: false,
+          name: "Tooltip",
+          state: "open"
+        });
+        let open = openState;
+        if (true) {
+          const {
+            current: isControlled
+          } = React96.useRef(openProp !== void 0);
+          React96.useEffect(() => {
+            if (childNode && childNode.disabled && !isControlled && title !== "" && childNode.tagName.toLowerCase() === "button") {
+              console.warn(["MUI: You are providing a disabled `button` child to the Tooltip component.", "A disabled element does not fire events.", "Tooltip needs to listen to the child element's events to display the title.", "", "Add a simple wrapper element, such as a `span`."].join("\n"));
+            }
+          }, [title, childNode, isControlled]);
+        }
+        const id = useId_default(idProp);
+        const prevUserSelect = React96.useRef();
+        const stopTouchInteraction = useEventCallback_default2(() => {
+          if (prevUserSelect.current !== void 0) {
+            document.body.style.WebkitUserSelect = prevUserSelect.current;
+            prevUserSelect.current = void 0;
+          }
+          touchTimer.clear();
+        });
+        React96.useEffect(() => stopTouchInteraction, [stopTouchInteraction]);
+        const handleOpen = (event) => {
+          hystersisTimer.clear();
+          hystersisOpen = true;
+          setOpenState(true);
+          if (onOpen && !open) {
+            onOpen(event);
+          }
+        };
+        const handleClose = useEventCallback_default2(
+          /**
+           * @param {React.SyntheticEvent | Event} event
+           */
+          (event) => {
+            hystersisTimer.start(800 + leaveDelay, () => {
+              hystersisOpen = false;
+            });
+            setOpenState(false);
+            if (onClose && open) {
+              onClose(event);
+            }
+            closeTimer.start(theme.transitions.duration.shortest, () => {
+              ignoreNonTouchEvents.current = false;
+            });
+          }
+        );
+        const handleMouseOver = (event) => {
+          if (ignoreNonTouchEvents.current && event.type !== "touchstart") {
+            return;
+          }
+          if (childNode) {
+            childNode.removeAttribute("title");
+          }
+          enterTimer.clear();
+          leaveTimer.clear();
+          if (enterDelay || hystersisOpen && enterNextDelay) {
+            enterTimer.start(hystersisOpen ? enterNextDelay : enterDelay, () => {
+              handleOpen(event);
+            });
+          } else {
+            handleOpen(event);
+          }
+        };
+        const handleMouseLeave = (event) => {
+          enterTimer.clear();
+          leaveTimer.start(leaveDelay, () => {
+            handleClose(event);
+          });
+        };
+        const [, setChildIsFocusVisible] = React96.useState(false);
+        const handleBlur = (event) => {
+          if (!isFocusVisible(event.target)) {
+            setChildIsFocusVisible(false);
+            handleMouseLeave(event);
+          }
+        };
+        const handleFocus = (event) => {
+          if (!childNode) {
+            setChildNode(event.currentTarget);
+          }
+          if (isFocusVisible(event.target)) {
+            setChildIsFocusVisible(true);
+            handleMouseOver(event);
+          }
+        };
+        const detectTouchStart = (event) => {
+          ignoreNonTouchEvents.current = true;
+          const childrenProps2 = children.props;
+          if (childrenProps2.onTouchStart) {
+            childrenProps2.onTouchStart(event);
+          }
+        };
+        const handleTouchStart = (event) => {
+          detectTouchStart(event);
+          leaveTimer.clear();
+          closeTimer.clear();
+          stopTouchInteraction();
+          prevUserSelect.current = document.body.style.WebkitUserSelect;
+          document.body.style.WebkitUserSelect = "none";
+          touchTimer.start(enterTouchDelay, () => {
+            document.body.style.WebkitUserSelect = prevUserSelect.current;
+            handleMouseOver(event);
+          });
+        };
+        const handleTouchEnd = (event) => {
+          if (children.props.onTouchEnd) {
+            children.props.onTouchEnd(event);
+          }
+          stopTouchInteraction();
+          leaveTimer.start(leaveTouchDelay, () => {
+            handleClose(event);
+          });
+        };
+        React96.useEffect(() => {
+          if (!open) {
+            return void 0;
+          }
+          function handleKeyDown(nativeEvent) {
+            if (nativeEvent.key === "Escape") {
+              handleClose(nativeEvent);
+            }
+          }
+          document.addEventListener("keydown", handleKeyDown);
+          return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+          };
+        }, [handleClose, open]);
+        const handleRef = useForkRef_default(getReactElementRef(children), setChildNode, ref);
+        if (!title && title !== 0) {
+          open = false;
+        }
+        const popperRef = React96.useRef();
+        const handleMouseMove = (event) => {
+          const childrenProps2 = children.props;
+          if (childrenProps2.onMouseMove) {
+            childrenProps2.onMouseMove(event);
+          }
+          cursorPosition = {
+            x: event.clientX,
+            y: event.clientY
+          };
+          if (popperRef.current) {
+            popperRef.current.update();
+          }
+        };
+        const nameOrDescProps = {};
+        const titleIsString = typeof title === "string";
+        if (describeChild) {
+          nameOrDescProps.title = !open && titleIsString && !disableHoverListener ? title : null;
+          nameOrDescProps["aria-describedby"] = open ? id : null;
+        } else {
+          nameOrDescProps["aria-label"] = titleIsString ? title : null;
+          nameOrDescProps["aria-labelledby"] = open && !titleIsString ? id : null;
+        }
+        const childrenProps = {
+          ...nameOrDescProps,
+          ...other,
+          ...children.props,
+          className: clsx_default(other.className, children.props.className),
+          onTouchStart: detectTouchStart,
+          ref: handleRef,
+          ...followCursor ? {
+            onMouseMove: handleMouseMove
+          } : {}
+        };
+        if (true) {
+          childrenProps["data-mui-internal-clone-element"] = true;
+          React96.useEffect(() => {
+            if (childNode && !childNode.getAttribute("data-mui-internal-clone-element")) {
+              console.error(["MUI: The `children` component of the Tooltip is not forwarding its props correctly.", "Please make sure that props are spread on the same element that the ref is applied to."].join("\n"));
+            }
+          }, [childNode]);
+        }
+        const interactiveWrapperListeners = {};
+        if (!disableTouchListener) {
+          childrenProps.onTouchStart = handleTouchStart;
+          childrenProps.onTouchEnd = handleTouchEnd;
+        }
+        if (!disableHoverListener) {
+          childrenProps.onMouseOver = composeEventHandler(handleMouseOver, childrenProps.onMouseOver);
+          childrenProps.onMouseLeave = composeEventHandler(handleMouseLeave, childrenProps.onMouseLeave);
+          if (!disableInteractive) {
+            interactiveWrapperListeners.onMouseOver = handleMouseOver;
+            interactiveWrapperListeners.onMouseLeave = handleMouseLeave;
+          }
+        }
+        if (!disableFocusListener) {
+          childrenProps.onFocus = composeEventHandler(handleFocus, childrenProps.onFocus);
+          childrenProps.onBlur = composeEventHandler(handleBlur, childrenProps.onBlur);
+          if (!disableInteractive) {
+            interactiveWrapperListeners.onFocus = handleFocus;
+            interactiveWrapperListeners.onBlur = handleBlur;
+          }
+        }
+        if (true) {
+          if (children.props.title) {
+            console.error(["MUI: You have provided a `title` prop to the child of <Tooltip />.", `Remove this title prop \`${children.props.title}\` or the Tooltip component.`].join("\n"));
+          }
+        }
+        const ownerState = {
+          ...props,
+          isRtl,
+          arrow: arrow2,
+          disableInteractive,
+          placement,
+          PopperComponentProp,
+          touch: ignoreNonTouchEvents.current
+        };
+        const resolvedPopperProps = typeof slotProps.popper === "function" ? slotProps.popper(ownerState) : slotProps.popper;
+        const popperOptions = React96.useMemo(() => {
+          let tooltipModifiers = [{
+            name: "arrow",
+            enabled: Boolean(arrowRef),
+            options: {
+              element: arrowRef,
+              padding: 4
+            }
+          }];
+          if (PopperProps.popperOptions?.modifiers) {
+            tooltipModifiers = tooltipModifiers.concat(PopperProps.popperOptions.modifiers);
+          }
+          if (resolvedPopperProps?.popperOptions?.modifiers) {
+            tooltipModifiers = tooltipModifiers.concat(resolvedPopperProps.popperOptions.modifiers);
+          }
+          return {
+            ...PopperProps.popperOptions,
+            ...resolvedPopperProps?.popperOptions,
+            modifiers: tooltipModifiers
+          };
+        }, [arrowRef, PopperProps.popperOptions, resolvedPopperProps?.popperOptions]);
+        const classes = useUtilityClasses35(ownerState);
+        const resolvedTransitionProps = typeof slotProps.transition === "function" ? slotProps.transition(ownerState) : slotProps.transition;
+        const externalForwardedProps = {
+          slots: {
+            popper: components.Popper,
+            transition: components.Transition ?? TransitionComponentProp,
+            tooltip: components.Tooltip,
+            arrow: components.Arrow,
+            ...slots
+          },
+          slotProps: {
+            arrow: slotProps.arrow ?? componentsProps.arrow,
+            popper: {
+              ...PopperProps,
+              ...resolvedPopperProps ?? componentsProps.popper
+            },
+            // resolvedPopperProps can be spread because it's already an object
+            tooltip: slotProps.tooltip ?? componentsProps.tooltip,
+            transition: {
+              ...TransitionProps,
+              ...resolvedTransitionProps ?? componentsProps.transition
+            }
+          }
+        };
+        const [PopperSlot, popperSlotProps] = useSlot("popper", {
+          elementType: TooltipPopper,
+          externalForwardedProps,
+          ownerState,
+          className: clsx_default(classes.popper, PopperProps?.className)
+        });
+        const [TransitionSlot, transitionSlotProps] = useSlot("transition", {
+          elementType: Grow_default,
+          externalForwardedProps,
+          ownerState
+        });
+        const [TooltipSlot, tooltipSlotProps] = useSlot("tooltip", {
+          elementType: TooltipTooltip,
+          className: classes.tooltip,
+          externalForwardedProps,
+          ownerState
+        });
+        const [ArrowSlot, arrowSlotProps] = useSlot("arrow", {
+          elementType: TooltipArrow,
+          className: classes.arrow,
+          externalForwardedProps,
+          ownerState,
+          ref: setArrowRef
+        });
+        return /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(React96.Fragment, {
+          children: [/* @__PURE__ */ React96.cloneElement(children, childrenProps), /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(PopperSlot, {
+            as: PopperComponentProp ?? Popper_default,
+            placement,
+            anchorEl: followCursor ? {
+              getBoundingClientRect: () => ({
+                top: cursorPosition.y,
+                left: cursorPosition.x,
+                right: cursorPosition.x,
+                bottom: cursorPosition.y,
+                width: 0,
+                height: 0
+              })
+            } : childNode,
+            popperRef,
+            open: childNode ? open : false,
+            id,
+            transition: true,
+            ...interactiveWrapperListeners,
+            ...popperSlotProps,
+            popperOptions,
+            children: ({
+              TransitionProps: TransitionPropsInner
+            }) => /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(TransitionSlot, {
+              timeout: theme.transitions.duration.shorter,
+              ...TransitionPropsInner,
+              ...transitionSlotProps,
+              children: /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(TooltipSlot, {
+                ...tooltipSlotProps,
+                children: [title, arrow2 ? /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(ArrowSlot, {
+                  ...arrowSlotProps
+                }) : null]
+              })
+            })
+          })]
+        });
+      });
+      true ? Tooltip.propTypes = {
+        // ┌────────────────────────────── Warning ──────────────────────────────┐
+        // │ These PropTypes are generated from the TypeScript type definitions. │
+        // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+        // └─────────────────────────────────────────────────────────────────────┘
+        /**
+         * If `true`, adds an arrow to the tooltip.
+         * @default false
+         */
+        arrow: import_prop_types67.default.bool,
+        /**
+         * Tooltip reference element.
+         */
+        children: elementAcceptingRef_default.isRequired,
+        /**
+         * Override or extend the styles applied to the component.
+         */
+        classes: import_prop_types67.default.object,
+        /**
+         * @ignore
+         */
+        className: import_prop_types67.default.string,
+        /**
+         * The components used for each slot inside.
+         *
+         * @deprecated use the `slots` prop instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+         *
+         * @default {}
+         */
+        components: import_prop_types67.default.shape({
+          Arrow: import_prop_types67.default.elementType,
+          Popper: import_prop_types67.default.elementType,
+          Tooltip: import_prop_types67.default.elementType,
+          Transition: import_prop_types67.default.elementType
+        }),
+        /**
+         * The extra props for the slot components.
+         * You can override the existing props or add new ones.
+         *
+         * @deprecated use the `slotProps` prop instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+         *
+         * @default {}
+         */
+        componentsProps: import_prop_types67.default.shape({
+          arrow: import_prop_types67.default.object,
+          popper: import_prop_types67.default.object,
+          tooltip: import_prop_types67.default.object,
+          transition: import_prop_types67.default.object
+        }),
+        /**
+         * Set to `true` if the `title` acts as an accessible description.
+         * By default the `title` acts as an accessible label for the child.
+         * @default false
+         */
+        describeChild: import_prop_types67.default.bool,
+        /**
+         * Do not respond to focus-visible events.
+         * @default false
+         */
+        disableFocusListener: import_prop_types67.default.bool,
+        /**
+         * Do not respond to hover events.
+         * @default false
+         */
+        disableHoverListener: import_prop_types67.default.bool,
+        /**
+         * Makes a tooltip not interactive, i.e. it will close when the user
+         * hovers over the tooltip before the `leaveDelay` is expired.
+         * @default false
+         */
+        disableInteractive: import_prop_types67.default.bool,
+        /**
+         * Do not respond to long press touch events.
+         * @default false
+         */
+        disableTouchListener: import_prop_types67.default.bool,
+        /**
+         * The number of milliseconds to wait before showing the tooltip.
+         * This prop won't impact the enter touch delay (`enterTouchDelay`).
+         * @default 100
+         */
+        enterDelay: import_prop_types67.default.number,
+        /**
+         * The number of milliseconds to wait before showing the tooltip when one was already recently opened.
+         * @default 0
+         */
+        enterNextDelay: import_prop_types67.default.number,
+        /**
+         * The number of milliseconds a user must touch the element before showing the tooltip.
+         * @default 700
+         */
+        enterTouchDelay: import_prop_types67.default.number,
+        /**
+         * If `true`, the tooltip follow the cursor over the wrapped element.
+         * @default false
+         */
+        followCursor: import_prop_types67.default.bool,
+        /**
+         * This prop is used to help implement the accessibility logic.
+         * If you don't provide this prop. It falls back to a randomly generated id.
+         */
+        id: import_prop_types67.default.string,
+        /**
+         * The number of milliseconds to wait before hiding the tooltip.
+         * This prop won't impact the leave touch delay (`leaveTouchDelay`).
+         * @default 0
+         */
+        leaveDelay: import_prop_types67.default.number,
+        /**
+         * The number of milliseconds after the user stops touching an element before hiding the tooltip.
+         * @default 1500
+         */
+        leaveTouchDelay: import_prop_types67.default.number,
+        /**
+         * Callback fired when the component requests to be closed.
+         *
+         * @param {React.SyntheticEvent} event The event source of the callback.
+         */
+        onClose: import_prop_types67.default.func,
+        /**
+         * Callback fired when the component requests to be open.
+         *
+         * @param {React.SyntheticEvent} event The event source of the callback.
+         */
+        onOpen: import_prop_types67.default.func,
+        /**
+         * If `true`, the component is shown.
+         */
+        open: import_prop_types67.default.bool,
+        /**
+         * Tooltip placement.
+         * @default 'bottom'
+         */
+        placement: import_prop_types67.default.oneOf(["auto-end", "auto-start", "auto", "bottom-end", "bottom-start", "bottom", "left-end", "left-start", "left", "right-end", "right-start", "right", "top-end", "top-start", "top"]),
+        /**
+         * The component used for the popper.
+         * @deprecated use the `slots.popper` prop instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+         */
+        PopperComponent: import_prop_types67.default.elementType,
+        /**
+         * Props applied to the [`Popper`](https://mui.com/material-ui/api/popper/) element.
+         * @deprecated use the `slotProps.popper` prop instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+         * @default {}
+         */
+        PopperProps: import_prop_types67.default.object,
+        /**
+         * The props used for each slot inside.
+         * @default {}
+         */
+        slotProps: import_prop_types67.default.shape({
+          arrow: import_prop_types67.default.oneOfType([import_prop_types67.default.func, import_prop_types67.default.object]),
+          popper: import_prop_types67.default.oneOfType([import_prop_types67.default.func, import_prop_types67.default.object]),
+          tooltip: import_prop_types67.default.oneOfType([import_prop_types67.default.func, import_prop_types67.default.object]),
+          transition: import_prop_types67.default.oneOfType([import_prop_types67.default.func, import_prop_types67.default.object])
+        }),
+        /**
+         * The components used for each slot inside.
+         * @default {}
+         */
+        slots: import_prop_types67.default.shape({
+          arrow: import_prop_types67.default.elementType,
+          popper: import_prop_types67.default.elementType,
+          tooltip: import_prop_types67.default.elementType,
+          transition: import_prop_types67.default.elementType
+        }),
+        /**
+         * The system prop that allows defining system overrides as well as additional CSS styles.
+         */
+        sx: import_prop_types67.default.oneOfType([import_prop_types67.default.arrayOf(import_prop_types67.default.oneOfType([import_prop_types67.default.func, import_prop_types67.default.object, import_prop_types67.default.bool])), import_prop_types67.default.func, import_prop_types67.default.object]),
+        /**
+         * Tooltip title. Zero-length titles string, undefined, null and false are never displayed.
+         */
+        title: import_prop_types67.default.node,
+        /**
+         * The component used for the transition.
+         * [Follow this guide](https://mui.com/material-ui/transitions/#transitioncomponent-prop) to learn more about the requirements for this component.
+         * @deprecated use the `slots.transition` prop instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+         */
+        TransitionComponent: import_prop_types67.default.elementType,
+        /**
+         * Props applied to the transition element.
+         * By default, the element is based on this [`Transition`](https://reactcommunity.org/react-transition-group/transition/) component.
+         * @deprecated use the `slotProps.transition` prop instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+         * @default {}
+         */
+        TransitionProps: import_prop_types67.default.object
+      } : void 0;
+      Tooltip_default = Tooltip;
     }
   });
 
   // node_modules/@mui/material/esm/Tooltip/index.js
-  var init_Tooltip = __esm({
+  var init_Tooltip2 = __esm({
     "node_modules/@mui/material/esm/Tooltip/index.js"() {
+      init_Tooltip();
       init_tooltipClasses();
     }
   });
@@ -48235,11 +51541,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/Stack/Stack.js
-  var import_prop_types65, Stack, Stack_default;
+  var import_prop_types68, Stack, Stack_default;
   var init_Stack2 = __esm({
     "node_modules/@mui/material/esm/Stack/Stack.js"() {
       "use client";
-      import_prop_types65 = __toESM(require_prop_types(), 1);
+      import_prop_types68 = __toESM(require_prop_types(), 1);
       init_esm3();
       init_styled3();
       init_DefaultPropsProvider4();
@@ -48261,31 +51567,31 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * The content of the component.
          */
-        children: import_prop_types65.default.node,
+        children: import_prop_types68.default.node,
         /**
          * The component used for the root node.
          * Either a string to use a HTML element or a component.
          */
-        component: import_prop_types65.default.elementType,
+        component: import_prop_types68.default.elementType,
         /**
          * Defines the `flex-direction` style property.
          * It is applied for all screen sizes.
          * @default 'column'
          */
-        direction: import_prop_types65.default.oneOfType([import_prop_types65.default.oneOf(["column-reverse", "column", "row-reverse", "row"]), import_prop_types65.default.arrayOf(import_prop_types65.default.oneOf(["column-reverse", "column", "row-reverse", "row"])), import_prop_types65.default.object]),
+        direction: import_prop_types68.default.oneOfType([import_prop_types68.default.oneOf(["column-reverse", "column", "row-reverse", "row"]), import_prop_types68.default.arrayOf(import_prop_types68.default.oneOf(["column-reverse", "column", "row-reverse", "row"])), import_prop_types68.default.object]),
         /**
          * Add an element between each child.
          */
-        divider: import_prop_types65.default.node,
+        divider: import_prop_types68.default.node,
         /**
          * Defines the space between immediate children.
          * @default 0
          */
-        spacing: import_prop_types65.default.oneOfType([import_prop_types65.default.arrayOf(import_prop_types65.default.oneOfType([import_prop_types65.default.number, import_prop_types65.default.string])), import_prop_types65.default.number, import_prop_types65.default.object, import_prop_types65.default.string]),
+        spacing: import_prop_types68.default.oneOfType([import_prop_types68.default.arrayOf(import_prop_types68.default.oneOfType([import_prop_types68.default.number, import_prop_types68.default.string])), import_prop_types68.default.number, import_prop_types68.default.object, import_prop_types68.default.string]),
         /**
          * The system prop, which allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types65.default.oneOfType([import_prop_types65.default.arrayOf(import_prop_types65.default.oneOfType([import_prop_types65.default.func, import_prop_types65.default.object, import_prop_types65.default.bool])), import_prop_types65.default.func, import_prop_types65.default.object]),
+        sx: import_prop_types68.default.oneOfType([import_prop_types68.default.arrayOf(import_prop_types68.default.oneOfType([import_prop_types68.default.func, import_prop_types68.default.object, import_prop_types68.default.bool])), import_prop_types68.default.func, import_prop_types68.default.object]),
         /**
          * If `true`, the CSS flexbox `gap` is used instead of applying `margin` to children.
          *
@@ -48295,7 +51601,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * To enable this flag globally, follow the [theme's default props](https://mui.com/material-ui/customization/theme-components/#default-props) configuration.
          * @default false
          */
-        useFlexGap: import_prop_types65.default.bool
+        useFlexGap: import_prop_types68.default.bool
       } : void 0;
       Stack_default = Stack;
     }
@@ -48309,12 +51615,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/Stepper/StepperContext.js
-  var React94, StepperContext;
+  var React97, StepperContext;
   var init_StepperContext = __esm({
     "node_modules/@mui/material/esm/Stepper/StepperContext.js"() {
       "use client";
-      React94 = __toESM(require_react(), 1);
-      StepperContext = /* @__PURE__ */ React94.createContext({});
+      React97 = __toESM(require_react(), 1);
+      StepperContext = /* @__PURE__ */ React97.createContext({});
       if (true) {
         StepperContext.displayName = "StepperContext";
       }
@@ -48322,12 +51628,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/Step/StepContext.js
-  var React95, StepContext;
+  var React98, StepContext;
   var init_StepContext = __esm({
     "node_modules/@mui/material/esm/Step/StepContext.js"() {
       "use client";
-      React95 = __toESM(require_react(), 1);
-      StepContext = /* @__PURE__ */ React95.createContext({});
+      React98 = __toESM(require_react(), 1);
+      StepContext = /* @__PURE__ */ React98.createContext({});
       if (true) {
         StepContext.displayName = "StepContext";
       }
@@ -48487,12 +51793,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/Table/TableContext.js
-  var React96, TableContext, TableContext_default;
+  var React99, TableContext, TableContext_default;
   var init_TableContext = __esm({
     "node_modules/@mui/material/esm/Table/TableContext.js"() {
       "use client";
-      React96 = __toESM(require_react(), 1);
-      TableContext = /* @__PURE__ */ React96.createContext();
+      React99 = __toESM(require_react(), 1);
+      TableContext = /* @__PURE__ */ React99.createContext();
       if (true) {
         TableContext.displayName = "TableContext";
       }
@@ -48514,12 +51820,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/Table/Table.js
-  var React97, import_prop_types66, import_jsx_runtime64, useUtilityClasses34, TableRoot, defaultComponent, Table, Table_default;
+  var React100, import_prop_types69, import_jsx_runtime67, useUtilityClasses36, TableRoot, defaultComponent, Table, Table_default;
   var init_Table = __esm({
     "node_modules/@mui/material/esm/Table/Table.js"() {
       "use client";
-      React97 = __toESM(require_react(), 1);
-      import_prop_types66 = __toESM(require_prop_types(), 1);
+      React100 = __toESM(require_react(), 1);
+      import_prop_types69 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_composeClasses2();
       init_TableContext();
@@ -48527,8 +51833,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_memoTheme2();
       init_DefaultPropsProvider4();
       init_tableClasses();
-      import_jsx_runtime64 = __toESM(require_jsx_runtime(), 1);
-      useUtilityClasses34 = (ownerState) => {
+      import_jsx_runtime67 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses36 = (ownerState) => {
         const {
           classes,
           stickyHeader
@@ -48571,7 +51877,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         }]
       })));
       defaultComponent = "table";
-      Table = /* @__PURE__ */ React97.forwardRef(function Table2(inProps, ref) {
+      Table = /* @__PURE__ */ React100.forwardRef(function Table2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiTable"
@@ -48591,15 +51897,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           size,
           stickyHeader
         };
-        const classes = useUtilityClasses34(ownerState);
-        const table2 = React97.useMemo(() => ({
+        const classes = useUtilityClasses36(ownerState);
+        const table2 = React100.useMemo(() => ({
           padding: padding2,
           size,
           stickyHeader
         }), [padding2, size, stickyHeader]);
-        return /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(TableContext_default.Provider, {
+        return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(TableContext_default.Provider, {
           value: table2,
-          children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(TableRoot, {
+          children: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(TableRoot, {
             as: component,
             role: component === defaultComponent ? null : "table",
             ref,
@@ -48617,39 +51923,39 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * The content of the table, normally `TableHead` and `TableBody`.
          */
-        children: import_prop_types66.default.node,
+        children: import_prop_types69.default.node,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types66.default.object,
+        classes: import_prop_types69.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types66.default.string,
+        className: import_prop_types69.default.string,
         /**
          * The component used for the root node.
          * Either a string to use a HTML element or a component.
          */
-        component: import_prop_types66.default.elementType,
+        component: import_prop_types69.default.elementType,
         /**
          * Allows TableCells to inherit padding of the Table.
          * @default 'normal'
          */
-        padding: import_prop_types66.default.oneOf(["checkbox", "none", "normal"]),
+        padding: import_prop_types69.default.oneOf(["checkbox", "none", "normal"]),
         /**
          * Allows TableCells to inherit size of the Table.
          * @default 'medium'
          */
-        size: import_prop_types66.default.oneOfType([import_prop_types66.default.oneOf(["medium", "small"]), import_prop_types66.default.string]),
+        size: import_prop_types69.default.oneOfType([import_prop_types69.default.oneOf(["medium", "small"]), import_prop_types69.default.string]),
         /**
          * Set the header sticky.
          * @default false
          */
-        stickyHeader: import_prop_types66.default.bool,
+        stickyHeader: import_prop_types69.default.bool,
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types66.default.oneOfType([import_prop_types66.default.arrayOf(import_prop_types66.default.oneOfType([import_prop_types66.default.func, import_prop_types66.default.object, import_prop_types66.default.bool])), import_prop_types66.default.func, import_prop_types66.default.object])
+        sx: import_prop_types69.default.oneOfType([import_prop_types69.default.arrayOf(import_prop_types69.default.oneOfType([import_prop_types69.default.func, import_prop_types69.default.object, import_prop_types69.default.bool])), import_prop_types69.default.func, import_prop_types69.default.object])
       } : void 0;
       Table_default = Table;
     }
@@ -48664,12 +51970,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/Table/Tablelvl2Context.js
-  var React98, Tablelvl2Context, Tablelvl2Context_default;
+  var React101, Tablelvl2Context, Tablelvl2Context_default;
   var init_Tablelvl2Context = __esm({
     "node_modules/@mui/material/esm/Table/Tablelvl2Context.js"() {
       "use client";
-      React98 = __toESM(require_react(), 1);
-      Tablelvl2Context = /* @__PURE__ */ React98.createContext();
+      React101 = __toESM(require_react(), 1);
+      Tablelvl2Context = /* @__PURE__ */ React101.createContext();
       if (true) {
         Tablelvl2Context.displayName = "Tablelvl2Context";
       }
@@ -48691,20 +51997,20 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/TableBody/TableBody.js
-  var React99, import_prop_types67, import_jsx_runtime65, useUtilityClasses35, TableBodyRoot, tablelvl2, defaultComponent2, TableBody, TableBody_default;
+  var React102, import_prop_types70, import_jsx_runtime68, useUtilityClasses37, TableBodyRoot, tablelvl2, defaultComponent2, TableBody, TableBody_default;
   var init_TableBody = __esm({
     "node_modules/@mui/material/esm/TableBody/TableBody.js"() {
       "use client";
-      React99 = __toESM(require_react(), 1);
-      import_prop_types67 = __toESM(require_prop_types(), 1);
+      React102 = __toESM(require_react(), 1);
+      import_prop_types70 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_composeClasses2();
       init_Tablelvl2Context();
       init_zero_styled();
       init_DefaultPropsProvider4();
       init_tableBodyClasses();
-      import_jsx_runtime65 = __toESM(require_jsx_runtime(), 1);
-      useUtilityClasses35 = (ownerState) => {
+      import_jsx_runtime68 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses37 = (ownerState) => {
         const {
           classes
         } = ownerState;
@@ -48723,7 +52029,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         variant: "body"
       };
       defaultComponent2 = "tbody";
-      TableBody = /* @__PURE__ */ React99.forwardRef(function TableBody2(inProps, ref) {
+      TableBody = /* @__PURE__ */ React102.forwardRef(function TableBody2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiTableBody"
@@ -48737,10 +52043,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           ...props,
           component
         };
-        const classes = useUtilityClasses35(ownerState);
-        return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Tablelvl2Context_default.Provider, {
+        const classes = useUtilityClasses37(ownerState);
+        return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(Tablelvl2Context_default.Provider, {
           value: tablelvl2,
-          children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(TableBodyRoot, {
+          children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(TableBodyRoot, {
             className: clsx_default(classes.root, className),
             as: component,
             ref,
@@ -48758,24 +52064,24 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * The content of the component, normally `TableRow`.
          */
-        children: import_prop_types67.default.node,
+        children: import_prop_types70.default.node,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types67.default.object,
+        classes: import_prop_types70.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types67.default.string,
+        className: import_prop_types70.default.string,
         /**
          * The component used for the root node.
          * Either a string to use a HTML element or a component.
          */
-        component: import_prop_types67.default.elementType,
+        component: import_prop_types70.default.elementType,
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types67.default.oneOfType([import_prop_types67.default.arrayOf(import_prop_types67.default.oneOfType([import_prop_types67.default.func, import_prop_types67.default.object, import_prop_types67.default.bool])), import_prop_types67.default.func, import_prop_types67.default.object])
+        sx: import_prop_types70.default.oneOfType([import_prop_types70.default.arrayOf(import_prop_types70.default.oneOfType([import_prop_types70.default.func, import_prop_types70.default.object, import_prop_types70.default.bool])), import_prop_types70.default.func, import_prop_types70.default.object])
       } : void 0;
       TableBody_default = TableBody;
     }
@@ -48804,12 +52110,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/TableCell/TableCell.js
-  var React100, import_prop_types68, import_jsx_runtime66, useUtilityClasses36, TableCellRoot, TableCell, TableCell_default;
+  var React103, import_prop_types71, import_jsx_runtime69, useUtilityClasses38, TableCellRoot, TableCell, TableCell_default;
   var init_TableCell = __esm({
     "node_modules/@mui/material/esm/TableCell/TableCell.js"() {
       "use client";
-      React100 = __toESM(require_react(), 1);
-      import_prop_types68 = __toESM(require_prop_types(), 1);
+      React103 = __toESM(require_react(), 1);
+      import_prop_types71 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_composeClasses2();
       init_colorManipulator2();
@@ -48820,8 +52126,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_memoTheme2();
       init_DefaultPropsProvider4();
       init_tableCellClasses();
-      import_jsx_runtime66 = __toESM(require_jsx_runtime(), 1);
-      useUtilityClasses36 = (ownerState) => {
+      import_jsx_runtime69 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses38 = (ownerState) => {
         const {
           classes,
           variant,
@@ -48953,7 +52259,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
         }]
       })));
-      TableCell = /* @__PURE__ */ React100.forwardRef(function TableCell2(inProps, ref) {
+      TableCell = /* @__PURE__ */ React103.forwardRef(function TableCell2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiTableCell"
@@ -48969,8 +52275,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           variant: variantProp,
           ...other
         } = props;
-        const table2 = React100.useContext(TableContext_default);
-        const tablelvl23 = React100.useContext(Tablelvl2Context_default);
+        const table2 = React103.useContext(TableContext_default);
+        const tablelvl23 = React103.useContext(Tablelvl2Context_default);
         const isHeadCell = tablelvl23 && tablelvl23.variant === "head";
         let component;
         if (componentProp) {
@@ -48995,12 +52301,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           stickyHeader: variant === "head" && table2 && table2.stickyHeader,
           variant
         };
-        const classes = useUtilityClasses36(ownerState);
+        const classes = useUtilityClasses38(ownerState);
         let ariaSort = null;
         if (sortDirection) {
           ariaSort = sortDirection === "asc" ? "ascending" : "descending";
         }
-        return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(TableCellRoot, {
+        return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(TableCellRoot, {
           as: component,
           ref,
           className: clsx_default(classes.root, className),
@@ -49022,51 +52328,51 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * you to add them up quickly in your head without having to worry about decimals.
          * @default 'inherit'
          */
-        align: import_prop_types68.default.oneOf(["center", "inherit", "justify", "left", "right"]),
+        align: import_prop_types71.default.oneOf(["center", "inherit", "justify", "left", "right"]),
         /**
          * The content of the component.
          */
-        children: import_prop_types68.default.node,
+        children: import_prop_types71.default.node,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types68.default.object,
+        classes: import_prop_types71.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types68.default.string,
+        className: import_prop_types71.default.string,
         /**
          * The component used for the root node.
          * Either a string to use a HTML element or a component.
          */
-        component: import_prop_types68.default.elementType,
+        component: import_prop_types71.default.elementType,
         /**
          * Sets the padding applied to the cell.
          * The prop defaults to the value (`'default'`) inherited from the parent Table component.
          */
-        padding: import_prop_types68.default.oneOf(["checkbox", "none", "normal"]),
+        padding: import_prop_types71.default.oneOf(["checkbox", "none", "normal"]),
         /**
          * Set scope attribute.
          */
-        scope: import_prop_types68.default.string,
+        scope: import_prop_types71.default.string,
         /**
          * Specify the size of the cell.
          * The prop defaults to the value (`'medium'`) inherited from the parent Table component.
          */
-        size: import_prop_types68.default.oneOfType([import_prop_types68.default.oneOf(["medium", "small"]), import_prop_types68.default.string]),
+        size: import_prop_types71.default.oneOfType([import_prop_types71.default.oneOf(["medium", "small"]), import_prop_types71.default.string]),
         /**
          * Set aria-sort direction.
          */
-        sortDirection: import_prop_types68.default.oneOf(["asc", "desc", false]),
+        sortDirection: import_prop_types71.default.oneOf(["asc", "desc", false]),
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types68.default.oneOfType([import_prop_types68.default.arrayOf(import_prop_types68.default.oneOfType([import_prop_types68.default.func, import_prop_types68.default.object, import_prop_types68.default.bool])), import_prop_types68.default.func, import_prop_types68.default.object]),
+        sx: import_prop_types71.default.oneOfType([import_prop_types71.default.arrayOf(import_prop_types71.default.oneOfType([import_prop_types71.default.func, import_prop_types71.default.object, import_prop_types71.default.bool])), import_prop_types71.default.func, import_prop_types71.default.object]),
         /**
          * Specify the cell type.
          * The prop defaults to the value inherited from the parent TableHead, TableBody, or TableFooter components.
          */
-        variant: import_prop_types68.default.oneOfType([import_prop_types68.default.oneOf(["body", "footer", "head"]), import_prop_types68.default.string])
+        variant: import_prop_types71.default.oneOfType([import_prop_types71.default.oneOf(["body", "footer", "head"]), import_prop_types71.default.string])
       } : void 0;
       TableCell_default = TableCell;
     }
@@ -49094,19 +52400,19 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/TableContainer/TableContainer.js
-  var React101, import_prop_types69, import_jsx_runtime67, useUtilityClasses37, TableContainerRoot, TableContainer, TableContainer_default;
+  var React104, import_prop_types72, import_jsx_runtime70, useUtilityClasses39, TableContainerRoot, TableContainer, TableContainer_default;
   var init_TableContainer = __esm({
     "node_modules/@mui/material/esm/TableContainer/TableContainer.js"() {
       "use client";
-      React101 = __toESM(require_react(), 1);
-      import_prop_types69 = __toESM(require_prop_types(), 1);
+      React104 = __toESM(require_react(), 1);
+      import_prop_types72 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_composeClasses2();
       init_zero_styled();
       init_DefaultPropsProvider4();
       init_tableContainerClasses();
-      import_jsx_runtime67 = __toESM(require_jsx_runtime(), 1);
-      useUtilityClasses37 = (ownerState) => {
+      import_jsx_runtime70 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses39 = (ownerState) => {
         const {
           classes
         } = ownerState;
@@ -49122,7 +52428,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         width: "100%",
         overflowX: "auto"
       });
-      TableContainer = /* @__PURE__ */ React101.forwardRef(function TableContainer2(inProps, ref) {
+      TableContainer = /* @__PURE__ */ React104.forwardRef(function TableContainer2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiTableContainer"
@@ -49136,8 +52442,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           ...props,
           component
         };
-        const classes = useUtilityClasses37(ownerState);
-        return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(TableContainerRoot, {
+        const classes = useUtilityClasses39(ownerState);
+        return /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(TableContainerRoot, {
           ref,
           as: component,
           className: clsx_default(classes.root, className),
@@ -49153,24 +52459,24 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * The content of the component, normally `Table`.
          */
-        children: import_prop_types69.default.node,
+        children: import_prop_types72.default.node,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types69.default.object,
+        classes: import_prop_types72.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types69.default.string,
+        className: import_prop_types72.default.string,
         /**
          * The component used for the root node.
          * Either a string to use a HTML element or a component.
          */
-        component: import_prop_types69.default.elementType,
+        component: import_prop_types72.default.elementType,
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types69.default.oneOfType([import_prop_types69.default.arrayOf(import_prop_types69.default.oneOfType([import_prop_types69.default.func, import_prop_types69.default.object, import_prop_types69.default.bool])), import_prop_types69.default.func, import_prop_types69.default.object])
+        sx: import_prop_types72.default.oneOfType([import_prop_types72.default.arrayOf(import_prop_types72.default.oneOfType([import_prop_types72.default.func, import_prop_types72.default.object, import_prop_types72.default.bool])), import_prop_types72.default.func, import_prop_types72.default.object])
       } : void 0;
       TableContainer_default = TableContainer;
     }
@@ -49214,20 +52520,20 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/TableHead/TableHead.js
-  var React102, import_prop_types70, import_jsx_runtime68, useUtilityClasses38, TableHeadRoot, tablelvl22, defaultComponent3, TableHead, TableHead_default;
+  var React105, import_prop_types73, import_jsx_runtime71, useUtilityClasses40, TableHeadRoot, tablelvl22, defaultComponent3, TableHead, TableHead_default;
   var init_TableHead = __esm({
     "node_modules/@mui/material/esm/TableHead/TableHead.js"() {
       "use client";
-      React102 = __toESM(require_react(), 1);
-      import_prop_types70 = __toESM(require_prop_types(), 1);
+      React105 = __toESM(require_react(), 1);
+      import_prop_types73 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_composeClasses2();
       init_Tablelvl2Context();
       init_zero_styled();
       init_DefaultPropsProvider4();
       init_tableHeadClasses();
-      import_jsx_runtime68 = __toESM(require_jsx_runtime(), 1);
-      useUtilityClasses38 = (ownerState) => {
+      import_jsx_runtime71 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses40 = (ownerState) => {
         const {
           classes
         } = ownerState;
@@ -49246,7 +52552,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         variant: "head"
       };
       defaultComponent3 = "thead";
-      TableHead = /* @__PURE__ */ React102.forwardRef(function TableHead2(inProps, ref) {
+      TableHead = /* @__PURE__ */ React105.forwardRef(function TableHead2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiTableHead"
@@ -49260,10 +52566,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           ...props,
           component
         };
-        const classes = useUtilityClasses38(ownerState);
-        return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(Tablelvl2Context_default.Provider, {
+        const classes = useUtilityClasses40(ownerState);
+        return /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(Tablelvl2Context_default.Provider, {
           value: tablelvl22,
-          children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(TableHeadRoot, {
+          children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(TableHeadRoot, {
             as: component,
             className: clsx_default(classes.root, className),
             ref,
@@ -49281,24 +52587,24 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * The content of the component, normally `TableRow`.
          */
-        children: import_prop_types70.default.node,
+        children: import_prop_types73.default.node,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types70.default.object,
+        classes: import_prop_types73.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types70.default.string,
+        className: import_prop_types73.default.string,
         /**
          * The component used for the root node.
          * Either a string to use a HTML element or a component.
          */
-        component: import_prop_types70.default.elementType,
+        component: import_prop_types73.default.elementType,
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types70.default.oneOfType([import_prop_types70.default.arrayOf(import_prop_types70.default.oneOfType([import_prop_types70.default.func, import_prop_types70.default.object, import_prop_types70.default.bool])), import_prop_types70.default.func, import_prop_types70.default.object])
+        sx: import_prop_types73.default.oneOfType([import_prop_types73.default.arrayOf(import_prop_types73.default.oneOfType([import_prop_types73.default.func, import_prop_types73.default.object, import_prop_types73.default.bool])), import_prop_types73.default.func, import_prop_types73.default.object])
       } : void 0;
       TableHead_default = TableHead;
     }
@@ -49365,12 +52671,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/TableRow/TableRow.js
-  var React103, import_prop_types71, import_jsx_runtime69, useUtilityClasses39, TableRowRoot, defaultComponent4, TableRow, TableRow_default;
+  var React106, import_prop_types74, import_jsx_runtime72, useUtilityClasses41, TableRowRoot, defaultComponent4, TableRow, TableRow_default;
   var init_TableRow = __esm({
     "node_modules/@mui/material/esm/TableRow/TableRow.js"() {
       "use client";
-      React103 = __toESM(require_react(), 1);
-      import_prop_types71 = __toESM(require_prop_types(), 1);
+      React106 = __toESM(require_react(), 1);
+      import_prop_types74 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_composeClasses2();
       init_colorManipulator2();
@@ -49379,8 +52685,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_memoTheme2();
       init_DefaultPropsProvider4();
       init_tableRowClasses();
-      import_jsx_runtime69 = __toESM(require_jsx_runtime(), 1);
-      useUtilityClasses39 = (ownerState) => {
+      import_jsx_runtime72 = __toESM(require_jsx_runtime(), 1);
+      useUtilityClasses41 = (ownerState) => {
         const {
           classes,
           selected,
@@ -49421,7 +52727,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         }
       })));
       defaultComponent4 = "tr";
-      TableRow = /* @__PURE__ */ React103.forwardRef(function TableRow2(inProps, ref) {
+      TableRow = /* @__PURE__ */ React106.forwardRef(function TableRow2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiTableRow"
@@ -49433,7 +52739,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           selected = false,
           ...other
         } = props;
-        const tablelvl23 = React103.useContext(Tablelvl2Context_default);
+        const tablelvl23 = React106.useContext(Tablelvl2Context_default);
         const ownerState = {
           ...props,
           component,
@@ -49442,8 +52748,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           head: tablelvl23 && tablelvl23.variant === "head",
           footer: tablelvl23 && tablelvl23.variant === "footer"
         };
-        const classes = useUtilityClasses39(ownerState);
-        return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(TableRowRoot, {
+        const classes = useUtilityClasses41(ownerState);
+        return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(TableRowRoot, {
           as: component,
           ref,
           className: clsx_default(classes.root, className),
@@ -49460,34 +52766,34 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * Should be valid `<tr>` children such as `TableCell`.
          */
-        children: import_prop_types71.default.node,
+        children: import_prop_types74.default.node,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types71.default.object,
+        classes: import_prop_types74.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types71.default.string,
+        className: import_prop_types74.default.string,
         /**
          * The component used for the root node.
          * Either a string to use a HTML element or a component.
          */
-        component: import_prop_types71.default.elementType,
+        component: import_prop_types74.default.elementType,
         /**
          * If `true`, the table row will shade on hover.
          * @default false
          */
-        hover: import_prop_types71.default.bool,
+        hover: import_prop_types74.default.bool,
         /**
          * If `true`, the table row will have the selected shading.
          * @default false
          */
-        selected: import_prop_types71.default.bool,
+        selected: import_prop_types74.default.bool,
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types71.default.oneOfType([import_prop_types71.default.arrayOf(import_prop_types71.default.oneOfType([import_prop_types71.default.func, import_prop_types71.default.object, import_prop_types71.default.bool])), import_prop_types71.default.func, import_prop_types71.default.object])
+        sx: import_prop_types74.default.oneOfType([import_prop_types74.default.arrayOf(import_prop_types74.default.oneOfType([import_prop_types74.default.func, import_prop_types74.default.object, import_prop_types74.default.bool])), import_prop_types74.default.func, import_prop_types74.default.object])
       } : void 0;
       TableRow_default = TableRow;
     }
@@ -49563,12 +52869,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/esm/TextField/TextField.js
-  var React104, import_prop_types72, import_jsx_runtime70, variantComponent, useUtilityClasses40, TextFieldRoot, TextField, TextField_default;
+  var React107, import_prop_types75, import_jsx_runtime73, variantComponent, useUtilityClasses42, TextFieldRoot, TextField, TextField_default;
   var init_TextField = __esm({
     "node_modules/@mui/material/esm/TextField/TextField.js"() {
       "use client";
-      React104 = __toESM(require_react(), 1);
-      import_prop_types72 = __toESM(require_prop_types(), 1);
+      React107 = __toESM(require_react(), 1);
+      import_prop_types75 = __toESM(require_prop_types(), 1);
       init_clsx();
       init_composeClasses2();
       init_useId2();
@@ -49584,13 +52890,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_Select2();
       init_textFieldClasses();
       init_useSlot();
-      import_jsx_runtime70 = __toESM(require_jsx_runtime(), 1);
+      import_jsx_runtime73 = __toESM(require_jsx_runtime(), 1);
       variantComponent = {
         standard: Input_default,
         filled: FilledInput_default,
         outlined: OutlinedInput_default
       };
-      useUtilityClasses40 = (ownerState) => {
+      useUtilityClasses42 = (ownerState) => {
         const {
           classes
         } = ownerState;
@@ -49603,7 +52909,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         name: "MuiTextField",
         slot: "Root"
       })({});
-      TextField = /* @__PURE__ */ React104.forwardRef(function TextField2(inProps, ref) {
+      TextField = /* @__PURE__ */ React107.forwardRef(function TextField2(inProps, ref) {
         const props = useDefaultProps2({
           props: inProps,
           name: "MuiTextField"
@@ -49657,7 +52963,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           select,
           variant
         };
-        const classes = useUtilityClasses40(ownerState);
+        const classes = useUtilityClasses42(ownerState);
         if (true) {
           if (select && !children) {
             console.error("MUI: `children` must be passed when using the `TextField` component with `select`.");
@@ -49737,7 +53043,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           externalForwardedProps,
           ownerState
         });
-        const InputElement = /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(InputSlot, {
+        const InputElement = /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(InputSlot, {
           "aria-describedby": helperTextId,
           autoComplete,
           autoFocus,
@@ -49762,14 +53068,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           },
           ...inputProps
         });
-        return /* @__PURE__ */ (0, import_jsx_runtime70.jsxs)(RootSlot, {
+        return /* @__PURE__ */ (0, import_jsx_runtime73.jsxs)(RootSlot, {
           ...rootProps,
-          children: [label != null && label !== "" && /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(InputLabelSlot, {
+          children: [label != null && label !== "" && /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(InputLabelSlot, {
             htmlFor: id,
             id: inputLabelId,
             ...inputLabelProps,
             children: label
-          }), select ? /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(SelectSlot, {
+          }), select ? /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(SelectSlot, {
             "aria-describedby": helperTextId,
             id,
             labelId: inputLabelId,
@@ -49777,7 +53083,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             input: InputElement,
             ...selectProps,
             children
-          }) : InputElement, helperText && /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(FormHelperTextSlot, {
+          }) : InputElement, helperText && /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(FormHelperTextSlot, {
             id: helperTextId,
             ...formHelperTextProps,
             children: helperText
@@ -49794,75 +53100,75 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * The name can be confusing, as it's more like an autofill.
          * You can learn more about it [following the specification](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill).
          */
-        autoComplete: import_prop_types72.default.string,
+        autoComplete: import_prop_types75.default.string,
         /**
          * If `true`, the `input` element is focused during the first mount.
          * @default false
          */
-        autoFocus: import_prop_types72.default.bool,
+        autoFocus: import_prop_types75.default.bool,
         /**
          * @ignore
          */
-        children: import_prop_types72.default.node,
+        children: import_prop_types75.default.node,
         /**
          * Override or extend the styles applied to the component.
          */
-        classes: import_prop_types72.default.object,
+        classes: import_prop_types75.default.object,
         /**
          * @ignore
          */
-        className: import_prop_types72.default.string,
+        className: import_prop_types75.default.string,
         /**
          * The color of the component.
          * It supports both default and custom theme colors, which can be added as shown in the
          * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
          * @default 'primary'
          */
-        color: import_prop_types72.default.oneOfType([import_prop_types72.default.oneOf(["primary", "secondary", "error", "info", "success", "warning"]), import_prop_types72.default.string]),
+        color: import_prop_types75.default.oneOfType([import_prop_types75.default.oneOf(["primary", "secondary", "error", "info", "success", "warning"]), import_prop_types75.default.string]),
         /**
          * The default value. Use when the component is not controlled.
          */
-        defaultValue: import_prop_types72.default.any,
+        defaultValue: import_prop_types75.default.any,
         /**
          * If `true`, the component is disabled.
          * @default false
          */
-        disabled: import_prop_types72.default.bool,
+        disabled: import_prop_types75.default.bool,
         /**
          * If `true`, the label is displayed in an error state.
          * @default false
          */
-        error: import_prop_types72.default.bool,
+        error: import_prop_types75.default.bool,
         /**
          * Props applied to the [`FormHelperText`](https://mui.com/material-ui/api/form-helper-text/) element.
          * @deprecated Use `slotProps.formHelperText` instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
          */
-        FormHelperTextProps: import_prop_types72.default.object,
+        FormHelperTextProps: import_prop_types75.default.object,
         /**
          * If `true`, the input will take up the full width of its container.
          * @default false
          */
-        fullWidth: import_prop_types72.default.bool,
+        fullWidth: import_prop_types75.default.bool,
         /**
          * The helper text content.
          */
-        helperText: import_prop_types72.default.node,
+        helperText: import_prop_types75.default.node,
         /**
          * The id of the `input` element.
          * Use this prop to make `label` and `helperText` accessible for screen readers.
          */
-        id: import_prop_types72.default.string,
+        id: import_prop_types75.default.string,
         /**
          * Props applied to the [`InputLabel`](https://mui.com/material-ui/api/input-label/) element.
          * Pointer events like `onClick` are enabled if and only if `shrink` is `true`.
          * @deprecated Use `slotProps.inputLabel` instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
          */
-        InputLabelProps: import_prop_types72.default.object,
+        InputLabelProps: import_prop_types75.default.object,
         /**
          * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#attributes) applied to the `input` element.
          * @deprecated Use `slotProps.htmlInput` instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
          */
-        inputProps: import_prop_types72.default.object,
+        inputProps: import_prop_types75.default.object,
         /**
          * Props applied to the Input element.
          * It will be a [`FilledInput`](https://mui.com/material-ui/api/filled-input/),
@@ -49870,7 +53176,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
          * component depending on the `variant` prop value.
          * @deprecated Use `slotProps.input` instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
          */
-        InputProps: import_prop_types72.default.object,
+        InputProps: import_prop_types75.default.object,
         /**
          * Pass a ref to the `input` element.
          */
@@ -49878,113 +53184,113 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
          * The label content.
          */
-        label: import_prop_types72.default.node,
+        label: import_prop_types75.default.node,
         /**
          * If `dense` or `normal`, will adjust vertical spacing of this and contained components.
          * @default 'none'
          */
-        margin: import_prop_types72.default.oneOf(["dense", "none", "normal"]),
+        margin: import_prop_types75.default.oneOf(["dense", "none", "normal"]),
         /**
          * Maximum number of rows to display when multiline option is set to true.
          */
-        maxRows: import_prop_types72.default.oneOfType([import_prop_types72.default.number, import_prop_types72.default.string]),
+        maxRows: import_prop_types75.default.oneOfType([import_prop_types75.default.number, import_prop_types75.default.string]),
         /**
          * Minimum number of rows to display when multiline option is set to true.
          */
-        minRows: import_prop_types72.default.oneOfType([import_prop_types72.default.number, import_prop_types72.default.string]),
+        minRows: import_prop_types75.default.oneOfType([import_prop_types75.default.number, import_prop_types75.default.string]),
         /**
          * If `true`, a `textarea` element is rendered instead of an input.
          * @default false
          */
-        multiline: import_prop_types72.default.bool,
+        multiline: import_prop_types75.default.bool,
         /**
          * Name attribute of the `input` element.
          */
-        name: import_prop_types72.default.string,
+        name: import_prop_types75.default.string,
         /**
          * @ignore
          */
-        onBlur: import_prop_types72.default.func,
+        onBlur: import_prop_types75.default.func,
         /**
          * Callback fired when the value is changed.
          *
          * @param {object} event The event source of the callback.
          * You can pull out the new value by accessing `event.target.value` (string).
          */
-        onChange: import_prop_types72.default.func,
+        onChange: import_prop_types75.default.func,
         /**
          * @ignore
          */
-        onFocus: import_prop_types72.default.func,
+        onFocus: import_prop_types75.default.func,
         /**
          * The short hint displayed in the `input` before the user enters a value.
          */
-        placeholder: import_prop_types72.default.string,
+        placeholder: import_prop_types75.default.string,
         /**
          * If `true`, the label is displayed as required and the `input` element is required.
          * @default false
          */
-        required: import_prop_types72.default.bool,
+        required: import_prop_types75.default.bool,
         /**
          * Number of rows to display when multiline option is set to true.
          */
-        rows: import_prop_types72.default.oneOfType([import_prop_types72.default.number, import_prop_types72.default.string]),
+        rows: import_prop_types75.default.oneOfType([import_prop_types75.default.number, import_prop_types75.default.string]),
         /**
          * Render a [`Select`](https://mui.com/material-ui/api/select/) element while passing the Input element to `Select` as `input` parameter.
          * If this option is set you must pass the options of the select as children.
          * @default false
          */
-        select: import_prop_types72.default.bool,
+        select: import_prop_types75.default.bool,
         /**
          * Props applied to the [`Select`](https://mui.com/material-ui/api/select/) element.
          * @deprecated Use `slotProps.select` instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
          */
-        SelectProps: import_prop_types72.default.object,
+        SelectProps: import_prop_types75.default.object,
         /**
          * The size of the component.
          * @default 'medium'
          */
-        size: import_prop_types72.default.oneOfType([import_prop_types72.default.oneOf(["medium", "small"]), import_prop_types72.default.string]),
+        size: import_prop_types75.default.oneOfType([import_prop_types75.default.oneOf(["medium", "small"]), import_prop_types75.default.string]),
         /**
          * The props used for each slot inside.
          * @default {}
          */
-        slotProps: import_prop_types72.default.shape({
-          formHelperText: import_prop_types72.default.oneOfType([import_prop_types72.default.func, import_prop_types72.default.object]),
-          htmlInput: import_prop_types72.default.oneOfType([import_prop_types72.default.func, import_prop_types72.default.object]),
-          input: import_prop_types72.default.oneOfType([import_prop_types72.default.func, import_prop_types72.default.object]),
-          inputLabel: import_prop_types72.default.oneOfType([import_prop_types72.default.func, import_prop_types72.default.object]),
-          select: import_prop_types72.default.oneOfType([import_prop_types72.default.func, import_prop_types72.default.object])
+        slotProps: import_prop_types75.default.shape({
+          formHelperText: import_prop_types75.default.oneOfType([import_prop_types75.default.func, import_prop_types75.default.object]),
+          htmlInput: import_prop_types75.default.oneOfType([import_prop_types75.default.func, import_prop_types75.default.object]),
+          input: import_prop_types75.default.oneOfType([import_prop_types75.default.func, import_prop_types75.default.object]),
+          inputLabel: import_prop_types75.default.oneOfType([import_prop_types75.default.func, import_prop_types75.default.object]),
+          select: import_prop_types75.default.oneOfType([import_prop_types75.default.func, import_prop_types75.default.object])
         }),
         /**
          * The components used for each slot inside.
          * @default {}
          */
-        slots: import_prop_types72.default.shape({
-          formHelperText: import_prop_types72.default.elementType,
-          htmlInput: import_prop_types72.default.elementType,
-          input: import_prop_types72.default.elementType,
-          inputLabel: import_prop_types72.default.elementType,
-          root: import_prop_types72.default.elementType,
-          select: import_prop_types72.default.elementType
+        slots: import_prop_types75.default.shape({
+          formHelperText: import_prop_types75.default.elementType,
+          htmlInput: import_prop_types75.default.elementType,
+          input: import_prop_types75.default.elementType,
+          inputLabel: import_prop_types75.default.elementType,
+          root: import_prop_types75.default.elementType,
+          select: import_prop_types75.default.elementType
         }),
         /**
          * The system prop that allows defining system overrides as well as additional CSS styles.
          */
-        sx: import_prop_types72.default.oneOfType([import_prop_types72.default.arrayOf(import_prop_types72.default.oneOfType([import_prop_types72.default.func, import_prop_types72.default.object, import_prop_types72.default.bool])), import_prop_types72.default.func, import_prop_types72.default.object]),
+        sx: import_prop_types75.default.oneOfType([import_prop_types75.default.arrayOf(import_prop_types75.default.oneOfType([import_prop_types75.default.func, import_prop_types75.default.object, import_prop_types75.default.bool])), import_prop_types75.default.func, import_prop_types75.default.object]),
         /**
          * Type of the `input` element. It should be [a valid HTML5 input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#input_types).
          */
-        type: import_prop_types72.default.string,
+        type: import_prop_types75.default.string,
         /**
          * The value of the `input` element, required for a controlled component.
          */
-        value: import_prop_types72.default.any,
+        value: import_prop_types75.default.any,
         /**
          * The variant to use.
          * @default 'outlined'
          */
-        variant: import_prop_types72.default.oneOf(["filled", "outlined", "standard"])
+        variant: import_prop_types75.default.oneOf(["filled", "outlined", "standard"])
       } : void 0;
       TextField_default = TextField;
     }
@@ -50128,6 +53434,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_Grow2();
       init_Icon();
       init_IconButton2();
+      init_IconButton2();
       init_ImageList();
       init_ImageListItem();
       init_ImageListItemBar();
@@ -50159,7 +53466,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_Paper2();
       init_Paper2();
       init_Popover2();
-      init_Popper();
+      init_Popper2();
       init_Portal2();
       init_Radio();
       init_RadioGroup();
@@ -50211,7 +53518,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_ToggleButton();
       init_ToggleButtonGroup();
       init_Toolbar();
-      init_Tooltip();
+      init_Tooltip2();
+      init_Tooltip2();
       init_Typography2();
       init_Typography2();
       init_useMediaQuery3();
@@ -50225,54 +53533,54 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/icons-material/esm/StickyNote2.js
-  var import_jsx_runtime71, StickyNote2_default;
+  var import_jsx_runtime74, StickyNote2_default;
   var init_StickyNote2 = __esm({
     "node_modules/@mui/icons-material/esm/StickyNote2.js"() {
       "use client";
       init_createSvgIcon2();
-      import_jsx_runtime71 = __toESM(require_jsx_runtime(), 1);
-      StickyNote2_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime71.jsx)("path", {
+      import_jsx_runtime74 = __toESM(require_jsx_runtime(), 1);
+      StickyNote2_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime74.jsx)("path", {
         d: "M19 3H4.99C3.89 3 3 3.9 3 5l.01 14c0 1.1.89 2 1.99 2h10l6-6V5c0-1.1-.9-2-2-2M7 8h10v2H7zm5 6H7v-2h5zm2 5.5V14h5.5z"
       }), "StickyNote2");
     }
   });
 
   // node_modules/@mui/icons-material/esm/Timelapse.js
-  var import_jsx_runtime72, Timelapse_default;
+  var import_jsx_runtime75, Timelapse_default;
   var init_Timelapse = __esm({
     "node_modules/@mui/icons-material/esm/Timelapse.js"() {
       "use client";
       init_createSvgIcon2();
-      import_jsx_runtime72 = __toESM(require_jsx_runtime(), 1);
-      Timelapse_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime72.jsx)("path", {
+      import_jsx_runtime75 = __toESM(require_jsx_runtime(), 1);
+      Timelapse_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime75.jsx)("path", {
         d: "M16.24 7.76C15.07 6.59 13.54 6 12 6v6l-4.24 4.24c2.34 2.34 6.14 2.34 8.49 0 2.34-2.34 2.34-6.14-.01-8.48M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8"
       }), "Timelapse");
     }
   });
 
   // node_modules/@mui/icons-material/esm/QueryBuilder.js
-  var import_jsx_runtime73, QueryBuilder_default;
+  var import_jsx_runtime76, QueryBuilder_default;
   var init_QueryBuilder = __esm({
     "node_modules/@mui/icons-material/esm/QueryBuilder.js"() {
       "use client";
       init_createSvgIcon2();
-      import_jsx_runtime73 = __toESM(require_jsx_runtime(), 1);
-      QueryBuilder_default = createSvgIcon([/* @__PURE__ */ (0, import_jsx_runtime73.jsx)("path", {
+      import_jsx_runtime76 = __toESM(require_jsx_runtime(), 1);
+      QueryBuilder_default = createSvgIcon([/* @__PURE__ */ (0, import_jsx_runtime76.jsx)("path", {
         d: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2M12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8"
-      }, "0"), /* @__PURE__ */ (0, import_jsx_runtime73.jsx)("path", {
+      }, "0"), /* @__PURE__ */ (0, import_jsx_runtime76.jsx)("path", {
         d: "M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"
       }, "1")], "QueryBuilder");
     }
   });
 
   // node_modules/@mui/icons-material/esm/CalendarMonth.js
-  var import_jsx_runtime74, CalendarMonth_default;
+  var import_jsx_runtime77, CalendarMonth_default;
   var init_CalendarMonth = __esm({
     "node_modules/@mui/icons-material/esm/CalendarMonth.js"() {
       "use client";
       init_createSvgIcon2();
-      import_jsx_runtime74 = __toESM(require_jsx_runtime(), 1);
-      CalendarMonth_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime74.jsx)("path", {
+      import_jsx_runtime77 = __toESM(require_jsx_runtime(), 1);
+      CalendarMonth_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime77.jsx)("path", {
         d: "M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 16H5V10h14zM9 14H7v-2h2zm4 0h-2v-2h2zm4 0h-2v-2h2zm-8 4H7v-2h2zm4 0h-2v-2h2zm4 0h-2v-2h2z"
       }), "CalendarMonth");
     }
@@ -50397,43 +53705,56 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/icons-material/esm/Person.js
-  var import_jsx_runtime75, Person_default;
+  var import_jsx_runtime78, Person_default;
   var init_Person = __esm({
     "node_modules/@mui/icons-material/esm/Person.js"() {
       "use client";
       init_createSvgIcon2();
-      import_jsx_runtime75 = __toESM(require_jsx_runtime(), 1);
-      Person_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime75.jsx)("path", {
+      import_jsx_runtime78 = __toESM(require_jsx_runtime(), 1);
+      Person_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime78.jsx)("path", {
         d: "M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4m0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4"
       }), "Person");
     }
   });
 
   // node_modules/@mui/icons-material/esm/AccessTime.js
-  var import_jsx_runtime76, AccessTime_default;
+  var import_jsx_runtime79, AccessTime_default;
   var init_AccessTime = __esm({
     "node_modules/@mui/icons-material/esm/AccessTime.js"() {
       "use client";
       init_createSvgIcon2();
-      import_jsx_runtime76 = __toESM(require_jsx_runtime(), 1);
-      AccessTime_default = createSvgIcon([/* @__PURE__ */ (0, import_jsx_runtime76.jsx)("path", {
+      import_jsx_runtime79 = __toESM(require_jsx_runtime(), 1);
+      AccessTime_default = createSvgIcon([/* @__PURE__ */ (0, import_jsx_runtime79.jsx)("path", {
         d: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2M12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8"
-      }, "0"), /* @__PURE__ */ (0, import_jsx_runtime76.jsx)("path", {
+      }, "0"), /* @__PURE__ */ (0, import_jsx_runtime79.jsx)("path", {
         d: "M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"
       }, "1")], "AccessTime");
     }
   });
 
   // node_modules/@mui/icons-material/esm/Search.js
-  var import_jsx_runtime77, Search_default;
+  var import_jsx_runtime80, Search_default;
   var init_Search = __esm({
     "node_modules/@mui/icons-material/esm/Search.js"() {
       "use client";
       init_createSvgIcon2();
-      import_jsx_runtime77 = __toESM(require_jsx_runtime(), 1);
-      Search_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime77.jsx)("path", {
+      import_jsx_runtime80 = __toESM(require_jsx_runtime(), 1);
+      Search_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime80.jsx)("path", {
         d: "M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"
       }), "Search");
+    }
+  });
+
+  // node_modules/@mui/icons-material/esm/OpenInNew.js
+  var import_jsx_runtime81, OpenInNew_default;
+  var init_OpenInNew = __esm({
+    "node_modules/@mui/icons-material/esm/OpenInNew.js"() {
+      "use client";
+      init_createSvgIcon2();
+      import_jsx_runtime81 = __toESM(require_jsx_runtime(), 1);
+      OpenInNew_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime81.jsx)("path", {
+        d: "M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3z"
+      }), "OpenInNew");
     }
   });
 
@@ -50509,7 +53830,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             size: "small"
           }
         ))
-      ), /* @__PURE__ */ import_react11.default.createElement(AccordionDetails_default, null, /* @__PURE__ */ import_react11.default.createElement(Stack_default, { spacing: 3 }, /* @__PURE__ */ import_react11.default.createElement(Box_default, null, /* @__PURE__ */ import_react11.default.createElement(Typography_default, { variant: "subtitle1", gutterBottom: true, sx: { fontWeight: "bold" } }, "Daily Work History"), /* @__PURE__ */ import_react11.default.createElement(TableContainer_default, { component: Paper_default, variant: "outlined", sx: { maxHeight: 300 } }, /* @__PURE__ */ import_react11.default.createElement(Table_default, { size: "small", stickyHeader: true }, /* @__PURE__ */ import_react11.default.createElement(TableHead_default, null, /* @__PURE__ */ import_react11.default.createElement(TableRow_default, null, /* @__PURE__ */ import_react11.default.createElement(TableCell_default, null, "Date"), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, { align: "right" }, "Hours Worked"))), /* @__PURE__ */ import_react11.default.createElement(TableBody_default, null, user.stats.daily_history.length > 0 ? user.stats.daily_history.map((day, idx) => /* @__PURE__ */ import_react11.default.createElement(TableRow_default, { key: idx }, /* @__PURE__ */ import_react11.default.createElement(TableCell_default, null, day.date), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, { align: "right" }, day.hours, " h"))) : /* @__PURE__ */ import_react11.default.createElement(TableRow_default, null, /* @__PURE__ */ import_react11.default.createElement(TableCell_default, { colSpan: 2, align: "center" }, "No activity recorded")))))), /* @__PURE__ */ import_react11.default.createElement(Divider_default, null), /* @__PURE__ */ import_react11.default.createElement(Box_default, null, /* @__PURE__ */ import_react11.default.createElement(Typography_default, { variant: "subtitle1", gutterBottom: true, sx: { fontWeight: "bold" } }, "Assigned Tasks"), /* @__PURE__ */ import_react11.default.createElement(TableContainer_default, { component: Paper_default, variant: "outlined", sx: { maxHeight: 300 } }, /* @__PURE__ */ import_react11.default.createElement(Table_default, { size: "small", stickyHeader: true }, /* @__PURE__ */ import_react11.default.createElement(TableHead_default, null, /* @__PURE__ */ import_react11.default.createElement(TableRow_default, null, /* @__PURE__ */ import_react11.default.createElement(TableCell_default, null, "Task Name"), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, null, "Created At"), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, null, "Finished At"), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, null, "Status"), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, { align: "right" }, "Time Dedicated"))), /* @__PURE__ */ import_react11.default.createElement(TableBody_default, null, user.tasks.length > 0 ? user.tasks.map((task2) => /* @__PURE__ */ import_react11.default.createElement(TableRow_default, { key: task2.id }, /* @__PURE__ */ import_react11.default.createElement(TableCell_default, null, task2.name), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, null, formatDate(task2.created_at)), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, null, formatDate(task2.end_time)), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, null, /* @__PURE__ */ import_react11.default.createElement(
+      ), /* @__PURE__ */ import_react11.default.createElement(AccordionDetails_default, null, /* @__PURE__ */ import_react11.default.createElement(Stack_default, { spacing: 3 }, /* @__PURE__ */ import_react11.default.createElement(Box_default, null, /* @__PURE__ */ import_react11.default.createElement(Typography_default, { variant: "subtitle1", gutterBottom: true, sx: { fontWeight: "bold" } }, "Daily Work History"), /* @__PURE__ */ import_react11.default.createElement(TableContainer_default, { component: Paper_default, variant: "outlined", sx: { maxHeight: 300 } }, /* @__PURE__ */ import_react11.default.createElement(Table_default, { size: "small", stickyHeader: true }, /* @__PURE__ */ import_react11.default.createElement(TableHead_default, null, /* @__PURE__ */ import_react11.default.createElement(TableRow_default, null, /* @__PURE__ */ import_react11.default.createElement(TableCell_default, null, "Date"), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, { align: "right" }, "Hours Worked"))), /* @__PURE__ */ import_react11.default.createElement(TableBody_default, null, user.stats.daily_history.length > 0 ? user.stats.daily_history.map((day, idx) => /* @__PURE__ */ import_react11.default.createElement(TableRow_default, { key: idx }, /* @__PURE__ */ import_react11.default.createElement(TableCell_default, null, day.date), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, { align: "right" }, day.hours, " h"))) : /* @__PURE__ */ import_react11.default.createElement(TableRow_default, null, /* @__PURE__ */ import_react11.default.createElement(TableCell_default, { colSpan: 2, align: "center" }, "No activity recorded")))))), /* @__PURE__ */ import_react11.default.createElement(Divider_default, null), /* @__PURE__ */ import_react11.default.createElement(Box_default, null, /* @__PURE__ */ import_react11.default.createElement(Typography_default, { variant: "subtitle1", gutterBottom: true, sx: { fontWeight: "bold" } }, "Assigned Tasks"), /* @__PURE__ */ import_react11.default.createElement(TableContainer_default, { component: Paper_default, variant: "outlined", sx: { maxHeight: 300 } }, /* @__PURE__ */ import_react11.default.createElement(Table_default, { size: "small", stickyHeader: true }, /* @__PURE__ */ import_react11.default.createElement(TableHead_default, null, /* @__PURE__ */ import_react11.default.createElement(TableRow_default, null, /* @__PURE__ */ import_react11.default.createElement(TableCell_default, null, "Task Name"), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, null, "Created At"), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, null, "Finished At"), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, null, "Status"), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, { align: "right" }, "Calculated Time"), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, { align: "right" }, "Custom Time"))), /* @__PURE__ */ import_react11.default.createElement(TableBody_default, null, user.tasks.length > 0 ? user.tasks.map((task2) => /* @__PURE__ */ import_react11.default.createElement(TableRow_default, { key: task2.id }, /* @__PURE__ */ import_react11.default.createElement(TableCell_default, null, /* @__PURE__ */ import_react11.default.createElement(Stack_default, { direction: "row", alignItems: "center", spacing: 1 }, /* @__PURE__ */ import_react11.default.createElement(Typography_default, { variant: "body2" }, task2.name), /* @__PURE__ */ import_react11.default.createElement(Tooltip_default, { title: "View Task Details" }, /* @__PURE__ */ import_react11.default.createElement(
+        IconButton_default,
+        {
+          size: "small",
+          href: `${window.SE7ENTECH.base_url}/modules/tasks/index.php/${task2.id}/view`,
+          target: "_blank"
+        },
+        /* @__PURE__ */ import_react11.default.createElement(OpenInNew_default, { fontSize: "small" })
+      )))), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, null, formatDate(task2.created_at)), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, null, formatDate(task2.end_time)), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, null, /* @__PURE__ */ import_react11.default.createElement(
         Chip_default,
         {
           label: task2.status,
@@ -50517,7 +53846,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           color: task2.status === "finished" ? "success" : task2.status === "paused" ? "warning" : "default",
           variant: "outlined"
         }
-      )), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, { align: "right" }, (task2.total_time / 3600).toFixed(2), " h"))) : /* @__PURE__ */ import_react11.default.createElement(TableRow_default, null, /* @__PURE__ */ import_react11.default.createElement(TableCell_default, { colSpan: 5, align: "center" }, "No tasks assigned.")))))))))));
+      )), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, { align: "right" }, (task2.total_time / 3600).toFixed(2), " h"), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, { align: "right" }, task2.custom_total_time ? parseFloat(task2.custom_total_time).toFixed(2) : "0.00", " h"))) : /* @__PURE__ */ import_react11.default.createElement(TableRow_default, null, /* @__PURE__ */ import_react11.default.createElement(TableCell_default, { colSpan: 6, align: "center" }, "No tasks assigned.")))))))))));
     };
     const container = document.getElementById("admin-tasks-app");
     if (container) {
@@ -50534,6 +53863,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       init_Person();
       init_AccessTime();
       init_Search();
+      init_OpenInNew();
     }
   });
 
@@ -50716,9 +54046,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       posB -= size;
     }
   }
-  function retIndex(index2, offset) {
+  function retIndex(index2, offset2) {
     found.index = index2;
-    found.offset = offset;
+    found.offset = offset2;
     return found;
   }
   function compareDeep(a, b) {
@@ -50746,25 +54076,25 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     return true;
   }
   function removeRange(content, from3, to) {
-    let { index: index2, offset } = content.findIndex(from3), child = content.maybeChild(index2);
+    let { index: index2, offset: offset2 } = content.findIndex(from3), child = content.maybeChild(index2);
     let { index: indexTo, offset: offsetTo } = content.findIndex(to);
-    if (offset == from3 || child.isText) {
+    if (offset2 == from3 || child.isText) {
       if (offsetTo != to && !content.child(indexTo).isText)
         throw new RangeError("Removing non-flat range");
       return content.cut(0, from3).append(content.cut(to));
     }
     if (index2 != indexTo)
       throw new RangeError("Removing non-flat range");
-    return content.replaceChild(index2, child.copy(removeRange(child.content, from3 - offset - 1, to - offset - 1)));
+    return content.replaceChild(index2, child.copy(removeRange(child.content, from3 - offset2 - 1, to - offset2 - 1)));
   }
   function insertInto(content, dist, insert, parent) {
-    let { index: index2, offset } = content.findIndex(dist), child = content.maybeChild(index2);
-    if (offset == dist || child.isText) {
+    let { index: index2, offset: offset2 } = content.findIndex(dist), child = content.maybeChild(index2);
+    if (offset2 == dist || child.isText) {
       if (parent && !parent.canReplace(index2, index2, insert))
         return null;
       return content.cut(0, dist).append(insert).append(content.cut(dist));
     }
-    let inner = insertInto(child.content, dist - offset - 1, insert);
+    let inner = insertInto(child.content, dist - offset2 - 1, insert);
     return inner && content.replaceChild(index2, child.copy(inner));
   }
   function replace2($from, $to, slice3) {
@@ -50785,13 +54115,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       let parent = $from.parent, content = parent.content;
       return close(parent, content.cut(0, $from.parentOffset).append(slice3.content).append(content.cut($to.parentOffset)));
     } else {
-      let { start, end } = prepareSliceForReplace(slice3, $from);
-      return close(node2, replaceThreeWay($from, start, end, $to, depth));
+      let { start: start2, end: end2 } = prepareSliceForReplace(slice3, $from);
+      return close(node2, replaceThreeWay($from, start2, end2, $to, depth));
     }
   }
-  function checkJoin(main, sub2) {
-    if (!sub2.type.compatibleContent(main.type))
-      throw new ReplaceError("Cannot join " + sub2.type.name + " onto " + main.type.name);
+  function checkJoin(main2, sub2) {
+    if (!sub2.type.compatibleContent(main2.type))
+      throw new ReplaceError("Cannot join " + sub2.type.name + " onto " + main2.type.name);
   }
   function joinable($before, $after, depth) {
     let node2 = $before.node(depth);
@@ -50842,7 +54172,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         addNode(close(openEnd, replaceTwoWay($end, $to, depth + 1)), content);
     }
     addRange($to, null, depth, content);
-    return new Fragment15(content);
+    return new Fragment16(content);
   }
   function replaceTwoWay($from, $to, depth) {
     let content = [];
@@ -50852,13 +54182,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       addNode(close(type, replaceTwoWay($from, $to, depth + 1)), content);
     }
     addRange($to, null, depth, content);
-    return new Fragment15(content);
+    return new Fragment16(content);
   }
   function prepareSliceForReplace(slice3, $along) {
     let extra = $along.depth - slice3.openStart, parent = $along.node(extra);
     let node2 = parent.copy(slice3.content);
     for (let i = extra - 1; i >= 0; i--)
-      node2 = $along.node(i).copy(Fragment15.from(node2));
+      node2 = $along.node(i).copy(Fragment16.from(node2));
     return {
       start: node2.resolveNoCache(slice3.openStart + extra),
       end: node2.resolveNoCache(node2.content.size - slice3.openEnd - extra)
@@ -50907,16 +54237,16 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     return result;
   }
   function parseExprRange(stream, expr) {
-    let min = parseNum(stream), max = min;
+    let min2 = parseNum(stream), max2 = min2;
     if (stream.eat(",")) {
       if (stream.next != "}")
-        max = parseNum(stream);
+        max2 = parseNum(stream);
       else
-        max = -1;
+        max2 = -1;
     }
     if (!stream.eat("}"))
       stream.err("Unclosed braced range");
-    return { type: "range", min, max, expr };
+    return { type: "range", min: min2, max: max2, expr };
   }
   function resolveName(stream, name) {
     let types = stream.nodeTypes, type = types[name];
@@ -51257,9 +54587,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }
     let contentDOM;
     let dom = xmlNS ? doc3.createElementNS(xmlNS, tagName) : doc3.createElement(tagName);
-    let attrs = structure[1], start = 1;
+    let attrs = structure[1], start2 = 1;
     if (attrs && typeof attrs == "object" && attrs.nodeType == null && !Array.isArray(attrs)) {
-      start = 2;
+      start2 = 2;
       for (let name in attrs)
         if (attrs[name] != null) {
           let space2 = name.indexOf(" ");
@@ -51269,10 +54599,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             dom.setAttribute(name, attrs[name]);
         }
     }
-    for (let i = start; i < structure.length; i++) {
+    for (let i = start2; i < structure.length; i++) {
       let child = structure[i];
       if (child === 0) {
-        if (i < structure.length - 1 || i > start)
+        if (i < structure.length - 1 || i > start2)
           throw new RangeError("Content hole must be the only child of its parent node");
         return { dom, contentDOM: dom };
       } else {
@@ -51287,11 +54617,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }
     return { dom, contentDOM };
   }
-  var Fragment15, found, Mark, ReplaceError, Slice, ResolvedPos, ResolveCache, resolveCacheSize, resolveCache, NodeRange, emptyAttrs, Node2, TextNode, ContentMatch, TokenStream, NodeType, Attribute, MarkType, Schema, DOMParser, blockTags, ignoreTags, listTags, OPT_PRESERVE_WS, OPT_PRESERVE_WS_FULL, OPT_OPEN_LEFT, NodeContext, ParseContext, DOMSerializer, suspiciousAttributeCache;
+  var Fragment16, found, Mark, ReplaceError, Slice, ResolvedPos, ResolveCache, resolveCacheSize, resolveCache, NodeRange, emptyAttrs, Node2, TextNode, ContentMatch, TokenStream, NodeType, Attribute, MarkType, Schema, DOMParser, blockTags, ignoreTags, listTags, OPT_PRESERVE_WS, OPT_PRESERVE_WS_FULL, OPT_OPEN_LEFT, NodeContext, ParseContext, DOMSerializer, suspiciousAttributeCache;
   var init_dist2 = __esm({
     "node_modules/prosemirror-model/dist/index.js"() {
       init_dist();
-      Fragment15 = class _Fragment {
+      Fragment16 = class _Fragment {
         /**
         @internal
         */
@@ -51309,12 +54639,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         */
         nodesBetween(from3, to, f, nodeStart = 0, parent) {
           for (let i = 0, pos = 0; pos < to; i++) {
-            let child = this.content[i], end = pos + child.nodeSize;
-            if (end > from3 && f(child, nodeStart + pos, parent || null, i) !== false && child.content.size) {
-              let start = pos + 1;
-              child.nodesBetween(Math.max(0, from3 - start), Math.min(child.content.size, to - start), f, nodeStart + start);
+            let child = this.content[i], end2 = pos + child.nodeSize;
+            if (end2 > from3 && f(child, nodeStart + pos, parent || null, i) !== false && child.content.size) {
+              let start2 = pos + 1;
+              child.nodesBetween(Math.max(0, from3 - start2), Math.min(child.content.size, to - start2), f, nodeStart + start2);
             }
-            pos = end;
+            pos = end2;
           }
         }
         /**
@@ -51370,9 +54700,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           let result = [], size = 0;
           if (to > from3)
             for (let i = 0, pos = 0; pos < to; i++) {
-              let child = this.content[i], end = pos + child.nodeSize;
-              if (end > from3) {
-                if (pos < from3 || end > to) {
+              let child = this.content[i], end2 = pos + child.nodeSize;
+              if (end2 > from3) {
+                if (pos < from3 || end2 > to) {
                   if (child.isText)
                     child = child.cut(Math.max(0, from3 - pos), Math.min(child.text.length, to - pos));
                   else
@@ -51381,7 +54711,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
                 result.push(child);
                 size += child.nodeSize;
               }
-              pos = end;
+              pos = end2;
             }
           return new _Fragment(result, size);
         }
@@ -51499,7 +54829,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         position in this fragment. The result object will be reused
         (overwritten) the next time the function is called. @internal
         */
-        findIndex(pos, round2 = -1) {
+        findIndex(pos, round4 = -1) {
           if (pos == 0)
             return retIndex(0, pos);
           if (pos == this.size)
@@ -51507,13 +54837,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           if (pos > this.size || pos < 0)
             throw new RangeError(`Position ${pos} outside of fragment (${this})`);
           for (let i = 0, curPos = 0; ; i++) {
-            let cur = this.child(i), end = curPos + cur.nodeSize;
-            if (end >= pos) {
-              if (end == pos || round2 > 0)
-                return retIndex(i + 1, end);
+            let cur = this.child(i), end2 = curPos + cur.nodeSize;
+            if (end2 >= pos) {
+              if (end2 == pos || round4 > 0)
+                return retIndex(i + 1, end2);
               return retIndex(i, curPos);
             }
-            curPos = end;
+            curPos = end2;
           }
         }
         /**
@@ -51583,7 +54913,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           throw new RangeError("Can not convert " + nodes + " to a Fragment" + (nodes.nodesBetween ? " (looks like multiple versions of prosemirror-model were loaded)" : ""));
         }
       };
-      Fragment15.empty = new Fragment15([], 0);
+      Fragment16.empty = new Fragment16([], 0);
       found = { index: 0, offset: 0 };
       Mark = class _Mark {
         /**
@@ -51779,7 +55109,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           let openStart = json.openStart || 0, openEnd = json.openEnd || 0;
           if (typeof openStart != "number" || typeof openEnd != "number")
             throw new RangeError("Invalid input for Slice.fromJSON");
-          return new _Slice(Fragment15.fromJSON(schema, json.content), openStart, openEnd);
+          return new _Slice(Fragment16.fromJSON(schema, json.content), openStart, openEnd);
         }
         /**
         Create a slice from a fragment by taking the maximum possible
@@ -51794,7 +55124,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           return new _Slice(fragment, openStart, openEnd);
         }
       };
-      Slice.empty = new Slice(Fragment15.empty, 0, 0);
+      Slice.empty = new Slice(Fragment16.empty, 0, 0);
       ResolvedPos = class _ResolvedPos {
         /**
         @internal
@@ -51944,13 +55274,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             return Mark.none;
           if (this.textOffset)
             return parent.child(index2).marks;
-          let main = parent.maybeChild(index2 - 1), other = parent.maybeChild(index2);
-          if (!main) {
-            let tmp = main;
-            main = other;
+          let main2 = parent.maybeChild(index2 - 1), other = parent.maybeChild(index2);
+          if (!main2) {
+            let tmp = main2;
+            main2 = other;
             other = tmp;
           }
-          let marks = main.marks;
+          let marks = main2.marks;
           for (var i = 0; i < marks.length; i++)
             if (marks[i].type.spec.inclusive === false && (!other || !marks[i].isInSet(other.marks)))
               marks = marks[i--].removeFromSet(marks);
@@ -52035,18 +55365,18 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           if (!(pos >= 0 && pos <= doc3.content.size))
             throw new RangeError("Position " + pos + " out of range");
           let path = [];
-          let start = 0, parentOffset = pos;
+          let start2 = 0, parentOffset = pos;
           for (let node2 = doc3; ; ) {
-            let { index: index2, offset } = node2.content.findIndex(parentOffset);
-            let rem = parentOffset - offset;
-            path.push(node2, index2, start + offset);
+            let { index: index2, offset: offset2 } = node2.content.findIndex(parentOffset);
+            let rem = parentOffset - offset2;
+            path.push(node2, index2, start2 + offset2);
             if (!rem)
               break;
             node2 = node2.child(index2);
             if (node2.isText)
               break;
             parentOffset = rem - 1;
-            start += offset + 1;
+            start2 += offset2 + 1;
           }
           return new _ResolvedPos(pos, path, parentOffset);
         }
@@ -52128,7 +55458,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           this.type = type;
           this.attrs = attrs;
           this.marks = marks;
-          this.content = content || Fragment15.empty;
+          this.content = content || Fragment16.empty;
         }
         /**
         The array of this node's child nodes.
@@ -52278,8 +55608,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             return Slice.empty;
           let $from = this.resolve(from3), $to = this.resolve(to);
           let depth = includeParents ? 0 : $from.sharedDepth(to);
-          let start = $from.start(depth), node2 = $from.node(depth);
-          let content = node2.content.cut($from.pos - start, $to.pos - start);
+          let start2 = $from.start(depth), node2 = $from.node(depth);
+          let content = node2.content.cut($from.pos - start2, $to.pos - start2);
           return new Slice(content, $from.depth - depth, $to.depth - depth);
         }
         /**
@@ -52298,13 +55628,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         */
         nodeAt(pos) {
           for (let node2 = this; ; ) {
-            let { index: index2, offset } = node2.content.findIndex(pos);
+            let { index: index2, offset: offset2 } = node2.content.findIndex(pos);
             node2 = node2.maybeChild(index2);
             if (!node2)
               return null;
-            if (offset == pos || node2.isText)
+            if (offset2 == pos || node2.isText)
               return node2;
-            pos -= offset + 1;
+            pos -= offset2 + 1;
           }
         }
         /**
@@ -52313,8 +55643,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         node.
         */
         childAfter(pos) {
-          let { index: index2, offset } = this.content.findIndex(pos);
-          return { node: this.content.maybeChild(index2), index: index2, offset };
+          let { index: index2, offset: offset2 } = this.content.findIndex(pos);
+          return { node: this.content.maybeChild(index2), index: index2, offset: offset2 };
         }
         /**
         Find the (direct) child node before the given offset, if any,
@@ -52324,11 +55654,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         childBefore(pos) {
           if (pos == 0)
             return { node: null, index: 0, offset: 0 };
-          let { index: index2, offset } = this.content.findIndex(pos);
-          if (offset < pos)
-            return { node: this.content.child(index2), index: index2, offset };
+          let { index: index2, offset: offset2 } = this.content.findIndex(pos);
+          if (offset2 < pos)
+            return { node: this.content.child(index2), index: index2, offset: offset2 };
           let node2 = this.content.child(index2 - 1);
-          return { node: node2, index: index2 - 1, offset: offset - node2.nodeSize };
+          return { node: node2, index: index2 - 1, offset: offset2 - node2.nodeSize };
         }
         /**
         Resolve the given position in the document, returning an
@@ -52433,12 +55763,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         can optionally pass `start` and `end` indices into the
         replacement fragment.
         */
-        canReplace(from3, to, replacement = Fragment15.empty, start = 0, end = replacement.childCount) {
-          let one = this.contentMatchAt(from3).matchFragment(replacement, start, end);
+        canReplace(from3, to, replacement = Fragment16.empty, start2 = 0, end2 = replacement.childCount) {
+          let one = this.contentMatchAt(from3).matchFragment(replacement, start2, end2);
           let two = one && one.matchFragment(this.content, to);
           if (!two || !two.validEnd)
             return false;
-          for (let i = start; i < end; i++)
+          for (let i = start2; i < end2; i++)
             if (!this.type.allowsMarks(replacement.child(i).marks))
               return false;
           return true;
@@ -52450,9 +55780,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         canReplaceWith(from3, to, type, marks) {
           if (marks && !this.type.allowsMarks(marks))
             return false;
-          let start = this.contentMatchAt(from3).matchType(type);
-          let end = start && start.matchFragment(this.content, to);
-          return end ? end.validEnd : false;
+          let start2 = this.contentMatchAt(from3).matchType(type);
+          let end2 = start2 && start2.matchFragment(this.content, to);
+          return end2 ? end2.validEnd : false;
         }
         /**
         Test whether the given node's content could be appended to this
@@ -52515,7 +55845,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
               throw new RangeError("Invalid text node in JSON");
             return schema.text(json.text, marks);
           }
-          let content = Fragment15.fromJSON(schema, json.content);
+          let content = Fragment16.fromJSON(schema, json.content);
           let node2 = schema.nodeType(json.type).create(json.attrs, content, marks);
           node2.type.checkAttrs(node2.attrs);
           return node2;
@@ -52605,9 +55935,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         Try to match a fragment. Returns the resulting match when
         successful.
         */
-        matchFragment(frag, start = 0, end = frag.childCount) {
+        matchFragment(frag, start2 = 0, end2 = frag.childCount) {
           let cur = this;
-          for (let i = start; cur && i < end; i++)
+          for (let i = start2; cur && i < end2; i++)
             cur = cur.matchType(frag.child(i).type);
           return cur;
         }
@@ -52652,7 +55982,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           function search(match2, types) {
             let finished = match2.matchFragment(after, startIndex);
             if (finished && (!toEnd || finished.validEnd))
-              return Fragment15.from(types.map((tp) => tp.createAndFill()));
+              return Fragment16.from(types.map((tp) => tp.createAndFill()));
             for (let i = 0; i < match2.next.length; i++) {
               let { type, next: next2 } = match2.next[i];
               if (!(type.isText || type.hasRequiredAttrs()) && seen.indexOf(next2) == -1) {
@@ -52854,7 +56184,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         create(attrs = null, content, marks) {
           if (this.isText)
             throw new Error("NodeType.create can't construct text nodes");
-          return new Node2(this, this.computeAttrs(attrs), Fragment15.from(content), Mark.setFrom(marks));
+          return new Node2(this, this.computeAttrs(attrs), Fragment16.from(content), Mark.setFrom(marks));
         }
         /**
         Like [`create`](https://prosemirror.net/docs/ref/#model.NodeType.create), but check the given content
@@ -52862,7 +56192,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         if it doesn't match.
         */
         createChecked(attrs = null, content, marks) {
-          content = Fragment15.from(content);
+          content = Fragment16.from(content);
           this.checkContent(content);
           return new Node2(this, this.computeAttrs(attrs), content, Mark.setFrom(marks));
         }
@@ -52876,7 +56206,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         */
         createAndFill(attrs = null, content, marks) {
           attrs = this.computeAttrs(attrs);
-          content = Fragment15.from(content);
+          content = Fragment16.from(content);
           if (content.size) {
             let before = this.contentMatch.fillBefore(content);
             if (!before)
@@ -52884,7 +56214,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             content = before.append(content);
           }
           let matched = this.contentMatch.matchFragment(content);
-          let after = matched && matched.fillBefore(Fragment15.empty, true);
+          let after = matched && matched.fillBefore(Fragment16.empty, true);
           if (!after)
             return null;
           return new Node2(this, attrs, content.append(after), Mark.setFrom(marks));
@@ -53325,13 +56655,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           if (!this.match) {
             if (!this.type)
               return [];
-            let fill = this.type.contentMatch.fillBefore(Fragment15.from(node2));
+            let fill = this.type.contentMatch.fillBefore(Fragment16.from(node2));
             if (fill) {
               this.match = this.type.contentMatch.matchFragment(fill);
             } else {
-              let start = this.type.contentMatch, wrap2;
-              if (wrap2 = start.findWrapping(node2.type)) {
-                this.match = start;
+              let start2 = this.type.contentMatch, wrap2;
+              if (wrap2 = start2.findWrapping(node2.type)) {
+                this.match = start2;
                 return wrap2;
               } else {
                 return null;
@@ -53351,9 +56681,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
                 this.content[this.content.length - 1] = text2.withText(text2.text.slice(0, text2.text.length - m[0].length));
             }
           }
-          let content = Fragment15.from(this.content);
+          let content = Fragment16.from(this.content);
           if (!openEnd && this.match)
-            content = content.append(this.match.fillBefore(Fragment15.empty, true));
+            content = content.append(this.match.fillBefore(Fragment16.empty, true));
           return this.type ? this.type.create(this.attrs, content, this.marks) : content;
         }
         inlineContext(node2) {
@@ -53397,12 +56727,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         }
         addTextNode(dom, marks) {
           let value = dom.nodeValue;
-          let top3 = this.top, preserveWS = top3.options & OPT_PRESERVE_WS_FULL ? "full" : this.localPreserveWS || (top3.options & OPT_PRESERVE_WS) > 0;
-          if (preserveWS === "full" || top3.inlineContext(dom) || /[^ \t\r\n\u000c]/.test(value)) {
+          let top4 = this.top, preserveWS = top4.options & OPT_PRESERVE_WS_FULL ? "full" : this.localPreserveWS || (top4.options & OPT_PRESERVE_WS) > 0;
+          if (preserveWS === "full" || top4.inlineContext(dom) || /[^ \t\r\n\u000c]/.test(value)) {
             if (!preserveWS) {
               value = value.replace(/[ \t\r\n\u000c]+/g, " ");
               if (/^[ \t\r\n\u000c]/.test(value) && this.open == this.nodes.length - 1) {
-                let nodeBefore = top3.content[top3.content.length - 1];
+                let nodeBefore = top4.content[top4.content.length - 1];
                 let domNodeBefore = dom.previousSibling;
                 if (!nodeBefore || domNodeBefore && domNodeBefore.nodeName == "BR" || nodeBefore.isText && /[ \t\r\n\u000c]$/.test(nodeBefore.text))
                   value = value.slice(1);
@@ -53422,7 +56752,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         // Try to find a handler for the given tag and use that to parse. If
         // none is found, the element's content nodes are added directly.
         addElement(dom, marks, matchAfter) {
-          let outerWS = this.localPreserveWS, top3 = this.top;
+          let outerWS = this.localPreserveWS, top4 = this.top;
           if (dom.tagName == "PRE" || /pre/.test(dom.style && dom.style.whiteSpace))
             this.localPreserveWS = true;
           let name = dom.nodeName.toLowerCase(), ruleID;
@@ -53439,12 +56769,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
               dom = rule.skip;
             let sync, oldNeedsBlock = this.needsBlock;
             if (blockTags.hasOwnProperty(name)) {
-              if (top3.content.length && top3.content[0].isInline && this.open) {
+              if (top4.content.length && top4.content[0].isInline && this.open) {
                 this.open--;
-                top3 = this.top;
+                top4 = this.top;
               }
               sync = true;
-              if (!top3.type)
+              if (!top4.type)
                 this.needsBlock = true;
             } else if (!dom.firstChild) {
               this.leafFallback(dom, marks);
@@ -53454,7 +56784,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             if (innerMarks)
               this.addAll(dom, innerMarks);
             if (sync)
-              this.sync(top3);
+              this.sync(top4);
             this.needsBlock = oldNeedsBlock;
           } else {
             let innerMarks = this.readStyles(dom, marks);
@@ -53548,7 +56878,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         // synchronize after every block element.
         addAll(parent, marks, startIndex, endIndex) {
           let index2 = startIndex || 0;
-          for (let dom = startIndex ? parent.childNodes[startIndex] : parent.firstChild, end = endIndex == null ? null : parent.childNodes[endIndex]; dom != end; dom = dom.nextSibling, ++index2) {
+          for (let dom = startIndex ? parent.childNodes[startIndex] : parent.firstChild, end2 = endIndex == null ? null : parent.childNodes[endIndex]; dom != end2; dom = dom.nextSibling, ++index2) {
             this.findAtPoint(parent, index2);
             this.addDOM(dom, marks);
           }
@@ -53591,14 +56921,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           let innerMarks = this.findPlace(node2, marks, cautious);
           if (innerMarks) {
             this.closeExtra();
-            let top3 = this.top;
-            if (top3.match)
-              top3.match = top3.match.matchType(node2.type);
+            let top4 = this.top;
+            if (top4.match)
+              top4.match = top4.match.matchType(node2.type);
             let nodeMarks = Mark.none;
             for (let m of innerMarks.concat(node2.marks))
-              if (top3.type ? top3.type.allowsMarkType(m.type) : markMayApply(m.type, node2.type))
+              if (top4.type ? top4.type.allowsMarkType(m.type) : markMayApply(m.type, node2.type))
                 nodeMarks = m.addToSet(nodeMarks);
-            top3.content.push(node2.mark(nodeMarks));
+            top4.content.push(node2.mark(nodeMarks));
             return true;
           }
           return false;
@@ -53614,14 +56944,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         // Open a node of the given type
         enterInner(type, attrs, marks, solid = false, preserveWS) {
           this.closeExtra();
-          let top3 = this.top;
-          top3.match = top3.match && top3.match.matchType(type);
-          let options = wsOptionsFor(type, preserveWS, top3.options);
-          if (top3.options & OPT_OPEN_LEFT && top3.content.length == 0)
+          let top4 = this.top;
+          top4.match = top4.match && top4.match.matchType(type);
+          let options = wsOptionsFor(type, preserveWS, top4.options);
+          if (top4.options & OPT_OPEN_LEFT && top4.content.length == 0)
             options |= OPT_OPEN_LEFT;
           let applyMarks = Mark.none;
           marks = marks.filter((m) => {
-            if (top3.type ? top3.type.allowsMarkType(m.type) : markMayApply(m.type, type)) {
+            if (top4.type ? top4.type.allowsMarkType(m.type) : markMayApply(m.type, type)) {
               applyMarks = m.addToSet(applyMarks);
               return false;
             }
@@ -53669,10 +56999,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
           return pos;
         }
-        findAtPoint(parent, offset) {
+        findAtPoint(parent, offset2) {
           if (this.find)
             for (let i = 0; i < this.find.length; i++) {
-              if (this.find[i].node == parent && this.find[i].offset == offset)
+              if (this.find[i].node == parent && this.find[i].offset == offset2)
                 this.find[i].pos = this.currentPos;
             }
         }
@@ -53767,7 +57097,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         serializeFragment(fragment, options = {}, target2) {
           if (!target2)
             target2 = doc(options).createDocumentFragment();
-          let top3 = target2, active = [];
+          let top4 = target2, active = [];
           fragment.forEach((node2) => {
             if (active.length || node2.marks.length) {
               let keep = 0, rendered = 0;
@@ -53783,18 +57113,18 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
                 rendered++;
               }
               while (keep < active.length)
-                top3 = active.pop()[1];
+                top4 = active.pop()[1];
               while (rendered < node2.marks.length) {
                 let add = node2.marks[rendered++];
                 let markDOM = this.serializeMark(add, node2.isInline, options);
                 if (markDOM) {
-                  active.push([add, top3]);
-                  top3.appendChild(markDOM.dom);
-                  top3 = markDOM.contentDOM || markDOM.dom;
+                  active.push([add, top4]);
+                  top4.appendChild(markDOM.dom);
+                  top4 = markDOM.contentDOM || markDOM.dom;
                 }
               }
             }
-            top3.appendChild(this.serializeNodeInner(node2, options));
+            top4.appendChild(this.serializeNodeInner(node2, options));
           });
           return target2;
         }
@@ -53867,8 +57197,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/prosemirror-transform/dist/index.js
-  function makeRecover(index2, offset) {
-    return index2 + offset * factor16;
+  function makeRecover(index2, offset2) {
+    return index2 + offset2 * factor16;
   }
   function recoverIndex(value) {
     return value & lower16;
@@ -53886,7 +57216,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         child = f(child, parent, i);
       mapped.push(child);
     }
-    return Fragment15.fromArray(mapped);
+    return Fragment16.fromArray(mapped);
   }
   function contentBetween(doc3, from3, to) {
     let $from = doc3.resolve(from3), dist = to - from3, depth = $from.depth;
@@ -53913,20 +57243,20 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         return;
       let marks = node2.marks;
       if (!mark.isInSet(marks) && parent.type.allowsMarkType(mark.type)) {
-        let start = Math.max(pos, from3), end = Math.min(pos + node2.nodeSize, to);
+        let start2 = Math.max(pos, from3), end2 = Math.min(pos + node2.nodeSize, to);
         let newSet = mark.addToSet(marks);
         for (let i = 0; i < marks.length; i++) {
           if (!marks[i].isInSet(newSet)) {
-            if (removing && removing.to == start && removing.mark.eq(marks[i]))
-              removing.to = end;
+            if (removing && removing.to == start2 && removing.mark.eq(marks[i]))
+              removing.to = end2;
             else
-              removed.push(removing = new RemoveMarkStep(start, end, marks[i]));
+              removed.push(removing = new RemoveMarkStep(start2, end2, marks[i]));
           }
         }
-        if (adding && adding.to == start)
-          adding.to = end;
+        if (adding && adding.to == start2)
+          adding.to = end2;
         else
-          added.push(adding = new AddMarkStep(start, end, mark));
+          added.push(adding = new AddMarkStep(start2, end2, mark));
       }
     });
     removed.forEach((s) => tr.step(s));
@@ -53952,7 +57282,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         toRemove = node2.marks;
       }
       if (toRemove && toRemove.length) {
-        let end = Math.min(pos + node2.nodeSize, to);
+        let end2 = Math.min(pos + node2.nodeSize, to);
         for (let i = 0; i < toRemove.length; i++) {
           let style4 = toRemove[i], found2;
           for (let j = 0; j < matched.length; j++) {
@@ -53961,10 +57291,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
               found2 = m;
           }
           if (found2) {
-            found2.to = end;
+            found2.to = end2;
             found2.step = step;
           } else {
-            matched.push({ style: style4, from: Math.max(pos, from3), to: end, step });
+            matched.push({ style: style4, from: Math.max(pos, from3), to: end2, step });
           }
         }
       }
@@ -53975,35 +57305,35 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     let node2 = tr.doc.nodeAt(pos);
     let replSteps = [], cur = pos + 1;
     for (let i = 0; i < node2.childCount; i++) {
-      let child = node2.child(i), end = cur + child.nodeSize;
+      let child = node2.child(i), end2 = cur + child.nodeSize;
       let allowed = match2.matchType(child.type);
       if (!allowed) {
-        replSteps.push(new ReplaceStep(cur, end, Slice.empty));
+        replSteps.push(new ReplaceStep(cur, end2, Slice.empty));
       } else {
         match2 = allowed;
         for (let j = 0; j < child.marks.length; j++)
           if (!parentType.allowsMarkType(child.marks[j].type))
-            tr.step(new RemoveMarkStep(cur, end, child.marks[j]));
+            tr.step(new RemoveMarkStep(cur, end2, child.marks[j]));
         if (clearNewlines && child.isText && parentType.whitespace != "pre") {
           let m, newline = /\r?\n|\r/g, slice3;
           while (m = newline.exec(child.text)) {
             if (!slice3)
-              slice3 = new Slice(Fragment15.from(parentType.schema.text(" ", parentType.allowedMarks(child.marks))), 0, 0);
+              slice3 = new Slice(Fragment16.from(parentType.schema.text(" ", parentType.allowedMarks(child.marks))), 0, 0);
             replSteps.push(new ReplaceStep(cur + m.index, cur + m.index + m[0].length, slice3));
           }
         }
       }
-      cur = end;
+      cur = end2;
     }
     if (!match2.validEnd) {
-      let fill = match2.fillBefore(Fragment15.empty, true);
+      let fill = match2.fillBefore(Fragment16.empty, true);
       tr.replace(cur, cur, new Slice(fill, 0, 0));
     }
     for (let i = replSteps.length - 1; i >= 0; i--)
       tr.step(replSteps[i]);
   }
-  function canCut(node2, start, end) {
-    return (start == 0 || node2.canReplace(start, node2.childCount)) && (end == node2.childCount || node2.canReplace(0, end));
+  function canCut(node2, start2, end2) {
+    return (start2 == 0 || node2.canReplace(start2, node2.childCount)) && (end2 == node2.childCount || node2.canReplace(0, end2));
   }
   function liftTarget(range2) {
     let parent = range2.parent;
@@ -54021,26 +57351,26 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   function lift(tr, range2, target2) {
     let { $from, $to, depth } = range2;
     let gapStart = $from.before(depth + 1), gapEnd = $to.after(depth + 1);
-    let start = gapStart, end = gapEnd;
-    let before = Fragment15.empty, openStart = 0;
+    let start2 = gapStart, end2 = gapEnd;
+    let before = Fragment16.empty, openStart = 0;
     for (let d = depth, splitting = false; d > target2; d--)
       if (splitting || $from.index(d) > 0) {
         splitting = true;
-        before = Fragment15.from($from.node(d).copy(before));
+        before = Fragment16.from($from.node(d).copy(before));
         openStart++;
       } else {
-        start--;
+        start2--;
       }
-    let after = Fragment15.empty, openEnd = 0;
+    let after = Fragment16.empty, openEnd = 0;
     for (let d = depth, splitting = false; d > target2; d--)
       if (splitting || $to.after(d + 1) < $to.end(d)) {
         splitting = true;
-        after = Fragment15.from($to.node(d).copy(after));
+        after = Fragment16.from($to.node(d).copy(after));
         openEnd++;
       } else {
-        end++;
+        end2++;
       }
-    tr.step(new ReplaceAroundStep(start, end, gapStart, gapEnd, new Slice(before.append(after), openStart, openEnd), before.size - openStart, true));
+    tr.step(new ReplaceAroundStep(start2, end2, gapStart, gapEnd, new Slice(before.append(after), openStart, openEnd), before.size - openStart, true));
   }
   function findWrapping(range2, nodeType, attrs = null, innerRange = range2) {
     let around = findWrappingOutside(range2, nodeType);
@@ -54075,17 +57405,17 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     return inside;
   }
   function wrap(tr, range2, wrappers) {
-    let content = Fragment15.empty;
+    let content = Fragment16.empty;
     for (let i = wrappers.length - 1; i >= 0; i--) {
       if (content.size) {
         let match2 = wrappers[i].type.contentMatch.matchFragment(content);
         if (!match2 || !match2.validEnd)
           throw new RangeError("Wrapper type given to Transform.wrap does not form valid content of its parent wrapper");
       }
-      content = Fragment15.from(wrappers[i].type.create(wrappers[i].attrs, content));
+      content = Fragment16.from(wrappers[i].type.create(wrappers[i].attrs, content));
     }
-    let start = range2.start, end = range2.end;
-    tr.step(new ReplaceAroundStep(start, end, start, end, new Slice(content, 0, 0), wrappers.length, true));
+    let start2 = range2.start, end2 = range2.end;
+    tr.step(new ReplaceAroundStep(start2, end2, start2, end2, new Slice(content, 0, 0), wrappers.length, true));
   }
   function setBlockType(tr, from3, to, type, attrs) {
     if (!type.isTextblock)
@@ -54107,7 +57437,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         clearIncompatible(tr, tr.mapping.slice(mapFrom).map(pos, 1), type, void 0, convertNewlines === null);
         let mapping = tr.mapping.slice(mapFrom);
         let startM = mapping.map(pos, 1), endM = mapping.map(pos + node2.nodeSize, 1);
-        tr.step(new ReplaceAroundStep(startM, endM, startM + 1, endM - 1, new Slice(Fragment15.from(type.create(attrsHere, null, node2.marks)), 0, 0), 1, true));
+        tr.step(new ReplaceAroundStep(startM, endM, startM + 1, endM - 1, new Slice(Fragment16.from(type.create(attrsHere, null, node2.marks)), 0, 0), 1, true));
         if (convertNewlines === true)
           replaceNewlines(tr, node2, pos, mapFrom);
         return false;
@@ -54115,21 +57445,21 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     });
   }
   function replaceNewlines(tr, node2, pos, mapFrom) {
-    node2.forEach((child, offset) => {
+    node2.forEach((child, offset2) => {
       if (child.isText) {
         let m, newline = /\r?\n|\r/g;
         while (m = newline.exec(child.text)) {
-          let start = tr.mapping.slice(mapFrom).map(pos + 1 + offset + m.index);
-          tr.replaceWith(start, start + 1, node2.type.schema.linebreakReplacement.create());
+          let start2 = tr.mapping.slice(mapFrom).map(pos + 1 + offset2 + m.index);
+          tr.replaceWith(start2, start2 + 1, node2.type.schema.linebreakReplacement.create());
         }
       }
     });
   }
   function replaceLinebreaks(tr, node2, pos, mapFrom) {
-    node2.forEach((child, offset) => {
+    node2.forEach((child, offset2) => {
       if (child.type == child.type.schema.linebreakReplacement) {
-        let start = tr.mapping.slice(mapFrom).map(pos + 1 + offset);
-        tr.replaceWith(start, start + 1, node2.type.schema.text("\n"));
+        let start2 = tr.mapping.slice(mapFrom).map(pos + 1 + offset2);
+        tr.replaceWith(start2, start2 + 1, node2.type.schema.text("\n"));
       }
     });
   }
@@ -54148,7 +57478,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       return tr.replaceWith(pos, pos + node2.nodeSize, newNode);
     if (!type.validContent(node2.content))
       throw new RangeError("Invalid content for node type " + type.name);
-    tr.step(new ReplaceAroundStep(pos, pos + node2.nodeSize, pos + 1, pos + node2.nodeSize - 1, new Slice(Fragment15.from(newNode), 0, 0), 1, true));
+    tr.step(new ReplaceAroundStep(pos, pos + node2.nodeSize, pos + 1, pos + node2.nodeSize - 1, new Slice(Fragment16.from(newNode), 0, 0), 1, true));
   }
   function canSplit(doc3, pos, depth = 1, typesAfter) {
     let $pos = doc3.resolve(pos), base2 = $pos.depth - depth;
@@ -54172,11 +57502,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     return $pos.node(base2).canReplaceWith(index2, index2, baseType ? baseType.type : $pos.node(base2 + 1).type);
   }
   function split(tr, pos, depth = 1, typesAfter) {
-    let $pos = tr.doc.resolve(pos), before = Fragment15.empty, after = Fragment15.empty;
+    let $pos = tr.doc.resolve(pos), before = Fragment16.empty, after = Fragment16.empty;
     for (let d = $pos.depth, e = $pos.depth - depth, i = depth - 1; d > e; d--, i--) {
-      before = Fragment15.from($pos.node(d).copy(before));
+      before = Fragment16.from($pos.node(d).copy(before));
       let typeAfter = typesAfter && typesAfter[i];
-      after = Fragment15.from(typeAfter ? typeAfter.type.create(typeAfter.attrs, after) : $pos.node(d).copy(after));
+      after = Fragment16.from(typeAfter ? typeAfter.type.create(typeAfter.attrs, after) : $pos.node(d).copy(after));
     }
     tr.step(new ReplaceStep(pos, pos, new Slice(before.append(after), depth, depth), true));
   }
@@ -54222,10 +57552,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }
     if (beforeType.inlineContent)
       clearIncompatible(tr, pos + depth - 1, beforeType, $before.node().contentMatchAt($before.index()), convertNewlines == null);
-    let mapping = tr.mapping.slice(mapFrom), start = mapping.map(pos - depth);
-    tr.step(new ReplaceStep(start, mapping.map(pos + depth, -1), Slice.empty, true));
+    let mapping = tr.mapping.slice(mapFrom), start2 = mapping.map(pos - depth);
+    tr.step(new ReplaceStep(start2, mapping.map(pos + depth, -1), Slice.empty, true));
     if (convertNewlines === true) {
-      let $full = tr.doc.resolve(start);
+      let $full = tr.doc.resolve(start2);
       replaceNewlines(tr, $full.node(), $full.before(), tr.steps.length);
     }
     return tr;
@@ -54311,7 +57641,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (openStart > 0) {
       frag = node2.type.contentMatch.fillBefore(frag).append(frag);
       if (openEnd <= 0)
-        frag = frag.append(node2.type.contentMatch.matchFragment(frag).fillBefore(Fragment15.empty, true));
+        frag = frag.append(node2.type.contentMatch.matchFragment(frag).fillBefore(Fragment16.empty, true));
     }
     return node2.copy(frag);
   }
@@ -54322,8 +57652,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     let fit = match2.fillBefore(node2.content, true, index2);
     return fit && !invalidMarks(type, node2.content, index2) ? fit : null;
   }
-  function invalidMarks(type, fragment, start) {
-    for (let i = start; i < fragment.childCount; i++)
+  function invalidMarks(type, fragment, start2) {
+    for (let i = start2; i < fragment.childCount; i++)
       if (!type.allowsMarks(fragment.child(i).marks))
         return true;
     return false;
@@ -54402,8 +57732,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }
     if (depth > newOpen) {
       let match2 = parent.contentMatchAt(0);
-      let start = match2.fillBefore(fragment).append(fragment);
-      fragment = start.append(match2.matchFragment(start).fillBefore(Fragment15.empty, true));
+      let start2 = match2.fillBefore(fragment).append(fragment);
+      fragment = start2.append(match2.matchFragment(start2).fillBefore(Fragment16.empty, true));
     }
     return fragment;
   }
@@ -54413,7 +57743,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       if (point != null)
         from3 = to = point;
     }
-    tr.replaceRange(from3, to, new Slice(Fragment15.from(node2), 0, 0));
+    tr.replaceRange(from3, to, new Slice(Fragment16.from(node2), 0, 0));
   }
   function deleteRange(tr, from3, to) {
     let $from = tr.doc.resolve(from3), $to = tr.doc.resolve(to);
@@ -54434,10 +57764,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   function coveredDepths($from, $to) {
     let result = [], minDepth = Math.min($from.depth, $to.depth);
     for (let d = minDepth; d >= 0; d--) {
-      let start = $from.start(d);
-      if (start < $from.pos - ($from.depth - d) || $to.end(d) > $to.pos + ($to.depth - d) || $from.node(d).type.spec.isolating || $to.node(d).type.spec.isolating)
+      let start2 = $from.start(d);
+      if (start2 < $from.pos - ($from.depth - d) || $to.end(d) > $to.pos + ($to.depth - d) || $from.node(d).type.spec.isolating || $to.node(d).type.spec.isolating)
         break;
-      if (start == $to.start(d) || d == $from.depth && d == $to.depth && $from.parent.inlineContent && $to.parent.inlineContent && d && $to.start(d - 1) == start - 1)
+      if (start2 == $to.start(d) || d == $from.depth && d == $to.depth && $from.parent.inlineContent && $to.parent.inlineContent && d && $to.start(d - 1) == start2 - 1)
         result.push(d);
     }
     return result;
@@ -54524,18 +57854,18 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         _map(pos, assoc, simple) {
           let diff2 = 0, oldIndex = this.inverted ? 2 : 1, newIndex = this.inverted ? 1 : 2;
           for (let i = 0; i < this.ranges.length; i += 3) {
-            let start = this.ranges[i] - (this.inverted ? diff2 : 0);
-            if (start > pos)
+            let start2 = this.ranges[i] - (this.inverted ? diff2 : 0);
+            if (start2 > pos)
               break;
-            let oldSize = this.ranges[i + oldIndex], newSize = this.ranges[i + newIndex], end = start + oldSize;
-            if (pos <= end) {
-              let side = !oldSize ? assoc : pos == start ? -1 : pos == end ? 1 : assoc;
-              let result = start + diff2 + (side < 0 ? 0 : newSize);
+            let oldSize = this.ranges[i + oldIndex], newSize = this.ranges[i + newIndex], end2 = start2 + oldSize;
+            if (pos <= end2) {
+              let side = !oldSize ? assoc : pos == start2 ? -1 : pos == end2 ? 1 : assoc;
+              let result = start2 + diff2 + (side < 0 ? 0 : newSize);
               if (simple)
                 return result;
-              let recover = pos == (assoc < 0 ? start : end) ? null : makeRecover(i / 3, pos - start);
-              let del2 = pos == start ? DEL_AFTER : pos == end ? DEL_BEFORE : DEL_ACROSS;
-              if (assoc < 0 ? pos != start : pos != end)
+              let recover = pos == (assoc < 0 ? start2 : end2) ? null : makeRecover(i / 3, pos - start2);
+              let del2 = pos == start2 ? DEL_AFTER : pos == end2 ? DEL_BEFORE : DEL_ACROSS;
+              if (assoc < 0 ? pos != start2 : pos != end2)
                 del2 |= DEL_SIDE;
               return new MapResult(result, del2, recover);
             }
@@ -54550,11 +57880,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           let diff2 = 0, index2 = recoverIndex(recover);
           let oldIndex = this.inverted ? 2 : 1, newIndex = this.inverted ? 1 : 2;
           for (let i = 0; i < this.ranges.length; i += 3) {
-            let start = this.ranges[i] - (this.inverted ? diff2 : 0);
-            if (start > pos)
+            let start2 = this.ranges[i] - (this.inverted ? diff2 : 0);
+            if (start2 > pos)
               break;
-            let oldSize = this.ranges[i + oldIndex], end = start + oldSize;
-            if (pos <= end && i == index2 * 3)
+            let oldSize = this.ranges[i + oldIndex], end2 = start2 + oldSize;
+            if (pos <= end2 && i == index2 * 3)
               return true;
             diff2 += this.ranges[i + newIndex] - oldSize;
           }
@@ -54567,7 +57897,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         forEach(f) {
           let oldIndex = this.inverted ? 2 : 1, newIndex = this.inverted ? 1 : 2;
           for (let i = 0, diff2 = 0; i < this.ranges.length; i += 3) {
-            let start = this.ranges[i], oldStart = start - (this.inverted ? diff2 : 0), newStart = start + (this.inverted ? 0 : diff2);
+            let start2 = this.ranges[i], oldStart = start2 - (this.inverted ? diff2 : 0), newStart = start2 + (this.inverted ? 0 : diff2);
             let oldSize = this.ranges[i + oldIndex], newSize = this.ranges[i + newIndex];
             f(oldStart, oldStart + oldSize, newStart, newStart + newSize);
             diff2 += newSize - oldSize;
@@ -54913,7 +58243,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           if (!node2)
             return StepResult.fail("No node at mark step's position");
           let updated = node2.type.create(node2.attrs, null, this.mark.addToSet(node2.marks));
-          return StepResult.fromReplace(doc3, this.pos, this.pos + 1, new Slice(Fragment15.from(updated), 0, node2.isLeaf ? 0 : 1));
+          return StepResult.fromReplace(doc3, this.pos, this.pos + 1, new Slice(Fragment16.from(updated), 0, node2.isLeaf ? 0 : 1));
         }
         invert(doc3) {
           let node2 = doc3.nodeAt(this.pos);
@@ -54959,7 +58289,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           if (!node2)
             return StepResult.fail("No node at mark step's position");
           let updated = node2.type.create(node2.attrs, null, this.mark.removeFromSet(node2.marks));
-          return StepResult.fromReplace(doc3, this.pos, this.pos + 1, new Slice(Fragment15.from(updated), 0, node2.isLeaf ? 0 : 1));
+          return StepResult.fromReplace(doc3, this.pos, this.pos + 1, new Slice(Fragment16.from(updated), 0, node2.isLeaf ? 0 : 1));
         }
         invert(doc3) {
           let node2 = doc3.nodeAt(this.pos);
@@ -55130,7 +58460,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           this.$to = $to;
           this.unplaced = unplaced;
           this.frontier = [];
-          this.placed = Fragment15.empty;
+          this.placed = Fragment16.empty;
           for (let i = 0; i <= $from.depth; i++) {
             let node2 = $from.node(i);
             this.frontier.push({
@@ -55139,7 +58469,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             });
           }
           for (let i = $from.depth; i > 0; i--)
-            this.placed = Fragment15.from($from.node(i).copy(this.placed));
+            this.placed = Fragment16.from($from.node(i).copy(this.placed));
         }
         get depth() {
           return this.frontier.length - 1;
@@ -55196,7 +58526,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
               let first = fragment.firstChild;
               for (let frontierDepth = this.depth; frontierDepth >= 0; frontierDepth--) {
                 let { type, match: match2 } = this.frontier[frontierDepth], wrap2, inject = null;
-                if (pass == 1 && (first ? match2.matchType(first.type) || (inject = match2.fillBefore(Fragment15.from(first), false)) : parent && type.compatibleContent(parent.type)))
+                if (pass == 1 && (first ? match2.matchType(first.type) || (inject = match2.fillBefore(Fragment16.from(first), false)) : parent && type.compatibleContent(parent.type)))
                   return { sliceDepth, frontierDepth, parent, inject };
                 else if (pass == 2 && first && (wrap2 = match2.findWrapping(first.type)))
                   return { sliceDepth, frontierDepth, parent, wrap: wrap2 };
@@ -55256,7 +58586,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           let toEnd = taken == fragment.childCount;
           if (!toEnd)
             openEndCount = -1;
-          this.placed = addToFragment(this.placed, frontierDepth, Fragment15.from(add));
+          this.placed = addToFragment(this.placed, frontierDepth, Fragment16.from(add));
           this.frontier[frontierDepth].match = match2;
           if (toEnd && openEndCount < 0 && parent && parent.type == this.frontier[this.depth].type && this.frontier.length > 1)
             this.closeFrontierNode();
@@ -55270,8 +58600,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         mustMoveInline() {
           if (!this.$to.parent.isTextblock)
             return -1;
-          let top3 = this.frontier[this.depth], level;
-          if (!top3.type.isTextblock || !contentAfterFits(this.$to, this.$to.depth, top3.type, top3.match, false) || this.$to.depth == this.depth && (level = this.findCloseLevel(this.$to)) && level.depth == this.depth)
+          let top4 = this.frontier[this.depth], level;
+          if (!top4.type.isTextblock || !contentAfterFits(this.$to, this.$to.depth, top4.type, top4.match, false) || this.$to.depth == this.depth && (level = this.findCloseLevel(this.$to)) && level.depth == this.depth)
             return -1;
           let { depth } = this.$to, after = this.$to.after(depth);
           while (depth > 1 && after == this.$to.end(--depth))
@@ -55310,14 +58640,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           return $to;
         }
         openFrontierNode(type, attrs = null, content) {
-          let top3 = this.frontier[this.depth];
-          top3.match = top3.match.matchType(type);
-          this.placed = addToFragment(this.placed, this.depth, Fragment15.from(type.create(attrs, content)));
+          let top4 = this.frontier[this.depth];
+          top4.match = top4.match.matchType(type);
+          this.placed = addToFragment(this.placed, this.depth, Fragment16.from(type.create(attrs, content)));
           this.frontier.push({ type, match: type.contentMatch });
         }
         closeFrontierNode() {
           let open = this.frontier.pop();
-          let add = open.match.fillBefore(Fragment15.empty, true);
+          let add = open.match.fillBefore(Fragment16.empty, true);
           if (add.childCount)
             this.placed = addToFragment(this.placed, this.frontier.length, add);
         }
@@ -55341,7 +58671,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             attrs[name] = node2.attrs[name];
           attrs[this.attr] = this.value;
           let updated = node2.type.create(attrs, null, node2.marks);
-          return StepResult.fromReplace(doc3, this.pos, this.pos + 1, new Slice(Fragment15.from(updated), 0, node2.isLeaf ? 0 : 1));
+          return StepResult.fromReplace(doc3, this.pos, this.pos + 1, new Slice(Fragment16.from(updated), 0, node2.isLeaf ? 0 : 1));
         }
         getMap() {
           return StepMap.empty;
@@ -55476,7 +58806,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         fragment, node, or array of nodes.
         */
         replaceWith(from3, to, content) {
-          return this.replace(from3, to, new Slice(Fragment15.from(content), 0, 0));
+          return this.replace(from3, to, new Slice(Fragment16.from(content), 0, 0));
         }
         /**
         Delete the content between the given positions.
@@ -55695,12 +59025,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     let step = tr.steps[last2];
     if (!(step instanceof ReplaceStep || step instanceof ReplaceAroundStep))
       return;
-    let map3 = tr.mapping.maps[last2], end;
+    let map3 = tr.mapping.maps[last2], end2;
     map3.forEach((_from, _to, _newFrom, newTo) => {
-      if (end == null)
-        end = newTo;
+      if (end2 == null)
+        end2 = newTo;
     });
-    tr.setSelection(Selection.near(tr.doc.resolve(end), bias));
+    tr.setSelection(Selection.near(tr.doc.resolve(end2), bias));
   }
   function bind(f, self2) {
     return !self2 || !f ? f : f.bind(self2);
@@ -56035,7 +59365,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           return new _NodeSelection($pos);
         }
         content() {
-          return new Slice(Fragment15.from(this.node), 0, 0);
+          return new Slice(Fragment16.from(this.node), 0, 0);
         }
         eq(other) {
           return other instanceof _NodeSelection && other.anchor == this.anchor;
@@ -56630,42 +59960,42 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   function nodeSize(node2) {
     return node2.nodeType == 3 ? node2.nodeValue.length : node2.childNodes.length;
   }
-  function textNodeBefore$1(node2, offset) {
+  function textNodeBefore$1(node2, offset2) {
     for (; ; ) {
-      if (node2.nodeType == 3 && offset)
+      if (node2.nodeType == 3 && offset2)
         return node2;
-      if (node2.nodeType == 1 && offset > 0) {
+      if (node2.nodeType == 1 && offset2 > 0) {
         if (node2.contentEditable == "false")
           return null;
-        node2 = node2.childNodes[offset - 1];
-        offset = nodeSize(node2);
+        node2 = node2.childNodes[offset2 - 1];
+        offset2 = nodeSize(node2);
       } else if (node2.parentNode && !hasBlockDesc(node2)) {
-        offset = domIndex(node2);
+        offset2 = domIndex(node2);
         node2 = node2.parentNode;
       } else {
         return null;
       }
     }
   }
-  function textNodeAfter$1(node2, offset) {
+  function textNodeAfter$1(node2, offset2) {
     for (; ; ) {
-      if (node2.nodeType == 3 && offset < node2.nodeValue.length)
+      if (node2.nodeType == 3 && offset2 < node2.nodeValue.length)
         return node2;
-      if (node2.nodeType == 1 && offset < node2.childNodes.length) {
+      if (node2.nodeType == 1 && offset2 < node2.childNodes.length) {
         if (node2.contentEditable == "false")
           return null;
-        node2 = node2.childNodes[offset];
-        offset = 0;
+        node2 = node2.childNodes[offset2];
+        offset2 = 0;
       } else if (node2.parentNode && !hasBlockDesc(node2)) {
-        offset = domIndex(node2) + 1;
+        offset2 = domIndex(node2) + 1;
         node2 = node2.parentNode;
       } else {
         return null;
       }
     }
   }
-  function isOnEdge(node2, offset, parent) {
-    for (let atStart = offset == 0, atEnd = offset == nodeSize(node2); atStart || atEnd; ) {
+  function isOnEdge(node2, offset2, parent) {
+    for (let atStart = offset2 == 0, atEnd = offset2 == nodeSize(node2); atStart || atEnd; ) {
       if (node2 == parent)
         return true;
       let index2 = domIndex(node2);
@@ -56813,11 +60143,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
   function restoreScrollStack(stack, dTop) {
     for (let i = 0; i < stack.length; i++) {
-      let { dom, top: top3, left: left2 } = stack[i];
-      if (dom.scrollTop != top3 + dTop)
-        dom.scrollTop = top3 + dTop;
-      if (dom.scrollLeft != left2)
-        dom.scrollLeft = left2;
+      let { dom, top: top4, left: left3 } = stack[i];
+      if (dom.scrollTop != top4 + dTop)
+        dom.scrollTop = top4 + dTop;
+      if (dom.scrollLeft != left3)
+        dom.scrollLeft = left3;
     }
   }
   function focusPreventScroll(dom) {
@@ -56838,7 +60168,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }
   }
   function findOffsetInNode(node2, coords) {
-    let closest2, dxClosest = 2e8, coordsClosest, offset = 0;
+    let closest2, dxClosest = 2e8, coordsClosest, offset2 = 0;
     let rowBot = coords.top, rowTop = coords.top;
     let firstBelow, coordsBelow;
     for (let child = node2.firstChild, childIndex = 0; child; child = child.nextSibling, childIndex++) {
@@ -56863,7 +60193,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
               top: coords.top
             } : coords;
             if (child.nodeType == 1 && dx)
-              offset = childIndex + (coords.left >= (rect2.left + rect2.right) / 2 ? 1 : 0);
+              offset2 = childIndex + (coords.left >= (rect2.left + rect2.right) / 2 ? 1 : 0);
             continue;
           }
         } else if (rect2.top > coords.top && !firstBelow && rect2.left <= coords.left && rect2.right >= coords.left) {
@@ -56871,7 +60201,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           coordsBelow = { left: Math.max(rect2.left, Math.min(rect2.right, coords.left)), top: rect2.top };
         }
         if (!closest2 && (coords.left >= rect2.right && coords.top >= rect2.top || coords.left >= rect2.left && coords.top >= rect2.bottom))
-          offset = childIndex + 1;
+          offset2 = childIndex + 1;
       }
     }
     if (!closest2 && firstBelow) {
@@ -56882,7 +60212,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (closest2 && closest2.nodeType == 3)
       return findOffsetInText(closest2, coordsClosest);
     if (!closest2 || dxClosest && closest2.nodeType == 1)
-      return { node: node2, offset };
+      return { node: node2, offset: offset2 };
     return findOffsetInNode(closest2, coordsClosest);
   }
   function findOffsetInText(node2, coords) {
@@ -56909,14 +60239,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     return dom;
   }
   function posFromElement(view, elt, coords) {
-    let { node: node2, offset } = findOffsetInNode(elt, coords), bias = -1;
+    let { node: node2, offset: offset2 } = findOffsetInNode(elt, coords), bias = -1;
     if (node2.nodeType == 1 && !node2.firstChild) {
       let rect2 = node2.getBoundingClientRect();
       bias = rect2.left != rect2.right && coords.left > (rect2.left + rect2.right) / 2 ? 1 : -1;
     }
-    return view.docView.posFromDOM(node2, offset, bias);
+    return view.docView.posFromDOM(node2, offset2, bias);
   }
-  function posFromCaret(view, node2, offset, coords) {
+  function posFromCaret(view, node2, offset2, coords) {
     let outsideBlock = -1;
     for (let cur = node2, sawBlock = false; ; ) {
       if (cur == view.dom)
@@ -56940,7 +60270,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
       cur = desc.dom.parentNode;
     }
-    return outsideBlock > -1 ? outsideBlock : view.docView.posFromDOM(node2, offset, -1);
+    return outsideBlock > -1 ? outsideBlock : view.docView.posFromDOM(node2, offset2, -1);
   }
   function elementFromPoint(element, coords, box) {
     let len = element.childNodes.length;
@@ -56962,10 +60292,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     return element;
   }
   function posAtCoords(view, coords) {
-    let doc3 = view.dom.ownerDocument, node2, offset = 0;
+    let doc3 = view.dom.ownerDocument, node2, offset2 = 0;
     let caret3 = caretFromPoint(doc3, coords.left, coords.top);
     if (caret3)
-      ({ node: node2, offset } = caret3);
+      ({ node: node2, offset: offset2 } = caret3);
     let elt = (view.root.elementFromPoint ? view.root : doc3).elementFromPoint(coords.left, coords.top);
     let pos;
     if (!elt || !view.dom.contains(elt.nodeType != 1 ? elt.parentNode : elt)) {
@@ -56984,20 +60314,20 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     elt = targetKludge(elt, coords);
     if (node2) {
       if (gecko && node2.nodeType == 1) {
-        offset = Math.min(offset, node2.childNodes.length);
-        if (offset < node2.childNodes.length) {
-          let next2 = node2.childNodes[offset], box;
+        offset2 = Math.min(offset2, node2.childNodes.length);
+        if (offset2 < node2.childNodes.length) {
+          let next2 = node2.childNodes[offset2], box;
           if (next2.nodeName == "IMG" && (box = next2.getBoundingClientRect()).right <= coords.left && box.bottom > coords.top)
-            offset++;
+            offset2++;
         }
       }
       let prev2;
-      if (webkit && offset && node2.nodeType == 1 && (prev2 = node2.childNodes[offset - 1]).nodeType == 1 && prev2.contentEditable == "false" && prev2.getBoundingClientRect().top >= coords.top)
-        offset--;
-      if (node2 == view.dom && offset == node2.childNodes.length - 1 && node2.lastChild.nodeType == 1 && coords.top > node2.lastChild.getBoundingClientRect().bottom)
+      if (webkit && offset2 && node2.nodeType == 1 && (prev2 = node2.childNodes[offset2 - 1]).nodeType == 1 && prev2.contentEditable == "false" && prev2.getBoundingClientRect().top >= coords.top)
+        offset2--;
+      if (node2 == view.dom && offset2 == node2.childNodes.length - 1 && node2.lastChild.nodeType == 1 && coords.top > node2.lastChild.getBoundingClientRect().bottom)
         pos = view.state.doc.content.size;
-      else if (offset == 0 || node2.nodeType != 1 || node2.childNodes[offset - 1].nodeName != "BR")
-        pos = posFromCaret(view, node2, offset, coords);
+      else if (offset2 == 0 || node2.nodeType != 1 || node2.childNodes[offset2 - 1].nodeName != "BR")
+        pos = posFromCaret(view, node2, offset2, coords);
     }
     if (pos == null)
       pos = posFromElement(view, elt, coords);
@@ -57017,26 +60347,26 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     return Array.prototype.find.call(rects, nonZero) || target2.getBoundingClientRect();
   }
   function coordsAtPos(view, pos, side) {
-    let { node: node2, offset, atom } = view.docView.domFromPos(pos, side < 0 ? -1 : 1);
+    let { node: node2, offset: offset2, atom } = view.docView.domFromPos(pos, side < 0 ? -1 : 1);
     let supportEmptyRange = webkit || gecko;
     if (node2.nodeType == 3) {
-      if (supportEmptyRange && (BIDI.test(node2.nodeValue) || (side < 0 ? !offset : offset == node2.nodeValue.length))) {
-        let rect2 = singleRect(textRange(node2, offset, offset), side);
-        if (gecko && offset && /\s/.test(node2.nodeValue[offset - 1]) && offset < node2.nodeValue.length) {
-          let rectBefore = singleRect(textRange(node2, offset - 1, offset - 1), -1);
+      if (supportEmptyRange && (BIDI.test(node2.nodeValue) || (side < 0 ? !offset2 : offset2 == node2.nodeValue.length))) {
+        let rect2 = singleRect(textRange(node2, offset2, offset2), side);
+        if (gecko && offset2 && /\s/.test(node2.nodeValue[offset2 - 1]) && offset2 < node2.nodeValue.length) {
+          let rectBefore = singleRect(textRange(node2, offset2 - 1, offset2 - 1), -1);
           if (rectBefore.top == rect2.top) {
-            let rectAfter = singleRect(textRange(node2, offset, offset + 1), -1);
+            let rectAfter = singleRect(textRange(node2, offset2, offset2 + 1), -1);
             if (rectAfter.top != rect2.top)
               return flattenV(rectAfter, rectAfter.left < rectBefore.left);
           }
         }
         return rect2;
       } else {
-        let from3 = offset, to = offset, takeSide = side < 0 ? 1 : -1;
-        if (side < 0 && !offset) {
+        let from3 = offset2, to = offset2, takeSide = side < 0 ? 1 : -1;
+        if (side < 0 && !offset2) {
           to++;
           takeSide = -1;
-        } else if (side >= 0 && offset == node2.nodeValue.length) {
+        } else if (side >= 0 && offset2 == node2.nodeValue.length) {
           from3--;
           takeSide = 1;
         } else if (side < 0) {
@@ -57049,26 +60379,26 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }
     let $dom = view.state.doc.resolve(pos - (atom || 0));
     if (!$dom.parent.inlineContent) {
-      if (atom == null && offset && (side < 0 || offset == nodeSize(node2))) {
-        let before = node2.childNodes[offset - 1];
+      if (atom == null && offset2 && (side < 0 || offset2 == nodeSize(node2))) {
+        let before = node2.childNodes[offset2 - 1];
         if (before.nodeType == 1)
           return flattenH(before.getBoundingClientRect(), false);
       }
-      if (atom == null && offset < nodeSize(node2)) {
-        let after = node2.childNodes[offset];
+      if (atom == null && offset2 < nodeSize(node2)) {
+        let after = node2.childNodes[offset2];
         if (after.nodeType == 1)
           return flattenH(after.getBoundingClientRect(), true);
       }
       return flattenH(node2.getBoundingClientRect(), side >= 0);
     }
-    if (atom == null && offset && (side < 0 || offset == nodeSize(node2))) {
-      let before = node2.childNodes[offset - 1];
+    if (atom == null && offset2 && (side < 0 || offset2 == nodeSize(node2))) {
+      let before = node2.childNodes[offset2 - 1];
       let target2 = before.nodeType == 3 ? textRange(before, nodeSize(before) - (supportEmptyRange ? 0 : 1)) : before.nodeType == 1 && (before.nodeName != "BR" || !before.nextSibling) ? before : null;
       if (target2)
         return flattenV(singleRect(target2, 1), false);
     }
-    if (atom == null && offset < nodeSize(node2)) {
-      let after = node2.childNodes[offset];
+    if (atom == null && offset2 < nodeSize(node2)) {
+      let after = node2.childNodes[offset2];
       while (after.pmViewDesc && after.pmViewDesc.ignoreForCoords)
         after = after.nextSibling;
       let target2 = !after ? null : after.nodeType == 3 ? textRange(after, 0, supportEmptyRange ? 0 : 1) : after.nodeType == 1 ? after : null;
@@ -57077,16 +60407,16 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }
     return flattenV(singleRect(node2.nodeType == 3 ? textRange(node2) : node2, -side), side >= 0);
   }
-  function flattenV(rect2, left2) {
+  function flattenV(rect2, left3) {
     if (rect2.width == 0)
       return rect2;
-    let x = left2 ? rect2.left : rect2.right;
+    let x = left3 ? rect2.left : rect2.right;
     return { top: rect2.top, bottom: rect2.bottom, left: x, right: x };
   }
-  function flattenH(rect2, top3) {
+  function flattenH(rect2, top4) {
     if (rect2.height == 0)
       return rect2;
-    let y = top3 ? rect2.top : rect2.bottom;
+    let y = top4 ? rect2.top : rect2.bottom;
     return { top: y, bottom: y, left: rect2.left, right: rect2.right };
   }
   function withFlushedState(view, state, f) {
@@ -57141,7 +60471,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     let { $head } = state.selection;
     if (!$head.parent.isTextblock)
       return false;
-    let offset = $head.parentOffset, atStart = !offset, atEnd = offset == $head.parent.content.size;
+    let offset2 = $head.parentOffset, atStart = !offset2, atEnd = offset2 == $head.parent.content.size;
     let sel = view.domSelection();
     if (!sel)
       return $head.pos == $head.start() || $head.pos == $head.end();
@@ -57209,25 +60539,25 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   function computeOuterDeco(outerDeco, node2, needsWrap) {
     if (outerDeco.length == 0)
       return noDeco;
-    let top3 = needsWrap ? noDeco[0] : new OuterDecoLevel(), result = [top3];
+    let top4 = needsWrap ? noDeco[0] : new OuterDecoLevel(), result = [top4];
     for (let i = 0; i < outerDeco.length; i++) {
       let attrs = outerDeco[i].type.attrs;
       if (!attrs)
         continue;
       if (attrs.nodeName)
-        result.push(top3 = new OuterDecoLevel(attrs.nodeName));
+        result.push(top4 = new OuterDecoLevel(attrs.nodeName));
       for (let name in attrs) {
         let val = attrs[name];
         if (val == null)
           continue;
         if (needsWrap && result.length == 1)
-          result.push(top3 = new OuterDecoLevel(node2.isInline ? "span" : "div"));
+          result.push(top4 = new OuterDecoLevel(node2.isInline ? "span" : "div"));
         if (name == "class")
-          top3.class = (top3.class ? top3.class + " " : "") + val;
+          top4.class = (top4.class ? top4.class + " " : "") + val;
         else if (name == "style")
-          top3.style = (top3.style ? top3.style + ";" : "") + val;
+          top4.style = (top4.style ? top4.style + ";" : "") + val;
         else if (name != "nodeName")
-          top3[name] = val;
+          top4[name] = val;
       }
     }
     return result;
@@ -57337,19 +60667,19 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     return a.type.side - b.type.side;
   }
   function iterDeco(parent, deco, onWidget, onNode) {
-    let locals = deco.locals(parent), offset = 0;
+    let locals = deco.locals(parent), offset2 = 0;
     if (locals.length == 0) {
       for (let i = 0; i < parent.childCount; i++) {
         let child = parent.child(i);
-        onNode(child, locals, deco.forChild(offset, child), i);
-        offset += child.nodeSize;
+        onNode(child, locals, deco.forChild(offset2, child), i);
+        offset2 += child.nodeSize;
       }
       return;
     }
     let decoIndex = 0, active = [], restNode = null;
     for (let parentIndex = 0; ; ) {
       let widget, widgets;
-      while (decoIndex < locals.length && locals[decoIndex].to == offset) {
+      while (decoIndex < locals.length && locals[decoIndex].to == offset2) {
         let next2 = locals[decoIndex++];
         if (next2.widget) {
           if (!widget)
@@ -57379,31 +60709,31 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         break;
       }
       for (let i = 0; i < active.length; i++)
-        if (active[i].to <= offset)
+        if (active[i].to <= offset2)
           active.splice(i--, 1);
-      while (decoIndex < locals.length && locals[decoIndex].from <= offset && locals[decoIndex].to > offset)
+      while (decoIndex < locals.length && locals[decoIndex].from <= offset2 && locals[decoIndex].to > offset2)
         active.push(locals[decoIndex++]);
-      let end = offset + child.nodeSize;
+      let end2 = offset2 + child.nodeSize;
       if (child.isText) {
-        let cutAt = end;
+        let cutAt = end2;
         if (decoIndex < locals.length && locals[decoIndex].from < cutAt)
           cutAt = locals[decoIndex].from;
         for (let i = 0; i < active.length; i++)
           if (active[i].to < cutAt)
             cutAt = active[i].to;
-        if (cutAt < end) {
-          restNode = child.cut(cutAt - offset);
-          child = child.cut(0, cutAt - offset);
-          end = cutAt;
+        if (cutAt < end2) {
+          restNode = child.cut(cutAt - offset2);
+          child = child.cut(0, cutAt - offset2);
+          end2 = cutAt;
           index2 = -1;
         }
       } else {
-        while (decoIndex < locals.length && locals[decoIndex].to < end)
+        while (decoIndex < locals.length && locals[decoIndex].to < end2)
           decoIndex++;
       }
       let outerDeco = child.isInline && !child.isLeaf ? active.filter((d) => !d.inline) : active.slice();
-      onNode(child, outerDeco, deco.forChild(offset, child), index2);
-      offset = end;
+      onNode(child, outerDeco, deco.forChild(offset2, child), index2);
+      offset2 = end2;
     }
   }
   function iosHacks(dom) {
@@ -57443,18 +60773,18 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   function replaceNodes(nodes, from3, to, view, replacement) {
     let result = [];
     for (let i = 0, off2 = 0; i < nodes.length; i++) {
-      let child = nodes[i], start = off2, end = off2 += child.size;
-      if (start >= to || end <= from3) {
+      let child = nodes[i], start2 = off2, end2 = off2 += child.size;
+      if (start2 >= to || end2 <= from3) {
         result.push(child);
       } else {
-        if (start < from3)
-          result.push(child.slice(0, from3 - start, view));
+        if (start2 < from3)
+          result.push(child.slice(0, from3 - start2, view));
         if (replacement) {
           result.push(replacement);
           replacement = void 0;
         }
-        if (end > to)
-          result.push(child.slice(to - start, child.size, view));
+        if (end2 > to)
+          result.push(child.slice(to - start2, child.size, view));
       }
     }
     return result;
@@ -57479,15 +60809,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     } else {
       if (domSel instanceof view.dom.ownerDocument.defaultView.Selection && domSel.rangeCount > 1) {
-        let min = head, max = head;
+        let min2 = head, max2 = head;
         for (let i = 0; i < domSel.rangeCount; i++) {
           let range2 = domSel.getRangeAt(i);
-          min = Math.min(min, view.docView.posFromDOM(range2.startContainer, range2.startOffset, 1));
-          max = Math.max(max, view.docView.posFromDOM(range2.endContainer, range2.endOffset, -1));
+          min2 = Math.min(min2, view.docView.posFromDOM(range2.startContainer, range2.startOffset, 1));
+          max2 = Math.max(max2, view.docView.posFromDOM(range2.endContainer, range2.endOffset, -1));
         }
-        if (min < 0)
+        if (min2 < 0)
           return null;
-        [anchor, head] = max == view.state.selection.anchor ? [max, min] : [min, max];
+        [anchor, head] = max2 == view.state.selection.anchor ? [max2, min2] : [min2, max2];
         $head = doc3.resolve(head);
       } else {
         anchor = view.docView.posFromDOM(domSel.anchorNode, domSel.anchorOffset, 1);
@@ -57548,9 +60878,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     view.domObserver.connectSelection();
   }
   function temporarilyEditableNear(view, pos) {
-    let { node: node2, offset } = view.docView.domFromPos(pos, 0);
-    let after = offset < node2.childNodes.length ? node2.childNodes[offset] : null;
-    let before = offset ? node2.childNodes[offset - 1] : null;
+    let { node: node2, offset: offset2 } = view.docView.domFromPos(pos, 0);
+    let after = offset2 < node2.childNodes.length ? node2.childNodes[offset2] : null;
+    let before = offset2 ? node2.childNodes[offset2 - 1] : null;
     if (safari && after && after.contentEditable == "false")
       return setEditable(after);
     if ((!after || after.contentEditable == "false") && (!before || before.contentEditable == "false")) {
@@ -57579,9 +60909,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     let doc3 = view.dom.ownerDocument;
     doc3.removeEventListener("selectionchange", view.input.hideSelectionGuard);
     let domSel = view.domSelectionRange();
-    let node2 = domSel.anchorNode, offset = domSel.anchorOffset;
+    let node2 = domSel.anchorNode, offset2 = domSel.anchorOffset;
     doc3.addEventListener("selectionchange", view.input.hideSelectionGuard = () => {
-      if (domSel.anchorNode != node2 || domSel.anchorOffset != offset) {
+      if (domSel.anchorNode != node2 || domSel.anchorOffset != offset2) {
         doc3.removeEventListener("selectionchange", view.input.hideSelectionGuard);
         setTimeout(() => {
           if (!editorOwnsSelection(view) || view.state.selection.visible)
@@ -57712,24 +61042,24 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
   function skipIgnoredNodesBefore(view) {
     let sel = view.domSelectionRange();
-    let node2 = sel.focusNode, offset = sel.focusOffset;
+    let node2 = sel.focusNode, offset2 = sel.focusOffset;
     if (!node2)
       return;
     let moveNode, moveOffset, force = false;
-    if (gecko && node2.nodeType == 1 && offset < nodeLen(node2) && isIgnorable(node2.childNodes[offset], -1))
+    if (gecko && node2.nodeType == 1 && offset2 < nodeLen(node2) && isIgnorable(node2.childNodes[offset2], -1))
       force = true;
     for (; ; ) {
-      if (offset > 0) {
+      if (offset2 > 0) {
         if (node2.nodeType != 1) {
           break;
         } else {
-          let before = node2.childNodes[offset - 1];
+          let before = node2.childNodes[offset2 - 1];
           if (isIgnorable(before, -1)) {
             moveNode = node2;
-            moveOffset = --offset;
+            moveOffset = --offset2;
           } else if (before.nodeType == 3) {
             node2 = before;
-            offset = node2.nodeValue.length;
+            offset2 = node2.nodeValue.length;
           } else
             break;
         }
@@ -57746,33 +61076,33 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           node2 = node2.parentNode;
           if (node2 == view.dom)
             break;
-          offset = 0;
+          offset2 = 0;
         } else {
           node2 = prev2;
-          offset = nodeLen(node2);
+          offset2 = nodeLen(node2);
         }
       }
     }
     if (force)
-      setSelFocus(view, node2, offset);
+      setSelFocus(view, node2, offset2);
     else if (moveNode)
       setSelFocus(view, moveNode, moveOffset);
   }
   function skipIgnoredNodesAfter(view) {
     let sel = view.domSelectionRange();
-    let node2 = sel.focusNode, offset = sel.focusOffset;
+    let node2 = sel.focusNode, offset2 = sel.focusOffset;
     if (!node2)
       return;
     let len = nodeLen(node2);
     let moveNode, moveOffset;
     for (; ; ) {
-      if (offset < len) {
+      if (offset2 < len) {
         if (node2.nodeType != 1)
           break;
-        let after = node2.childNodes[offset];
+        let after = node2.childNodes[offset2];
         if (isIgnorable(after, 1)) {
           moveNode = node2;
-          moveOffset = ++offset;
+          moveOffset = ++offset2;
         } else
           break;
       } else if (isBlockNode(node2)) {
@@ -57788,10 +61118,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           node2 = node2.parentNode;
           if (node2 == view.dom)
             break;
-          offset = len = 0;
+          offset2 = len = 0;
         } else {
           node2 = next2;
-          offset = 0;
+          offset2 = 0;
           len = nodeLen(node2);
         }
       }
@@ -57803,45 +61133,45 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     let desc = dom.pmViewDesc;
     return desc && desc.node && desc.node.isBlock;
   }
-  function textNodeAfter(node2, offset) {
-    while (node2 && offset == node2.childNodes.length && !hasBlockDesc(node2)) {
-      offset = domIndex(node2) + 1;
+  function textNodeAfter(node2, offset2) {
+    while (node2 && offset2 == node2.childNodes.length && !hasBlockDesc(node2)) {
+      offset2 = domIndex(node2) + 1;
       node2 = node2.parentNode;
     }
-    while (node2 && offset < node2.childNodes.length) {
-      let next2 = node2.childNodes[offset];
+    while (node2 && offset2 < node2.childNodes.length) {
+      let next2 = node2.childNodes[offset2];
       if (next2.nodeType == 3)
         return next2;
       if (next2.nodeType == 1 && next2.contentEditable == "false")
         break;
       node2 = next2;
-      offset = 0;
+      offset2 = 0;
     }
   }
-  function textNodeBefore(node2, offset) {
-    while (node2 && !offset && !hasBlockDesc(node2)) {
-      offset = domIndex(node2);
+  function textNodeBefore(node2, offset2) {
+    while (node2 && !offset2 && !hasBlockDesc(node2)) {
+      offset2 = domIndex(node2);
       node2 = node2.parentNode;
     }
-    while (node2 && offset) {
-      let next2 = node2.childNodes[offset - 1];
+    while (node2 && offset2) {
+      let next2 = node2.childNodes[offset2 - 1];
       if (next2.nodeType == 3)
         return next2;
       if (next2.nodeType == 1 && next2.contentEditable == "false")
         break;
       node2 = next2;
-      offset = node2.childNodes.length;
+      offset2 = node2.childNodes.length;
     }
   }
-  function setSelFocus(view, node2, offset) {
+  function setSelFocus(view, node2, offset2) {
     if (node2.nodeType != 3) {
       let before, after;
-      if (after = textNodeAfter(node2, offset)) {
+      if (after = textNodeAfter(node2, offset2)) {
         node2 = after;
-        offset = 0;
-      } else if (before = textNodeBefore(node2, offset)) {
+        offset2 = 0;
+      } else if (before = textNodeBefore(node2, offset2)) {
         node2 = before;
-        offset = before.nodeValue.length;
+        offset2 = before.nodeValue.length;
       }
     }
     let sel = view.domSelection();
@@ -57849,12 +61179,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       return;
     if (selectionCollapsed(sel)) {
       let range2 = document.createRange();
-      range2.setEnd(node2, offset);
-      range2.setStart(node2, offset);
+      range2.setEnd(node2, offset2);
+      range2.setStart(node2, offset2);
       sel.removeAllRanges();
       sel.addRange(range2);
     } else if (sel.extend) {
-      sel.extend(node2, offset);
+      sel.extend(node2, offset2);
     }
     view.domObserver.setCurSelection();
     let { state } = view;
@@ -58017,7 +61347,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         text2 = f(text2, inCode || plainText, view);
       });
       if (inCode)
-        return text2 ? new Slice(Fragment15.from(view.state.schema.text(text2.replace(/\r\n?/g, "\n"))), 0, 0) : Slice.empty;
+        return text2 ? new Slice(Fragment16.from(view.state.schema.text(text2.replace(/\r\n?/g, "\n"))), 0, 0) : Slice.empty;
       let parsed = view.someProp("clipboardTextParser", (f) => f(text2, $context, plainText, view));
       if (parsed) {
         slice3 = parsed;
@@ -58105,13 +61435,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         }
       });
       if (result)
-        return Fragment15.from(result);
+        return Fragment16.from(result);
     }
     return fragment;
   }
   function withWrappers(node2, wrap2, from3 = 0) {
     for (let i = wrap2.length - 1; i >= from3; i--)
-      node2 = wrap2[i].create(null, Fragment15.from(node2));
+      node2 = wrap2[i].create(null, Fragment16.from(node2));
     return node2;
   }
   function addToSibling(wrap2, lastWrap, node2, sibling, depth) {
@@ -58121,14 +61451,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         return sibling.copy(sibling.content.replaceChild(sibling.childCount - 1, inner));
       let match2 = sibling.contentMatchAt(sibling.childCount);
       if (match2.matchType(depth == wrap2.length - 1 ? node2.type : wrap2[depth + 1]))
-        return sibling.copy(sibling.content.append(Fragment15.from(withWrappers(node2, wrap2, depth + 1))));
+        return sibling.copy(sibling.content.append(Fragment16.from(withWrappers(node2, wrap2, depth + 1))));
     }
   }
   function closeRight(node2, depth) {
     if (depth == 0)
       return node2;
     let fragment = node2.content.replaceChild(node2.childCount - 1, closeRight(node2.lastChild, depth - 1));
-    let fill = node2.contentMatchAt(node2.childCount).fillBefore(Fragment15.empty, true);
+    let fill = node2.contentMatchAt(node2.childCount).fillBefore(Fragment16.empty, true);
     return node2.copy(fragment.append(fill));
   }
   function closeRange(fragment, side, from3, to, depth, openEnd) {
@@ -58138,7 +61468,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (depth < to - 1)
       inner = closeRange(inner, side, from3, to, depth + 1, openEnd);
     if (depth >= from3)
-      inner = side < 0 ? node2.contentMatchAt(0).fillBefore(inner, openEnd <= depth).append(inner) : inner.append(node2.contentMatchAt(node2.childCount).fillBefore(Fragment15.empty, true));
+      inner = side < 0 ? node2.contentMatchAt(0).fillBefore(inner, openEnd <= depth).append(inner) : inner.append(node2.contentMatchAt(node2.childCount).fillBefore(Fragment16.empty, true));
     return fragment.replaceChild(side < 0 ? 0 : fragment.childCount - 1, node2.copy(inner));
   }
   function closeSlice(slice3, openStart, openEnd) {
@@ -58195,7 +61525,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       let type = schema.nodes[array[i]];
       if (!type || type.hasRequiredAttrs())
         break;
-      content = Fragment15.from(type.create(array[i + 1], content));
+      content = Fragment16.from(type.create(array[i + 1], content));
       openStart++;
       openEnd++;
     }
@@ -58485,19 +61815,19 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         return false;
     return true;
   }
-  function mapChildren(oldChildren, newLocal, mapping, node2, offset, oldOffset, options) {
+  function mapChildren(oldChildren, newLocal, mapping, node2, offset2, oldOffset, options) {
     let children = oldChildren.slice();
     for (let i = 0, baseOffset = oldOffset; i < mapping.maps.length; i++) {
       let moved = 0;
       mapping.maps[i].forEach((oldStart, oldEnd, newStart, newEnd) => {
         let dSize = newEnd - newStart - (oldEnd - oldStart);
         for (let i2 = 0; i2 < children.length; i2 += 3) {
-          let end = children[i2 + 1];
-          if (end < 0 || oldStart > end + baseOffset - moved)
+          let end2 = children[i2 + 1];
+          if (end2 < 0 || oldStart > end2 + baseOffset - moved)
             continue;
-          let start = children[i2] + baseOffset - moved;
-          if (oldEnd >= start) {
-            children[i2 + 1] = oldStart <= start ? -2 : -1;
+          let start2 = children[i2] + baseOffset - moved;
+          if (oldEnd >= start2) {
+            children[i2 + 1] = oldStart <= start2 ? -2 : -1;
           } else if (oldStart >= baseOffset && dSize) {
             children[i2] += dSize;
             children[i2 + 1] += dSize;
@@ -58515,12 +61845,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           children[i + 1] = -1;
           continue;
         }
-        let from3 = mapping.map(oldChildren[i] + oldOffset), fromLocal = from3 - offset;
+        let from3 = mapping.map(oldChildren[i] + oldOffset), fromLocal = from3 - offset2;
         if (fromLocal < 0 || fromLocal >= node2.content.size) {
           mustRebuild = true;
           continue;
         }
-        let to = mapping.map(oldChildren[i + 1] + oldOffset, -1), toLocal = to - offset;
+        let to = mapping.map(oldChildren[i + 1] + oldOffset, -1), toLocal = to - offset2;
         let { index: index2, offset: childOffset } = node2.content.findIndex(fromLocal);
         let childNode = node2.maybeChild(index2);
         if (childNode && childOffset == fromLocal && childOffset + childNode.nodeSize == toLocal) {
@@ -58538,7 +61868,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         }
       }
     if (mustRebuild) {
-      let decorations = mapAndGatherRemainingDecorations(children, oldChildren, newLocal, mapping, offset, oldOffset, options);
+      let decorations = mapAndGatherRemainingDecorations(children, oldChildren, newLocal, mapping, offset2, oldOffset, options);
       let built = buildTree(decorations, node2, 0, options);
       newLocal = built.local;
       for (let i = 0; i < children.length; i += 3)
@@ -58555,20 +61885,20 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }
     return new DecorationSet(newLocal.sort(byPos), children);
   }
-  function moveSpans(spans, offset) {
-    if (!offset || !spans.length)
+  function moveSpans(spans, offset2) {
+    if (!offset2 || !spans.length)
       return spans;
     let result = [];
     for (let i = 0; i < spans.length; i++) {
       let span = spans[i];
-      result.push(new Decoration(span.from + offset, span.to + offset, span.type));
+      result.push(new Decoration(span.from + offset2, span.to + offset2, span.type));
     }
     return result;
   }
-  function mapAndGatherRemainingDecorations(children, oldChildren, decorations, mapping, offset, oldOffset, options) {
+  function mapAndGatherRemainingDecorations(children, oldChildren, decorations, mapping, offset2, oldOffset, options) {
     function gather(set, oldOffset2) {
       for (let i = 0; i < set.local.length; i++) {
-        let mapped = set.local[i].map(mapping, offset, oldOffset2);
+        let mapped = set.local[i].map(mapping, offset2, oldOffset2);
         if (mapped)
           decorations.push(mapped);
         else if (options.onRemove)
@@ -58582,12 +61912,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         gather(children[i + 2], oldChildren[i] + oldOffset + 1);
     return decorations;
   }
-  function takeSpansForNode(spans, node2, offset) {
+  function takeSpansForNode(spans, node2, offset2) {
     if (node2.isLeaf)
       return null;
-    let end = offset + node2.nodeSize, found2 = null;
+    let end2 = offset2 + node2.nodeSize, found2 = null;
     for (let i = 0, span; i < spans.length; i++) {
-      if ((span = spans[i]) && span.from > offset && span.to < end) {
+      if ((span = spans[i]) && span.from > offset2 && span.to < end2) {
         (found2 || (found2 = [])).push(span);
         spans[i] = null;
       }
@@ -58601,18 +61931,18 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         result.push(array[i]);
     return result;
   }
-  function buildTree(spans, node2, offset, options) {
+  function buildTree(spans, node2, offset2, options) {
     let children = [], hasNulls = false;
     node2.forEach((childNode, localStart) => {
-      let found2 = takeSpansForNode(spans, childNode, localStart + offset);
+      let found2 = takeSpansForNode(spans, childNode, localStart + offset2);
       if (found2) {
         hasNulls = true;
-        let subtree = buildTree(found2, childNode, offset + localStart + 1, options);
+        let subtree = buildTree(found2, childNode, offset2 + localStart + 1, options);
         if (subtree != empty)
           children.push(localStart, localStart + childNode.nodeSize, subtree);
       }
     });
-    let locals = moveSpans(hasNulls ? withoutNulls(spans) : spans, -offset).sort(byPos);
+    let locals = moveSpans(hasNulls ? withoutNulls(spans) : spans, -offset2).sort(byPos);
     for (let i = 0; i < locals.length; i++)
       if (!locals[i].type.valid(node2, locals[i])) {
         if (options.onRemove)
@@ -58695,14 +62025,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         return rangeToSelectionRange(view, range2);
     }
     let found2;
-    function read(event) {
+    function read2(event) {
       event.preventDefault();
       event.stopImmediatePropagation();
       found2 = event.getTargetRanges()[0];
     }
-    view.dom.addEventListener("beforeinput", read, true);
+    view.dom.addEventListener("beforeinput", read2, true);
     document.execCommand("indent");
-    view.dom.removeEventListener("beforeinput", read, true);
+    view.dom.removeEventListener("beforeinput", read2, true);
     return found2 ? rangeToSelectionRange(view, found2) : null;
   }
   function blockParent(view, node2) {
@@ -58940,69 +62270,69 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     let updated = [];
     for (let i = 0; i < prev2.childCount; i++)
       updated.push(update(prev2.child(i)));
-    if (Fragment15.from(updated).eq(cur))
+    if (Fragment16.from(updated).eq(cur))
       return { mark, type };
   }
-  function looksLikeBackspace(old, start, end, $newStart, $newEnd) {
+  function looksLikeBackspace(old, start2, end2, $newStart, $newEnd) {
     if (
       // The content must have shrunk
-      end - start <= $newEnd.pos - $newStart.pos || // newEnd must point directly at or after the end of the block that newStart points into
+      end2 - start2 <= $newEnd.pos - $newStart.pos || // newEnd must point directly at or after the end of the block that newStart points into
       skipClosingAndOpening($newStart, true, false) < $newEnd.pos
     )
       return false;
-    let $start = old.resolve(start);
+    let $start = old.resolve(start2);
     if (!$newStart.parent.isTextblock) {
       let after = $start.nodeAfter;
-      return after != null && end == start + after.nodeSize;
+      return after != null && end2 == start2 + after.nodeSize;
     }
     if ($start.parentOffset < $start.parent.content.size || !$start.parent.isTextblock)
       return false;
     let $next = old.resolve(skipClosingAndOpening($start, true, true));
-    if (!$next.parent.isTextblock || $next.pos > end || skipClosingAndOpening($next, true, false) < end)
+    if (!$next.parent.isTextblock || $next.pos > end2 || skipClosingAndOpening($next, true, false) < end2)
       return false;
     return $newStart.parent.content.cut($newStart.parentOffset).eq($next.parent.content);
   }
   function skipClosingAndOpening($pos, fromEnd, mayOpen) {
-    let depth = $pos.depth, end = fromEnd ? $pos.end() : $pos.pos;
+    let depth = $pos.depth, end2 = fromEnd ? $pos.end() : $pos.pos;
     while (depth > 0 && (fromEnd || $pos.indexAfter(depth) == $pos.node(depth).childCount)) {
       depth--;
-      end++;
+      end2++;
       fromEnd = false;
     }
     if (mayOpen) {
       let next2 = $pos.node(depth).maybeChild($pos.indexAfter(depth));
       while (next2 && !next2.isLeaf) {
         next2 = next2.firstChild;
-        end++;
+        end2++;
       }
     }
-    return end;
+    return end2;
   }
   function findDiff(a, b, pos, preferredPos, preferredSide) {
-    let start = a.findDiffStart(b, pos);
-    if (start == null)
+    let start2 = a.findDiffStart(b, pos);
+    if (start2 == null)
       return null;
     let { a: endA, b: endB } = a.findDiffEnd(b, pos + a.size, pos + b.size);
     if (preferredSide == "end") {
-      let adjust = Math.max(0, start - Math.min(endA, endB));
-      preferredPos -= endA + adjust - start;
+      let adjust = Math.max(0, start2 - Math.min(endA, endB));
+      preferredPos -= endA + adjust - start2;
     }
-    if (endA < start && a.size < b.size) {
-      let move = preferredPos <= start && preferredPos >= endA ? start - preferredPos : 0;
-      start -= move;
-      if (start && start < b.size && isSurrogatePair(b.textBetween(start - 1, start + 1)))
-        start += move ? 1 : -1;
-      endB = start + (endB - endA);
-      endA = start;
-    } else if (endB < start) {
-      let move = preferredPos <= start && preferredPos >= endB ? start - preferredPos : 0;
-      start -= move;
-      if (start && start < a.size && isSurrogatePair(a.textBetween(start - 1, start + 1)))
-        start += move ? 1 : -1;
-      endA = start + (endA - endB);
-      endB = start;
+    if (endA < start2 && a.size < b.size) {
+      let move = preferredPos <= start2 && preferredPos >= endA ? start2 - preferredPos : 0;
+      start2 -= move;
+      if (start2 && start2 < b.size && isSurrogatePair(b.textBetween(start2 - 1, start2 + 1)))
+        start2 += move ? 1 : -1;
+      endB = start2 + (endB - endA);
+      endA = start2;
+    } else if (endB < start2) {
+      let move = preferredPos <= start2 && preferredPos >= endB ? start2 - preferredPos : 0;
+      start2 -= move;
+      if (start2 && start2 < a.size && isSurrogatePair(a.textBetween(start2 - 1, start2 + 1)))
+        start2 += move ? 1 : -1;
+      endA = start2 + (endA - endB);
+      endB = start2;
     }
-    return { start, endA, endB };
+    return { start: start2, endA, endB };
   }
   function isSurrogatePair(str) {
     if (str.length != 2)
@@ -59212,12 +62542,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         get posAtEnd() {
           return this.posAtStart + this.size - 2 * this.border;
         }
-        localPosFromDOM(dom, offset, bias) {
+        localPosFromDOM(dom, offset2, bias) {
           if (this.contentDOM && this.contentDOM.contains(dom.nodeType == 1 ? dom : dom.parentNode)) {
             if (bias < 0) {
               let domBefore, desc;
               if (dom == this.contentDOM) {
-                domBefore = dom.childNodes[offset - 1];
+                domBefore = dom.childNodes[offset2 - 1];
               } else {
                 while (dom.parentNode != this.contentDOM)
                   dom = dom.parentNode;
@@ -59229,7 +62559,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             } else {
               let domAfter, desc;
               if (dom == this.contentDOM) {
-                domAfter = dom.childNodes[offset];
+                domAfter = dom.childNodes[offset2];
               } else {
                 while (dom.parentNode != this.contentDOM)
                   dom = dom.parentNode;
@@ -59242,11 +62572,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
           let atEnd;
           if (dom == this.dom && this.contentDOM) {
-            atEnd = offset > domIndex(this.contentDOM);
+            atEnd = offset2 > domIndex(this.contentDOM);
           } else if (this.contentDOM && this.contentDOM != this.dom && this.dom.contains(this.contentDOM)) {
             atEnd = dom.compareDocumentPosition(this.contentDOM) & 2;
           } else if (this.dom.firstChild) {
-            if (offset == 0)
+            if (offset2 == 0)
               for (let search = dom; ; search = search.parentNode) {
                 if (search == this.dom) {
                   atEnd = false;
@@ -59255,7 +62585,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
                 if (search.previousSibling)
                   break;
               }
-            if (atEnd == null && offset == dom.childNodes.length)
+            if (atEnd == null && offset2 == dom.childNodes.length)
               for (let search = dom; ; search = search.parentNode) {
                 if (search == this.dom) {
                   atEnd = true;
@@ -59284,20 +62614,20 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             if (cur == this)
               return desc;
         }
-        posFromDOM(dom, offset, bias) {
+        posFromDOM(dom, offset2, bias) {
           for (let scan = dom; scan; scan = scan.parentNode) {
             let desc = this.getDesc(scan);
             if (desc)
-              return desc.localPosFromDOM(dom, offset, bias);
+              return desc.localPosFromDOM(dom, offset2, bias);
           }
           return -1;
         }
         // Find the desc for the node after the given pos, if any. (When a
         // parent node overrode rendering, there might not be one.)
         descAt(pos) {
-          for (let i = 0, offset = 0; i < this.children.length; i++) {
-            let child = this.children[i], end = offset + child.size;
-            if (offset == pos && end != offset) {
+          for (let i = 0, offset2 = 0; i < this.children.length; i++) {
+            let child = this.children[i], end2 = offset2 + child.size;
+            if (offset2 == pos && end2 != offset2) {
               while (!child.border && child.children.length) {
                 for (let i2 = 0; i2 < child.children.length; i2++) {
                   let inner = child.children[i2];
@@ -59309,25 +62639,25 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
               }
               return child;
             }
-            if (pos < end)
-              return child.descAt(pos - offset - child.border);
-            offset = end;
+            if (pos < end2)
+              return child.descAt(pos - offset2 - child.border);
+            offset2 = end2;
           }
         }
         domFromPos(pos, side) {
           if (!this.contentDOM)
             return { node: this.dom, offset: 0, atom: pos + 1 };
-          let i = 0, offset = 0;
+          let i = 0, offset2 = 0;
           for (let curPos = 0; i < this.children.length; i++) {
-            let child = this.children[i], end = curPos + child.size;
-            if (end > pos || child instanceof TrailingHackViewDesc) {
-              offset = pos - curPos;
+            let child = this.children[i], end2 = curPos + child.size;
+            if (end2 > pos || child instanceof TrailingHackViewDesc) {
+              offset2 = pos - curPos;
               break;
             }
-            curPos = end;
+            curPos = end2;
           }
-          if (offset)
-            return this.children[i].domFromPos(offset - this.children[i].border, side);
+          if (offset2)
+            return this.children[i].domFromPos(offset2 - this.children[i].border, side);
           for (let prev2; i && !(prev2 = this.children[i - 1]).size && prev2 instanceof WidgetViewDesc && prev2.side >= 0; i--) {
           }
           if (side <= 0) {
@@ -59358,13 +62688,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           if (this.children.length == 0)
             return { node: this.contentDOM, from: from3, to, fromOffset: 0, toOffset: this.contentDOM.childNodes.length };
           let fromOffset = -1, toOffset = -1;
-          for (let offset = base2, i = 0; ; i++) {
-            let child = this.children[i], end = offset + child.size;
-            if (fromOffset == -1 && from3 <= end) {
-              let childBase = offset + child.border;
-              if (from3 >= childBase && to <= end - child.border && child.node && child.contentDOM && this.contentDOM.contains(child.contentDOM))
+          for (let offset2 = base2, i = 0; ; i++) {
+            let child = this.children[i], end2 = offset2 + child.size;
+            if (fromOffset == -1 && from3 <= end2) {
+              let childBase = offset2 + child.border;
+              if (from3 >= childBase && to <= end2 - child.border && child.node && child.contentDOM && this.contentDOM.contains(child.contentDOM))
                 return child.parseRange(from3, to, childBase);
-              from3 = offset;
+              from3 = offset2;
               for (let j = i; j > 0; j--) {
                 let prev2 = this.children[j - 1];
                 if (prev2.size && prev2.dom.parentNode == this.contentDOM && !prev2.emptyChildAt(1)) {
@@ -59376,8 +62706,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
               if (fromOffset == -1)
                 fromOffset = 0;
             }
-            if (fromOffset > -1 && (end > to || i == this.children.length - 1)) {
-              to = end;
+            if (fromOffset > -1 && (end2 > to || i == this.children.length - 1)) {
+              to = end2;
               for (let j = i + 1; j < this.children.length; j++) {
                 let next2 = this.children[j];
                 if (next2.size && next2.dom.parentNode == this.contentDOM && !next2.emptyChildAt(-1)) {
@@ -59390,7 +62720,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
                 toOffset = this.contentDOM.childNodes.length;
               break;
             }
-            offset = end;
+            offset2 = end2;
           }
           return { node: this.contentDOM, from: from3, to, fromOffset, toOffset };
         }
@@ -59401,10 +62731,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           return child.size == 0 || child.emptyChildAt(side);
         }
         domAfterPos(pos) {
-          let { node: node2, offset } = this.domFromPos(pos, 0);
-          if (node2.nodeType != 1 || offset == node2.childNodes.length)
+          let { node: node2, offset: offset2 } = this.domFromPos(pos, 0);
+          if (node2.nodeType != 1 || offset2 == node2.childNodes.length)
             throw new RangeError("No node after pos " + pos);
-          return node2.childNodes[offset];
+          return node2.childNodes[offset2];
         }
         // View descs are responsible for setting any selection that falls
         // entirely inside of them, so that custom implementations can do
@@ -59413,11 +62743,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         // case we just use whatever domFromPos produces as a best effort.
         setSelection(anchor, head, view, force = false) {
           let from3 = Math.min(anchor, head), to = Math.max(anchor, head);
-          for (let i = 0, offset = 0; i < this.children.length; i++) {
-            let child = this.children[i], end = offset + child.size;
-            if (from3 > offset && to < end)
-              return child.setSelection(anchor - offset - child.border, head - offset - child.border, view, force);
-            offset = end;
+          for (let i = 0, offset2 = 0; i < this.children.length; i++) {
+            let child = this.children[i], end2 = offset2 + child.size;
+            if (from3 > offset2 && to < end2)
+              return child.setSelection(anchor - offset2 - child.border, head - offset2 - child.border, view, force);
+            offset2 = end2;
           }
           let anchorDOM = this.domFromPos(anchor, anchor ? -1 : 1);
           let headDOM = head == anchor ? anchorDOM : this.domFromPos(head, head ? -1 : 1);
@@ -59425,10 +62755,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           let selRange = view.domSelectionRange();
           let brKludge = false;
           if ((gecko || safari) && anchor == head) {
-            let { node: node2, offset } = anchorDOM;
+            let { node: node2, offset: offset2 } = anchorDOM;
             if (node2.nodeType == 3) {
-              brKludge = !!(offset && node2.nodeValue[offset - 1] == "\n");
-              if (brKludge && offset == node2.nodeValue.length) {
+              brKludge = !!(offset2 && node2.nodeValue[offset2 - 1] == "\n");
+              if (brKludge && offset2 == node2.nodeValue.length) {
                 for (let scan = node2, after; scan; scan = scan.parentNode) {
                   if (after = scan.nextSibling) {
                     if (after.nodeName == "BR")
@@ -59441,7 +62771,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
                 }
               }
             } else {
-              let prev2 = node2.childNodes[offset - 1];
+              let prev2 = node2.childNodes[offset2 - 1];
               brKludge = prev2 && (prev2.nodeName == "BR" || prev2.contentEditable == "false");
             }
           }
@@ -59484,12 +62814,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         // Remove a subtree of the element tree that has been touched
         // by a DOM change, so that the next update will redraw it.
         markDirty(from3, to) {
-          for (let offset = 0, i = 0; i < this.children.length; i++) {
-            let child = this.children[i], end = offset + child.size;
-            if (offset == end ? from3 <= end && to >= offset : from3 < end && to > offset) {
-              let startInside = offset + child.border, endInside = end - child.border;
+          for (let offset2 = 0, i = 0; i < this.children.length; i++) {
+            let child = this.children[i], end2 = offset2 + child.size;
+            if (offset2 == end2 ? from3 <= end2 && to >= offset2 : from3 < end2 && to > offset2) {
+              let startInside = offset2 + child.border, endInside = end2 - child.border;
               if (from3 >= startInside && to <= endInside) {
-                this.dirty = from3 == offset || to == end ? CONTENT_DIRTY : CHILD_DIRTY;
+                this.dirty = from3 == offset2 || to == end2 ? CONTENT_DIRTY : CHILD_DIRTY;
                 if (from3 == startInside && to == endInside && (child.contentLost || child.dom.parentNode != this.contentDOM))
                   child.dirty = NODE_DIRTY;
                 else
@@ -59499,7 +62829,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
                 child.dirty = child.dom == child.contentDOM && child.dom.parentNode == this.contentDOM && !child.children.length ? CONTENT_DIRTY : NODE_DIRTY;
               }
             }
-            offset = end;
+            offset2 = end2;
           }
           this.dirty = CONTENT_DIRTY;
         }
@@ -59584,10 +62914,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         get size() {
           return this.text.length;
         }
-        localPosFromDOM(dom, offset) {
+        localPosFromDOM(dom, offset2) {
           if (dom != this.textDOM)
-            return this.posAtStart + (offset ? this.size : 0);
-          return this.posAtStart + offset;
+            return this.posAtStart + (offset2 ? this.size : 0);
+          return this.posAtStart + offset2;
         }
         domFromPos(pos) {
           return { node: this.textDOM, offset: pos };
@@ -59718,7 +63048,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
               }
             }
             if (!rule.contentElement)
-              rule.getContent = () => Fragment15.empty;
+              rule.getContent = () => Fragment16.empty;
           }
           return rule;
         }
@@ -59883,10 +63213,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         domFromPos(pos) {
           return { node: this.nodeDOM, offset: pos };
         }
-        localPosFromDOM(dom, offset, bias) {
+        localPosFromDOM(dom, offset2, bias) {
           if (dom == this.nodeDOM)
-            return this.posAtStart + Math.min(offset, this.node.text.length);
-          return super.localPosFromDOM(dom, offset, bias);
+            return this.posAtStart + Math.min(offset2, this.node.text.length);
+          return super.localPosFromDOM(dom, offset2, bias);
         }
         ignoreMutation(mutation) {
           return mutation.type != "characterData" && mutation.type != "selection";
@@ -59971,23 +63301,23 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       OuterDecoLevel.prototype = /* @__PURE__ */ Object.create(null);
       noDeco = [new OuterDecoLevel()];
       ViewTreeUpdater = class {
-        constructor(top3, lock, view) {
+        constructor(top4, lock, view) {
           this.lock = lock;
           this.view = view;
           this.index = 0;
           this.stack = [];
           this.changed = false;
-          this.top = top3;
-          this.preMatch = preMatch(top3.node.content, top3);
+          this.top = top4;
+          this.preMatch = preMatch(top4.node.content, top4);
         }
         // Destroy and remove the children between the given indices in
         // `this.top`.
-        destroyBetween(start, end) {
-          if (start == end)
+        destroyBetween(start2, end2) {
+          if (start2 == end2)
             return;
-          for (let i = start; i < end; i++)
+          for (let i = start2; i < end2; i++)
             this.top.children[i].destroy();
-          this.top.children.splice(start, end - start);
+          this.top.children.splice(start2, end2 - start2);
           this.changed = true;
         }
         // Destroy all remaining children in `this.top`.
@@ -60426,8 +63756,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             endComposition(view, !state.selection.empty);
             if (gecko && state.selection.empty && $pos.parentOffset && !$pos.textOffset && $pos.nodeBefore.marks.length) {
               let sel = view.domSelectionRange();
-              for (let node2 = sel.focusNode, offset = sel.focusOffset; node2 && node2.nodeType == 1 && offset != 0; ) {
-                let before = offset < 0 ? node2.lastChild : node2.childNodes[offset - 1];
+              for (let node2 = sel.focusNode, offset2 = sel.focusOffset; node2 && node2.nodeType == 1 && offset2 != 0; ) {
+                let before = offset2 < 0 ? node2.lastChild : node2.childNodes[offset2 - 1];
                 if (!before)
                   break;
                 if (before.nodeType == 3) {
@@ -60437,7 +63767,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
                   break;
                 } else {
                   node2 = before;
-                  offset = -1;
+                  offset2 = -1;
                 }
               }
             }
@@ -60582,9 +63912,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         if (isNode && NodeSelection.isSelectable(slice3.content.firstChild) && $pos.nodeAfter && $pos.nodeAfter.sameMarkup(slice3.content.firstChild)) {
           tr.setSelection(new NodeSelection($pos));
         } else {
-          let end = tr.mapping.map(insertPos);
-          tr.mapping.maps[tr.mapping.maps.length - 1].forEach((_from, _to, _newFrom, newTo) => end = newTo);
-          tr.setSelection(selectionBetween(view, $pos, tr.doc.resolve(end)));
+          let end2 = tr.mapping.map(insertPos);
+          tr.mapping.maps[tr.mapping.maps.length - 1].forEach((_from, _to, _newFrom, newTo) => end2 = newTo);
+          tr.setSelection(selectionBetween(view, $pos, tr.doc.resolve(end2)));
         }
         view.focus();
         view.dispatch(tr.setMeta("uiEvent", "drop"));
@@ -60639,9 +63969,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           this.spec = spec || noSpec;
           this.side = this.spec.side || 0;
         }
-        map(mapping, span, offset, oldOffset) {
+        map(mapping, span, offset2, oldOffset) {
           let { pos, deleted } = mapping.mapResult(span.from + oldOffset, this.side < 0 ? -1 : 1);
-          return deleted ? null : new Decoration(pos - offset, pos - offset, this);
+          return deleted ? null : new Decoration(pos - offset2, pos - offset2, this);
         }
         valid() {
           return true;
@@ -60659,9 +63989,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           this.attrs = attrs;
           this.spec = spec || noSpec;
         }
-        map(mapping, span, offset, oldOffset) {
-          let from3 = mapping.map(span.from + oldOffset, this.spec.inclusiveStart ? -1 : 1) - offset;
-          let to = mapping.map(span.to + oldOffset, this.spec.inclusiveEnd ? 1 : -1) - offset;
+        map(mapping, span, offset2, oldOffset) {
+          let from3 = mapping.map(span.from + oldOffset, this.spec.inclusiveStart ? -1 : 1) - offset2;
+          let to = mapping.map(span.to + oldOffset, this.spec.inclusiveEnd ? 1 : -1) - offset2;
           return from3 >= to ? null : new Decoration(from3, to, this);
         }
         valid(_, span) {
@@ -60681,18 +64011,18 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           this.attrs = attrs;
           this.spec = spec || noSpec;
         }
-        map(mapping, span, offset, oldOffset) {
+        map(mapping, span, offset2, oldOffset) {
           let from3 = mapping.mapResult(span.from + oldOffset, 1);
           if (from3.deleted)
             return null;
           let to = mapping.mapResult(span.to + oldOffset, -1);
           if (to.deleted || to.pos <= from3.pos)
             return null;
-          return new Decoration(from3.pos - offset, to.pos - offset, this);
+          return new Decoration(from3.pos - offset2, to.pos - offset2, this);
         }
         valid(node2, span) {
-          let { index: index2, offset } = node2.content.findIndex(span.from), child;
-          return offset == span.from && !(child = node2.child(index2)).isText && offset + child.nodeSize == span.to;
+          let { index: index2, offset: offset2 } = node2.content.findIndex(span.from), child;
+          return offset2 == span.from && !(child = node2.child(index2)).isText && offset2 + child.nodeSize == span.to;
         }
         eq(other) {
           return this == other || other instanceof _NodeType && compareObjs(this.attrs, other.attrs) && compareObjs(this.spec, other.spec);
@@ -60718,14 +64048,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
         @internal
         */
-        eq(other, offset = 0) {
-          return this.type.eq(other.type) && this.from + offset == other.from && this.to + offset == other.to;
+        eq(other, offset2 = 0) {
+          return this.type.eq(other.type) && this.from + offset2 == other.from && this.to + offset2 == other.to;
         }
         /**
         @internal
         */
-        map(mapping, offset, oldOffset) {
-          return this.type.map(mapping, this, offset, oldOffset);
+        map(mapping, offset2, oldOffset) {
+          return this.type.map(mapping, this, offset2, oldOffset);
         }
         /**
         Creates a widget decoration, which is a DOM node that's shown in
@@ -60799,21 +64129,21 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         considered. When `predicate` isn't given, all decorations are
         assumed to match.
         */
-        find(start, end, predicate) {
+        find(start2, end2, predicate) {
           let result = [];
-          this.findInner(start == null ? 0 : start, end == null ? 1e9 : end, result, 0, predicate);
+          this.findInner(start2 == null ? 0 : start2, end2 == null ? 1e9 : end2, result, 0, predicate);
           return result;
         }
-        findInner(start, end, result, offset, predicate) {
+        findInner(start2, end2, result, offset2, predicate) {
           for (let i = 0; i < this.local.length; i++) {
             let span = this.local[i];
-            if (span.from <= end && span.to >= start && (!predicate || predicate(span.spec)))
-              result.push(span.copy(span.from + offset, span.to + offset));
+            if (span.from <= end2 && span.to >= start2 && (!predicate || predicate(span.spec)))
+              result.push(span.copy(span.from + offset2, span.to + offset2));
           }
           for (let i = 0; i < this.children.length; i += 3) {
-            if (this.children[i] < end && this.children[i + 1] > start) {
+            if (this.children[i] < end2 && this.children[i + 1] > start2) {
               let childOff = this.children[i] + 1;
-              this.children[i + 2].findInner(start - childOff, end - childOff, result, offset + childOff, predicate);
+              this.children[i + 2].findInner(start2 - childOff, end2 - childOff, result, offset2 + childOff, predicate);
             }
           }
         }
@@ -60829,17 +64159,17 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         /**
         @internal
         */
-        mapInner(mapping, node2, offset, oldOffset, options) {
+        mapInner(mapping, node2, offset2, oldOffset, options) {
           let newLocal;
           for (let i = 0; i < this.local.length; i++) {
-            let mapped = this.local[i].map(mapping, offset, oldOffset);
+            let mapped = this.local[i].map(mapping, offset2, oldOffset);
             if (mapped && mapped.type.valid(node2, mapped))
               (newLocal || (newLocal = [])).push(mapped);
             else if (options.onRemove)
               options.onRemove(this.local[i].spec);
           }
           if (this.children.length)
-            return mapChildren(this.children, newLocal || [], mapping, node2, offset, oldOffset, options);
+            return mapChildren(this.children, newLocal || [], mapping, node2, offset2, oldOffset, options);
           else
             return newLocal ? new _DecorationSet(newLocal.sort(byPos), none) : empty;
         }
@@ -60856,10 +64186,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             return _DecorationSet.create(doc3, decorations);
           return this.addInner(doc3, decorations, 0);
         }
-        addInner(doc3, decorations, offset) {
+        addInner(doc3, decorations, offset2) {
           let children, childIndex = 0;
           doc3.forEach((childNode, childOffset) => {
-            let baseOffset = childOffset + offset, found2;
+            let baseOffset = childOffset + offset2, found2;
             if (!(found2 = takeSpansForNode(decorations, childNode, baseOffset)))
               return;
             if (!children)
@@ -60872,7 +64202,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
               children.splice(childIndex, 0, childOffset, childOffset + childNode.nodeSize, buildTree(found2, childNode, baseOffset + 1, noSpec));
             childIndex += 3;
           });
-          let local = moveSpans(childIndex ? withoutNulls(decorations) : decorations, -offset);
+          let local = moveSpans(childIndex ? withoutNulls(decorations) : decorations, -offset2);
           for (let i = 0; i < local.length; i++)
             if (!local[i].type.valid(doc3, local[i]))
               local.splice(i--, 1);
@@ -60887,11 +64217,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             return this;
           return this.removeInner(decorations, 0);
         }
-        removeInner(decorations, offset) {
+        removeInner(decorations, offset2) {
           let children = this.children, local = this.local;
           for (let i = 0; i < children.length; i += 3) {
             let found2;
-            let from3 = children[i] + offset, to = children[i + 1] + offset;
+            let from3 = children[i] + offset2, to = children[i + 1] + offset2;
             for (let j = 0, span; j < decorations.length; j++)
               if (span = decorations[j]) {
                 if (span.from > from3 && span.to < to) {
@@ -60915,7 +64245,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             for (let i = 0, span; i < decorations.length; i++)
               if (span = decorations[i]) {
                 for (let j = 0; j < local.length; j++)
-                  if (local[j].eq(span, offset)) {
+                  if (local[j].eq(span, offset2)) {
                     if (local == this.local)
                       local = this.local.slice();
                     local.splice(j--, 1);
@@ -60926,23 +64256,23 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             return this;
           return local.length || children.length ? new _DecorationSet(local, children) : empty;
         }
-        forChild(offset, node2) {
+        forChild(offset2, node2) {
           if (this == empty)
             return this;
           if (node2.isLeaf)
             return _DecorationSet.empty;
           let child, local;
           for (let i = 0; i < this.children.length; i += 3)
-            if (this.children[i] >= offset) {
-              if (this.children[i] == offset)
+            if (this.children[i] >= offset2) {
+              if (this.children[i] == offset2)
                 child = this.children[i + 2];
               break;
             }
-          let start = offset + 1, end = start + node2.content.size;
+          let start2 = offset2 + 1, end2 = start2 + node2.content.size;
           for (let i = 0; i < this.local.length; i++) {
             let dec = this.local[i];
-            if (dec.from < end && dec.to > start && dec.type instanceof InlineType) {
-              let from3 = Math.max(start, dec.from) - start, to = Math.min(end, dec.to) - start;
+            if (dec.from < end2 && dec.to > start2 && dec.type instanceof InlineType) {
+              let from3 = Math.max(start2, dec.from) - start2, to = Math.min(end2, dec.to) - start2;
               if (from3 < to)
                 (local || (local = [])).push(dec.copy(from3, to));
             }
@@ -61005,12 +64335,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           const mappedDecos = this.members.map((member) => member.map(mapping, doc3, noSpec));
           return _DecorationGroup.from(mappedDecos);
         }
-        forChild(offset, child) {
+        forChild(offset2, child) {
           if (child.isLeaf)
             return DecorationSet.empty;
           let found2 = [];
           for (let i = 0; i < this.members.length; i++) {
-            let result = this.members[i].forChild(offset, child);
+            let result = this.members[i].forChild(offset2, child);
             if (result == empty)
               continue;
             if (result instanceof _DecorationGroup)
@@ -61665,8 +64995,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         The `bias` parameter can be used to influence which side of a DOM
         node to use when the position is inside a leaf node.
         */
-        posAtDOM(node2, offset, bias = -1) {
-          let pos = this.docView.posFromDOM(node2, offset, bias);
+        posAtDOM(node2, offset2, bias = -1) {
+          let pos = this.docView.posFromDOM(node2, offset2, bias);
           if (pos == null)
             throw new RangeError("DOM position not inside the editor");
           return pos;
@@ -62085,12 +65415,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     let canDelAfter = !isolated && $cut.parent.canReplace($cut.index(), $cut.index() + 1);
     if (canDelAfter && (conn = (match2 = before.contentMatchAt(before.childCount)).findWrapping(after.type)) && match2.matchType(conn[0] || after.type).validEnd) {
       if (dispatch) {
-        let end = $cut.pos + after.nodeSize, wrap2 = Fragment15.empty;
+        let end2 = $cut.pos + after.nodeSize, wrap2 = Fragment16.empty;
         for (let i = conn.length - 1; i >= 0; i--)
-          wrap2 = Fragment15.from(conn[i].create(null, wrap2));
-        wrap2 = Fragment15.from(before.copy(wrap2));
-        let tr = state.tr.step(new ReplaceAroundStep($cut.pos - 1, end, $cut.pos, end, new Slice(wrap2, 1, 0), conn.length, true));
-        let $joinAt = tr.doc.resolve(end + 2 * conn.length);
+          wrap2 = Fragment16.from(conn[i].create(null, wrap2));
+        wrap2 = Fragment16.from(before.copy(wrap2));
+        let tr = state.tr.step(new ReplaceAroundStep($cut.pos - 1, end2, $cut.pos, end2, new Slice(wrap2, 1, 0), conn.length, true));
+        let $joinAt = tr.doc.resolve(end2 + 2 * conn.length);
         if ($joinAt.nodeAfter && $joinAt.nodeAfter.type == before.type && canJoin(tr.doc, $joinAt.pos))
           tr.join($joinAt.pos);
         dispatch(tr.scrollIntoView());
@@ -62117,10 +65447,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         afterDepth++;
       if (at.canReplace(at.childCount, at.childCount, afterText.content)) {
         if (dispatch) {
-          let end = Fragment15.empty;
+          let end2 = Fragment16.empty;
           for (let i = wrap2.length - 1; i >= 0; i--)
-            end = Fragment15.from(wrap2[i].copy(end));
-          let tr = state.tr.step(new ReplaceAroundStep($cut.pos - wrap2.length, $cut.pos + after.nodeSize, $cut.pos + afterDepth, $cut.pos + after.nodeSize - afterDepth, new Slice(end, wrap2.length, 0), 0, true));
+            end2 = Fragment16.from(wrap2[i].copy(end2));
+          let tr = state.tr.step(new ReplaceAroundStep($cut.pos - wrap2.length, $cut.pos + after.nodeSize, $cut.pos + afterDepth, $cut.pos + after.nodeSize - afterDepth, new Slice(end2, wrap2.length, 0), 0, true));
           dispatch(tr.scrollIntoView());
         }
         return true;
@@ -62253,9 +65583,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             if (!add) {
               tr.removeMark($from.pos, $to.pos, markType);
             } else {
-              let from3 = $from.pos, to = $to.pos, start = $from.nodeAfter, end = $to.nodeBefore;
-              let spaceStart = dropSpace && start && start.isText ? /^\s*/.exec(start.text)[0].length : 0;
-              let spaceEnd = dropSpace && end && end.isText ? /\s*$/.exec(end.text)[0].length : 0;
+              let from3 = $from.pos, to = $to.pos, start2 = $from.nodeAfter, end2 = $to.nodeBefore;
+              let spaceStart = dropSpace && start2 && start2.isText ? /^\s*/.exec(start2.text)[0].length : 0;
+              let spaceEnd = dropSpace && end2 && end2.isText ? /\s*$/.exec(end2.text)[0].length : 0;
               if (from3 + spaceStart < to) {
                 from3 += spaceStart;
                 to -= spaceEnd;
@@ -62483,19 +65813,19 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
 
   // node_modules/prosemirror-inputrules/dist/index.js
   function stringHandler(string) {
-    return function(state, match2, start, end) {
+    return function(state, match2, start2, end2) {
       let insert = string;
       if (match2[1]) {
-        let offset = match2[0].lastIndexOf(match2[1]);
-        insert += match2[0].slice(offset + match2[1].length);
-        start += offset;
-        let cutOff = start - end;
+        let offset2 = match2[0].lastIndexOf(match2[1]);
+        insert += match2[0].slice(offset2 + match2[1].length);
+        start2 += offset2;
+        let cutOff = start2 - end2;
         if (cutOff > 0) {
-          insert = match2[0].slice(offset - cutOff, offset) + insert;
-          start = end;
+          insert = match2[0].slice(offset2 - cutOff, offset2) + insert;
+          start2 = end2;
         }
       }
-      return state.tr.insertText(insert, start, end);
+      return state.tr.insertText(insert, start2, end2);
     };
   }
   function inputRules({ rules }) {
@@ -62699,16 +66029,16 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         Leaf2.prototype.getInner = function getInner(i) {
           return this.values[i];
         };
-        Leaf2.prototype.forEachInner = function forEachInner(f, from3, to, start) {
+        Leaf2.prototype.forEachInner = function forEachInner(f, from3, to, start2) {
           for (var i = from3; i < to; i++) {
-            if (f(this.values[i], start + i) === false) {
+            if (f(this.values[i], start2 + i) === false) {
               return false;
             }
           }
         };
-        Leaf2.prototype.forEachInvertedInner = function forEachInvertedInner(f, from3, to, start) {
+        Leaf2.prototype.forEachInvertedInner = function forEachInvertedInner(f, from3, to, start2) {
           for (var i = from3 - 1; i >= to; i--) {
-            if (f(this.values[i], start + i) === false) {
+            if (f(this.values[i], start2 + i) === false) {
               return false;
             }
           }
@@ -62734,12 +66064,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }(RopeSequence);
       RopeSequence.empty = new Leaf([]);
       Append = /* @__PURE__ */ function(RopeSequence3) {
-        function Append2(left2, right2) {
+        function Append2(left3, right3) {
           RopeSequence3.call(this);
-          this.left = left2;
-          this.right = right2;
-          this.length = left2.length + right2.length;
-          this.depth = Math.max(left2.depth, right2.depth) + 1;
+          this.left = left3;
+          this.right = right3;
+          this.length = left3.length + right3.length;
+          this.depth = Math.max(left3.depth, right3.depth) + 1;
         }
         if (RopeSequence3) Append2.__proto__ = RopeSequence3;
         Append2.prototype = Object.create(RopeSequence3 && RopeSequence3.prototype);
@@ -62750,21 +66080,21 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         Append2.prototype.getInner = function getInner(i) {
           return i < this.left.length ? this.left.get(i) : this.right.get(i - this.left.length);
         };
-        Append2.prototype.forEachInner = function forEachInner(f, from3, to, start) {
+        Append2.prototype.forEachInner = function forEachInner(f, from3, to, start2) {
           var leftLen = this.left.length;
-          if (from3 < leftLen && this.left.forEachInner(f, from3, Math.min(to, leftLen), start) === false) {
+          if (from3 < leftLen && this.left.forEachInner(f, from3, Math.min(to, leftLen), start2) === false) {
             return false;
           }
-          if (to > leftLen && this.right.forEachInner(f, Math.max(from3 - leftLen, 0), Math.min(this.length, to) - leftLen, start + leftLen) === false) {
+          if (to > leftLen && this.right.forEachInner(f, Math.max(from3 - leftLen, 0), Math.min(this.length, to) - leftLen, start2 + leftLen) === false) {
             return false;
           }
         };
-        Append2.prototype.forEachInvertedInner = function forEachInvertedInner(f, from3, to, start) {
+        Append2.prototype.forEachInvertedInner = function forEachInvertedInner(f, from3, to, start2) {
           var leftLen = this.left.length;
-          if (from3 > leftLen && this.right.forEachInvertedInner(f, from3 - leftLen, Math.max(to, leftLen) - leftLen, start + leftLen) === false) {
+          if (from3 > leftLen && this.right.forEachInvertedInner(f, from3 - leftLen, Math.max(to, leftLen) - leftLen, start2 + leftLen) === false) {
             return false;
           }
-          if (to < leftLen && this.left.forEachInvertedInner(f, Math.min(from3, leftLen), to, start) === false) {
+          if (to < leftLen && this.left.forEachInvertedInner(f, Math.min(from3, leftLen), to, start2) === false) {
             return false;
           }
         };
@@ -62847,9 +66177,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (!transform.docChanged)
       return true;
     let adjacent = false;
-    transform.mapping.maps[0].forEach((start, end) => {
+    transform.mapping.maps[0].forEach((start2, end2) => {
       for (let i = 0; i < prevRanges.length; i += 2)
-        if (start <= prevRanges[i + 1] && end >= prevRanges[i])
+        if (start2 <= prevRanges[i + 1] && end2 >= prevRanges[i])
           adjacent = true;
     });
     return adjacent;
@@ -62959,17 +66289,17 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         popEvent(state, preserveItems) {
           if (this.eventCount == 0)
             return null;
-          let end = this.items.length;
-          for (; ; end--) {
-            let next2 = this.items.get(end - 1);
+          let end2 = this.items.length;
+          for (; ; end2--) {
+            let next2 = this.items.get(end2 - 1);
             if (next2.selection) {
-              --end;
+              --end2;
               break;
             }
           }
           let remap, mapFrom;
           if (preserveItems) {
-            remap = this.remapping(end, this.items.length);
+            remap = this.remapping(end2, this.items.length);
             mapFrom = remap.maps.length;
           }
           let transform = state.tr;
@@ -62978,7 +66308,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           this.items.forEach((item2, i) => {
             if (!item2.step) {
               if (!remap) {
-                remap = this.remapping(end, i + 1);
+                remap = this.remapping(end2, i + 1);
                 mapFrom = remap.maps.length;
               }
               mapFrom--;
@@ -63000,7 +66330,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             }
             if (item2.selection) {
               selection = remap ? item2.selection.map(remap.slice(mapFrom)) : item2.selection;
-              remaining = new _Branch(this.items.slice(0, end).append(addBefore.reverse().concat(addAfter)), this.eventCount - 1);
+              remaining = new _Branch(this.items.slice(0, end2).append(addBefore.reverse().concat(addAfter)), this.eventCount - 1);
               return false;
             }
           }, this.items.length, 0);
@@ -63055,14 +66385,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         rebased(rebasedTransform, rebasedCount) {
           if (!this.eventCount)
             return this;
-          let rebasedItems = [], start = Math.max(0, this.items.length - rebasedCount);
+          let rebasedItems = [], start2 = Math.max(0, this.items.length - rebasedCount);
           let mapping = rebasedTransform.mapping;
           let newUntil = rebasedTransform.steps.length;
           let eventCount = this.eventCount;
           this.items.forEach((item2) => {
             if (item2.selection)
               eventCount--;
-          }, start);
+          }, start2);
           let iRebased = rebasedCount;
           this.items.forEach((item2) => {
             let pos = mapping.getMirror(--iRebased);
@@ -63079,11 +66409,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             } else {
               rebasedItems.push(new Item(map3));
             }
-          }, start);
+          }, start2);
           let newMaps = [];
           for (let i = rebasedCount; i < newUntil; i++)
             newMaps.push(new Item(mapping.maps[i]));
-          let items = this.items.slice(0, start).append(newMaps).append(rebasedItems);
+          let items = this.items.slice(0, start2).append(newMaps).append(rebasedItems);
           let branch = new _Branch(items, eventCount);
           if (branch.emptyItemCount() > max_empty_items)
             branch = branch.compress(this.items.length - rebasedItems.length);
@@ -63448,9 +66778,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       imageSyntaxRanges.push([result.index, result.index + result[0].length]);
       result = reMdImageSyntax.exec(text2);
     }
-    return text2.replace(reEscapedCharInLinkSyntax, function(matched, offset) {
+    return text2.replace(reEscapedCharInLinkSyntax, function(matched, offset2) {
       var isDelimiter = imageSyntaxRanges.some(function(range2) {
-        return offset > range2[0] && offset < range2[1];
+        return offset2 > range2[0] && offset2 < range2[1];
       });
       return isDelimiter ? matched : "\\" + matched;
     });
@@ -63512,8 +66842,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   function last$1(arr) {
     return arr[arr.length - 1];
   }
-  function between$1(value, min, max) {
-    return value >= min && value <= max;
+  function between$1(value, min2, max2) {
+    return value >= min2 && value <= max2;
   }
   function isObject$1(obj) {
     return typeof obj === "object" && obj !== null;
@@ -63620,7 +66950,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     for (var i = startIndex; i <= endIndex; i += 1) {
       var _b = doc3.child(i), nodeSize2 = _b.nodeSize, textContent = _b.textContent, content = _b.content;
       var text2 = createText(textContent);
-      var node2 = text2 ? createTextNode$1(schema, text2) : Fragment15.empty;
+      var node2 = text2 ? createTextNode$1(schema, text2) : Fragment16.empty;
       var mappedFrom = tr.mapping.map(from3);
       var mappedTo = mappedFrom + content.size;
       tr.replaceWith(mappedFrom, mappedTo, node2);
@@ -63708,8 +67038,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       mdNode = mdNode.parent;
     }
   }
-  function addOffsetPos(originPos, offset) {
-    return [originPos[0], originPos[1] + offset];
+  function addOffsetPos(originPos, offset2) {
+    return [originPos[0], originPos[1] + offset2];
   }
   function setOffsetPos(originPos, newOffset) {
     return [originPos[0], newOffset];
@@ -63898,11 +67228,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     return matchSelector.call(element, selector);
   }
   function isPositionInBox(style4, offsetX, offsetY) {
-    var left2 = parseInt(style4.left, 10);
-    var top3 = parseInt(style4.top, 10);
+    var left3 = parseInt(style4.left, 10);
+    var top4 = parseInt(style4.top, 10);
     var width2 = parseInt(style4.width, 10) + parseInt(style4.paddingLeft, 10) + parseInt(style4.paddingRight, 10);
     var height2 = parseInt(style4.height, 10) + parseInt(style4.paddingTop, 10) + parseInt(style4.paddingBottom, 10);
-    return offsetX >= left2 && offsetX <= left2 + width2 && offsetY >= top3 && offsetY <= top3 + height2;
+    return offsetX >= left3 && offsetX <= left3 + width2 && offsetY >= top4 && offsetY <= top4 + height2;
   }
   function cls() {
     var names = [];
@@ -64022,9 +67352,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     var offsetTop = 0;
     var offsetLeft = 0;
     while (el2 && el2 !== root) {
-      var top_1 = el2.offsetTop, left2 = el2.offsetLeft, offsetParent = el2.offsetParent;
+      var top_1 = el2.offsetTop, left3 = el2.offsetLeft, offsetParent = el2.offsetParent;
       offsetTop += top_1;
-      offsetLeft += left2;
+      offsetLeft += left3;
       if (offsetParent === root.offsetParent) {
         break;
       }
@@ -64253,113 +67583,113 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   function getNodeContentOffsetRange(doc3, targetIndex) {
     var startOffset = 1;
     var endOffset = 1;
-    for (var i = 0, offset = 0; i < doc3.childCount; i += 1) {
+    for (var i = 0, offset2 = 0; i < doc3.childCount; i += 1) {
       var nodeSize2 = doc3.child(i).nodeSize;
-      startOffset = offset + 1;
-      endOffset = offset + nodeSize2 - 1;
+      startOffset = offset2 + 1;
+      endOffset = offset2 + nodeSize2 - 1;
       if (i === targetIndex) {
         break;
       }
-      offset += nodeSize2;
+      offset2 += nodeSize2;
     }
     return { startOffset, endOffset };
   }
-  function markInfo(start, end, type, attrs) {
-    return { start, end, spec: { type, attrs } };
+  function markInfo(start2, end2, type, attrs) {
+    return { start: start2, end: end2, spec: { type, attrs } };
   }
-  function heading$1(_a, start, end) {
+  function heading$1(_a, start2, end2) {
     var level = _a.level, headingType = _a.headingType;
-    var marks = [markInfo(start, end, HEADING, { level })];
+    var marks = [markInfo(start2, end2, HEADING, { level })];
     if (headingType === "atx") {
-      marks.push(markInfo(start, addOffsetPos(start, level), DELIM));
+      marks.push(markInfo(start2, addOffsetPos(start2, level), DELIM));
     } else {
-      marks.push(markInfo(setOffsetPos(end, 0), end, HEADING, { seText: true }));
+      marks.push(markInfo(setOffsetPos(end2, 0), end2, HEADING, { seText: true }));
     }
     return marks;
   }
-  function emphasisAndStrikethrough(_a, start, end) {
+  function emphasisAndStrikethrough(_a, start2, end2) {
     var type = _a.type;
-    var startDelimPos = addOffsetPos(start, delimSize[type]);
-    var endDelimPos = addOffsetPos(end, -delimSize[type]);
+    var startDelimPos = addOffsetPos(start2, delimSize[type]);
+    var endDelimPos = addOffsetPos(end2, -delimSize[type]);
     return [
       markInfo(startDelimPos, endDelimPos, type),
-      markInfo(start, startDelimPos, DELIM),
-      markInfo(endDelimPos, end, DELIM)
+      markInfo(start2, startDelimPos, DELIM),
+      markInfo(endDelimPos, end2, DELIM)
     ];
   }
-  function markLink(start, end, linkTextStart, lastChildCh) {
+  function markLink(start2, end2, linkTextStart, lastChildCh) {
     return [
-      markInfo(start, end, LINK),
-      markInfo(setOffsetPos(start, linkTextStart[1] + 1), setOffsetPos(end, lastChildCh), LINK, {
+      markInfo(start2, end2, LINK),
+      markInfo(setOffsetPos(start2, linkTextStart[1] + 1), setOffsetPos(end2, lastChildCh), LINK, {
         desc: true
       }),
-      markInfo(setOffsetPos(end, lastChildCh + 2), addOffsetPos(end, -1), LINK, { url: true })
+      markInfo(setOffsetPos(end2, lastChildCh + 2), addOffsetPos(end2, -1), LINK, { url: true })
     ];
   }
-  function image$1(_a, start, end) {
+  function image$1(_a, start2, end2) {
     var lastChild = _a.lastChild;
     var lastChildCh = lastChild ? getMdEndCh(lastChild) + 1 : 3;
-    var linkTextEnd = addOffsetPos(start, 1);
-    return __spreadArray$1([markInfo(start, linkTextEnd, META)], markLink(start, end, linkTextEnd, lastChildCh));
+    var linkTextEnd = addOffsetPos(start2, 1);
+    return __spreadArray$1([markInfo(start2, linkTextEnd, META)], markLink(start2, end2, linkTextEnd, lastChildCh));
   }
-  function link(_a, start, end) {
+  function link(_a, start2, end2) {
     var lastChild = _a.lastChild, extendedAutolink = _a.extendedAutolink;
     var lastChildCh = lastChild ? getMdEndCh(lastChild) + 1 : 2;
-    return extendedAutolink ? [markInfo(start, end, LINK, { desc: true })] : markLink(start, end, start, lastChildCh);
+    return extendedAutolink ? [markInfo(start2, end2, LINK, { desc: true })] : markLink(start2, end2, start2, lastChildCh);
   }
-  function code(_a, start, end) {
+  function code(_a, start2, end2) {
     var tickCount = _a.tickCount;
-    var openDelimEnd = addOffsetPos(start, tickCount);
-    var closeDelimStart = addOffsetPos(end, -tickCount);
+    var openDelimEnd = addOffsetPos(start2, tickCount);
+    var closeDelimStart = addOffsetPos(end2, -tickCount);
     return [
-      markInfo(start, end, CODE),
-      markInfo(start, openDelimEnd, CODE, { start: true }),
+      markInfo(start2, end2, CODE),
+      markInfo(start2, openDelimEnd, CODE, { start: true }),
       markInfo(openDelimEnd, closeDelimStart, CODE, { marked: true }),
-      markInfo(closeDelimStart, end, CODE, { end: true })
+      markInfo(closeDelimStart, end2, CODE, { end: true })
     ];
   }
-  function lineBackground(parent, start, end, prefix2) {
+  function lineBackground(parent, start2, end2, prefix2) {
     var defaultBackground = {
-      start,
-      end,
+      start: start2,
+      end: end2,
       spec: {
-        attrs: { className: prefix2 + "-line-background", codeStart: start[0], codeEnd: end[0] }
+        attrs: { className: prefix2 + "-line-background", codeStart: start2[0], codeEnd: end2[0] }
       },
       lineBackground: true
     };
     return parent.type !== "item" && parent.type !== "blockQuote" ? [
-      __assign$1(__assign$1({}, defaultBackground), { end: start, spec: { attrs: { className: prefix2 + "-line-background start" } } }),
-      __assign$1(__assign$1({}, defaultBackground), { start: [Math.min(start[0] + 1, end[0]), start[1]] })
+      __assign$1(__assign$1({}, defaultBackground), { end: start2, spec: { attrs: { className: prefix2 + "-line-background start" } } }),
+      __assign$1(__assign$1({}, defaultBackground), { start: [Math.min(start2[0] + 1, end2[0]), start2[1]] })
     ] : null;
   }
-  function codeBlock$1(node2, start, end, endLine) {
+  function codeBlock$1(node2, start2, end2, endLine) {
     var fenceOffset = node2.fenceOffset, fenceLength = node2.fenceLength, fenceChar = node2.fenceChar, info = node2.info, infoPadding = node2.infoPadding, parent = node2.parent;
     var fenceEnd = fenceOffset + fenceLength;
-    var marks = [markInfo(setOffsetPos(start, 1), end, CODE_BLOCK)];
+    var marks = [markInfo(setOffsetPos(start2, 1), end2, CODE_BLOCK)];
     if (fenceChar) {
-      marks.push(markInfo(start, addOffsetPos(start, fenceEnd), DELIM));
+      marks.push(markInfo(start2, addOffsetPos(start2, fenceEnd), DELIM));
     }
     if (info) {
-      marks.push(markInfo(addOffsetPos(start, fenceLength), addOffsetPos(start, fenceLength + infoPadding + info.length), META));
+      marks.push(markInfo(addOffsetPos(start2, fenceLength), addOffsetPos(start2, fenceLength + infoPadding + info.length), META));
     }
     var codeBlockEnd = "^(\\s{0,4})(" + fenceChar + "{" + fenceLength + ",})";
     var reCodeBlockEnd = new RegExp(codeBlockEnd);
     if (reCodeBlockEnd.test(endLine)) {
-      marks.push(markInfo(setOffsetPos(end, 1), end, DELIM));
+      marks.push(markInfo(setOffsetPos(end2, 1), end2, DELIM));
     }
-    var lineBackgroundMarkInfo = lineBackground(parent, start, end, "code-block");
+    var lineBackgroundMarkInfo = lineBackground(parent, start2, end2, "code-block");
     return lineBackgroundMarkInfo ? marks.concat(lineBackgroundMarkInfo) : marks;
   }
-  function customBlock$2(node2, start, end) {
-    var _a = node2, offset = _a.offset, syntaxLength = _a.syntaxLength, info = _a.info, parent = _a.parent;
-    var syntaxEnd = offset + syntaxLength;
-    var marks = [markInfo(setOffsetPos(start, 1), end, CUSTOM_BLOCK)];
-    marks.push(markInfo(start, addOffsetPos(start, syntaxEnd), DELIM));
+  function customBlock$2(node2, start2, end2) {
+    var _a = node2, offset2 = _a.offset, syntaxLength = _a.syntaxLength, info = _a.info, parent = _a.parent;
+    var syntaxEnd = offset2 + syntaxLength;
+    var marks = [markInfo(setOffsetPos(start2, 1), end2, CUSTOM_BLOCK)];
+    marks.push(markInfo(start2, addOffsetPos(start2, syntaxEnd), DELIM));
     if (info) {
-      marks.push(markInfo(addOffsetPos(start, syntaxEnd), addOffsetPos(start, syntaxLength + info.length), META));
+      marks.push(markInfo(addOffsetPos(start2, syntaxEnd), addOffsetPos(start2, syntaxLength + info.length), META));
     }
-    marks.push(markInfo(setOffsetPos(end, 1), end, DELIM));
-    var lineBackgroundMarkInfo = lineBackground(parent, start, end, "custom-block");
+    marks.push(markInfo(setOffsetPos(end2, 1), end2, DELIM));
+    var lineBackgroundMarkInfo = lineBackground(parent, start2, end2, "custom-block");
     return lineBackgroundMarkInfo ? marks.concat(lineBackgroundMarkInfo) : marks;
   }
   function markListItemChildren(node2, markType) {
@@ -64381,8 +67711,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }
     return marks;
   }
-  function blockQuote$2(node2, start, end) {
-    var marks = node2.parent && node2.parent.type !== "blockQuote" ? [markInfo(start, end, BLOCK_QUOTE)] : [];
+  function blockQuote$2(node2, start2, end2) {
+    var marks = node2.parent && node2.parent.type !== "blockQuote" ? [markInfo(start2, end2, BLOCK_QUOTE)] : [];
     if (node2.firstChild) {
       var childMarks = [];
       if (node2.firstChild.type === "paragraph") {
@@ -64403,23 +67733,23 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     var attrs = [{ odd: true }, { even: true }][depth % 2];
     return [LIST_ITEM, __assign$1(__assign$1({}, attrs), { listStyle: true })];
   }
-  function item$1(node2, start) {
+  function item$1(node2, start2) {
     var _a = node2.listData, padding2 = _a.padding, task2 = _a.task;
     var spec = getSpecOfListItemStyle(node2);
-    var marks = [markInfo.apply(void 0, __spreadArray$1([start, addOffsetPos(start, padding2)], spec))];
+    var marks = [markInfo.apply(void 0, __spreadArray$1([start2, addOffsetPos(start2, padding2)], spec))];
     if (task2) {
-      marks.push(markInfo(addOffsetPos(start, padding2), addOffsetPos(start, padding2 + 3), TASK_DELIM));
-      marks.push(markInfo(addOffsetPos(start, padding2 + 1), addOffsetPos(start, padding2 + 2), META));
+      marks.push(markInfo(addOffsetPos(start2, padding2), addOffsetPos(start2, padding2 + 3), TASK_DELIM));
+      marks.push(markInfo(addOffsetPos(start2, padding2 + 1), addOffsetPos(start2, padding2 + 2), META));
     }
     return marks.concat(markListItemChildren(node2.firstChild, TEXT));
   }
-  function getMarkInfo(node2, start, end, endLine) {
+  function getMarkInfo(node2, start2, end2, endLine) {
     var type = node2.type;
     if (isFunction_1(markNodeFuncMap[type])) {
-      return markNodeFuncMap[type](node2, start, end, endLine);
+      return markNodeFuncMap[type](node2, start2, end2, endLine);
     }
     if (simpleMarkClassNameMap[type]) {
-      return [markInfo(start, end, simpleMarkClassNameMap[type])];
+      return [markInfo(start2, end2, simpleMarkClassNameMap[type])];
     }
     return null;
   }
@@ -64488,15 +67818,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     var paragraph2 = schema.nodes.paragraph;
     var startPosListPerLine = getStartPosListPerLine(doc3, doc3.childCount);
     marks.forEach(function(_a) {
-      var start = _a.start, end = _a.end, spec = _a.spec, lineBackground2 = _a.lineBackground;
-      var startIndex = Math.min(start[0], doc3.childCount) - 1;
-      var endIndex = Math.min(end[0], doc3.childCount) - 1;
+      var start2 = _a.start, end2 = _a.end, spec = _a.spec, lineBackground2 = _a.lineBackground;
+      var startIndex = Math.min(start2[0], doc3.childCount) - 1;
+      var endIndex = Math.min(end2[0], doc3.childCount) - 1;
       var startNode = doc3.child(startIndex);
       var endNode = doc3.child(endIndex);
       var from3 = startPosListPerLine[startIndex];
       var to = startPosListPerLine[endIndex];
-      from3 += start[1] + getWidgetNodePos(startNode, start[1] - 1);
-      to += end[1] + getWidgetNodePos(endNode, end[1] - 1);
+      from3 += start2[1] + getWidgetNodePos(startNode, start2[1] - 1);
+      to += end2[1] + getWidgetNodePos(endNode, end2[1] - 1);
       if (spec) {
         if (lineBackground2) {
           var posInfo = { from: from3, to, startIndex, endIndex };
@@ -64522,10 +67852,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       tr.setBlockType(from3, to, paragraph2);
     });
   }
-  function cacheIndexToRemoveBackground(doc3, start, end) {
+  function cacheIndexToRemoveBackground(doc3, start2, end2) {
     var skipLines = [];
     removingBackgroundIndexMap = {};
-    for (var i = start[0] - 1; i < end[0]; i += 1) {
+    for (var i = start2[0] - 1; i < end2[0]; i += 1) {
       var node2 = doc3.child(i);
       var codeEnd = node2.attrs.codeEnd;
       var codeStart = node2.attrs.codeStart;
@@ -64533,7 +67863,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         skipLines.push(codeStart);
         codeEnd = Math.min(codeEnd, doc3.childCount);
         var startIndex = codeStart - 1;
-        var endIndex = end[0];
+        var endIndex = end2[0];
         for (var index2 = startIndex; index2 < endIndex; index2 += 1) {
           removingBackgroundIndexMap[index2] = true;
         }
@@ -64542,12 +67872,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
   function getMarkForRemoving(_a, nodes) {
     var doc3 = _a.doc;
-    var start = nodes[0].sourcepos[0];
-    var _b = last$1(nodes).sourcepos, end = _b[1];
-    var startPos = [start[0], start[1]];
-    var endPos = [end[0], end[1] + 1];
+    var start2 = nodes[0].sourcepos[0];
+    var _b = last$1(nodes).sourcepos, end2 = _b[1];
+    var startPos = [start2[0], start2[1]];
+    var endPos = [end2[0], end2[1] + 1];
     var marks = [];
-    cacheIndexToRemoveBackground(doc3, start, end);
+    cacheIndexToRemoveBackground(doc3, start2, end2);
     marks.push({ start: startPos, end: endPos });
     return marks;
   }
@@ -64693,16 +68023,16 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (type === "bullet" || type === "ordered" && reCanBeTaskList.test(text2)) {
       text2 = text2.replace(reCanBeTaskList, "$1" + ordinalNum + ". ");
     } else if (type === "ordered") {
-      var start = reOrderedListGroup.exec(text2)[3];
-      if (Number(start) !== ordinalNum) {
+      var start2 = reOrderedListGroup.exec(text2)[3];
+      if (Number(start2) !== ordinalNum) {
         text2 = text2.replace(reOrderedList, "$1" + ordinalNum + ". ");
       }
     }
     return text2;
   }
-  function getChangedInfo(doc3, sameDepthItems, type, start) {
-    if (start === void 0) {
-      start = 0;
+  function getChangedInfo(doc3, sameDepthItems, type, start2) {
+    if (start2 === void 0) {
+      start2 = 0;
     }
     var firstIndex = Number.MAX_VALUE;
     var lastIndex = 0;
@@ -64711,7 +68041,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       firstIndex = Math.min(line2 - 1, firstIndex);
       lastIndex = Math.max(line2 - 1, lastIndex);
       var text2 = getTextByMdLine(doc3, line2);
-      text2 = type === "bullet" ? textToBullet(text2) : textToOrdered(text2, index2 + 1 + start);
+      text2 = type === "bullet" ? textToBullet(text2) : textToOrdered(text2, index2 + 1 + start2);
       return { text: text2, line: line2 };
     });
     return { changedResults, firstIndex, lastIndex };
@@ -65078,15 +68408,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     }
     single.sort();
-    for (var start = 0; start < single.length - 1; start++) {
-      var end = start;
-      while (end < single.length - 1 && single[end].charCodeAt(1) + 1 === single[end + 1].charCodeAt(1)) {
-        end += 1;
+    for (var start2 = 0; start2 < single.length - 1; start2++) {
+      var end2 = start2;
+      while (end2 < single.length - 1 && single[end2].charCodeAt(1) + 1 === single[end2 + 1].charCodeAt(1)) {
+        end2 += 1;
       }
-      var count = 1 + end - start;
+      var count = 1 + end2 - start2;
       if (count < 3)
         continue;
-      single.splice(start, count, single[start] + "-" + single[end]);
+      single.splice(start2, count, single[start2] + "-" + single[end2]);
     }
     multiple.unshift("[" + single.join("") + "]");
     return new RegExp(multiple.join("|"), "g");
@@ -65447,13 +68777,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
   function parseRowContent(content) {
     var startIdx = 0;
-    var offset = 0;
+    var offset2 = 0;
     var cells = [];
     for (var i = 0; i < content.length; i += 1) {
       if (content[i] === "|" && content[i - 1] !== "\\") {
         var cell = content.substring(startIdx, i);
         if (startIdx === 0 && isEmpty4(cell)) {
-          offset = i + 1;
+          offset2 = i + 1;
         } else {
           cells.push(cell);
         }
@@ -65466,7 +68796,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         cells.push(cell);
       }
     }
-    return [offset, cells];
+    return [offset2, cells];
   }
   function generateTableCells(cellType, contents, lineNum, chPos) {
     var cells = [];
@@ -65749,17 +69079,17 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   function findNodeById(id) {
     return getNodeById(id) || null;
   }
-  function invokeNextUntil(callback, start, end) {
-    if (end === void 0) {
-      end = null;
+  function invokeNextUntil(callback, start2, end2) {
+    if (end2 === void 0) {
+      end2 = null;
     }
-    if (start) {
-      var walker = start.walker();
-      while (start && start !== end) {
-        callback(start);
+    if (start2) {
+      var walker = start2.walker();
+      while (start2 && start2 !== end2) {
+        callback(start2);
         var next2 = walker.next();
         if (next2) {
-          start = next2.node;
+          start2 = next2.node;
         } else {
           break;
         }
@@ -65923,7 +69253,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     var cloneNode = lookupGetter(ElementPrototype, "cloneNode");
     var getNextSibling = lookupGetter(ElementPrototype, "nextSibling");
     var getChildNodes2 = lookupGetter(ElementPrototype, "childNodes");
-    var getParentNode2 = lookupGetter(ElementPrototype, "parentNode");
+    var getParentNode3 = lookupGetter(ElementPrototype, "parentNode");
     if (typeof HTMLTemplateElement === "function") {
       var template = document2.createElement("template");
       if (template.content && template.content.ownerDocument) {
@@ -65940,7 +69270,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     } catch (_) {
     }
     var hooks = {};
-    DOMPurify.isSupported = typeof getParentNode2 === "function" && implementation && typeof implementation.createHTMLDocument !== "undefined" && documentMode !== 9;
+    DOMPurify.isSupported = typeof getParentNode3 === "function" && implementation && typeof implementation.createHTMLDocument !== "undefined" && documentMode !== 9;
     var MUSTACHE_EXPR$$1 = MUSTACHE_EXPR, ERB_EXPR$$1 = ERB_EXPR, DATA_ATTR$$1 = DATA_ATTR, ARIA_ATTR$$1 = ARIA_ATTR, IS_SCRIPT_OR_DATA$$1 = IS_SCRIPT_OR_DATA, ATTR_WHITESPACE$$1 = ATTR_WHITESPACE;
     var IS_ALLOWED_URI$$1 = IS_ALLOWED_URI;
     var ALLOWED_TAGS = null;
@@ -66090,7 +69420,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     var ALL_MATHML_TAGS = addToSet({}, mathMl);
     addToSet(ALL_MATHML_TAGS, mathMlDisallowed);
     var _checkValidNamespace = function _checkValidNamespace2(element) {
-      var parent = getParentNode2(element);
+      var parent = getParentNode3(element);
       if (!parent || !parent.tagName) {
         parent = {
           namespaceURI: HTML_NAMESPACE,
@@ -66252,7 +69582,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
       if (!ALLOWED_TAGS[tagName] || FORBID_TAGS[tagName]) {
         if (KEEP_CONTENT && !FORBID_CONTENTS[tagName]) {
-          var parentNode2 = getParentNode2(currentNode) || currentNode.parentNode;
+          var parentNode2 = getParentNode3(currentNode) || currentNode.parentNode;
           var childNodes = getChildNodes2(currentNode) || currentNode.childNodes;
           if (childNodes && parentNode2) {
             var childCount = childNodes.length;
@@ -66635,21 +69965,21 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     return !pmNode.childCount || pmNode.childCount === 1 && !((_a = pmNode.firstChild.text) === null || _a === void 0 ? void 0 : _a.trim());
   }
   function getEditorRangeHeightInfo(doc3, mdNode, children) {
-    var start = getMdStartLine(mdNode) - 1;
-    var end = getMdEndLine(mdNode) - 1;
-    var rect2 = children[start].getBoundingClientRect();
-    var height2 = children[end].offsetTop - children[start].offsetTop + children[end].clientHeight;
+    var start2 = getMdStartLine(mdNode) - 1;
+    var end2 = getMdEndLine(mdNode) - 1;
+    var rect2 = children[start2].getBoundingClientRect();
+    var height2 = children[end2].offsetTop - children[start2].offsetTop + children[end2].clientHeight;
     return {
-      height: height2 <= 0 ? children[start].clientHeight : height2 + getBlankLinesHeight(doc3, children, Math.min(end + 1, doc3.childCount - 1)),
+      height: height2 <= 0 ? children[start2].clientHeight : height2 + getBlankLinesHeight(doc3, children, Math.min(end2 + 1, doc3.childCount - 1)),
       rect: rect2
     };
   }
-  function getBlankLinesHeight(doc3, children, start) {
-    var end = doc3.childCount - 1;
+  function getBlankLinesHeight(doc3, children, start2) {
+    var end2 = doc3.childCount - 1;
     var height2 = 0;
-    while (start <= end && isBlankLine(doc3, start)) {
-      height2 += children[start].clientHeight;
-      start += 1;
+    while (start2 <= end2 && isBlankLine(doc3, start2)) {
+      height2 += children[start2].clientHeight;
+      start2 += 1;
     }
     return height2;
   }
@@ -66874,12 +70204,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     return null;
   }
   function wrapInList(tr, _a, wrappers, joinBefore, list2) {
-    var start = _a.start, end = _a.end, startIndex = _a.startIndex, endIndex = _a.endIndex, parent = _a.parent;
-    var content = Fragment15.empty;
+    var start2 = _a.start, end2 = _a.end, startIndex = _a.startIndex, endIndex = _a.endIndex, parent = _a.parent;
+    var content = Fragment16.empty;
     for (var i = wrappers.length - 1; i >= 0; i -= 1) {
-      content = Fragment15.from(wrappers[i].type.create(wrappers[i].attrs, content));
+      content = Fragment16.from(wrappers[i].type.create(wrappers[i].attrs, content));
     }
-    tr.step(new ReplaceAroundStep(start - (joinBefore ? 2 : 0), end, start, end, new Slice(content, 0, 0), wrappers.length, true));
+    tr.step(new ReplaceAroundStep(start2 - (joinBefore ? 2 : 0), end2, start2, end2, new Slice(content, 0, 0), wrappers.length, true));
     var foundListIndex = 0;
     for (var i = 0; i < wrappers.length; i += 1) {
       if (wrappers[i].type === list2) {
@@ -66888,7 +70218,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     }
     var splitDepth = wrappers.length - foundListIndex;
-    var splitPos = start + wrappers.length - (joinBefore ? 2 : 0);
+    var splitPos = start2 + wrappers.length - (joinBefore ? 2 : 0);
     for (var i = startIndex, len = endIndex; i < len; i += 1) {
       var first = i === startIndex;
       if (!first && canSplit(tr.doc, splitPos, splitDepth)) {
@@ -66904,8 +70234,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     var outerRange = range2;
     var joinBefore = false;
     if (depth >= 2 && $from.node(depth - 1).type.compatibleContent(list2) && range2.startIndex === 0 && $from.index(depth - 1)) {
-      var start = tr.doc.resolve(range2.start - 2);
-      outerRange = new NodeRange(start, start, depth);
+      var start2 = tr.doc.resolve(range2.start - 2);
+      outerRange = new NodeRange(start2, start2, depth);
       if (range2.endIndex < range2.parent.childCount) {
         range2 = new NodeRange($from, tr.doc.resolve($to.end(depth)), depth);
       }
@@ -66917,11 +70247,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }
     return tr;
   }
-  function getBeforeLineListItem(doc3, offset) {
-    var endListItemPos = doc3.resolve(offset);
+  function getBeforeLineListItem(doc3, offset2) {
+    var endListItemPos = doc3.resolve(offset2);
     while (endListItemPos.node().type.name !== "paragraph") {
-      offset -= 2;
-      endListItemPos = doc3.resolve(offset);
+      offset2 -= 2;
+      endListItemPos = doc3.resolve(offset2);
     }
     return findListItem(endListItemPos);
   }
@@ -66931,13 +70261,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     var endListItem = findListItem($to);
     if (startListItem && endListItem) {
       while (endListItem) {
-        var offset = endListItem.offset, node2 = endListItem.node;
+        var offset2 = endListItem.offset, node2 = endListItem.node;
         var attrs = { task: !node2.attrs.task, checked: false };
-        tr.setNodeMarkup(offset, null, attrs);
-        if (offset === startListItem.offset) {
+        tr.setNodeMarkup(offset2, null, attrs);
+        if (offset2 === startListItem.offset) {
           break;
         }
-        endListItem = getBeforeLineListItem(tr.doc, offset);
+        endListItem = getBeforeLineListItem(tr.doc, offset2);
       }
     }
     return tr;
@@ -66948,19 +70278,19 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     var endListItem = findListItem($to);
     if (startListItem && endListItem) {
       while (endListItem) {
-        var offset = endListItem.offset, node2 = endListItem.node, depth = endListItem.depth;
+        var offset2 = endListItem.offset, node2 = endListItem.node, depth = endListItem.depth;
         if (node2.attrs.task) {
-          tr.setNodeMarkup(offset, null, { task: false, checked: false });
+          tr.setNodeMarkup(offset2, null, { task: false, checked: false });
         }
-        var resolvedPos = tr.doc.resolve(offset);
+        var resolvedPos = tr.doc.resolve(offset2);
         if (resolvedPos.parent.type !== list2) {
           var parentOffset = resolvedPos.before(depth - 1);
           tr.setNodeMarkup(parentOffset, list2);
         }
-        if (offset === startListItem.offset) {
+        if (offset2 === startListItem.offset) {
           break;
         }
-        endListItem = getBeforeLineListItem(tr.doc, offset);
+        endListItem = getBeforeLineListItem(tr.doc, offset2);
       }
     }
     return tr;
@@ -67006,8 +70336,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           return false;
         }
         var nestedBefore = nodeBefore.lastChild && nodeBefore.lastChild.type === parent_1.type;
-        var inner = nestedBefore ? Fragment15.from(listItem2.create()) : null;
-        var slice3 = new Slice(Fragment15.from(listItem2.create(null, Fragment15.from(parent_1.type.create(null, inner)))), nestedBefore ? 3 : 1, 0);
+        var inner = nestedBefore ? Fragment16.from(listItem2.create()) : null;
+        var slice3 = new Slice(Fragment16.from(listItem2.create(null, Fragment16.from(parent_1.type.create(null, inner)))), nestedBefore ? 3 : 1, 0);
         var before = range2.start;
         var after = range2.end;
         tr.step(new ReplaceAroundStep(before - (nestedBefore ? 3 : 1), after, before, after, slice3, 1, true));
@@ -67018,10 +70348,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     };
   }
   function liftToOuterList(tr, range2, listItem2) {
-    var $from = range2.$from, $to = range2.$to, end = range2.end, depth = range2.depth, parent = range2.parent;
+    var $from = range2.$from, $to = range2.$to, end2 = range2.end, depth = range2.depth, parent = range2.parent;
     var endOfList = $to.end(depth);
-    if (end < endOfList) {
-      tr.step(new ReplaceAroundStep(end - 1, endOfList, end, endOfList, new Slice(Fragment15.from(listItem2.create(null, parent.copy())), 1, 0), 1, true));
+    if (end2 < endOfList) {
+      tr.step(new ReplaceAroundStep(end2 - 1, endOfList, end2, endOfList, new Slice(Fragment16.from(listItem2.create(null, parent.copy())), 1, 0), 1, true));
       range2 = new NodeRange(tr.doc.resolve($from.pos), tr.doc.resolve(endOfList), depth);
     }
     tr.lift(range2, liftTarget(range2));
@@ -67040,11 +70370,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     var atEnd = range2.endIndex === list2.childCount;
     var parent = startPos.node(-1);
     var indexBefore = startPos.index(-1);
-    var canReplaceParent = parent.canReplace(indexBefore + (atStart ? 0 : 1), indexBefore + 1, listItem2 === null || listItem2 === void 0 ? void 0 : listItem2.content.append(atEnd ? Fragment15.empty : Fragment15.from(list2)));
+    var canReplaceParent = parent.canReplace(indexBefore + (atStart ? 0 : 1), indexBefore + 1, listItem2 === null || listItem2 === void 0 ? void 0 : listItem2.content.append(atEnd ? Fragment16.empty : Fragment16.from(list2)));
     if (listItem2 && canReplaceParent) {
-      var start = startPos.pos;
-      var end = start + listItem2.nodeSize;
-      tr.step(new ReplaceAroundStep(start - (atStart ? 1 : 0), end + (atEnd ? 1 : 0), start + 1, end - 1, new Slice((atStart ? Fragment15.empty : Fragment15.from(list2.copy(Fragment15.empty))).append(atEnd ? Fragment15.empty : Fragment15.from(list2.copy(Fragment15.empty))), atStart ? 0 : 1, atEnd ? 0 : 1), atStart ? 0 : 1));
+      var start2 = startPos.pos;
+      var end2 = start2 + listItem2.nodeSize;
+      tr.step(new ReplaceAroundStep(start2 - (atStart ? 1 : 0), end2 + (atEnd ? 1 : 0), start2 + 1, end2 - 1, new Slice((atStart ? Fragment16.empty : Fragment16.from(list2.copy(Fragment16.empty))).append(atEnd ? Fragment16.empty : Fragment16.from(list2.copy(Fragment16.empty))), atStart ? 0 : 1, atEnd ? 0 : 1), atStart ? 0 : 1));
     }
     return tr;
   }
@@ -67081,11 +70411,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           return false;
         }
         var keepItem = $from.index(-1) > 0;
-        var wrapper2 = Fragment15.empty;
+        var wrapper2 = Fragment16.empty;
         for (var depth = $from.depth - (keepItem ? 1 : 2); depth >= $from.depth - 3; depth -= 1) {
-          wrapper2 = Fragment15.from($from.node(depth).copy(wrapper2));
+          wrapper2 = Fragment16.from($from.node(depth).copy(wrapper2));
         }
-        wrapper2 = wrapper2.append(Fragment15.from(listItem2.createAndFill()));
+        wrapper2 = wrapper2.append(Fragment16.from(listItem2.createAndFill()));
         tr.replace(keepItem ? $from.before() : $from.before(-1), $from.after(-3), new Slice(wrapper2, keepItem ? 3 : 2, 2));
         tr.setSelection(Selection.near(tr.doc.resolve($from.pos + (keepItem ? 3 : 2))));
         dispatch(tr);
@@ -67144,8 +70474,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     var ranges = [];
     for (var rowIdx = startRowIdx; rowIdx <= endRowIdx; rowIdx += 1) {
       for (var colIdx = startColIdx; colIdx <= endColIdx; colIdx += 1) {
-        var _b = map3.getCellInfo(rowIdx, colIdx), offset = _b.offset, nodeSize2 = _b.nodeSize;
-        ranges.push(new SelectionRange(doc3.resolve(offset + 1), doc3.resolve(offset + nodeSize2 - 1)));
+        var _b = map3.getCellInfo(rowIdx, colIdx), offset2 = _b.offset, nodeSize2 = _b.nodeSize;
+        ranges.push(new SelectionRange(doc3.resolve(offset2 + 1), doc3.resolve(offset2 + nodeSize2 - 1)));
       }
     }
     return ranges;
@@ -67158,7 +70488,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (tableBody2.childCount) {
       fragment.push(tableBody2);
     }
-    return Fragment15.from(fragment);
+    return Fragment16.from(fragment);
   }
   function createTableHeadRow(columnCount, schema, data) {
     var _a = schema.nodes, tableRow2 = _a.tableRow, tableHeadCell = _a.tableHeadCell, paragraph2 = _a.paragraph;
@@ -67321,10 +70651,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             if (tableCell2) {
               ev.preventDefault();
               var _a = ev, clientX = _a.clientX, clientY = _a.clientY;
-              var _b = view.dom.parentNode.getBoundingClientRect(), left2 = _b.left, top_1 = _b.top;
+              var _b = view.dom.parentNode.getBoundingClientRect(), left3 = _b.left, top_1 = _b.top;
               var inTableHead = tableCell2.nodeName === "TH";
               eventEmitter.emit("contextmenu", {
-                pos: { left: clientX - left2 + 10 + "px", top: clientY - top_1 + 30 + "px" },
+                pos: { left: clientX - left3 + 10 + "px", top: clientY - top_1 + 30 + "px" },
                 menuGroups: getContextMenuGroups(eventEmitter, inTableHead),
                 tableCell: tableCell2
               });
@@ -67354,9 +70684,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
                 return false;
               }
               ev.preventDefault();
-              var offset = currentPos.before(listItem2.depth);
+              var offset2 = currentPos.before(listItem2.depth);
               var attrs = listItem2.node.attrs;
-              tr.setNodeMarkup(offset, null, __assign$1(__assign$1({}, attrs), { checked: !attrs.checked }));
+              tr.setNodeMarkup(offset2, null, __assign$1(__assign$1({}, attrs), { checked: !attrs.checked }));
               view.dispatch(tr);
               return true;
             }
@@ -67679,7 +71009,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     var content = slice3.content, openStart = slice3.openStart, openEnd = slice3.openEnd;
     content.forEach(function(node2) {
       if (node2.type.name === "table") {
-        var tableContent = getTableContentFromSlice(new Slice(Fragment15.from(node2), 0, 0));
+        var tableContent = getTableContentFromSlice(new Slice(Fragment16.from(node2), 0, 0));
         if (tableContent) {
           var rows = createRowsFromPastingTable(tableContent);
           var startFromBody = tableContent.firstChild.type.name === "tableBody";
@@ -67690,7 +71020,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         nodes.push(node2);
       }
     });
-    return new Slice(Fragment15.from(nodes), openStart, openEnd);
+    return new Slice(Fragment16.from(nodes), openStart, openEnd);
   }
   function getDummyCellSize(dummyCellCount) {
     return dummyCellCount * DUMMY_CELL_SIZE;
@@ -67763,8 +71093,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     var totalRowCount = map3.totalRowCount;
     var index2 = 0;
     for (var rowIdx = 0; rowIdx < totalRowCount; rowIdx += 1) {
-      var _b = map3.getCellInfo(rowIdx, endColIdx - addedColumnCount), offset = _b.offset, nodeSize2 = _b.nodeSize;
-      var insertOffset = tr.mapping.map(offset + nodeSize2);
+      var _b = map3.getCellInfo(rowIdx, endColIdx - addedColumnCount), offset2 = _b.offset, nodeSize2 = _b.nodeSize;
+      var insertOffset = tr.mapping.map(offset2 + nodeSize2);
       var cells = createDummyCells(addedColumnCount, rowIdx, schema);
       tr.insert(insertOffset, cells);
       if (rowIdx >= startRowIdx && rowIdx <= endRowIdx - addedRowCount) {
@@ -67958,8 +71288,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         rowIdx += 1;
         nextColIdx = 0;
       }
-      var offset = map3.getCellInfo(rowIdx, nextColIdx).offset;
-      return offset + 2;
+      var offset2 = map3.getCellInfo(rowIdx, nextColIdx).offset;
+      return offset2 + 2;
     }
     return null;
   }
@@ -67974,16 +71304,16 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         rowIdx -= 1;
         colIdx = totalColumnCount - 1;
       }
-      var _b = map3.getCellInfo(rowIdx, colIdx), offset = _b.offset, nodeSize2 = _b.nodeSize;
-      return offset + nodeSize2 - 2;
+      var _b = map3.getCellInfo(rowIdx, colIdx), offset2 = _b.offset, nodeSize2 = _b.nodeSize;
+      return offset2 + nodeSize2 - 2;
     }
     return null;
   }
   function getUpCellOffset(_a, map3) {
     var rowIdx = _a[0], colIdx = _a[1];
     if (rowIdx > 0) {
-      var _b = map3.getCellInfo(rowIdx - 1, colIdx), offset = _b.offset, nodeSize2 = _b.nodeSize;
-      return offset + nodeSize2 - 2;
+      var _b = map3.getCellInfo(rowIdx - 1, colIdx), offset2 = _b.offset, nodeSize2 = _b.nodeSize;
+      return offset2 + nodeSize2 - 2;
     }
     return null;
   }
@@ -67996,17 +71326,17 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       if ((rowspanInfo === null || rowspanInfo === void 0 ? void 0 : rowspanInfo.count) > 1) {
         nextRowIdx += rowspanInfo.count - 1;
       }
-      var offset = map3.getCellInfo(nextRowIdx, colIdx).offset;
-      return offset + 2;
+      var offset2 = map3.getCellInfo(nextRowIdx, colIdx).offset;
+      return offset2 + 2;
     }
     return null;
   }
   function moveToCell(direction, tr, cellIndex, map3) {
     var cellOffsetFn = cellOffsetFnMap[direction];
-    var offset = cellOffsetFn(cellIndex, map3);
-    if (offset) {
+    var offset2 = cellOffsetFn(cellIndex, map3);
+    if (offset2) {
       var dir = direction === "right" || direction === "down" ? 1 : -1;
-      return tr.setSelection(Selection.near(tr.doc.resolve(offset), dir));
+      return tr.setSelection(Selection.near(tr.doc.resolve(offset2), dir));
     }
     return null;
   }
@@ -68016,9 +71346,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       return false;
     }
     var tableStartOffset = map3.tableStartOffset, tableEndOffset = map3.tableEndOffset;
-    var _b = map3.getCellInfo(rowIdx, colIdx), offset = _b.offset, nodeSize2 = _b.nodeSize;
+    var _b = map3.getCellInfo(rowIdx, colIdx), offset2 = _b.offset, nodeSize2 = _b.nodeSize;
     var pos = direction === "left" ? tableStartOffset : tableEndOffset;
-    var curPos = direction === "left" ? offset - 2 : offset + nodeSize2 + 3;
+    var curPos = direction === "left" ? offset2 - 2 : offset2 + nodeSize2 + 3;
     return pos === curPos;
   }
   function selectNode(tr, pos, depth) {
@@ -68042,8 +71372,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
   function getRowRanges(map3, rowIdx, totalColumnCount) {
     var startOffset = map3.getCellInfo(rowIdx, 0).offset;
-    var _a = map3.getCellInfo(rowIdx, totalColumnCount - 1), offset = _a.offset, nodeSize2 = _a.nodeSize;
-    return { from: startOffset, to: offset + nodeSize2 };
+    var _a = map3.getCellInfo(rowIdx, totalColumnCount - 1), offset2 = _a.offset, nodeSize2 = _a.nodeSize;
+    return { from: startOffset, to: offset2 + nodeSize2 };
   }
   function createSpecs(linkAttributes) {
     return new SpecManager([
@@ -68229,7 +71559,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }
     return "" + leftDelim + repeat$1("-", Math.max(textLen, 3)) + rightDelim;
   }
-  function write(type, _a) {
+  function write2(type, _a) {
     var state = _a.state, nodeInfo = _a.nodeInfo, params = _a.params;
     var rawHTML = params.rawHTML;
     if (rawHTML) {
@@ -68284,7 +71614,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           var params = convertor ? convertor(nodeInfo, {
             inTable: state.inTable
           }) : {};
-          write(type, { state, nodeInfo, params });
+          write2(type, { state, nodeInfo, params });
         }
       };
     });
@@ -68332,7 +71662,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     var plugin = pluginInfo.plugin, eventEmitter = pluginInfo.eventEmitter, usageStatistics = pluginInfo.usageStatistics, instance = pluginInfo.instance;
     var pmState = { Plugin, PluginKey, Selection, TextSelection };
     var pmView = { Decoration, DecorationSet };
-    var pmModel = { Fragment: Fragment15 };
+    var pmModel = { Fragment: Fragment16 };
     var pmRules = { InputRule, inputRules, undoInputRule };
     var pmKeymap = { keymap };
     var context = {
@@ -68639,7 +71969,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     }
   }
-  function getParentNode(vnode) {
+  function getParentNode2(vnode) {
     var parent = vnode.parent;
     while (!parent.node) {
       parent = parent.parent;
@@ -68651,7 +71981,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       return;
     }
     if (vnode.node) {
-      var parentNode2 = getParentNode(vnode);
+      var parentNode2 = getParentNode2(vnode);
       if (vnode.effect === "A") {
         parentNode2.appendChild(vnode.node);
       } else if (vnode.effect === "U") {
@@ -68670,7 +72000,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
               comp2.beforeDestroy();
             }
           } else {
-            var parentNode2 = getParentNode(vnode);
+            var parentNode2 = getParentNode2(vnode);
             removeNode(vnode, parentNode2);
           }
         }
@@ -68803,28 +72133,28 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       return destroy(root.firstChild);
     };
   }
-  function debounce$1(fn, delay) {
+  function debounce$1(fn2, delay) {
     var timer, args;
     delay = delay || 0;
     function debounced() {
       args = Array.prototype.slice.call(arguments);
       window.clearTimeout(timer);
       timer = window.setTimeout(function() {
-        fn.apply(null, args);
+        fn2.apply(null, args);
       }, delay);
     }
     return debounced;
   }
-  function throttle$1(fn, interval) {
+  function throttle$1(fn2, interval) {
     var base2;
     var isLeading = true;
     var tick = function(_args) {
-      fn.apply(null, _args);
+      fn2.apply(null, _args);
       base2 = null;
     };
     var debounced, stamp, args;
     interval = interval || 0;
-    debounced = debounce2(tick, interval);
+    debounced = debounce3(tick, interval);
     function throttled() {
       args = Array.prototype.slice.call(arguments);
       if (isLeading) {
@@ -69242,9 +72572,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             var tooltip = _this.props.item.tooltip;
             if (!_this.props.disabled && tooltip) {
               var bound = _this.getBound(el2);
-              var left2 = bound.left + TOOLTIP_INDENT + "px";
+              var left3 = bound.left + TOOLTIP_INDENT + "px";
               var top_1 = bound.top + TOOLTIP_INDENT + "px";
-              css_1(_this.props.tooltipRef.current, { display: "block", left: left2, top: top_1 });
+              css_1(_this.props.tooltipRef.current, { display: "block", left: left3, top: top_1 });
               _this.props.tooltipRef.current.querySelector(".text").textContent = tooltip;
             }
           };
@@ -69278,7 +72608,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }(Component)
     );
   }
-  var extendStatics$1, __assign$1, forEachOwnProperties_1, extend_1, isString_1, isArray_1, forEachArray_1, isArray$2, forEachArray$2, forEachOwnProperties$1, forEach_1, isString$2, forEach$3, css_1, isArray$1, inArray_1, isUndefined_1, isUndefined$3, getClass_1, isArray, isUndefined$2, _setClassName, forEach$2, inArray$3, getClass$2, setClassName$1, addClass_1, forEachArray$1, inArray$2, getClass$1, setClassName, removeClass_1, isNumber_1, isNull_1, forEachOwnProperties, imagePing_1, isUndefined$1, imagePing, ms7days, sendHostname_1, reSpaceMoreThanOne, reEscapeChars$1, reEscapeHTML, reEscapeBackSlash, reEscapePairedChars, reMdImageSyntax, reEscapedCharInLinkSyntax, reEscapeBackSlashInSentence, XMLSPECIAL$1, reXmlSpecial$1, availableLinkAttributes, reMarkdownTextToEscapeMap, forEachArray, toArray_1, widgetRules, widgetRuleMap, reWidgetPrefix, inArray$1, getClass, hasClass_1, inArray, toArray, elProto, matchSelector, matches_1, TAG_NAME, ATTRIBUTE_NAME, UNQUOTED_VALUE, SINGLE_QUOTED_VALUE, DOUBLE_QUOTED_VALUE, ATTRIBUTE_VALUE, ATTRIBUTE_VALUE_SPEC, ATTRIBUTE$1, OPEN_TAG, CLOSE_TAG, HTML_TAG, reHTMLTag, reBR, reHTMLComment, ALTERNATIVE_TAG_FOR_BR, CLS_PREFIX, pluginKey$1, MARGIN, PopupWidget, Node$2, Widget, EditorBase, isFunction_1, defaultCommandShortcuts, SpecManager, HEADING, BLOCK_QUOTE, LIST_ITEM, TABLE, TABLE_CELL, CODE_BLOCK, THEMATIC_BREAK, LINK, CODE, META, DELIM, TASK_DELIM, TEXT, HTML, CUSTOM_BLOCK, delimSize, markNodeFuncMap, simpleMarkClassNameMap, removingBackgroundIndexMap, defaultToolbarStateKeys, Doc$1, Mark2, reBlockQuote, BlockQuote$1, reList, reOrderedList, reOrderedListGroup, reCanBeTaskList, reBulletListGroup, reTaskList, reBulletTaskList, otherListToList, otherNodeToList, extendList, reStartSpace, Paragraph$1, Text$1, reHeading, Heading$1, fencedCodeBlockSyntax, CodeBlock$1, reEmptyTable, Table$1, thematicBreakSyntax, ThematicBreak$1, ListItem$1, reStrong, strongSyntax, Strong$1, reStrike, strikeSyntax, Strike$1, reEmph, emphSyntax, Emph$1, reCode, codeSyntax, Code$1, Link$1, TaskDelimiter, Delimiter, Meta, MarkedText, TableCell3, Html, customBlockSyntax, CustomBlock$1, reTaskMarkerKey, reTaskMarker, EVENT_TYPE, reLineEnding$2, MdEditor, EVENT_KEY, _safeEvent, isString$1, forEach$1, safeEvent$1, off_1, isString, forEach2, safeEvent, on_1, extendStatics, __assign, commonjsGlobal, encodeCache, encode_1, lib, decode, Aacute$1, aacute$1, Abreve, abreve, ac, acd, acE, Acirc$1, acirc$1, acute$1, Acy, acy, AElig$1, aelig$1, af, Afr, afr, Agrave$1, agrave$1, alefsym, aleph, Alpha, alpha2, Amacr, amacr, amalg, amp$2, AMP$1, andand, And, and, andd, andslope, andv, ang, ange, angle, angmsdaa, angmsdab, angmsdac, angmsdad, angmsdae, angmsdaf, angmsdag, angmsdah, angmsd, angrt, angrtvb, angrtvbd, angsph, angst, angzarr, Aogon, aogon, Aopf, aopf, apacir, ap, apE, ape, apid, apos$1, ApplyFunction, approx, approxeq, Aring$1, aring$1, Ascr, ascr, Assign, ast, asymp, asympeq, Atilde$1, atilde$1, Auml$1, auml$1, awconint, awint, backcong, backepsilon, backprime, backsim, backsimeq, Backslash, Barv, barvee, barwed, Barwed, barwedge, bbrk, bbrktbrk, bcong, Bcy, bcy, bdquo, becaus, because, Because, bemptyv, bepsi, bernou, Bernoullis, Beta, beta, beth, between, Bfr, bfr, bigcap, bigcirc, bigcup, bigodot, bigoplus, bigotimes, bigsqcup, bigstar, bigtriangledown, bigtriangleup, biguplus, bigvee, bigwedge, bkarow, blacklozenge, blacksquare, blacktriangle, blacktriangledown, blacktriangleleft, blacktriangleright, blank, blk12, blk14, blk34, block, bne, bnequiv, bNot, bnot, Bopf, bopf, bot, bottom2, bowtie, boxbox, boxdl, boxdL, boxDl, boxDL, boxdr, boxdR, boxDr, boxDR, boxh, boxH, boxhd, boxHd, boxhD, boxHD, boxhu, boxHu, boxhU, boxHU, boxminus, boxplus, boxtimes, boxul, boxuL, boxUl, boxUL, boxur, boxuR, boxUr, boxUR, boxv, boxV, boxvh, boxvH, boxVh, boxVH, boxvl, boxvL, boxVl, boxVL, boxvr, boxvR, boxVr, boxVR, bprime, breve, Breve, brvbar$1, bscr, Bscr, bsemi, bsim, bsime, bsolb, bsol, bsolhsub, bull, bullet, bump, bumpE, bumpe, Bumpeq, bumpeq, Cacute, cacute, capand, capbrcup, capcap, cap, Cap, capcup, capdot, CapitalDifferentialD, caps, caret2, caron, Cayleys, ccaps, Ccaron, ccaron, Ccedil$1, ccedil$1, Ccirc, ccirc, Cconint, ccups, ccupssm, Cdot, cdot, cedil$1, Cedilla, cemptyv, cent$1, centerdot, CenterDot, cfr, Cfr, CHcy, chcy, check, checkmark, Chi, chi, circ, circeq, circlearrowleft, circlearrowright, circledast, circledcirc, circleddash, CircleDot, circledR, circledS, CircleMinus, CirclePlus, CircleTimes, cir, cirE, cire, cirfnint, cirmid, cirscir, ClockwiseContourIntegral, CloseCurlyDoubleQuote, CloseCurlyQuote, clubs, clubsuit, colon, Colon, Colone, colone, coloneq, comma, commat, comp, compfn, complement, complexes, cong, congdot, Congruent, conint, Conint, ContourIntegral, copf, Copf, coprod, Coproduct, copy$1, COPY$1, copysr, CounterClockwiseContourIntegral, crarr, cross, Cross, Cscr, cscr, csub, csube, csup, csupe, ctdot, cudarrl, cudarrr, cuepr, cuesc, cularr, cularrp, cupbrcap, cupcap, CupCap, cup, Cup, cupcup, cupdot, cupor, cups, curarr, curarrm, curlyeqprec, curlyeqsucc, curlyvee, curlywedge, curren$1, curvearrowleft, curvearrowright, cuvee, cuwed, cwconint, cwint, cylcty, dagger, Dagger, daleth, darr, Darr, dArr, dash, Dashv, dashv, dbkarow, dblac, Dcaron, dcaron, Dcy, dcy, ddagger, ddarr, DD, dd, DDotrahd, ddotseq, deg$1, Del, Delta, delta, demptyv, dfisht, Dfr, dfr, dHar, dharl, dharr, DiacriticalAcute, DiacriticalDot, DiacriticalDoubleAcute, DiacriticalGrave, DiacriticalTilde, diam, diamond, Diamond, diamondsuit, diams, die, DifferentialD, digamma, disin, div, divide$1, divideontimes, divonx, DJcy, djcy, dlcorn, dlcrop, dollar, Dopf, dopf, Dot, dot, DotDot, doteq, doteqdot, DotEqual, dotminus, dotplus, dotsquare, doublebarwedge, DoubleContourIntegral, DoubleDot, DoubleDownArrow, DoubleLeftArrow, DoubleLeftRightArrow, DoubleLeftTee, DoubleLongLeftArrow, DoubleLongLeftRightArrow, DoubleLongRightArrow, DoubleRightArrow, DoubleRightTee, DoubleUpArrow, DoubleUpDownArrow, DoubleVerticalBar, DownArrowBar, downarrow, DownArrow, Downarrow, DownArrowUpArrow, DownBreve, downdownarrows, downharpoonleft, downharpoonright, DownLeftRightVector, DownLeftTeeVector, DownLeftVectorBar, DownLeftVector, DownRightTeeVector, DownRightVectorBar, DownRightVector, DownTeeArrow, DownTee, drbkarow, drcorn, drcrop, Dscr, dscr, DScy, dscy, dsol, Dstrok, dstrok, dtdot, dtri, dtrif, duarr, duhar, dwangle, DZcy, dzcy, dzigrarr, Eacute$1, eacute$1, easter, Ecaron, ecaron, Ecirc$1, ecirc$1, ecir, ecolon, Ecy, ecy, eDDot, Edot, edot, eDot, ee, efDot, Efr, efr, eg, Egrave$1, egrave$1, egs, egsdot, el, Element$1, elinters, ell, els, elsdot, Emacr, emacr, empty2, emptyset, EmptySmallSquare, emptyv, EmptyVerySmallSquare, emsp13, emsp14, emsp, ENG, eng, ensp, Eogon, eogon, Eopf, eopf, epar, eparsl, eplus, epsi, Epsilon, epsilon, epsiv, eqcirc, eqcolon, eqsim, eqslantgtr, eqslantless, Equal, equals, EqualTilde, equest, Equilibrium, equiv, equivDD, eqvparsl, erarr, erDot, escr, Escr, esdot, Esim, esim, Eta, eta, ETH$1, eth$1, Euml$1, euml$1, euro, excl, exist, Exists, expectation, exponentiale, ExponentialE, fallingdotseq, Fcy, fcy, female, ffilig, fflig, ffllig, Ffr, ffr, filig, FilledSmallSquare, FilledVerySmallSquare, fjlig, flat, fllig, fltns, fnof, Fopf, fopf, forall, ForAll, fork, forkv, Fouriertrf, fpartint, frac12$1, frac13, frac14$1, frac15, frac16, frac18, frac23, frac25, frac34$1, frac35, frac38, frac45, frac56, frac58, frac78, frasl, frown, fscr, Fscr, gacute, Gamma, gamma, Gammad, gammad, gap2, Gbreve, gbreve, Gcedil, Gcirc, gcirc, Gcy, gcy, Gdot, gdot, ge, gE, gEl, gel, geq, geqq, geqslant, gescc, ges, gesdot, gesdoto, gesdotol, gesl, gesles, Gfr, gfr, gg, Gg, ggg, gimel, GJcy, gjcy, gla, gl, glE, glj, gnap, gnapprox, gne, gnE, gneq, gneqq, gnsim, Gopf, gopf, grave, GreaterEqual, GreaterEqualLess, GreaterFullEqual, GreaterGreater, GreaterLess, GreaterSlantEqual, GreaterTilde, Gscr, gscr, gsim, gsime, gsiml, gtcc, gtcir, gt$2, GT$1, Gt, gtdot, gtlPar, gtquest, gtrapprox, gtrarr, gtrdot, gtreqless, gtreqqless, gtrless, gtrsim, gvertneqq, gvnE, Hacek, hairsp, half, hamilt, HARDcy, hardcy, harrcir, harr, hArr, harrw, Hat, hbar, Hcirc, hcirc, hearts, heartsuit, hellip, hercon, hfr, Hfr, HilbertSpace, hksearow, hkswarow, hoarr, homtht, hookleftarrow, hookrightarrow, hopf, Hopf, horbar, HorizontalLine, hscr, Hscr, hslash, Hstrok, hstrok, HumpDownHump, HumpEqual, hybull, hyphen, Iacute$1, iacute$1, ic, Icirc$1, icirc$1, Icy, icy, Idot, IEcy, iecy, iexcl$1, iff, ifr, Ifr, Igrave$1, igrave$1, ii, iiiint, iiint, iinfin, iiota, IJlig, ijlig, Imacr, imacr, image, ImaginaryI, imagline, imagpart, imath, Im, imof, imped, Implies, incare, infin, infintie, inodot, intcal, int, Int, integers, Integral, intercal, Intersection, intlarhk, intprod, InvisibleComma, InvisibleTimes, IOcy, iocy, Iogon, iogon, Iopf, iopf, Iota, iota, iprod, iquest$1, iscr, Iscr, isin, isindot, isinE, isins, isinsv, isinv, it, Itilde, itilde, Iukcy, iukcy, Iuml$1, iuml$1, Jcirc, jcirc, Jcy, jcy, Jfr, jfr, jmath, Jopf, jopf, Jscr, jscr, Jsercy, jsercy, Jukcy, jukcy, Kappa, kappa, kappav, Kcedil, kcedil, Kcy, kcy, Kfr, kfr, kgreen, KHcy, khcy, KJcy, kjcy, Kopf, kopf, Kscr, kscr, lAarr, Lacute, lacute, laemptyv, lagran, Lambda, lambda, lang, Lang, langd, langle, lap, Laplacetrf, laquo$1, larrb, larrbfs, larr, Larr, lArr, larrfs, larrhk, larrlp, larrpl, larrsim, larrtl, latail, lAtail, lat, late, lates, lbarr, lBarr, lbbrk, lbrace, lbrack, lbrke, lbrksld, lbrkslu, Lcaron, lcaron, Lcedil, lcedil, lceil, lcub, Lcy, lcy, ldca, ldquo, ldquor, ldrdhar, ldrushar, ldsh, le, lE, LeftAngleBracket, LeftArrowBar, leftarrow, LeftArrow, Leftarrow, LeftArrowRightArrow, leftarrowtail, LeftCeiling, LeftDoubleBracket, LeftDownTeeVector, LeftDownVectorBar, LeftDownVector, LeftFloor, leftharpoondown, leftharpoonup, leftleftarrows, leftrightarrow, LeftRightArrow, Leftrightarrow, leftrightarrows, leftrightharpoons, leftrightsquigarrow, LeftRightVector, LeftTeeArrow, LeftTee, LeftTeeVector, leftthreetimes, LeftTriangleBar, LeftTriangle, LeftTriangleEqual, LeftUpDownVector, LeftUpTeeVector, LeftUpVectorBar, LeftUpVector, LeftVectorBar, LeftVector, lEg, leg, leq, leqq, leqslant, lescc, les, lesdot, lesdoto, lesdotor, lesg, lesges, lessapprox, lessdot, lesseqgtr, lesseqqgtr, LessEqualGreater, LessFullEqual, LessGreater, lessgtr, LessLess, lesssim, LessSlantEqual, LessTilde, lfisht, lfloor, Lfr, lfr, lg, lgE, lHar, lhard, lharu, lharul, lhblk, LJcy, ljcy, llarr, ll, Ll, llcorner, Lleftarrow, llhard, lltri, Lmidot, lmidot, lmoustache, lmoust, lnap, lnapprox, lne, lnE, lneq, lneqq, lnsim, loang, loarr, lobrk, longleftarrow, LongLeftArrow, Longleftarrow, longleftrightarrow, LongLeftRightArrow, Longleftrightarrow, longmapsto, longrightarrow, LongRightArrow, Longrightarrow, looparrowleft, looparrowright, lopar, Lopf, lopf, loplus, lotimes, lowast, lowbar, LowerLeftArrow, LowerRightArrow, loz, lozenge, lozf, lpar, lparlt, lrarr, lrcorner, lrhar, lrhard, lrm, lrtri, lsaquo, lscr, Lscr, lsh, Lsh, lsim, lsime, lsimg, lsqb, lsquo, lsquor, Lstrok, lstrok, ltcc, ltcir, lt$2, LT$1, Lt, ltdot, lthree, ltimes, ltlarr, ltquest, ltri, ltrie, ltrif, ltrPar, lurdshar, luruhar, lvertneqq, lvnE, macr$1, male, malt, maltese, map2, mapsto, mapstodown, mapstoleft, mapstoup, marker, mcomma, Mcy, mcy, mdash, mDDot, measuredangle, MediumSpace, Mellintrf, Mfr, mfr, mho, micro$1, midast, midcir, mid, middot$1, minusb, minus, minusd, minusdu, MinusPlus, mlcp, mldr, mnplus, models, Mopf, mopf, mp, mscr, Mscr, mstpos, Mu, mu, multimap, mumap, nabla, Nacute, nacute, nang, nap, napE, napid, napos, napprox, natural, naturals, natur, nbsp$1, nbump, nbumpe, ncap, Ncaron, ncaron, Ncedil, ncedil, ncong, ncongdot, ncup, Ncy, ncy, ndash, nearhk, nearr, neArr, nearrow, ne, nedot, NegativeMediumSpace, NegativeThickSpace, NegativeThinSpace, NegativeVeryThinSpace, nequiv, nesear, nesim, NestedGreaterGreater, NestedLessLess, NewLine, nexist, nexists, Nfr, nfr, ngE, nge, ngeq, ngeqq, ngeqslant, nges, nGg, ngsim, nGt, ngt, ngtr, nGtv, nharr, nhArr, nhpar, ni, nis, nisd, niv, NJcy, njcy, nlarr, nlArr, nldr, nlE, nle, nleftarrow, nLeftarrow, nleftrightarrow, nLeftrightarrow, nleq, nleqq, nleqslant, nles, nless, nLl, nlsim, nLt, nlt, nltri, nltrie, nLtv, nmid, NoBreak, NonBreakingSpace, nopf, Nopf, Not, not$1, NotCongruent, NotCupCap, NotDoubleVerticalBar, NotElement, NotEqual, NotEqualTilde, NotExists, NotGreater, NotGreaterEqual, NotGreaterFullEqual, NotGreaterGreater, NotGreaterLess, NotGreaterSlantEqual, NotGreaterTilde, NotHumpDownHump, NotHumpEqual, notin, notindot, notinE, notinva, notinvb, notinvc, NotLeftTriangleBar, NotLeftTriangle, NotLeftTriangleEqual, NotLess, NotLessEqual, NotLessGreater, NotLessLess, NotLessSlantEqual, NotLessTilde, NotNestedGreaterGreater, NotNestedLessLess, notni, notniva, notnivb, notnivc, NotPrecedes, NotPrecedesEqual, NotPrecedesSlantEqual, NotReverseElement, NotRightTriangleBar, NotRightTriangle, NotRightTriangleEqual, NotSquareSubset, NotSquareSubsetEqual, NotSquareSuperset, NotSquareSupersetEqual, NotSubset, NotSubsetEqual, NotSucceeds, NotSucceedsEqual, NotSucceedsSlantEqual, NotSucceedsTilde, NotSuperset, NotSupersetEqual, NotTilde, NotTildeEqual, NotTildeFullEqual, NotTildeTilde, NotVerticalBar, nparallel, npar, nparsl, npart, npolint, npr, nprcue, nprec, npreceq, npre, nrarrc, nrarr, nrArr, nrarrw, nrightarrow, nRightarrow, nrtri, nrtrie, nsc, nsccue, nsce, Nscr, nscr, nshortmid, nshortparallel, nsim, nsime, nsimeq, nsmid, nspar, nsqsube, nsqsupe, nsub, nsubE, nsube, nsubset, nsubseteq, nsubseteqq, nsucc, nsucceq, nsup, nsupE, nsupe, nsupset, nsupseteq, nsupseteqq, ntgl, Ntilde$1, ntilde$1, ntlg, ntriangleleft, ntrianglelefteq, ntriangleright, ntrianglerighteq, Nu, nu, num, numero, numsp, nvap, nvdash, nvDash, nVdash, nVDash, nvge, nvgt, nvHarr, nvinfin, nvlArr, nvle, nvlt, nvltrie, nvrArr, nvrtrie, nvsim, nwarhk, nwarr, nwArr, nwarrow, nwnear, Oacute$1, oacute$1, oast, Ocirc$1, ocirc$1, ocir, Ocy, ocy, odash, Odblac, odblac, odiv, odot, odsold, OElig, oelig, ofcir, Ofr, ofr, ogon, Ograve$1, ograve$1, ogt, ohbar, ohm, oint, olarr, olcir, olcross, oline, olt, Omacr, omacr, Omega, omega, Omicron, omicron, omid, ominus, Oopf, oopf, opar, OpenCurlyDoubleQuote, OpenCurlyQuote, operp, oplus, orarr, Or, or, ord, order2, orderof, ordf$1, ordm$1, origof, oror, orslope, orv, oS, Oscr, oscr, Oslash$1, oslash$1, osol, Otilde$1, otilde$1, otimesas, Otimes, otimes, Ouml$1, ouml$1, ovbar, OverBar, OverBrace, OverBracket, OverParenthesis, para$1, parallel, par, parsim, parsl, part, PartialD, Pcy, pcy, percnt, period, permil, perp, pertenk, Pfr, pfr, Phi, phi, phiv, phmmat, phone, Pi, pi, pitchfork, piv, planck, planckh, plankv, plusacir, plusb, pluscir, plus, plusdo, plusdu, pluse, PlusMinus, plusmn$1, plussim, plustwo, pm, Poincareplane, pointint, popf, Popf, pound$1, prap, Pr, pr, prcue, precapprox, prec, preccurlyeq, Precedes, PrecedesEqual, PrecedesSlantEqual, PrecedesTilde, preceq, precnapprox, precneqq, precnsim, pre, prE, precsim, prime, Prime, primes, prnap, prnE, prnsim, prod, Product, profalar, profline, profsurf, prop, Proportional, Proportion, propto, prsim, prurel, Pscr, pscr, Psi, psi, puncsp, Qfr, qfr, qint, qopf, Qopf, qprime, Qscr, qscr, quaternions, quatint, quest, questeq, quot$2, QUOT$1, rAarr, race, Racute, racute, radic, raemptyv, rang, Rang, rangd, range, rangle, raquo$1, rarrap, rarrb, rarrbfs, rarrc, rarr, Rarr, rArr, rarrfs, rarrhk, rarrlp, rarrpl, rarrsim, Rarrtl, rarrtl, rarrw, ratail, rAtail, ratio, rationals, rbarr, rBarr, RBarr, rbbrk, rbrace, rbrack, rbrke, rbrksld, rbrkslu, Rcaron, rcaron, Rcedil, rcedil, rceil, rcub, Rcy, rcy, rdca, rdldhar, rdquo, rdquor, rdsh, real, realine, realpart, reals, Re, rect, reg$1, REG$1, ReverseElement, ReverseEquilibrium, ReverseUpEquilibrium, rfisht, rfloor, rfr, Rfr, rHar, rhard, rharu, rharul, Rho, rho, rhov, RightAngleBracket, RightArrowBar, rightarrow, RightArrow, Rightarrow, RightArrowLeftArrow, rightarrowtail, RightCeiling, RightDoubleBracket, RightDownTeeVector, RightDownVectorBar, RightDownVector, RightFloor, rightharpoondown, rightharpoonup, rightleftarrows, rightleftharpoons, rightrightarrows, rightsquigarrow, RightTeeArrow, RightTee, RightTeeVector, rightthreetimes, RightTriangleBar, RightTriangle, RightTriangleEqual, RightUpDownVector, RightUpTeeVector, RightUpVectorBar, RightUpVector, RightVectorBar, RightVector, ring, risingdotseq, rlarr, rlhar, rlm, rmoustache, rmoust, rnmid, roang, roarr, robrk, ropar, ropf, Ropf, roplus, rotimes, RoundImplies, rpar, rpargt, rppolint, rrarr, Rrightarrow, rsaquo, rscr, Rscr, rsh, Rsh, rsqb, rsquo, rsquor, rthree, rtimes, rtri, rtrie, rtrif, rtriltri, RuleDelayed, ruluhar, rx, Sacute, sacute, sbquo, scap, Scaron, scaron, Sc, sc, sccue, sce, scE, Scedil, scedil, Scirc, scirc, scnap, scnE, scnsim, scpolint, scsim, Scy, scy, sdotb, sdot, sdote, searhk, searr, seArr, searrow, sect$1, semi, seswar, setminus, setmn, sext, Sfr, sfr, sfrown, sharp, SHCHcy, shchcy, SHcy, shcy, ShortDownArrow, ShortLeftArrow, shortmid, shortparallel, ShortRightArrow, ShortUpArrow, shy$1, Sigma, sigma, sigmaf, sigmav, sim, simdot, sime, simeq, simg, simgE, siml, simlE, simne, simplus, simrarr, slarr, SmallCircle, smallsetminus, smashp, smeparsl, smid, smile, smt, smte, smtes, SOFTcy, softcy, solbar, solb, sol, Sopf, sopf, spades, spadesuit, spar, sqcap, sqcaps, sqcup, sqcups, Sqrt, sqsub, sqsube, sqsubset, sqsubseteq, sqsup, sqsupe, sqsupset, sqsupseteq, square, Square, SquareIntersection, SquareSubset, SquareSubsetEqual, SquareSuperset, SquareSupersetEqual, SquareUnion, squarf, squ, squf, srarr, Sscr, sscr, ssetmn, ssmile, sstarf, Star, star, starf, straightepsilon, straightphi, strns, sub, Sub, subdot, subE, sube, subedot, submult, subnE, subne, subplus, subrarr, subset, Subset, subseteq, subseteqq, SubsetEqual, subsetneq, subsetneqq, subsim, subsub, subsup, succapprox, succ, succcurlyeq, Succeeds, SucceedsEqual, SucceedsSlantEqual, SucceedsTilde, succeq, succnapprox, succneqq, succnsim, succsim, SuchThat, sum, Sum, sung, sup1$1, sup2$1, sup3$1, sup, Sup, supdot, supdsub, supE, supe, supedot, Superset, SupersetEqual, suphsol, suphsub, suplarr, supmult, supnE, supne, supplus, supset, Supset, supseteq, supseteqq, supsetneq, supsetneqq, supsim, supsub, supsup, swarhk, swarr, swArr, swarrow, swnwar, szlig$1, Tab, target, Tau, tau, tbrk, Tcaron, tcaron, Tcedil, tcedil, Tcy, tcy, tdot, telrec, Tfr, tfr, there4, therefore, Therefore, Theta, theta, thetasym, thetav, thickapprox, thicksim, ThickSpace, ThinSpace, thinsp, thkap, thksim, THORN$1, thorn$1, tilde, Tilde, TildeEqual, TildeFullEqual, TildeTilde, timesbar, timesb, times$1, timesd, tint, toea, topbot, topcir, top2, Topf, topf, topfork, tosa, tprime, trade, TRADE, triangle, triangledown, triangleleft, trianglelefteq, triangleq, triangleright, trianglerighteq, tridot, trie, triminus, TripleDot, triplus, trisb, tritime, trpezium, Tscr, tscr, TScy, tscy, TSHcy, tshcy, Tstrok, tstrok, twixt, twoheadleftarrow, twoheadrightarrow, Uacute$1, uacute$1, uarr, Uarr, uArr, Uarrocir, Ubrcy, ubrcy, Ubreve, ubreve, Ucirc$1, ucirc$1, Ucy, ucy, udarr, Udblac, udblac, udhar, ufisht, Ufr, ufr, Ugrave$1, ugrave$1, uHar, uharl, uharr, uhblk, ulcorn, ulcorner, ulcrop, ultri, Umacr, umacr, uml$1, UnderBar, UnderBrace, UnderBracket, UnderParenthesis, Union, UnionPlus, Uogon, uogon, Uopf, uopf, UpArrowBar, uparrow, UpArrow, Uparrow, UpArrowDownArrow, updownarrow, UpDownArrow, Updownarrow, UpEquilibrium, upharpoonleft, upharpoonright, uplus, UpperLeftArrow, UpperRightArrow, upsi, Upsi, upsih, Upsilon, upsilon, UpTeeArrow, UpTee, upuparrows, urcorn, urcorner, urcrop, Uring, uring, urtri, Uscr, uscr, utdot, Utilde, utilde, utri, utrif, uuarr, Uuml$1, uuml$1, uwangle, vangrt, varepsilon, varkappa, varnothing, varphi, varpi, varpropto, varr, vArr, varrho, varsigma, varsubsetneq, varsubsetneqq, varsupsetneq, varsupsetneqq, vartheta, vartriangleleft, vartriangleright, vBar, Vbar, vBarv, Vcy, vcy, vdash, vDash, Vdash, VDash, Vdashl, veebar, vee, Vee, veeeq, vellip, verbar, Verbar, vert, Vert, VerticalBar, VerticalLine, VerticalSeparator, VerticalTilde, VeryThinSpace, Vfr, vfr, vltri, vnsub, vnsup, Vopf, vopf, vprop, vrtri, Vscr, vscr, vsubnE, vsubne, vsupnE, vsupne, Vvdash, vzigzag, Wcirc, wcirc, wedbar, wedge, Wedge, wedgeq, weierp, Wfr, wfr, Wopf, wopf, wp, wr, wreath, Wscr, wscr, xcap, xcirc, xcup, xdtri, Xfr, xfr, xharr, xhArr, Xi, xi, xlarr, xlArr, xmap, xnis, xodot, Xopf, xopf, xoplus, xotime, xrarr, xrArr, Xscr, xscr, xsqcup, xuplus, xutri, xvee, xwedge, Yacute$1, yacute$1, YAcy, yacy, Ycirc, ycirc, Ycy, ycy, yen$1, Yfr, yfr, YIcy, yicy, Yopf, yopf, Yscr, yscr, YUcy, yucy, yuml$1, Yuml, Zacute, zacute, Zcaron, zcaron, Zcy, zcy, Zdot, zdot, zeetrf, ZeroWidthSpace, Zeta, zeta, zfr, Zfr, ZHcy, zhcy, zigrarr, zopf, Zopf, Zscr, zscr, zwj, zwnj, require$$1$1, Aacute, aacute, Acirc, acirc, acute, AElig, aelig, Agrave, agrave, amp$1, AMP, Aring, aring, Atilde, atilde, Auml, auml, brvbar, Ccedil, ccedil, cedil, cent, copy3, COPY, curren, deg, divide, Eacute, eacute, Ecirc, ecirc, Egrave, egrave, ETH, eth, Euml, euml, frac12, frac14, frac34, gt$1, GT, Iacute, iacute, Icirc, icirc, iexcl, Igrave, igrave, iquest, Iuml, iuml, laquo, lt$1, LT, macr, micro, middot, nbsp, not, Ntilde, ntilde, Oacute, oacute, Ocirc, ocirc, Ograve, ograve, ordf, ordm, Oslash, oslash, Otilde, otilde, Ouml, ouml, para, plusmn, pound, quot$1, QUOT, raquo, reg, REG, sect, shy, sup1, sup2, sup3, szlig, THORN, thorn, times, Uacute, uacute, Ucirc, ucirc, Ugrave, ugrave, uml, Uuml, uuml, Yacute, yacute, yen, yuml, require$$1, amp, apos, gt, lt, quot, require$$0$1, decode_codepoint, require$$0, __importDefault$2, decode_json_1, fromCodePoint$2, __importDefault$1, entities_json_1$1, legacy_json_1, xml_json_1$1, decode_codepoint_1, strictEntityRe, sorter, encode, __importDefault, xml_json_1, inverseXML, xmlReplacer, entities_json_1, inverseHTML, htmlReplacer, reNonASCII, getCodePoint, reEscapeChars, ENTITY, C_BACKSLASH$1, reBackslashOrAmp, ESCAPABLE, reEntityOrEscapedChar, XMLSPECIAL, reXmlSpecial, unescapeChar, NodeWalker, lastNodeId, nodeMap, Node$1, BlockNode, ListNode, HeadingNode, CodeBlockNode, TableNode, TableCellNode, RefDefNode, CustomBlockNode, HtmlBlockNode, LinkNode, CodeNode, CustomInlineNode, TAGNAME, ATTRIBUTENAME, UNQUOTEDVALUE, SINGLEQUOTEDVALUE, DOUBLEQUOTEDVALUE, ATTRIBUTEVALUE, ATTRIBUTEVALUESPEC, ATTRIBUTE, OPENTAG, CLOSETAG, HTMLCOMMENT, PROCESSINGINSTRUCTION, DECLARATION2, CDATA, HTMLTAG, reHtmlTag, fromCodePoint, stringFromCharCode_1, floor_1, fromCodePoint$1, DOMAIN, PATH, EMAIL, C_NEWLINE, C_ASTERISK, C_UNDERSCORE, C_BACKTICK, C_OPEN_BRACKET$1, C_CLOSE_BRACKET, C_TILDE, C_LESSTHAN$1, C_BANG, C_BACKSLASH, C_AMPERSAND, C_OPEN_PAREN, C_CLOSE_PAREN, C_COLON, C_SINGLEQUOTE, C_DOUBLEQUOTE, C_DOLLAR, ESCAPED_CHAR, rePunctuation, reLinkTitle, reLinkDestinationBraces, reEscapable, reEntityHere, reTicks, reTicksHere, reEllipses, reDash, reEmailAutolink, reAutolink, reSpnl, reWhitespaceChar, reUnicodeWhitespaceChar, reFinalSpace, reInitialSpace, reSpaceAtEndOfLine, reLinkLabel, reMain, InlineParser, reTaskListItemMarker, table, tableBody$1, tableHead$1, tableDelimRow, tableDelimCell, tableRow, tableCell, CODE_INDENT, C_TAB, C_GREATERTHAN, C_LESSTHAN, C_SPACE, C_OPEN_BRACKET, reNonSpace, reClosingCodeFence, reClosingCustomBlock, customBlock$1, noop5, document$1, list, blockQuote$1, item, heading, thematicBreak$1, codeBlock, htmlBlock$1, paragraph, refDef, frontMatter$2, blockHandlers, tableHead, tableBody, reCustomBlock, reCanBeCustomInline, customBlock, reCodeFence, reHtmlBlockOpen, reSetextHeadingLine, reATXHeadingMarker, reThematicBreak, reBulletListMarker, reOrderedListMarker, blockQuote, atxHeading, fencedCodeBlock, htmlBlock, seTextHeading, thematicBreak, listItem, indentedCodeBlock, blockStarts, reFrontMatter, frontMatter$1, frontMatter, reHtmlBlockClose, reMaybeSpecial, reLineEnding$1, defaultOptions$1, Parser, reLineEnding, ToastMark, disallowedTags, reDisallowedTag, baseConvertors$1, gfmConvertors, defaultOptions, Renderer, hasOwnProperty, setPrototypeOf, isFrozen, getPrototypeOf, getOwnPropertyDescriptor, freeze, seal, create, _ref, apply2, construct, arrayForEach, arrayPop, arrayPush, stringToLowerCase, stringMatch, stringReplace, stringIndexOf, stringTrim, regExpTest, typeErrorCreate, html$2, svg, svgFilters, svgDisallowed, mathMl, mathMlDisallowed, text, html$1$1, svg$1, mathMl$1, xml, MUSTACHE_EXPR, ERB_EXPR, DATA_ATTR, ARIA_ATTR, IS_ALLOWED_URI, IS_SCRIPT_OR_DATA, ATTR_WHITESPACE, _typeof, getGlobal, _createTrustedTypesPolicy, purify, CAN_BE_WHITE_TAG_LIST, whiteTagList, schemaFactory, reCloseTag, baseConvertors, nestableTypes, nestableTagNames, offsetInfoMap, CLASS_HIGHLIGHT, MarkdownPreview, cache, TableOffsetMap, createOffsetMap, CellSelection, pluginKey, MOUSE_RIGHT_BUTTON, TableSelection, SELECTED_CELL_CLASS_NAME, Map$1, DEFAULT_CODE, I18n, i18n, contextMenuGroups, EXCEPT_TYPES, MARK_TYPES, LIST_TYPES, CustomBlockView, IMAGE_LINK_CLASS_NAME, ImageView, WRAPPER_CLASS_NAME, CODE_BLOCK_LANG_CLASS_NAME, CodeBlockView, reMSOListClassName, reMSOStylePrefix, reMSOListStyle, reMSOTagName, reMSOListBullet, MSO_CLASS_NAME_LIST_PARA, START_FRAGMENT_COMMENT, END_FRAGMENT_COMMENT, DUMMY_CELL_SIZE, TR_NODES_SIZE, Doc, Paragraph, reSoftTabLen, Text, Heading, CodeBlock, BulletList, OrderedList, ListItem, BlockQuote, cellOffsetFnMap, Table3, TableHead3, TableBody3, TableRow3, TableHeadCell, TableBodyCell, Image, ROOT_BLOCK_DEPTH, ThematicBreak, Strong, Emph, Strike, Link, Code, CustomBlock, FrontMatter, HTMLComment, CONTENTS_CLASS_NAME, WysiwygEditor, isUndefined, isNull, isExisty_1, isExisty, isTruthy_1, isTruthy, isFalsy_1, eventTypeList, EventEmitter, CommandManager, convertors, htmlToWwConvertors, toWwConvertors, ToWwConvertorState, nodeTypeWriters, toMdConvertors, markTypeOptions, ToMdConvertorState, Convertor, TASK_ATTR_NAME, DISABLED_TASK_ATTR_NAME, TASK_CHECKED_CLASS_NAME, ToastUIEditorViewer, tokenToDOMNode, WwToDOMAdaptor, ANIMATION_TIME, SCROLL_BLOCKING_RESET_DELAY, currentTimeoutId, releaseTimer, EDITOR_BOTTOM_PADDING, ScrollSync, queryMap, ToastUIEditorCore, isBoolean_1, VNodeWalker, VNode, html, isObject_1, reNonDimension, Component, Switch, templateObject_1$h, debounce_1, debounce2, throttle_1, MapShim, isBrowser2, global$1, requestAnimationFrame$1, trailingTimeout, REFRESH_DELAY, transitionKeys, mutationObserverSupported, ResizeObserverController, defineConfigurable, getWindowOf, emptyRect, isSVGGraphicsElement, ResizeObservation, ResizeObserverEntry, ResizeObserverSPI, observers, ResizeObserver2, index, HeadingPopupBody, templateObject_1$g, templateObject_2$8, Tabs, templateObject_1$f, templateObject_2$7, TYPE_UI, ImagePopupBody, templateObject_1$e, LinkPopupBody, templateObject_1$d, CELL_WIDTH, CELL_HEIGHT, MIN_ROW_INDEX, MAX_ROW_INDEX, MIN_COL_INDEX, MAX_COL_INDEX, MIN_ROW_SELECTION_INDEX, MIN_COL_SELECTION_INDEX, BORDER_WIDTH, TablePopupBody, templateObject_1$c, templateObject_2$6, templateObject_3$2, templateObject_4$1, CustomPopupBody, templateObject_1$b, templateObject_1$a, templateObject_2$5, templateObject_3$1, templateObject_4, templateObject_5, MARGIN_FROM_RIGHT_SIDE, Popup, templateObject_1$9, TOOLTIP_INDENT, templateObject_1$8, DEFAULT_WIDTH, ToolbarButtonComp, ToolbarButton, templateObject_1$7, CustomToolbarItemComp, CustomToolbarItem, templateObject_1$6, ToolbarGroup, templateObject_1$5, templateObject_2$4, POPUP_INDENT, DropdownToolbarButtonComp, DropdownToolbarButton, templateObject_1$4, templateObject_2$3, INLINE_PADDING, Toolbar, templateObject_1$3, templateObject_2$2, ContextMenu, templateObject_1$2, templateObject_2$1, templateObject_3, Layout, templateObject_1$1, templateObject_2, ToastUIEditor, templateObject_1;
+  var extendStatics$1, __assign$1, forEachOwnProperties_1, extend_1, isString_1, isArray_1, forEachArray_1, isArray$2, forEachArray$2, forEachOwnProperties$1, forEach_1, isString$2, forEach$3, css_1, isArray$1, inArray_1, isUndefined_1, isUndefined$3, getClass_1, isArray, isUndefined$2, _setClassName, forEach$2, inArray$3, getClass$2, setClassName$1, addClass_1, forEachArray$1, inArray$2, getClass$1, setClassName, removeClass_1, isNumber_1, isNull_1, forEachOwnProperties, imagePing_1, isUndefined$1, imagePing, ms7days, sendHostname_1, reSpaceMoreThanOne, reEscapeChars$1, reEscapeHTML, reEscapeBackSlash, reEscapePairedChars, reMdImageSyntax, reEscapedCharInLinkSyntax, reEscapeBackSlashInSentence, XMLSPECIAL$1, reXmlSpecial$1, availableLinkAttributes, reMarkdownTextToEscapeMap, forEachArray, toArray_1, widgetRules, widgetRuleMap, reWidgetPrefix, inArray$1, getClass, hasClass_1, inArray, toArray, elProto, matchSelector, matches_1, TAG_NAME, ATTRIBUTE_NAME, UNQUOTED_VALUE, SINGLE_QUOTED_VALUE, DOUBLE_QUOTED_VALUE, ATTRIBUTE_VALUE, ATTRIBUTE_VALUE_SPEC, ATTRIBUTE$1, OPEN_TAG, CLOSE_TAG, HTML_TAG, reHTMLTag, reBR, reHTMLComment, ALTERNATIVE_TAG_FOR_BR, CLS_PREFIX, pluginKey$1, MARGIN, PopupWidget, Node$2, Widget, EditorBase, isFunction_1, defaultCommandShortcuts, SpecManager, HEADING, BLOCK_QUOTE, LIST_ITEM, TABLE, TABLE_CELL, CODE_BLOCK, THEMATIC_BREAK, LINK, CODE, META, DELIM, TASK_DELIM, TEXT, HTML, CUSTOM_BLOCK, delimSize, markNodeFuncMap, simpleMarkClassNameMap, removingBackgroundIndexMap, defaultToolbarStateKeys, Doc$1, Mark2, reBlockQuote, BlockQuote$1, reList, reOrderedList, reOrderedListGroup, reCanBeTaskList, reBulletListGroup, reTaskList, reBulletTaskList, otherListToList, otherNodeToList, extendList, reStartSpace, Paragraph$1, Text$1, reHeading, Heading$1, fencedCodeBlockSyntax, CodeBlock$1, reEmptyTable, Table$1, thematicBreakSyntax, ThematicBreak$1, ListItem$1, reStrong, strongSyntax, Strong$1, reStrike, strikeSyntax, Strike$1, reEmph, emphSyntax, Emph$1, reCode, codeSyntax, Code$1, Link$1, TaskDelimiter, Delimiter, Meta, MarkedText, TableCell3, Html, customBlockSyntax, CustomBlock$1, reTaskMarkerKey, reTaskMarker, EVENT_TYPE, reLineEnding$2, MdEditor, EVENT_KEY, _safeEvent, isString$1, forEach$1, safeEvent$1, off_1, isString, forEach2, safeEvent, on_1, extendStatics, __assign, commonjsGlobal, encodeCache, encode_1, lib, decode, Aacute$1, aacute$1, Abreve, abreve, ac, acd, acE, Acirc$1, acirc$1, acute$1, Acy, acy, AElig$1, aelig$1, af, Afr, afr, Agrave$1, agrave$1, alefsym, aleph, Alpha, alpha2, Amacr, amacr, amalg, amp$2, AMP$1, andand, And, and, andd, andslope, andv, ang, ange, angle, angmsdaa, angmsdab, angmsdac, angmsdad, angmsdae, angmsdaf, angmsdag, angmsdah, angmsd, angrt, angrtvb, angrtvbd, angsph, angst, angzarr, Aogon, aogon, Aopf, aopf, apacir, ap, apE, ape, apid, apos$1, ApplyFunction, approx, approxeq, Aring$1, aring$1, Ascr, ascr, Assign, ast, asymp, asympeq, Atilde$1, atilde$1, Auml$1, auml$1, awconint, awint, backcong, backepsilon, backprime, backsim, backsimeq, Backslash, Barv, barvee, barwed, Barwed, barwedge, bbrk, bbrktbrk, bcong, Bcy, bcy, bdquo, becaus, because, Because, bemptyv, bepsi, bernou, Bernoullis, Beta, beta, beth, between, Bfr, bfr, bigcap, bigcirc, bigcup, bigodot, bigoplus, bigotimes, bigsqcup, bigstar, bigtriangledown, bigtriangleup, biguplus, bigvee, bigwedge, bkarow, blacklozenge, blacksquare, blacktriangle, blacktriangledown, blacktriangleleft, blacktriangleright, blank, blk12, blk14, blk34, block, bne, bnequiv, bNot, bnot, Bopf, bopf, bot, bottom3, bowtie, boxbox, boxdl, boxdL, boxDl, boxDL, boxdr, boxdR, boxDr, boxDR, boxh, boxH, boxhd, boxHd, boxhD, boxHD, boxhu, boxHu, boxhU, boxHU, boxminus, boxplus, boxtimes, boxul, boxuL, boxUl, boxUL, boxur, boxuR, boxUr, boxUR, boxv, boxV, boxvh, boxvH, boxVh, boxVH, boxvl, boxvL, boxVl, boxVL, boxvr, boxvR, boxVr, boxVR, bprime, breve, Breve, brvbar$1, bscr, Bscr, bsemi, bsim, bsime, bsolb, bsol, bsolhsub, bull, bullet, bump, bumpE, bumpe, Bumpeq, bumpeq, Cacute, cacute, capand, capbrcup, capcap, cap, Cap, capcup, capdot, CapitalDifferentialD, caps, caret2, caron, Cayleys, ccaps, Ccaron, ccaron, Ccedil$1, ccedil$1, Ccirc, ccirc, Cconint, ccups, ccupssm, Cdot, cdot, cedil$1, Cedilla, cemptyv, cent$1, centerdot, CenterDot, cfr, Cfr, CHcy, chcy, check, checkmark, Chi, chi, circ, circeq, circlearrowleft, circlearrowright, circledast, circledcirc, circleddash, CircleDot, circledR, circledS, CircleMinus, CirclePlus, CircleTimes, cir, cirE, cire, cirfnint, cirmid, cirscir, ClockwiseContourIntegral, CloseCurlyDoubleQuote, CloseCurlyQuote, clubs, clubsuit, colon, Colon, Colone, colone, coloneq, comma, commat, comp, compfn, complement, complexes, cong, congdot, Congruent, conint, Conint, ContourIntegral, copf, Copf, coprod, Coproduct, copy$1, COPY$1, copysr, CounterClockwiseContourIntegral, crarr, cross, Cross, Cscr, cscr, csub, csube, csup, csupe, ctdot, cudarrl, cudarrr, cuepr, cuesc, cularr, cularrp, cupbrcap, cupcap, CupCap, cup, Cup, cupcup, cupdot, cupor, cups, curarr, curarrm, curlyeqprec, curlyeqsucc, curlyvee, curlywedge, curren$1, curvearrowleft, curvearrowright, cuvee, cuwed, cwconint, cwint, cylcty, dagger, Dagger, daleth, darr, Darr, dArr, dash, Dashv, dashv, dbkarow, dblac, Dcaron, dcaron, Dcy, dcy, ddagger, ddarr, DD, dd, DDotrahd, ddotseq, deg$1, Del, Delta, delta, demptyv, dfisht, Dfr, dfr, dHar, dharl, dharr, DiacriticalAcute, DiacriticalDot, DiacriticalDoubleAcute, DiacriticalGrave, DiacriticalTilde, diam, diamond, Diamond, diamondsuit, diams, die, DifferentialD, digamma, disin, div, divide$1, divideontimes, divonx, DJcy, djcy, dlcorn, dlcrop, dollar, Dopf, dopf, Dot, dot, DotDot, doteq, doteqdot, DotEqual, dotminus, dotplus, dotsquare, doublebarwedge, DoubleContourIntegral, DoubleDot, DoubleDownArrow, DoubleLeftArrow, DoubleLeftRightArrow, DoubleLeftTee, DoubleLongLeftArrow, DoubleLongLeftRightArrow, DoubleLongRightArrow, DoubleRightArrow, DoubleRightTee, DoubleUpArrow, DoubleUpDownArrow, DoubleVerticalBar, DownArrowBar, downarrow, DownArrow, Downarrow, DownArrowUpArrow, DownBreve, downdownarrows, downharpoonleft, downharpoonright, DownLeftRightVector, DownLeftTeeVector, DownLeftVectorBar, DownLeftVector, DownRightTeeVector, DownRightVectorBar, DownRightVector, DownTeeArrow, DownTee, drbkarow, drcorn, drcrop, Dscr, dscr, DScy, dscy, dsol, Dstrok, dstrok, dtdot, dtri, dtrif, duarr, duhar, dwangle, DZcy, dzcy, dzigrarr, Eacute$1, eacute$1, easter, Ecaron, ecaron, Ecirc$1, ecirc$1, ecir, ecolon, Ecy, ecy, eDDot, Edot, edot, eDot, ee, efDot, Efr, efr, eg, Egrave$1, egrave$1, egs, egsdot, el, Element$1, elinters, ell, els, elsdot, Emacr, emacr, empty2, emptyset, EmptySmallSquare, emptyv, EmptyVerySmallSquare, emsp13, emsp14, emsp, ENG, eng, ensp, Eogon, eogon, Eopf, eopf, epar, eparsl, eplus, epsi, Epsilon, epsilon, epsiv, eqcirc, eqcolon, eqsim, eqslantgtr, eqslantless, Equal, equals, EqualTilde, equest, Equilibrium, equiv, equivDD, eqvparsl, erarr, erDot, escr, Escr, esdot, Esim, esim, Eta, eta, ETH$1, eth$1, Euml$1, euml$1, euro, excl, exist, Exists, expectation, exponentiale, ExponentialE, fallingdotseq, Fcy, fcy, female, ffilig, fflig, ffllig, Ffr, ffr, filig, FilledSmallSquare, FilledVerySmallSquare, fjlig, flat, fllig, fltns, fnof, Fopf, fopf, forall, ForAll, fork, forkv, Fouriertrf, fpartint, frac12$1, frac13, frac14$1, frac15, frac16, frac18, frac23, frac25, frac34$1, frac35, frac38, frac45, frac56, frac58, frac78, frasl, frown, fscr, Fscr, gacute, Gamma, gamma, Gammad, gammad, gap2, Gbreve, gbreve, Gcedil, Gcirc, gcirc, Gcy, gcy, Gdot, gdot, ge, gE, gEl, gel, geq, geqq, geqslant, gescc, ges, gesdot, gesdoto, gesdotol, gesl, gesles, Gfr, gfr, gg, Gg, ggg, gimel, GJcy, gjcy, gla, gl, glE, glj, gnap, gnapprox, gne, gnE, gneq, gneqq, gnsim, Gopf, gopf, grave, GreaterEqual, GreaterEqualLess, GreaterFullEqual, GreaterGreater, GreaterLess, GreaterSlantEqual, GreaterTilde, Gscr, gscr, gsim, gsime, gsiml, gtcc, gtcir, gt$2, GT$1, Gt, gtdot, gtlPar, gtquest, gtrapprox, gtrarr, gtrdot, gtreqless, gtreqqless, gtrless, gtrsim, gvertneqq, gvnE, Hacek, hairsp, half, hamilt, HARDcy, hardcy, harrcir, harr, hArr, harrw, Hat, hbar, Hcirc, hcirc, hearts, heartsuit, hellip, hercon, hfr, Hfr, HilbertSpace, hksearow, hkswarow, hoarr, homtht, hookleftarrow, hookrightarrow, hopf, Hopf, horbar, HorizontalLine, hscr, Hscr, hslash, Hstrok, hstrok, HumpDownHump, HumpEqual, hybull, hyphen, Iacute$1, iacute$1, ic, Icirc$1, icirc$1, Icy, icy, Idot, IEcy, iecy, iexcl$1, iff, ifr, Ifr, Igrave$1, igrave$1, ii, iiiint, iiint, iinfin, iiota, IJlig, ijlig, Imacr, imacr, image, ImaginaryI, imagline, imagpart, imath, Im, imof, imped, Implies, incare, infin, infintie, inodot, intcal, int, Int, integers, Integral, intercal, Intersection, intlarhk, intprod, InvisibleComma, InvisibleTimes, IOcy, iocy, Iogon, iogon, Iopf, iopf, Iota, iota, iprod, iquest$1, iscr, Iscr, isin, isindot, isinE, isins, isinsv, isinv, it, Itilde, itilde, Iukcy, iukcy, Iuml$1, iuml$1, Jcirc, jcirc, Jcy, jcy, Jfr, jfr, jmath, Jopf, jopf, Jscr, jscr, Jsercy, jsercy, Jukcy, jukcy, Kappa, kappa, kappav, Kcedil, kcedil, Kcy, kcy, Kfr, kfr, kgreen, KHcy, khcy, KJcy, kjcy, Kopf, kopf, Kscr, kscr, lAarr, Lacute, lacute, laemptyv, lagran, Lambda, lambda, lang, Lang, langd, langle, lap, Laplacetrf, laquo$1, larrb, larrbfs, larr, Larr, lArr, larrfs, larrhk, larrlp, larrpl, larrsim, larrtl, latail, lAtail, lat, late, lates, lbarr, lBarr, lbbrk, lbrace, lbrack, lbrke, lbrksld, lbrkslu, Lcaron, lcaron, Lcedil, lcedil, lceil, lcub, Lcy, lcy, ldca, ldquo, ldquor, ldrdhar, ldrushar, ldsh, le, lE, LeftAngleBracket, LeftArrowBar, leftarrow, LeftArrow, Leftarrow, LeftArrowRightArrow, leftarrowtail, LeftCeiling, LeftDoubleBracket, LeftDownTeeVector, LeftDownVectorBar, LeftDownVector, LeftFloor, leftharpoondown, leftharpoonup, leftleftarrows, leftrightarrow, LeftRightArrow, Leftrightarrow, leftrightarrows, leftrightharpoons, leftrightsquigarrow, LeftRightVector, LeftTeeArrow, LeftTee, LeftTeeVector, leftthreetimes, LeftTriangleBar, LeftTriangle, LeftTriangleEqual, LeftUpDownVector, LeftUpTeeVector, LeftUpVectorBar, LeftUpVector, LeftVectorBar, LeftVector, lEg, leg, leq, leqq, leqslant, lescc, les, lesdot, lesdoto, lesdotor, lesg, lesges, lessapprox, lessdot, lesseqgtr, lesseqqgtr, LessEqualGreater, LessFullEqual, LessGreater, lessgtr, LessLess, lesssim, LessSlantEqual, LessTilde, lfisht, lfloor, Lfr, lfr, lg, lgE, lHar, lhard, lharu, lharul, lhblk, LJcy, ljcy, llarr, ll, Ll, llcorner, Lleftarrow, llhard, lltri, Lmidot, lmidot, lmoustache, lmoust, lnap, lnapprox, lne, lnE, lneq, lneqq, lnsim, loang, loarr, lobrk, longleftarrow, LongLeftArrow, Longleftarrow, longleftrightarrow, LongLeftRightArrow, Longleftrightarrow, longmapsto, longrightarrow, LongRightArrow, Longrightarrow, looparrowleft, looparrowright, lopar, Lopf, lopf, loplus, lotimes, lowast, lowbar, LowerLeftArrow, LowerRightArrow, loz, lozenge, lozf, lpar, lparlt, lrarr, lrcorner, lrhar, lrhard, lrm, lrtri, lsaquo, lscr, Lscr, lsh, Lsh, lsim, lsime, lsimg, lsqb, lsquo, lsquor, Lstrok, lstrok, ltcc, ltcir, lt$2, LT$1, Lt, ltdot, lthree, ltimes, ltlarr, ltquest, ltri, ltrie, ltrif, ltrPar, lurdshar, luruhar, lvertneqq, lvnE, macr$1, male, malt, maltese, map2, mapsto, mapstodown, mapstoleft, mapstoup, marker, mcomma, Mcy, mcy, mdash, mDDot, measuredangle, MediumSpace, Mellintrf, Mfr, mfr, mho, micro$1, midast, midcir, mid, middot$1, minusb, minus, minusd, minusdu, MinusPlus, mlcp, mldr, mnplus, models, Mopf, mopf, mp, mscr, Mscr, mstpos, Mu, mu, multimap, mumap, nabla, Nacute, nacute, nang, nap, napE, napid, napos, napprox, natural, naturals, natur, nbsp$1, nbump, nbumpe, ncap, Ncaron, ncaron, Ncedil, ncedil, ncong, ncongdot, ncup, Ncy, ncy, ndash, nearhk, nearr, neArr, nearrow, ne, nedot, NegativeMediumSpace, NegativeThickSpace, NegativeThinSpace, NegativeVeryThinSpace, nequiv, nesear, nesim, NestedGreaterGreater, NestedLessLess, NewLine, nexist, nexists, Nfr, nfr, ngE, nge, ngeq, ngeqq, ngeqslant, nges, nGg, ngsim, nGt, ngt, ngtr, nGtv, nharr, nhArr, nhpar, ni, nis, nisd, niv, NJcy, njcy, nlarr, nlArr, nldr, nlE, nle, nleftarrow, nLeftarrow, nleftrightarrow, nLeftrightarrow, nleq, nleqq, nleqslant, nles, nless, nLl, nlsim, nLt, nlt, nltri, nltrie, nLtv, nmid, NoBreak, NonBreakingSpace, nopf, Nopf, Not, not$1, NotCongruent, NotCupCap, NotDoubleVerticalBar, NotElement, NotEqual, NotEqualTilde, NotExists, NotGreater, NotGreaterEqual, NotGreaterFullEqual, NotGreaterGreater, NotGreaterLess, NotGreaterSlantEqual, NotGreaterTilde, NotHumpDownHump, NotHumpEqual, notin, notindot, notinE, notinva, notinvb, notinvc, NotLeftTriangleBar, NotLeftTriangle, NotLeftTriangleEqual, NotLess, NotLessEqual, NotLessGreater, NotLessLess, NotLessSlantEqual, NotLessTilde, NotNestedGreaterGreater, NotNestedLessLess, notni, notniva, notnivb, notnivc, NotPrecedes, NotPrecedesEqual, NotPrecedesSlantEqual, NotReverseElement, NotRightTriangleBar, NotRightTriangle, NotRightTriangleEqual, NotSquareSubset, NotSquareSubsetEqual, NotSquareSuperset, NotSquareSupersetEqual, NotSubset, NotSubsetEqual, NotSucceeds, NotSucceedsEqual, NotSucceedsSlantEqual, NotSucceedsTilde, NotSuperset, NotSupersetEqual, NotTilde, NotTildeEqual, NotTildeFullEqual, NotTildeTilde, NotVerticalBar, nparallel, npar, nparsl, npart, npolint, npr, nprcue, nprec, npreceq, npre, nrarrc, nrarr, nrArr, nrarrw, nrightarrow, nRightarrow, nrtri, nrtrie, nsc, nsccue, nsce, Nscr, nscr, nshortmid, nshortparallel, nsim, nsime, nsimeq, nsmid, nspar, nsqsube, nsqsupe, nsub, nsubE, nsube, nsubset, nsubseteq, nsubseteqq, nsucc, nsucceq, nsup, nsupE, nsupe, nsupset, nsupseteq, nsupseteqq, ntgl, Ntilde$1, ntilde$1, ntlg, ntriangleleft, ntrianglelefteq, ntriangleright, ntrianglerighteq, Nu, nu, num, numero, numsp, nvap, nvdash, nvDash, nVdash, nVDash, nvge, nvgt, nvHarr, nvinfin, nvlArr, nvle, nvlt, nvltrie, nvrArr, nvrtrie, nvsim, nwarhk, nwarr, nwArr, nwarrow, nwnear, Oacute$1, oacute$1, oast, Ocirc$1, ocirc$1, ocir, Ocy, ocy, odash, Odblac, odblac, odiv, odot, odsold, OElig, oelig, ofcir, Ofr, ofr, ogon, Ograve$1, ograve$1, ogt, ohbar, ohm, oint, olarr, olcir, olcross, oline, olt, Omacr, omacr, Omega, omega, Omicron, omicron, omid, ominus, Oopf, oopf, opar, OpenCurlyDoubleQuote, OpenCurlyQuote, operp, oplus, orarr, Or, or, ord, order3, orderof, ordf$1, ordm$1, origof, oror, orslope, orv, oS, Oscr, oscr, Oslash$1, oslash$1, osol, Otilde$1, otilde$1, otimesas, Otimes, otimes, Ouml$1, ouml$1, ovbar, OverBar, OverBrace, OverBracket, OverParenthesis, para$1, parallel, par, parsim, parsl, part, PartialD, Pcy, pcy, percnt, period, permil, perp, pertenk, Pfr, pfr, Phi, phi, phiv, phmmat, phone, Pi, pi, pitchfork, piv, planck, planckh, plankv, plusacir, plusb, pluscir, plus, plusdo, plusdu, pluse, PlusMinus, plusmn$1, plussim, plustwo, pm, Poincareplane, pointint, popf, Popf, pound$1, prap, Pr, pr, prcue, precapprox, prec, preccurlyeq, Precedes, PrecedesEqual, PrecedesSlantEqual, PrecedesTilde, preceq, precnapprox, precneqq, precnsim, pre, prE, precsim, prime, Prime, primes, prnap, prnE, prnsim, prod, Product, profalar, profline, profsurf, prop, Proportional, Proportion, propto, prsim, prurel, Pscr, pscr, Psi, psi, puncsp, Qfr, qfr, qint, qopf, Qopf, qprime, Qscr, qscr, quaternions, quatint, quest, questeq, quot$2, QUOT$1, rAarr, race, Racute, racute, radic, raemptyv, rang, Rang, rangd, range, rangle, raquo$1, rarrap, rarrb, rarrbfs, rarrc, rarr, Rarr, rArr, rarrfs, rarrhk, rarrlp, rarrpl, rarrsim, Rarrtl, rarrtl, rarrw, ratail, rAtail, ratio, rationals, rbarr, rBarr, RBarr, rbbrk, rbrace, rbrack, rbrke, rbrksld, rbrkslu, Rcaron, rcaron, Rcedil, rcedil, rceil, rcub, Rcy, rcy, rdca, rdldhar, rdquo, rdquor, rdsh, real, realine, realpart, reals, Re, rect, reg$1, REG$1, ReverseElement, ReverseEquilibrium, ReverseUpEquilibrium, rfisht, rfloor, rfr, Rfr, rHar, rhard, rharu, rharul, Rho, rho, rhov, RightAngleBracket, RightArrowBar, rightarrow, RightArrow, Rightarrow, RightArrowLeftArrow, rightarrowtail, RightCeiling, RightDoubleBracket, RightDownTeeVector, RightDownVectorBar, RightDownVector, RightFloor, rightharpoondown, rightharpoonup, rightleftarrows, rightleftharpoons, rightrightarrows, rightsquigarrow, RightTeeArrow, RightTee, RightTeeVector, rightthreetimes, RightTriangleBar, RightTriangle, RightTriangleEqual, RightUpDownVector, RightUpTeeVector, RightUpVectorBar, RightUpVector, RightVectorBar, RightVector, ring, risingdotseq, rlarr, rlhar, rlm, rmoustache, rmoust, rnmid, roang, roarr, robrk, ropar, ropf, Ropf, roplus, rotimes, RoundImplies, rpar, rpargt, rppolint, rrarr, Rrightarrow, rsaquo, rscr, Rscr, rsh, Rsh, rsqb, rsquo, rsquor, rthree, rtimes, rtri, rtrie, rtrif, rtriltri, RuleDelayed, ruluhar, rx, Sacute, sacute, sbquo, scap, Scaron, scaron, Sc, sc, sccue, sce, scE, Scedil, scedil, Scirc, scirc, scnap, scnE, scnsim, scpolint, scsim, Scy, scy, sdotb, sdot, sdote, searhk, searr, seArr, searrow, sect$1, semi, seswar, setminus, setmn, sext, Sfr, sfr, sfrown, sharp, SHCHcy, shchcy, SHcy, shcy, ShortDownArrow, ShortLeftArrow, shortmid, shortparallel, ShortRightArrow, ShortUpArrow, shy$1, Sigma, sigma, sigmaf, sigmav, sim, simdot, sime, simeq, simg, simgE, siml, simlE, simne, simplus, simrarr, slarr, SmallCircle, smallsetminus, smashp, smeparsl, smid, smile, smt, smte, smtes, SOFTcy, softcy, solbar, solb, sol, Sopf, sopf, spades, spadesuit, spar, sqcap, sqcaps, sqcup, sqcups, Sqrt, sqsub, sqsube, sqsubset, sqsubseteq, sqsup, sqsupe, sqsupset, sqsupseteq, square, Square, SquareIntersection, SquareSubset, SquareSubsetEqual, SquareSuperset, SquareSupersetEqual, SquareUnion, squarf, squ, squf, srarr, Sscr, sscr, ssetmn, ssmile, sstarf, Star, star, starf, straightepsilon, straightphi, strns, sub, Sub, subdot, subE, sube, subedot, submult, subnE, subne, subplus, subrarr, subset, Subset, subseteq, subseteqq, SubsetEqual, subsetneq, subsetneqq, subsim, subsub, subsup, succapprox, succ, succcurlyeq, Succeeds, SucceedsEqual, SucceedsSlantEqual, SucceedsTilde, succeq, succnapprox, succneqq, succnsim, succsim, SuchThat, sum, Sum, sung, sup1$1, sup2$1, sup3$1, sup, Sup, supdot, supdsub, supE, supe, supedot, Superset, SupersetEqual, suphsol, suphsub, suplarr, supmult, supnE, supne, supplus, supset, Supset, supseteq, supseteqq, supsetneq, supsetneqq, supsim, supsub, supsup, swarhk, swarr, swArr, swarrow, swnwar, szlig$1, Tab, target, Tau, tau, tbrk, Tcaron, tcaron, Tcedil, tcedil, Tcy, tcy, tdot, telrec, Tfr, tfr, there4, therefore, Therefore, Theta, theta, thetasym, thetav, thickapprox, thicksim, ThickSpace, ThinSpace, thinsp, thkap, thksim, THORN$1, thorn$1, tilde, Tilde, TildeEqual, TildeFullEqual, TildeTilde, timesbar, timesb, times$1, timesd, tint, toea, topbot, topcir, top3, Topf, topf, topfork, tosa, tprime, trade, TRADE, triangle, triangledown, triangleleft, trianglelefteq, triangleq, triangleright, trianglerighteq, tridot, trie, triminus, TripleDot, triplus, trisb, tritime, trpezium, Tscr, tscr, TScy, tscy, TSHcy, tshcy, Tstrok, tstrok, twixt, twoheadleftarrow, twoheadrightarrow, Uacute$1, uacute$1, uarr, Uarr, uArr, Uarrocir, Ubrcy, ubrcy, Ubreve, ubreve, Ucirc$1, ucirc$1, Ucy, ucy, udarr, Udblac, udblac, udhar, ufisht, Ufr, ufr, Ugrave$1, ugrave$1, uHar, uharl, uharr, uhblk, ulcorn, ulcorner, ulcrop, ultri, Umacr, umacr, uml$1, UnderBar, UnderBrace, UnderBracket, UnderParenthesis, Union, UnionPlus, Uogon, uogon, Uopf, uopf, UpArrowBar, uparrow, UpArrow, Uparrow, UpArrowDownArrow, updownarrow, UpDownArrow, Updownarrow, UpEquilibrium, upharpoonleft, upharpoonright, uplus, UpperLeftArrow, UpperRightArrow, upsi, Upsi, upsih, Upsilon, upsilon, UpTeeArrow, UpTee, upuparrows, urcorn, urcorner, urcrop, Uring, uring, urtri, Uscr, uscr, utdot, Utilde, utilde, utri, utrif, uuarr, Uuml$1, uuml$1, uwangle, vangrt, varepsilon, varkappa, varnothing, varphi, varpi, varpropto, varr, vArr, varrho, varsigma, varsubsetneq, varsubsetneqq, varsupsetneq, varsupsetneqq, vartheta, vartriangleleft, vartriangleright, vBar, Vbar, vBarv, Vcy, vcy, vdash, vDash, Vdash, VDash, Vdashl, veebar, vee, Vee, veeeq, vellip, verbar, Verbar, vert, Vert, VerticalBar, VerticalLine, VerticalSeparator, VerticalTilde, VeryThinSpace, Vfr, vfr, vltri, vnsub, vnsup, Vopf, vopf, vprop, vrtri, Vscr, vscr, vsubnE, vsubne, vsupnE, vsupne, Vvdash, vzigzag, Wcirc, wcirc, wedbar, wedge, Wedge, wedgeq, weierp, Wfr, wfr, Wopf, wopf, wp, wr, wreath, Wscr, wscr, xcap, xcirc, xcup, xdtri, Xfr, xfr, xharr, xhArr, Xi, xi, xlarr, xlArr, xmap, xnis, xodot, Xopf, xopf, xoplus, xotime, xrarr, xrArr, Xscr, xscr, xsqcup, xuplus, xutri, xvee, xwedge, Yacute$1, yacute$1, YAcy, yacy, Ycirc, ycirc, Ycy, ycy, yen$1, Yfr, yfr, YIcy, yicy, Yopf, yopf, Yscr, yscr, YUcy, yucy, yuml$1, Yuml, Zacute, zacute, Zcaron, zcaron, Zcy, zcy, Zdot, zdot, zeetrf, ZeroWidthSpace, Zeta, zeta, zfr, Zfr, ZHcy, zhcy, zigrarr, zopf, Zopf, Zscr, zscr, zwj, zwnj, require$$1$1, Aacute, aacute, Acirc, acirc, acute, AElig, aelig, Agrave, agrave, amp$1, AMP, Aring, aring, Atilde, atilde, Auml, auml, brvbar, Ccedil, ccedil, cedil, cent, copy3, COPY, curren, deg, divide, Eacute, eacute, Ecirc, ecirc, Egrave, egrave, ETH, eth, Euml, euml, frac12, frac14, frac34, gt$1, GT, Iacute, iacute, Icirc, icirc, iexcl, Igrave, igrave, iquest, Iuml, iuml, laquo, lt$1, LT, macr, micro, middot, nbsp, not, Ntilde, ntilde, Oacute, oacute, Ocirc, ocirc, Ograve, ograve, ordf, ordm, Oslash, oslash, Otilde, otilde, Ouml, ouml, para, plusmn, pound, quot$1, QUOT, raquo, reg, REG, sect, shy, sup1, sup2, sup3, szlig, THORN, thorn, times, Uacute, uacute, Ucirc, ucirc, Ugrave, ugrave, uml, Uuml, uuml, Yacute, yacute, yen, yuml, require$$1, amp, apos, gt, lt, quot, require$$0$1, decode_codepoint, require$$0, __importDefault$2, decode_json_1, fromCodePoint$2, __importDefault$1, entities_json_1$1, legacy_json_1, xml_json_1$1, decode_codepoint_1, strictEntityRe, sorter, encode, __importDefault, xml_json_1, inverseXML, xmlReplacer, entities_json_1, inverseHTML, htmlReplacer, reNonASCII, getCodePoint, reEscapeChars, ENTITY, C_BACKSLASH$1, reBackslashOrAmp, ESCAPABLE, reEntityOrEscapedChar, XMLSPECIAL, reXmlSpecial, unescapeChar, NodeWalker, lastNodeId, nodeMap, Node$1, BlockNode, ListNode, HeadingNode, CodeBlockNode, TableNode, TableCellNode, RefDefNode, CustomBlockNode, HtmlBlockNode, LinkNode, CodeNode, CustomInlineNode, TAGNAME, ATTRIBUTENAME, UNQUOTEDVALUE, SINGLEQUOTEDVALUE, DOUBLEQUOTEDVALUE, ATTRIBUTEVALUE, ATTRIBUTEVALUESPEC, ATTRIBUTE, OPENTAG, CLOSETAG, HTMLCOMMENT, PROCESSINGINSTRUCTION, DECLARATION2, CDATA, HTMLTAG, reHtmlTag, fromCodePoint, stringFromCharCode_1, floor_1, fromCodePoint$1, DOMAIN, PATH, EMAIL, C_NEWLINE, C_ASTERISK, C_UNDERSCORE, C_BACKTICK, C_OPEN_BRACKET$1, C_CLOSE_BRACKET, C_TILDE, C_LESSTHAN$1, C_BANG, C_BACKSLASH, C_AMPERSAND, C_OPEN_PAREN, C_CLOSE_PAREN, C_COLON, C_SINGLEQUOTE, C_DOUBLEQUOTE, C_DOLLAR, ESCAPED_CHAR, rePunctuation, reLinkTitle, reLinkDestinationBraces, reEscapable, reEntityHere, reTicks, reTicksHere, reEllipses, reDash, reEmailAutolink, reAutolink, reSpnl, reWhitespaceChar, reUnicodeWhitespaceChar, reFinalSpace, reInitialSpace, reSpaceAtEndOfLine, reLinkLabel, reMain, InlineParser, reTaskListItemMarker, table, tableBody$1, tableHead$1, tableDelimRow, tableDelimCell, tableRow, tableCell, CODE_INDENT, C_TAB, C_GREATERTHAN, C_LESSTHAN, C_SPACE, C_OPEN_BRACKET, reNonSpace, reClosingCodeFence, reClosingCustomBlock, customBlock$1, noop5, document$1, list, blockQuote$1, item, heading, thematicBreak$1, codeBlock, htmlBlock$1, paragraph, refDef, frontMatter$2, blockHandlers, tableHead, tableBody, reCustomBlock, reCanBeCustomInline, customBlock, reCodeFence, reHtmlBlockOpen, reSetextHeadingLine, reATXHeadingMarker, reThematicBreak, reBulletListMarker, reOrderedListMarker, blockQuote, atxHeading, fencedCodeBlock, htmlBlock, seTextHeading, thematicBreak, listItem, indentedCodeBlock, blockStarts, reFrontMatter, frontMatter$1, frontMatter, reHtmlBlockClose, reMaybeSpecial, reLineEnding$1, defaultOptions$1, Parser, reLineEnding, ToastMark, disallowedTags, reDisallowedTag, baseConvertors$1, gfmConvertors, defaultOptions, Renderer, hasOwnProperty, setPrototypeOf, isFrozen, getPrototypeOf, getOwnPropertyDescriptor, freeze, seal, create, _ref, apply2, construct, arrayForEach, arrayPop, arrayPush, stringToLowerCase, stringMatch, stringReplace, stringIndexOf, stringTrim, regExpTest, typeErrorCreate, html$2, svg, svgFilters, svgDisallowed, mathMl, mathMlDisallowed, text, html$1$1, svg$1, mathMl$1, xml, MUSTACHE_EXPR, ERB_EXPR, DATA_ATTR, ARIA_ATTR, IS_ALLOWED_URI, IS_SCRIPT_OR_DATA, ATTR_WHITESPACE, _typeof, getGlobal, _createTrustedTypesPolicy, purify, CAN_BE_WHITE_TAG_LIST, whiteTagList, schemaFactory, reCloseTag, baseConvertors, nestableTypes, nestableTagNames, offsetInfoMap, CLASS_HIGHLIGHT, MarkdownPreview, cache, TableOffsetMap, createOffsetMap, CellSelection, pluginKey, MOUSE_RIGHT_BUTTON, TableSelection, SELECTED_CELL_CLASS_NAME, Map$1, DEFAULT_CODE, I18n, i18n, contextMenuGroups, EXCEPT_TYPES, MARK_TYPES, LIST_TYPES, CustomBlockView, IMAGE_LINK_CLASS_NAME, ImageView, WRAPPER_CLASS_NAME, CODE_BLOCK_LANG_CLASS_NAME, CodeBlockView, reMSOListClassName, reMSOStylePrefix, reMSOListStyle, reMSOTagName, reMSOListBullet, MSO_CLASS_NAME_LIST_PARA, START_FRAGMENT_COMMENT, END_FRAGMENT_COMMENT, DUMMY_CELL_SIZE, TR_NODES_SIZE, Doc, Paragraph, reSoftTabLen, Text, Heading, CodeBlock, BulletList, OrderedList, ListItem, BlockQuote, cellOffsetFnMap, Table3, TableHead3, TableBody3, TableRow3, TableHeadCell, TableBodyCell, Image, ROOT_BLOCK_DEPTH, ThematicBreak, Strong, Emph, Strike, Link, Code, CustomBlock, FrontMatter, HTMLComment, CONTENTS_CLASS_NAME, WysiwygEditor, isUndefined, isNull, isExisty_1, isExisty, isTruthy_1, isTruthy, isFalsy_1, eventTypeList, EventEmitter, CommandManager, convertors, htmlToWwConvertors, toWwConvertors, ToWwConvertorState, nodeTypeWriters, toMdConvertors, markTypeOptions, ToMdConvertorState, Convertor, TASK_ATTR_NAME, DISABLED_TASK_ATTR_NAME, TASK_CHECKED_CLASS_NAME, ToastUIEditorViewer, tokenToDOMNode, WwToDOMAdaptor, ANIMATION_TIME, SCROLL_BLOCKING_RESET_DELAY, currentTimeoutId, releaseTimer, EDITOR_BOTTOM_PADDING, ScrollSync, queryMap, ToastUIEditorCore, isBoolean_1, VNodeWalker, VNode, html, isObject_1, reNonDimension, Component, Switch, templateObject_1$h, debounce_1, debounce3, throttle_1, MapShim, isBrowser2, global$1, requestAnimationFrame$1, trailingTimeout, REFRESH_DELAY, transitionKeys, mutationObserverSupported, ResizeObserverController, defineConfigurable, getWindowOf, emptyRect, isSVGGraphicsElement, ResizeObservation, ResizeObserverEntry, ResizeObserverSPI, observers, ResizeObserver2, index, HeadingPopupBody, templateObject_1$g, templateObject_2$8, Tabs, templateObject_1$f, templateObject_2$7, TYPE_UI, ImagePopupBody, templateObject_1$e, LinkPopupBody, templateObject_1$d, CELL_WIDTH, CELL_HEIGHT, MIN_ROW_INDEX, MAX_ROW_INDEX, MIN_COL_INDEX, MAX_COL_INDEX, MIN_ROW_SELECTION_INDEX, MIN_COL_SELECTION_INDEX, BORDER_WIDTH, TablePopupBody, templateObject_1$c, templateObject_2$6, templateObject_3$2, templateObject_4$1, CustomPopupBody, templateObject_1$b, templateObject_1$a, templateObject_2$5, templateObject_3$1, templateObject_4, templateObject_5, MARGIN_FROM_RIGHT_SIDE, Popup, templateObject_1$9, TOOLTIP_INDENT, templateObject_1$8, DEFAULT_WIDTH, ToolbarButtonComp, ToolbarButton, templateObject_1$7, CustomToolbarItemComp, CustomToolbarItem, templateObject_1$6, ToolbarGroup, templateObject_1$5, templateObject_2$4, POPUP_INDENT, DropdownToolbarButtonComp, DropdownToolbarButton, templateObject_1$4, templateObject_2$3, INLINE_PADDING, Toolbar, templateObject_1$3, templateObject_2$2, ContextMenu, templateObject_1$2, templateObject_2$1, templateObject_3, Layout, templateObject_1$1, templateObject_2, ToastUIEditor, templateObject_1;
   var init_esm6 = __esm({
     "node_modules/@toast-ui/editor/dist/esm/index.js"() {
       init_dist2();
@@ -69428,15 +72758,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           this.removeWidget();
           if (widget) {
             var node2 = widget.node, style4 = widget.style;
-            var _a = view.coordsAtPos(widget.pos), top_1 = _a.top, left2 = _a.left, bottom3 = _a.bottom;
-            var height2 = bottom3 - top_1;
+            var _a = view.coordsAtPos(widget.pos), top_1 = _a.top, left3 = _a.left, bottom4 = _a.bottom;
+            var height2 = bottom4 - top_1;
             var rect2 = this.rootEl.getBoundingClientRect();
             var relTopPos = top_1 - rect2.top;
             css_1(node2, { opacity: "0" });
             this.rootEl.appendChild(node2);
             css_1(node2, {
               position: "absolute",
-              left: left2 - rect2.left + MARGIN + "px",
+              left: left3 - rect2.left + MARGIN + "px",
               top: (style4 === "bottom" ? relTopPos + height2 - MARGIN : relTopPos - height2) + "px",
               opacity: "1"
             });
@@ -69558,10 +72888,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           var widgetRules2 = getWidgetRules();
           var rules = widgetRules2.map(function(_a) {
             var rule = _a.rule;
-            return new InputRule(rule, function(state, match2, start, end) {
+            return new InputRule(rule, function(state, match2, start2, end2) {
               var schema = state.schema, tr = state.tr, doc3 = state.doc;
               var allMatched = match2.input.match(new RegExp(rule, "g"));
-              var pos = doc3.resolve(start);
+              var pos = doc3.resolve(start2);
               var parent = pos.parent;
               var count = 0;
               if (isWidgetNode(parent)) {
@@ -69573,7 +72903,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
               if (allMatched.length > count) {
                 var content = last$1(allMatched);
                 var nodes = createNodesWithWidget(content, schema);
-                return tr.replaceWith(end - content.length + 1, end, nodes);
+                return tr.replaceWith(end2 - content.length + 1, end2, nodes);
               }
               return null;
             });
@@ -69643,8 +72973,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             this.focus();
           }
         };
-        EditorBase2.prototype.setScrollTop = function(top3) {
-          this.view.dom.scrollTop = top3;
+        EditorBase2.prototype.setScrollTop = function(top4) {
+          this.view.dom.scrollTop = top4;
         };
         EditorBase2.prototype.getScrollTop = function() {
           return this.view.dom.scrollTop;
@@ -70003,9 +73333,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
               skipped += 1;
               continue;
             }
-            var _b = searchResult, indent2 = _b[1], start = _b[3];
+            var _b = searchResult, indent2 = _b[1], start2 = _b[3];
             if (!indent2) {
-              firstOrderedListNum = Number(start);
+              firstOrderedListNum = Number(start2);
               firstOrderedListLine = i;
               break;
             }
@@ -70032,8 +73362,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           var toastMark = _a.toastMark, line2 = _a.line, mdNode = _a.mdNode, doc3 = _a.doc;
           var depth = getListDepth(mdNode);
           var lineText = getTextByMdLine(doc3, line2);
-          var _b = reOrderedListGroup.exec(lineText), indent2 = _b[1], start = _b[3], delimiter2 = _b[4];
-          var ordinalNum = Number(start) + 1;
+          var _b = reOrderedListGroup.exec(lineText), indent2 = _b[1], start2 = _b[3], delimiter2 = _b[4];
+          var ordinalNum = Number(start2) + 1;
           var listSyntax = "" + indent2 + ordinalNum + delimiter2;
           var backwardList = findSameDepthList(toastMark, line2, depth, true);
           var filteredList = backwardList.filter(function(info) {
@@ -70095,9 +73425,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           if (topListNode) {
             startLine = topListNode.sourcepos[0][0];
           }
-          var _c = reOrderedListGroup.exec(getTextByMdLine(doc3, startLine)), indent2 = _c[1], start = _c[3];
+          var _c = reOrderedListGroup.exec(getTextByMdLine(doc3, startLine)), indent2 = _c[1], start2 = _c[3];
           var indentLen = indent2.length;
-          var _d = getReorderedListInfo(doc3, schema, startLine, Number(start), indentLen), line2 = _d.line, nodes = _d.nodes;
+          var _d = getReorderedListInfo(doc3, schema, startLine, Number(start2), indentLen), line2 = _d.line, nodes = _d.nodes;
           endLine = Math.max(endLine, line2 - 1);
           var startOffset = getNodeContentOffsetRange(doc3, startLine - 1).startOffset;
           for (var i = startLine - 1; i <= endLine - 1; i += 1) {
@@ -70901,12 +74231,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
                 marked: { default: false }
               },
               toDOM: function(mark) {
-                var _a = mark.attrs, start = _a.start, end = _a.end, marked = _a.marked;
+                var _a = mark.attrs, start2 = _a.start, end2 = _a.end, marked = _a.marked;
                 var classNames = "code";
-                if (start) {
+                if (start2) {
                   classNames += "|delimiter|start";
                 }
-                if (end) {
+                if (end2) {
                   classNames += "|delimiter|end";
                 }
                 if (marked) {
@@ -71394,47 +74724,47 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           });
           return changed;
         };
-        MdEditor2.prototype.setSelection = function(start, end) {
-          if (end === void 0) {
-            end = start;
+        MdEditor2.prototype.setSelection = function(start2, end2) {
+          if (end2 === void 0) {
+            end2 = start2;
           }
           var tr = this.view.state.tr;
-          var _a = getMdToEditorPos(tr.doc, start, end), from3 = _a[0], to = _a[1];
+          var _a = getMdToEditorPos(tr.doc, start2, end2), from3 = _a[0], to = _a[1];
           this.view.dispatch(tr.setSelection(createTextSelection(tr, from3, to)).scrollIntoView());
         };
-        MdEditor2.prototype.replaceSelection = function(text2, start, end) {
+        MdEditor2.prototype.replaceSelection = function(text2, start2, end2) {
           var newTr;
           var _a = this.view.state, tr = _a.tr, schema = _a.schema, doc3 = _a.doc;
           var lineTexts = text2.split(reLineEnding$2);
           var nodes = lineTexts.map(function(lineText) {
             return createParagraph(schema, createNodesWithWidget(lineText, schema));
           });
-          var slice3 = new Slice(Fragment15.from(nodes), 1, 1);
+          var slice3 = new Slice(Fragment16.from(nodes), 1, 1);
           this.focus();
-          if (start && end) {
-            var _b = getMdToEditorPos(doc3, start, end), from3 = _b[0], to = _b[1];
+          if (start2 && end2) {
+            var _b = getMdToEditorPos(doc3, start2, end2), from3 = _b[0], to = _b[1];
             newTr = tr.replaceRange(from3, to, slice3);
           } else {
             newTr = tr.replaceSelection(slice3);
           }
           this.view.dispatch(newTr.scrollIntoView());
         };
-        MdEditor2.prototype.deleteSelection = function(start, end) {
+        MdEditor2.prototype.deleteSelection = function(start2, end2) {
           var newTr;
           var _a = this.view.state, tr = _a.tr, doc3 = _a.doc;
-          if (start && end) {
-            var _b = getMdToEditorPos(doc3, start, end), from3 = _b[0], to = _b[1];
+          if (start2 && end2) {
+            var _b = getMdToEditorPos(doc3, start2, end2), from3 = _b[0], to = _b[1];
             newTr = tr.deleteRange(from3, to);
           } else {
             newTr = tr.deleteSelection();
           }
           this.view.dispatch(newTr.scrollIntoView());
         };
-        MdEditor2.prototype.getSelectedText = function(start, end) {
+        MdEditor2.prototype.getSelectedText = function(start2, end2) {
           var _a = this.view.state, doc3 = _a.doc, selection = _a.selection;
           var from3 = selection.from, to = selection.to;
-          if (start && end) {
-            var pos = getMdToEditorPos(doc3, start, end);
+          if (start2 && end2) {
+            var pos = getMdToEditorPos(doc3, start2, end2);
             from3 = pos[0];
             to = pos[1];
           }
@@ -71463,9 +74793,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           var pos = mdPos ? getMdToEditorPos(doc3, mdPos, mdPos)[0] : selection.to;
           this.view.dispatch(tr.setMeta("widget", { pos, node: node2, style: style4 }));
         };
-        MdEditor2.prototype.replaceWithWidget = function(start, end, text2) {
+        MdEditor2.prototype.replaceWithWidget = function(start2, end2, text2) {
           var _a = this.view.state, tr = _a.tr, schema = _a.schema, doc3 = _a.doc;
-          var pos = getMdToEditorPos(doc3, start, end);
+          var pos = getMdToEditorPos(doc3, start2, end2);
           var nodes = createNodesWithWidget(text2, schema);
           this.view.dispatch(tr.replaceWith(pos[0], pos[1], nodes));
         };
@@ -71665,7 +74995,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       Bopf = "\u{1D539}";
       bopf = "\u{1D553}";
       bot = "\u22A5";
-      bottom2 = "\u22A5";
+      bottom3 = "\u22A5";
       bowtie = "\u22C8";
       boxbox = "\u29C9";
       boxdl = "\u2510";
@@ -72876,7 +76206,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       Or = "\u2A54";
       or = "\u2228";
       ord = "\u2A5D";
-      order2 = "\u2134";
+      order3 = "\u2134";
       orderof = "\u2134";
       ordf$1 = "\xAA";
       ordm$1 = "\xBA";
@@ -73383,7 +76713,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       toea = "\u2928";
       topbot = "\u2336";
       topcir = "\u2AF1";
-      top2 = "\u22A4";
+      top3 = "\u22A4";
       Topf = "\u{1D54B}";
       topf = "\u{1D565}";
       topfork = "\u2ADA";
@@ -73789,7 +77119,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         Bopf,
         bopf,
         bot,
-        bottom: bottom2,
+        bottom: bottom3,
         bowtie,
         boxbox,
         boxdl,
@@ -75002,7 +78332,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         Or,
         or,
         ord,
-        order: order2,
+        order: order3,
         orderof,
         ordf: ordf$1,
         ordm: ordm$1,
@@ -75509,7 +78839,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         toea,
         topbot,
         topcir,
-        top: top2,
+        top: top3,
         Topf,
         topf,
         topfork,
@@ -76598,12 +79928,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           this.refDefCandidateMap = {};
           this.options = options;
         }
-        InlineParser2.prototype.sourcepos = function(start, end) {
+        InlineParser2.prototype.sourcepos = function(start2, end2) {
           var linePosOffset = this.linePosOffset + this.lineOffsets[this.lineIdx];
           var lineNum = this.lineStartNum + this.lineIdx;
-          var startpos = [lineNum, start + linePosOffset];
-          if (typeof end === "number") {
-            return [startpos, [lineNum, end + linePosOffset]];
+          var startpos = [lineNum, start2 + linePosOffset];
+          if (typeof end2 === "number") {
+            return [startpos, [lineNum, end2 + linePosOffset]];
           }
           return startpos;
         };
@@ -76811,10 +80141,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             delim.next.previous = delim.previous;
           }
         };
-        InlineParser2.prototype.removeDelimitersBetween = function(bottom3, top3) {
-          if (bottom3.next !== top3) {
-            bottom3.next = top3;
-            top3.previous = bottom3;
+        InlineParser2.prototype.removeDelimitersBetween = function(bottom4, top4) {
+          if (bottom4.next !== top4) {
+            bottom4.next = top4;
+            top4.previous = bottom4;
           }
         };
         InlineParser2.prototype.processEmphasis = function(stackBottom) {
@@ -77829,8 +81159,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         tableBody2.appendChild(tableRow2);
         var table2 = tableBody2.parent;
         var content = parser.currentLine.slice(parser.nextNonspace);
-        var _a = parseRowContent(content), offset = _a[0], cellContents = _a[1];
-        generateTableCells("tableCell", cellContents, parser.lineNumber, parser.nextNonspace + 1 + offset).forEach(function(cellNode, idx) {
+        var _a = parseRowContent(content), offset2 = _a[0], cellContents = _a[1];
+        generateTableCells("tableCell", cellContents, parser.lineNumber, parser.nextNonspace + 1 + offset2).forEach(function(cellNode, idx) {
           if (idx >= table2.columns.length) {
             cellNode.ignored = true;
           }
@@ -78170,11 +81500,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
           this.tip.stringContent += this.currentLine.slice(this.offset) + "\n";
         };
-        Parser2.prototype.addChild = function(tag, offset) {
+        Parser2.prototype.addChild = function(tag, offset2) {
           while (!blockHandlers[this.tip.type].canContain(tag)) {
             this.finalize(this.tip, this.lineNumber - 1);
           }
-          var columnNumber = offset + 1;
+          var columnNumber = offset2 + 1;
           var newBlock = createNode$1(tag, [
             [this.lineNumber, columnNumber],
             [0, 0]
@@ -78747,11 +82077,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         },
         list: function(node2, _a) {
           var entering = _a.entering;
-          var _b = node2.listData, type = _b.type, start = _b.start;
+          var _b = node2.listData, type = _b.type, start2 = _b.start;
           var tagName = type === "bullet" ? "ul" : "ol";
           var attributes = {};
-          if (tagName === "ol" && start !== null && start !== 1) {
-            attributes.start = start.toString();
+          if (tagName === "ol" && start2 !== null && start2 !== 1) {
+            attributes.start = start2.toString();
           }
           return {
             type: entering ? "openTag" : "closeTag",
@@ -79579,9 +82909,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             return type.name === "table";
           });
           if (table2) {
-            var node2 = table2.node, depth = table2.depth, offset = table2.offset;
+            var node2 = table2.node, depth = table2.depth, offset2 = table2.offset;
             var cached = cache.get(node2);
-            if ((cached === null || cached === void 0 ? void 0 : cached.tableStartPos) === offset + 1) {
+            if ((cached === null || cached === void 0 ? void 0 : cached.tableStartPos) === offset2 + 1) {
               return cached;
             }
             var rows_1 = [];
@@ -79678,12 +83008,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           return null;
         };
         TableOffsetMap2.prototype.getCellStartOffset = function(rowIdx, colIdx) {
-          var offset = this.rowInfo[rowIdx][colIdx].offset;
-          return this.extendedRowspan(rowIdx, colIdx) ? this.posAt(rowIdx, colIdx) : offset;
+          var offset2 = this.rowInfo[rowIdx][colIdx].offset;
+          return this.extendedRowspan(rowIdx, colIdx) ? this.posAt(rowIdx, colIdx) : offset2;
         };
         TableOffsetMap2.prototype.getCellEndOffset = function(rowIdx, colIdx) {
-          var _a = this.rowInfo[rowIdx][colIdx], offset = _a.offset, nodeSize2 = _a.nodeSize;
-          return this.extendedRowspan(rowIdx, colIdx) ? this.posAt(rowIdx, colIdx) : offset + nodeSize2;
+          var _a = this.rowInfo[rowIdx][colIdx], offset2 = _a.offset, nodeSize2 = _a.nodeSize;
+          return this.extendedRowspan(rowIdx, colIdx) ? this.posAt(rowIdx, colIdx) : offset2 + nodeSize2;
         };
         TableOffsetMap2.prototype.getCellIndex = function(cellPos) {
           for (var rowIdx = 0; rowIdx < this.totalRowCount; rowIdx += 1) {
@@ -79787,8 +83117,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           for (var rowIdx = startRowIdx; rowIdx <= endRowIdx; rowIdx += 1) {
             var cells = [];
             for (var colIdx = startColIdx; colIdx <= endColIdx; colIdx += 1) {
-              var offset = map3.getCellInfo(rowIdx, colIdx).offset;
-              var cell = table2.nodeAt(offset - tableOffset);
+              var offset2 = map3.getCellInfo(rowIdx, colIdx).offset;
+              var cell = table2.nodeAt(offset2 - tableOffset);
               if (cell) {
                 isTableHeadCell = cell.type.name === "tableHeadCell";
                 if (map3.extendedRowspan(rowIdx, colIdx) || map3.extendedColspan(rowIdx, colIdx)) {
@@ -79798,9 +83128,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
                 }
               }
             }
-            var copiedRow = row.copy(Fragment15.from(cells));
+            var copiedRow = row.copy(Fragment16.from(cells));
             var targetNode = isTableHeadCell ? tableHead2 : tableBody2;
-            targetNode.content = targetNode.content.append(Fragment15.from(copiedRow));
+            targetNode.content = targetNode.content.append(Fragment16.from(copiedRow));
           }
           return new Slice(createTableFragment(tableHead2, tableBody2), 1, 1);
         };
@@ -80295,8 +83625,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             var target2 = ev.target;
             var style4 = getComputedStyle(target2, ":after");
             if (style4.backgroundImage !== "none" && isFunction_1(_this.getPos)) {
-              var _a = _this.view.coordsAtPos(_this.getPos()), top_1 = _a.top, right2 = _a.right;
-              _this.createLanguageEditor({ top: top_1, right: right2 });
+              var _a = _this.view.coordsAtPos(_this.getPos()), top_1 = _a.top, right3 = _a.right;
+              _this.createLanguageEditor({ top: top_1, right: right3 });
             }
           };
           this.handleKeydown = function(ev) {
@@ -80338,7 +83668,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         };
         CodeBlockView2.prototype.createLanguageEditor = function(_a) {
           var _this = this;
-          var top3 = _a.top, right2 = _a.right;
+          var top4 = _a.top, right3 = _a.right;
           var wrapper2 = document.createElement("span");
           wrapper2.className = CODE_BLOCK_LANG_CLASS_NAME;
           var input = document.createElement("input");
@@ -80348,8 +83678,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           this.view.dom.parentElement.appendChild(wrapper2);
           var wrpperWidth = wrapper2.clientWidth;
           css_1(wrapper2, {
-            top: top3 + 10 + "px",
-            left: right2 - wrpperWidth - 10 + "px",
+            top: top4 + 10 + "px",
+            left: right3 - wrpperWidth - 10 + "px",
             width: wrpperWidth + "px"
           });
           this.input = input;
@@ -80660,8 +83990,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             var view = _this.context.view;
             if (view.endOfTextblock(direction) && $from.node().type.name === "codeBlock") {
               var lines = $from.parent.textContent.split("\n");
-              var offset = direction === "up" ? $from.start() : $from.end();
-              var range2 = direction === "up" ? [offset, lines[0].length + offset] : [offset - last$1(lines).length, offset];
+              var offset2 = direction === "up" ? $from.start() : $from.end();
+              var range2 = direction === "up" ? [offset2, lines[0].length + offset2] : [offset2 - last$1(lines).length, offset2];
               var pos = doc3.resolve(direction === "up" ? $from.before() : $from.after());
               var node2 = direction === "up" ? pos.nodeBefore : pos.nodeAfter;
               if (between$1($from.pos, range2[0], range2[1]) && !node2) {
@@ -80761,9 +84091,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
                 {
                   tag: "ol",
                   getAttrs: function(dom) {
-                    var start = dom.getAttribute("start");
+                    var start2 = dom.getAttribute("start");
                     var rawHTML = dom.getAttribute("data-raw-html");
-                    return __assign$1({ order: dom.hasAttribute("start") ? Number(start) : 1 }, rawHTML && { rawHTML });
+                    return __assign$1({ order: dom.hasAttribute("start") ? Number(start2) : 1 }, rawHTML && { rawHTML });
                   }
                 }
               ],
@@ -81050,8 +84380,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
                 var mapStart = tr.mapping.maps.length;
                 for (var rowIdx = 0; rowIdx < totalRowCount; rowIdx += 1) {
                   for (var colIdx = endColIdx; colIdx >= startColIdx; colIdx -= 1) {
-                    var _b = map3.getCellInfo(rowIdx, colIdx), offset = _b.offset, nodeSize2 = _b.nodeSize;
-                    var from3 = tr.mapping.slice(mapStart).map(offset);
+                    var _b = map3.getCellInfo(rowIdx, colIdx), offset2 = _b.offset, nodeSize2 = _b.nodeSize;
+                    var from3 = tr.mapping.slice(mapStart).map(offset2);
                     var to = from3 + nodeSize2;
                     tr.delete(from3, to);
                   }
@@ -82227,28 +85557,28 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         WysiwygEditor2.prototype.getSchema = function() {
           return this.view.state.schema;
         };
-        WysiwygEditor2.prototype.replaceSelection = function(text2, start, end) {
+        WysiwygEditor2.prototype.replaceSelection = function(text2, start2, end2) {
           var _a = this.view.state, schema = _a.schema, tr = _a.tr;
           var lineTexts = text2.split("\n");
           var paras = lineTexts.map(function(lineText) {
             return createParagraph(schema, createNodesWithWidget(lineText, schema));
           });
-          var slice3 = new Slice(Fragment15.from(paras), 1, 1);
-          var newTr = isNumber_1(start) && isNumber_1(end) ? tr.replaceRange(start, end, slice3) : tr.replaceSelection(slice3);
+          var slice3 = new Slice(Fragment16.from(paras), 1, 1);
+          var newTr = isNumber_1(start2) && isNumber_1(end2) ? tr.replaceRange(start2, end2, slice3) : tr.replaceSelection(slice3);
           this.view.dispatch(newTr);
           this.focus();
         };
-        WysiwygEditor2.prototype.deleteSelection = function(start, end) {
+        WysiwygEditor2.prototype.deleteSelection = function(start2, end2) {
           var tr = this.view.state.tr;
-          var newTr = isNumber_1(start) && isNumber_1(end) ? tr.deleteRange(start, end) : tr.deleteSelection();
+          var newTr = isNumber_1(start2) && isNumber_1(end2) ? tr.deleteRange(start2, end2) : tr.deleteSelection();
           this.view.dispatch(newTr.scrollIntoView());
         };
-        WysiwygEditor2.prototype.getSelectedText = function(start, end) {
+        WysiwygEditor2.prototype.getSelectedText = function(start2, end2) {
           var _a = this.view.state, doc3 = _a.doc, selection = _a.selection;
           var from3 = selection.from, to = selection.to;
-          if (isNumber_1(start) && isNumber_1(end)) {
-            from3 = start;
-            to = end;
+          if (isNumber_1(start2) && isNumber_1(end2)) {
+            from3 = start2;
+            to = end2;
           }
           return doc3.textBetween(from3, to, "\n");
         };
@@ -82262,30 +85592,30 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             this.moveCursorToEnd(true);
           }
         };
-        WysiwygEditor2.prototype.setSelection = function(start, end) {
-          if (end === void 0) {
-            end = start;
+        WysiwygEditor2.prototype.setSelection = function(start2, end2) {
+          if (end2 === void 0) {
+            end2 = start2;
           }
           var tr = this.view.state.tr;
-          var selection = createTextSelection(tr, start, end);
+          var selection = createTextSelection(tr, start2, end2);
           this.view.dispatch(tr.setSelection(selection).scrollIntoView());
         };
         WysiwygEditor2.prototype.addWidget = function(node2, style4, pos) {
           var _a = this.view, dispatch = _a.dispatch, state = _a.state;
           dispatch(state.tr.setMeta("widget", { pos: pos !== null && pos !== void 0 ? pos : state.selection.to, node: node2, style: style4 }));
         };
-        WysiwygEditor2.prototype.replaceWithWidget = function(start, end, text2) {
+        WysiwygEditor2.prototype.replaceWithWidget = function(start2, end2, text2) {
           var _a = this.view.state, tr = _a.tr, schema = _a.schema;
           var nodes = createNodesWithWidget(text2, schema);
-          this.view.dispatch(tr.replaceWith(start, end, nodes));
+          this.view.dispatch(tr.replaceWith(start2, end2, nodes));
         };
         WysiwygEditor2.prototype.getRangeInfoOfNode = function(pos) {
           var _a = this.view.state, doc3 = _a.doc, selection = _a.selection;
           var $pos = pos ? doc3.resolve(pos) : selection.$from;
           var marks = $pos.marks();
           var node2 = $pos.node();
-          var start = $pos.start();
-          var end = $pos.end();
+          var start2 = $pos.start();
+          var end2 = $pos.end();
           var type = node2.type.name;
           if (marks.length || type === "paragraph") {
             var mark_1 = marks[marks.length - 1];
@@ -82293,16 +85623,16 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
               return nodeMarks.length ? includes(nodeMarks, mark_1) : true;
             };
             type = mark_1 ? mark_1.type.name : "text";
-            node2.forEach(function(child, offset) {
+            node2.forEach(function(child, offset2) {
               var isText = child.isText, nodeSize2 = child.nodeSize, nodeMarks = child.marks;
-              var startOffset = $pos.pos - start;
-              if (isText && offset <= startOffset && offset + nodeSize2 >= startOffset && maybeHasMark_1(nodeMarks)) {
-                start = start + offset;
-                end = start + nodeSize2;
+              var startOffset = $pos.pos - start2;
+              if (isText && offset2 <= startOffset && offset2 + nodeSize2 >= startOffset && maybeHasMark_1(nodeMarks)) {
+                start2 = start2 + offset2;
+                end2 = start2 + nodeSize2;
               }
             });
           }
-          return { range: [start, end], type };
+          return { range: [start2, end2], type };
         };
         return WysiwygEditor2;
       }(EditorBase);
@@ -82465,9 +85795,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         EventEmitter2.prototype.getEvents = function() {
           return this.events;
         };
-        EventEmitter2.prototype.holdEventInvoke = function(fn) {
+        EventEmitter2.prototype.holdEventInvoke = function(fn2) {
           this.hold = true;
-          fn();
+          fn2();
           this.hold = false;
         };
         return EventEmitter2;
@@ -82677,11 +86007,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           var entering = _a.entering;
           if (entering) {
             var _b = state.schema.nodes, bulletList = _b.bulletList, orderedList = _b.orderedList;
-            var _c = node2.listData, type = _c.type, start = _c.start;
+            var _c = node2.listData, type = _c.type, start2 = _c.start;
             if (type === "bullet") {
               state.openNode(bulletList, customAttrs);
             } else {
-              state.openNode(orderedList, __assign$1({ order: start }, customAttrs));
+              state.openNode(orderedList, __assign$1({ order: start2 }, customAttrs));
             }
           } else {
             state.closeNode();
@@ -83130,9 +86460,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         },
         orderedList: function(state, _a) {
           var node2 = _a.node;
-          var start = node2.attrs.order || 1;
+          var start2 = node2.attrs.order || 1;
           state.convertList(node2, repeat$1(" ", 4), function(index2) {
-            var orderedNum = String(start + index2);
+            var orderedNum = String(start2 + index2);
             return orderedNum + ". ";
           });
         },
@@ -83536,11 +86866,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             this.closed = false;
           }
         };
-        ToMdConvertorState2.prototype.wrapBlock = function(delim, firstDelim, node2, fn) {
+        ToMdConvertorState2.prototype.wrapBlock = function(delim, firstDelim, node2, fn2) {
           var old = this.getDelim();
           this.write(firstDelim || delim);
           this.setDelim(this.getDelim() + delim);
-          fn();
+          fn2();
           this.setDelim(old);
           this.closeBlock(node2);
         };
@@ -83791,8 +87121,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           };
           registerHTMLTagToWhitelist(rendererOptions.customHTMLRenderer);
           if (this.options.events) {
-            forEachOwnProperties_1(this.options.events, function(fn, key) {
-              _this.on(key, fn);
+            forEachOwnProperties_1(this.options.events, function(fn2, key) {
+              _this.on(key, fn2);
             });
           }
           var _c = this.options, el2 = _c.el, initialValue = _c.initialValue, theme = _c.theme;
@@ -84008,8 +87338,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             editing = false;
           }
           var _a = this, editorView = _a.editorView, previewEl = _a.previewEl, previewRoot = _a.previewRoot;
-          var _b = editorView.dom.getBoundingClientRect(), left2 = _b.left, top3 = _b.top;
-          var posInfo = editorView.posAtCoords({ left: left2, top: top3 });
+          var _b = editorView.dom.getBoundingClientRect(), left3 = _b.left, top4 = _b.top;
+          var posInfo = editorView.posAtCoords({ left: left3, top: top4 });
           var doc3 = editorView.state.doc;
           var firstMdNode = this.getMdNodeAtPos(doc3, posInfo);
           if (!firstMdNode || isHTMLNode(firstMdNode)) {
@@ -84031,7 +87361,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
               var _e = getEditorRangeHeightInfo(doc3, mdNode, children), height2 = _e.height, rect2 = _e.rect;
               var totalOffsetTop = getTotalOffsetTop(el2, previewRoot) || el2.offsetTop;
               var nodeHeight = el2.clientHeight;
-              var ratio2 = top3 > rect2.top ? Math.min((top3 - rect2.top) / height2, 1) : 0;
+              var ratio2 = top4 > rect2.top ? Math.min((top4 - rect2.top) / height2, 1) : 0;
               targetScrollTop = totalOffsetTop + nodeHeight * ratio2;
             }
             targetScrollTop = this.getResolvedScrollTop("editor", scrollTop, targetScrollTop, curScrollTop);
@@ -84217,13 +87547,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           this.addInitCommand(mdCommands, wwCommands);
           buildQuery(this);
           if (this.options.hooks) {
-            forEachOwnProperties_1(this.options.hooks, function(fn, key) {
-              return _this.addHook(key, fn);
+            forEachOwnProperties_1(this.options.hooks, function(fn2, key) {
+              return _this.addHook(key, fn2);
             });
           }
           if (this.options.events) {
-            forEachOwnProperties_1(this.options.events, function(fn, key) {
-              return _this.on(key, fn);
+            forEachOwnProperties_1(this.options.events, function(fn2, key) {
+              return _this.on(key, fn2);
             });
           }
           this.eventEmitter.emit("load", this);
@@ -84369,17 +87699,17 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         ToastUIEditorCore2.prototype.insertText = function(text2) {
           this.getCurrentModeEditor().replaceSelection(text2);
         };
-        ToastUIEditorCore2.prototype.setSelection = function(start, end) {
-          this.getCurrentModeEditor().setSelection(start, end);
+        ToastUIEditorCore2.prototype.setSelection = function(start2, end2) {
+          this.getCurrentModeEditor().setSelection(start2, end2);
         };
-        ToastUIEditorCore2.prototype.replaceSelection = function(text2, start, end) {
-          this.getCurrentModeEditor().replaceSelection(text2, start, end);
+        ToastUIEditorCore2.prototype.replaceSelection = function(text2, start2, end2) {
+          this.getCurrentModeEditor().replaceSelection(text2, start2, end2);
         };
-        ToastUIEditorCore2.prototype.deleteSelection = function(start, end) {
-          this.getCurrentModeEditor().deleteSelection(start, end);
+        ToastUIEditorCore2.prototype.deleteSelection = function(start2, end2) {
+          this.getCurrentModeEditor().deleteSelection(start2, end2);
         };
-        ToastUIEditorCore2.prototype.getSelectedText = function(start, end) {
-          return this.getCurrentModeEditor().getSelectedText(start, end);
+        ToastUIEditorCore2.prototype.getSelectedText = function(start2, end2) {
+          return this.getCurrentModeEditor().getSelectedText(start2, end2);
         };
         ToastUIEditorCore2.prototype.getRangeInfoOfNode = function(pos) {
           return this.getCurrentModeEditor().getRangeInfoOfNode(pos);
@@ -84387,8 +87717,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         ToastUIEditorCore2.prototype.addWidget = function(node2, style4, pos) {
           this.getCurrentModeEditor().addWidget(node2, style4, pos);
         };
-        ToastUIEditorCore2.prototype.replaceWithWidget = function(start, end, text2) {
-          this.getCurrentModeEditor().replaceWithWidget(start, end, text2);
+        ToastUIEditorCore2.prototype.replaceWithWidget = function(start2, end2, text2) {
+          this.getCurrentModeEditor().replaceWithWidget(start2, end2, text2);
         };
         ToastUIEditorCore2.prototype.setHeight = function(height2) {
           var el2 = this.options.el;
@@ -84501,26 +87831,26 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             wwEditor: this.wwEditor.getElement()
           };
         };
-        ToastUIEditorCore2.prototype.convertPosToMatchEditorMode = function(start, end, mode) {
+        ToastUIEditorCore2.prototype.convertPosToMatchEditorMode = function(start2, end2, mode) {
           var _a, _b;
-          if (end === void 0) {
-            end = start;
+          if (end2 === void 0) {
+            end2 = start2;
           }
           if (mode === void 0) {
             mode = this.mode;
           }
           var doc3 = this.mdEditor.view.state.doc;
-          var isFromArray = Array.isArray(start);
-          var isToArray = Array.isArray(end);
-          var convertedFrom = start;
-          var convertedTo = end;
+          var isFromArray = Array.isArray(start2);
+          var isToArray = Array.isArray(end2);
+          var convertedFrom = start2;
+          var convertedTo = end2;
           if (isFromArray !== isToArray) {
             throw new Error("Types of arguments must be same");
           }
           if (mode === "markdown" && !isFromArray && !isToArray) {
-            _a = getEditorToMdPos(doc3, start, end), convertedFrom = _a[0], convertedTo = _a[1];
+            _a = getEditorToMdPos(doc3, start2, end2), convertedFrom = _a[0], convertedTo = _a[1];
           } else if (mode === "wysiwyg" && isFromArray && isToArray) {
-            _b = getMdToEditorPos(doc3, start, end), convertedFrom = _b[0], convertedTo = _b[1];
+            _b = getMdToEditorPos(doc3, start2, end2), convertedFrom = _b[0], convertedTo = _b[1];
           }
           return [convertedFrom, convertedTo];
         };
@@ -84642,7 +87972,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         return Switch2;
       }(Component);
       debounce_1 = debounce$1;
-      debounce2 = debounce_1;
+      debounce3 = debounce_1;
       throttle_1 = throttle$1;
       MapShim = function() {
         if (typeof Map !== "undefined") {
@@ -85291,9 +88621,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           if (!this.props.show) {
             this.setState({ colIdx: -1, rowIdx: -1 });
           } else if (this.state.colIdx === -1 && this.state.rowIdx === -1) {
-            var _a = this.refs.tableEl.getBoundingClientRect(), left2 = _a.left, top_1 = _a.top;
+            var _a = this.refs.tableEl.getBoundingClientRect(), left3 = _a.left, top_1 = _a.top;
             this.offsetRect = {
-              left: window.pageXOffset + left2,
+              left: window.pageXOffset + left3,
               top: window.pageYOffset + top_1
             };
           }
@@ -85934,8 +89264,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         Layout2.prototype.render = function() {
           var _this = this;
           var _a = this.props, eventEmitter = _a.eventEmitter, hideModeSwitch = _a.hideModeSwitch, toolbarItems = _a.toolbarItems, theme = _a.theme;
-          var _b = this.state, hide = _b.hide, previewStyle = _b.previewStyle, editorType = _b.editorType;
-          var displayClassName = hide ? " hidden" : "";
+          var _b = this.state, hide2 = _b.hide, previewStyle = _b.previewStyle, editorType = _b.editorType;
+          var displayClassName = hide2 ? " hidden" : "";
           var editorTypeClassName = cls(editorType === "markdown" ? "md-mode" : "ww-mode");
           var previewClassName = cls("md") + "-" + previewStyle + "-style";
           var themeClassName = cls([theme !== "light", theme + " "]);

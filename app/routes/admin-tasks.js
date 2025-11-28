@@ -20,12 +20,15 @@ import {
     TableRow,
     Paper,
     TextField,
-    InputAdornment
+    InputAdornment,
+    IconButton,
+    Tooltip
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import PersonIcon from '@mui/icons-material/Person';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import SearchIcon from '@mui/icons-material/Search';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 export function init() {
 
@@ -165,14 +168,28 @@ export function init() {
                                                     <TableCell>Created At</TableCell>
                                                     <TableCell>Finished At</TableCell>
                                                     <TableCell>Status</TableCell>
-                                                    <TableCell align="right">Time Dedicated</TableCell>
+                                                    <TableCell align="right">Calculated Time</TableCell>
+                                                    <TableCell align="right">Custom Time</TableCell>
                                                 </TableRow>
                                             </TableHead>
                                             <TableBody>
                                                 {user.tasks.length > 0 ? (
                                                     user.tasks.map((task) => (
                                                         <TableRow key={task.id}>
-                                                            <TableCell>{task.name}</TableCell>
+                                                            <TableCell>
+                                                                <Stack direction="row" alignItems="center" spacing={1}>
+                                                                    <Typography variant="body2">{task.name}</Typography>
+                                                                    <Tooltip title="View Task Details">
+                                                                        <IconButton
+                                                                            size="small"
+                                                                            href={`${window.SE7ENTECH.base_url}/modules/tasks/index.php/${task.id}/view`}
+                                                                            target="_blank"
+                                                                        >
+                                                                            <OpenInNewIcon fontSize="small" />
+                                                                        </IconButton>
+                                                                    </Tooltip>
+                                                                </Stack>
+                                                            </TableCell>
                                                             <TableCell>{formatDate(task.created_at)}</TableCell>
                                                             <TableCell>{formatDate(task.end_time)}</TableCell>
                                                             <TableCell>
@@ -186,11 +203,14 @@ export function init() {
                                                             <TableCell align="right">
                                                                 {(task.total_time / 3600).toFixed(2)} h
                                                             </TableCell>
+                                                            <TableCell align="right">
+                                                                {task.custom_total_time ? parseFloat(task.custom_total_time).toFixed(2) : '0.00'} h
+                                                            </TableCell>
                                                         </TableRow>
                                                     ))
                                                 ) : (
                                                     <TableRow>
-                                                        <TableCell colSpan={5} align="center">No tasks assigned.</TableCell>
+                                                        <TableCell colSpan={6} align="center">No tasks assigned.</TableCell>
                                                     </TableRow>
                                                 )}
                                             </TableBody>
