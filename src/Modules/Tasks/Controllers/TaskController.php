@@ -585,7 +585,7 @@ class TaskController {
         $net_seconds = $total_seconds - $total_paused;
         return $net_seconds > 0 ? $net_seconds : 0;
     }
-    /**
+        /**
      * Helper: Calculate daily hours from task timestamps
      */
     private function calculateDailyHours($task){
@@ -609,11 +609,16 @@ class TaskController {
         }
         // Determine end time for calculation (finished time or now if active)
         $finalEnd = !empty($task['end_time']) ? $task['end_time'] : time();
-        if($task['status'] == 'paused' && !empty($pauses)){
-             // If currently paused, the last pause start is the effective end of the last work segment
-             $lastPause = end($pauses);
-             $finalEnd = $lastPause['start']; 
+        
+        // FIX: If currently paused, the effective end of the last work segment is the start of the current pause
+        if($task['status'] == 'paused' && !empty($task['pause_intervals'])){
+             $parts = explode(',', $task['pause_intervals']);
+             $lastTimestamp = end($parts);
+             if($lastTimestamp){
+                 $finalEnd = $lastTimestamp;
+             }
         }
+
         // Build work segments: [Start, End]
         // Segment 1: Start Time -> First Pause Start
         // Segment 2: First Pause End -> Second Pause Start
