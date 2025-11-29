@@ -201,7 +201,7 @@ export function init() {
                                                                 />
                                                             </TableCell>
                                                             <TableCell align="right">
-                                                                {(task.total_time / 3600).toFixed(2)} h
+                                                                {(task.calculated_duration / 3600).toFixed(2)} h
                                                             </TableCell>
                                                             <TableCell align="right">
                                                                 {task.custom_total_time ? parseFloat(task.custom_total_time / 60).toFixed(2) : '0.00'} h

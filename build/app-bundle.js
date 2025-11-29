@@ -53846,7 +53846,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           color: task2.status === "finished" ? "success" : task2.status === "paused" ? "warning" : "default",
           variant: "outlined"
         }
-      )), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, { align: "right" }, (task2.total_time / 3600).toFixed(2), " h"), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, { align: "right" }, task2.custom_total_time ? parseFloat(task2.custom_total_time / 60).toFixed(2) : "0.00", " h"))) : /* @__PURE__ */ import_react11.default.createElement(TableRow_default, null, /* @__PURE__ */ import_react11.default.createElement(TableCell_default, { colSpan: 6, align: "center" }, "No tasks assigned.")))))))))));
+      )), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, { align: "right" }, (task2.calculated_duration / 3600).toFixed(2), " h"), /* @__PURE__ */ import_react11.default.createElement(TableCell_default, { align: "right" }, task2.custom_total_time ? parseFloat(task2.custom_total_time / 60).toFixed(2) : "0.00", " h"))) : /* @__PURE__ */ import_react11.default.createElement(TableRow_default, null, /* @__PURE__ */ import_react11.default.createElement(TableCell_default, { colSpan: 6, align: "center" }, "No tasks assigned.")))))))))));
     };
     const container = document.getElementById("admin-tasks-app");
     if (container) {

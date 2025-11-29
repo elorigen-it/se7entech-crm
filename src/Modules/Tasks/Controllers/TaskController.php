@@ -497,10 +497,6 @@ class TaskController {
         $users = UserModel::getAll();
         $tasks = TaskModel::getAll();
         
-        // Filter users to only those with role != 12 and != 15 (optional, based on sidebar logic)
-        // $users = array_filter($users, function($user){
-        //     return $user['role'] != 12 && $user['role'] != 15;
-        // });
         $usersMap = [];
         foreach($users as $user){
             $usersMap[$user['id']] = $user;
@@ -513,11 +509,15 @@ class TaskController {
         foreach($tasks as $task){
             $userId = $task['asigned_to'];
             if(isset($usersMap[$userId])){
+                // Calculate Net Duration using view.php logic
+                $task['calculated_duration'] = $this->calculateNetDuration($task);
+
                 $usersMap[$userId]['tasks'][] = $task;
                 
-                // Calculate Total Hours
-                $totalSeconds = $task['total_time'] ? $task['total_time'] : 0;
+                // Calculate Total Hours using the new calculated duration
+                $totalSeconds = $task['calculated_duration'];
                 $usersMap[$userId]['stats']['total_hours'] += ($totalSeconds / 3600);
+
                 // Calculate Daily History
                 $dailyData = $this->calculateDailyHours($task);
                 foreach($dailyData as $date => $seconds){
@@ -544,6 +544,46 @@ class TaskController {
         header('Content-Type: application/json');
         echo json_encode(array_values($usersMap));
         exit;
+    }
+
+        /**
+     * Helper: Calculate net duration matching view.php logic
+     */
+    private function calculateNetDuration($task){
+        if(!$task['start_time']) return 0;
+        
+        $end_time = !empty($task['end_time']) ? $task['end_time'] : time();
+        
+        // 3. Obtener y procesar los intervalos de pausa
+        $paused_intervals = !empty($task['pause_intervals']) ? explode(',', $task['pause_intervals']) : [];
+
+        // Handle PAUSED state: effective end time is the start of the last pause
+        if($task['status'] == 'paused' && !empty($paused_intervals)){
+            $last_pause_start = end($paused_intervals);
+            if($last_pause_start){
+                $end_time = $last_pause_start;
+            }
+        }
+        
+        // 2. Calcular el tiempo total (en segundos)
+        $total_seconds = $end_time - $task['start_time'];
+        
+        // Si es impar, eliminamos el último timestamp (pausa no finalizada)
+        if (count($paused_intervals) % 2 !== 0) {
+            array_pop($paused_intervals); 
+        }
+
+        // 4. Calcular el tiempo total pausado
+        $total_paused = 0;
+        for ($i = 0; $i < count($paused_intervals); $i += 2) {
+            if (isset($paused_intervals[$i+1])) {
+                $total_paused += ($paused_intervals[$i+1] - $paused_intervals[$i]);
+            }
+        }
+        
+        // 5. Calcular el tiempo neto (total - pausas)
+        $net_seconds = $total_seconds - $total_paused;
+        return $net_seconds > 0 ? $net_seconds : 0;
     }
     /**
      * Helper: Calculate daily hours from task timestamps
