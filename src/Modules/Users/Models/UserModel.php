@@ -234,6 +234,9 @@ class UserModel
     {
         include __DIR__ . '/../../../../config/connection.php';
 
+        // Ensure Firebase JWT is loaded
+        require_once __DIR__ . '/../../../../vendor/autoload.php';
+
         // Get user data
         $user = self::getById($userId);
         if (!$user) {
