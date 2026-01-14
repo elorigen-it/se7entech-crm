@@ -3,140 +3,121 @@ use Symfony\Component\Routing\Route;
 
 $definitions = array(
     array(
-        'name' => 'index',
+        'name' => 'invoices_index',
         'route' => array(
             'path' => '/',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Contract\Controllers\ContractController', 
-                'method'=>'index',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm')
+                'controller' => 'Se7entech\Contractnew\Modules\Invoices\Controllers\InvoicesController',
+                'method' => 'index',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
+            'methods' => ['GET']
+        )
+    ),
+    array(
+        'name' => 'invoices_create',
+        'route' => array(
+            'path' => '/',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Invoices\Controllers\InvoicesController',
+                'method' => 'create',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
+            'methods' => ['POST']
+        )
+    ),
+    array(
+        'name' => 'invoices_edit',
+        'route' => array(
+            'path' => '/{id}',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Invoices\Controllers\InvoicesController',
+                'method' => 'edit',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
             ),
             'methods' => ['GET'],
+            'params' => array('id' => '[0-9]+')
         )
     ),
     array(
-        'name' => 'getAllInvoices',
+        'name' => 'invoices_update',
         'route' => array(
-            'path' => '/getAllInvoices/',
+            'path' => '/{id}',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Invoices\Controllers\InvoicesController', 
-                'method'=>'getAllInvoices',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm')),
-            'methods' => ['POST']
-            // 'params' => array('id' => '[0-9]+') //query parameters requirements
+                'controller' => 'Se7entech\Contractnew\Modules\Invoices\Controllers\InvoicesController',
+                'method' => 'update',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
+            'methods' => ['POST'],
+            'params' => array('id' => '[0-9]+')
         )
     ),
     array(
-        'name' => 'notifications',
+        'name' => 'invoices_delete',
         'route' => array(
-            'path' => '/notifications/',
+            'path' => '/delete/',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Contract\Controllers\ContractController', 
-                'method'=>'notifications',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm')),
+                'controller' => 'Se7entech\Contractnew\Modules\Invoices\Controllers\InvoicesController',
+                'method' => 'delete',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
             'methods' => ['POST']
-            // 'params' => array('id' => '[0-9]+') //query parameters requirements
         )
     ),
     array(
-        'name' => 'associateInvoice',
+        'name' => 'api_invoices_get_all',
         'route' => array(
-            'path' => '/associateInvoice/',
+            'path' => '/api/all',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Contract\Controllers\ContractController', 
-                'method'=>'associateInvoice',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm')),
-            'methods' => ['POST']
-            // 'params' => array('id' => '[0-9]+') //query parameters requirements
+                'controller' => 'Se7entech\Contractnew\Modules\Invoices\Controllers\InvoicesController',
+                'method' => 'apiGetAll',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\JWTMiddleware')
+            ),
+            'methods' => ['GET', 'POST']
         )
     ),
     array(
-        'name' => 'getAssociatedInvoices',
+        'name' => 'api_invoices_create',
         'route' => array(
-            'path' => '/getAssociatedInvoices/',
+            'path' => '/api/create',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Contract\Controllers\ContractController', 
-                'method'=>'getAssociatedInvoices',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm')),
+                'controller' => 'Se7entech\Contractnew\Modules\Invoices\Controllers\InvoicesController',
+                'method' => 'apiCreate',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\JWTMiddleware')
+            ),
             'methods' => ['POST']
-            // 'params' => array('id' => '[0-9]+') //query parameters requirements
         )
     ),
-    // array(
-    //     'name' => 'getById',
-    //     'route' => array(
-    //         'path' => '/{id}',
-    //         'detail' => array(
-    //             'controller' => 'Se7entech\Contractnew\Modules\Appointments\Controllers\AppointmentsController', 
-    //             'method'=>'getById',
-    //             'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
-    //         'methods' => ['GET'],
-    //         'params' => array('id' => '[0-9]+') //query parameters requirements
-    //     )
-    // ),
-    // array(
-    //     'name' => 'acceptAppointment',
-    //     'route' => array(
-    //         'path' => '/accept/{id}',
-    //         'detail' => array(
-    //             'controller' => 'Se7entech\Contractnew\Modules\Appointments\Controllers\AppointmentsController', 
-    //             'method'=>'acceptAppointment',
-    //             'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
-    //         'methods' => ['GET'],
-    //         'params' => array('id' => '[0-9]+') //query parameters requirements
-    //     )
-    // ),
-    // array(
-    //     'name' => 'rejectAppointment',
-    //     'route' => array(
-    //         'path' => '/reject/{id}',
-    //         'detail' => array(
-    //             'controller' => 'Se7entech\Contractnew\Modules\Appointments\Controllers\AppointmentsController', 
-    //             'method'=>'rejectAppointment',
-    //             'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
-    //         'methods' => ['GET'],
-    //         'params' => array('id' => '[0-9]+') //query parameters requirements
-    //     )
-    // ),
-    // array(
-    //     'name' => 'sendReminders',
-    //     'route' => array(
-    //         'path' => '/send-reminders/',
-    //         'detail' => array(
-    //             'controller' => 'Se7entech\Contractnew\Modules\Appointments\Controllers\AppointmentsController', 
-    //             'method'=>'sendReminders',
-    //             'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
-    //         'methods' => ['GET'],
-    //     )
-    // ),
-    // array(
-    //     'name' => 'updateAppointment',
-    //     'route' => array(
-    //         'path' => '/{id}',
-    //         'detail' => array(
-    //             'controller' => 'Se7entech\Contractnew\Modules\Appointments\Controllers\AppointmentsController', 
-    //             'method'=>'updateAppointment',
-    //             'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
-    //         'methods' => ['POST'],
-    //         'params' => array('id' => '[0-9]+') //query parameters requirements
-    //     )
-    // ),
-    // array(
-    //     'name' => 'delete',
-    //     'route' => array(
-    //         'path' => '/delete/',
-    //         'detail' => array(
-    //             'controller' => 'Se7entech\Contractnew\Modules\Appointments\Controllers\AppointmentsController', 
-    //             'method'=>'delete',
-    //             'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
-    //         'methods' => ['POST'],
-    //         // 'params' => array('id' => '[0-9]+') //query parameters requirements
-    //     )
-    // )
+    array(
+        'name' => 'api_invoices_update',
+        'route' => array(
+            'path' => '/api/update/{id}',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Invoices\Controllers\InvoicesController',
+                'method' => 'apiUpdate',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\JWTMiddleware')
+            ),
+            'methods' => ['POST'],
+            'params' => array('id' => '[0-9]+')
+        )
+    ),
+    array(
+        'name' => 'api_invoices_delete',
+        'route' => array(
+            'path' => '/api/delete/{id}',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Invoices\Controllers\InvoicesController',
+                'method' => 'apiDelete',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\JWTMiddleware')
+            ),
+            'methods' => ['POST'],
+            'params' => array('id' => '[0-9]+')
+        )
+    )
 );
 
 $routes = array();
-foreach($definitions as $d){
+foreach ($definitions as $d) {
     $routeDef = array();
     $params = isset($d['params']) ? $d['params'] : [];
     $route = new Route($d['route']['path'], $d['route']['detail'], $params);

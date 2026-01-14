@@ -7,7 +7,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Rakit\Validation\Validator;
 
-class TaskLabelController {
+class TaskLabelController
+{
 
     public $data = array(
         'errors' => array(),
@@ -16,29 +17,34 @@ class TaskLabelController {
         'success' => null,
         'session' => array()
     );
+    public $session;
+    public $base_url;
 
-    public function __construct(Session $session){
+    public function __construct(Session $session)
+    {
         global $base_url;
         $this->base_url = $base_url;
         $this->session = $session;
         foreach ($this->session->getFlashBag()->all() as $type => $messages) {
-            if($type === 'last_data'){
+            if ($type === 'last_data') {
                 $this->data['last_data'] = $messages[0];
                 continue;
             }
-            foreach($messages as $message){
-                array_push($this->data['session'], '<div class="alert alert-'.$type.' p-2" role="alert">'.$message.'</div>');
+            foreach ($messages as $message) {
+                array_push($this->data['session'], '<div class="alert alert-' . $type . ' p-2" role="alert">' . $message . '</div>');
             }
         }
     }
 
-    public function index(){
+    public function index()
+    {
         $labels = TaskLabelModel::getAll();
         $this->data['labels'] = $labels;
         include __DIR__ . '/../labels/index.php';
     }
 
-    public function postLabel(){
+    public function postLabel()
+    {
         $request = Request::createFromGlobals();
         $data = $request->request->all();
         $validator = new Validator;
@@ -48,7 +54,7 @@ class TaskLabelController {
             'label-text-color' => 'required'
         ]);
         $validation->validate();
-        
+
         if ($validation->fails()) {
             $this->data['errors'] = $validation->errors()->all();
             $this->data['last_data'] = $data;
@@ -60,10 +66,10 @@ class TaskLabelController {
         } else {
             $res = TaskLabelModel::postLabel($data);
             $flashes = $this->session->getFlashBag();
-            if($res['success']){
+            if ($res['success']) {
                 $this->data['success'] = true;
                 $flashes->add('success', '<span>New Label created</span>');
-            }else{
+            } else {
                 $this->data['success'] = false;
                 $flashes->add('warning', '<span>Something happened with database</span>');
             }
@@ -71,7 +77,8 @@ class TaskLabelController {
         }
     }
 
-    public function getById($params){
+    public function getById($params)
+    {
         $id = $params['id'];
         $request = Request::createFromGlobals();
         $data = $request->query->all();
@@ -87,16 +94,17 @@ class TaskLabelController {
             include __DIR__ . '/../labels/index.php';
         } else {
             $res = TaskLabelModel::getById($data['id']);
-            if($res){
+            if ($res) {
                 $this->data['current'] = $res[0];
                 include __DIR__ . '/../labels/single.php';
-            }else{
+            } else {
                 echo json_encode(array('error' => 'Something happened with database'));
             }
         }
     }
 
-    public function updateLabel($params){
+    public function updateLabel($params)
+    {
         $request = Request::createFromGlobals();
         $data = $request->request->all();
         $id = $params['id'];
@@ -111,29 +119,110 @@ class TaskLabelController {
         if ($validation->fails()) {
             $this->data['errors'] = $validation->errors()->all();
             $res = TaskLabelModel::getById($id);
-            if($res){
+            if ($res) {
                 $this->data['current'] = $res[0];
                 include __DIR__ . '/../labels/single.php';
             }
         } else {
             $res = TaskLabelModel::updateLabel($id, $data);
-            if($res){
+            if ($res) {
                 $flashes = $this->session->getFlashBag();
                 $flashes->add('success', '<span>Label updated successfully</span>');
                 $this->data['success'] = true;
-                header('location: /modules/tasks/index.php/labels/'.$id);
-            }else{
+                header('location: /modules/tasks/index.php/labels/' . $id);
+            } else {
                 return json_encode(array('error' => 'Something happened with database'));
             }
         }
     }
 
 
-    public function deleteLabel($params){
+    public function deleteLabel($params)
+    {
         $request = Request::createFromGlobals();
         $id = $request->request->get('id');
-        if($id){
+        if ($id) {
             echo json_encode(array('success' => TaskLabelModel::delete($id)));
         }
+    }
+    // API Methods
+
+    private function _getJsonInput()
+    {
+        $input = file_get_contents('php://input');
+        return json_decode($input, true) ?? [];
+    }
+
+    public function apiIndex()
+    {
+        $labels = TaskLabelModel::getAll();
+        header('Content-Type: application/json');
+        echo json_encode(['success' => true, 'data' => $labels]);
+        exit;
+    }
+
+    public function apiCreate()
+    {
+        $data = $this->_getJsonInput();
+        $validator = new Validator;
+        $validation = $validator->make($data, [
+            'label-name' => 'required',
+            'label-background-color' => 'required',
+            'label-text-color' => 'required'
+        ]);
+        $validation->validate();
+
+        if ($validation->fails()) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'errors' => $validation->errors()->all()]);
+            exit;
+        }
+
+        $res = TaskLabelModel::postLabel($data);
+        header('Content-Type: application/json');
+        if ($res['success']) {
+            echo json_encode(['success' => true, 'message' => 'Label created']);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Database error']);
+        }
+        exit;
+    }
+
+    public function apiUpdate($params)
+    {
+        $id = $params['id'];
+        $data = $this->_getJsonInput();
+
+        $validator = new Validator;
+        $validation = $validator->make($data, [
+            'label-name' => 'required',
+            'label-background-color' => 'required',
+            'label-text-color' => 'required',
+        ]);
+        $validation->validate();
+
+        if ($validation->fails()) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'errors' => $validation->errors()->all()]);
+            exit;
+        }
+
+        $res = TaskLabelModel::updateLabel($id, $data);
+        header('Content-Type: application/json');
+        if ($res) {
+            echo json_encode(['success' => true, 'message' => 'Label updated']);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Database error']);
+        }
+        exit;
+    }
+
+    public function apiDelete($params)
+    {
+        $id = $params['id'];
+        $res = TaskLabelModel::delete($id);
+        header('Content-Type: application/json');
+        echo json_encode(['success' => $res, 'message' => $res ? 'Label deleted' : 'Database error']);
+        exit;
     }
 }

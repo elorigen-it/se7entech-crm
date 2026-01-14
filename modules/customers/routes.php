@@ -20,9 +20,10 @@ $definitions = array(
         'route' => array(
             'path' => '/{customerId}/brand-rules/generate',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController', 
-                'method'=>'generateBrandRulesForm',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'generateBrandRulesForm',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
             'methods' => ['GET'],
             'params' => array('customerId' => '[0-9]+') //query parameters requirements
         )
@@ -32,9 +33,10 @@ $definitions = array(
         'route' => array(
             'path' => '/{customerId}/brand-rules/generate',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController', 
-                'method'=>'generateBrandRules',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'generateBrandRules',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
             'methods' => ['POST'],
             'params' => array('customerId' => '[0-9]+') //query parameters requirements
         )
@@ -44,9 +46,10 @@ $definitions = array(
         'route' => array(
             'path' => '/{customerId}/brand-rules/confirm',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController', 
-                'method'=>'confirmBrandRules',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'confirmBrandRules',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
             'methods' => ['POST'],
             'params' => array('customerId' => '[0-9]+') //query parameters requirements
         )
@@ -56,9 +59,10 @@ $definitions = array(
         'route' => array(
             'path' => '/{customerId}/content-creator/generate',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController', 
-                'method'=>'generateContentForm',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'generateContentForm',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
             'methods' => ['GET'],
             'params' => array('customerId' => '[0-9]+') //query parameters requirements
         )
@@ -68,9 +72,10 @@ $definitions = array(
         'route' => array(
             'path' => '/{customerId}/content-creator/generate',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController', 
-                'method'=>'generateContentPlan',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'generateContentPlan',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
             'methods' => ['POST'],
             'params' => array('customerId' => '[0-9]+') //query parameters requirements
         )
@@ -145,8 +150,8 @@ $definitions = array(
         'route' => array(
             'path' => '/',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController', 
-                'method'=>'index',
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'index',
                 'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm')
             ),
             'methods' => ['GET'],
@@ -157,9 +162,10 @@ $definitions = array(
         'route' => array(
             'path' => '/',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController', 
-                'method'=>'postCustomer',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm')),
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'postCustomer',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm')
+            ),
             'methods' => ['POST']
             // 'params' => array('id' => '[0-9]+') //query parameters requirements
         )
@@ -169,9 +175,10 @@ $definitions = array(
         'route' => array(
             'path' => '/{id}',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController', 
-                'method'=>'getById',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'getById',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
             'methods' => ['GET'],
             'params' => array('id' => '[0-9]+') //query parameters requirements
         )
@@ -181,9 +188,10 @@ $definitions = array(
         'route' => array(
             'path' => '/{id}',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController', 
-                'method'=>'updateCustomer',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'updateCustomer',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
             'methods' => ['POST'],
             'params' => array('id' => '[0-9]+') //query parameters requirements
         )
@@ -193,9 +201,10 @@ $definitions = array(
         'route' => array(
             'path' => '/delete/',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController', 
-                'method'=>'delete',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'delete',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
             'methods' => ['POST'],
             // 'params' => array('id' => '[0-9]+') //query parameters requirements
         )
@@ -292,6 +301,56 @@ $definitions = array(
         )
     ),
     array(
+        'name' => 'api_customers_get_all',
+        'route' => array(
+            'path' => '/api/all',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'apiGetAll',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\JWTMiddleware')
+            ),
+            'methods' => ['GET', 'POST']
+        )
+    ),
+    array(
+        'name' => 'api_customers_create',
+        'route' => array(
+            'path' => '/api/create',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'apiCreate',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\JWTMiddleware')
+            ),
+            'methods' => ['POST']
+        )
+    ),
+    array(
+        'name' => 'api_customers_update',
+        'route' => array(
+            'path' => '/api/update/{id}',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'apiUpdate',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\JWTMiddleware')
+            ),
+            'methods' => ['POST'],
+            'params' => array('id' => '[0-9]+')
+        )
+    ),
+    array(
+        'name' => 'api_customers_delete',
+        'route' => array(
+            'path' => '/api/delete/{id}',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'apiDelete',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\JWTMiddleware')
+            ),
+            'methods' => ['POST'],
+            'params' => array('id' => '[0-9]+')
+        )
+    ),
+    array(
         'name' => 'deactivateLoginAccess',
         'route' => array(
             'path' => '/login-access/deactivate',
@@ -303,8 +362,8 @@ $definitions = array(
             'methods' => ['POST'],
             // 'params' => array('customerId' => '[0-9]+', 'brandContentId' => '[0-9]+')
         )
-    ),    
-    
+    ),
+
     // array(
     //     'name' => 'acceptAppointment',
     //     'route' => array(
@@ -352,11 +411,11 @@ $definitions = array(
     //         'params' => array('id' => '[0-9]+') //query parameters requirements
     //     )
     // ),
-   
+
 );
 
 $routes = array();
-foreach($definitions as $d){
+foreach ($definitions as $d) {
     $routeDef = array();
     $params = isset($d['params']) ? $d['params'] : [];
     $route = new Route($d['route']['path'], $d['route']['detail'], $params);

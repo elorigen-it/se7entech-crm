@@ -15,7 +15,8 @@ use \mikehaertl\pdftk\Pdf;
 use PhpOffice\PhpWord\IOFactory;
 use PhpOffice\PhpWord\Settings;
 
-class UserController{
+class UserController
+{
     public $data = array(
         'errors' => array(),
         'last_data' => array(),
@@ -26,64 +27,69 @@ class UserController{
         'zones' => array()
     );
 
-    public function __construct(Session $session){
+    public function __construct(Session $session)
+    {
         global $base_url, $base_path;
         $this->base_url = $base_url;
         $this->base_path = $base_path;
         $this->session = $session;
-        $this->session->set('access', $_SESSION['access']);
-        $this->session->set('user', $_SESSION['user']);
-        $this->session->set('email', $_SESSION['email']);
-        $this->session->set('designation', $_SESSION['designation']);
-        $this->session->set('zone_id', $_SESSION['zone_id']);
-        $this->session->set('userid', $_SESSION['id']);
-        $this->session->set('role', $_SESSION['role']);
+        $this->session->set('access', $_SESSION['access'] ?? null);
+        $this->session->set('user', $_SESSION['user'] ?? null);
+        $this->session->set('email', $_SESSION['email'] ?? null);
+        $this->session->set('designation', $_SESSION['designation'] ?? null);
+        $this->session->set('zone_id', $_SESSION['zone_id'] ?? null);
+        // Supports both 'id' (Legacy) and 'userid' (JWT)
+        $this->session->set('userid', $_SESSION['id'] ?? $_SESSION['userid'] ?? null);
+        $this->session->set('role', $_SESSION['role'] ?? null);
 
         $this->data['users'] = $this->getUsers();
         foreach ($this->session->getFlashBag()->all() as $type => $messages) {
-            if($type === 'last_data'){
+            if ($type === 'last_data') {
                 $this->data['last_data'] = $messages[0];
                 continue;
             }
-            if($type === 'current'){
+            if ($type === 'current') {
                 $this->data['current'] = $messages[0];
                 continue;
             }
-            foreach($messages as $message){
-                array_push($this->data['session'], '<div class="alert alert-'.$type.' p-2" role="alert">'.$message.'</div>');
+            foreach ($messages as $message) {
+                array_push($this->data['session'], '<div class="alert alert-' . $type . ' p-2" role="alert">' . $message . '</div>');
             }
         }
         $this->data['roles'] = RolesModel::getAll();
         $this->data['zones'] = ZonesModel::getAll();
 
     }
-    public function index(){
+    public function index()
+    {
         include __DIR__ . '/../index.php';
     }
 
-    public function getById($params){
+    public function getById($params)
+    {
         $id = $params['id'];
-        if($id){
+        if ($id) {
             $record = UserModel::getById($id);
-            if($record){
+            if ($record) {
                 $this->data['current'] = $record;
                 include __DIR__ . '/../single.php';
-            }else{
+            } else {
                 $flashes = $this->session->getFlashBag();
                 $flashes->add('warning', 'User id not found');
 
                 header('location: ' . $this->base_url . '/modules/users/');
-            }  
-        }else{
+            }
+        } else {
             $flashes = $this->session->getFlashBag();
             $flashes->add('warning', 'Bad Request');
             header('location: ' . $this->base_url . '/modules/users/');
         }
     }
-    
-    public function postUser(){
+
+    public function postUser()
+    {
         $request = Request::createFromGlobals();
-        if($request->request->get('save')){
+        if ($request->request->get('save')) {
             $validation = $this->_validateData($request->request->all());
 
             if ($validation->fails()) {
@@ -93,41 +99,41 @@ class UserController{
                 $messages = $errors->all('<span>:message</span>');
                 $flashes = $this->session->getFlashBag();
                 // add flash messages
-                foreach($messages as $msg){
+                foreach ($messages as $msg) {
                     $flashes->add(
                         'danger',
                         $msg
                     );
                 }
-                
+
                 $flashes->add('last_data', $request->request->all());
-        
-            }else{
+
+            } else {
                 $digits = 4;
-                $otp = rand(pow(10, $digits-1), pow(10, $digits)-1);
+                $otp = rand(pow(10, $digits - 1), pow(10, $digits) - 1);
                 $postData = $request->request->all();
                 $postData['password'] = $otp;
                 $postData['avatar'] = $this->base_url . '/uploads/avatars/default.png';
 
-    
-                if($_FILES['avatar']['size']){
-                    $fullname=$_FILES['avatar']['name']; 
-                    $name=explode('.',$fullname);
-                    $ext=$name[1];
+
+                if ($_FILES['avatar']['size']) {
+                    $fullname = $_FILES['avatar']['name'];
+                    $name = explode('.', $fullname);
+                    $ext = $name[1];
                     $date = date('m/d/Yh:i:sa', time());
-                    $rand=rand(10000,99999);
-                    $encname=$date.$rand;
-                    $finalname=md5($encname).'.'.$ext;
-                    $path = "/uploads/avatars/".$finalname;
-                    $finalpath=$this->base_path . $path;
-                    move_uploaded_file($_FILES["avatar"]["tmp_name"],$finalpath);
+                    $rand = rand(10000, 99999);
+                    $encname = $date . $rand;
+                    $finalname = md5($encname) . '.' . $ext;
+                    $path = "/uploads/avatars/" . $finalname;
+                    $finalpath = $this->base_path . $path;
+                    move_uploaded_file($_FILES["avatar"]["tmp_name"], $finalpath);
 
                     $postData['avatar'] = $this->base_url . $path;
                 }
-                
+
                 $res = UserModel::postUser($postData);
                 $flashes = $this->session->getFlashBag();
-                if($res){
+                if ($res) {
                     $this->data['success'] = true;
                     $flashes->add(
                         'success',
@@ -145,11 +151,11 @@ class UserController{
                     $to = $postData['email'];
                     $toName = $postData['firstname'] . ' ' . $postData['lastname'];
                     $subject = 'Welcome to Se7entech!';
-        
+
                     $mailer = new Mailer($from, $fromName, $to, $toName, $subject, $content, null, 'no-reply@se7entech.net', 'jvkD1ka?1');
                     $mailer->send();
 
-                }else{
+                } else {
                     $this->data['success'] = false;
                     $flashes->add(
                         'warning',
@@ -161,8 +167,9 @@ class UserController{
             header('location: ' . $this->base_url . '/modules/users/');
         }
     }
-    
-    public function postUserTest(){
+
+    public function postUserTest()
+    {
         ini_set('display_errors', 1);
         ini_set('display_startup_errors', 1);
         error_reporting(E_ALL);
@@ -170,13 +177,14 @@ class UserController{
         var_dump($_POST);
     }
 
-    public function updateUser($params){
-        
+    public function updateUser($params)
+    {
+
         $request = Request::createFromGlobals();
         $id = $params['id'];
         $user = UserModel::getById($id);
-        
-        if($request->request->get('save')){
+
+        if ($request->request->get('save')) {
             $postData = $request->request->all();
             unset($postData['email']);
             $validation = $this->_validateDataToUpdate($postData);
@@ -187,41 +195,41 @@ class UserController{
                 $messages = $errors->all('<span>:message</span>');
                 $flashes = $this->session->getFlashBag();
                 // add flash messages
-                foreach($messages as $msg){
+                foreach ($messages as $msg) {
                     $flashes->add(
                         'danger',
                         $msg
                     );
                 }
                 $flashes->add('current', $request->request->all());
-            }else{
+            } else {
                 $postData = $request->request->all();
                 $postData['avatar'] = $user['avatar'];
 
-                if($_FILES['avatar']['size']){
-                    $fullname=$_FILES['avatar']['name']; 
-                    $name=explode('.',$fullname);
-                    $ext=$name[1];
+                if ($_FILES['avatar']['size']) {
+                    $fullname = $_FILES['avatar']['name'];
+                    $name = explode('.', $fullname);
+                    $ext = $name[1];
                     $date = date('m/d/Yh:i:sa', time());
-                    $rand=rand(10000,99999);
-                    $encname=$date.$rand;
-                    $finalname=md5($encname).'.'.$ext;
-                    $path = "/uploads/avatars/".$finalname;
-                    $finalpath=$this->base_path . $path;
-                    move_uploaded_file($_FILES["avatar"]["tmp_name"],$finalpath);
+                    $rand = rand(10000, 99999);
+                    $encname = $date . $rand;
+                    $finalname = md5($encname) . '.' . $ext;
+                    $path = "/uploads/avatars/" . $finalname;
+                    $finalpath = $this->base_path . $path;
+                    move_uploaded_file($_FILES["avatar"]["tmp_name"], $finalpath);
 
                     $postData['avatar'] = $this->base_url . $path;
                 }
 
                 $res = UserModel::update($id, $postData);
                 $flashes = $this->session->getFlashBag();
-                if($res){
+                if ($res) {
                     $this->data['success'] = true;
                     $flashes->add(
                         'success',
                         '<span>User updated</span>'
                     );
-                }else{
+                } else {
                     $this->data['success'] = false;
                     $flashes->add(
                         'warning',
@@ -231,17 +239,19 @@ class UserController{
             }
 
             header('location: ' . $this->base_url . '/modules/users/index.php/' . $id);
-        } 
+        }
     }
 
-    public function getUsers(){
+    public function getUsers()
+    {
         return UserModel::getAll();
     }
 
-    public function delete($params){
+    public function delete($params)
+    {
         $request = Request::createFromGlobals();
         $id = $request->request->get('id');
-        if($id){
+        if ($id) {
             // $flashes = $this->session->getFlashBag();
             // // add flash messages
             // $flashes->add(
@@ -252,7 +262,8 @@ class UserController{
         }
     }
 
-    private function _validateData($data){
+    private function _validateData($data)
+    {
         require __DIR__ . '/../../../../config/connection.php';
         $validator = new Validator;
         $validator->addValidator('unique', new UniqueRule($con));
@@ -267,7 +278,7 @@ class UserController{
             'role' => 'required',
             'zone_id' => 'required',
             'status' => 'required',
-            
+
         ]);
         $validation->setAlias('firstname', 'First Name');
         $validation->setAlias('lastname', 'Last Name');
@@ -278,13 +289,14 @@ class UserController{
         $validation->setAlias('role', 'Role');
         $validation->setAlias('zone_id', 'Zone');
         $validation->setAlias('status', 'isAdmin');
-        
+
         $validation->validate();
 
         return $validation;
     }
 
-    private function _validateDataToUpdate($data){
+    private function _validateDataToUpdate($data)
+    {
         require __DIR__ . '/../../../../config/connection.php';
         $validator = new Validator;
         $validator->addValidator('unique', new UniqueRule($con));
@@ -297,7 +309,7 @@ class UserController{
             'designation' => 'required|min:1',
             'role' => 'required',
             'status' => 'required',
-            
+
         ]);
         $validation->setAlias('firstname', 'First Name');
         $validation->setAlias('lastname', 'Last Name');
@@ -308,62 +320,64 @@ class UserController{
         $validation->setAlias('role', 'Role');
         $validation->setAlias('zone_id', 'Zone');
         $validation->setAlias('status', 'isAdmin');
-        
+
         $validation->validate();
 
         return $validation;
     }
 
-    public function taxes(){
+    public function taxes()
+    {
         $record = UserModel::getByIdWithTaxes($this->session->get('userid'));
         $this->data['current'] = $record;
         // echo var_dump($this->data['current']['address']);
         // exit;
         $date = date('m-d-Y');
         $res = UserModel::getOldestContract($this->session->get('userid'));
-        if($res){
+        if ($res) {
             $date = date('m-d-Y', strtotime($res['sign_date']));
         }
         $this->data['current']['calculated_date'] = $date;
         include __DIR__ . '/../tax-form.php';
     }
 
-    public function updateDownloadTax(){
+    public function updateDownloadTax()
+    {
         $user_id = $_POST['user_id'];
-        if($user_id){
+        if ($user_id) {
             $user = UserModel::getById($user_id);
-            if($user){
+            if ($user) {
                 $data = array(
-                    'user_id' => $user_id, 
-                    'payer_info' => isset($_POST['payer_info']) ? $_POST['payer_info'] : '' , 
-                    'payer_tin' => isset($_POST['payer_tin']) ? $_POST['payer_tin'] : '', 
-                    'recipient_tin' => isset($_POST['recipient_tin']) ? $_POST['recipient_tin'] : '', 
-                    'recipient_name' => isset($_POST['recipient_name']) ? $_POST['recipient_name'] : '', 
-                    'street_address' => isset($_POST['street_address']) ? $_POST['street_address'] : '', 
-                    'city_town' => isset($_POST['city_town']) ? $_POST['city_town'] : '', 
-                    'account_number' => isset($_POST['account_number']) ? $_POST['account_number'] : '', 
-                    '2nd_tin_not' => isset($_POST['2nd_tin_not']) ? 1:0, 
-                    '1_rents' => isset($_POST['1_rents']) ? $_POST['1_rents'] : '', 
+                    'user_id' => $user_id,
+                    'payer_info' => isset($_POST['payer_info']) ? $_POST['payer_info'] : '',
+                    'payer_tin' => isset($_POST['payer_tin']) ? $_POST['payer_tin'] : '',
+                    'recipient_tin' => isset($_POST['recipient_tin']) ? $_POST['recipient_tin'] : '',
+                    'recipient_name' => isset($_POST['recipient_name']) ? $_POST['recipient_name'] : '',
+                    'street_address' => isset($_POST['street_address']) ? $_POST['street_address'] : '',
+                    'city_town' => isset($_POST['city_town']) ? $_POST['city_town'] : '',
+                    'account_number' => isset($_POST['account_number']) ? $_POST['account_number'] : '',
+                    '2nd_tin_not' => isset($_POST['2nd_tin_not']) ? 1 : 0,
+                    '1_rents' => isset($_POST['1_rents']) ? $_POST['1_rents'] : '',
                     '2_royalties' => isset($_POST['2_royalties']) ? $_POST['2_royalties'] : '',
-                    '3_other_income' => isset($_POST['3_other_income']) ? $_POST['3_other_income'] : '', 
-                    '4_federal_income' =>isset( $_POST['4_federal_income']) ? $_POST['4_federal_income'] : '', 
-                    '5_fishing_boat' => isset($_POST['5_fishing_boat']) ? $_POST['5_fishing_boat'] : '', 
-                    '6_medical_health' => isset($_POST['6_medical_health']) ? $_POST['6_medical_health'] : '', 
-                    '7_payer_direct' => isset($_POST['7_payer_direct']) ? 1:0, 
-                    '8_substitute_payments' => isset($_POST['8_substitute_payments']) ? $_POST['8_substitute_payments'] : '', 
-                    '9_crop_insurance' => isset($_POST['9_crop_insurance']) ? $_POST['9_crop_insurance'] : '', 
-                    '10_gross_proceeds' => isset($_POST['10_gross_proceeds']) ? $_POST['10_gross_proceeds'] : '', 
-                    '11_fish_purchased' => isset($_POST['11_fish_purchased']) ? $_POST['11_fish_purchased'] : '', 
-                    '12_section_409a' =>isset( $_POST['12_section_409a']) ? $_POST['12_section_409a'] : '', 
-                    '13_fatca_filing' => isset($_POST['13_fatca_filing']) ? 1:0, 
-                    '14_excess_golden' => isset($_POST['14_excess_golden']) ? $_POST['14_excess_golden'] : '', 
-                    '15_nonqualified_deferred' => isset($_POST['15_nonqualified_deferred']) ? $_POST['15_nonqualified_deferred'] : '', 
-                    '16_state_tax' =>isset( $_POST['16_state_tax']) ? $_POST['16_state_tax'] : '', 
-                    '16_state_tax_2' => isset($_POST['16_state_tax_2']) ? $_POST['16_state_tax_2'] : '', 
-                    '17_state_payers_state' => isset($_POST['17_state_payers_state']) ? $_POST['17_state_payers_state'] : '', 
-                    '17_state_payers_state_2' => isset($_POST['17_state_payers_state_2']) ? $_POST['17_state_payers_state_2'] : '', 
-                    '18_state_income' => isset($_POST['18_state_income']) ? $_POST['18_state_income'] : '', 
-                    '18_state_income_2' => isset($_POST['18_state_income_2']) ? $_POST['18_state_income_2'] : '' 
+                    '3_other_income' => isset($_POST['3_other_income']) ? $_POST['3_other_income'] : '',
+                    '4_federal_income' => isset($_POST['4_federal_income']) ? $_POST['4_federal_income'] : '',
+                    '5_fishing_boat' => isset($_POST['5_fishing_boat']) ? $_POST['5_fishing_boat'] : '',
+                    '6_medical_health' => isset($_POST['6_medical_health']) ? $_POST['6_medical_health'] : '',
+                    '7_payer_direct' => isset($_POST['7_payer_direct']) ? 1 : 0,
+                    '8_substitute_payments' => isset($_POST['8_substitute_payments']) ? $_POST['8_substitute_payments'] : '',
+                    '9_crop_insurance' => isset($_POST['9_crop_insurance']) ? $_POST['9_crop_insurance'] : '',
+                    '10_gross_proceeds' => isset($_POST['10_gross_proceeds']) ? $_POST['10_gross_proceeds'] : '',
+                    '11_fish_purchased' => isset($_POST['11_fish_purchased']) ? $_POST['11_fish_purchased'] : '',
+                    '12_section_409a' => isset($_POST['12_section_409a']) ? $_POST['12_section_409a'] : '',
+                    '13_fatca_filing' => isset($_POST['13_fatca_filing']) ? 1 : 0,
+                    '14_excess_golden' => isset($_POST['14_excess_golden']) ? $_POST['14_excess_golden'] : '',
+                    '15_nonqualified_deferred' => isset($_POST['15_nonqualified_deferred']) ? $_POST['15_nonqualified_deferred'] : '',
+                    '16_state_tax' => isset($_POST['16_state_tax']) ? $_POST['16_state_tax'] : '',
+                    '16_state_tax_2' => isset($_POST['16_state_tax_2']) ? $_POST['16_state_tax_2'] : '',
+                    '17_state_payers_state' => isset($_POST['17_state_payers_state']) ? $_POST['17_state_payers_state'] : '',
+                    '17_state_payers_state_2' => isset($_POST['17_state_payers_state_2']) ? $_POST['17_state_payers_state_2'] : '',
+                    '18_state_income' => isset($_POST['18_state_income']) ? $_POST['18_state_income'] : '',
+                    '18_state_income_2' => isset($_POST['18_state_income_2']) ? $_POST['18_state_income_2'] : ''
                 );
 
                 $updated = UserModel::updateTax($user_id, $data);
@@ -398,7 +412,7 @@ class UserController{
                     'topmostSubform[0].Copy1[0].f2_26[0]' => '18_state_income',
                     'topmostSubform[0].Copy1[0].f2_27[0]' => '18_state_income_2'
                 );
-                if($updated){
+                if ($updated) {
                     //download and redirect to /taxes/
                     $pathToPdfFile = __DIR__ . '/../f1099msc.pdf';
                     $pdf = new Pdf($pathToPdfFile, array(
@@ -532,8 +546,8 @@ class UserController{
                         'topmostSubform[0].CopyC[0].f2_27[0]' => $updated['18_state_income_2'],
                         'topmostSubform[0].CopyC[0].c2_2[0]' => $updated['2nd_tin_not']
                     ])
-                    ->flatten()
-                    ->send('f1099msc.pdf');
+                        ->flatten()
+                        ->send('f1099msc.pdf');
 
                     // $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($this->base_path . '/src/Modules/Users/taxes/1099-template.docx');
 
@@ -568,7 +582,7 @@ class UserController{
                     // $templateProcessor->setValue('${18}', $updated['18_state_income']);
                     // $templateProcessor->setValue('${18-2}', $updated['18_state_income_2']);
 
-                    
+
                     // $templateProcessor->saveAs($this->base_path . '/src/Modules/Users/taxes/downloadable.docx');
                 }
             }
@@ -577,14 +591,15 @@ class UserController{
         }
     }
 
-    public function updateDownloadContract(){
+    public function updateDownloadContract()
+    {
         $user_id = $_POST['user_id'];
-        if($user_id){
+        if ($user_id) {
             $user = UserModel::getById($user_id);
-            if($user){
+            if ($user) {
                 $user_oldest_contract = UserModel::getOldestContract($user_id);
                 $sign_date = date('m-d-Y');
-                if($user_oldest_contract){
+                if ($user_oldest_contract) {
                     $sign_date = date('m-d-Y', strtotime($user_oldest_contract['sign_date']));
                 }
                 $data = array(
@@ -597,22 +612,22 @@ class UserController{
                 );
 
                 $result = UserModel::updateContract($user_id, $data);
-                if($result['success']){
+                if ($result['success']) {
                     $data = $result['data'];
                     $data['address'] = $user['address'];
 
                     $this->session->set('is_user_fully_registered', 1);
                     $_SESSION['is_user_fully_registered'] = 1;
-                    if($user['role'] == 5 || $user['role'] == 1){
+                    if ($user['role'] == 5 || $user['role'] == 1) {
                         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($this->base_path . '/src/Modules/Users/project-manager.docx');
-                    }else if($user['role'] == 6 || $user['role'] == 99){
+                    } else if ($user['role'] == 6 || $user['role'] == 99) {
                         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($this->base_path . '/src/Modules/Users/sales-agent.docx');
-                    }else if($user['role'] == 11){
+                    } else if ($user['role'] == 11) {
                         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($this->base_path . '/src/Modules/Users/content-creator.docx');
-                    }else if($user['role'] == 12){
+                    } else if ($user['role'] == 12) {
                         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($this->base_path . '/src/Modules/Users/event-animator.docx');
                         $templateProcessor->setValue('${address}', $data['address']);
-                    }else if($user['role'] == 14){
+                    } else if ($user['role'] == 14) {
                         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($this->base_path . '/src/Modules/Users/influencers.docx');
                         $templateProcessor->setValue('${address}', $data['address']);
                     }
@@ -625,7 +640,7 @@ class UserController{
 
                     $signature = $data['signature'];
                     list($type, $signature) = explode(';', $signature);
-                    list(, $signature)      = explode(',', $signature);
+                    list(, $signature) = explode(',', $signature);
                     $signature = base64_decode($signature);
 
                     file_put_contents(__DIR__ . '/../tmp/image.png', $signature);
@@ -634,8 +649,8 @@ class UserController{
                     $templateProcessor->setImageValue('sign_se7entech', array('path' => __DIR__ . '/../tmp/se7entech-sign.jpeg', 'width' => 200, 'height' => 100));
 
                     $rnd_name = rand(0, 10000);
-                    $filename = $this->base_path . '/src/Modules/Users/tmp/downloadable'.$rnd_name.'.docx';
-                    
+                    $filename = $this->base_path . '/src/Modules/Users/tmp/downloadable' . $rnd_name . '.docx';
+
                     $templateProcessor->saveAs($filename);
 
                     header('Content-Description: File Transfer');
@@ -665,11 +680,101 @@ class UserController{
                     // //Save it
                     // $xmlWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord , 'PDF');
                     // $xmlWriter->save($this->base_path . '/src/Modules/Users/tmp/document.pdf');  
-                    
+
                 }
                 // echo var_dump($result);
 
             }
         }
+    }
+
+    private function _getJsonInput()
+    {
+        $input = file_get_contents('php://input');
+        $data = json_decode($input, true);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            return [];
+        }
+        return $data;
+    }
+
+    public function apiGenerateKey()
+    {
+        header('Content-Type: application/json');
+
+        // Auth check happens in middleware, but we double check session here
+        $userId = $this->session->get('userid');
+        $access = $this->session->get('access');
+
+        if (!$userId) {
+            http_response_code(401);
+            echo json_encode(['success' => false, 'message' => 'Unauthorized']);
+            exit;
+        }
+
+        // Logic: Users can generate their own key. Admins can generate for others (future).
+        // For now, generate for CURRENT user.
+
+        $newKey = UserModel::generateApiKey($userId);
+
+        if ($newKey) {
+            echo json_encode(['success' => true, 'api_key' => $newKey]);
+        } else {
+            http_response_code(500);
+            echo json_encode(['success' => false, 'message' => 'Failed to generate API Key']);
+        }
+        exit;
+    }
+
+    public function apiRevokeKey()
+    {
+        header('Content-Type: application/json');
+
+        $userId = $this->session->get('userid');
+
+        if (!$userId) {
+            http_response_code(401);
+            echo json_encode(['success' => false, 'message' => 'Unauthorized']);
+            exit;
+        }
+
+        if (UserModel::revokeApiKey($userId)) {
+            echo json_encode(['success' => true, 'message' => 'API Key revoked']);
+        } else {
+            http_response_code(500);
+            echo json_encode(['success' => false, 'message' => 'Failed to revoke API Key']);
+        }
+        exit;
+    }
+
+    public function webGenerateApiKey($params)
+    {
+        $id = $params['id'];
+        $model = new UserModel();
+        $key = UserModel::generateApiKey($id);
+
+        if ($key) {
+            $this->session->getFlashBag()->add('success', 'API Key generated successfully.');
+        } else {
+            $this->session->getFlashBag()->add('danger', 'Failed to generate API Key.');
+        }
+
+        header('Location: ' . $this->base_url . '/modules/users/' . $id);
+        exit;
+    }
+
+    public function webRevokeApiKey($params)
+    {
+        $id = $params['id'];
+        $success = UserModel::revokeApiKey($id);
+
+        if ($success) {
+            $this->session->getFlashBag()->add('success', 'API Key revoked successfully.');
+        } else {
+            $this->session->getFlashBag()->add('danger', 'Failed to revoke API Key.');
+        }
+
+        header('Location: ' . $this->base_url . '/modules/users/' . $id);
+        exit;
     }
 }

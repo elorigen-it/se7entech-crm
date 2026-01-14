@@ -7,7 +7,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Rakit\Validation\Validator;
 
-class TaskCategoryController {
+class TaskCategoryController
+{
 
     public $data = array(
         'errors' => array(),
@@ -16,29 +17,34 @@ class TaskCategoryController {
         'success' => null,
         'session' => array()
     );
+    public $session;
+    public $base_url;
 
-    public function __construct(Session $session){
+    public function __construct(Session $session)
+    {
         global $base_url;
         $this->base_url = $base_url;
         $this->session = $session;
         foreach ($this->session->getFlashBag()->all() as $type => $messages) {
-            if($type === 'last_data'){
+            if ($type === 'last_data') {
                 $this->data['last_data'] = $messages[0];
                 continue;
             }
-            foreach($messages as $message){
-                array_push($this->data['session'], '<div class="alert alert-'.$type.' p-2" role="alert">'.$message.'</div>');
+            foreach ($messages as $message) {
+                array_push($this->data['session'], '<div class="alert alert-' . $type . ' p-2" role="alert">' . $message . '</div>');
             }
         }
     }
 
-    public function index(){
+    public function index()
+    {
         $categories = TaskCategoryModel::getAll();
         $this->data['categories'] = $categories;
         include __DIR__ . '/../categories/index.php';
     }
 
-    public function postCategory(){
+    public function postCategory()
+    {
         $request = Request::createFromGlobals();
         $data = $request->request->all();
         $validator = new Validator;
@@ -47,7 +53,7 @@ class TaskCategoryController {
             'category-description' => 'required'
         ]);
         $validation->validate();
-        
+
         if ($validation->fails()) {
             $this->data['errors'] = $validation->errors()->all();
             $this->data['last_data'] = $data;
@@ -58,10 +64,10 @@ class TaskCategoryController {
         } else {
             $res = TaskCategoryModel::postCategory($data);
             $flashes = $this->session->getFlashBag();
-            if($res['success']){
+            if ($res['success']) {
                 $this->data['success'] = true;
                 $flashes->add('success', '<span>New Category created</span>');
-            }else{
+            } else {
                 $this->data['success'] = false;
                 $flashes->add('warning', '<span>Something happened with database</span>');
             }
@@ -69,7 +75,8 @@ class TaskCategoryController {
         }
     }
 
-    public function getById($params){
+    public function getById($params)
+    {
         $id = $params['id'];
         $request = Request::createFromGlobals();
         $data = $request->query->all();
@@ -85,16 +92,17 @@ class TaskCategoryController {
             include __DIR__ . '/../categories/index.php';
         } else {
             $res = TaskCategoryModel::getById($data['id']);
-            if($res){
+            if ($res) {
                 $this->data['current'] = $res[0];
                 include __DIR__ . '/../categories/single.php';
-            }else{
+            } else {
                 echo json_encode(array('error' => 'Something happened with database'));
             }
         }
     }
 
-    public function updateCategory($params){
+    public function updateCategory($params)
+    {
         $request = Request::createFromGlobals();
         $data = $request->request->all();
         $id = $params['id'];
@@ -108,28 +116,107 @@ class TaskCategoryController {
         if ($validation->fails()) {
             $this->data['errors'] = $validation->errors()->all();
             $res = TaskCategoryModel::getById($id);
-            if($res){
+            if ($res) {
                 $this->data['current'] = $res[0];
                 include __DIR__ . '/../categories/single.php';
             }
         } else {
             $res = TaskCategoryModel::updateCategory($id, $data);
-            if($res){
+            if ($res) {
                 $flashes = $this->session->getFlashBag();
                 $flashes->add('success', '<span>Category updated successfully</span>');
                 $this->data['success'] = true;
-                header('location: /modules/tasks/index.php/categories/'.$id);
-            }else{
+                header('location: /modules/tasks/index.php/categories/' . $id);
+            } else {
                 return json_encode(array('error' => 'Something happened with database'));
             }
         }
     }
 
-    public function deleteCategory($params){
+    public function deleteCategory($params)
+    {
         $request = Request::createFromGlobals();
         $id = $request->request->get('id');
-        if($id){
+        if ($id) {
             echo json_encode(array('success' => TaskCategoryModel::delete($id)));
         }
+    }
+    // API Methods
+
+    private function _getJsonInput()
+    {
+        $input = file_get_contents('php://input');
+        return json_decode($input, true) ?? [];
+    }
+
+    public function apiIndex()
+    {
+        $categories = TaskCategoryModel::getAll();
+        header('Content-Type: application/json');
+        echo json_encode(['success' => true, 'data' => $categories]);
+        exit;
+    }
+
+    public function apiCreate()
+    {
+        $data = $this->_getJsonInput();
+        $validator = new Validator;
+        $validation = $validator->make($data, [
+            'category-name' => 'required',
+            'category-description' => 'required'
+        ]);
+        $validation->validate();
+
+        if ($validation->fails()) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'errors' => $validation->errors()->all()]);
+            exit;
+        }
+
+        $res = TaskCategoryModel::postCategory($data);
+        header('Content-Type: application/json');
+        if ($res['success']) {
+            echo json_encode(['success' => true, 'message' => 'Category created']);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Database error']);
+        }
+        exit;
+    }
+
+    public function apiUpdate($params)
+    {
+        $id = $params['id'];
+        $data = $this->_getJsonInput();
+
+        $validator = new Validator;
+        $validation = $validator->make($data, [
+            'category-name' => 'required',
+            'category-description' => 'required',
+        ]);
+        $validation->validate();
+
+        if ($validation->fails()) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'errors' => $validation->errors()->all()]);
+            exit;
+        }
+
+        $res = TaskCategoryModel::updateCategory($id, $data);
+        header('Content-Type: application/json');
+        if ($res) {
+            echo json_encode(['success' => true, 'message' => 'Category updated']);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Database error']);
+        }
+        exit;
+    }
+
+    public function apiDelete($params)
+    {
+        $id = $params['id'];
+        $res = TaskCategoryModel::delete($id);
+        header('Content-Type: application/json');
+        echo json_encode(['success' => $res, 'message' => $res ? 'Category deleted' : 'Database error']);
+        exit;
     }
 }

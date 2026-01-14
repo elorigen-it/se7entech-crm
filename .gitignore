@@ -26,6 +26,4 @@ node_modules/
 *.secret
 # Ignore all environment files
 error_log
-modules/**/error_log
-src/Modules/Contract/tmp
-uploads/
+

@@ -9,7 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Rakit\Validation\Validator;
 
-class ServicesController{
+class ServicesController
+{
     public $data = array(
         'errors' => array(),
         'last_data' => array(),
@@ -18,57 +19,61 @@ class ServicesController{
         'session' => array()
     );
 
-    public function __construct(Session $session){
+    public function __construct(Session $session)
+    {
         global $base_url;
         $this->base_url = $base_url;
         $this->session = $session;
         $this->session->set('access', $_SESSION['access']);
         $this->session->set('userid', $_SESSION['userid']);
-        
+
         $this->data['services'] = $this->getServices();
 
-        if($this->session->get('access') == '0'){
+        if ($this->session->get('access') == '0') {
             $this->data['departments'] = DepartmentsModel::getAll();
-        }else{
+        } else {
             $this->data['departments'] = DepartmentsModel::getUserDepartment($this->session->get('userid'));
         }
 
         foreach ($this->session->getFlashBag()->all() as $type => $messages) {
-            if($type === 'last_data'){
+            if ($type === 'last_data') {
                 $this->data['last_data'] = $messages[0];
                 continue;
             }
-            foreach($messages as $message){
-                array_push($this->data['session'], '<div class="alert alert-'.$type.' p-2" role="alert">'.$message.'</div>');
+            foreach ($messages as $message) {
+                array_push($this->data['session'], '<div class="alert alert-' . $type . ' p-2" role="alert">' . $message . '</div>');
             }
         }
 
     }
-    public function index(){
+    public function index()
+    {
         include __DIR__ . '/../index.php';
     }
 
-    public function getById($params){
+    public function getById($params)
+    {
         $id = $params['id'];
-        if($id){
+        if ($id) {
             $record = ServicesModel::getById($id);
-            if($record){
+            if ($record) {
                 $this->data['current'] = $record;
                 include __DIR__ . '/../single.php';
-            }else{
+            } else {
                 $flashes = $this->session->getFlashBag();
                 $flashes->add('warning', 'Service id not found');
 
                 header('location: /modules/services/');
-            }  
-        }else{
+            }
+        } else {
             $flashes = $this->session->getFlashBag();
             $flashes->add('warning', 'Bad Request');
             header('location: ' . $this->base_url . '/modules/services/');
         }
     }
 
-    private function _validateData($data){
+    private function _validateData($data)
+    {
         $validator = new Validator;
         // $validation->make
         $validation = $validator->make($data, [
@@ -80,15 +85,16 @@ class ServicesController{
         $validation->setAlias('service-price', 'Service price');
         $validation->setAlias('department', 'Department');
 
-        
+
         $validation->validate();
 
         return $validation;
     }
 
-    public function postService(){
+    public function postService()
+    {
         $request = Request::createFromGlobals();
-        if($request->request->get('save')){
+        if ($request->request->get('save')) {
             $validation = $this->_validateData($request->request->all());
 
             if ($validation->fails()) {
@@ -98,23 +104,23 @@ class ServicesController{
                 $messages = $errors->all('<span>:message</span>');
                 $flashes = $this->session->getFlashBag();
                 // add flash messages
-                foreach($messages as $msg){
+                foreach ($messages as $msg) {
                     $flashes->add(
                         'danger',
                         $msg
                     );
                 }
                 $flashes->add('last_data', $request->request->all());
-            }else{
+            } else {
                 $res = ServicesModel::postService($request->request->all());
                 $flashes = $this->session->getFlashBag();
-                if($res){
+                if ($res) {
                     $this->data['success'] = true;
                     $flashes->add(
                         'success',
                         '<span>New Service created</span>'
                     );
-                }else{
+                } else {
                     $this->data['success'] = false;
                     $flashes->add(
                         'warning',
@@ -127,10 +133,11 @@ class ServicesController{
         }
     }
 
-    public function updateService($params){
+    public function updateService($params)
+    {
         $request = Request::createFromGlobals();
         $id = $params['id'];
-        if($request->request->get('save')){
+        if ($request->request->get('save')) {
             $validation = $this->_validateData($request->request->all());
             if ($validation->fails()) {
                 // handling errors
@@ -139,7 +146,7 @@ class ServicesController{
                 $messages = $errors->all('<span>:message</span>');
                 $flashes = $this->session->getFlashBag();
                 // add flash messages
-                foreach($messages as $msg){
+                foreach ($messages as $msg) {
                     $flashes->add(
                         'danger',
                         $msg
@@ -147,16 +154,16 @@ class ServicesController{
                 }
                 $flashes->add('current', $request->request->all());
                 // $this->data['current'] = $request->request->all();
-            }else{
+            } else {
                 $res = ServicesModel::update($id, $request->request->all());
                 $flashes = $this->session->getFlashBag();
-                if($res){
+                if ($res) {
                     $this->data['success'] = true;
                     $flashes->add(
                         'success',
                         '<span>Service updated</span>'
                     );
-                }else{
+                } else {
                     $this->data['success'] = false;
                     $flashes->add(
                         'warning',
@@ -166,23 +173,25 @@ class ServicesController{
             }
 
             header('location: ' . $this->base_url . '/modules/services/');
-        } 
+        }
     }
 
-    public function getServices(){
+    public function getServices()
+    {
         $services = array();
-        if($this->session->get('access') == '0'){
+        if ($this->session->get('access') == '0') {
             $services = ServicesModel::getAll();
-        }else{
+        } else {
             $services = ServicesModel::getUserServices($this->session->get('userid'));
         }
         return $services;
     }
 
-    public function delete($params){
+    public function delete($params)
+    {
         $request = Request::createFromGlobals();
         $id = $request->request->get('id');
-        if($id){
+        if ($id) {
             // $flashes = $this->session->getFlashBag();
             // // add flash messages
             // $flashes->add(
@@ -192,4 +201,96 @@ class ServicesController{
             echo json_encode(array('success' => ServicesModel::delete($id)));
         }
     }
+
+    // API Methods
+
+    private function _getJsonInput()
+    {
+        $input = json_decode(file_get_contents('php://input'), true);
+        if (json_last_error() === JSON_ERROR_NONE) {
+            return $input;
+        }
+        return $_POST; // Fallback to POST
+    }
+
+    public function apiGetAll()
+    {
+        header('Content-Type: application/json');
+        try {
+            $services = $this->getServices();
+            echo json_encode(['success' => true, 'data' => $services]);
+        } catch (\Exception $e) {
+            http_response_code(500);
+            echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+        }
+        exit;
+    }
+
+    public function apiCreate()
+    {
+        header('Content-Type: application/json');
+        $data = $this->_getJsonInput();
+
+        $validation = $this->_validateData($data);
+
+        if ($validation->fails()) {
+            http_response_code(400);
+            echo json_encode(['success' => false, 'errors' => $validation->errors()->toArray()]);
+            exit;
+        }
+
+        $res = ServicesModel::postService($data);
+        if ($res) {
+            echo json_encode(['success' => true, 'message' => 'Service created', 'id' => $res]);
+        } else {
+            http_response_code(500);
+            echo json_encode(['success' => false, 'message' => 'Database error']);
+        }
+        exit;
+    }
+
+    public function apiUpdate($params)
+    {
+        header('Content-Type: application/json');
+        $id = $params['id'];
+        $data = $this->_getJsonInput();
+
+        $validation = $this->_validateData($data);
+        if ($validation->fails()) {
+            http_response_code(400);
+            echo json_encode(['success' => false, 'errors' => $validation->errors()->toArray()]);
+            exit;
+        }
+
+        $res = ServicesModel::update($id, $data);
+        if ($res) {
+            echo json_encode(['success' => true, 'message' => 'Service updated']);
+        } else {
+            http_response_code(500);
+            echo json_encode(['success' => false, 'message' => 'Database error']);
+        }
+        exit;
+    }
+
+    public function apiDelete($params)
+    {
+        header('Content-Type: application/json');
+        $id = $params['id'];
+
+        if (!$id) {
+            http_response_code(400);
+            echo json_encode(['success' => false, 'message' => 'ID required']);
+            exit;
+        }
+
+        $res = ServicesModel::delete($id);
+        if ($res) {
+            echo json_encode(['success' => true, 'message' => 'Service deleted']);
+        } else {
+            http_response_code(500);
+            echo json_encode(['success' => false, 'message' => 'Database error']);
+        }
+        exit;
+    }
+
 }

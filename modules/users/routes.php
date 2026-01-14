@@ -7,9 +7,10 @@ $definitions = array(
         'route' => array(
             'path' => '/',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Users\Controllers\UserController', 
-                'method'=>'index',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm', 'Se7entech\Contractnew\Middlewares\isAdminMiddleware')),
+                'controller' => 'Se7entech\Contractnew\Modules\Users\Controllers\UserController',
+                'method' => 'index',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm', 'Se7entech\Contractnew\Middlewares\isAdminMiddleware')
+            ),
             'methods' => ['GET'],
         )
     ),
@@ -18,9 +19,10 @@ $definitions = array(
         'route' => array(
             'path' => '/',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Users\Controllers\UserController', 
-                'method'=>'postUser',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm', 'Se7entech\Contractnew\Middlewares\isAdminMiddleware')),
+                'controller' => 'Se7entech\Contractnew\Modules\Users\Controllers\UserController',
+                'method' => 'postUser',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm', 'Se7entech\Contractnew\Middlewares\isAdminMiddleware')
+            ),
             'methods' => ['POST'],
         )
     ),
@@ -29,9 +31,10 @@ $definitions = array(
         'route' => array(
             'path' => '/{id}',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Users\Controllers\UserController', 
-                'method'=>'getById',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm', 'Se7entech\Contractnew\Middlewares\isAdminMiddleware')),
+                'controller' => 'Se7entech\Contractnew\Modules\Users\Controllers\UserController',
+                'method' => 'getById',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm', 'Se7entech\Contractnew\Middlewares\isAdminMiddleware')
+            ),
             'methods' => ['GET'],
             'params' => array('id' => '[0-9]+') //query parameters requirements
         )
@@ -41,9 +44,10 @@ $definitions = array(
         'route' => array(
             'path' => '/{id}',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Users\Controllers\UserController', 
-                'method'=>'updateUser',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm', 'Se7entech\Contractnew\Middlewares\isAdminMiddleware')),
+                'controller' => 'Se7entech\Contractnew\Modules\Users\Controllers\UserController',
+                'method' => 'updateUser',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm', 'Se7entech\Contractnew\Middlewares\isAdminMiddleware')
+            ),
             'methods' => ['POST'],
             'params' => array('id' => '[0-9]+') //query parameters requirements
         )
@@ -53,9 +57,10 @@ $definitions = array(
         'route' => array(
             'path' => '/taxes/',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Users\Controllers\UserController', 
-                'method'=>'taxes',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
+                'controller' => 'Se7entech\Contractnew\Modules\Users\Controllers\UserController',
+                'method' => 'taxes',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
             'methods' => ['GET'],
         ),
     ),
@@ -64,9 +69,10 @@ $definitions = array(
         'route' => array(
             'path' => '/update-download/',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Users\Controllers\UserController', 
-                'method'=>'updateDownloadTax',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
+                'controller' => 'Se7entech\Contractnew\Modules\Users\Controllers\UserController',
+                'method' => 'updateDownloadTax',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
             'methods' => ['POST'],
             'params' => array('id' => '[0-9]+') //query parameters requirements
         )
@@ -76,9 +82,10 @@ $definitions = array(
         'route' => array(
             'path' => '/update-download-contract/',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Users\Controllers\UserController', 
-                'method'=>'updateDownloadContract',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')),
+                'controller' => 'Se7entech\Contractnew\Modules\Users\Controllers\UserController',
+                'method' => 'updateDownloadContract',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
             'methods' => ['POST'],
             'params' => array('id' => '[0-9]+') //query parameters requirements
         )
@@ -88,17 +95,68 @@ $definitions = array(
         'route' => array(
             'path' => '/delete/',
             'detail' => array(
-                'controller' => 'Se7entech\Contractnew\Modules\Users\Controllers\UserController', 
-                'method'=>'delete',
-                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm', 'Se7entech\Contractnew\Middlewares\isAdminMiddleware')),
+                'controller' => 'Se7entech\Contractnew\Modules\Users\Controllers\UserController',
+                'method' => 'delete',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm', 'Se7entech\Contractnew\Middlewares\isAdminMiddleware')
+            ),
             'methods' => ['POST'],
             // 'params' => array('id' => '[0-9]+') //query parameters requirements
+        )
+    ),
+    array(
+        'name' => 'apiGenerateKey',
+        'route' => array(
+            'path' => '/api/generate-key',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Users\Controllers\UserController',
+                'method' => 'apiGenerateKey',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\JWTMiddleware')
+            ), // Use JWTMiddleware
+            'methods' => ['POST'],
+        )
+    ),
+    array(
+        'name' => 'apiRevokeKey',
+        'route' => array(
+            'path' => '/api/revoke-key',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Users\Controllers\UserController',
+                'method' => 'apiRevokeKey',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\JWTMiddleware')
+            ), // Use JWTMiddleware
+            'methods' => ['POST'],
+        )
+    ),
+    array(
+        'name' => 'webGenerateApiKey',
+        'route' => array(
+            'path' => '/web/generate-key/{id}',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Users\Controllers\UserController',
+                'method' => 'webGenerateApiKey',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm', 'Se7entech\Contractnew\Middlewares\isAdminMiddleware')
+            ),
+            'methods' => ['POST'],
+            'params' => array('id' => '[0-9]+')
+        )
+    ),
+    array(
+        'name' => 'webRevokeApiKey',
+        'route' => array(
+            'path' => '/web/revoke-key/{id}',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Users\Controllers\UserController',
+                'method' => 'webRevokeApiKey',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware', 'Se7entech\Contractnew\Middlewares\hasFilledRequirementForm', 'Se7entech\Contractnew\Middlewares\isAdminMiddleware')
+            ),
+            'methods' => ['POST'],
+            'params' => array('id' => '[0-9]+')
         )
     )
 );
 
 $routes = array();
-foreach($definitions as $d){
+foreach ($definitions as $d) {
     $routeDef = array();
     $params = isset($d['params']) ? $d['params'] : [];
     $route = new Route($d['route']['path'], $d['route']['detail'], $params);

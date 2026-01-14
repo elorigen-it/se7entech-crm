@@ -20,7 +20,8 @@ use Se7entech\Contractnew\Helpers\Mailer;
 use Se7entech\Contractnew\Helpers\TimezoneUtils;
 use GeoIp2\Database\Reader;
 
-class TaskController {
+class TaskController
+{
 
     public $data = array(
         'errors' => array(),
@@ -29,25 +30,29 @@ class TaskController {
         'success' => null,
         'session' => array()
     );
- 
-    public function __construct(Session $session){
+    public $session;
+    public $base_url;
+
+    public function __construct(Session $session)
+    {
         global $base_url;
         $this->base_url = $base_url;
         $this->session = $session;
         // $this->data['tasks'] = $this->getTasks();
         foreach ($this->session->getFlashBag()->all() as $type => $messages) {
-            if($type === 'last_data'){
+            if ($type === 'last_data') {
                 $this->data['last_data'] = $messages[0];
                 continue;
             }
-            foreach($messages as $message){
-                array_push($this->data['session'], '<div class="alert alert-'.$type.' p-2" role="alert">'.$message.'</div>');
+            foreach ($messages as $message) {
+                array_push($this->data['session'], '<div class="alert alert-' . $type . ' p-2" role="alert">' . $message . '</div>');
             }
         }
 
     }
 
-    public function index(){
+    public function index()
+    {
         $tasks = TaskModel::getAll();
         $users = UserModel::getAll();
         $customers = CustomersModel::getAllV2();
@@ -60,8 +65,8 @@ class TaskController {
         $this->data['labels'] = $labels;
         $this->data['categories'] = $categories;
 
-        if($this->session->get('access') != '0'){
-            $tasks = array_filter($tasks, function($task) {
+        if ($this->session->get('access') != '0') {
+            $tasks = array_filter($tasks, function ($task) {
                 return $task['asigned_to'] == $this->session->get('userid');
             });
             $this->data['tasks'] = $tasks;
@@ -69,7 +74,8 @@ class TaskController {
         include __DIR__ . '/../index.php';
     }
 
-    public function postTask(){
+    public function postTask()
+    {
         $request = Request::createFromGlobals();
         $data = $request->request->all();
         $validator = new Validator;
@@ -91,7 +97,7 @@ class TaskController {
             $labels = TaskLabelModel::getAll();
             $categories = TaskCategoryModel::getAll();
             $customers = CustomersModel::getAllV2();
-            
+
             $flashes = $this->session->getFlashBag();
             foreach ($this->data['errors'] as $error) {
                 $flashes->add('danger', $error);
@@ -101,21 +107,21 @@ class TaskController {
             $this->data['labels'] = $labels;
             $this->data['categories'] = $categories;
             $this->data['customers'] = $customers;
-            
+
             include __DIR__ . '/../index.php';
         } else {
             $data['deadline'] = TimezoneUtils::fromUserTimeZoneDateStringToTimestamp($data['deadline']);
             $data['estimated_time'] = $data['estimated_time'] ? $data['estimated_time'] * 60 : 0;
             $res = TaskModel::postTask($data);
             $flashes = $this->session->getFlashBag();
-            if($res['success']){
+            if ($res['success']) {
                 $this->data['success'] = true;
                 $flashes->add(
                     'success',
                     '<span>New Task created</span>'
                 );
                 //send email to user    
-                $user = UserModel::getById($data['task-user']);            
+                $user = UserModel::getById($data['task-user']);
                 $subject = 'New Task Created ' . $data['task-name'];
                 //get from template
                 $template = file_get_contents(__DIR__ . '/../../../../email-templates/index.html');
@@ -128,7 +134,7 @@ class TaskController {
                 $email = new Mailer('no-reply@se7entech.net', 'Se7entech CRM', $user['email'], $user['first_name'] . $user['last_name'], $subject, $template, null, $smtpUser, $smtpPass);
                 $email->send();
 
-            }else{
+            } else {
                 $this->data['success'] = false;
                 $flashes->add(
                     'warning',
@@ -139,7 +145,8 @@ class TaskController {
         }
     }
 
-    public function getById($params){
+    public function getById($params)
+    {
         $id = $params['id'];
         $request = Request::createFromGlobals();
         $data = $request->query->all();
@@ -160,7 +167,7 @@ class TaskController {
             $categories = TaskCategoryModel::getAll();
             $res = TaskModel::getById($data['id']);
 
-            if($res){
+            if ($res) {
                 $this->data['current'] = $res[0];
                 $this->data['current']['deadline'] = isset($this->data['current']['deadline']) ? TimezoneUtils::fromTimestampToUserTimezoneDateString($this->data['current']['deadline']) : '';
                 $this->data['current']['estimated_time'] = isset($this->data['current']['estimated_time']) ? $this->data['current']['estimated_time'] / 60 : 0;
@@ -172,13 +179,14 @@ class TaskController {
                 $this->data['projects'] = ProjectsModel::getByCustomerId($this->data['current']['customer_id']);
 
                 include __DIR__ . '/../single.php';
-            }else{
+            } else {
                 echo json_encode(array('error' => 'Something happened with database'));
             }
         }
     }
 
-    public function updateTask($params){
+    public function updateTask($params)
+    {
         $request = Request::createFromGlobals();
         $data = $request->request->all();
         $id = $params['id'];
@@ -199,7 +207,7 @@ class TaskController {
             $labels = TaskLabelModel::getAll();
             $categories = TaskCategoryModel::getAll();
             $res = TaskModel::getById($id);
-            if($res){
+            if ($res) {
                 $this->data['current'] = $res[0];
                 $this->data['customers'] = $customers;
                 $this->data['users'] = $users;
@@ -213,30 +221,31 @@ class TaskController {
             $data['custom_total_time'] = ($data['custom_total_time']) ? $data['custom_total_time'] * 60 : 0;
 
             $res = TaskModel::updateTask($id, $data);
-            if($res){
-                header('location: /modules/tasks/index.php/'.$id.'/view');
-            }else{
+            if ($res) {
+                header('location: /modules/tasks/index.php/' . $id . '/view');
+            } else {
                 return json_encode(array('error' => 'Something happened with database'));
             }
         }
     }
 
-    public function viewById($params){
+    public function viewById($params)
+    {
         $id = $params['id'];
 
-        if($id){
+        if ($id) {
             $res = TaskModel::getById($id);
             $labels = TaskLabelModel::getAll();
             $categories = TaskCategoryModel::getAll();
-            if($res){
+            if ($res) {
                 $projects = ProjectsModel::getByCustomerId($res[0]['customer_id']);
                 $this->data['current'] = $res[0];
                 $this->data['labels'] = $labels;
                 $this->data['categories'] = $categories;
                 $this->data['projects'] = $projects;
-                if($this->data['current']['deadline']){
+                if ($this->data['current']['deadline']) {
                     $deadline = TimezoneUtils::fromTimestampToUserTimezoneDateString($this->data['current']['deadline']);
-                }else{
+                } else {
                     $deadline = 'No deadline set';
                 }
                 $this->data['current']['deadline'] = $deadline;
@@ -244,24 +253,25 @@ class TaskController {
                 $this->data['current']['custom_total_time'] = isset($this->data['current']['custom_total_time']) ? $this->data['current']['custom_total_time'] / 60 : 'Not set';
 
                 include __DIR__ . '/../view.php';
-            }else{
+            } else {
                 $flashes = $this->session->getFlashBag();
                 $flashes->add('warning', 'Task id not found');
 
                 header('location: /modules/tasks/');
-            } 
-        }else{
+            }
+        } else {
             $flashes = $this->session->getFlashBag();
             $flashes->add('warning', 'Bad Request');
             header('location: ' . $this->base_url . '/modules/tasks/');
         }
     }
 
-    public function puseTask($params){
+    public function puseTask($params)
+    {
         $id = $params['id'];
         $reason = $params['reason'];
         $task = TaskModel::getById($id);
-        if(!$task){
+        if (!$task) {
             return json_encode(array('error' => 'Task not found'));
         }
 
@@ -280,7 +290,7 @@ class TaskController {
         );
         $res = TaskModel::pauseTask($id, $update);
 
-        if($res){
+        if ($res) {
             $task = TaskModel::getById($id);
             $this->data['current'] = $task[0];
             $flashes = $this->session->getFlashBag();
@@ -289,17 +299,18 @@ class TaskController {
                 'success',
                 '<span>Task paused</span>'
             );
-            header('location: /modules/tasks/index.php/'.$id.'/view');
-        }else{
+            header('location: /modules/tasks/index.php/' . $id . '/view');
+        } else {
             echo json_encode(array('error' => 'Something happened with database'));
         }
     }
 
-    public function resumeTask($params){
+    public function resumeTask($params)
+    {
         $id = $params['id'];
-        
+
         $task = TaskModel::getById($id);
-        if(!$task){
+        if (!$task) {
             return json_encode(array('error' => 'Task not found'));
         }
 
@@ -314,19 +325,19 @@ class TaskController {
         // 4. Calcular el tiempo total pausado
         $total_paused = 0;
         for ($i = 0; $i < count($paused_intervals); $i += 2) {
-            if (isset($paused_intervals[$i+1])) {
-                $total_paused += ($paused_intervals[$i+1] - $paused_intervals[$i]);
+            if (isset($paused_intervals[$i + 1])) {
+                $total_paused += ($paused_intervals[$i + 1] - $paused_intervals[$i]);
             }
         }
-        
+
         $update = array(
-            'pause_intervals' => $task[0]['pause_intervals'] . ','. $timestamp,
+            'pause_intervals' => $task[0]['pause_intervals'] . ',' . $timestamp,
             'status' => 'started',
             'total_pauses' => $total_paused,
         );
         $res = TaskModel::resumeTask($id, $update);
 
-        if($res){
+        if ($res) {
             $task = TaskModel::getById($id);
             $this->data['current'] = $task[0];
             $flashes = $this->session->getFlashBag();
@@ -335,17 +346,18 @@ class TaskController {
                 'success',
                 '<span>Task resumed</span>'
             );
-            header('location: /modules/tasks/index.php/'.$id.'/view');
-        }else{
+            header('location: /modules/tasks/index.php/' . $id . '/view');
+        } else {
             echo json_encode(array('error' => 'Something happened with database'));
         }
     }
 
-    public function startTask($params){
+    public function startTask($params)
+    {
         $id = $params['id'];
-        
+
         $task = TaskModel::getById($id);
-        if(!$task){
+        if (!$task) {
             return json_encode(array('error' => 'Task not found'));
         }
 
@@ -355,7 +367,7 @@ class TaskController {
         );
         $res = TaskModel::startTask($id, $update);
 
-        if($res){
+        if ($res) {
             $task = TaskModel::getById($id);
             $this->data['current'] = $task[0];
             $flashes = $this->session->getFlashBag();
@@ -364,31 +376,32 @@ class TaskController {
                 'success',
                 '<span>Task started</span>'
             );
-            header('location: /modules/tasks/index.php/'.$id.'/view');
-        }else{
+            header('location: /modules/tasks/index.php/' . $id . '/view');
+        } else {
             echo json_encode(array('error' => 'Something happened with database'));
         }
     }
 
-    public function finishTask($params){
+    public function finishTask($params)
+    {
         $id = $params['id'];
         $resource = $params['resource'];
         $resource = base64_decode($resource);
         $task = TaskModel::getById($id);
 
-        if(!$task){
+        if (!$task) {
             return json_encode(array('error' => 'Task not found'));
         }
         $timestamp = time();
 
         $start_time = new \DateTime('@' . $task[0]['start_time']);
-        
+
         // 2. Calcular el tiempo total (en segundos)
         $total_seconds = $timestamp - $start_time->getTimestamp();
-        
+
         // 3. Obtener y procesar los intervalos de pausa (ejemplo: "1641000000,1641003600,1641010000,1641012000")
         $paused_intervals = explode(',', $task[0]['pause_intervals']);
-        
+
         // Si es impar, eliminamos el último timestamp (pausa no finalizada)
         if (count($paused_intervals) % 2 !== 0) {
             array_pop($paused_intervals); // Elimina el último elemento
@@ -397,11 +410,11 @@ class TaskController {
         // 4. Calcular el tiempo total pausado
         $total_paused = 0;
         for ($i = 0; $i < count($paused_intervals); $i += 2) {
-            if (isset($paused_intervals[$i+1])) {
-                $total_paused += ($paused_intervals[$i+1] - $paused_intervals[$i]);
+            if (isset($paused_intervals[$i + 1])) {
+                $total_paused += ($paused_intervals[$i + 1] - $paused_intervals[$i]);
             }
         }
-        
+
         // 5. Calcular el tiempo neto (total - pausas)
         $net_seconds = $total_seconds - $total_paused;
         $update = array(
@@ -414,7 +427,7 @@ class TaskController {
 
         $res = TaskModel::finishTask($id, $update);
 
-        if($res){
+        if ($res) {
             $task = TaskModel::getById($id);
             $this->data['current'] = $task[0];
             $flashes = $this->session->getFlashBag();
@@ -423,17 +436,18 @@ class TaskController {
                 'success',
                 '<span>Task finished</span>'
             );
-            header('location: /modules/tasks/index.php/'.$id.'/view');
-        }else{
+            header('location: /modules/tasks/index.php/' . $id . '/view');
+        } else {
             echo json_encode(array('error' => 'Something happened with database'));
         }
     }
 
-    public function reopenTask($params){
+    public function reopenTask($params)
+    {
         $id = $params['id'];
-        
+
         $task = TaskModel::getById($id);
-        if(!$task){
+        if (!$task) {
             return json_encode(array('error' => 'Task not found'));
         }
 
@@ -444,7 +458,7 @@ class TaskController {
         );
         $res = TaskModel::reopenTask($id, $update);
 
-        if($res){
+        if ($res) {
             $task = TaskModel::getById($id);
             $this->data['current'] = $task[0];
             $flashes = $this->session->getFlashBag();
@@ -453,16 +467,17 @@ class TaskController {
                 'success',
                 '<span>Task reopened</span>'
             );
-            header('location: /modules/tasks/index.php/'.$id.'/view');
-        }else{
+            header('location: /modules/tasks/index.php/' . $id . '/view');
+        } else {
             echo json_encode(array('error' => 'Something happened with database'));
         }
     }
 
-    public function deleteTask($params){
+    public function deleteTask($params)
+    {
         $request = Request::createFromGlobals();
         $id = $request->request->get('id');
-        if($id){
+        if ($id) {
             // $flashes = $this->session->getFlashBag();
             // // add flash messages
             // $flashes->add(
@@ -476,29 +491,31 @@ class TaskController {
     /**
      * Render the Admin Dashboard View
      */
-    public function adminDashboard(){
+    public function adminDashboard()
+    {
         // Check admin access
-        if($this->session->get('access') != '0'){
+        if ($this->session->get('access') != '0') {
             header('Location: ' . $this->base_url . '/dashboard');
             exit;
         }
-        
+
         include __DIR__ . '/../admin_dashboard.php';
     }
     /**
      * API Endpoint: Get data for Admin Dashboard
      */
-    public function getAdminDashboardData(){
+    public function getAdminDashboardData()
+    {
         // Check admin access
-        if($this->session->get('access') != '0'){
+        if ($this->session->get('access') != '0') {
             echo json_encode(['error' => 'Unauthorized']);
             exit;
         }
         $users = UserModel::getAll();
         $tasks = TaskModel::getAll();
-        
+
         $usersMap = [];
-        foreach($users as $user){
+        foreach ($users as $user) {
             $usersMap[$user['id']] = $user;
             $usersMap[$user['id']]['tasks'] = [];
             $usersMap[$user['id']]['stats'] = [
@@ -506,22 +523,22 @@ class TaskController {
                 'daily_history' => []
             ];
         }
-        foreach($tasks as $task){
+        foreach ($tasks as $task) {
             $userId = $task['asigned_to'];
-            if(isset($usersMap[$userId])){
+            if (isset($usersMap[$userId])) {
                 // Calculate Net Duration using view.php logic
                 $task['calculated_duration'] = $this->calculateNetDuration($task);
 
                 $usersMap[$userId]['tasks'][] = $task;
-                
+
                 // Calculate Total Hours using the new calculated duration
                 $totalSeconds = $task['calculated_duration'];
                 $usersMap[$userId]['stats']['total_hours'] += ($totalSeconds / 3600);
 
                 // Calculate Daily History
                 $dailyData = $this->calculateDailyHours($task);
-                foreach($dailyData as $date => $seconds){
-                    if(!isset($usersMap[$userId]['stats']['daily_history'][$date])){
+                foreach ($dailyData as $date => $seconds) {
+                    if (!isset($usersMap[$userId]['stats']['daily_history'][$date])) {
                         $usersMap[$userId]['stats']['daily_history'][$date] = 0;
                     }
                     $usersMap[$userId]['stats']['daily_history'][$date] += ($seconds / 3600);
@@ -529,13 +546,13 @@ class TaskController {
             }
         }
         // Format daily history for frontend (array of objects)
-        foreach($usersMap as &$user){
+        foreach ($usersMap as &$user) {
             $history = [];
-            foreach($user['stats']['daily_history'] as $date => $hours){
+            foreach ($user['stats']['daily_history'] as $date => $hours) {
                 $history[] = ['date' => $date, 'hours' => round($hours, 2)];
             }
             // Sort by date desc
-            usort($history, function($a, $b) {
+            usort($history, function ($a, $b) {
                 return strtotime($b['date']) - strtotime($a['date']);
             });
             $user['stats']['daily_history'] = $history;
@@ -546,77 +563,81 @@ class TaskController {
         exit;
     }
 
-        /**
+    /**
      * Helper: Calculate net duration matching view.php logic
      */
-    private function calculateNetDuration($task){
-        if(!$task['start_time']) return 0;
-        
+    private function calculateNetDuration($task)
+    {
+        if (!$task['start_time'])
+            return 0;
+
         $end_time = !empty($task['end_time']) ? $task['end_time'] : time();
-        
+
         // 3. Obtener y procesar los intervalos de pausa
         $paused_intervals = !empty($task['pause_intervals']) ? explode(',', $task['pause_intervals']) : [];
 
         // Handle PAUSED state: effective end time is the start of the last pause
-        if($task['status'] == 'paused' && !empty($paused_intervals)){
+        if ($task['status'] == 'paused' && !empty($paused_intervals)) {
             $last_pause_start = end($paused_intervals);
-            if($last_pause_start){
+            if ($last_pause_start) {
                 $end_time = $last_pause_start;
             }
         }
-        
+
         // 2. Calcular el tiempo total (en segundos)
         $total_seconds = $end_time - $task['start_time'];
-        
+
         // Si es impar, eliminamos el último timestamp (pausa no finalizada)
         if (count($paused_intervals) % 2 !== 0) {
-            array_pop($paused_intervals); 
+            array_pop($paused_intervals);
         }
 
         // 4. Calcular el tiempo total pausado
         $total_paused = 0;
         for ($i = 0; $i < count($paused_intervals); $i += 2) {
-            if (isset($paused_intervals[$i+1])) {
-                $total_paused += ($paused_intervals[$i+1] - $paused_intervals[$i]);
+            if (isset($paused_intervals[$i + 1])) {
+                $total_paused += ($paused_intervals[$i + 1] - $paused_intervals[$i]);
             }
         }
-        
+
         // 5. Calcular el tiempo neto (total - pausas)
         $net_seconds = $total_seconds - $total_paused;
         return $net_seconds > 0 ? $net_seconds : 0;
     }
-        /**
+    /**
      * Helper: Calculate daily hours from task timestamps
      */
-    private function calculateDailyHours($task){
+    private function calculateDailyHours($task)
+    {
         $dailyLog = [];
-        
+
         // If no start time, we can't calculate history
-        if(empty($task['start_time'])) return [];
+        if (empty($task['start_time']))
+            return [];
         $intervals = [];
         $currentStart = $task['start_time'];
-        
+
         // Parse pause intervals
         // Format: start_pause,end_pause,start_pause,end_pause...
         $pauses = [];
-        if(!empty($task['pause_intervals'])){
+        if (!empty($task['pause_intervals'])) {
             $parts = explode(',', $task['pause_intervals']);
-            for($i = 0; $i < count($parts); $i+=2){
-                if(isset($parts[$i]) && isset($parts[$i+1])){
-                    $pauses[] = ['start' => $parts[$i], 'end' => $parts[$i+1]];
+            for ($i = 0; $i < count($parts); $i += 2) {
+                if (isset($parts[$i]) && isset($parts[$i + 1])) {
+                    $pauses[] = ['start' => $parts[$i], 'end' => $parts[$i + 1]];
                 }
             }
         }
         // Determine end time for calculation (finished time or now if active)
         $finalEnd = !empty($task['end_time']) ? $task['end_time'] : time();
-        
+
         // FIX: If currently paused, the effective end of the last work segment is the start of the current pause
-        if($task['status'] == 'paused' && !empty($task['pause_intervals'])){
-             $parts = explode(',', $task['pause_intervals']);
-             $lastTimestamp = end($parts);
-             if($lastTimestamp){
-                 $finalEnd = $lastTimestamp;
-             }
+        if ($task['status'] == 'paused' && !empty($task['pause_intervals'])) {
+            $parts = explode(',', $task['pause_intervals']);
+            $lastTimestamp = end($parts);
+            if ($lastTimestamp) {
+                $finalEnd = $lastTimestamp;
+            }
         }
 
         // Build work segments: [Start, End]
@@ -626,35 +647,282 @@ class TaskController {
         // Last Segment: Last Pause End -> Final End
         $workSegments = [];
         $lastWorkStart = $currentStart;
-        foreach($pauses as $pause){
-            if($pause['start'] > $lastWorkStart){
+        foreach ($pauses as $pause) {
+            if ($pause['start'] > $lastWorkStart) {
                 $workSegments[] = ['start' => $lastWorkStart, 'end' => $pause['start']];
             }
             $lastWorkStart = $pause['end'];
         }
-        
+
         // Add final segment
-        if($finalEnd > $lastWorkStart){
+        if ($finalEnd > $lastWorkStart) {
             $workSegments[] = ['start' => $lastWorkStart, 'end' => $finalEnd];
         }
         // Distribute segments into days
-        foreach($workSegments as $segment){
+        foreach ($workSegments as $segment) {
             $segStart = $segment['start'];
             $segEnd = $segment['end'];
-            
-            while($segStart < $segEnd){
+
+            while ($segStart < $segEnd) {
                 $currentDay = date('Y-m-d', $segStart);
                 $nextDayStart = strtotime($currentDay . ' +1 day');
-                
+
                 $segmentEndForDay = min($segEnd, $nextDayStart);
                 $duration = $segmentEndForDay - $segStart;
-                
-                if(!isset($dailyLog[$currentDay])) $dailyLog[$currentDay] = 0;
+
+                if (!isset($dailyLog[$currentDay]))
+                    $dailyLog[$currentDay] = 0;
                 $dailyLog[$currentDay] += $duration;
-                
+
                 $segStart = $segmentEndForDay;
             }
         }
         return $dailyLog;
+    }
+    // API Methods
+
+    private function _getJsonInput()
+    {
+        $input = file_get_contents('php://input');
+        return json_decode($input, true) ?? [];
+    }
+
+    public function apiGetAll()
+    {
+        $filters = $_GET;
+        $tasks = TaskModel::apiGetTasks($filters);
+        header('Content-Type: application/json');
+        echo json_encode(['success' => true, 'data' => $tasks]);
+        exit;
+    }
+
+    public function apiGetById($params)
+    {
+        $id = $params['id'];
+        $task = TaskModel::getById($id);
+        header('Content-Type: application/json');
+        if ($task) {
+            echo json_encode(['success' => true, 'data' => $task[0]]);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Task not found']);
+        }
+        exit;
+    }
+
+    public function apiCreate()
+    {
+        $data = $this->_getJsonInput();
+        // Trigger postTask logic (using current model method which expects array)
+        $res = TaskModel::postTask($data);
+        header('Content-Type: application/json');
+        if ($res['success']) {
+            echo json_encode(['success' => true, 'message' => 'Task created', 'id' => $res['id']]);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Database error']);
+        }
+        exit;
+    }
+
+    public function apiUpdate($params)
+    {
+        $id = $params['id'];
+        $data = $this->_getJsonInput();
+        $res = TaskModel::updateTask($id, $data);
+        header('Content-Type: application/json');
+        if ($res) {
+            echo json_encode(['success' => true, 'message' => 'Task updated']);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Database error']);
+        }
+        exit;
+    }
+
+    public function apiDelete($params)
+    {
+        $id = $params['id'];
+        $res = TaskModel::delete($id);
+        header('Content-Type: application/json');
+        echo json_encode(['success' => $res, 'message' => $res ? 'Task deleted' : 'Database error']);
+        exit;
+    }
+
+    // State Management API
+
+    public function apiStart($params)
+    {
+        $id = $params['id'];
+        $data = $this->_getJsonInput();
+        $tasks = TaskModel::getById($id);
+
+        if (!$tasks) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'message' => 'Task not found']);
+            exit;
+        }
+
+        $now = new \DateTime('now');
+        $data['start_time'] = $now->getTimestamp();
+        $data['status'] = 'started';
+
+        $res = TaskModel::startTask($id, $data);
+        header('Content-Type: application/json');
+        echo json_encode(['success' => $res]);
+        exit;
+    }
+
+    public function apiPause($params)
+    {
+        $id = $params['id'];
+        $data = $this->_getJsonInput(); // Expecting {"reason": "..."}
+
+        $tasks = TaskModel::getById($id);
+        if (!$tasks) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'message' => 'Task not found']);
+            exit;
+        }
+        $current = $tasks[0];
+
+        $now = new \DateTime('now');
+        $timestamp = $now->getTimestamp();
+
+        $intervals = $current['pause_intervals'];
+        if ($intervals) {
+            $intervals .= ',' . $timestamp;
+        } else {
+            $intervals = $timestamp;
+        }
+
+        $reasons = $current['pause_reasons'];
+        $reason_text = isset($data['reason']) ? $data['reason'] : 'No Reason';
+
+        if ($reasons) {
+            $reasons .= '|||' . $reason_text;
+        } else {
+            $reasons = $reason_text;
+        }
+
+        $updateData = [
+            'pause_intervals' => $intervals,
+            'pause_reasons' => $reasons,
+            'status' => 'paused'
+        ];
+
+        $res = TaskModel::pauseTask($id, $updateData);
+        header('Content-Type: application/json');
+        echo json_encode(['success' => $res]);
+        exit;
+    }
+
+    public function apiResume($params)
+    {
+        $id = $params['id'];
+        $tasks = TaskModel::getById($id);
+        if (!$tasks) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'message' => 'Task not found']);
+            exit;
+        }
+        $current = $tasks[0];
+
+        $now = new \DateTime('now');
+        $timestamp = $now->getTimestamp();
+
+        $intervals = $current['pause_intervals'];
+        if ($intervals) {
+            $intervals .= ',' . $timestamp;
+        } else {
+            $intervals = $timestamp;
+        }
+
+        // Calculate total paused time
+        $interval_array = explode(',', $intervals);
+        $total_paused = 0;
+        // Logic: pair start-pause (interval[i]) with end-pause (interval[i+1])
+        // Resume adds a timestamp, so count should be even now (start, end, start, end)
+        for ($i = 0; $i < count($interval_array); $i += 2) {
+            if (isset($interval_array[$i + 1])) {
+                $total_paused += ($interval_array[$i + 1] - $interval_array[$i]);
+            }
+        }
+
+        $updateData = [
+            'pause_intervals' => $intervals,
+            'status' => 'started',
+            'total_pauses' => $total_paused
+        ];
+
+        $res = TaskModel::resumeTask($id, $updateData);
+        header('Content-Type: application/json');
+        echo json_encode(['success' => $res]);
+        exit;
+    }
+
+    public function apiFinish($params)
+    {
+        $id = $params['id'];
+        $data = $this->_getJsonInput(); // Expecting {"resource": "..."}
+
+        $tasks = TaskModel::getById($id);
+        if (!$tasks) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'message' => 'Task not found']);
+            exit;
+        }
+        $current = $tasks[0];
+
+        $now = new \DateTime('now');
+        $end_time = $now->getTimestamp();
+        $start_time = $current['start_time'];
+
+        $total_seconds = $end_time - $start_time;
+
+        // Recalculate total paused time to be sure
+        $paused_intervals = explode(',', $current['pause_intervals']);
+        // If odd, we ignore last? No, finished means we shouldn't be paused. 
+        // If status was paused, we can't finish directly? Or we assume last pause ended?
+        // Logic from view: if count is odd, remove last.
+        if (count($paused_intervals) % 2 !== 0) {
+            array_pop($paused_intervals);
+        }
+
+        $total_paused = 0;
+        for ($i = 0; $i < count($paused_intervals); $i += 2) {
+            if (isset($paused_intervals[$i + 1])) {
+                $total_paused += ($paused_intervals[$i + 1] - $paused_intervals[$i]);
+            }
+        }
+
+        $net_seconds = $total_seconds - $total_paused;
+
+        $updateData = [
+            'end_time' => $end_time,
+            'status' => 'finished',
+            'total_time' => $net_seconds,
+            'total_pauses' => $total_paused,
+            'final_resource' => isset($data['resource']) ? $data['resource'] : ''
+        ];
+
+        $res = TaskModel::finishTask($id, $updateData);
+        header('Content-Type: application/json');
+        echo json_encode(['success' => $res]);
+        exit;
+    }
+
+    public function apiReopen($params)
+    {
+        $id = $params['id'];
+
+        $updateData = [
+            'status' => 'created', // Or started? Reopen usually means set back to start/created.
+            'total_time' => 0,
+            'end_time' => 0
+        ];
+        // Existing logic for reopenTask sets status, total_time=0, end_time=0
+
+        $res = TaskModel::reopenTask($id, $updateData);
+        header('Content-Type: application/json');
+        echo json_encode(['success' => $res]);
+        exit;
     }
 }
