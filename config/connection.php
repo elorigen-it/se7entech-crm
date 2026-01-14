@@ -10,6 +10,6 @@ $con_charset = getenv('DATABASE_CHARSET');
 $con_collation = getenv('DATABASE_COLLATE');
 $con_timezone = getenv('DATABASE_TIMEZONE');
 
-$con = mysqli_connect($con_host,$con_user,$con_pass,$con_db);
-mysqli_query($con,"SET NAMES '".$con_charset."' COLLATE '".$con_collation."'");
+$con = mysqli_connect($con_host, $con_user, $con_pass, $con_db);
+mysqli_query($con, "SET NAMES '" . $con_charset . "' COLLATE '" . $con_collation . "'");
 ?>

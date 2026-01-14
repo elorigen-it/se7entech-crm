@@ -13,7 +13,8 @@ use Rakit\Validation\Validator;
 use Se7entech\Contractnew\Providers\OpenAIProvider;
 use Exception;
 
-class CustomersController {
+class CustomersController
+{
     public $data = array(
         'errors' => array(),
         'last_data' => array(),
@@ -24,43 +25,126 @@ class CustomersController {
         'users' => array() // Si necesitas lista de usuarios/agentes
     );
 
-    public function __construct(Session $session) {
+    // API METHODS
+    private function _jsonResponse($data, $status = 200)
+    {
+        header('Content-Type: application/json');
+        http_response_code($status);
+        echo json_encode($data);
+        exit;
+    }
+
+    private function _getJsonInput()
+    {
+        $content = file_get_contents('php://input');
+        return json_decode($content, true) ?? [];
+    }
+
+    public function apiGetAll()
+    {
+        try {
+            $customers = CustomersModel::getAll();
+            $this->_jsonResponse(['success' => true, 'data' => $customers]);
+        } catch (Exception $e) {
+            $this->_jsonResponse(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
+
+    public function apiCreate()
+    {
+        $data = $this->_getJsonInput();
+        if (empty($data)) {
+            $request = Request::createFromGlobals();
+            $data = $request->request->all();
+        }
+
+        $validation = $this->_validateData($data);
+        if ($validation->fails()) {
+            $this->_jsonResponse(['success' => false, 'errors' => $validation->errors()->all()], 400);
+        }
+
+        // Image handling pending implementation for API, skipping for now or assuming URL provided
+        $res = CustomersModel::create($data);
+        if ($res) {
+            $this->_jsonResponse(['success' => true, 'message' => 'Customer created', 'id' => $res]);
+        } else {
+            $this->_jsonResponse(['success' => false, 'message' => 'Database error'], 500);
+        }
+    }
+
+    public function apiUpdate($params)
+    {
+        $id = $params['id'];
+        $data = $this->_getJsonInput();
+        if (empty($data)) {
+            $request = Request::createFromGlobals();
+            $data = $request->request->all();
+        }
+
+        $validation = $this->_validateData($data);
+        if ($validation->fails()) {
+            $this->_jsonResponse(['success' => false, 'errors' => $validation->errors()->all()], 400);
+        }
+
+        $res = CustomersModel::update($id, $data);
+        if ($res) {
+            $this->_jsonResponse(['success' => true, 'message' => 'Customer updated']);
+        } else {
+            $this->_jsonResponse(['success' => false, 'message' => 'Database error'], 500);
+        }
+    }
+
+    public function apiDelete($params)
+    {
+        $id = $params['id'];
+        $res = CustomersModel::delete($id);
+        if ($res) {
+            $this->_jsonResponse(['success' => true, 'message' => 'Customer deleted']);
+        } else {
+            $this->_jsonResponse(['success' => false, 'message' => 'Database error'], 500);
+        }
+    }
+
+    public function __construct(Session $session)
+    {
         global $base_url;
         $this->base_url = $base_url;
         $this->session = $session;
         $this->data['records'] = $this->getCustomers();
         $this->data['loginAccess'] = $this->getCustomersAccess();
-        
+
         // Si necesitas cargar usuarios/agentes para dropdowns
         // $this->data['users'] = $this->getUsers(); 
-        
+
         foreach ($this->session->getFlashBag()->all() as $type => $messages) {
-            if($type === 'last_data') {
+            if ($type === 'last_data') {
                 $this->data['last_data'] = $messages[0];
                 continue;
             }
-            foreach($messages as $message) {
-                array_push($this->data['session'], '<div class="alert alert-'.$type.' p-2" role="alert">'.$message.'</div>');
+            foreach ($messages as $message) {
+                array_push($this->data['session'], '<div class="alert alert-' . $type . ' p-2" role="alert">' . $message . '</div>');
             }
         }
     }
 
-    public function index() {
+    public function index()
+    {
         include __DIR__ . '/../index.php';
     }
 
-    public function getById($params) {
+    public function getById($params)
+    {
         $id = $params['id'];
-        if($id) {
+        if ($id) {
             $record = CustomersModel::getById($id);
-            if($record) {
+            if ($record) {
                 $this->data['current'] = $record;
                 include __DIR__ . '/../single.php';
             } else {
                 $flashes = $this->session->getFlashBag();
                 $flashes->add('warning', 'Customer not found');
                 header('location: /modules/customers/');
-            }  
+            }
         } else {
             $flashes = $this->session->getFlashBag();
             $flashes->add('warning', 'Bad Request');
@@ -68,9 +152,10 @@ class CustomersController {
         }
     }
 
-    private function _validateData($data) {
+    private function _validateData($data)
+    {
         $validator = new Validator;
-        
+
         $validation = $validator->make($data, [
             'type' => 'required|in:customer,lead',
             'name' => 'required|min:3',
@@ -78,20 +163,21 @@ class CustomersController {
             'phone' => 'nullable|min:8',
             'status' => 'required|in:active,inactive'
         ]);
-        
+
         $validation->setAliases([
             'type' => 'Customer Type',
             'name' => 'Customer Name'
         ]);
-        
+
         $validation->validate();
 
         return $validation;
     }
 
-    public function postCustomer() {
+    public function postCustomer()
+    {
         $request = Request::createFromGlobals();
-        if($request->request->get('save')) {
+        if ($request->request->get('save')) {
             $validation = $this->_validateData($request->request->all());
 
             if ($validation->fails()) {
@@ -99,8 +185,8 @@ class CustomersController {
                 $this->data['errors'] = $errors;
                 $messages = $errors->all('<span>:message</span>');
                 $flashes = $this->session->getFlashBag();
-                
-                foreach($messages as $msg) {
+
+                foreach ($messages as $msg) {
                     $flashes->add('danger', $msg);
                 }
                 $flashes->add('last_data', $request->request->all());
@@ -111,7 +197,7 @@ class CustomersController {
                     $imagePath = $this->handleImageUpload($request->files->get('image'));
                     echo var_dump($imagePath);
                 }
-                
+
                 // Preparar datos para el modelo
                 $customerData = $request->request->all();
                 if ($imagePath) {
@@ -126,8 +212,8 @@ class CustomersController {
 
                 $res = CustomersModel::create($customerData);
                 $flashes = $this->session->getFlashBag();
-                
-                if($res) {
+
+                if ($res) {
                     $this->data['success'] = true;
                     $flashes->add('success', '<span>New customer created</span>');
                 } else {
@@ -140,20 +226,21 @@ class CustomersController {
         }
     }
 
-    public function updateCustomer($params) {
+    public function updateCustomer($params)
+    {
         $request = Request::createFromGlobals();
         $id = $params['id'];
-        
-        if($request->request->get('save')) {
+
+        if ($request->request->get('save')) {
             $validation = $this->_validateData($request->request->all());
-            
+
             if ($validation->fails()) {
                 $errors = $validation->errors();
                 $this->data['errors'] = $errors;
                 $messages = $errors->all('<span>:message</span>');
                 $flashes = $this->session->getFlashBag();
-                
-                foreach($messages as $msg) {
+
+                foreach ($messages as $msg) {
                     $flashes->add('danger', $msg);
                 }
                 $flashes->add('last_data', $request->request->all());
@@ -162,14 +249,14 @@ class CustomersController {
                 $imagePath = null;
                 if ($request->files->has('image') && $request->files->get('image')) {
                     $imagePath = $this->handleImageUpload($request->files->get('image'));
-                    
+
                     // Eliminar imagen anterior si existe
                     $currentCustomer = CustomersModel::getById($id);
                     if ($currentCustomer && $currentCustomer['image']) {
                         $this->deleteImage($currentCustomer['image']);
                     }
                 }
-                
+
                 // Preparar datos para el modelo
                 $customerData = $request->request->all();
 
@@ -192,11 +279,11 @@ class CustomersController {
                         $customerData['image'] = $currentCustomer['image'];
                     }
                 }
-                
+
                 $res = CustomersModel::update($id, $customerData);
                 $flashes = $this->session->getFlashBag();
-                
-                if($res) {
+
+                if ($res) {
                     $this->data['success'] = true;
                     $flashes->add('success', '<span>Customer updated</span>');
                 } else {
@@ -209,50 +296,56 @@ class CustomersController {
         }
     }
 
-    public function getCustomers() {
+    public function getCustomers()
+    {
         return CustomersModel::getAll();
     }
 
-    public function getCustomerAccess() {
+    public function getCustomerAccess()
+    {
         return CustomerAccessModel::getAll();
     }
 
-    public function delete($params) {
+    public function delete($params)
+    {
         $request = Request::createFromGlobals();
         $id = $request->request->get('id');
-        
-        if($id) {
+
+        if ($id) {
             // Eliminar imagen asociada si existe
             $customer = CustomersModel::getById($id);
             if ($customer && $customer['image']) {
                 $this->deleteImage($customer['image']);
             }
-            
+
             $result = CustomersModel::delete($id);
             echo json_encode(array('success' => $result));
         }
     }
 
-    private function handleImageUpload($file) {
+    private function handleImageUpload($file)
+    {
         $uploadDir = __DIR__ . '/../../../../uploads/customers/';
         if (!file_exists($uploadDir)) {
             mkdir($uploadDir, 0777, true);
         }
-        
+
         $fileName = uniqid() . '_' . $file->getClientOriginalName();
         $file->move($uploadDir, $fileName);
-        
+
         return '/uploads/customers/' . $fileName;
     }
 
-    private function deleteImage($imagePath) {
+    private function deleteImage($imagePath)
+    {
         $fullPath = __DIR__ . '/../../../..' . $imagePath;
         if (file_exists($fullPath)) {
             unlink($fullPath);
         }
     }
 
-    public function generateBrandRulesForm($params) {
+    public function generateBrandRulesForm($params)
+    {
         $request = Request::createFromGlobals();
         $customerId = $params['customerId'];
         $customer = CustomersModel::getById($customerId);
@@ -260,7 +353,7 @@ class CustomersController {
             echo json_encode(array('success' => false, 'message' => 'Customer not found'));
             return;
         }
-        
+
         //return form to generate brand rules
         include __DIR__ . '/../generate_brand_rules_form.php';
 
@@ -274,7 +367,7 @@ class CustomersController {
         $brandName = htmlspecialchars($request->get('brandName'));
         $industry = htmlspecialchars($request->get('industry'));
         $brandDescription = htmlspecialchars($request->get('brandDescription'));
-        
+
         // Procesar arrays (checkbox)
         $goals = $request->all('goals');
         $goals = array_map('htmlspecialchars', $goals);
@@ -286,7 +379,7 @@ class CustomersController {
         $styles = is_array($styles) ? array_map('htmlspecialchars', $styles) : [];
         $contentTypes = $request->all('contentTypes');
         $contentTypes = is_array($contentTypes) ? array_map('htmlspecialchars', $contentTypes) : [];
-        
+
         // Procesar campos condicionales "Otro"
         $otherGoal = htmlspecialchars($request->get('goalOtherText'));
         $otherAttributes = htmlspecialchars($request->get('attrOtherText'));
@@ -296,7 +389,7 @@ class CustomersController {
         $otherStyle = htmlspecialchars($request->get('styleOtherText'));
         $otherContent = htmlspecialchars($request->get('contentOtherText'));
         $otherImages = htmlspecialchars($request->get('imagesOtherText'));
-        
+
         // Procesar resto de campos
         $targetDemographic = htmlspecialchars($request->get('targetDemographic'));
         $communicationStyle = htmlspecialchars($request->get('communicationStyle'));
@@ -341,7 +434,7 @@ class CustomersController {
             ✔️ Stickers en Historias (encuestas, preguntas, emoji slider):\n
             Frase corta y disruptiva (35 caracteres máximo).\n'
         \n\n";
-        
+
         $systemPrompt .= "Descripción del cliente: $brandDescription\n\n";
 
         // Sección de Objetivos
@@ -352,7 +445,7 @@ class CustomersController {
         if (!empty($otherGoal)) {
             $prompt .= "- Adicional: $otherGoal\n";
         }
-        
+
         // Atributos y personalidad
         $prompt .= "\nPERSONALIDAD DE MARCA:\n";
         $prompt .= "- Atributos clave: " . implode(", ", $attributes);
@@ -360,12 +453,12 @@ class CustomersController {
             $prompt .= ", $otherAttributes";
         }
         $prompt .= "\n";
-        
+
         if (!empty($brandPersona)) {
             $personaText = $brandPersona === 'other' ? $otherPersona : $brandPersona;
             $prompt .= "- Personificación: $personaText\n";
         }
-        
+
         if (!empty($tones)) {
             $prompt .= "- Tono de voz: " . implode(", ", $tones);
             if (!empty($otherTone)) {
@@ -373,7 +466,7 @@ class CustomersController {
             }
             $prompt .= "\n";
         }
-        
+
         // Público objetivo
         $prompt .= "\nPÚBLICO OBJETIVO:\n";
         $prompt .= "- Demográfico principal: $targetDemographic\n";
@@ -381,7 +474,7 @@ class CustomersController {
             $commStyleText = $communicationStyle === 'other' ? $otherCommunication : $communicationStyle;
             $prompt .= "- Estilo de comunicación preferido: $commStyleText\n";
         }
-        
+
         // Estilo visual
         $prompt .= "\nESTILO VISUAL:\n";
         if (!empty($styles)) {
@@ -391,12 +484,12 @@ class CustomersController {
             }
             $prompt .= "\n";
         }
-        
+
         if (!empty($imageTreatment)) {
             $imageText = $imageTreatment === 'other' ? $otherImages : $imageTreatment;
             $prompt .= "- Tratamiento de imágenes: $imageText\n";
         }
-        
+
         // Contenido
         $prompt .= "\nCONTENIDO:\n";
         if (!empty($contentTypes)) {
@@ -406,7 +499,7 @@ class CustomersController {
             }
             $prompt .= "\n";
         }
-        
+
         // Restricciones
         $prompt .= "\nRESTRICCIONES:\n";
         if (!empty($avoidWords)) {
@@ -415,24 +508,24 @@ class CustomersController {
         if (!empty($avoidBrands)) {
             $prompt .= "- Estilos a evitar: $avoidBrands\n";
         }
-        
+
         // Diferenciadores
         $prompt .= "\nDIFERENCIADORES:\n";
         $prompt .= "- Propuesta única: $uniqueValue\n";
         if (!empty($distinctiveElement)) {
             $prompt .= "- Elemento distintivo: $distinctiveElement\n";
         }
-        
+
         // Adaptaciones culturales
         if (!empty($localReferences) && $localReferences === 'yes' && !empty($localExamples)) {
             $prompt .= "\nADAPTACIÓN CULTURAL:\n";
             $prompt .= "- Modismos/referencias locales: $localExamples\n";
         }
-        
+
         if (!empty($specialEvents) && $specialEvents === 'yes' && !empty($eventsExamples)) {
             $prompt .= "- Eventos/fechas especiales: $eventsExamples\n";
         }
-        
+
         // Referencias
         if (!empty($admiredBrands) || !empty($communicationExample)) {
             $prompt .= "\nREFERENCIAS:\n";
@@ -443,11 +536,11 @@ class CustomersController {
                 $prompt .= "- Ejemplo a emular: $communicationExample\n";
             }
         }
-        
+
         // Instrucción final para la IA
         // $prompt .= "\nINSTRUCCIÓN PARA LA IA:\n";
         $prompt .= "Basado en esta información, desarrolla en este orden estrictamente:\n";
-        $prompt .= "1. Reglas de Contenido para Redes Sociales tal como estas entrenado\n";        
+        $prompt .= "1. Reglas de Contenido para Redes Sociales tal como estas entrenado\n";
         $prompt .= "3. Reglas de comunicación y tono de voz\n";
         $prompt .= "4. Reglas de uso de imágenes y estilo visual\n";
         $prompt .= "5. Reglas de contenido y formatos prioritarios\n";
@@ -455,7 +548,7 @@ class CustomersController {
         $prompt .= "7. Reglas de restricciones y evitación de palabras o marcas\n";
         $prompt .= "8. Reglas de referencias y ejemplos a seguir\n";
         $prompt .= "9. Reglas de eventos y fechas especiales\n";
-        $prompt .= "10. Reglas de modismos y referencias locales\n";      
+        $prompt .= "10. Reglas de modismos y referencias locales\n";
         $prompt .= "11. Respuestas a Comentarios en Reels / Feed\n";
         $prompt .= "12. Respuestas a Mensajes Directos (DM)\n";
         $prompt .= "13. Respuestas a Comentarios en Historias\n";
@@ -485,10 +578,11 @@ class CustomersController {
             $result['error'] = $e->getMessage();
             $result['message'] = 'Error en el test de chat completion';
             echo var_dump($result);
-        }            
+        }
     }
 
-    public function confirmBrandRules($params) {
+    public function confirmBrandRules($params)
+    {
         $request = Request::createFromGlobals();
         $customerId = $params['customerId'];
         $customer = CustomersModel::getById($customerId);
@@ -496,7 +590,7 @@ class CustomersController {
             echo json_encode(array('success' => false, 'message' => 'Customer not found'));
             return;
         }
-        
+
         // Procesar el formulario de confirmación de reglas de marca
         $ruleName = htmlspecialchars($request->get('rule_name'));
         $ruleContent = filter_input(INPUT_POST, 'brand_identity', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -504,10 +598,10 @@ class CustomersController {
         $success = BrandRulesModel::addBrandRuleToCustomer($customerId, $ruleName, $ruleContent);
         // Aquí podrías guardar las reglas generadas en la base de datos o en un archivo
         // Por simplicidad, solo se muestra un mensaje de éxito
-        if($success){
+        if ($success) {
             $this->session->getFlashBag()->add('success', 'Brand rules confirmed successfully for customer: ' . $customer['name']);
         }
-        
+
         echo json_encode(array(
             'success' => $success,
             'message' => 'Brand rules confirmed successfully',
@@ -517,7 +611,8 @@ class CustomersController {
         ));
     }
 
-    public function generateContentForm($params){
+    public function generateContentForm($params)
+    {
         $customerId = $params['customerId'];
         $customer = CustomersModel::getById($customerId);
         $brandRules = BrandRulesModel::getBrandRulesByCustomerId($customerId);
@@ -528,83 +623,84 @@ class CustomersController {
             echo json_encode(array('success' => false, 'message' => 'Customer not found'));
             return;
         }
-        
+
         // Mostrar el formulario para generar contenido
         include __DIR__ . '/../generate_content_form.php';
     }
 
-    private function calculatePublications($frequency, $postsPerWeek, $duration, $preferredDays = []) {
+    private function calculatePublications($frequency, $postsPerWeek, $duration, $preferredDays = [])
+    {
         $weeklyPosts = 0;
         $totalPosts = 0;
-        
+
         // Calcular publicaciones por semana según frecuencia
         switch ($frequency) {
             case 'daily':
                 $weeklyPosts = count($preferredDays);
                 break;
-                
+
             case 'weekly':
                 if (strpos($postsPerWeek, '-') !== false) {
                     list($min, $max) = explode('-', $postsPerWeek);
-                    $weeklyPosts = (int)$max; // Tomamos el valor máximo del rango
+                    $weeklyPosts = (int) $max; // Tomamos el valor máximo del rango
                 } elseif ($postsPerWeek == '10+') {
                     $weeklyPosts = 10; // Asumimos 10 como mínimo para "10+"
                 } else {
-                    $weeklyPosts = (int)$postsPerWeek;
+                    $weeklyPosts = (int) $postsPerWeek;
                 }
                 break;
-                
+
             case 'monthly':
                 if (strpos($postsPerWeek, '-') !== false) {
                     list($min, $max) = explode('-', $postsPerWeek);
-                    $weeklyPosts = (int)$max; // Para mensual, primero calculamos semanal
+                    $weeklyPosts = (int) $max; // Para mensual, primero calculamos semanal
                 } elseif ($postsPerWeek == '10+') {
                     $weeklyPosts = 10;
                 } else {
-                    $weeklyPosts = (int)$postsPerWeek;
+                    $weeklyPosts = (int) $postsPerWeek;
                 }
                 break;
-                
+
             default:
                 $weeklyPosts = 0;
         }
-        
+
         // Calcular el total según duración
         switch ($duration) {
             case '1-month':
                 $totalPosts = $weeklyPosts * 4; // 4 semanas
                 break;
-                
+
             case '3-months':
                 $totalPosts = $weeklyPosts * 13; // 13 semanas (3 meses)
                 break;
-                
+
             case '6-months':
                 $totalPosts = $weeklyPosts * 26; // 26 semanas (6 meses)
                 break;
-                
+
             case '1-year':
                 $totalPosts = $weeklyPosts * 52; // 52 semanas (1 año)
                 break;
-                
+
             default:
                 $totalPosts = $weeklyPosts * 4; // Por defecto 1 mes
         }
-        
+
         // Ajuste especial para frecuencia mensual
         if ($frequency == 'monthly') {
             // Para mensual, dividimos el total ya que postsPerWeek realmente significa postsPerMonth
             $totalPosts = ceil($totalPosts / 4);
         }
-        
+
         return $totalPosts;
     }
-    
+
     public function generateContentPlan($params)
     {
         $customerId = $params['customerId'];
         $request = Request::createFromGlobals()->request;
-        
+
         // Recoger y sanitizar datos básicos
         $brandRulesId = htmlspecialchars($request->get('brandRules'));
         $brandRules = BrandRulesModel::getById($brandRulesId);
@@ -636,17 +732,17 @@ class CustomersController {
         $platforms = is_array($platforms) ? array_map('htmlspecialchars', $platforms) : [];
         $formats = $request->all('formats');
         $formats = is_array($formats) ? array_map('htmlspecialchars', $formats) : [];
-        
+
         // Procesar campos condicionales "Otro"
         $otherPlatform = htmlspecialchars($request->get('platformOtherText'));
         $otherFormat = htmlspecialchars($request->get('formatOtherText'));
-        
+
         // Procesar tiempos
         $morningTime = htmlspecialchars($request->get('morningTime'));
         $afternoonTime = htmlspecialchars($request->get('afternoonTime'));
         $eveningTime = htmlspecialchars($request->get('eveningTime'));
         $weekendTime = htmlspecialchars($request->get('weekendTime'));
-        
+
         // Procesar porcentajes de contenido
         $contentEducational = htmlspecialchars($request->get('contentEducational'));
         $contentPromotional = htmlspecialchars($request->get('contentPromotional'));
@@ -654,12 +750,12 @@ class CustomersController {
         $contentCommunity = htmlspecialchars($request->get('contentCommunity'));
         $contentTrends = htmlspecialchars($request->get('contentTrends'));
         $contentOther = htmlspecialchars($request->get('contentOther'));
-        
+
         // Procesar temáticas
         $mainThemes = htmlspecialchars($request->get('mainThemes'));
         $keywords = htmlspecialchars($request->get('keywords'));
         $hashtags = htmlspecialchars($request->get('hashtags'));
-        
+
         // Procesar recursos
         $resources = htmlspecialchars($request->get('resources'));
         $contentRequirements = htmlspecialchars($request->get('contentRequirements'));
@@ -673,7 +769,7 @@ class CustomersController {
         // Construir el prompt para IA
         $systemPrompt = "";
         $prompt = "";
-        $systemPrompt .="
+        $systemPrompt .= "
             Eres un estratega de contenido para redes sociales con amplia experiencia en la creación de planes de contenido de alto rendimiento y específicos para cada plataforma. Necesito que desarrolles un calendario de contenido para redes sociales meticulosamente detallado de 91 publicaciones, totalmente alineado con las directrices de la marca y los requisitos de la plataforma.\n
 
             Resultados clave:\n
@@ -704,7 +800,7 @@ class CustomersController {
             La cantidad de publicaciones debe ser exactamente de " . $totalPosts . " publicaciones\n
         ";
         $prompt .= "Las reglas obligatorias para el formato de contenido y la personalidad de la marca estan en este texto html: $brandRulesContent\n\n";
-        
+
         // Información básica
         $prompt .= "Ahora te proporciono los requerimientos para el plan de contenido:\n\n";
         $prompt .= "INFORMACIÓN BÁSICA:\n";
@@ -712,7 +808,7 @@ class CustomersController {
         $prompt .= "- Cantidad de publicaciones por semana: $postCount\n";
         $prompt .= "- Fecha de inicio: $startDate\n";
         $prompt .= "- Duración del plan: $duration\n\n";
-        
+
         // Horarios y días
         $prompt .= "HORARIOS Y DÍAS:\n";
         if (!empty($days)) {
@@ -722,7 +818,7 @@ class CustomersController {
         $prompt .= "- Horario tarde: $afternoonTime\n";
         $prompt .= "- Horario noche: $eveningTime\n";
         $prompt .= "- Horario fines de semana: $weekendTime\n\n";
-        
+
         // Plataformas
         $prompt .= "PLATAFORMAS:\n";
         if (!empty($platforms)) {
@@ -732,7 +828,7 @@ class CustomersController {
             }
             $prompt .= "\n\n";
         }
-        
+
         // Distribución de contenido
         $prompt .= "DISTRIBUCIÓN DE CONTENIDO:\n";
         $prompt .= "- Educativo: $contentEducational%\n";
@@ -741,7 +837,7 @@ class CustomersController {
         $prompt .= "- Comunidad: $contentCommunity%\n";
         $prompt .= "- Trends/Actualidad: $contentTrends%\n";
         $prompt .= "- Otros: $contentOther%\n\n";
-        
+
         // Temáticas
         $prompt .= "TEMÁTICAS:\n";
         $prompt .= "- Principales: $mainThemes\n";
@@ -752,7 +848,7 @@ class CustomersController {
             $prompt .= "- Hashtags: $hashtags\n";
         }
         $prompt .= "\n";
-        
+
         // Formatos y recursos
         $prompt .= "RECURSOS Y FORMATOS:\n";
         $prompt .= "- Nivel de recursos: $resources\n";
@@ -767,7 +863,7 @@ class CustomersController {
             $prompt .= "- Requerimientos específicos: $contentRequirements\n";
         }
         $prompt .= "\n";
-        
+
         // Eventos especiales
         if (!empty($specialDates)) {
             $prompt .= "FECHAS ESPECIALES:\n";
@@ -775,13 +871,19 @@ class CustomersController {
         }
         $prompt .= "IDIOMA:\n";
         $prompt .= "- Idioma del contenido: $language.\n\n";
-        
+
         $prompt .= "No coloques los caracteres ``` al comienzo detu respuesta\n";
         $prompt .= "Comienza tu respuesta con el caracter #";
         try {
             $openAI = new OpenAIProvider(
-                $apiModel, $apiTemperature, $apiTopP, $apiMaxTokens,
-                $apiFrequencyPenalty, $apiPresencePenalty, null, $reasoningEffort
+                $apiModel,
+                $apiTemperature,
+                $apiTopP,
+                $apiMaxTokens,
+                $apiFrequencyPenalty,
+                $apiPresencePenalty,
+                null,
+                $reasoningEffort
             );
             $messages = [
                 ['role' => 'system', 'content' => $systemPrompt],
@@ -791,17 +893,18 @@ class CustomersController {
             $response = $openAI->chatCompletion($messages);
 
             $responseContent = $response['choices'][0]['message']['content'];
-            
+
             require __DIR__ . '/../content_plan_results.php';
 
         } catch (Exception $e) {
             $result['error'] = $e->getMessage();
             $result['message'] = 'Error al generar el plan de contenido';
             echo var_dump($result);
-        }            
+        }
     }
 
-    public function manageBrandRules($params){
+    public function manageBrandRules($params)
+    {
         $customerId = $params['customerId'];
         $customer = CustomersModel::getById($customerId);
         $brandRules = BrandRulesModel::getBrandRulesByCustomerId($customerId);
@@ -809,12 +912,13 @@ class CustomersController {
             echo json_encode(array('success' => false, 'message' => 'Customer not found'));
             return;
         }
-        
+
         // Mostrar el formulario para gestionar las reglas de marca
         include __DIR__ . '/../manage_brand_rules.php';
     }
 
-    public function viewBrandRule($params) {
+    public function viewBrandRule($params)
+    {
         $brandRuleId = $params['brandRuleId'];
         $customerId = $params['customerId'];
         $brandRule = BrandRulesModel::getById($brandRuleId);
@@ -822,43 +926,45 @@ class CustomersController {
             echo json_encode(array('success' => false, 'message' => 'Brand rule not found'));
             return;
         }
-        
+
         // Mostrar la vista de la regla de marca
         include __DIR__ . '/../view_brand_rule.php';
     }
 
-    public function editBrandRule($params) {
+    public function editBrandRule($params)
+    {
         $brandRuleId = $params['brandRuleId'];
         $customerId = $params['customerId'];
         $brandRule = BrandRulesModel::getById($brandRuleId);
-    
+
         if (!$brandRule) {
             echo json_encode(array('success' => false, 'message' => 'Brand rule not found'));
             return;
         }
-        
+
         // Mostrar el formulario para editar la regla de marca
         include __DIR__ . '/../edit_brand_rule.php';
     }
 
-    public function updateBrandRule($params) {
+    public function updateBrandRule($params)
+    {
         $brandRuleId = $params['brandRuleId'];
         $customerId = $params['customerId'];
         $request = Request::createFromGlobals()->request;
-        
+
         // Recoger y sanitizar datos del formulario
         $ruleName = htmlspecialchars($request->get('rule_name'));
         $brandIdentity = filter_input(INPUT_POST, 'brand_identity', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        
+
         // Validar datos
         if (empty($ruleName) || empty($brandIdentity)) {
             echo json_encode(array('success' => false, 'message' => 'Faltan datos requeridos'));
             return;
         }
-        
+
         // Actualizar la regla de marca
         $success = BrandRulesModel::updateBrandRule($brandRuleId, $ruleName, $brandIdentity);
-        
+
         if ($success) {
             echo json_encode(array('success' => true, 'message' => 'Regla de marca actualizada correctamente'));
         } else {
@@ -866,13 +972,14 @@ class CustomersController {
         }
     }
 
-    public function deleteBrandRule($params) {
+    public function deleteBrandRule($params)
+    {
         $brandRuleId = $params['brandRuleId'];
         $customerId = $params['customerId'];
-        
+
         // Eliminar la regla de marca
         $success = BrandRulesModel::deleteBrandRule($brandRuleId);
-        
+
         if ($success) {
             echo json_encode(array('success' => true, 'message' => 'Regla de marca eliminada correctamente'));
         } else {
@@ -880,7 +987,8 @@ class CustomersController {
         }
     }
 
-    public function manageBrandContent($params){
+    public function manageBrandContent($params)
+    {
         $customerId = $params['customerId'];
         $customer = CustomersModel::getById($customerId);
         $brandContents = BrandContentModel::getBrandContentByCustomerId($customerId);
@@ -888,12 +996,13 @@ class CustomersController {
             echo json_encode(array('success' => false, 'message' => 'Customer not found'));
             return;
         }
-        
+
         // Mostrar el formulario para gestionar las reglas de marca
         include __DIR__ . '/../manage_brand_contents.php';
     }
 
-    public function viewBrandContent($params) {
+    public function viewBrandContent($params)
+    {
         $brandContentId = $params['brandContentId'];
         $customerId = $params['customerId'];
         $brandContent = BrandContentModel::getById($brandContentId);
@@ -901,12 +1010,13 @@ class CustomersController {
             echo json_encode(array('success' => false, 'message' => 'Brand content not found'));
             return;
         }
-        
+
         // Mostrar la vista de la regla de marca
         include __DIR__ . '/../view_brand_content.php';
     }
 
-     public function confirmBrandContent($params) {
+    public function confirmBrandContent($params)
+    {
         $request = Request::createFromGlobals();
         $customerId = $params['customerId'];
         $customer = CustomersModel::getById($customerId);
@@ -914,7 +1024,7 @@ class CustomersController {
             echo json_encode(array('success' => false, 'message' => 'Customer not found'));
             return;
         }
-        
+
         // Procesar el formulario de confirmación de reglas de marca
         $contentName = htmlspecialchars($request->get('plan_name'));
         $content = filter_input(INPUT_POST, 'generated_content', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -922,10 +1032,10 @@ class CustomersController {
         $success = BrandContentModel::addBrandContentToCustomer($customerId, $contentName, $content);
         // Aquí podrías guardar las reglas generadas en la base de datos o en un archivo
         // Por simplicidad, solo se muestra un mensaje de éxito
-        if($success){
+        if ($success) {
             $this->session->getFlashBag()->add('success', 'Brand content confirmed successfully for customer: ' . $customer['name']);
         }
-        
+
         echo json_encode(array(
             'success' => $success,
             'message' => 'Brand content confirmed successfully',
@@ -935,38 +1045,40 @@ class CustomersController {
         ));
     }
 
-    public function editBrandContent($params) {
+    public function editBrandContent($params)
+    {
         $brandContentId = $params['brandContentId'];
         $customerId = $params['customerId'];
         $brandContent = BrandContentModel::getById($brandContentId);
-    
+
         if (!$brandContent) {
             echo json_encode(array('success' => false, 'message' => 'Brand content not found'));
             return;
         }
-        
+
         // Mostrar el formulario para editar la regla de marca
         include __DIR__ . '/../edit_brand_content.php';
     }
 
-    public function updateBrandContent($params) {
+    public function updateBrandContent($params)
+    {
         $brandContentId = $params['brandContentId'];
         $customerId = $params['customerId'];
         $request = Request::createFromGlobals()->request;
-        
+
         // Recoger y sanitizar datos del formulario
         $contentName = htmlspecialchars($request->get('content_name'));
         $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        
+
         // Validar datos
         if (empty($contentName) || empty($content)) {
             echo json_encode(array('success' => false, 'message' => 'Faltan datos requeridos'));
             return;
         }
-        
+
         // Actualizar la regla de marca
         $success = BrandContentModel::updateBrandContent($brandContentId, $contentName, $content);
-        
+
         if ($success) {
             echo json_encode(array('success' => true, 'message' => 'Contenido  de marca actualizado correctamente'));
         } else {
@@ -974,13 +1086,14 @@ class CustomersController {
         }
     }
 
-    public function deleteBrandContent($params) {
+    public function deleteBrandContent($params)
+    {
         $brandContentId = $params['brandContentId'];
         $customerId = $params['customerId'];
-        
+
         // Eliminar la regla de marca
         $success = BrandContentModel::deleteBrandContent($brandContentId);
-        
+
         if ($success) {
             echo json_encode(array('success' => true, 'message' => 'Contenido de marca eliminado correctamente'));
         } else {
@@ -988,34 +1101,36 @@ class CustomersController {
         }
     }
 
-    public function activateLoginAccess(){
+    public function activateLoginAccess()
+    {
         $request = Request::createFromGlobals()->request;
         $data = $request->all();
 
         CustomerAccessModel::deleteByCustomerID($data['customer_id']);
-        $result = CustomerAccessModel::create($data);       
+        $result = CustomerAccessModel::create($data);
 
-        if(isset($result['record_id'])){
+        if (isset($result['record_id'])) {
             echo json_encode(array(
                 'inserted_id' => $result['record_id'],
                 'success' => true
             ));
-        }else{
+        } else {
             echo json_encode(array(
                 'success' => false,
-                'msg' => $result 
+                'msg' => $result
             ));
         }
         exit;
     }
 
-    public function deactivateLoginAccess(){
+    public function deactivateLoginAccess()
+    {
         $request = Request::createFromGlobals()->request;
         $data = $request->all();
 
         $record = CustomerAccessModel::getAccessByCustomerId($data['customer_id']);
 
-        if(count($record)){
+        if (count($record)) {
 
             $customerAccess = $record[0];
             $customerAccess['active'] = 0;
@@ -1023,7 +1138,7 @@ class CustomersController {
             echo json_encode(array(
                 'success' => $updated,
             ));
-        }else{
+        } else {
             echo json_encode(array(
                 'success' => false,
                 'msg' => 'Access not found'
@@ -1032,10 +1147,12 @@ class CustomersController {
         exit;
     }
 
-    public function getCustomersAccess(){
+    public function getCustomersAccess()
+    {
         return CustomerAccessModel::getAll();
     }
-    public function loginAccess(){
-        include __DIR__ . '/../customer_access.php';    
+    public function loginAccess()
+    {
+        include __DIR__ . '/../customer_access.php';
     }
 }

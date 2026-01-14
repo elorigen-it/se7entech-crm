@@ -1,0 +1,28 @@
+apiCreate called. Data: Array
+(
+    [label-name] => API Test Label
+    [label-background-color] => #ff0000
+    [label-text-color] => #ffffff
+)
+
+apiCreate called. Data: Array
+(
+    [label-name] => API Test Label Manual
+    [label-background-color] => #00ff00
+    [label-text-color] => #000000
+)
+
+apiCreate called. Data: Array
+(
+    [label-name] => API Test Label
+    [label-background-color] => #ff0000
+    [label-text-color] => #ffffff
+)
+
+apiCreate called. Data: Array
+(
+    [label-name] => API Test Label 1768369070
+    [label-background-color] => #ff0000
+    [label-text-color] => #ffffff
+)
+
