@@ -146,7 +146,8 @@ require_once('../../connection.php');
                                                         <label class="form-control-label" for="role">Role</label>
                                                         <select name="role" class="form-control form-control" required>
                                                             <?php foreach ($this->data['roles'] as $role): ?>
-                                                                <option value="<?php echo $role['id']; ?>" <?php echo ($this->data['current']['role'] == $role['id']) ? 'selected' : ''; ?>><?php echo $role['name']; ?></option>
+                                                                <option value="<?php echo $role['id']; ?>" <?php echo ($this->data['current']['role'] == $role['id']) ? 'selected' : ''; ?>><?php echo $role['name']; ?>
+                                                                </option>
                                                             <?php endforeach; ?>
                                                         </select>
                                                     </div>
@@ -158,7 +159,8 @@ require_once('../../connection.php');
                                                         <select name="zone_id" class="form-control form-control"
                                                             required>
                                                             <?php foreach ($this->data['zones'] as $zone): ?>
-                                                                <option value="<?php echo $zone['id']; ?>" <?php echo ($this->data['current']['zone_id'] == $zone['id']) ? 'selected' : ''; ?>><?php echo $zone['name']; ?></option>
+                                                                <option value="<?php echo $zone['id']; ?>" <?php echo ($this->data['current']['zone_id'] == $zone['id']) ? 'selected' : ''; ?>><?php echo $zone['name']; ?>
+                                                                </option>
                                                             <?php endforeach; ?>
                                                         </select>
                                                     </div>
@@ -228,7 +230,7 @@ require_once('../../connection.php');
                                 <div class="card-header bg-white border-0">
                                     <div class="row align-items-center">
                                         <div class="col-8">
-                                            <h3 class="mb-0">API Key Management</h3>
+                                            <h3 class="mb-0">JWT Token Management</h3>
                                         </div>
                                     </div>
                                     <!-- Flash Messages -->
@@ -245,12 +247,10 @@ require_once('../../connection.php');
                                 <div class="card-body">
                                     <?php if (!empty($this->data['current']['api_key'])): ?>
                                         <div class="form-group">
-                                            <label class="form-control-label">Current API Key</label>
+                                            <label class="form-control-label">Current JWT Token</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control"
-                                                    value="<?php echo $this->data['current']['api_key']; ?>"
-                                                    id="apiKeyInput" readonly
-                                                    style="background-color: #f8f9fe; color: #32325d; font-family: monospace; font-size: 1.1em; letter-spacing: 0.05em;">
+                                                <textarea class="form-control" id="apiKeyInput" readonly rows="4"
+                                                    style="background-color: #f8f9fe; color: #32325d; font-family: monospace; font-size: 0.9em; letter-spacing: 0.02em; word-break: break-all;"><?php echo $this->data['current']['api_key']; ?></textarea>
                                                 <div class="input-group-append">
                                                     <button class="btn btn-outline-primary" type="button"
                                                         onclick="copyApiKey()" title="Copy to clipboard">
@@ -278,7 +278,7 @@ require_once('../../connection.php');
                                                 <form
                                                     action="/modules/users/index.php/web/revoke-key/<?php echo $this->data['current']['id']; ?>"
                                                     method="POST"
-                                                    onsubmit="return confirm('Are you sure you want to revoke this API Key?');">
+                                                    onsubmit="return confirm('Are you sure you want to revoke this JWT Token?');">
                                                     <button type="submit" class="btn btn-danger btn-block shadow"><i
                                                             class="fa fa-trash"></i> Revoke Key</button>
                                                 </form>
@@ -287,7 +287,7 @@ require_once('../../connection.php');
                                                 <form
                                                     action="/modules/users/index.php/web/generate-key/<?php echo $this->data['current']['id']; ?>"
                                                     method="POST"
-                                                    onsubmit="return confirm('Are you sure you want to REGENERATE this API Key? The old one will stop working.');">
+                                                    onsubmit="return confirm('Are you sure you want to REGENERATE this JWT Token? The old one will stop working.');">
                                                     <button type="submit"
                                                         class="btn btn-warning btn-block text-white shadow"><i
                                                             class="fa fa-refresh"></i> Regenerate Key</button>
@@ -303,16 +303,16 @@ require_once('../../connection.php');
                                                     <i class="fa fa-key fa-2x"></i>
                                                 </span>
                                             </div>
-                                            <h3 class="text-muted mb-2">No API Key Active</h3>
-                                            <p class="text-muted mb-4" style="max-width: 400px; margin: 0 auto;">Generate an
-                                                API key to enable independent programmatic access to the system for this
+                                            <h3 class="text-muted mb-2">No JWT Token Active</h3>
+                                            <p class="text-muted mb-4" style="max-width: 400px; margin: 0 auto;">Generate a
+                                                JWT token to enable independent programmatic access to the system for this
                                                 user.</p>
 
                                             <form
                                                 action="/modules/users/index.php/web/generate-key/<?php echo $this->data['current']['id']; ?>"
                                                 method="POST">
                                                 <button type="submit" class="btn btn-lg btn-success shadow px-5"><i
-                                                        class="fa fa-plus mr-2"></i> Generate API Key</button>
+                                                        class="fa fa-plus mr-2"></i> Generate JWT Token</button>
                                             </form>
                                         </div>
                                     <?php endif; ?>
