@@ -761,7 +761,7 @@ class UserController
             $this->session->getFlashBag()->add('danger', 'Failed to generate JWT Token.');
         }
 
-        header('Location: ' . $this->base_url . '/modules/users/' . $id);
+        header('Location: ' . $this->base_url . '/modules/users/index.php/' . $id);
         exit;
     }
 
@@ -776,7 +776,7 @@ class UserController
             $this->session->getFlashBag()->add('danger', 'Failed to revoke API Key.');
         }
 
-        header('Location: ' . $this->base_url . '/modules/users/' . $id);
+        header('Location: ' . $this->base_url . '/modules/users/index.php/' . $id);
         exit;
     }
 }
