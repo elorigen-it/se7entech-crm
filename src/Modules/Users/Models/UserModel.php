@@ -230,17 +230,58 @@ class UserModel
         }
     }
 
-    public static function generateApiKey($userId)
+    public static function generateApiKey($userId, $expirationHours = 8760)
     {
         include __DIR__ . '/../../../../config/connection.php';
 
-        $apiKey = bin2hex(random_bytes(32)); // 64 chars
-        $sql = "UPDATE " . self::$table . " SET api_key='" . $apiKey . "' WHERE id=$userId";
-
-        if (mysqli_query($con, $sql)) {
-            return $apiKey;
+        // Get user data
+        $user = self::getById($userId);
+        if (!$user) {
+            return false;
         }
-        return false;
+
+        // Load private key for JWT signing
+        $keyPath = __DIR__ . '/../../../../config/keys/private.pem';
+        if (!file_exists($keyPath)) {
+            error_log("Private key not found at: $keyPath");
+            return false;
+        }
+        $privateKey = file_get_contents($keyPath);
+
+        // Generate JWT token
+        $issuedAt = time();
+        $expirationTime = $issuedAt + ($expirationHours * 3600); // Default: 1 year
+
+        $payload = [
+            'iss' => 'se7entech-crm',
+            'aud' => 'se7entech-api',
+            'iat' => $issuedAt,
+            'exp' => $expirationTime,
+            'data' => [
+                'client' => $user['email'] ?? "user_$userId",
+                'userid' => (int) $userId,
+                'access' => $user['access'] ?? '0',
+                'user' => ($user['first_name'] ?? '') . ' ' . ($user['last_name'] ?? ''),
+                'email' => $user['email'] ?? null
+            ]
+        ];
+
+        try {
+            // Use Firebase JWT library (already installed)
+            $jwt = \Firebase\JWT\JWT::encode($payload, $privateKey, 'RS256');
+
+            // Store JWT in database
+            $escapedJwt = mysqli_real_escape_string($con, $jwt);
+            $sql = "UPDATE " . self::$table . " SET api_key='$escapedJwt' WHERE id=$userId";
+
+            if (mysqli_query($con, $sql)) {
+                return $jwt;
+            }
+            return false;
+        } catch (\Exception $e) {
+            error_log("JWT generation failed: " . $e->getMessage());
+            return false;
+        }
     }
 
     public static function revokeApiKey($userId)
