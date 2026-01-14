@@ -751,12 +751,14 @@ class UserController
     {
         $id = $params['id'];
         $model = new UserModel();
-        $key = UserModel::generateApiKey($id);
+        $jwt = UserModel::generateApiKey($id);
 
-        if ($key) {
-            $this->session->getFlashBag()->add('success', 'API Key generated successfully.');
+        if ($jwt) {
+            // Store JWT in session to display on the page
+            $this->session->getFlashBag()->add('success', 'JWT Token generated successfully.');
+            $this->session->getFlashBag()->add('jwt_token', $jwt);
         } else {
-            $this->session->getFlashBag()->add('danger', 'Failed to generate API Key.');
+            $this->session->getFlashBag()->add('danger', 'Failed to generate JWT Token.');
         }
 
         header('Location: ' . $this->base_url . '/modules/users/' . $id);

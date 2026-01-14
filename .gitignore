@@ -32,3 +32,5 @@ database/
 tests/
 swagger/
 composer.phar
+logs/
+*.log
