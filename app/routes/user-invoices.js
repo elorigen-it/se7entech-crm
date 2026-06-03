@@ -67,6 +67,7 @@ export function init() {
                   <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Paid</TableCell>
                   <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Amount Due</TableCell>
                   <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Status</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Linked Contracts</TableCell>
                   <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Actions</TableCell>
                 </TableRow>
               </TableHead>
@@ -107,6 +108,33 @@ export function init() {
                       <TableCell sx={{ fontWeight: 600, color: due > 0 ? '#d32f2f' : '#2e7d32', whiteSpace: 'nowrap' }}>${due.toFixed(2)}</TableCell>
                       <TableCell sx={{ whiteSpace: 'nowrap' }}>
                         <Chip label={statusLabel} color={statusColor} size="small" sx={{ fontWeight: 600 }} />
+                      </TableCell>
+                      <TableCell sx={{ whiteSpace: 'nowrap' }}>
+                        {(inv.associated_contracts || []).length === 0 ? (
+                          <Typography variant="caption" color="textSecondary">—</Typography>
+                        ) : (
+                          <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>
+                            {(inv.associated_contracts || []).map((contractId) => (
+                              <Chip
+                                key={contractId}
+                                label={`#${contractId}`}
+                                size="small"
+                                variant="outlined"
+                                onClick={() => {
+                                  const url = `${window.SE7ENTECH.base_url}/print.php?id=${contractId}`;
+                                  window.open(url, '_blank');
+                                }}
+                                sx={{ 
+                                  cursor: 'pointer',
+                                  fontSize: '0.75rem',
+                                  color: '#0daea8',
+                                  borderColor: '#0daea8',
+                                  '&:hover': { backgroundColor: 'rgba(13, 174, 168, 0.08)' }
+                                }}
+                              />
+                            ))}
+                          </Box>
+                        )}
                       </TableCell>
                       <TableCell sx={{ whiteSpace: 'nowrap' }}>
                         <Tooltip title="View / Print Invoice">

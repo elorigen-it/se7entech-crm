@@ -45,6 +45,12 @@ class CustomerPortalController{
     public function contracts(){
         $customer_id = $this->session->get('customer_id');
         $contracts = ContractModel::getCustomerContracts($customer_id);
+        
+        foreach ($contracts as &$contract) {
+            $contract['associated_invoices'] = ContractModel::getAssociatedInvoicesOnly($contract['id']);
+        }
+        unset($contract);
+
         $this->data['contracts'] = $contracts;
         include __DIR__ . '/../contracts.php';
     }
@@ -52,6 +58,12 @@ class CustomerPortalController{
     public function invoices(){
         $customer_id = $this->session->get('customer_id');
         $invoices = InvoiceModel::getCustomerInvoices($customer_id);
+
+        foreach ($invoices as &$invoice) {
+            $invoice['associated_contracts'] = ContractModel::getAssociatedContractsOnly($invoice['order_id']);
+        }
+        unset($invoice);
+
         $this->data['invoices'] = $invoices;
         // Check if there is an invoices.php file, or include tasks if missing, but let's assume we might need a placeholder or view
         include __DIR__ . '/../invoices.php';

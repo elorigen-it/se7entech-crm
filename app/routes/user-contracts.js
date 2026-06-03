@@ -12,7 +12,8 @@ import {
   TableHead, 
   TableRow, 
   CircularProgress,
-  Tooltip
+  Tooltip,
+  Chip
 } from '@mui/material';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import DescriptionIcon from '@mui/icons-material/Description';
@@ -64,6 +65,7 @@ export function init() {
                   <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Representative</TableCell>
                   <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Company</TableCell>
                   <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Total Value</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Linked Invoices</TableCell>
                   <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Actions</TableCell>
                 </TableRow>
               </TableHead>
@@ -85,6 +87,33 @@ export function init() {
                     <TableCell sx={{ whiteSpace: 'nowrap' }}>{contract.company_name_1}</TableCell>
                     <TableCell sx={{ fontWeight: 600, color: '#2c646c', whiteSpace: 'nowrap' }}>
                       ${contract.total_purchase}
+                    </TableCell>
+                    <TableCell sx={{ whiteSpace: 'nowrap' }}>
+                      {(contract.associated_invoices || []).length === 0 ? (
+                        <Typography variant="caption" color="textSecondary">—</Typography>
+                      ) : (
+                        <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>
+                          {(contract.associated_invoices || []).map((invId) => (
+                            <Chip
+                              key={invId}
+                              label={`#00${invId}`}
+                              size="small"
+                              variant="outlined"
+                              onClick={() => {
+                                const url = `${window.SE7ENTECH.base_url}/print_invoice.php?invoice_id=${invId}`;
+                                window.open(url, '_blank');
+                              }}
+                              sx={{ 
+                                cursor: 'pointer',
+                                fontSize: '0.75rem',
+                                color: '#0daea8',
+                                borderColor: '#0daea8',
+                                '&:hover': { backgroundColor: 'rgba(13, 174, 168, 0.08)' }
+                              }}
+                            />
+                          ))}
+                        </Box>
+                      )}
                     </TableCell>
                     <TableCell sx={{ whiteSpace: 'nowrap' }}>
                       <Tooltip title="View / Print PDF">

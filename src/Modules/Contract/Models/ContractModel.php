@@ -201,6 +201,34 @@ class ContractModel
         return $days;
     }
 
+    public static function getAssociatedInvoicesOnly($contractId)
+    {
+        include __DIR__ . '/../../../../config/connection.php';
+        $sql = "SELECT invoice_id FROM contract_invoices WHERE contract_id = " . (int)$contractId;
+        $res = mysqli_query($con, $sql);
+        $ids = [];
+        if ($res && mysqli_num_rows($res)) {
+            while ($row = mysqli_fetch_assoc($res)) {
+                $ids[] = (int)$row['invoice_id'];
+            }
+        }
+        return $ids;
+    }
+
+    public static function getAssociatedContractsOnly($invoiceId)
+    {
+        include __DIR__ . '/../../../../config/connection.php';
+        $sql = "SELECT contract_id FROM contract_invoices WHERE invoice_id = " . (int)$invoiceId;
+        $res = mysqli_query($con, $sql);
+        $ids = [];
+        if ($res && mysqli_num_rows($res)) {
+            while ($row = mysqli_fetch_assoc($res)) {
+                $ids[] = (int)$row['contract_id'];
+            }
+        }
+        return $ids;
+    }
+
     public static function getCustomerContracts($customer_id)
     {
         include __DIR__ . '/../../../../config/connection.php';
