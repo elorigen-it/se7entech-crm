@@ -346,7 +346,7 @@ class ContractController
         if ($request->request->get('save')) {
             $data = $request->request->all();
 
-            if ($this->session->get('access') == '1') {
+            if ($this->session->get('access') != '0') {
                 $data['agent_name_1'] = $this->session->get('user');
                 $data['agent_name_2'] = $this->session->get('user');
             }
@@ -398,7 +398,7 @@ class ContractController
         $id = $params['id'];
         if ($request->request->get('save')) {
             $data = $request->request->all();
-            if ($this->session->get('access') == '1') {
+            if ($this->session->get('access') != '0') {
                 $data['agent_name_1'] = $this->session->get('user');
                 $data['agent_name_2'] = $this->session->get('user');
                 $data['agent_id'] = $this->session->get('userid');
@@ -421,8 +421,12 @@ class ContractController
                 // $this->data['current'] = $request->request->all();
             } else {
                 $record = ContractModel::getById($id);
-                // $data = $request->request->all();
-                $data['customer_id'] = $record['customer_id'];
+                if (!isset($data['customer_id_input'])) {
+                    $data['customer_id_input'] = $record['customer_id'];
+                }
+                if (!isset($data['agent_id'])) {
+                    $data['agent_id'] = $record['agent_id'];
+                }
                 $res = ContractModel::update($id, $data);
                 $flashes = $this->session->getFlashBag();
                 if ($res) {

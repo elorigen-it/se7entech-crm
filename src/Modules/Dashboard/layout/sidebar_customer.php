@@ -58,12 +58,12 @@ navbar-light bg-white" id="sidenav-main">
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)">
+                    <a class="nav-link" href="<?php echo $this->base_url;?>/modules/customer-portal/index.php/contracts">
                         <i class="fa fa-book"></i> Contracts
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)">
+                    <a class="nav-link" href="<?php echo $this->base_url;?>/modules/customer-portal/index.php/invoices">
                         <i class="fa fa-address-book-o"></i> Invoices
                     </a>
                 </li>

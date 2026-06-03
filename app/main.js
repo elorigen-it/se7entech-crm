@@ -4,6 +4,8 @@ import { Router } from './utils/router.js';
 const routes = {
   '/': () => import('./routes/home.js'),
   '/modules/customer-portal/index.php/tasks': () => import('./routes/user-tasks.js'),
+  '/modules/customer-portal/index.php/contracts': () => import('./routes/user-contracts.js'),
+  '/modules/customer-portal/index.php/invoices': () => import('./routes/user-invoices.js'),
   // NEW ROUTE
 
   '/modules/tasks/index.php/admin-dashboard': () => import('./routes/admin-tasks.js'),

@@ -120,11 +120,10 @@
                                             <div class="row">
                                                 <div class="col-12 col-md-6 mb-1">
                                                     <label for="customer_id" class="bolder">Populate with:</label><br>
-                                                    <input type="hidden" class="customer_id_input" id="customer_id_input" name="customer_id_input">
                                                     <select name="customer_id" id="customer_id" class="form-control select2">
                                                         <option>SELECT A CUSTOMER</option>
                                                         <?php foreach($this->data['customers'] as $customer):?>
-                                                            <option value="<?php echo $customer['id'];?>"><?php echo $customer['type'] . ' - ' .$customer['business_name'] . ' - ' . $customer['name'];;?></option>
+                                                            <option value="<?php echo $customer['id'];?>" <?php echo ($customer['id'] == $this->data['current']['customer_id']) ? 'selected' : '';?>><?php echo $customer['type'] . ' - ' .$customer['business_name'] . ' - ' . $customer['name'];;?></option>
                                                         <?php endforeach;?>
                                                     </select>
                                                 </div>
@@ -158,6 +157,7 @@
                                             </div>
                                         </div>    
                                         <form id="postcontract" method="POST">
+                                            <input type="hidden" class="customer_id_input" id="customer_id_input" name="customer_id_input" value="<?php echo htmlspecialchars($this->data['current']['customer_id'] ?? '');?>">
                                             <!-- Form Name -->
                                             <legend>
                                                 <center>
@@ -354,7 +354,7 @@
                     customer_name_control.value = selectedCustomer.name;
                     customer_name_control.dispatchEvent(new Event('change', {bubbles:true}));
 
-                    document.querySelector('customer_id_input').value=customerSelection.value;
+                    document.querySelector('#customer_id_input').value=customer_selection.value;
 
                 })
 
@@ -482,14 +482,14 @@
                     if(confirmed){
                         let data = new FormData;
                         data.set('id', id);
-                        let endpoint = "<?php echo $base_url;?>/modules/roles/index.php/delete/"
+                        let endpoint = "<?php echo $base_url;?>/modules/contract/index.php/delete/"
                         let xhr = new XMLHttpRequest();
                         xhr.open('POST', endpoint, true)
                         xhr.addEventListener('load', (e) => {
                             let res = JSON.parse(e.target.response);
                             if(res.success){
                                 $("#contract-list-table").dataTable().fnDeleteRow(row)
-                                $.notify('Role deleted!', 'success')
+                                $.notify('Contract deleted!', 'success')
                                 //TODO: delete row from datatable
                             }
                         })
