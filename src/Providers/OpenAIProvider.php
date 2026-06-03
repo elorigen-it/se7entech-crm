@@ -142,12 +142,13 @@ class OpenAIProvider
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true); // Verificar certificado SSL
-        if( $_ENV['ENVIRONMENT'] === 'production' ) {
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2); // Verificar el nombre del host
+        $env = $_ENV['ENVIRONMENT'] ?? getenv('ENVIRONMENT') ?? 'production';
+        if ($env === 'production') {
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
         } else {
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0); // Desactivar verificación en desarrollo
-            curl_setopt($ch, CURLOPT_CAINFO, __DIR__ . '/cert/cacert.pem'); // Ruta al certificado CA si es necesario
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         }
 
         $response = curl_exec($ch);
@@ -186,12 +187,13 @@ class OpenAIProvider
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true); // Verificar certificado SSL
-        if( $_ENV['ENVIRONMENT'] === 'production' ) {
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2); // Verificar el nombre del host
+        $env = $_ENV['ENVIRONMENT'] ?? getenv('ENVIRONMENT') ?? 'production';
+        if ($env === 'production') {
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
         } else {
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0); // Desactivar verificación en desarrollo
-            curl_setopt($ch, CURLOPT_CAINFO, __DIR__ . '/cert/cacert.pem'); // Ruta al certificado CA si es necesario
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         }
         $response = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);

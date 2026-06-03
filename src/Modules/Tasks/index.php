@@ -254,7 +254,14 @@
                                                                     echo htmlspecialchars($clientName);
                                                                 ?>
                                                             </td>
-                                                            <td><?php echo $task['first_name'] . ' ' . $task['last_name'] . ' (' . $task['email'] . ')'; ?></td>
+                                                            <td><?php 
+                                                                 $assigned = trim($task['first_name'] . ' ' . $task['last_name']);
+                                                                 if (!empty($assigned)) {
+                                                                     echo htmlspecialchars($assigned . ' (' . $task['email'] . ')');
+                                                                 } else {
+                                                                     echo '<span class="text-muted">Unassigned</span>';
+                                                                 }
+                                                             ?></td>
 
                                                             <td>
                                                                 <?php 

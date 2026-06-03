@@ -148,6 +148,12 @@ navbar-light bg-white" id="sidenav-main">
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo $base_url; ?>/modules/reports/">
+                                <i class="ni ni-archive-2 text-primary"></i> Reports
+                            </a>
+                        </li>
+
 
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo $base_url; ?>/Email">

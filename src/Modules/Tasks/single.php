@@ -201,7 +201,14 @@
                                                         <br>
                                                         <input type="number" step="0.1" value="<?php echo $this->data['current']['custom_total_time'];?>" id="custom_total_time" name="custom_total_time">
                                                     </div>
-                                                </div>
+                                                    <div class="col-md-4">
+                                                     <div class="form-group">
+                                                         <label class="form-control-label" for="created_at">Creation Date</label>
+                                                         <br>
+                                                         <input type="text" id="created_at" name="created_at" value="<?php echo htmlspecialchars($this->data['current']['created_at'] ?? ''); ?>" class="form-control">
+                                                     </div>
+                                                 </div>
+                                             </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12">
@@ -318,6 +325,12 @@
                     enableTime: true,
                     dateFormat: "Y-m-d H:i",
                     defaultDate: "<?php echo isset($this->data['current']['deadline']) ? $this->data['current']['deadline'] : ''; ?>",
+                });
+
+                flatpickr("#created_at", {
+                    enableTime: true,
+                    dateFormat: "Y-m-d H:i",
+                    defaultDate: "<?php echo isset($this->data['current']['created_at']) ? $this->data['current']['created_at'] : ''; ?>",
                 });
             })
         </script>

@@ -41,7 +41,7 @@ class TaskModel
             customers.business_name AS customer_business_name,
             GROUP_CONCAT(" . self::$taskLabelTable . ".id) AS labels
             FROM " . self::$table . "
-            JOIN invoice_user ON tasks.asigned_to = invoice_user.id
+            LEFT JOIN invoice_user ON tasks.asigned_to = invoice_user.id
             LEFT JOIN customers ON tasks.customer_id = customers.id
             LEFT JOIN " . self::$taskLablesTasks . " ON tasks.id = " . self::$taskLablesTasks . ".id_task
             LEFT JOIN " . self::$taskLabelTable . " ON " . self::$taskLablesTasks . ".id_task_label = " . self::$taskLabelTable . ".id
@@ -92,8 +92,8 @@ class TaskModel
                 GROUP_CONCAT(" . self::$taskLabelTable . ".id) AS labels,
                 GROUP_CONCAT(" . self::$taskCategoryTable . ".id) AS categories
             FROM " . self::$table . "
-            JOIN invoice_user ON tasks.asigned_to = invoice_user.id
-            JOIN customers ON tasks.customer_id = customers.id
+            LEFT JOIN invoice_user ON tasks.asigned_to = invoice_user.id
+            LEFT JOIN customers ON tasks.customer_id = customers.id
             LEFT JOIN " . self::$taskLablesTasks . " ON tasks.id = " . self::$taskLablesTasks . ".id_task
             LEFT JOIN " . self::$taskLabelTable . " ON " . self::$taskLablesTasks . ".id_task_label = " . self::$taskLabelTable . ".id
             LEFT JOIN " . self::$taskCategoriesTasks . " ON tasks.id = " . self::$taskCategoriesTasks . ".task_id
@@ -181,8 +181,11 @@ class TaskModel
             deadline='" . $data['deadline'] . "',
             estimated_time='" . $data['estimated_time'] . "',
             custom_total_time='" . $data['custom_total_time'] . "',
-            task_description_for_customer='" . $data['task-description-for-customer'] . "'
-            WHERE id=$id";
+            task_description_for_customer='" . $data['task-description-for-customer'] . "'";
+        if (isset($data['created_at']) && $data['created_at'] !== '') {
+            $sql .= ", created_at='" . $data['created_at'] . "'";
+        }
+        $sql .= " WHERE id=$id";
         $result = mysqli_query($con, $sql);
         if (!$result) {
             return false; // If the update fails, return false
@@ -361,7 +364,7 @@ class TaskModel
             GROUP_CONCAT(DISTINCT " . self::$taskLabelTable . ".id) AS labels,
             GROUP_CONCAT(DISTINCT " . self::$taskCategoryTable . ".id) AS categories
             FROM " . self::$table . "
-            JOIN invoice_user ON tasks.asigned_to = invoice_user.id
+            LEFT JOIN invoice_user ON tasks.asigned_to = invoice_user.id
             LEFT JOIN " . self::$taskLablesTasks . " ON tasks.id = " . self::$taskLablesTasks . ".id_task
             LEFT JOIN " . self::$taskLabelTable . " ON " . self::$taskLablesTasks . ".id_task_label = " . self::$taskLabelTable . ".id
             LEFT JOIN " . self::$taskCategoriesTasks . " ON tasks.id = " . self::$taskCategoriesTasks . ".task_id

@@ -163,7 +163,14 @@
                                                     <div class="form-group">
                                                         <label class="form-control-label" for="task-user">Asigned to</label>
                                                         <br>
-                                                        <span class="text-muted"><?php echo $this->data['current']['first_name'] . ' ' . $this->data['current']['last_name'] . '<br> &lt;' . $this->data['current']['email'] . '&gt;';?></span><br>
+                                                        <span class="text-muted"><?php 
+                                                            $assigned = trim($this->data['current']['first_name'] . ' ' . $this->data['current']['last_name']);
+                                                            if (!empty($assigned)) {
+                                                                echo htmlspecialchars($assigned) . '<br> &lt;' . htmlspecialchars($this->data['current']['email']) . '&gt;';
+                                                            } else {
+                                                                echo 'Unassigned';
+                                                            }
+                                                        ?></span><br>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">

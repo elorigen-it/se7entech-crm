@@ -28,7 +28,20 @@ class TaskHelper {
     }
 
     public static function getTotalTime($task, $hours = false) {
+        // If the task is finished/completed and has a saved total_time, use it directly!
+        if (($task['status'] === 'finished' || $task['status'] === 'completed') && !empty($task['total_time'])) {
+            $seconds = (int)$task['total_time'];
+            if ($hours) {
+                return $seconds / 3600;
+            }
+            return $seconds;
+        }
+
+        // If the task is finished/completed but doesn't have total_time (fallback), use end_time
         $timestamp = time();
+        if (($task['status'] === 'finished' || $task['status'] === 'completed') && !empty($task['end_time'])) {
+            $timestamp = (int)$task['end_time'];
+        }
 
         if (!$task['start_time']) {
             return 0;
@@ -40,7 +53,7 @@ class TaskHelper {
         $total_seconds = $timestamp - $start_time->getTimestamp();
         
         // 3. Obtener y procesar los intervalos de pausa (ejemplo: "1641000000,1641003600,1641010000,1641012000")
-        $paused_intervals = explode(',', $task['pause_intervals']);
+        $paused_intervals = !empty($task['pause_intervals']) ? explode(',', $task['pause_intervals']) : [];
         
         // Si es impar, eliminamos el último timestamp (pausa no finalizada)
         if (count($paused_intervals) % 2 !== 0) {
@@ -58,7 +71,7 @@ class TaskHelper {
         // 5. Calcular el tiempo neto (total - pausas)
         $net_seconds = $total_seconds - $total_paused;        
         if($hours) {
-            return ceil($net_seconds / 3600);
+            return $net_seconds / 3600;
         }
         return $net_seconds;       
     }
