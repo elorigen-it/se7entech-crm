@@ -224,6 +224,7 @@
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Task Name</th>
+                                                    <th>Customer</th>
                                                     <th>Task User</th>
                                                     <th>Status</th>
                                                     <th>Labels</th>
@@ -236,6 +237,23 @@
                                                         <tr>
                                                             <td><?php echo $task['id'];?></td>
                                                             <td><?php echo $task['name'];?></td>
+                                                            <td>
+                                                                <?php 
+                                                                    $clientName = '';
+                                                                    if (!empty($task['customer_name'])) {
+                                                                        $clientName .= $task['customer_name'];
+                                                                        if (!empty($task['customer_business_name'])) {
+                                                                            $clientName .= ' - ' . $task['customer_business_name'];
+                                                                        }
+                                                                        if (!empty($task['customer_tempname'])) {
+                                                                            $clientName .= ' (' . $task['customer_tempname'] . ')';
+                                                                        }
+                                                                    } else {
+                                                                        $clientName = $task['customer_tempname'];
+                                                                    }
+                                                                    echo htmlspecialchars($clientName);
+                                                                ?>
+                                                            </td>
                                                             <td><?php echo $task['first_name'] . ' ' . $task['last_name'] . ' (' . $task['email'] . ')'; ?></td>
 
                                                             <td>

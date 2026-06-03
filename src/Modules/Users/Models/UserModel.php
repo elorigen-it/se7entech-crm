@@ -51,7 +51,7 @@ class UserModel
     {
         include __DIR__ . '/../../../../config/connection.php';
         $response = array();
-        $sql = "SELECT email, first_name, last_name FROM " . self::$table . " WHERE email='$email'";
+        $sql = "SELECT * FROM " . self::$table . " WHERE email='$email'";
 
         $res = mysqli_query($con, $sql);
         if (mysqli_num_rows($res)) {
@@ -304,5 +304,112 @@ class UserModel
             return mysqli_fetch_assoc($res);
         }
         return false;
+    }
+
+    /**
+     * Sanitize user data by removing sensitive fields
+     * @param array|null $user User data array
+     * @return array|null Sanitized user data or null if input is null
+     */
+    public static function sanitizeUserData($user)
+    {
+        if (!$user) {
+            return null;
+        }
+
+        // Remove sensitive fields if they exist
+        $sensitiveFields = ['password', 'smtp_pass', 'api_key'];
+        foreach ($sensitiveFields as $field) {
+            if (isset($user[$field])) {
+                unset($user[$field]);
+            }
+        }
+
+        return $user;
+    }
+
+    /**
+     * Get paginated list of users with optional filters
+     * @param int $page Current page number (1-indexed)
+     * @param int $perPage Number of records per page
+     * @param array $filters Optional filters (role, zone_id, status)
+     * @return array Array of users
+     */
+    public static function getAllPaginated($page = 1, $perPage = 20, $filters = [])
+    {
+        include __DIR__ . '/../../../../config/connection.php';
+
+        $response = array();
+        $offset = ($page - 1) * $perPage;
+
+        // Build WHERE clause from filters
+        $whereClauses = [];
+        if (isset($filters['role']) && $filters['role'] !== '') {
+            $role = mysqli_real_escape_string($con, $filters['role']);
+            $whereClauses[] = "role = '$role'";
+        }
+        if (isset($filters['zone_id']) && $filters['zone_id'] !== '') {
+            $zoneId = mysqli_real_escape_string($con, $filters['zone_id']);
+            $whereClauses[] = "zone_id = '$zoneId'";
+        }
+        if (isset($filters['status']) && $filters['status'] !== '') {
+            $status = mysqli_real_escape_string($con, $filters['status']);
+            $whereClauses[] = "status = '$status'";
+        }
+
+        $whereSQL = '';
+        if (!empty($whereClauses)) {
+            $whereSQL = ' WHERE ' . implode(' AND ', $whereClauses);
+        }
+
+        $sql = "SELECT * FROM " . self::$table . $whereSQL . " LIMIT $perPage OFFSET $offset";
+
+        $res = mysqli_query($con, $sql);
+        if (mysqli_num_rows($res)) {
+            while ($row = mysqli_fetch_assoc($res)) {
+                array_push($response, $row);
+            }
+        }
+
+        return $response;
+    }
+
+    /**
+     * Count total users with optional filters
+     * @param array $filters Optional filters (role, zone_id, status)
+     * @return int Total count
+     */
+    public static function count($filters = [])
+    {
+        include __DIR__ . '/../../../../config/connection.php';
+
+        // Build WHERE clause from filters
+        $whereClauses = [];
+        if (isset($filters['role']) && $filters['role'] !== '') {
+            $role = mysqli_real_escape_string($con, $filters['role']);
+            $whereClauses[] = "role = '$role'";
+        }
+        if (isset($filters['zone_id']) && $filters['zone_id'] !== '') {
+            $zoneId = mysqli_real_escape_string($con, $filters['zone_id']);
+            $whereClauses[] = "zone_id = '$zoneId'";
+        }
+        if (isset($filters['status']) && $filters['status'] !== '') {
+            $status = mysqli_real_escape_string($con, $filters['status']);
+            $whereClauses[] = "status = '$status'";
+        }
+
+        $whereSQL = '';
+        if (!empty($whereClauses)) {
+            $whereSQL = ' WHERE ' . implode(' AND ', $whereClauses);
+        }
+
+        $sql = "SELECT COUNT(*) as total FROM " . self::$table . $whereSQL;
+
+        $res = mysqli_query($con, $sql);
+        if ($res && $row = mysqli_fetch_assoc($res)) {
+            return (int) $row['total'];
+        }
+
+        return 0;
     }
 }

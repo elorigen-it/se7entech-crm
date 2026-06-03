@@ -152,6 +152,70 @@ $definitions = array(
             'methods' => ['POST'],
             'params' => array('id' => '[0-9]+')
         )
+    ),
+    // ========== REST API Routes ==========
+    array(
+        'name' => 'apiGetUsers',
+        'route' => array(
+            'path' => '/api/users',
+            'detail' => array(
+                'controller' => 'Se7entech\\Contractnew\\Modules\\Users\\Controllers\\UserController',
+                'method' => 'apiGetUsers',
+                'middlewares' => array('Se7entech\\Contractnew\\Middlewares\\JWTMiddleware')
+            ),
+            'methods' => ['GET'],
+        )
+    ),
+    array(
+        'name' => 'apiGetUser',
+        'route' => array(
+            'path' => '/api/users/{id}',
+            'detail' => array(
+                'controller' => 'Se7entech\\Contractnew\\Modules\\Users\\Controllers\\UserController',
+                'method' => 'apiGetUser',
+                'middlewares' => array('Se7entech\\Contractnew\\Middlewares\\JWTMiddleware')
+            ),
+            'methods' => ['GET'],
+            'params' => array('id' => '[0-9]+')
+        )
+    ),
+    array(
+        'name' => 'apiCreateUser',
+        'route' => array(
+            'path' => '/api/users',
+            'detail' => array(
+                'controller' => 'Se7entech\\Contractnew\\Modules\\Users\\Controllers\\UserController',
+                'method' => 'apiCreateUser',
+                'middlewares' => array('Se7entech\\Contractnew\\Middlewares\\JWTMiddleware')
+            ),
+            'methods' => ['POST'],
+        )
+    ),
+    array(
+        'name' => 'apiUpdateUser',
+        'route' => array(
+            'path' => '/api/users/{id}',
+            'detail' => array(
+                'controller' => 'Se7entech\\Contractnew\\Modules\\Users\\Controllers\\UserController',
+                'method' => 'apiUpdateUser',
+                'middlewares' => array('Se7entech\\Contractnew\\Middlewares\\JWTMiddleware')
+            ),
+            'methods' => ['PUT'],
+            'params' => array('id' => '[0-9]+')
+        )
+    ),
+    array(
+        'name' => 'apiDeleteUser',
+        'route' => array(
+            'path' => '/api/users/{id}',
+            'detail' => array(
+                'controller' => 'Se7entech\\Contractnew\\Modules\\Users\\Controllers\\UserController',
+                'method' => 'apiDeleteUser',
+                'middlewares' => array('Se7entech\\Contractnew\\Middlewares\\JWTMiddleware')
+            ),
+            'methods' => ['DELETE'],
+            'params' => array('id' => '[0-9]+')
+        )
     )
 );
 

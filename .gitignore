@@ -29,7 +29,7 @@ error_log
 modules/**/error_log
 config/keys/private.pem
 database/
-tests/
+#tests/
 swagger/
 composer.phar
 logs/

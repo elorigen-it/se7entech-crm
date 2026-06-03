@@ -302,13 +302,11 @@ class UserController
         $validator->addValidator('unique', new UniqueRule($con));
 
         $validation = $validator->make($data, [
-            'firstname' => 'required|min:3',
-            'lastname' => 'required|min:3',
-            'phone' => 'required|min:1',
-            'address' => 'required|min:1',
-            'designation' => 'required|min:1',
-            'role' => 'required',
-            'status' => 'required',
+            'firstname' => 'min:3',
+            'lastname' => 'min:3',
+            'phone' => 'min:1',
+            'address' => 'min:1',
+            'designation' => 'min:1',
 
         ]);
         $validation->setAlias('firstname', 'First Name');
@@ -777,6 +775,274 @@ class UserController
         }
 
         header('Location: ' . $this->base_url . '/modules/users/index.php/' . $id);
+        exit;
+    }
+
+    // ===== REST API Endpoints =====
+
+    /**
+     * GET /api/users - List all users with pagination
+     */
+    public function apiGetUsers()
+    {
+        header('Content-Type: application/json');
+
+        // Get pagination parameters
+        $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+        $perPage = isset($_GET['per_page']) ? (int) $_GET['per_page'] : 20;
+
+        // Validate pagination
+        $page = max(1, $page);
+        $perPage = min(100, max(1, $perPage)); // Max 100 per page
+
+        // Get filters
+        $filters = [];
+        if (isset($_GET['role']))
+            $filters['role'] = $_GET['role'];
+        if (isset($_GET['zone_id']))
+            $filters['zone_id'] = $_GET['zone_id'];
+        if (isset($_GET['status']))
+            $filters['status'] = $_GET['status'];
+
+        // Get paginated users
+        $users = UserModel::getAllPaginated($page, $perPage, $filters);
+        $total = UserModel::count($filters);
+
+        // Sanitize all users
+        $sanitizedUsers = array_map([UserModel::class, 'sanitizeUserData'], $users);
+
+        // Calculate pagination metadata
+        $totalPages = ceil($total / $perPage);
+
+        echo json_encode([
+            'success' => true,
+            'data' => $sanitizedUsers,
+            'pagination' => [
+                'current_page' => $page,
+                'per_page' => $perPage,
+                'total' => $total,
+                'total_pages' => $totalPages
+            ]
+        ]);
+        exit;
+    }
+
+    /**
+     * GET /api/users/{id} - Get user by ID
+     */
+    public function apiGetUser($params)
+    {
+        header('Content-Type: application/json');
+
+        $id = $params['id'];
+        $user = UserModel::getById($id);
+
+        if (!$user) {
+            http_response_code(404);
+            echo json_encode(['success' => false, 'message' => 'User not found']);
+            exit;
+        }
+
+        // Sanitize sensitive data
+        $sanitizedUser = UserModel::sanitizeUserData($user);
+
+        echo json_encode(['success' => true, 'data' => $sanitizedUser]);
+        exit;
+    }
+
+    /**
+     * POST /api/users - Create new user
+     */
+    public function apiCreateUser()
+    {
+        header('Content-Type: application/json');
+
+        // Check if user is admin
+        $access = $this->session->get('access');
+        if ($access != '0') {
+            http_response_code(403);
+            echo json_encode(['success' => false, 'message' => 'Forbidden: Admin access required']);
+            exit;
+        }
+
+        // Get JSON input
+        $input = $this->_getJsonInput();
+
+        // Validate required fields
+        $validation = $this->_validateData($input);
+        if ($validation->fails()) {
+            http_response_code(400);
+            echo json_encode([
+                'success' => false,
+                'message' => 'Validation failed',
+                'errors' => $validation->errors()->toArray()
+            ]);
+            exit;
+        }
+
+        // Generate temporary password
+        $digits = 4;
+        $otp = rand(pow(10, $digits - 1), pow(10, $digits) - 1);
+        $input['password'] = $otp;
+        $input['avatar'] = $this->base_url . '/uploads/avatars/default.png';
+
+        // Set default empty values for optional fields if not provided
+        if (!isset($input['smtp_user'])) {
+            $input['smtp_user'] = '';
+        }
+        if (!isset($input['smtp_pass'])) {
+            $input['smtp_pass'] = '';
+        }
+
+        // Create user
+        $result = UserModel::postUser($input);
+
+        if ($result) {
+            // Get newly created user
+            $newUser = UserModel::getByEmail($input['email']);
+            $sanitizedUser = UserModel::sanitizeUserData($newUser);
+
+            http_response_code(201);
+            echo json_encode([
+                'success' => true,
+                'message' => 'User created successfully',
+                'data' => $sanitizedUser,
+                'temporary_password' => $otp
+            ]);
+        } else {
+            http_response_code(500);
+            echo json_encode(['success' => false, 'message' => 'Failed to create user']);
+        }
+        exit;
+    }
+
+    /**
+     * PUT /api/users/{id} - Update user
+     */
+    public function apiUpdateUser($params)
+    {
+        header('Content-Type: application/json');
+
+        $id = $params['id'];
+        $userId = $this->session->get('userid');
+        $access = $this->session->get('access');
+
+        // Check permissions: users can only update themselves, admins can update anyone
+        if ($access != '0' && $userId != $id) {
+            http_response_code(403);
+            echo json_encode(['success' => false, 'message' => 'Forbidden: You can only update your own profile']);
+            exit;
+        }
+
+        // Check if user exists
+        $existingUser = UserModel::getById($id);
+        if (!$existingUser) {
+            http_response_code(404);
+            echo json_encode(['success' => false, 'message' => 'User not found']);
+            exit;
+        }
+
+        // Get JSON input
+        $input = $this->_getJsonInput();
+
+        // Remove email from update (cannot change email)
+        unset($input['email']);
+
+        // Non-admins cannot change role, status, access
+        if ($access != '0') {
+            unset($input['role']);
+            unset($input['status']);
+            unset($input['access']);
+        }
+
+        // Validate
+        $validation = $this->_validateDataToUpdate($input);
+        if ($validation->fails()) {
+            http_response_code(400);
+            echo json_encode([
+                'success' => false,
+                'message' => 'Validation failed',
+                'errors' => $validation->errors()->toArray()
+            ]);
+            exit;
+        }
+
+        // Keep existing avatar if not provided
+        if (!isset($input['avatar'])) {
+            $input['avatar'] = $existingUser['avatar'];
+        }
+
+        // Merge with existing data for fields not provided (to support partial updates)
+        $updateData = [
+            'firstname' => $input['firstname'] ?? $existingUser['first_name'],
+            'lastname' => $input['lastname'] ?? $existingUser['last_name'],
+            'phone' => $input['phone'] ?? $existingUser['mobile'],
+            'address' => $input['address'] ?? $existingUser['address'],
+            'designation' => $input['designation'] ?? $existingUser['designation'],
+            'role' => $input['role'] ?? $existingUser['role'],
+            'zone_id' => $input['zone_id'] ?? $existingUser['zone_id'],
+            'status' => $input['status'] ?? $existingUser['status'],
+            'smtp_user' => $input['smtp_user'] ?? $existingUser['smtp_user'],
+            'smtp_pass' => $input['smtp_pass'] ?? $existingUser['smtp_pass'],
+            'avatar' => $input['avatar'],
+        ];
+
+        // Update user
+        $result = UserModel::update($id, $updateData);
+
+        if ($result) {
+            $updatedUser = UserModel::getById($id);
+            $sanitizedUser = UserModel::sanitizeUserData($updatedUser);
+
+            echo json_encode([
+                'success' => true,
+                'message' => 'User updated successfully',
+                'data' => $sanitizedUser
+            ]);
+        } else {
+            http_response_code(500);
+            echo json_encode(['success' => false, 'message' => 'Failed to update user']);
+        }
+        exit;
+    }
+
+    /**
+     * DELETE /api/users/{id} - Delete user
+     */
+    public function apiDeleteUser($params)
+    {
+        header('Content-Type: application/json');
+
+        // Only admins can delete users
+        $access = $this->session->get('access');
+        if ($access != '0') {
+            http_response_code(403);
+            echo json_encode(['success' => false, 'message' => 'Forbidden: Admin access required']);
+            exit;
+        }
+
+        $id = $params['id'];
+
+        // Check if user exists
+        $user = UserModel::getById($id);
+        if (!$user) {
+            http_response_code(404);
+            echo json_encode(['success' => false, 'message' => 'User not found']);
+            exit;
+        }
+
+        // Delete user
+        $result = UserModel::delete($id);
+
+        if ($result) {
+            echo json_encode([
+                'success' => true,
+                'message' => 'User deleted successfully'
+            ]);
+        } else {
+            http_response_code(500);
+            echo json_encode(['success' => false, 'message' => 'Failed to delete user']);
+        }
         exit;
     }
 }

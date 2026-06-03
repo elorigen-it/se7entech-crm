@@ -37,9 +37,12 @@ class TaskModel
             invoice_user.email, 
             invoice_user.first_name, 
             invoice_user.last_name,
+            customers.name AS customer_name,
+            customers.business_name AS customer_business_name,
             GROUP_CONCAT(" . self::$taskLabelTable . ".id) AS labels
             FROM " . self::$table . "
             JOIN invoice_user ON tasks.asigned_to = invoice_user.id
+            LEFT JOIN customers ON tasks.customer_id = customers.id
             LEFT JOIN " . self::$taskLablesTasks . " ON tasks.id = " . self::$taskLablesTasks . ".id_task
             LEFT JOIN " . self::$taskLabelTable . " ON " . self::$taskLablesTasks . ".id_task_label = " . self::$taskLabelTable . ".id
             GROUP BY tasks.id
