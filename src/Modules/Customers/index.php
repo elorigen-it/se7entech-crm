@@ -395,14 +395,21 @@
                                                                 $isActive = $hasLogin && $record['active_access'] == 1;
                                                                 $switchId = 'login-switch-' . $record['id'];
                                                             ?>
-                                                            <label class="switch" style="vertical-align:middle;">
-                                                                <input type="checkbox" 
-                                                                    data-defaultusername="<?php echo $record['email'];?>" 
-                                                                    data-checkboxid="<?php echo $switchId;?>" 
-                                                                    <?php echo $isActive ? 'checked' : '';?> 
-                                                                    onchange="toggleLoginAccess(<?php echo $record['id'];?>, this.checked, this)">
-                                                                <span class="slider round"></span>
-                                                            </label>                                                                                                                                                                               
+                                                            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                                                                <label class="switch" style="vertical-align:middle; margin-bottom: 0;">
+                                                                    <input type="checkbox" 
+                                                                        data-defaultusername="<?php echo $record['email'];?>" 
+                                                                        data-checkboxid="<?php echo $switchId;?>" 
+                                                                        <?php echo $isActive ? 'checked' : '';?> 
+                                                                        onchange="toggleLoginAccess(<?php echo $record['id'];?>, this.checked, this)">
+                                                                    <span class="slider round"></span>
+                                                                </label>                                                                                                                                                                               
+                                                                <?php if ($hasLogin): ?>
+                                                                    <button class="btn btn-secondary btn-sm" onclick="resetCustomerPassword(<?php echo $record['id'];?>, '<?php echo htmlspecialchars(!empty($record['username']) ? $record['username'] : $record['email']);?>')">
+                                                                        <i class="fa fa-key"></i> Reset Password
+                                                                    </button>
+                                                                <?php endif; ?>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach;?>
@@ -493,85 +500,90 @@
                 });
             }
 
+            function showAccessModal(customerId, defaultUsername, el) {
+                // Show modal to enter username and generate password
+                bootbox.dialog({
+                    title: "Access Credentials",
+                    message: `
+                        <form id="loginAccessForm">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" name="username" class="form-control" value="${defaultUsername}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <div class="input-group">
+                                    <input type="text" id="password" name="password" class="form-control">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-secondary" type="button" onclick="generatePassword()">Generate</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    `,
+                    buttons: {
+                        cancel: {
+                            label: "Cancel",
+                            className: 'btn-secondary',
+                            callback: function() {
+                                if (el) el.checked = false;
+                            }
+                        },
+                        confirm: {
+                            label: "Save",
+                            className: 'btn-primary',
+                            callback: function() {
+                                var username = document.getElementById('username').value.trim();
+                                var password = document.getElementById('password').value.trim();
+                                if (!username || !password) {
+                                    $.notify('Username and password are required', 'danger');
+                                    return false;
+                                }
+                                var data = new FormData();
+                                data.append('customer_id', customerId);
+                                data.append('username', username);
+                                data.append('password', password);
+                                var endpoint = "<?php echo $base_url;?>/modules/customers/index.php/login-access/activate";
+                                fetch(endpoint, {
+                                    method: 'POST',
+                                    body: data
+                                })
+                                .then(res => res.json())
+                                .then(res => {
+                                    if (res.success) {
+                                        $.notify('Access credentials updated successfully!', 'success');
+                                        if (el) el.checked = true;
+                                        setTimeout(() => window.location.reload(), 1000);
+                                    } else {
+                                        $.notify(res.msg || 'Failed to update access credentials', 'danger');
+                                        if (el) el.checked = false;
+                                    }
+                                })
+                                .catch(() => {
+                                    $.notify('Request failed', 'danger');
+                                    if (el) el.checked = false;
+                                });
+                            }
+                        }
+                    },
+                    onEscape: () => {     
+                        if (el) el.checked = false;
+                    },
+                    onHide: (e) => {
+                        if (el && (!e || (e && e.currentTarget && e.currentTarget.classList && !e.currentTarget.classList.contains('btn-primary') && !e.currentTarget.classList.contains('btn-secondary')))) {
+                            el.checked = false;
+                        }
+                    }
+                });
+
+                // Auto-generate password on popup load
+                generatePassword();
+            }
+
             function toggleLoginAccess(customerId, enabled, el) {   
                 const defaultUsername = el.dataset.defaultusername || '';
                 if (enabled) { 
-                    
-                    // Show modal to enter username and generate password
-                    bootbox.dialog({
-                        title: "Activate Login Access",
-                        message: `
-                            <form id="loginAccessForm">
-                                <div class="form-group">
-                                    <label for="username">Username</label>
-                                    <input type="text" id="username" name="username" class="form-control" value="${defaultUsername}" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <div class="input-group">
-                                        <input type="text" id="password" name="password" class="form-control" readonly>
-                                        <div class="input-group-append">
-                                            <button class="btn btn-secondary" type="button" onclick="generatePassword()">Generate</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        `,
-                        buttons: {
-                            cancel: {
-                                label: "Cancel",
-                                className: 'btn-secondary',
-                                callback: function() {
-                                    // Uncheck switch if cancelled                                    
-                                    el.checked = false;
-                                }
-                            },
-                            confirm: {
-                                label: "Save",
-                                className: 'btn-primary',
-                                callback: function() {
-                                    var username = document.getElementById('username').value.trim();
-                                    var password = document.getElementById('password').value.trim();
-                                    if (!username || !password) {
-                                        $.notify('Username and password are required', 'danger');
-                                        return false;
-                                    }
-                                    var data = new FormData();
-                                    data.append('customer_id', customerId);
-                                    data.append('username', username);
-                                    data.append('password', password);
-                                    var endpoint = "<?php echo $base_url;?>/modules/customers/index.php/login-access/activate";
-                                    fetch(endpoint, {
-                                        method: 'POST',
-                                        body: data
-                                    })
-                                    .then(res => res.json())
-                                    .then(res => {
-                                        if (res.success) {
-                                            $.notify('Login access activated!', 'success');
-                                            el.checked = true;
-                                        } else {
-                                            $.notify(res.msg || 'Failed to activate login access', 'danger');
-                                            el.checked = false;
-                                        }
-                                    })
-                                    .catch(() => {
-                                        $.notify('Request failed', 'danger');
-                                        el.checked = false;
-                                    });
-                                }
-                            }
-                        },
-                        onEscape: () => {     
-                            el.checked = false;
-                        },
-                        onHide: (e) => {
-                            // If dialog is closed without pressing Cancel or Save
-                            if (!e || (e && e.currentTarget && e.currentTarget.classList && !e.currentTarget.classList.contains('btn-primary') && !e.currentTarget.classList.contains('btn-secondary'))) {
-                                el.checked = false;
-                            }
-                        }
-                    });
+                    showAccessModal(customerId, defaultUsername, el);
                 } else {
                     // Confirm deactivation
                     bootbox.confirm({
@@ -589,48 +601,40 @@
                                 .then(res => {
                                     if (res.success) {
                                         $.notify('Login access deactivated!', 'success');  
-                                        // document.querySelectorAll("[data-checkboxid='"+el.dataset.checkboxid+"']").forEach((element, n) => {
-                                        //     element.checked = false;
-                                        //     element.removeAttribute('checked')
-                                        // })                                      
-                                        let table = $('#zones-list-table').DataTable();
-                                        let rowIdx = table.row('#row-'+customerId).index();
-                                        let cellColumn = 7;
-                                        let cell = table.cell(rowIdx, cellColumn);
-                                        let cellHtml = cell.data();
-                                        cellHtml = cellHtml.replace(/checked\s*=\s*""/g, '');
-                                        cell.data(cellHtml).draw(false);      
-                                        
+                                        setTimeout(() => window.location.reload(), 1000);
                                     } else {
                                         $.notify(res.error || 'Failed to deactivate login access', 'danger');
                                         document.querySelectorAll("[data-checkboxid='"+el.dataset.checkboxid+"']").forEach((element) => {
                                             element.checked = true;
-                                        })
+                                        });
                                     }
                                 })
                                 .catch(() => {
                                     $.notify('Request failed', 'danger');
                                     document.querySelectorAll("[data-checkboxid='"+el.dataset.checkboxid+"']").forEach((element) => {
                                         element.checked = true;
-                                    })
+                                    });
                                 });
                             } else {
                                 document.querySelectorAll("[data-checkboxid='"+el.dataset.checkboxid+"']").forEach((element) => {
                                     element.checked = true;
-                                })
+                                });
                             }
                         },
                         onEscape: () => {     
                             el.checked = true;
                         },
                         onHide: (e) => {
-                            // If dialog is closed without pressing Cancel or Save
                             if (!e || (e && e.currentTarget && e.currentTarget.classList && !e.currentTarget.classList.contains('btn-primary') && !e.currentTarget.classList.contains('btn-secondary'))) {
                                 el.checked = true;
                             }
                         }        
                     });
                 }
+            }
+
+            function resetCustomerPassword(customerId, currentUsername) {
+                showAccessModal(customerId, currentUsername, null);
             }
 
             function generatePassword() {
