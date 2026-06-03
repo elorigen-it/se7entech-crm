@@ -5,11 +5,18 @@
 session_start();
 include 'Invoice.php';
 $invoice = new Invoice();
-$invoice->checkLoggedIn();
+$invoice->checkLoggedIn(true);
 if(!empty($_GET['invoice_id']) && $_GET['invoice_id']) {
 	$inv_id =  $_GET['invoice_id'];
 	$invoiceValues = $invoice->getInvoice($_GET['invoice_id']);		
 	$invoiceItems = $invoice->getInvoiceItems($_GET['invoice_id']);		
+
+	// Security check for logged-in customers
+	if (isset($_SESSION['customer_id']) && !isset($_SESSION['userid'])) {
+		if (empty($invoiceValues) || (int)$invoiceValues['customer_id'] !== (int)$_SESSION['customer_id']) {
+			die("Unauthorized access to this invoice.");
+		}
+	}
 }
 ?>
  <title>Se7entech Invoice</title>

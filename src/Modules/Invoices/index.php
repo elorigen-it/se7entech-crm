@@ -135,9 +135,10 @@ require __DIR__ . '/../../../config/connection.php'; // Use require to ensure $c
                                                         <option value="">SELECT A CUSTOMER</option>
                                                         <?php if (isset($this->data['customers']) && count($this->data['customers'])): ?>
                                                             <?php foreach ($this->data['customers'] as $customer): ?>
-                                                                <option data-address="<?php echo $customer['address']; ?>"
-                                                                    value="<?php echo $customer['business_name'] . ' - ' . $customer['name']; ?>">
-                                                                    <?php echo $customer['type'] . ' - ' . $customer['business_name'] . ' - ' . $customer['name']; ?>
+                                                                <option value="<?php echo $customer['id']; ?>"
+                                                                    data-address="<?php echo htmlspecialchars($customer['address'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"
+                                                                    data-company="<?php echo htmlspecialchars(($customer['business_name'] ?? '') . ' - ' . ($customer['name'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>">
+                                                                    <?php echo htmlspecialchars(($customer['type'] ?? '') . ' - ' . ($customer['business_name'] ?? '') . ' - ' . ($customer['name'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>
                                                                 </option>
                                                             <?php endforeach; ?>
                                                         <?php endif; ?>
@@ -308,10 +309,9 @@ require __DIR__ . '/../../../config/connection.php'; // Use require to ensure $c
             // Handle Customer Selection
             $('#customer_id').on('select2:select', function (e) {
                 let address = e.params.data.element.dataset.address;
-                // The value is set to "Business Name - User Name" in the option value
-                let value = e.params.data.id;
+                let company = e.params.data.element.dataset.company;
 
-                $('#companyName').val(value);
+                $('#companyName').val(company);
                 if (address) {
                     $('#address').val(address);
                 }

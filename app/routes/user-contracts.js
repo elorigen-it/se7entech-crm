@@ -54,17 +54,17 @@ export function init() {
             </Typography>
           </Paper>
         ) : (
-          <TableContainer component={Paper} sx={{ borderRadius: 2, boxShadow: '0 4px 20px rgba(0,0,0,0.05)', overflow: 'hidden' }}>
+          <TableContainer component={Paper} sx={{ borderRadius: 2, boxShadow: '0 4px 20px rgba(0,0,0,0.05)', overflowX: 'auto' }}>
             <Table sx={{ minWidth: 650 }} aria-label="contracts table">
               <TableHead sx={{ backgroundColor: '#0daea8' }}>
                 <TableRow>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>ID</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Date Start</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Date End</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Representative</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Company</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Total Value</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Actions</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>ID</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Date Start</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Date End</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Representative</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Company</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Total Value</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Actions</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -76,17 +76,17 @@ export function init() {
                       '&:hover': { backgroundColor: 'rgba(13, 174, 168, 0.05)', transition: 'background-color 0.3s' }
                     }}
                   >
-                    <TableCell component="th" scope="row" sx={{ fontWeight: 600 }}>
+                    <TableCell component="th" scope="row" sx={{ fontWeight: 600, whiteSpace: 'nowrap' }}>
                       #{contract.id}
                     </TableCell>
-                    <TableCell>{contract.contract_date_start}</TableCell>
-                    <TableCell>{contract.contract_date_end}</TableCell>
-                    <TableCell>{contract.agent_name_1}</TableCell>
-                    <TableCell>{contract.company_name_1}</TableCell>
-                    <TableCell sx={{ fontWeight: 600, color: '#2c646c' }}>
+                    <TableCell sx={{ whiteSpace: 'nowrap' }}>{contract.contract_date_start}</TableCell>
+                    <TableCell sx={{ whiteSpace: 'nowrap' }}>{contract.contract_date_end}</TableCell>
+                    <TableCell sx={{ whiteSpace: 'nowrap' }}>{contract.agent_name_1}</TableCell>
+                    <TableCell sx={{ whiteSpace: 'nowrap' }}>{contract.company_name_1}</TableCell>
+                    <TableCell sx={{ fontWeight: 600, color: '#2c646c', whiteSpace: 'nowrap' }}>
                       ${contract.total_purchase}
                     </TableCell>
-                    <TableCell>
+                    <TableCell sx={{ whiteSpace: 'nowrap' }}>
                       <Tooltip title="View / Print PDF">
                         <Button
                           variant="contained"

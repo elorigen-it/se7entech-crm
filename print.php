@@ -3,7 +3,11 @@
    require_once './envloader.php';
    require_once './config/config.php';
    require_once './config/connection.php';
-//   require_once './access.php';
+
+   if (!isset($_SESSION['userid']) && !isset($_SESSION['customer_id'])) {
+       header("Location: index.php");
+       exit;
+   }
 ?>
 
 <head>
@@ -19,6 +23,13 @@
         $id=$_GET['id'];
         $res=mysqli_query($con,"select * from contract where id='$id'");
         $row=mysqli_fetch_assoc($res);
+
+        // Security check for logged-in customers
+        if (isset($_SESSION['customer_id']) && !isset($_SESSION['userid'])) {
+            if (empty($row) || (int)$row['customer_id'] !== (int)$_SESSION['customer_id']) {
+                die("Unauthorized access to this contract.");
+            }
+        }
     ?>
     <style>
     body

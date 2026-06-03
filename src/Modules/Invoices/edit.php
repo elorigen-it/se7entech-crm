@@ -56,10 +56,28 @@ $items = $this->data['items'] ?? [];
                                 <input type="hidden" name="id" value="<?php echo $invoice['order_id']; ?>">
                                 <input type="hidden" name="userId" value="<?php echo $invoice['user_id']; ?>">
 
-                                <h6 class="heading-small text-muted mb-4">Receiver Info</h6>
-                                <div class="pl-lg-4">
-                                    <div class="row">
-                                        <div class="col-md-6">
+                                 <h6 class="heading-small text-muted mb-4">Receiver Info</h6>
+                                 <div class="pl-lg-4">
+                                     <div class="row">
+                                         <div class="col-md-12 mb-3">
+                                             <label class="form-control-label" for="customer_id">Select Customer</label>
+                                             <select name="customer_id" id="customer_id" class="form-control select2">
+                                                 <option value="">SELECT A CUSTOMER</option>
+                                                 <?php if (isset($this->data['customers']) && count($this->data['customers'])): ?>
+                                                     <?php foreach ($this->data['customers'] as $customer): ?>
+                                                         <option value="<?php echo $customer['id']; ?>"
+                                                             data-address="<?php echo htmlspecialchars($customer['address'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"
+                                                             data-company="<?php echo htmlspecialchars(($customer['business_name'] ?? '') . ' - ' . ($customer['name'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>"
+                                                             <?php echo (isset($invoice['customer_id']) && $invoice['customer_id'] == $customer['id']) ? 'selected' : ''; ?>>
+                                                             <?php echo htmlspecialchars(($customer['type'] ?? '') . ' - ' . ($customer['business_name'] ?? '') . ' - ' . ($customer['name'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>
+                                                         </option>
+                                                     <?php endforeach; ?>
+                                                 <?php endif; ?>
+                                             </select>
+                                         </div>
+                                     </div>
+                                     <div class="row">
+                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="companyName">Company Name</label>
                                                 <input type="text" id="companyName" name="companyName"
@@ -227,6 +245,23 @@ $items = $this->data['items'] ?? [];
     <?php include __DIR__ . '/../../../layout/footer_scripts.php'; ?>
     <script>
         $(document).ready(function () {
+            // Initialize Select2
+            $('.select2').select2({
+                placeholder: 'Select a customer',
+                allowClear: true
+            });
+
+            // Handle Customer Selection
+            $('#customer_id').on('select2:select', function (e) {
+                let address = e.params.data.element.dataset.address;
+                let company = e.params.data.element.dataset.company;
+
+                $('#companyName').val(company);
+                if (address) {
+                    $('#address').val(address);
+                }
+            });
+
             // Simplified JS Logic mirroring index.php but accounting for pre-filled rows
             $(document).on('click', '#checkAll', function () {
                 $(".itemRow").prop("checked", this.checked);

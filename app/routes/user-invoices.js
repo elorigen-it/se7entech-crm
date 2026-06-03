@@ -55,19 +55,19 @@ export function init() {
             </Typography>
           </Paper>
         ) : (
-          <TableContainer component={Paper} sx={{ borderRadius: 2, boxShadow: '0 4px 20px rgba(0,0,0,0.05)', overflow: 'hidden' }}>
+          <TableContainer component={Paper} sx={{ borderRadius: 2, boxShadow: '0 4px 20px rgba(0,0,0,0.05)', overflowX: 'auto' }}>
             <Table sx={{ minWidth: 650 }} aria-label="invoices table">
               <TableHead sx={{ backgroundColor: '#0daea8' }}>
                 <TableRow>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>ID</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Concept</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Date of Issue</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Due Date</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Total</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Paid</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Amount Due</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Status</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Actions</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>ID</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Concept</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Date of Issue</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Due Date</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Total</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Paid</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Amount Due</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Status</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Actions</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -94,21 +94,21 @@ export function init() {
                         '&:hover': { backgroundColor: 'rgba(13, 174, 168, 0.05)', transition: 'background-color 0.3s' }
                       }}
                     >
-                      <TableCell component="th" scope="row" sx={{ fontWeight: 600 }}>
+                      <TableCell component="th" scope="row" sx={{ fontWeight: 600, whiteSpace: 'nowrap' }}>
                         #00{inv.order_id}
                       </TableCell>
                       <TableCell sx={{ maxWidth: 200, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} title={inv.order_concept}>
                         {inv.order_concept}
                       </TableCell>
-                      <TableCell>{inv.order_date}</TableCell>
-                      <TableCell>{inv.duesdate}</TableCell>
-                      <TableCell sx={{ fontWeight: 600 }}>${total.toFixed(2)}</TableCell>
-                      <TableCell sx={{ color: '#2c646c' }}>${paid.toFixed(2)}</TableCell>
-                      <TableCell sx={{ fontWeight: 600, color: due > 0 ? '#d32f2f' : '#2e7d32' }}>${due.toFixed(2)}</TableCell>
-                      <TableCell>
+                      <TableCell sx={{ whiteSpace: 'nowrap' }}>{inv.order_date}</TableCell>
+                      <TableCell sx={{ whiteSpace: 'nowrap' }}>{inv.duesdate}</TableCell>
+                      <TableCell sx={{ fontWeight: 600, whiteSpace: 'nowrap' }}>${total.toFixed(2)}</TableCell>
+                      <TableCell sx={{ color: '#2c646c', whiteSpace: 'nowrap' }}>${paid.toFixed(2)}</TableCell>
+                      <TableCell sx={{ fontWeight: 600, color: due > 0 ? '#d32f2f' : '#2e7d32', whiteSpace: 'nowrap' }}>${due.toFixed(2)}</TableCell>
+                      <TableCell sx={{ whiteSpace: 'nowrap' }}>
                         <Chip label={statusLabel} color={statusColor} size="small" sx={{ fontWeight: 600 }} />
                       </TableCell>
-                      <TableCell>
+                      <TableCell sx={{ whiteSpace: 'nowrap' }}>
                         <Tooltip title="View / Print Invoice">
                           <Button
                             variant="contained"

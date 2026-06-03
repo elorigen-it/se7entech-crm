@@ -508,7 +508,7 @@
                         <form id="loginAccessForm">
                             <div class="form-group">
                                 <label for="username">Username</label>
-                                <input type="text" id="username" name="username" class="form-control" value="${defaultUsername}" required>
+                                <input type="text" id="username" name="username" class="form-control" value="${defaultUsername}" disabled>
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>

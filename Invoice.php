@@ -59,9 +59,17 @@ class Invoice{
 		}
         return  $user;
 	}	
-	public function checkLoggedIn(){
-		if(!$_SESSION['userid']) {
-			header("Location:index.php");
+	public function checkLoggedIn($allowCustomer = false){
+		if ($allowCustomer) {
+			if(!isset($_SESSION['userid']) && !isset($_SESSION['customer_id'])) {
+				header("Location:index.php");
+				exit;
+			}
+		} else {
+			if(!isset($_SESSION['userid'])) {
+				header("Location:index.php");
+				exit;
+			}
 		}
 	}		
 	public function isDepartmentResponsible($id){

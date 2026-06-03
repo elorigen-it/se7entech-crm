@@ -11,6 +11,7 @@ class InvoiceModel
     {
         include __DIR__ . '/../../../../config/connection.php';
 
+        $customerId = isset($data['customer_id']) && $data['customer_id'] !== '' ? (int)$data['customer_id'] : null;
         $userId = $data['userId'] ?? 0;
         $concept = $data['invoiceConcept'] ?? '';
         $name = $data['companyName'] ?? '';
@@ -26,14 +27,14 @@ class InvoiceModel
         $logid = $data['logid'] ?? $userId;
         $dueDate = $data['duesdate'] ?? date('Y-m-d');
 
-        $stmt = $con->prepare("INSERT INTO " . self::$table . " (user_id, order_concept, order_receiver_name, order_receiver_address, order_total_before_tax, order_total_tax, order_tax_per, order_total_after_tax, order_amount_paid, order_total_amount_due, note, logid, duesdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $con->prepare("INSERT INTO " . self::$table . " (customer_id, user_id, order_concept, order_receiver_name, order_receiver_address, order_total_before_tax, order_total_tax, order_tax_per, order_total_after_tax, order_amount_paid, order_total_amount_due, note, logid, duesdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
         if (!$stmt) {
             error_log("Prepare failed: " . $con->error);
             return false;
         }
 
-        $stmt->bind_param("isssddddddsss", $userId, $concept, $name, $address, $subTotal, $taxAmount, $taxRate, $totalAfter, $paid, $due, $note, $logid, $dueDate);
+        $stmt->bind_param("iisssddddddsss", $customerId, $userId, $concept, $name, $address, $subTotal, $taxAmount, $taxRate, $totalAfter, $paid, $due, $note, $logid, $dueDate);
 
         if ($stmt->execute()) {
             $invoiceId = $stmt->insert_id;
@@ -49,6 +50,7 @@ class InvoiceModel
     {
         include __DIR__ . '/../../../../config/connection.php';
 
+        $customerId = isset($data['customer_id']) && $data['customer_id'] !== '' ? (int)$data['customer_id'] : null;
         $concept = $data['invoiceConcept'] ?? '';
         $name = $data['companyName'] ?? '';
         $address = $data['address'] ?? '';
@@ -61,9 +63,9 @@ class InvoiceModel
         $note = $data['notes'] ?? '';
         $dueDate = $data['duesdate'] ?? date('Y-m-d');
 
-        $stmt = $con->prepare("UPDATE " . self::$table . " SET order_concept=?, order_receiver_name=?, order_receiver_address=?, order_total_before_tax=?, order_total_tax=?, order_tax_per=?, order_total_after_tax=?, order_amount_paid=?, order_total_amount_due=?, note=?, duesdate=? WHERE order_id=?");
+        $stmt = $con->prepare("UPDATE " . self::$table . " SET customer_id=?, order_concept=?, order_receiver_name=?, order_receiver_address=?, order_total_before_tax=?, order_total_tax=?, order_tax_per=?, order_total_after_tax=?, order_amount_paid=?, order_total_amount_due=?, note=?, duesdate=? WHERE order_id=?");
 
-        $stmt->bind_param("sssddddddssi", $concept, $name, $address, $subTotal, $taxAmount, $taxRate, $totalAfter, $paid, $due, $note, $dueDate, $id);
+        $stmt->bind_param("isssddddddssi", $customerId, $concept, $name, $address, $subTotal, $taxAmount, $taxRate, $totalAfter, $paid, $due, $note, $dueDate, $id);
 
         if ($stmt->execute()) {
             self::deleteItems($id);
