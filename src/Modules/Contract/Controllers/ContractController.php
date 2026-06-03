@@ -450,7 +450,7 @@ class ContractController
 
     public function getContracts()
     {
-        if ($this->session->get('access') === '0') {
+        if ($this->session->get('access') == '0') {
             $contracts = ContractModel::getAll();
         } else {
             $contracts = ContractModel::getContractsFromAgent($this->session->get('userid'));
@@ -461,7 +461,7 @@ class ContractController
 
     public function getCustomers()
     {
-        if ($this->session->get('access') === '0') {
+        if ($this->session->get('access') == '0') {
             $customers = CustomersModel::getAllV2();
         } else {
             $customers = CustomersModel::getCustomersFromAgent($this->session->get('email'));

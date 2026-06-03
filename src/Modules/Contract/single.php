@@ -328,12 +328,13 @@
                 
                 //let services_split = services_textarea.split('::');
                 let services_split = services_textarea.match("<li>(.*)::");
-                window.ss = services_split
+                window.ss = services_split;
                 window.services_textarea = services_textarea;
                 
                 let defaultSelected = [];
-                if(services_split.length){
+                if(services_split && services_split.length){
                     services_split.forEach((_el) => {
+                        if (!_el) return;
                         $('#services_control option').each((i, _opt) => {
                             // console.log(removeTags(_el)
                             if(_opt.textContent == removeTags(_el) ){
