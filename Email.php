@@ -144,9 +144,12 @@ if(isset($_SESSION['email']))
               $testSubject = "Correo de prueba - Integración Resend";
               $testBody = "<h3>¡Hola!</h3><p>Este es un correo de prueba de tu integración con <strong>Resend</strong> en Se7entech CRM.</p><p>Si recibiste este mensaje, la configuración es correcta y fiable.</p>";
               
+              $resendFromEmail = getenv('RESEND_FROM_EMAIL') ?: ($_ENV['RESEND_FROM_EMAIL'] ?? ($_SERVER['RESEND_FROM_EMAIL'] ?? 'onboarding@resend.dev'));
+              $resendFromName = getenv('RESEND_FROM_NAME') ?: ($_ENV['RESEND_FROM_NAME'] ?? ($_SERVER['RESEND_FROM_NAME'] ?? 'Se7entech CRM'));
+
               $mailer = new Mailer(
-                  getenv('RESEND_FROM_EMAIL') ?: 'onboarding@resend.dev',
-                  getenv('RESEND_FROM_NAME') ?: 'Se7entech CRM',
+                  $resendFromEmail,
+                  $resendFromName,
                   $testTo,
                   'Test Recipient',
                   $testSubject,
@@ -644,7 +647,11 @@ if(isset($_SESSION['email']))
                      </div>
                      
                      <!--start resend tab-->
-                     <?php if ($access === '0'): ?>
+                     <?php if ($access === '0'): 
+                        $resendApiKey = getenv('RESEND_API_KEY') ?: ($_ENV['RESEND_API_KEY'] ?? ($_SERVER['RESEND_API_KEY'] ?? ''));
+                        $resendFromEmail = getenv('RESEND_FROM_EMAIL') ?: ($_ENV['RESEND_FROM_EMAIL'] ?? ($_SERVER['RESEND_FROM_EMAIL'] ?? ''));
+                        $resendFromName = getenv('RESEND_FROM_NAME') ?: ($_ENV['RESEND_FROM_NAME'] ?? ($_SERVER['RESEND_FROM_NAME'] ?? ''));
+                     ?>
                      <div class="tab-pane fade show" id="resend" role="tabpanel" aria-labelledby="tabs-resend-main">
                         <div class="row">
                            <div class="col-xl-6 col-12 mb-4">
@@ -655,7 +662,7 @@ if(isset($_SESSION['email']))
                                           <h3 class="mb-0">Configuración de Resend</h3>
                                        </div>
                                        <div class="col-4 text-right">
-                                          <?php if (!empty(getenv('RESEND_API_KEY'))): ?>
+                                          <?php if (!empty($resendApiKey)): ?>
                                              <span class="badge badge-success" style="font-size:0.8rem; padding: 6px 12px; border-radius: 4px;">Activo</span>
                                           <?php else: ?>
                                              <span class="badge badge-warning" style="font-size:0.8rem; padding: 6px 12px; border-radius: 4px;">Inactivo (Fallback SMTP)</span>
@@ -682,19 +689,19 @@ if(isset($_SESSION['email']))
                                        
                                        <div class="form-group">
                                           <label class="form-control-label" for="resend_api_key">Resend API Key <span style="color:red">*</span></label>
-                                          <input type="password" id="resend_api_key" name="resend_api_key" class="form-control" placeholder="re_..." value="<?php echo htmlspecialchars(getenv('RESEND_API_KEY') ?: ''); ?>" required>
+                                          <input type="password" id="resend_api_key" name="resend_api_key" class="form-control" placeholder="re_..." value="<?php echo htmlspecialchars($resendApiKey); ?>" required>
                                           <small class="text-muted">Ingresa tu API Key secreta generada desde el panel de control de Resend.</small>
                                        </div>
                                        
                                        <div class="form-group">
                                           <label class="form-control-label" for="resend_from_email">Email remitente (From Email) <span style="color:red">*</span></label>
-                                          <input type="email" id="resend_from_email" name="resend_from_email" class="form-control" placeholder="no-reply@tudominio.com" value="<?php echo htmlspecialchars(getenv('RESEND_FROM_EMAIL') ?: ''); ?>" required>
+                                          <input type="email" id="resend_from_email" name="resend_from_email" class="form-control" placeholder="no-reply@tudominio.com" value="<?php echo htmlspecialchars($resendFromEmail); ?>" required>
                                           <small class="text-muted">Debe ser una dirección de correo verificada o de un dominio verificado en Resend.</small>
                                        </div>
                                        
                                        <div class="form-group">
                                           <label class="form-control-label" for="resend_from_name">Nombre remitente (From Name)</label>
-                                          <input type="text" id="resend_from_name" name="resend_from_name" class="form-control" placeholder="Se7entech CRM" value="<?php echo htmlspecialchars(getenv('RESEND_FROM_NAME') ?: ''); ?>">
+                                          <input type="text" id="resend_from_name" name="resend_from_name" class="form-control" placeholder="Se7entech CRM" value="<?php echo htmlspecialchars($resendFromName); ?>">
                                           <small class="text-muted">El nombre para mostrar en los correos enviados.</small>
                                        </div>
 
@@ -732,10 +739,10 @@ if(isset($_SESSION['email']))
                                           <small class="text-muted">Ingresa el correo electrónico donde deseas recibir el mensaje de prueba.</small>
                                        </div>
 
-                                       <button type="submit" class="btn btn-success btn-block" <?php echo empty(getenv('RESEND_API_KEY')) ? 'disabled' : ''; ?>>
+                                       <button type="submit" class="btn btn-success btn-block" <?php echo empty($resendApiKey) ? 'disabled' : ''; ?>>
                                           Enviar Correo de Prueba <i class="fa fa-paper-plane ml-1"></i>
                                        </button>
-                                       <?php if (empty(getenv('RESEND_API_KEY'))): ?>
+                                       <?php if (empty($resendApiKey)): ?>
                                           <small class="text-danger d-block mt-2 text-center">Debes configurar y guardar tu API Key antes de enviar pruebas.</small>
                                        <?php endif; ?>
                                     </form>

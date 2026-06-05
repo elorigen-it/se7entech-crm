@@ -33,10 +33,10 @@ class Mailer {
     public function send(){
         require __DIR__ . '/../../config/config.php';
         
-        $resendApiKey = getenv('RESEND_API_KEY');
+        $resendApiKey = getenv('RESEND_API_KEY') ?: ($_ENV['RESEND_API_KEY'] ?? ($_SERVER['RESEND_API_KEY'] ?? null));
         if (!empty($resendApiKey)) {
-            $resendFromEmail = getenv('RESEND_FROM_EMAIL');
-            $resendFromName = getenv('RESEND_FROM_NAME');
+            $resendFromEmail = getenv('RESEND_FROM_EMAIL') ?: ($_ENV['RESEND_FROM_EMAIL'] ?? ($_SERVER['RESEND_FROM_EMAIL'] ?? ''));
+            $resendFromName = getenv('RESEND_FROM_NAME') ?: ($_ENV['RESEND_FROM_NAME'] ?? ($_SERVER['RESEND_FROM_NAME'] ?? ''));
             
             $fromEmail = !empty($resendFromEmail) ? $resendFromEmail : $this->from;
             $fromName = !empty($resendFromName) ? $resendFromName : $this->fromName;
