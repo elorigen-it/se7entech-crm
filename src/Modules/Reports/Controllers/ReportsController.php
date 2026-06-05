@@ -211,7 +211,7 @@ Respond STRICTLY in JSON format matching this schema:
                 $trimmed = trim($line);
                 $isComment = (strpos($trimmed, '#') === 0);
                 $isEmpty = empty($trimmed);
-                echo "Line " . ($i + 1) . ": len=" . strlen($line) . " trimmed_len=" . strlen($trimmed) . " isEmpty=" . ($isEmpty?'YES':'NO') . " isComment=" . ($isComment?'YES':'NO') . "\n";
+                echo "Line " . ($i + 1) . ": len=" . strlen($line) . " [{$line}] isEmpty=" . ($isEmpty?'YES':'NO') . " isComment=" . ($isComment?'YES':'NO') . "\n";
                 if ($isEmpty || $isComment) continue;
                 if (preg_match('/^([^=]+)\=(.*)$/', $trimmed, $matches)) {
                     $k = trim($matches[1]);
