@@ -10,8 +10,26 @@ if (isset($_GET['debug_env'])) {
     echo "SMTP_DEFAULT_USERNAME: " . (getenv('SMTP_DEFAULT_USERNAME') ?: ($_ENV['SMTP_DEFAULT_USERNAME'] ?? ($_SERVER['SMTP_DEFAULT_USERNAME'] ?? 'NOT FOUND'))) . "\n";
     echo "ENVIRONMENT: " . (getenv('ENVIRONMENT') ?: ($_ENV['ENVIRONMENT'] ?? ($_SERVER['ENVIRONMENT'] ?? 'NOT FOUND'))) . "\n";
     echo "=== FILES CHECK ===\n";
-    echo "envloader.php path: " . realpath(__DIR__ . '/../envloader.php') . " (Exists: " . (file_exists(__DIR__ . '/../envloader.php') ? 'YES' : 'NO') . ")\n";
+    echo "envloader.php path: " . realpath(__DIR__ . '/../../envloader.php') . " (Exists: " . (file_exists(__DIR__ . '/../../envloader.php') ? 'YES' : 'NO') . ")\n";
     echo ".env path: " . realpath(__DIR__ . '/../../.env') . " (Exists: " . (file_exists(__DIR__ . '/../../.env') ? 'YES' : 'NO') . ")\n";
+    echo "=== PARSED KEYS IN .ENV ===\n";
+    $envPath = __DIR__ . '/../../.env';
+    if (file_exists($envPath)) {
+        $envLines = explode("\n", str_replace("\r", "", file_get_contents($envPath)));
+        foreach ($envLines as $line) {
+            $line = trim($line);
+            if (empty($line) || strpos($line, '#') === 0) continue;
+            if (preg_match('/^([^=]+)\=(.*)$/', $line, $matches)) {
+                $key = trim($matches[1]);
+                $val = trim($matches[2]);
+                $len = strlen($val);
+                $masked = $len > 6 ? substr($val, 0, 4) . '...' . substr($val, -2) : '***';
+                echo "Key: [{$key}] (Length: {$len}, Masked Value: {$masked})\n";
+            }
+        }
+    } else {
+        echo ".env file not found at " . $envPath . "\n";
+    }
     exit;
 }
 
