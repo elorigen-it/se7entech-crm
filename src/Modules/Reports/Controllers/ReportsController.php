@@ -232,16 +232,23 @@ Respond STRICTLY in JSON format matching this schema:
             $smtpPass = getenv('SMTP_DEFAULT_PASSWORD') ?: 'Se7entech775$';
         }
 
+        $resendApiKey = getenv('RESEND_API_KEY');
+        $resendFromEmail = getenv('RESEND_FROM_EMAIL') ?: 'no-reply@se7entech.net';
+        $resendFromName = getenv('RESEND_FROM_NAME') ?: 'SE7ENTECH';
+        
+        $fromEmail = !empty($resendApiKey) ? $resendFromEmail : $smtpUser;
+        $fromName = !empty($resendApiKey) ? $resendFromName : 'SE7ENTECH';
+
         $mailer = new Mailer(
-            $smtpUser,
-            'SE7ENTECH',
+            $fromEmail,
+            $fromName,
             $email,
             $customer['name'],
             $subject,
             $emailBody,
             null,
-            $smtpUser,
-            $smtpPass
+            !empty($resendApiKey) ? false : $smtpUser,
+            !empty($resendApiKey) ? false : $smtpPass
         );
         $mailer->addAttachment($pdfFile);
         $mailResult = $mailer->send();

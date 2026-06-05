@@ -24,6 +24,13 @@ class DashboardController{
         $invoices = InvoiceModel::getCustomerInvoices($customer_id);
         $tasks = TaskModel::getCustomerTasks($customer_id);
 
+        // Compute total hours invested across all customer tasks
+        $totalHours = 0;
+        foreach ($tasks as $task) {
+            $totalHours += \Se7entech\Contractnew\Helpers\TaskHelper::getRealTotalTime($task, true);
+        }
+        $this->data['total_hours_invested'] = round($totalHours, 1);
+
         include __DIR__ . '/../customer_dashboard.php';
     }
 

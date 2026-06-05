@@ -163,8 +163,18 @@ require_once './config/connection.php';
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-body">                                
-                                    <!-- Chart -->
+                                <div class="card-body text-center py-4">                                
+                                    <div style="display: inline-flex; position: relative; justify-content: center; align-items: center; width: 130px; height: 130px; border-radius: 50%; background: radial-gradient(circle, #ffffff 60%, #e8ecfa 100%); box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 4px solid #5e72e4; margin: 10px 0;">
+                                        <div style="text-align: center;">
+                                            <span style="font-size: 2rem; font-weight: 800; color: #5e72e4; display: block; line-height: 1;">
+                                                <?php echo isset($this->data['total_hours_invested']) ? $this->data['total_hours_invested'] : '0'; ?>
+                                            </span>
+                                            <span style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: #8898aa; letter-spacing: 0.5px;">
+                                                Horas
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <p class="text-muted small mt-3 mb-0">Total acumulado de tiempo dedicado a tus tareas y soporte.</p>
                                 </div>
                             </div>
                         </div>
