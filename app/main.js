@@ -6,7 +6,8 @@ const routes = {
   '/modules/customer-portal/index.php/tasks': () => import('./routes/user-tasks.js'),
   '/modules/customer-portal/index.php/contracts': () => import('./routes/user-contracts.js'),
   '/modules/customer-portal/index.php/invoices': () => import('./routes/user-invoices.js'),
-  // NEW ROUTE
+  '/modules/customer-portal/index.php/ai-request': () => import('./routes/ai-request-list.js'),
+  '/modules/customer-portal/index.php/ai-request/chat/:id': () => import('./routes/ai-request-chat.js'),
 
   '/modules/tasks/index.php/admin-dashboard': () => import('./routes/admin-tasks.js'),
   '/modules/customers/index.php/:id/content-creator/generate': () => import('./routes/content-creator.js'),

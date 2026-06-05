@@ -22,15 +22,30 @@ const plugins = [{
     });
   },
 }, cssModulesPlugin()];
-esbuild.context({
+const isProduction = process.env.ENVIRONMENT === 'production';
+
+const config = {
   entryPoints: ['app/main.js'],
   bundle: true,
   loader: { '.js': 'jsx' },
   outfile: 'build/app-bundle.js',
   sourcemap: true,
   plugins
-}).then( async ctx => {
-  await ctx.watch().then(() => {
-    console.log('🔄 Watch iniciado');
-  }).catch(console.error);  
-}).catch(console.error);
+};
+
+if (isProduction) {
+  esbuild.build(config)
+    .then(() => {
+      console.log('✨ Build de producción completado con éxito');
+    })
+    .catch((err) => {
+      console.error('❌ Error en el build de producción:', err);
+      process.exit(1);
+    });
+} else {
+  esbuild.context(config).then( async ctx => {
+    await ctx.watch().then(() => {
+      console.log('🔄 Watch iniciado');
+    }).catch(console.error);  
+  }).catch(console.error);
+}

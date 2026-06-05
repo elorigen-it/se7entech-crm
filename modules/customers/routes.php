@@ -301,6 +301,18 @@ $definitions = array(
         )
     ),
     array(
+        'name' => 'updateMegaLink',
+        'route' => array(
+            'path' => '/login-access/mega-link',
+            'detail' => array(
+                'controller' => 'Se7entech\Contractnew\Modules\Customers\Controllers\CustomersController',
+                'method' => 'updateMegaLink',
+                'middlewares' => array('Se7entech\Contractnew\Middlewares\AuthenticationMiddleware')
+            ),
+            'methods' => ['POST'],
+        )
+    ),
+    array(
         'name' => 'api_customers_get_all',
         'route' => array(
             'path' => '/api/all',

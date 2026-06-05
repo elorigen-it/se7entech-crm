@@ -104,6 +104,29 @@ require_once './config/connection.php';
                 </div>
  
                 <div class="container-fluid mt--7">
+                    <!-- Quick AI Requests Buttons Card -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card shadow border-0" style="background: linear-gradient(135deg, #ffffff 0%, #f6f9fc 100%);">
+                                <div class="card-body p-4">
+                                    <h4 class="mb-3 text-primary font-weight-bold" style="color: #5e72e4;"><i class="fa fa-magic mr-2"></i>Solicitudes Rápidas con IA</h4>
+                                    <p class="text-muted small mb-4">Elige una de las siguientes opciones para iniciar una conversación asistida por IA y estructurar tu requerimiento:</p>
+                                    <div class="d-flex flex-wrap" style="gap: 15px; display: flex; flex-wrap: wrap;">
+                                        <a href="<?php echo $this->base_url; ?>/modules/customer-portal/index.php/ai-request/new?type=flyer" class="btn btn-outline-success btn-sm rounded-pill font-weight-bold" style="background: white; border: 1px solid #2dce89; color: #2dce89; padding: 8px 16px; text-transform: none; border-radius: 20px;"><span style="color:#2dce89;margin-right:5px">🟢</span> Solicitar Flyer</a>
+                                        <a href="<?php echo $this->base_url; ?>/modules/customer-portal/index.php/ai-request/new?type=reel" class="btn btn-outline-success btn-sm rounded-pill font-weight-bold" style="background: white; border: 1px solid #2dce89; color: #2dce89; padding: 8px 16px; text-transform: none; border-radius: 20px;"><span style="color:#2dce89;margin-right:5px">🟢</span> Solicitar Reel</a>
+                                        <a href="<?php echo $this->base_url; ?>/modules/customer-portal/index.php/ai-request/new?type=commercial" class="btn btn-outline-success btn-sm rounded-pill font-weight-bold" style="background: white; border: 1px solid #2dce89; color: #2dce89; padding: 8px 16px; text-transform: none; border-radius: 20px;"><span style="color:#2dce89;margin-right:5px">🟢</span> Solicitar Comercial</a>
+                                        <a href="<?php echo $this->base_url; ?>/modules/customer-portal/index.php/ai-request/new?type=design" class="btn btn-outline-success btn-sm rounded-pill font-weight-bold" style="background: white; border: 1px solid #2dce89; color: #2dce89; padding: 8px 16px; text-transform: none; border-radius: 20px;"><span style="color:#2dce89;margin-right:5px">🟢</span> Solicitar Diseño</a>
+                                        <a href="<?php echo $this->base_url; ?>/modules/customer-portal/index.php/ai-request/new?type=menu" class="btn btn-outline-success btn-sm rounded-pill font-weight-bold" style="background: white; border: 1px solid #2dce89; color: #2dce89; padding: 8px 16px; text-transform: none; border-radius: 20px;"><span style="color:#2dce89;margin-right:5px">🟢</span> Solicitar Menú</a>
+                                        <a href="<?php echo $this->base_url; ?>/modules/customer-portal/index.php/ai-request/new?type=website" class="btn btn-outline-success btn-sm rounded-pill font-weight-bold" style="background: white; border: 1px solid #2dce89; color: #2dce89; padding: 8px 16px; text-transform: none; border-radius: 20px;"><span style="color:#2dce89;margin-right:5px">🟢</span> Solicitar Website</a>
+                                        <a href="<?php echo $this->base_url; ?>/modules/customer-portal/index.php/ai-request/new?type=campaign" class="btn btn-outline-success btn-sm rounded-pill font-weight-bold" style="background: white; border: 1px solid #2dce89; color: #2dce89; padding: 8px 16px; text-transform: none; border-radius: 20px;"><span style="color:#2dce89;margin-right:5px">🟢</span> Solicitar Campaña Publicitaria</a>
+                                        <a href="<?php echo $this->base_url; ?>/modules/customer-portal/index.php/ai-request/new?type=prices" class="btn btn-outline-success btn-sm rounded-pill font-weight-bold" style="background: white; border: 1px solid #2dce89; color: #2dce89; padding: 8px 16px; text-transform: none; border-radius: 20px;"><span style="color:#2dce89;margin-right:5px">🟢</span> Solicitar Actualización de Precios</a>
+                                        <a href="<?php echo $this->base_url; ?>/modules/customer-portal/index.php/ai-request/new?type=photo_video" class="btn btn-outline-success btn-sm rounded-pill font-weight-bold" style="background: white; border: 1px solid #2dce89; color: #2dce89; padding: 8px 16px; text-transform: none; border-radius: 20px;"><span style="color:#2dce89;margin-right:5px">🟢</span> Solicitar Sesión de Foto y Video</a>
+                                        <a href="<?php echo $this->base_url; ?>/modules/customer-portal/index.php/ai-request/new?type=support" class="btn btn-outline-success btn-sm rounded-pill font-weight-bold" style="background: white; border: 1px solid #2dce89; color: #2dce89; padding: 8px 16px; text-transform: none; border-radius: 20px;"><span style="color:#2dce89;margin-right:5px">🟢</span> Solicitar Soporte Técnico</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-xl-8 mb-5 mb-xl-0">
                             <div class="card bg-gradient-default shadow">

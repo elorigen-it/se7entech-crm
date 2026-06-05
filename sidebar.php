@@ -162,6 +162,12 @@ navbar-light bg-white" id="sidenav-main">
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo $base_url; ?>/modules/admin-ai-requests/">
+                                <i class="ni ni-spaceship text-purple"></i> Requerimientos IA
+                            </a>
+                        </li>
+
 
                         <!--<li class="nav-item">
                     <a href="<?php echo $base_url; ?>/Payment-Reminder" class="nav-link">

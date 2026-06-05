@@ -37,7 +37,7 @@ class CustomersModel{
         'type', 'longitude', 'latitude', 'name', 'image', 
         'phone', 'email', 'address', 'map_link', 'business_name', 
         'notes', 'agent_email', 'status', 'created_at', 'updated_at',
-        'old_refference_table', 'old_refference_id'
+        'old_refference_table', 'old_refference_id', 'mega_upload_link'
     ];
 
     public static function getCustomersFromAgent($email){

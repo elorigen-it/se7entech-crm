@@ -77,6 +77,94 @@ if(isset($_SESSION['email']))
    $smtp_user = $row['smtp_user'];
    $smtp_pass = $row['smtp_pass'];
 
+   if (!function_exists('updateEnvFile')) {
+      function updateEnvFile($updates) {
+          $envPath = __DIR__ . '/.env';
+          if (!file_exists($envPath)) {
+              return false;
+          }
+          
+          $content = file_get_contents($envPath);
+          $lines = explode("\n", str_replace("\r", "", $content));
+          
+          $updatedKeys = [];
+          foreach ($lines as $i => $line) {
+              $trimmed = trim($line);
+              if (strpos($trimmed, '#') === 0 || empty($trimmed)) {
+                  continue;
+              }
+              
+              if (preg_match('/^([A-Z0-9_]+)\s*=\s*(.*)$/', $trimmed, $matches)) {
+                  $key = $matches[1];
+                  if (array_key_exists($key, $updates)) {
+                      $lines[$i] = $key . "=" . $updates[$key];
+                      $updatedKeys[$key] = true;
+                  }
+              }
+          }
+          
+          foreach ($updates as $key => $val) {
+              if (!isset($updatedKeys[$key])) {
+                  $lines[] = $key . "=" . $val;
+              }
+          }
+          
+          $newContent = implode("\n", $lines);
+          return file_put_contents($envPath, $newContent) !== false;
+      }
+   }
+
+   if ($access === '0') {
+      if (isset($_POST['save-resend-config'])) {
+          $apiKey = trim($_POST['resend_api_key'] ?? '');
+          $fromEmail = trim($_POST['resend_from_email'] ?? '');
+          $fromNameVal = trim($_POST['resend_from_name'] ?? '');
+          
+          $updates = [
+              'RESEND_API_KEY' => $apiKey,
+              'RESEND_FROM_EMAIL' => $fromEmail,
+              'RESEND_FROM_NAME' => $fromNameVal
+          ];
+          
+          if (updateEnvFile($updates)) {
+              $resendConfigSuccess = "Configuración de Resend guardada con éxito en .env.";
+              foreach ($updates as $k => $v) {
+                  putenv("$k=$v");
+                  $_ENV[$k] = $v;
+                  $_SERVER[$k] = $v;
+              }
+          } else {
+              $resendConfigError = "Error al guardar la configuración en el archivo .env.";
+          }
+      }
+      
+      if (isset($_POST['send-resend-test'])) {
+          $testTo = trim($_POST['test_recipient'] ?? '');
+          if (!empty($testTo)) {
+              $testSubject = "Correo de prueba - Integración Resend";
+              $testBody = "<h3>¡Hola!</h3><p>Este es un correo de prueba de tu integración con <strong>Resend</strong> en Se7entech CRM.</p><p>Si recibiste este mensaje, la configuración es correcta y fiable.</p>";
+              
+              $mailer = new Mailer(
+                  getenv('RESEND_FROM_EMAIL') ?: 'onboarding@resend.dev',
+                  getenv('RESEND_FROM_NAME') ?: 'Se7entech CRM',
+                  $testTo,
+                  'Test Recipient',
+                  $testSubject,
+                  $testBody
+              );
+              
+              $result = $mailer->send();
+              if ($result === true) {
+                  $resendTestSuccess = "Correo de prueba enviado con éxito a: " . htmlspecialchars($testTo);
+              } else {
+                  $resendTestError = "Error al enviar el correo de prueba: " . $result;
+              }
+          } else {
+              $resendTestError = "Por favor, especifica un destinatario válido.";
+          }
+      }
+   }
+
    if($access === '0' ) {
       $customers = CustomersModel::getAllV2();
    }else{
@@ -319,6 +407,11 @@ if(isset($_SESSION['email']))
                      <li class="nav-item">
                         <a class="nav-link mb-sm-3 mb-md-0 " id="tabs-menagment-main" data-toggle="tab" href="#sent" role="tab" aria-controls="tabs-menagment" aria-selected="true"><i class="fa fa-share mr-2"></i>Sent</a>
                      </li>
+                     <?php if ($access === '0'): ?>
+                     <li class="nav-item">
+                        <a class="nav-link mb-sm-3 mb-md-0 " id="tabs-resend-main" data-toggle="tab" href="#resend" role="tab" aria-controls="tabs-resend" aria-selected="false"><i class="fa fa-envelope mr-2"></i>Resend Integration</a>
+                     </li>
+                     <?php endif; ?>
                   </ul>
                </div>
             </div>
@@ -549,6 +642,109 @@ if(isset($_SESSION['email']))
                            </div>
                         </div>
                      </div>
+                     
+                     <!--start resend tab-->
+                     <?php if ($access === '0'): ?>
+                     <div class="tab-pane fade show" id="resend" role="tabpanel" aria-labelledby="tabs-resend-main">
+                        <div class="row">
+                           <div class="col-xl-6 col-12 mb-4">
+                              <div class="card bg-secondary shadow">
+                                 <div class="card-header bg-white border-0">
+                                    <div class="row align-items-center">
+                                       <div class="col-8">
+                                          <h3 class="mb-0">Configuración de Resend</h3>
+                                       </div>
+                                       <div class="col-4 text-right">
+                                          <?php if (!empty(getenv('RESEND_API_KEY'))): ?>
+                                             <span class="badge badge-success" style="font-size:0.8rem; padding: 6px 12px; border-radius: 4px;">Activo</span>
+                                          <?php else: ?>
+                                             <span class="badge badge-warning" style="font-size:0.8rem; padding: 6px 12px; border-radius: 4px;">Inactivo (Fallback SMTP)</span>
+                                          <?php endif; ?>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="card-body">
+                                    <?php if (isset($resendConfigSuccess)): ?>
+                                       <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                          <span class="alert-icon"><i class="fa fa-check-circle"></i></span>
+                                          <span class="alert-text"><?php echo $resendConfigSuccess; ?></span>
+                                       </div>
+                                    <?php endif; ?>
+                                    <?php if (isset($resendConfigError)): ?>
+                                       <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                          <span class="alert-icon"><i class="fa fa-exclamation-circle"></i></span>
+                                          <span class="alert-text"><?php echo $resendConfigError; ?></span>
+                                       </div>
+                                    <?php endif; ?>
+
+                                    <form method="POST" action="">
+                                       <input type="hidden" name="save-resend-config" value="1">
+                                       
+                                       <div class="form-group">
+                                          <label class="form-control-label" for="resend_api_key">Resend API Key <span style="color:red">*</span></label>
+                                          <input type="password" id="resend_api_key" name="resend_api_key" class="form-control" placeholder="re_..." value="<?php echo htmlspecialchars(getenv('RESEND_API_KEY') ?: ''); ?>" required>
+                                          <small class="text-muted">Ingresa tu API Key secreta generada desde el panel de control de Resend.</small>
+                                       </div>
+                                       
+                                       <div class="form-group">
+                                          <label class="form-control-label" for="resend_from_email">Email remitente (From Email) <span style="color:red">*</span></label>
+                                          <input type="email" id="resend_from_email" name="resend_from_email" class="form-control" placeholder="no-reply@tudominio.com" value="<?php echo htmlspecialchars(getenv('RESEND_FROM_EMAIL') ?: ''); ?>" required>
+                                          <small class="text-muted">Debe ser una dirección de correo verificada o de un dominio verificado en Resend.</small>
+                                       </div>
+                                       
+                                       <div class="form-group">
+                                          <label class="form-control-label" for="resend_from_name">Nombre remitente (From Name)</label>
+                                          <input type="text" id="resend_from_name" name="resend_from_name" class="form-control" placeholder="Se7entech CRM" value="<?php echo htmlspecialchars(getenv('RESEND_FROM_NAME') ?: ''); ?>">
+                                          <small class="text-muted">El nombre para mostrar en los correos enviados.</small>
+                                       </div>
+
+                                       <button type="submit" class="btn btn-primary btn-block">Guardar Configuración</button>
+                                    </form>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-xl-6 col-12 mb-4">
+                              <div class="card bg-secondary shadow">
+                                 <div class="card-header bg-white border-0">
+                                    <h3 class="mb-0">Prueba de Envío</h3>
+                                 </div>
+                                 <div class="card-body">
+                                    <?php if (isset($resendTestSuccess)): ?>
+                                       <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                          <span class="alert-icon"><i class="fa fa-check-circle"></i></span>
+                                          <span class="alert-text"><?php echo $resendTestSuccess; ?></span>
+                                       </div>
+                                    <?php endif; ?>
+                                    <?php if (isset($resendTestError)): ?>
+                                       <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                          <span class="alert-icon"><i class="fa fa-exclamation-circle"></i></span>
+                                          <span class="alert-text"><?php echo $resendTestError; ?></span>
+                                       </div>
+                                    <?php endif; ?>
+
+                                    <form method="POST" action="">
+                                       <input type="hidden" name="send-resend-test" value="1">
+                                       
+                                       <div class="form-group">
+                                          <label class="form-control-label" for="test_recipient">Correo Destinatario <span style="color:red">*</span></label>
+                                          <input type="email" id="test_recipient" name="test_recipient" class="form-control" placeholder="destinatario@correo.com" required>
+                                          <small class="text-muted">Ingresa el correo electrónico donde deseas recibir el mensaje de prueba.</small>
+                                       </div>
+
+                                       <button type="submit" class="btn btn-success btn-block" <?php echo empty(getenv('RESEND_API_KEY')) ? 'disabled' : ''; ?>>
+                                          Enviar Correo de Prueba <i class="fa fa-paper-plane ml-1"></i>
+                                       </button>
+                                       <?php if (empty(getenv('RESEND_API_KEY'))): ?>
+                                          <small class="text-danger d-block mt-2 text-center">Debes configurar y guardar tu API Key antes de enviar pruebas.</small>
+                                       <?php endif; ?>
+                                    </form>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <?php endif; ?>
                      <!--end-->
                   </div>
                </div>

@@ -54,7 +54,12 @@ navbar-light bg-white" id="sidenav-main">
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo $this->base_url;?>/modules/customer-portal/index.php/tasks">
-                        <i class="fa fa-tasks"></i> Tasks
+                        <i class="fa fa-tasks text-info"></i> Tasks
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo $this->base_url;?>/modules/customer-portal/index.php/ai-request">
+                        <i class="fa fa-magic" style="color: #6f42c1;"></i> AI Project Request
                     </a>
                 </li>
                 <li class="nav-item">

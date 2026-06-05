@@ -1103,6 +1103,11 @@ class CustomersController
 
     public function activateLoginAccess()
     {
+        if (!isset($_SESSION['access']) || $_SESSION['access'] !== '0') {
+            echo json_encode(array('success' => false, 'msg' => 'Forbidden: Admin access required'));
+            exit;
+        }
+
         $request = Request::createFromGlobals()->request;
         $data = $request->all();
 
@@ -1125,6 +1130,11 @@ class CustomersController
 
     public function deactivateLoginAccess()
     {
+        if (!isset($_SESSION['access']) || $_SESSION['access'] !== '0') {
+            echo json_encode(array('success' => false, 'msg' => 'Forbidden: Admin access required'));
+            exit;
+        }
+
         $request = Request::createFromGlobals()->request;
         $data = $request->all();
 
@@ -1151,8 +1161,43 @@ class CustomersController
     {
         return CustomerAccessModel::getAll();
     }
+    public function updateMegaLink()
+    {
+        if (!isset($_SESSION['access']) || $_SESSION['access'] !== '0') {
+            echo json_encode(array('success' => false, 'message' => 'Forbidden: Admin access required'));
+            exit;
+        }
+
+        $request = Request::createFromGlobals()->request;
+        $customerId = $request->get('customer_id');
+        $megaLink = $request->get('mega_upload_link');
+
+        if (!$customerId) {
+            echo json_encode(array('success' => false, 'message' => 'Missing customer_id'));
+            exit;
+        }
+
+        $customer = CustomersModel::getById($customerId);
+        if (!$customer) {
+            echo json_encode(array('success' => false, 'message' => 'Customer not found'));
+            exit;
+        }
+
+        include __DIR__ . '/../../../../config/connection.php';
+        $stmt = $con->prepare("UPDATE customers SET mega_upload_link = ? WHERE id = ?");
+        $stmt->bind_param("si", $megaLink, $customerId);
+        $success = $stmt->execute();
+        $stmt->close();
+
+        echo json_encode(array('success' => $success));
+        exit;
+    }
     public function loginAccess()
     {
+        if (!isset($_SESSION['access']) || $_SESSION['access'] !== '0') {
+            header('Location: ' . $this->base_url . '/modules/dashboard/');
+            exit;
+        }
         include __DIR__ . '/../customer_access.php';
     }
 }

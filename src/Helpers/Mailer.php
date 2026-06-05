@@ -7,6 +7,8 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 class Mailer {
+    private $attachments = [];
+
     public function __construct($from, $fromName, $to, $toName, $subject, $content, $altContent = null, $smtpUser = false, $smtpPass = false, $toCC=false, $toCCO=false){
         $this->mail = new PHPMailer(true);
         $this->mail->CharSet = "UTF-8";
@@ -25,10 +27,117 @@ class Mailer {
     }
 
     public function addAttachment($path){
+        $this->attachments[] = $path;
         $this->mail->addAttachment($path);
     }
     public function send(){
         require __DIR__ . '/../../config/config.php';
+        
+        $resendApiKey = getenv('RESEND_API_KEY');
+        if (!empty($resendApiKey)) {
+            $resendFromEmail = getenv('RESEND_FROM_EMAIL');
+            $resendFromName = getenv('RESEND_FROM_NAME');
+            
+            $fromEmail = !empty($resendFromEmail) ? $resendFromEmail : $this->from;
+            $fromName = !empty($resendFromName) ? $resendFromName : $this->fromName;
+            
+            $fromField = !empty($fromName) ? "$fromName <$fromEmail>" : $fromEmail;
+            
+            $toEmails = [];
+            if (is_array($this->to)) {
+                foreach ($this->to as $address) {
+                    if (is_array($address)) {
+                        $toEmails[] = $address['email'];
+                    } else {
+                        $toEmails[] = $address;
+                    }
+                }
+            } else {
+                $toEmails[] = $this->to;
+            }
+            
+            $ccEmails = [];
+            if (is_array($this->toCC)) {
+                foreach ($this->toCC as $address) {
+                    if (is_array($address)) {
+                        $ccEmails[] = $address['email'];
+                    } else {
+                        $ccEmails[] = $address;
+                    }
+                }
+            }
+            
+            $bccEmails = [];
+            if (is_array($this->toCCO)) {
+                foreach ($this->toCCO as $address) {
+                    if (is_array($address)) {
+                        $bccEmails[] = $address['email'];
+                    } else {
+                        $bccEmails[] = $address;
+                    }
+                }
+            }
+            
+            $resendAttachments = [];
+            if (!empty($this->attachments)) {
+                foreach ($this->attachments as $path) {
+                    if (file_exists($path)) {
+                        $resendAttachments[] = [
+                            'content' => base64_encode(file_get_contents($path)),
+                            'filename' => basename($path),
+                        ];
+                    }
+                }
+            }
+            
+            $payload = [
+                'from' => $fromField,
+                'to' => $toEmails,
+                'subject' => $this->subject,
+                'html' => $this->content,
+            ];
+            
+            if (!empty($ccEmails)) {
+                $payload['cc'] = $ccEmails;
+            }
+            if (!empty($bccEmails)) {
+                $payload['bcc'] = $bccEmails;
+            }
+            if (!empty($resendAttachments)) {
+                $payload['attachments'] = $resendAttachments;
+            }
+            
+            $ch = curl_init('https://api.resend.com/emails');
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Authorization: Bearer ' . $resendApiKey,
+                'Content-Type: application/json',
+            ]);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+            
+            // Bypass SSL certificate verification on local/Windows environments to avoid cURL Code 0 errors
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+            
+            $response = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $errNo = curl_errno($ch);
+            $errStr = curl_error($ch);
+            curl_close($ch);
+            
+            if ($httpCode >= 200 && $httpCode < 300) {
+                return true;
+            } else {
+                $errMsg = "Message could not be sent. Resend API Error: Code {$httpCode}.";
+                if ($errNo) {
+                    $errMsg .= " cURL Error ({$errNo}): {$errStr}.";
+                }
+                $errMsg .= " Response: " . $response;
+                return $errMsg;
+            }
+        }
+
         try {
             //Server settings
             $this->mail->SMTPDebug = false;//SMTP::DEBUG_SERVER;                      //Enable verbose debug output

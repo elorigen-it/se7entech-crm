@@ -312,6 +312,15 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
+                                                        <label class="form-control-label" for="mega_upload_link">Enlace de Mega para subir archivos</label>
+                                                        <input value="<?php echo isset($this->data['last_data']['mega_upload_link']) ? htmlspecialchars($this->data['last_data']['mega_upload_link']) : '';?>" type="url" id="mega_upload_link" name="mega_upload_link" class="form-control" placeholder="https://mega.nz/...">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
                                                         <label class="form-control-label" for="image">Image</label>
                                                         <input type="file" id="image" name="image" class="form-control">
                                                     </div>
