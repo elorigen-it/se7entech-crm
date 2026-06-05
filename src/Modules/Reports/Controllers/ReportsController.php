@@ -199,6 +199,13 @@ Respond STRICTLY in JSON format matching this schema:
         $dotEnvPath = realpath(__DIR__ . '/../../../../.env');
         echo "envloader.php path: " . ($envloaderPath ?: 'NOT FOUND') . " (Exists: " . (file_exists(__DIR__ . '/../../../../envloader.php') ? 'YES' : 'NO') . ")\n";
         echo ".env path: " . ($dotEnvPath ?: 'NOT FOUND') . " (Exists: " . (file_exists(__DIR__ . '/../../../../.env') ? 'YES' : 'NO') . ")\n";
+        if ($dotEnvPath && file_exists($dotEnvPath)) {
+            echo "Last modified: " . date('Y-m-d H:i:s', filemtime($dotEnvPath)) . "\n";
+            echo "Current server time: " . date('Y-m-d H:i:s') . "\n";
+            echo "File MD5: " . md5_file($dotEnvPath) . "\n";
+            echo "Document Root: " . ($_SERVER['DOCUMENT_ROOT'] ?? 'NOT SET') . "\n";
+            echo "Script filename: " . ($_SERVER['SCRIPT_FILENAME'] ?? 'NOT SET') . "\n";
+        }
         echo "\n";
 
         echo "--- PARSED LINES BY ENVLOADER LOGIC ---\n";
