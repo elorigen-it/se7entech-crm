@@ -200,6 +200,31 @@ Respond STRICTLY in JSON format matching this schema:
         echo "envloader.php path: " . ($envloaderPath ?: 'NOT FOUND') . " (Exists: " . (file_exists(__DIR__ . '/../../../../envloader.php') ? 'YES' : 'NO') . ")\n";
         echo ".env path: " . ($dotEnvPath ?: 'NOT FOUND') . " (Exists: " . (file_exists(__DIR__ . '/../../../../.env') ? 'YES' : 'NO') . ")\n";
         echo "\n";
+
+        echo "--- PARSED LINES BY ENVLOADER LOGIC ---\n";
+        if ($dotEnvPath && file_exists($dotEnvPath)) {
+            $envContent = file_get_contents($dotEnvPath);
+            echo "File size: " . strlen($envContent) . " bytes\n";
+            $lines = explode("\n", str_replace("\r", "", $envContent));
+            echo "Total lines: " . count($lines) . "\n";
+            foreach ($lines as $i => $line) {
+                $trimmed = trim($line);
+                $isComment = (strpos($trimmed, '#') === 0);
+                $isEmpty = empty($trimmed);
+                echo "Line " . ($i + 1) . ": len=" . strlen($line) . " trimmed_len=" . strlen($trimmed) . " isEmpty=" . ($isEmpty?'YES':'NO') . " isComment=" . ($isComment?'YES':'NO') . "\n";
+                if ($isEmpty || $isComment) continue;
+                if (preg_match('/^([^=]+)\=(.*)$/', $trimmed, $matches)) {
+                    $k = trim($matches[1]);
+                    $v = trim($matches[2]);
+                    echo "  MATCHED key='{$k}' val_len=" . strlen($v) . "\n";
+                } else {
+                    echo "  NO MATCH for: '" . substr($trimmed, 0, 30) . "...'\n";
+                }
+            }
+        } else {
+            echo ".env not found at root!\n";
+        }
+        echo "\n";
         
         echo "=== DEBUG INTERCEPTOR END ===\n";
         die();
