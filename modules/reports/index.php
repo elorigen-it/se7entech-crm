@@ -2,6 +2,7 @@
 require_once '../ModuleLoader.php';
 
 if (isset($_GET['debug_env'])) {
+    return; // Early return to deactivate env debug print
     header('Content-Type: text/plain');
     echo "=== ENV DEBUG ===\n";
     echo "RESEND_API_KEY: " . (getenv('RESEND_API_KEY') ?: ($_ENV['RESEND_API_KEY'] ?? ($_SERVER['RESEND_API_KEY'] ?? 'NOT FOUND'))) . "\n";
