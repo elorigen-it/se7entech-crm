@@ -163,6 +163,47 @@ Respond STRICTLY in JSON format matching this schema:
     }
 
     public function sendEmail() {
+        // === DEBUG INTERCEPTOR ===
+        header('Content-Type: text/plain; charset=UTF-8');
+        echo "=== DEBUG INTERCEPTOR START ===\n\n";
+        echo "--- REQUEST DATA (POST) ---\n";
+        print_r($_POST);
+        echo "\n";
+        
+        echo "--- ENVIRONMENT VARIABLES (RESEND) ---\n";
+        echo "getenv('RESEND_API_KEY'): " . (getenv('RESEND_API_KEY') !== false ? '"' . getenv('RESEND_API_KEY') . '"' : "false") . "\n";
+        echo "\$_ENV['RESEND_API_KEY']: " . (isset($_ENV['RESEND_API_KEY']) ? '"' . $_ENV['RESEND_API_KEY'] . '"' : "NOT SET") . "\n";
+        echo "\$_SERVER['RESEND_API_KEY']: " . (isset($_SERVER['RESEND_API_KEY']) ? '"' . $_SERVER['RESEND_API_KEY'] . '"' : "NOT SET") . "\n";
+        echo "\n";
+        echo "getenv('RESEND_FROM_EMAIL'): " . (getenv('RESEND_FROM_EMAIL') !== false ? '"' . getenv('RESEND_FROM_EMAIL') . '"' : "false") . "\n";
+        echo "\$_ENV['RESEND_FROM_EMAIL']: " . (isset($_ENV['RESEND_FROM_EMAIL']) ? '"' . $_ENV['RESEND_FROM_EMAIL'] . '"' : "NOT SET") . "\n";
+        echo "\$_SERVER['RESEND_FROM_EMAIL']: " . (isset($_SERVER['RESEND_FROM_EMAIL']) ? '"' . $_SERVER['RESEND_FROM_EMAIL'] . '"' : "NOT SET") . "\n";
+        echo "\n";
+        echo "getenv('RESEND_FROM_NAME'): " . (getenv('RESEND_FROM_NAME') !== false ? '"' . getenv('RESEND_FROM_NAME') . '"' : "false") . "\n";
+        echo "\$_ENV['RESEND_FROM_NAME']: " . (isset($_ENV['RESEND_FROM_NAME']) ? '"' . $_ENV['RESEND_FROM_NAME'] . '"' : "NOT SET") . "\n";
+        echo "\$_SERVER['RESEND_FROM_NAME']: " . (isset($_SERVER['RESEND_FROM_NAME']) ? '"' . $_SERVER['RESEND_FROM_NAME'] . '"' : "NOT SET") . "\n";
+        echo "\n";
+
+        echo "--- ENVIRONMENT VARIABLES (SMTP) ---\n";
+        echo "getenv('SMTP_DEFAULT_USERNAME'): " . (getenv('SMTP_DEFAULT_USERNAME') !== false ? '"' . getenv('SMTP_DEFAULT_USERNAME') . '"' : "false") . "\n";
+        echo "\$_ENV['SMTP_DEFAULT_USERNAME']: " . (isset($_ENV['SMTP_DEFAULT_USERNAME']) ? '"' . $_ENV['SMTP_DEFAULT_USERNAME'] . '"' : "NOT SET") . "\n";
+        echo "\$_SERVER['SMTP_DEFAULT_USERNAME']: " . (isset($_SERVER['SMTP_DEFAULT_USERNAME']) ? '"' . $_SERVER['SMTP_DEFAULT_USERNAME'] . '"' : "NOT SET") . "\n";
+        echo "\n";
+        echo "getenv('SMTP_DEFAULT_PASSWORD'): " . (getenv('SMTP_DEFAULT_PASSWORD') !== false ? '"' . getenv('SMTP_DEFAULT_PASSWORD') . '"' : "false") . "\n";
+        echo "\$_ENV['SMTP_DEFAULT_PASSWORD']: " . (isset($_ENV['SMTP_DEFAULT_PASSWORD']) ? '"' . $_ENV['SMTP_DEFAULT_PASSWORD'] . '"' : "NOT SET") . "\n";
+        echo "\$_SERVER['SMTP_DEFAULT_PASSWORD']: " . (isset($_SERVER['SMTP_DEFAULT_PASSWORD']) ? '"' . $_SERVER['SMTP_DEFAULT_PASSWORD'] . '"' : "NOT SET") . "\n";
+        echo "\n";
+
+        echo "--- FILE SYSTEM CHECK ---\n";
+        $envloaderPath = realpath(__DIR__ . '/../../../../envloader.php');
+        $dotEnvPath = realpath(__DIR__ . '/../../../../.env');
+        echo "envloader.php path: " . ($envloaderPath ?: 'NOT FOUND') . " (Exists: " . (file_exists(__DIR__ . '/../../../../envloader.php') ? 'YES' : 'NO') . ")\n";
+        echo ".env path: " . ($dotEnvPath ?: 'NOT FOUND') . " (Exists: " . (file_exists(__DIR__ . '/../../../../.env') ? 'YES' : 'NO') . ")\n";
+        echo "\n";
+        
+        echo "=== DEBUG INTERCEPTOR END ===\n";
+        die();
+
         $customerId = $_POST['customer_id'] ?? null;
         $startDate = $_POST['start_date'] ?? null;
         $endDate = $_POST['end_date'] ?? null;
