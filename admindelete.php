@@ -12,7 +12,7 @@ header("location:$url");
 
 else
 {
- echo '<script>alert("Failed")</script>';
+ echo '<script>alert("Failed")</script> ';
 header("location:$url");   
 }
  ?>
